@@ -1,5 +1,7 @@
 # Windows 재현 검증
 
+> 3차 프로젝트(`sji21/3rd_project_team4`)에서 이관한 문서입니다. 본문의 `PATCH-XXX`는 3차 패치 번호를 가리킵니다.
+
 등기 PDF 업로드 기능은 macOS와 Windows에서 같은 Python 코드로 동작한다. Tesseract 실행 파일 설치 방식만 운영체제별로 다르다.
 
 ## 준비
