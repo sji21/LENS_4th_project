@@ -9,4 +9,4 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-001 initializes the record files for the 4th project. `LIST.md` now holds an empty patch table plus the patch numbering rule, links to the 3rd project records, and the retrieval follow-up tasks carried over from the 3rd project. Both changelogs start from the 4th project's first change instead of repeating the 3rd project history. (commit: pending)
+- PATCH-001 initializes the record files for the 4th project. `LIST.md` now holds an empty patch table plus the patch numbering rule, links to the 3rd project records, and the retrieval follow-up tasks carried over from the 3rd project. Both changelogs start from the 4th project's first change instead of repeating the 3rd project history. (commit: `6256704`)
