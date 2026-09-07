@@ -1,0 +1,95 @@
+{
+  "eval_set": "data/eval/dev.jsonl",
+  "answerable_questions": 23,
+  "experiments": [
+    {
+      "name": "bm25-default",
+      "family": "bm25",
+      "corpus": "raw",
+      "metrics": {
+        "n": 23,
+        "hit@1": 0.4783,
+        "hit@3": 0.6957,
+        "hit@5": 0.8696,
+        "mrr": 0.6188,
+        "recall@5": 0.8696,
+        "failures": [
+          "dev-005",
+          "dev-015",
+          "dev-016"
+        ]
+      },
+      "average_latency_ms": 0.0569
+    },
+    {
+      "name": "bm25-b025",
+      "family": "bm25",
+      "corpus": "raw",
+      "metrics": {
+        "n": 23,
+        "hit@1": 0.5652,
+        "hit@3": 0.7391,
+        "hit@5": 0.8696,
+        "mrr": 0.6754,
+        "recall@5": 0.8478,
+        "failures": [
+          "dev-005",
+          "dev-015",
+          "dev-016"
+        ]
+      },
+      "average_latency_ms": 0.0559
+    },
+    {
+      "name": "tfidf-cosine",
+      "family": "tfidf",
+      "corpus": "raw",
+      "metrics": {
+        "n": 23,
+        "hit@1": 0.5217,
+        "hit@3": 0.6522,
+        "hit@5": 0.8261,
+        "mrr": 0.6283,
+        "recall@5": 0.8261,
+        "failures": [
+          "dev-003",
+          "dev-005",
+          "dev-015",
+          "dev-016"
+        ]
+      },
+      "average_latency_ms": 0.0483
+    },
+    {
+      "name": "bm25-enriched",
+      "family": "bm25",
+      "corpus": "enriched",
+      "metrics": {
+        "n": 23,
+        "hit@1": 0.8696,
+        "hit@3": 1.0,
+        "hit@5": 1.0,
+        "mrr": 0.9275,
+        "recall@5": 1.0,
+        "failures": []
+      },
+      "average_latency_ms": 0.058
+    },
+    {
+      "name": "tfidf-enriched",
+      "family": "tfidf",
+      "corpus": "enriched",
+      "metrics": {
+        "n": 23,
+        "hit@1": 0.7391,
+        "hit@3": 0.9565,
+        "hit@5": 1.0,
+        "mrr": 0.8514,
+        "recall@5": 1.0,
+        "failures": []
+      },
+      "average_latency_ms": 0.0592
+    }
+  ],
+  "caution": "enriched 코퍼스의 쉬운 설명은 dev 질문을 참고해 작성되어 독립 holdout 검증 전에는 일반화 성능으로 간주할 수 없음"
+}

@@ -1,0 +1,4 @@
+﻿qid,question,expected_type,expected_status,actual_status,status_match,category,difficulty,gold_articles,retrieved_articles,retrieved_gold_articles,gold_recall,retrieval_mode,final_answer,source_labels,source_chunk_ids,elapsed_seconds,failure_stage,manual_correct,manual_note
+dev-014,보증금을 올려달라고 하는데 상한이 있나요?,answerable,answered,answered,True,계약/갱신,easy,주택임대차보호법-제7조,주택임대차보호법-제7조 | 주택임대차보호법 시행령-제8조 | 주택임대차보호법-제10조의2 | CASE-2021DA238650 | CASE-93DA39676,주택임대차보호법-제7조,1.0,hybrid,"보증금 증액청구는 약정한 보증금의 20분의 1을 초과할 수 없습니다. 주택임대차보호법 제7조 및 시행령 제8조에 따릅니다.
+
+본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",주택임대차보호법 제7조(차임 등의 증감청구권) | 주택임대차보호법 시행령 제8조(차임 등 증액청구의 기준 등) | 주택임대차보호법 제10조의2(초과 차임 등의 반환청구) | 대법원 2021다238650 구상금등청구의소 (2021-10-28 선고) | 대법원 93다39676 건물명도 (1993-12-24 선고),law-주택임대차보호법-20260102#제7조#0 | law-주택임대차보호법시행령-20260701#제8조#0 | law-주택임대차보호법-20260102#제10조의2#0 | case:CASE-2021DA238650#0 | case:CASE-93DA39676#0,219.897,,,

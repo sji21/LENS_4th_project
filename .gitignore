@@ -1,0 +1,29 @@
+# 원문 · 파생 데이터 (재수집/재생성 가능, 커밋하지 않음)
+data/raw/
+data/parsed/
+data/chunks/
+data/database/
+data/index/
+
+# 환경 변수 · 비밀정보
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# OS / 에디터
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# 로컬 OCR 실험 자료 (팀 저장소에 업로드하지 않음)
+/test/
+tmp/
+
+# 로컬 AI 작업 지침 (팀 저장소에 업로드하지 않음)
+/AGENTS.md

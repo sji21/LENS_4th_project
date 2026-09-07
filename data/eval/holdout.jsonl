@@ -1,0 +1,20 @@
+{"qid": "holdout-001", "question": "계약이 끝났는데 집주인이 보증금을 안 돌려주면 어떻게 해야 하나요?", "answer_type": "answerable", "gold_articles": ["주택임대차보호법-제3조의2", "주택임대차보호법-제3조의3"], "category": "보증금 반환", "difficulty": "easy"}
+{"qid": "holdout-002", "question": "전입신고만 하면 보증금을 보호받을 수 있나요?", "answer_type": "answerable", "gold_articles": ["주택임대차보호법-제3조", "주택임대차보호법-제3조의2"], "category": "대항력/우선변제", "difficulty": "easy"}
+{"qid": "holdout-003", "question": "확정일자는 어디에서 받을 수 있나요?", "answer_type": "answerable", "gold_articles": ["주택임대차보호법-제3조의6"], "category": "확정일자", "difficulty": "easy"}
+{"qid": "holdout-004", "question": "전입신고와 확정일자는 계약한 날 바로 받아야 하나요?", "answer_type": "answerable", "gold_articles": ["주택임대차보호법-제3조", "주택임대차보호법-제3조의2"], "category": "대항력/우선변제", "difficulty": "medium"}
+{"qid": "holdout-005", "question": "집주인이 바뀌면 전세 계약서를 새로 써야 하나요?", "answer_type": "answerable", "gold_articles": ["주택임대차보호법-제3조"], "category": "임대인 변경", "difficulty": "easy"}
+{"qid": "holdout-006", "question": "계약 기간이 남아 있는데 세입자가 먼저 나가려면 어떻게 해야 하나요?", "answer_type": "out_of_scope", "gold_articles": [], "category": "계약 해지", "difficulty": "medium"}
+{"qid": "holdout-007", "question": "계약을 다시 연장하고 싶다고 집주인에게 언제까지 말해야 하나요?", "answer_type": "answerable", "gold_articles": ["주택임대차보호법-제6조", "주택임대차보호법-제6조의3"], "category": "계약 갱신", "difficulty": "easy"}
+{"qid": "holdout-008", "question": "집주인이 전세를 월세로 바꾸자고 하면 꼭 동의해야 하나요?", "answer_type": "answerable", "gold_articles": ["주택임대차보호법-제7조의2", "주택임대차보호법 시행령-제9조"], "category": "월차임 전환", "difficulty": "medium"}
+{"qid": "holdout-009", "question": "살고 있는 집이 경매로 넘어갔는지 어디에서 확인할 수 있나요?", "answer_type": "out_of_scope", "gold_articles": [], "category": "경매", "difficulty": "easy"}
+{"qid": "holdout-010", "question": "보증금을 못 받은 채 이사해야 할 때 임차권등기는 어떻게 신청하나요?", "answer_type": "answerable", "gold_articles": ["주택임대차보호법-제3조의3"], "category": "임차권등기", "difficulty": "medium"}
+{"qid": "holdout-011", "question": "계약이 자동으로 연장된 뒤 세입자가 나가겠다고 하면 언제 계약이 끝나나요?", "answer_type": "answerable", "gold_articles": ["주택임대차보호법-제6조의2"], "category": "묵시적 갱신", "difficulty": "medium"}
+{"qid": "holdout-012", "question": "계약갱신요구권을 한 번 쓰면 다음 계약 때는 다시 쓸 수 없나요?", "answer_type": "answerable", "gold_articles": ["주택임대차보호법-제6조의3"], "category": "계약 갱신", "difficulty": "easy"}
+{"qid": "holdout-013", "question": "집주인이 직접 살겠다는 이유로 계약 연장을 거절할 수 있나요?", "answer_type": "answerable", "gold_articles": ["주택임대차보호법-제6조의3"], "category": "계약 갱신", "difficulty": "medium"}
+{"qid": "holdout-014", "question": "전세보증금을 월세로 바꿀 때 월세 금액에 법적인 제한이 있나요?", "answer_type": "answerable", "gold_articles": ["주택임대차보호법-제7조의2", "주택임대차보호법 시행령-제9조"], "category": "월차임 전환", "difficulty": "medium"}
+{"qid": "holdout-015", "question": "집이 경매로 팔리면 세입자는 보증금을 어떤 순서로 돌려받나요?", "answer_type": "answerable", "gold_articles": ["주택임대차보호법-제3조의2", "주택임대차보호법-제8조"], "category": "경매/우선변제", "difficulty": "hard"}
+{"qid": "holdout-016", "question": "임차권등기를 신청한 뒤 등기가 끝나기 전에 이사해도 되나요?", "answer_type": "answerable", "gold_articles": ["주택임대차보호법-제3조의3"], "category": "임차권등기", "difficulty": "hard"}
+{"qid": "holdout-017", "question": "보증금이 적은 세입자는 경매 때 다른 채권자보다 먼저 일부를 받을 수 있나요?", "answer_type": "answerable", "gold_articles": ["주택임대차보호법-제8조", "주택임대차보호법 시행령-제10조", "주택임대차보호법 시행령-제11조"], "category": "소액임차인", "difficulty": "medium"}
+{"qid": "holdout-018", "question": "전입신고를 했다가 잠시 다른 곳으로 옮기면 보증금 보호 효력이 사라지나요?", "answer_type": "answerable", "gold_articles": ["주택임대차보호법-제3조"], "category": "대항력/우선변제", "difficulty": "hard"}
+{"qid": "holdout-019", "question": "집주인이 실제로 살겠다며 내보낸 뒤 다른 사람에게 세를 놓으면 손해배상을 청구할 수 있나요?", "answer_type": "answerable", "gold_articles": ["주택임대차보호법-제6조의3"], "category": "계약 갱신", "difficulty": "hard"}
+{"qid": "holdout-020", "question": "계약 당시 집에 빚이 없었는데 나중에 집주인이 담보대출을 받으면 보증금 순위는 어떻게 되나요?", "answer_type": "answerable", "gold_articles": ["주택임대차보호법-제3조의2"], "category": "대항력/우선변제", "difficulty": "medium"}

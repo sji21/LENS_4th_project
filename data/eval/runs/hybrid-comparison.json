@@ -1,0 +1,156 @@
+{
+  "chunks": "data/sample/chunks_expanded.jsonl",
+  "eval_set": "data/eval/dev.jsonl",
+  "n": 25,
+  "questions_with_multiple_gold": [
+    "dev-001",
+    "dev-015",
+    "dev-017",
+    "dev-021",
+    "dev-022",
+    "dev-024"
+  ],
+  "standard_error_hit5": 0.0,
+  "one_question_is": 0.04,
+  "config": {
+    "rrf_k": 5,
+    "depth": 20,
+    "weights": {
+      "bm25": 1.0,
+      "kure": 1.0
+    },
+    "model": "nlpai-lab/KURE-v1"
+  },
+  "results": {
+    "BM25 (b=0.25, 사전)": {
+      "hit@1": 0.76,
+      "hit@3": 0.96,
+      "hit@5": 0.96,
+      "recall@3": 0.9,
+      "recall@5": 0.96,
+      "mrr": 0.8466666666666667,
+      "failures": [
+        "dev-008"
+      ],
+      "partial@3": [
+        "dev-015",
+        "dev-021",
+        "dev-022"
+      ],
+      "partial": [],
+      "ranks": {
+        "dev-001": 1,
+        "dev-002": 2,
+        "dev-003": 1,
+        "dev-004": 1,
+        "dev-005": 3,
+        "dev-006": 1,
+        "dev-007": 1,
+        "dev-008": 0,
+        "dev-009": 2,
+        "dev-010": 2,
+        "dev-011": 1,
+        "dev-012": 1,
+        "dev-013": 1,
+        "dev-014": 1,
+        "dev-015": 1,
+        "dev-016": 3,
+        "dev-017": 1,
+        "dev-018": 1,
+        "dev-019": 1,
+        "dev-020": 1,
+        "dev-021": 1,
+        "dev-022": 1,
+        "dev-023": 1,
+        "dev-024": 1,
+        "dev-025": 1
+      }
+    },
+    "nlpai-lab/KURE-v1": {
+      "hit@1": 0.8,
+      "hit@3": 0.88,
+      "hit@5": 0.96,
+      "recall@3": 0.86,
+      "recall@5": 0.94,
+      "mrr": 0.86,
+      "failures": [
+        "dev-003"
+      ],
+      "partial@3": [
+        "dev-021"
+      ],
+      "partial": [
+        "dev-001"
+      ],
+      "ranks": {
+        "dev-001": 4,
+        "dev-002": 1,
+        "dev-003": 0,
+        "dev-004": 2,
+        "dev-005": 1,
+        "dev-006": 1,
+        "dev-007": 1,
+        "dev-008": 1,
+        "dev-009": 2,
+        "dev-010": 1,
+        "dev-011": 1,
+        "dev-012": 1,
+        "dev-013": 1,
+        "dev-014": 1,
+        "dev-015": 4,
+        "dev-016": 1,
+        "dev-017": 1,
+        "dev-018": 1,
+        "dev-019": 1,
+        "dev-020": 1,
+        "dev-021": 1,
+        "dev-022": 1,
+        "dev-023": 1,
+        "dev-024": 1,
+        "dev-025": 1
+      }
+    },
+    "Hybrid RRF (BM25 + KURE)": {
+      "hit@1": 0.8,
+      "hit@3": 1.0,
+      "hit@5": 1.0,
+      "recall@3": 0.98,
+      "recall@5": 0.98,
+      "mrr": 0.8866666666666666,
+      "failures": [],
+      "partial@3": [
+        "dev-015"
+      ],
+      "partial": [
+        "dev-015"
+      ],
+      "ranks": {
+        "dev-001": 2,
+        "dev-002": 1,
+        "dev-003": 3,
+        "dev-004": 1,
+        "dev-005": 2,
+        "dev-006": 1,
+        "dev-007": 1,
+        "dev-008": 3,
+        "dev-009": 2,
+        "dev-010": 1,
+        "dev-011": 1,
+        "dev-012": 1,
+        "dev-013": 1,
+        "dev-014": 1,
+        "dev-015": 1,
+        "dev-016": 1,
+        "dev-017": 1,
+        "dev-018": 1,
+        "dev-019": 1,
+        "dev-020": 1,
+        "dev-021": 1,
+        "dev-022": 1,
+        "dev-023": 1,
+        "dev-024": 1,
+        "dev-025": 1
+      }
+    }
+  }
+}

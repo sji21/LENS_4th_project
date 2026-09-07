@@ -1,0 +1,20 @@
+{"qid":"case-holdout-001","question":"임차인의 관리 소홀로 임차주택에 불이 나 건물이 소실됐지만 임대인이 보험금을 받은 경우, 임대인이 임차인에게 다시 손해배상을 청구할 수 있나요?","gold_case_ids":["75829"],"category":"화재 손해배상","difficulty":"medium"}
+{"qid":"case-holdout-002","question":"제3자가 임차인 몰래 퇴거신고를 했다가 대출 절차 후 주민등록을 원상복구한 경우, 임차인은 대항력을 잃나요?","gold_case_ids":["118615"],"category":"대항력·주민등록","difficulty":"hard"}
+{"qid":"case-holdout-003","question":"아파트 분양 뒤 일정 기간 임차권 양도가 금지돼 있어도, 당사자 사이의 임차권 양도계약까지 무효가 되나요?","gold_case_ids":["201827"],"category":"임차권 양도","difficulty":"medium"}
+{"qid":"case-holdout-004","question":"주택 소유권을 채권 담보 목적으로만 넘겨받은 양도담보권자도 임대인의 지위를 승계한 양수인인가요?","gold_case_ids":["200844"],"category":"임대인 지위 승계","difficulty":"hard"}
+{"qid":"case-holdout-005","question":"일반 주택임대차에서 임대인은 임차인의 안전이나 도난 방지까지 보호할 의무가 있나요?","gold_case_ids":["117855"],"category":"임대인의 보호의무","difficulty":"medium"}
+{"qid":"case-holdout-006","question":"여러 임차인이 같은 사람을 임대인이라고 주장하며 각자 보증금 반환을 청구할 때 선정당사자를 세울 수 있나요?","gold_case_ids":["192145"],"category":"보증금 반환 소송","difficulty":"hard"}
+{"qid":"case-holdout-007","question":"전입신고 당시 실제 건물 지번과 주소가 일치했는데 이후 토지 분할로 지번이 바뀐 경우에도 주민등록 공시는 유효한가요?","gold_case_ids":["190337"],"category":"대항력·주민등록","difficulty":"hard"}
+{"qid":"case-holdout-008","question":"전입신고 후 토지 분할로 지번이 바뀌었는데, 경매개시결정 등기 뒤에야 주민등록 주소를 새 지번으로 고쳤다면 경락인에게 대항할 수 있나요?","gold_case_ids":["190669"],"category":"대항력·경매","difficulty":"hard"}
+{"qid":"case-holdout-009","question":"건물에 양도담보가 설정된 뒤 대항요건을 갖춘 임차인이 있으면, 양도담보권자는 담보 실행으로 임차인에게 명도를 청구할 수 있나요?","gold_case_ids":["191129"],"category":"양도담보·명도","difficulty":"hard"}
+{"qid":"case-holdout-010","question":"임차주택이 매매되어 소유자가 바뀐 뒤, 임차인은 이전 임대인과 새 소유자 중 누구에게 보증금 반환을 청구할 수 있나요?","gold_case_ids":["71381"],"category":"임대인 지위 승계","difficulty":"medium"}
+{"qid":"case-holdout-011","question":"임차인이 이사하면서 임대인에게 알리지 않았다면, 목적물 명도의 이행제공을 했다고 보아 보증금 반환 지체책임을 물을 수 있나요?","gold_case_ids":["81316"],"category":"보증금 반환·동시이행","difficulty":"hard"}
+{"qid":"case-holdout-012","question":"기존 채권을 우선변제받으려고 실제 거주 의사 없이 주택임대차 형식과 전입신고만 갖춘 경우에도 대항력이 인정되나요?","gold_case_ids":["81330"],"category":"통정허위 임대차","difficulty":"hard"}
+{"qid":"case-holdout-013","question":"대항력 있는 임대차가 끝났지만 보증금을 받지 못한 상태에서 주택이 양도되면, 새 소유자는 보증금 반환의무를 승계하나요?","gold_case_ids":["81841"],"category":"임대인 지위 승계","difficulty":"medium"}
+{"qid":"case-holdout-014","question":"임대인의 소유권 취득 계약이 나중에 해제됐더라도, 그 전에 인도와 주민등록을 마친 임차인은 소유권을 회복한 사람에게 대항할 수 있나요?","gold_case_ids":["194464"],"category":"계약해제·대항력","difficulty":"hard"}
+{"qid":"case-holdout-015","question":"임대차가 끝나기 전 임차인이 월세를 연체하면, 임대인의 별도 의사표시 없이 보증금에서 연체차임이 자동으로 공제되나요?","gold_case_ids":["168106"],"category":"차임·보증금","difficulty":"medium"}
+{"qid":"case-holdout-016","question":"재외국민이 한 국내거소신고를 주택임대차보호법상 주민등록으로 보아 대항력을 인정할 수 있나요?","gold_case_ids":["187509"],"category":"재외국민·대항력","difficulty":"hard"}
+{"qid":"case-holdout-017","question":"저당 부동산이 압류된 뒤 발생하는 차임채권에도 저당권의 효력이 미치나요?","gold_case_ids":["183073"],"category":"저당권·차임","difficulty":"medium"}
+{"qid":"case-holdout-018","question":"선순위 근저당권이 있어 곧 경매될 것을 알면서 소액보증금 임대차를 꾸며 최우선변제를 노린 임차인도 보호받나요?","gold_case_ids":["184312"],"category":"소액임차인·최우선변제","difficulty":"hard"}
+{"qid":"case-holdout-019","question":"임차인이 집 열쇠나 출입수단을 넘겨받아 사실상 지배하고 있다면, 물리적으로 계속 머물지 않아도 주택 인도와 점유가 인정될 수 있나요?","gold_case_ids":["185576"],"category":"점유·대항력","difficulty":"hard"}
+{"qid":"case-holdout-020","question":"외국인이 외국인등록과 체류지 변경신고를 하면 주택임대차보호법상 주민등록과 전입신고를 한 것과 같은 효과가 있나요?","gold_case_ids":["207117"],"category":"외국인·대항력","difficulty":"medium"}
