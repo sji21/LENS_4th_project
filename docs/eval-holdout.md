@@ -1,5 +1,7 @@
 # holdout 평가셋
 
+> 3차 프로젝트(`sji21/3rd_project_team4`)에서 이관한 문서입니다. 본문의 `PATCH-XXX`는 3차 패치 번호를 가리킵니다.
+
 ## 왜 만들었나
 
 `dev.jsonl` 27문항은 **설정을 고르는 데 썼습니다.** BM25 의 `b`, RRF 의 `rrf_k`,
