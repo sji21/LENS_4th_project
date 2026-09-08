@@ -19,6 +19,7 @@ from src.document_check.extraction import DocumentValidationError, PdfInspection
         ("registry.pdf", b"not a pdf", "PDF 형식"),
         ("registry.pdf", b"%PDF" + b"0" * (20 * 1024 * 1024), "20MB"),
     ],
+    ids=["wrong-extension", "empty-file", "invalid-header", "over-size-limit"],
 )
 def test_validate_pdf_rejects_invalid_uploads(filename: str, data: bytes, message: str) -> None:
     with pytest.raises(DocumentValidationError, match=message):

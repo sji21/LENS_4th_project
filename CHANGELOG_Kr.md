@@ -7,6 +7,11 @@
 
 ## 2026-09-08
 
+### 버그 수정 (Fixed)
+
+- PATCH-004 추적이 꺼져 있으면 LangSmith 설정·연결 검사를 건너뛰고, 켜져 있는데 필수 설정이 빠지면 실패하도록 정리했습니다. PDF 검증 테스트에 짧은 ID를 부여해 용량 초과 입력을 유지하면서 Windows 환경변수 길이 오류를 해결했습니다. (commit: pending)
+  - 검증: Windows에서 `.venv/Scripts/python -m pytest -q` 실행 결과 564 passed, 3 skipped, 58 subtests passed. 스킵은 비활성 LangSmith 검사 2개와 비공개 PDF 통합 테스트 1개이며 실패·오류는 없습니다.
+
 ### 추가
 
 - PATCH-003 법령·판례 회귀 평가를 같은 서비스 호출로 재현하는 CLI를 추가했습니다. 유형별 Hit·Recall·MRR, 문항별 순위, 입력 해시와 제외 내역을 기록하고 인덱스 불일치·정답 누락·기존 보고서 덮어쓰기를 차단합니다. CLI로 측정한 네 지표는 PATCH-002 기준선과 모두 일치하며, 법령 Dev는 연속 3회 실행에서 소수점까지 같았습니다. (commit: `fbc946c`, `68494dc`, `8af0f25`, `3c9cce7`, `dfaa323`)

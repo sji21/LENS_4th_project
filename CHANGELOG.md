@@ -7,6 +7,11 @@ This file records the 4th project from its first change onward.
 
 ## 2026-09-08
 
+### Fixed (Bug Fixes)
+
+- PATCH-004 skips LangSmith configuration and connection checks when tracing is disabled, while missing configuration still fails when enabled. Short PDF validation test IDs avoid Windows environment-variable length errors without reducing the oversized-file test input. (commit: pending)
+  - Validation: `.venv/Scripts/python -m pytest -q` on Windows: 564 passed, 3 skipped, 58 subtests passed. Skips are two disabled LangSmith checks and one private-PDF integration test; no failures or errors.
+
 ### Added
 
 - PATCH-003 adds a fixed service baseline CLI for statute and case regression datasets, with separate Hit/Recall/MRR metrics, per-question ranks, input hashes, explicit exclusions and index consistency checks. Existing outputs and missing gold labels fail safely. All four figures it measures match the PATCH-002 baseline, and statute Dev repeated identically across three consecutive runs. (commit: `fbc946c`, `68494dc`, `8af0f25`, `3c9cce7`, `dfaa323`)
