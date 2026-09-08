@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-005 records dispositions for all 11 inherited Dev audit items: three label corrections already landed in the 3rd project and eight labels are retained with corpus-based reasons and answer constraints. Marks the old audit as historical; evaluation data and retrieval behavior are unchanged. (commit: pending)
+- PATCH-005 records dispositions for all 11 inherited Dev audit items: three label corrections already landed in the 3rd project and eight labels are retained with corpus-based reasons and answer constraints. Marks the old audit as historical; evaluation data and retrieval behavior are unchanged. (commit: `a41a403`)
 
 ### Fixed (Bug Fixes)
 
