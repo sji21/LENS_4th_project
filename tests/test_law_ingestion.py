@@ -11,6 +11,7 @@ from tempfile import TemporaryDirectory
 
 from src.database.relational import connect_database, initialize_relational_database
 from src.ingestion.fetch_law_mock import parse_law_header
+from src.ingestion.fetch_minbeop import MINBEOP_ARTICLES, collect_records
 from src.ingestion.load_laws import (
     LawArticleRecord,
     article_row_id_of,
@@ -104,6 +105,34 @@ class HeaderParsingTests(unittest.TestCase):
         meta = parse_law_header("본문만 있고 머리말이 없다")
         self.assertEqual(meta["effective_from"], "")
         self.assertEqual(meta["ministry"], "")
+
+
+class MinbeopCollectionTests(unittest.TestCase):
+    HEADER = (
+        "민법\n"
+        "[시행 2026. 3. 17.] [법률 제21065호, 2025. 10. 1., 일부개정]\n"
+        "법무부 (법무심의관실), 02-0000-0000\n"
+    )
+
+    def source(self, articles=MINBEOP_ARTICLES):
+        return self.HEADER + "\n".join(
+            f"{number} (시험 제목) {number}의 검증용 본문이다."
+            for number in articles
+        )
+
+    def test_collects_only_the_locked_seven_articles(self):
+        records = collect_records(self.source())
+        self.assertEqual(tuple(record.article_number for record in records), MINBEOP_ARTICLES)
+        self.assertTrue(all(record.law_name == "민법" for record in records))
+        self.assertTrue(all(record.validate() == [] for record in records))
+
+    def test_missing_candidate_article_fails_instead_of_silently_shrinking(self):
+        with self.assertRaisesRegex(ValueError, "제640조"):
+            collect_records(self.source(MINBEOP_ARTICLES[:-1]))
+
+    def test_unreviewed_effective_date_is_rejected(self):
+        with self.assertRaisesRegex(ValueError, "시행일"):
+            collect_records(self.source().replace("2026. 3. 17.", "2027. 1. 1."))
 
 
 class LoadTests(unittest.TestCase):

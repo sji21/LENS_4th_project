@@ -419,6 +419,10 @@ python -m src.retrieval.index \
 
 ### 6.6 서비스 실행
 
+민법 조건부 검색(PATCH-006)을 사용하려면 기본 법령 적재 후 민법 7개 조문을
+추가 적재하고 민법 전용 인덱스를 만들어야 합니다. [적재·평가·제한 사항](docs/patch006-civil-routing.md)을
+확인하세요. 3차 공개 평가셋을 재사용한 회귀 검증이며 독립 평가 결과는 아닙니다.
+
 ```bash
 streamlit run app/streamlit_app.py
 ```

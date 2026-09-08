@@ -8,6 +8,20 @@ import pytest
 from src.evaluation.baseline import evaluate, load_dataset, main, prepare_questions
 
 
+def test_settings_include_actual_civil_and_custom_law_configuration():
+    from dataclasses import replace
+    from src.evaluation.baseline import settings
+    from src.retrieval.service import LAW, RetrievalService
+
+    chunks = [chunk("law", "a"), chunk("civil", "민법-제632조")]
+    chunks[1]["metadata"]["title"] = "민법"
+    service = RetrievalService(chunks, law=replace(LAW, rrf_k=9))
+    config = settings(service)["corpora"]
+    assert config["law"]["rrf_k"] == config["law"]["retriever"]["rrf_k"] == 9
+    assert "민법-제632조" in config["civil"]["include_ids"]
+    assert config["civil"]["retriever"]["rrf_k"] == 5
+
+
 def chunk(cid, aid, kind="law"):
     return {"chunk_id": cid, "text": aid, "metadata": {
         "doc_type": kind, "article_id": aid, "case_id": aid}}

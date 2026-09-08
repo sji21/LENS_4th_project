@@ -204,3 +204,41 @@ def expand_law(query: str) -> list[str]:
                 if term not in found and term not in query:
                     found.append(term)
     return found
+
+
+# 민법 임대차 후보는 일반 법령과 별도 검색한다. 이 확장을 공통 ``TERM_MAP``에
+# 넣으면 민법이 필요 없는 주택임대차보호법 질문의 BM25 순위까지 바뀐다.
+CIVIL_TERM_MAP: dict[str, tuple[str, ...]] = {
+    "보일러": ("수선", "사용 및 수익"),
+    "온수": ("수선", "사용 및 수익"),
+    "난방": ("수선", "사용 및 수익"),
+    "고장": ("수선", "사용 및 수익"),
+    "수리": ("수선", "필요비", "상환"),
+    "수리비": ("필요비", "상환"),
+    "제 돈": ("비용을 지출", "상환"),
+    "먼저 내": ("비용을 지출", "상환"),
+    "누수": ("일부를 사용·수익할 수 없게", "차임의 감액"),
+    "물이 새": ("일부를 사용·수익할 수 없게", "차임의 감액"),
+    "못 쓰": ("사용·수익할 수 없게", "차임의 감액"),
+    "곰팡이": ("사용·수익할 수 없게", "차임의 감액"),
+    "알려": ("통지",),
+    "말해야": ("통지",),
+    "말 안 하고": ("통지",),
+    "친구한테 빌려": ("전대", "임대인의 동의"),
+    "다른 사람에게 빌려": ("전대", "임대인의 동의"),
+    "방 하나를 빌려": ("전대", "임대인의 동의"),
+    "월세가 밀": ("차임액의 연체", "계약을 해지"),
+    "월세를 밀": ("차임액의 연체", "계약을 해지"),
+    "차임을 연체": ("차임액의 연체", "계약을 해지"),
+}
+
+
+def expand_civil(query: str) -> list[str]:
+    """민법 임대차 후보 검색에서만 생활 표현을 조문 표현으로 넓힌다."""
+    found = expand(query)
+    for colloquial, legal in CIVIL_TERM_MAP.items():
+        if colloquial in query:
+            for term in legal:
+                if term not in found and term not in query:
+                    found.append(term)
+    return found

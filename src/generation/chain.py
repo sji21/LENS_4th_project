@@ -97,6 +97,7 @@ _SETUP_HINT = (
     "  python -m src.ingestion.fetch_law_mock --records data/parsed/law_records.jsonl\n"
     "  python -m src.ingestion.load_laws --records data/parsed/law_records.jsonl "
     "--export data/chunks/chunks.jsonl\n"
+    "  민법 추가 적재: docs/patch006-civil-routing.md (별도 인덱스 필수)\n"
     "  python scripts/load_case_only_demo_corpus.py\n"
     "  python -m src.ingestion.fetch_guides --records data/parsed/guide_records.jsonl\n"
     "  python -m src.ingestion.load_guides --records data/parsed/guide_records.jsonl "
