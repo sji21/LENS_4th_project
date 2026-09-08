@@ -5,6 +5,12 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-08
+
+### Added
+
+- PATCH-003 adds a fixed service baseline CLI for statute and case regression datasets, with separate Hit/Recall/MRR metrics, per-question ranks, input hashes, explicit exclusions and index consistency checks. Existing outputs and missing gold labels fail safely. (commit: pending)
+
 ## 2026-09-07
 
 ### Changed
