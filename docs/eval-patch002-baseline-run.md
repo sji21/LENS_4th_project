@@ -53,16 +53,18 @@
 ## 5. 전체 테스트
 
 ```
-pytest -q
+.venv/Scripts/python -m pytest -q
 547 passed, 1 failed, 2 skipped, 2 errors   (종료 코드 1)
 ```
 
-실패·오류 3건은 모두 **환경 문제**이며 기존 코드 오류는 확인되지 않았다.
+**제품 코드 회귀는 확인되지 않았다.** 다만 실패·오류 3건은 순수한 환경 문제가 아니라
+**기존 테스트 설정·호환성 문제**가 남아 있는 것이다. 두 건 모두 검색·생성·앱 동작이 아니라
+테스트 쪽 조건에서 발생한다. 후속 조치는 `PATCH-004` 후보로 등록했다.
 
 | 항목 | 분류 | 내용 |
 | --- | --- | --- |
-| `tests/test_langsmith_connection.py::test_langsmith_environment_is_configured` | 환경 설정 | `LANGSMITH_TRACING` 이 `true` 이기를 단언하지만 `.env.example` 기본값은 `false`. 3차도 PATCH-037 기록에서 같은 사유로 실패 1건을 남겼다 |
-| `tests/test_pdf_extraction.py::test_validate_pdf_rejects_invalid_uploads` (오류 2건) | 플랫폼 제약 | `ValueError: the environment variable is longer than 32767 characters`. 긴 파라미터화 테스트 이름이 Windows 환경변수 길이 한도를 넘는 문제로, 3차가 PATCH-020·032·037에서 반복 기록한 사전 존재 오류 |
+| `tests/test_langsmith_connection.py::test_langsmith_environment_is_configured` | 테스트-기본설정 불일치 | `LANGSMITH_TRACING` 이 `true` 이기를 무조건 단언한다. LangSmith 추적은 선택 기능이고 `.env.example` 기본값은 `false` 이므로, 기본 설정으로 실행하면 항상 실패한다. 테스트가 기본 설정과 어긋나 있는 것이며 3차도 PATCH-037 기록에서 같은 실패를 남겼다 |
+| `tests/test_pdf_extraction.py::test_validate_pdf_rejects_invalid_uploads` (오류 2건) | 테스트 ID 생성·플랫폼 호환성 | `ValueError: the environment variable is longer than 32767 characters`. 파라미터에 긴 바이트열을 그대로 넣어 테스트 ID가 길어지고, 그 ID가 Windows 환경변수 길이 한도를 넘는다. 파라미터에 짧은 `id` 를 붙이면 해소되는 테스트 작성 방식 문제이며, 3차가 PATCH-020·032·037에서 반복 기록한 사전 존재 오류 |
 | 스킵 2건 | 선택 조건 | `LANGSMITH_TRACING` 비활성 1건, `REGISTRY_SAMPLE_PDF`(로컬 비공개 PDF) 미설정으로 OCR 통합 테스트 1건 |
 
 ## 6. 검색 평가
@@ -116,14 +118,60 @@ pytest -q
 
 ## 8. 재현 방법
 
+### 8.1 환경 준비
+
+명령은 모두 `.venv` 인터프리터를 직접 지정한다. 가상환경을 만들어 두고 기본 `python`으로
+실행하면 다른 환경에서 돌아 결과가 달라진다.
+
 ```bash
-python -m venv .venv                      # Python 3.11
-.venv/Scripts/python -m pip install -r requirements.txt
-cp .env.example .env
-pytest -q
-python -m src.evaluation.compare_law_top3
-streamlit run app/streamlit_app.py
+python -m venv .venv                                        # Python 3.11
+.venv/Scripts/python -m pip install -r requirements.txt     # Linux/macOS 는 .venv/bin/python
+cp .env.example .env                                        # PowerShell: Copy-Item .env.example .env
 ```
+
+### 8.2 데이터 준비 (필수)
+
+법령·판례·안내 청크와 SQLite·Chroma 인덱스는 `.gitignore` 대상이라 **새 클론에는 없다.**
+아래 두 방법 중 하나로 채워야 재현할 수 있다.
+
+**(a) 3차 산출물을 그대로 복사 — 이번 측정이 쓴 방법.** 재생성 과정에서 생기는 차이를
+배제할 수 있어 동일 조건 비교에 적합하다.
+
+```bash
+SRC=<3차 저장소 로컬 경로>
+cp -r "$SRC"/data/{raw,parsed,chunks,database,index} data/
+cp "$SRC"/data/manifest.jsonl data/manifest.jsonl
+```
+
+**(b) 재생성.** `README.md` 6절의 초기화·적재·색인 절차를 따른다. 이 경우 아래 해시가
+달라질 수 있으므로 동일 조건 비교로 쓰지 않는다.
+
+복사한 산출물이 이번 측정과 같은지는 해시로 확인한다.
+
+```bash
+.venv/Scripts/python -c "import hashlib,pathlib,sys; [print(hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest(), p) for p in sys.argv[1:]]"   data/chunks/chunks.jsonl data/chunks/cases.jsonl data/chunks/guides.jsonl   data/database/knowledge.sqlite3 data/index/chroma_kurev1_1024/chroma.sqlite3
+```
+
+| 파일 | 크기 | SHA-256 |
+| --- | ---: | --- |
+| `data/chunks/chunks.jsonl` | 201,317 | `9b6bce36419779bffbb0f3b75fcf7884f40ff24eb6a511b7174d4dc4b28f072a` |
+| `data/chunks/cases.jsonl` | 24,142 | `b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134` |
+| `data/chunks/guides.jsonl` | 13,243 | `af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317` |
+| `data/database/knowledge.sqlite3` | 696,320 | `209349f0ba299d154857413c4c0fbcfc600a9d916e0d53b9ac187e63bfcaa06a` |
+| `data/index/chroma_kurev1_1024/chroma.sqlite3` | 2,514,944 | `e0ba15c395bd954c33adf6b27a9fbf1359cc5f5bd2289137611631b76c03f98b` |
+
+`cases.jsonl` 의 해시는 3차 `final-main-case26-20260901.json` 이 기록한 `chunks_sha256`
+과 같다. 판례 코퍼스가 3차 최종 측정과 동일하다는 독립 확인이다.
+
+### 8.3 실행
+
+```bash
+.venv/Scripts/python -m pytest -q
+.venv/Scripts/python -m src.evaluation.compare_law_top3
+.venv/Scripts/python -m streamlit run app/streamlit_app.py --server.headless true --server.port 8501
+```
+
+기동 확인은 `curl -s http://localhost:8501/_stcore/health` 가 `ok` 를 돌려주는지로 한다.
 
 법령 Holdout 18문항과 판례 두 평가셋에는 저장소에 커밋된 실행 스크립트가 없다. 3차도
 `docs/eval-holdout.md` 에서 같은 한계를 기록했다. 이번에는 3차 기록과 동일한 호출
@@ -146,5 +194,6 @@ streamlit run app/streamlit_app.py
 ## 10. 결론
 
 4차 환경에서 이관 코드베이스가 정상 기동하고, 3차가 기록한 검색 성능 4개 수치를 모두
-재현했다. 기존 코드 오류는 확인되지 않았으므로 별도 수정 패치를 등록하지 않는다.
+재현했다. 제품 코드 회귀는 확인되지 않았으므로 제품 코드 수정 패치는 등록하지 않는다.
+다만 기존 테스트 설정·호환성 문제가 남아 있어 `PATCH-004` 후보로 등록했다.
 기능 개발을 시작해도 되는 상태다.
