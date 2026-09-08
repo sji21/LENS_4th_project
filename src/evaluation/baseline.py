@@ -17,7 +17,7 @@ from src.retrieval.retriever import BM25Retriever, load_chunks
 from src.retrieval.index import clean_metadata
 from src.retrieval.service import (
     CASE, CASE_CHUNKS, DEFAULT_INDEX, DEFAULT_MODEL, GUIDE, GUIDE_CHUNKS,
-    LAW, LAW_CHUNKS, LAW_TYPES, RetrievalService,
+    LAW, LAW_CHUNKS, LAW_TYPES, DEFAULT_CIVIL_INDEX, RetrievalService,
 )
 
 SEARCH_K = {"k_law": 5, "k_case": 5, "k_guide": 2}
@@ -126,7 +126,7 @@ def retriever_settings(retriever) -> dict | None:
 
 def settings(service) -> dict:
     corpora = {}
-    for key, corpus in (("law", LAW), ("case", CASE), ("guide", GUIDE)):
+    for key, corpus in zip(("law", "case", "guide", "civil"), (*service.corpora, service.civil)):
         config = {f.name: (f"{value.__module__}.{value.__name__}" if callable(value) else value)
                   for f in fields(corpus) for value in [getattr(corpus, f.name)]}
         config["retriever"] = retriever_settings(service._retrievers.get(corpus.name))
@@ -143,13 +143,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--case-chunks", type=Path, default=CASE_CHUNKS)
     parser.add_argument("--guide-chunks", type=Path, default=GUIDE_CHUNKS)
     parser.add_argument("--index", type=Path, default=DEFAULT_INDEX)
+    parser.add_argument("--civil-index", type=Path, default=DEFAULT_CIVIL_INDEX)
     parser.add_argument("--model", default=DEFAULT_MODEL)
     args = parser.parse_args(argv)
     # Never replace a frozen dataset, baseline report, or index by accident.
     if args.out.exists():
         parser.error("Output already exists; use a new report path")
     paths = (args.law_chunks, args.case_chunks, args.guide_chunks)
-    if args.out.resolve().is_relative_to(args.index.resolve()):
+    if any(args.out.resolve().is_relative_to(p.resolve()) for p in (args.index, args.civil_index)):
         parser.error("Output must be outside the index")
     try:
         inputs = [fingerprint(p) for p in (*paths, args.eval_set)]
@@ -158,11 +159,18 @@ def main(argv: list[str] | None = None) -> int:
         if len({c["chunk_id"] for c in chunks}) != len(chunks):
             raise ValueError("Duplicate chunk_id across input files")
         questions, exclusions = prepare_questions(load_dataset(args.eval_set, args.kind), chunks, args.kind)
-        service = RetrievalService.from_index(chunk_paths=paths, index_path=args.index, model=args.model)
+        service = RetrievalService.from_index(chunk_paths=paths, index_path=args.index, model=args.model,
+                                              civil_index_path=args.civil_index)
         # Catch missing or stale indexed records before reporting a misleading score.
         indexed = service.dense.collection.get(include=["documents", "metadatas"])
+        civil_index_db = None
+        if service.civil_dense is not None:
+            civil_index_db = fingerprint(args.civil_index / "chroma.sqlite3")
+            civil_indexed = service.civil_dense.collection.get(include=["documents", "metadatas"])
+            for key in ("ids", "documents", "metadatas"):
+                indexed[key] += civil_indexed[key]
         expected = {c["chunk_id"]: c for c in chunks}
-        if set(indexed["ids"]) != set(expected):
+        if len(indexed["ids"]) != len(expected) or set(indexed["ids"]) != set(expected):
             raise ValueError("Index/chunk IDs differ; restore the matching baseline artifacts")
         for cid, document, metadata in zip(indexed["ids"], indexed["documents"], indexed["metadatas"]):
             if document != expected[cid]["text"] or metadata != clean_metadata(expected[cid]["metadata"]):
@@ -176,6 +184,7 @@ def main(argv: list[str] | None = None) -> int:
                    "purpose": "published baseline reproduction/regression; not independent holdout",
                    "kind": args.kind, "model": args.model, "settings": settings(service),
                    "inputs": inputs, "index_sqlite_before_run": index_db,
+                   "civil_index_sqlite_before_run": civil_index_db,
                    "index_records_verified": len(expected), "exclusions": exclusions,
                    "ranking": "deduplicate article_id/case_id after 5 returned chunks; MRR truncated at 5",
                    "guide_evaluation": "counts only; no guide accuracy", **result}

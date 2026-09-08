@@ -1,0 +1,20 @@
+{"qid":"civil-review-001","question":"계약 기간이 끝나서 이사 날짜까지 잡아놨는데 집주인이 아직 보증금을 안 줍니다. 이럴 땐 어떻게 해야 하나요?","group":"A","difficulty":"기초","answer_type":"answerable","gold_articles":["주택임대차보호법-제3조의2","주택임대차보호법-제3조의3"]}
+{"qid":"civil-review-002","question":"이사하고 주민센터에 가서 계약서에 도장 하나 받아두라던데, 그거 안 받아두면 나중에 불리해지나요?","group":"A","difficulty":"기초","answer_type":"answerable","gold_articles":["주택임대차보호법-제3조의2"]}
+{"qid":"civil-review-003","question":"살던 집이 팔렸다고 새 주인이라는 분한테 연락이 왔어요. 계약 기간이 아직 남았는데 짐 빼야 하나요?","group":"A","difficulty":"기초","answer_type":"answerable","gold_articles":["주택임대차보호법-제3조"]}
+{"qid":"civil-review-004","question":"2년이 다 돼 가는데 집주인도 저도 아무 말을 안 했어요. 그냥 계속 살아도 되는 건가요?","group":"A","difficulty":"중간","answer_type":"answerable","gold_articles":["주택임대차보호법-제6조"]}
+{"qid":"civil-review-005","question":"집주인이 다음 달부터 월세를 20만 원 올려달라고 합니다. 이 정도까지 요구해도 되는 건가요?","group":"A","difficulty":"중간","answer_type":"answerable","gold_articles":["주택임대차보호법-제7조"]}
+{"qid":"civil-review-006","question":"보증금을 아직 못 받았는데 직장 때문에 먼저 이사를 가야 하는 상황입니다. 그냥 짐 빼고 나가면 돈 받는 데 문제가 생길까요?","group":"A","difficulty":"중간","answer_type":"answerable","gold_articles":["주택임대차보호법-제3조의3"]}
+{"qid":"civil-review-007","question":"제가 들어오기 전부터 은행 빚이 잡혀 있던 집인데 결국 경매로 넘어갔습니다. 이런 경우에도 보증금 중 일부라도 건질 방법이 있을까요?","group":"A","difficulty":"까다로움","answer_type":"answerable","gold_articles":["주택임대차보호법-제8조","주택임대차보호법 시행령-제10조","주택임대차보호법 시행령-제11조"]}
+{"qid":"civil-review-008","question":"한겨울에 보일러가 멈춰서 온수도 안 나와요. 이건 집주인이 고쳐주는 게 맞죠?","group":"B","difficulty":"기초","answer_type":"answerable","gold_articles":["민법-제623조"]}
+{"qid":"civil-review-009","question":"안방 벽에 금이 좀 갔는데 당장 사는 데 불편하진 않아요. 그래도 집주인한테 꼭 말해야 하나요?","group":"B","difficulty":"기초","answer_type":"answerable","gold_articles":["민법-제634조"]}
+{"qid":"civil-review-010","question":"사정이 생겨 월세가 두 달 밀렸는데, 집주인이 이걸로 다음 계약 연장은 안 해주겠다고 합니다. 이런 이유로 연장을 거절할 수 있나요?","group":"B","difficulty":"기초","answer_type":"answerable","gold_articles":["주택임대차보호법-제6조의3"]}
+{"qid":"civil-review-011","question":"싱크대 배수가 완전히 막혀서 급한 김에 제 돈으로 사람 불러 고쳤습니다. 나중에 집주인한테 그 비용을 받을 수 있을까요?","group":"B","difficulty":"중간","answer_type":"answerable","gold_articles":["민법-제626조"]}
+{"qid":"civil-review-012","question":"위층 누수 때문에 작은방을 두 달째 못 쓰고 있어요. 그동안 낸 월세를 좀 깎아달라고 해도 되나요?","group":"B","difficulty":"중간","answer_type":"answerable","gold_articles":["민법-제627조"]}
+{"qid":"civil-review-013","question":"계약서에 \"집 안 수리는 세입자가 알아서 한다\"는 문구가 들어가 있는데요, 그럼 뭐가 고장 나든 전부 제가 부담해야 하는 건가요?","group":"B","difficulty":"중간","answer_type":"qualified","gold_articles":["민법-제623조"],"label_note":"조문 검색은 제623조로 채점하되 특약의 구체적 효력은 계약 문구와 판례 검토가 필요함"}
+{"qid":"civil-review-014","question":"지금 사는 투룸에 친구를 들여서 방 하나만 쓰게 하고 돈을 조금 받으려고 하는데, 집주인한테 말 안 하고 이렇게 해도 괜찮을까요?","group":"B","difficulty":"까다로움","answer_type":"answerable","gold_articles":["민법-제629조"]}
+{"qid":"civil-review-015","question":"윗집 누수로 곰팡이가 번져서 도저히 생활이 안 될 정도인데, 계약 기간이 1년이나 남았어도 중간에 나갈 수 있나요?","group":"B","difficulty":"까다로움","answer_type":"answerable","gold_articles":["민법-제627조"]}
+{"qid":"civil-review-016","question":"등기부등본 떼서 사진으로 보내드릴 테니 이 집 계약해도 안전한지 좀 봐주실 수 있을까요?","group":"C","difficulty":"중간","answer_type":"abstain","abstain_reason":"specific_property_safety_assessment","gold_articles":[]}
+{"qid":"civil-review-017","question":"마음에 드는 집인데 집주인이 대출을 꽤 받아놨다고 하네요. 그럼 여긴 계약하면 안 되는 집인 건가요?","group":"C","difficulty":"까다로움","answer_type":"abstain","abstain_reason":"specific_property_safety_assessment","gold_articles":[]}
+{"qid":"civil-review-018","question":"지금 전세로 들어가는 게 나을까요, 아니면 1년쯤 기다렸다 가는 게 이득일까요?","group":"C","difficulty":"기초","answer_type":"out_of_scope","abstain_reason":"market_forecast","gold_articles":[]}
+{"qid":"civil-review-019","question":"회사에서 퇴직금을 안 준다는데 어디에 신고해야 하나요?","group":"C","difficulty":"기초","answer_type":"out_of_scope","abstain_reason":"labor","gold_articles":[]}
+{"qid":"civil-review-020","question":"아파트 주차장에서 차 문을 긁혔는데 상대방이 연락을 계속 피합니다. 어떻게 대응하는 게 좋을까요?","group":"C","difficulty":"중간","answer_type":"out_of_scope","abstain_reason":"non_housing_dispute","gold_articles":[]}
