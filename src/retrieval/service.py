@@ -170,7 +170,7 @@ def mentions_commercial(question: str) -> bool:
 def route_law_corpus(question: str, base: Corpus = LAW) -> Corpus:
     """질문에 맞는 법령 범위를 고른다.
 
-    **기본은 주택이다.** 전세ON 은 주택임대차 서비스이고, 코퍼스의 법령 133청크 중
+    **기본은 주택이다.** LENS는 주택임대차 서비스이고, 코퍼스의 법령 133청크 중
     57청크(43%)가 상가 법령이라 그대로 두면 주택 질문에서 상가 조문이 상위를
     차지한다. 실제로 "집주인이 바뀌면" 질문에 상가건물 임대차보호법 제5조가
     1위로 올라왔다.
