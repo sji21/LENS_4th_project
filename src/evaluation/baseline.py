@@ -13,7 +13,7 @@ import subprocess
 from time import perf_counter
 
 from src.evaluation.metrics import hit_at_k, recall_at_k, reciprocal_rank
-from src.retrieval.retriever import load_chunks
+from src.retrieval.retriever import BM25Retriever, load_chunks
 from src.retrieval.index import clean_metadata
 from src.retrieval.service import (
     CASE, CASE_CHUNKS, DEFAULT_INDEX, DEFAULT_MODEL, GUIDE, GUIDE_CHUNKS,
@@ -109,13 +109,29 @@ def evaluate(service, questions: list[dict], chunks: list[dict], kind: str) -> d
             "mean_search_seconds": sum(r["seconds"] for r in rows) / len(rows), "questions": rows}
 
 
-def settings() -> dict:
+def retriever_settings(retriever) -> dict | None:
+    """Read the parameters off the built retriever, never a copy of them.
+
+    A literal here would keep reporting the old value after someone retunes
+    the retriever, and the report exists to say what the run actually used.
+    """
+    if retriever is None:
+        return None
+    bm25 = next((m.retriever for m in retriever.members
+                 if isinstance(m.retriever, BM25Retriever)), None)
+    return {"rrf_k": retriever.rrf_k, "depth": retriever.depth,
+            "bm25": None if bm25 is None
+                    else {"k1": bm25.k1, "b": bm25.b, "char_ngram": bm25.char_ngram}}
+
+
+def settings(service) -> dict:
     corpora = {}
     for key, corpus in (("law", LAW), ("case", CASE), ("guide", GUIDE)):
-        corpora[key] = {f.name: (f"{value.__module__}.{value.__name__}" if callable(value) else value)
-                        for f in fields(corpus) for value in [getattr(corpus, f.name)]}
-    return {"search_k": SEARCH_K, "bm25_k1": 1.5, "char_ngram": 2,
-            "hybrid_depth": 20, "corpora": corpora}
+        config = {f.name: (f"{value.__module__}.{value.__name__}" if callable(value) else value)
+                  for f in fields(corpus) for value in [getattr(corpus, f.name)]}
+        config["retriever"] = retriever_settings(service._retrievers.get(corpus.name))
+        corpora[key] = config
+    return {"search_k": SEARCH_K, "corpora": corpora}
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -158,7 +174,7 @@ def main(argv: list[str] | None = None) -> int:
                    "worktree_dirty": dirty,
                    "python": platform.python_version(), "platform": platform.platform(),
                    "purpose": "published baseline reproduction/regression; not independent holdout",
-                   "kind": args.kind, "model": args.model, "settings": settings(),
+                   "kind": args.kind, "model": args.model, "settings": settings(service),
                    "inputs": inputs, "index_sqlite_before_run": index_db,
                    "index_records_verified": len(expected), "exclusions": exclusions,
                    "ranking": "deduplicate article_id/case_id after 5 returned chunks; MRR truncated at 5",
