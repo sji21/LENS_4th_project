@@ -7,6 +7,10 @@ This file records the 4th project from its first change onward.
 
 ## 2026-09-08
 
+### Changed
+
+- PATCH-005 records dispositions for all 11 inherited Dev audit items: three label corrections already landed in the 3rd project and eight labels are retained with corpus-based reasons and answer constraints. Marks the old audit as historical; evaluation data and retrieval behavior are unchanged. (commit: `a41a403`)
+
 ### Fixed (Bug Fixes)
 
 - PATCH-004 skips LangSmith configuration and connection checks when tracing is disabled, while missing configuration still fails when enabled. Short PDF validation test IDs avoid Windows environment-variable length errors without reducing the oversized-file test input. (commit: `2ec2329`)
