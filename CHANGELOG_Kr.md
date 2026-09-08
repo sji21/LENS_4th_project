@@ -9,7 +9,7 @@
 
 ### 버그 수정 (Fixed)
 
-- PATCH-004 추적이 꺼져 있으면 LangSmith 설정·연결 검사를 건너뛰고, 켜져 있는데 필수 설정이 빠지면 실패하도록 정리했습니다. PDF 검증 테스트에 짧은 ID를 부여해 용량 초과 입력을 유지하면서 Windows 환경변수 길이 오류를 해결했습니다. (commit: pending)
+- PATCH-004 추적이 꺼져 있으면 LangSmith 설정·연결 검사를 건너뛰고, 켜져 있는데 필수 설정이 빠지면 실패하도록 정리했습니다. PDF 검증 테스트에 짧은 ID를 부여해 용량 초과 입력을 유지하면서 Windows 환경변수 길이 오류를 해결했습니다. (commit: `2ec2329`)
   - 검증: Windows에서 `.venv/Scripts/python -m pytest -q` 실행 결과 564 passed, 3 skipped, 58 subtests passed. 스킵은 비활성 LangSmith 검사 2개와 비공개 PDF 통합 테스트 1개이며 실패·오류는 없습니다.
 
 ### 추가
