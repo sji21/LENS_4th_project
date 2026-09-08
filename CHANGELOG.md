@@ -19,7 +19,7 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
-- PATCH-006 ports conditional Civil Act retrieval from 3rd-project PATCH-033, adds Article 632 alongside the sublease rule, and stores seven reviewed articles in a separate dense index to preserve existing rankings. Includes corpus ingestion, missing/mixed-index checks, regression tooling and setup instructions. Published regression sets are reused; independent evaluation and operating-data rollout remain pending. (commit: pending)
+- PATCH-006 ports conditional Civil Act retrieval from 3rd-project PATCH-033, adds Article 632 alongside the sublease rule, and stores seven reviewed articles in a separate dense index to preserve existing rankings. Includes corpus ingestion, missing/mixed-index checks, regression tooling and setup instructions. Published regression sets are reused; independent evaluation and operating-data rollout remain pending. (commit: `4b9a929`)
 
 - PATCH-003 adds a fixed service baseline CLI for statute and case regression datasets, with separate Hit/Recall/MRR metrics, per-question ranks, input hashes, explicit exclusions and index consistency checks. Existing outputs and missing gold labels fail safely. All four figures it measures match the PATCH-002 baseline, and statute Dev repeated identically across three consecutive runs. (commit: `fbc946c`, `68494dc`, `8af0f25`, `3c9cce7`, `dfaa323`)
 
