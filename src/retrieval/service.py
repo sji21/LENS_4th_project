@@ -230,11 +230,29 @@ def detect_civil_topics(question: str) -> tuple[CivilTopic, ...]:
          "안 켜", "안 돌아가", "안 내려가", "막히", "막혀", "멈췄", "멈추"),
     )
     repair = explicit_repair or (equipment and malfunction)
-    reimbursement = repair and _has_any(
+    # 수리와 지출은 같은 문장에 있어야 한다. "수리는 끝냈어요. 계약금을
+    # 냈습니다"를 연결하지 않고, "끝냈어요"도 지출 표현으로 세지 않는다.
+    payment_sentences = [
+        sentence for sentence in re.split(r"[.!?\n]+", q)
+        if re.search(r"(?<![가-힣])(?:냈어요|냈습니다|냈는데|지불했|결제했)", sentence)
+    ]
+    other_money = ("계약금", "보증금", "예약금", "잔금", "월세", "차임", "관리비", "중개수수료", "중개보수")
+    repair_payment = any(
+        _has_any(sentence, ("수리", "수선", "고치", "고쳐", "고쳤"))
+        and not _has_any(sentence, other_money)
+        for sentence in payment_sentences
+    )
+    explicit_reclaim = _has_any(q, ("수리비 달라", "수리비를 달라", "수선비 달라", "수선비를 달라"))
+    # 다른 비용도 지급했다면 "이 돈"의 대상을 추정하지 않는다.
+    implicit_reclaim = _has_any(q, ("이 돈 달라", "이 돈을 달라", "이 돈 받을", "이 돈을 받을")) and not any(
+        _has_any(sentence, other_money) for sentence in payment_sentences
+    )
+    paid_repair_reclaim = repair_payment and (explicit_reclaim or implicit_reclaim)
+    reimbursement = repair and (paid_repair_reclaim or _has_any(
         q,
         ("제 돈", "먼저 내", "먼저 냈", "먼저 지불", "비용을 받", "비용 받을",
          "돌려받", "청구", "업체 불러서 고쳤", "사람 불러 고쳤"),
-    )
+    ))
     unusable = _has_any(q, ("누수", "물이 새", "물 새", "곰팡이", "침수")) and _has_any(
         q,
         ("못 쓰", "쓰지 못", "사용할 수 없", "사용하지 못", "살 수 없", "생활이 안",
