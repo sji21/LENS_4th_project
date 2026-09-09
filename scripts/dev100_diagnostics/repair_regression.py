@@ -1,11 +1,15 @@
-import os,sys,json,shutil,hashlib
+import os,sys,json,shutil,hashlib,argparse
 from pathlib import Path
 from dataclasses import asdict
 os.environ.update(HF_HUB_OFFLINE='1',TRANSFORMERS_OFFLINE='1',ANONYMIZED_TELEMETRY='False',LANGSMITH_TRACING='false')
 sys.stdout.reconfigure(encoding='utf-8');sys.path.insert(0,str(Path.cwd()))
 from src.retrieval.service import RetrievalService
-root=Path.cwd().parent/'질문제작평가/3. 구현 담당 AI — 범위 점검과 데이터 부족 분석부터/patch009-dev100-20260909'
-out=Path('tmp/patch010');snapshot=out/'snapshot'
+parser=argparse.ArgumentParser(description='Compare 200 development inputs against a saved pre-fix run.')
+parser.add_argument('--baseline-run',required=True,type=Path)
+parser.add_argument('--out',required=True,type=Path)
+args=parser.parse_args();root=args.baseline_run;out=args.out
+if not (root/'results.json').is_file() or not (root/'snapshot').is_dir():parser.error('Baseline results.json and snapshot/ are required')
+out.mkdir(parents=True,exist_ok=False);snapshot=out/'snapshot'
 shutil.copytree(root/'snapshot',snapshot)
 rows=json.loads((root/'results.json').read_text(encoding='utf-8'))
 paths=tuple(snapshot/'data/chunks'/f'{n}.jsonl' for n in ['chunks','cases','guides'])
