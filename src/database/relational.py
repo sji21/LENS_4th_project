@@ -37,6 +37,8 @@ def initialize_relational_database(path: Path) -> DatabaseSummary:
     with connect_database(database_path) as connection:
         connection.executescript(schema)
         _migrate_case_number_uniqueness(connection)
+        # v3 adds side tables only; existing rows and retrieval chunks stay intact.
+        connection.execute("INSERT OR IGNORE INTO schema_migrations(version) VALUES (3)")
         version = connection.execute(
             "SELECT MAX(version) AS version FROM schema_migrations"
         ).fetchone()["version"]

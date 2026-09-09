@@ -66,7 +66,7 @@ def test_migrates_legacy_unique_case_number_constraint(tmp_path: Path) -> None:
                        '요지', 1, 'chunk', 'test')"""
         )
 
-    assert initialize_relational_database(path).schema_version == 2
+    assert initialize_relational_database(path).schema_version == 3
     with connect_database(path) as connection:
         connection.execute(
             """INSERT INTO documents

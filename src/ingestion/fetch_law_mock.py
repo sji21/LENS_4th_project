@@ -39,7 +39,8 @@ LAWS: list[tuple[str, str, str, str, str | None]] = [
 
 # 조문 시작 지점. "제3조", "제3조의2", "제12조의3" 등
 _ARTICLE_HEAD = re.compile(r"^\s*(제\d+조(?:의\d+)?)\s*(?:\(([^)]*)\))?")
-# 부칙부터는 버린다. 경과규정은 이번 범위 밖이고 노이즈가 크다.
+# 검색용 본문에서는 부칙을 제외한다. 적재 레코드는 전체 수집 평문을
+# 별도 source_text 스냅샷에 보존하므로 부칙을 유실하지 않는다.
 # onclick 자바스크립트가 텍스트로 새어나와 줄 앞을 가리므로 줄머리로 잡지 않는다.
 _ADDENDA = re.compile(r"부\s*칙\s*<\s*(?:법률|대통령령)")
 # 태그를 걷어내도 남는 스크립트·속성 잔해
@@ -200,7 +201,7 @@ def build_records() -> list:
         header = parse_law_header(text)
         effective_from = header["effective_from"] or f"{eff[:4]}-{eff[4:6]}-{eff[6:]}"
 
-        for no, title, body in parse_articles(text):
+        for index, (no, title, body) in enumerate(parse_articles(text)):
             records.append(LawArticleRecord(
                 law_name=name,
                 law_type=hierarchy,
@@ -218,6 +219,9 @@ def build_records() -> list:
                 source_url=f"https://www.law.go.kr/법령/{name.replace(' ', '')}/{no}",
                 collected_at=time.strftime("%Y-%m-%d"),
                 file_path=str(path),
+                source_text=text if index == 0 else "",
+                source_document_url=ENDPOINT.format(seq=seq, eff=eff),
+                source_version_id=seq,
             ))
     return records
 
