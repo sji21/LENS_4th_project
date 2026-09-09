@@ -1,10 +1,11 @@
 """Article-anchor diagnostics, retaining conditions rather than inventing gold scores."""
-import json,re,sys
+import json,re,sys,argparse
 from pathlib import Path
 from collections import Counter,defaultdict
 sys.stdout.reconfigure(encoding='utf-8')
-root=Path.cwd().parent/'질문제작평가/3. 구현 담당 AI — 범위 점검과 데이터 부족 분석부터'
-out=root/'patch009-dev100-20260909'
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--run-dir',type=Path,default=Path('tmp/dev100-run'))
+out=parser.parse_args().run_dir
 rows=json.loads((out/'results.json').read_text(encoding='utf-8'))
 inventory=json.loads((out/'db-inventory.json').read_text(encoding='utf-8'))
 available={r['law_name'].replace(' ','')+'-'+r['article_number'] for r in inventory}

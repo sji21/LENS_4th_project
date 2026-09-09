@@ -1,0 +1,15 @@
+{
+  "purpose": "shared development set; not independent evaluation",
+  "evaluation_date": "2026-09-08",
+  "items": 100,
+  "queries": 200,
+  "appendix_overrides": 26,
+  "gold_status_note": "89 verified / 11 partially unverified as supplied; not revalidated here",
+  "sha256": {
+    "gold-review.md": "4cb59b9057078cc656376c9d1b06b6e722a6d158caeb931ea8056ddebce7a47e",
+    "pre_patch008_law_rankings.json": "9b675b504154cf8cccb66dfbfd00687c5a9a3d00b0e5799e28bb58d20ba47787",
+    "questions.json": "48952d558a99ad22e726ce778ef045cb48ec8bb250f17aec7e07e15ced0cc964",
+    "requirements.json": "aa20b6c8ef02dafa306b26a33154a4faf28a10ff4692b6a951464434885bd7fa"
+  },
+  "source_note": "User-provided AI question and gold review files; questions and exact diagnostic queries preserved. Rankings are historical law IDs only, never query input."
+}
