@@ -1,0 +1,4 @@
+# Preserve dataset fingerprints across Windows/Linux checkouts.
+*.json -text whitespace=cr-at-eol
+# The supplied Markdown also contains intentional two-space hard line breaks.
+gold-review.md -text whitespace=-blank-at-eol,cr-at-eol

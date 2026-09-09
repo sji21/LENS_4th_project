@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
+- PATCH-009 shares all 100 development questions, 200 exact retrieval inputs, original gold review, effective requirements and version hashes in `data/eval/dev100`. Diagnostic tools read repository inputs and accept explicit output paths; corpus/model preparation remains separate. (commit: pending)
+
 - PATCH-009 records a frozen development retrieval run of 100 questions in two input modes, preserving raw evidence and distinguishing missing article references from retrieval omissions. Adds reproducible local diagnostic scripts; no product tuning, corpus changes, LLM evaluation or aggregate accuracy claim. See `docs/patch009-dev100-retrieval.md`. (commit: `dc3ec75`)
 
 - PATCH-008 activates seven prepared Civil Act articles in local operating data, preserving the original 133 law chunks and keeping the 165-record base index separate from seven civil vectors. Records backups, source/structure checks, published regression and DEV retrieval limitations in `docs/patch008-civil-rollout.md`. Generated data stays outside Git. (commit: `b85fd40`)
