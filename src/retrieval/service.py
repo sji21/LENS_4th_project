@@ -230,11 +230,17 @@ def detect_civil_topics(question: str) -> tuple[CivilTopic, ...]:
          "안 켜", "안 돌아가", "안 내려가", "막히", "막혀", "멈췄", "멈추"),
     )
     repair = explicit_repair or (equipment and malfunction)
-    reimbursement = repair and _has_any(
+    # "수리하고 돈을 냈어요. 이 돈 달라고 해도 되나요?"처럼 지출과
+    # 상환 의사가 나뉜 표현도 잡되, 금액 또는 납부 표현만으로 발동하지 않는다.
+    paid_repair_reclaim = _has_any(q, ("냈어요", "냈습니다", "냈는데", "지불했", "결제했")) and _has_any(
+        q, ("이 돈 달라", "이 돈을 달라", "이 돈 받을", "이 돈을 받을",
+            "수리비 달라", "수리비를 달라", "수선비 달라", "수선비를 달라"),
+    )
+    reimbursement = repair and (paid_repair_reclaim or _has_any(
         q,
         ("제 돈", "먼저 내", "먼저 냈", "먼저 지불", "비용을 받", "비용 받을",
          "돌려받", "청구", "업체 불러서 고쳤", "사람 불러 고쳤"),
-    )
+    ))
     unusable = _has_any(q, ("누수", "물이 새", "물 새", "곰팡이", "침수")) and _has_any(
         q,
         ("못 쓰", "쓰지 못", "사용할 수 없", "사용하지 못", "살 수 없", "생활이 안",

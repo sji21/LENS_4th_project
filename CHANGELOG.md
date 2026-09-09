@@ -17,6 +17,8 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
+- PATCH-010 recognizes repair-expense payment followed by requests for that money, retrieving Civil Act Articles 626 and 623 for the missed reimbursement wording. The 200-input development regression changes only the two DEV-006 inputs; case and guide rankings are unchanged. (commit: pending)
+
 - PATCH-008 prevents money nouns such as `보증금이` from matching the crack signal `금이` and incorrectly prepending Article 634. Full tests: 617 passed, 3 skipped; existing law and case regression metrics remain unchanged. (commit: `b85fd40`)
 
 - PATCH-007 exports each newly loaded article's own source URL instead of the document's first article URL, and rolls back failed statute reloads. Full tests: 606 passed, 3 skipped, 124 subtests passed; real-data copy checks preserve all 133 article texts and retrieval fields except 129 corrected URLs on reload. (commit: `2c6db32`)
