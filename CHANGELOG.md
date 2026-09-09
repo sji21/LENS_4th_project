@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
+- PATCH-009 records a frozen development retrieval run of 100 questions in two input modes, preserving raw evidence and distinguishing missing article references from retrieval omissions. Adds reproducible local diagnostic scripts; no product tuning, corpus changes, LLM evaluation or aggregate accuracy claim. See `docs/patch009-dev100-retrieval.md`. (commit: pending)
+
 - PATCH-008 activates seven prepared Civil Act articles in local operating data, preserving the original 133 law chunks and keeping the 165-record base index separate from seven civil vectors. Records backups, source/structure checks, published regression and DEV retrieval limitations in `docs/patch008-civil-rollout.md`. Generated data stays outside Git. (commit: `b85fd40`)
 
 - PATCH-007 preserves collected statute plaintext snapshots, article sources and paragraph/item/subitem structure alongside unchanged retrieval text and IDs. Adds an explicit legacy-DB backfill and review export; does not expand the corpus or update operating indexes. See `docs/patch007-law-structure.md`. (commit: `2c6db32`)
