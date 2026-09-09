@@ -16,6 +16,7 @@ import time
 from pathlib import Path
 
 from src.ingestion.fetch_law_mock import (
+    ENDPOINT,
     fetch,
     html_to_text,
     parse_articles,
@@ -56,6 +57,9 @@ def collect_records(raw_html: str) -> list[LawArticleRecord]:
             article_title=parsed[number][0],
             document_type="law",
             file_path=f"data/raw/law/민법-{MINBEOP_EFFECTIVE_DATE}.txt",
+            source_text=text if number == MINBEOP_ARTICLES[0] else "",
+            source_document_url=ENDPOINT.format(seq=MINBEOP_SEQ, eff=MINBEOP_EFFECTIVE_DATE),
+            source_version_id=MINBEOP_SEQ,
         )
         for number in MINBEOP_ARTICLES
     ]

@@ -30,6 +30,7 @@ from pathlib import Path
 
 from src.database.config import resolve_database_paths
 from src.database.relational import connect_database, initialize_relational_database
+from src.ingestion.law_structure import PARSER_VERSION as STRUCTURE_VERSION, store_units
 
 PARSER_VERSION = "law-ingest-1"
 
@@ -61,6 +62,11 @@ class LawArticleRecord:
     status: str = "current"
     document_type: str = "law"
     file_path: str = ""
+    # Optional complete collected plaintext, including addenda. Supply once per
+    # version; legacy records without it must not be mistaken for complete sources.
+    source_text: str = ""
+    source_document_url: str = ""
+    source_version_id: str = ""
 
     def validate(self) -> list[str]:
         problems = []
@@ -76,6 +82,8 @@ class LawArticleRecord:
             value = getattr(self, name)
             if value and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
                 problems.append(f"{name} '{value}' 는 YYYY-MM-DD 형식이 아님")
+        if self.source_text and not self.source_document_url:
+            problems.append("source_text 에는 source_document_url 이 필요함")
         return problems
 
 
@@ -158,6 +166,11 @@ def load_records(
     connection: sqlite3.Connection,
 ) -> LoadSummary:
     """원천 레코드를 관계형 테이블로 펼쳐 넣는다. 재실행해도 안전하다."""
+    with connection:
+        return _load_records(records, connection)
+
+
+def _load_records(records: list[LawArticleRecord], connection: sqlite3.Connection) -> LoadSummary:
     summary = LoadSummary()
 
     valid: list[LawArticleRecord] = []
@@ -168,6 +181,17 @@ def load_records(
             summary.skipped.extend(f"{where}: {p}" for p in problems)
             continue
         valid.append(record)
+
+    sources: dict[str, LawArticleRecord] = {}
+    for record in valid:
+        if record.source_text:
+            version_id = law_version_id_of(record)
+            previous = sources.get(version_id)
+            if previous and (previous.source_text, previous.source_document_url, previous.source_version_id) != (
+                record.source_text, record.source_document_url, record.source_version_id
+            ):
+                raise ValueError(f"동일 판본의 원문 스냅샷 불일치: {version_id}")
+            sources[version_id] = record
 
     # 이번 입력에 들어온 판본의 조문을 통째로 지우고 다시 넣는다. upsert 만 하면
     # 조문이 삭제되거나 항·호 구성이 바뀐 경우 옛 행이 남는다. law_articles 를
@@ -248,6 +272,18 @@ def load_records(
             seen_versions.add(version_id)
             summary.versions += 1
 
+        snapshot_id = None
+        if source := sources.get(version_id):
+            digest = checksum_of(source.source_text)
+            snapshot_id = f"{version_id}#{digest}"
+            connection.execute(
+                """INSERT OR IGNORE INTO law_source_snapshots
+                   (snapshot_id, law_version_id, source_version_id, source_url,
+                    collected_at, source_text, checksum) VALUES (?, ?, ?, ?, ?, ?, ?)""",
+                (snapshot_id, version_id, source.source_version_id,
+                 source.source_document_url, source.collected_at, source.source_text, digest),
+            )
+
         connection.execute(
             """
             INSERT INTO law_articles (
@@ -262,6 +298,14 @@ def load_records(
              record.paragraph_number, record.item_number, record.content),
         )
         summary.articles += 1
+
+        connection.execute(
+            """INSERT INTO law_article_sources
+               (article_id, source_url, snapshot_id, content_checksum, parser_version)
+               VALUES (?, ?, ?, ?, ?)""",
+            (article_id, record.source_url, snapshot_id, checksum_of(record.content), STRUCTURE_VERSION),
+        )
+        store_units(connection, article_id, record.content)
 
         key = (document_id, record.article_number)
         index = chunk_seq.get(key, 0)
@@ -285,7 +329,6 @@ def load_records(
         )
         summary.chunks += 1
 
-    connection.commit()
     return summary
 
 
@@ -301,7 +344,7 @@ SELECT
     c.checksum,
     c.source_type,
     d.title       AS doc_title,
-    d.source_url  AS source_url,
+    COALESCE(NULLIF(s.source_url, ''), d.source_url) AS source_url,
     d.status      AS status,
     a.article_number,
     a.article_title,
@@ -312,6 +355,7 @@ SELECT
 FROM chunks AS c
 JOIN documents     AS d ON d.document_id = c.document_id
 JOIN law_articles  AS a ON a.article_id = c.article_id
+LEFT JOIN law_article_sources AS s ON s.article_id = a.article_id
 JOIN law_versions  AS v ON v.law_version_id = a.law_version_id
 JOIN laws          AS l ON l.law_id = v.law_id
 ORDER BY c.document_id, c.chunk_index

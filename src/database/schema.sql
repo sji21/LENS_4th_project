@@ -203,3 +203,38 @@ CREATE INDEX IF NOT EXISTS idx_rule_evidence_rule
     ON rule_evidence(rule_id, priority);
 CREATE INDEX IF NOT EXISTS idx_chunks_document
     ON chunks(document_id, chunk_index);
+
+-- Additive storage: retrieval continues to use the existing article chunks.
+CREATE TABLE IF NOT EXISTS law_source_snapshots (
+    snapshot_id TEXT PRIMARY KEY,
+    law_version_id TEXT NOT NULL REFERENCES law_versions(law_version_id) ON DELETE RESTRICT,
+    source_version_id TEXT NOT NULL DEFAULT '',
+    source_url TEXT NOT NULL,
+    collected_at TEXT NOT NULL,
+    source_text TEXT NOT NULL,
+    checksum TEXT NOT NULL,
+    UNIQUE(law_version_id, checksum)
+);
+
+CREATE TABLE IF NOT EXISTS law_article_sources (
+    article_id TEXT PRIMARY KEY REFERENCES law_articles(article_id) ON DELETE CASCADE,
+    source_url TEXT NOT NULL,
+    snapshot_id TEXT REFERENCES law_source_snapshots(snapshot_id) ON DELETE RESTRICT,
+    content_checksum TEXT NOT NULL,
+    parser_version TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS law_article_units (
+    article_id TEXT NOT NULL REFERENCES law_articles(article_id) ON DELETE CASCADE,
+    unit_key TEXT NOT NULL,
+    parent_key TEXT,
+    unit_type TEXT NOT NULL CHECK(unit_type IN ('article', 'text', 'paragraph', 'item', 'subitem')),
+    unit_number TEXT NOT NULL DEFAULT '',
+    ordinal INTEGER NOT NULL CHECK(ordinal >= 0),
+    start_offset INTEGER NOT NULL CHECK(start_offset >= 0),
+    end_offset INTEGER NOT NULL CHECK(end_offset >= start_offset),
+    content TEXT NOT NULL,
+    PRIMARY KEY(article_id, unit_key),
+    FOREIGN KEY(article_id, parent_key) REFERENCES law_article_units(article_id, unit_key)
+        ON DELETE CASCADE
+);
