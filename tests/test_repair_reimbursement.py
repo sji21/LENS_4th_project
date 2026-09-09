@@ -24,3 +24,28 @@ def test_paid_repair_reclaim_routes_to_reimbursement(question):
 ])
 def test_payment_or_money_alone_does_not_add_reimbursement(question):
     assert '민법-제626조' not in [t.article_id for t in detect_civil_topics(question)]
+
+
+@pytest.mark.parametrize('money', ['계약금', '보증금', '예약금', '관리비', '중개수수료'])
+def test_unrelated_payment_after_landlord_repair_does_not_add_reimbursement(money):
+    question = f'보일러 수리는 집주인이 끝냈어요. 저는 {money}을 냈습니다. 계약이 취소됐는데 이 돈 달라고 할 수 있나요?'
+    assert '민법-제626조' not in [t.article_id for t in detect_civil_topics(question)]
+
+
+def test_review_counterexample_does_not_add_reimbursement():
+    question = '보일러 수리는 집주인이 끝냈어요. 저는 계약금을 냈습니다. 계약이 취소됐는데 이 돈 달라고 할 수 있나요?'
+    assert '민법-제626조' not in [t.article_id for t in detect_civil_topics(question)]
+
+
+@pytest.mark.parametrize('question', [
+    '보일러 수리는 끝났고 계약금을 냈습니다. 이 돈을 달라고 해도 되나요?',
+    '보일러 수리하고 비용을 냈습니다. 계약금도 냈어요. 이 돈을 달라고 해도 되나요?',
+    '보일러 수리를 끝냈어요. 이 돈 달라고 해도 되나요?',
+])
+def test_ambiguous_or_non_payment_context_does_not_add_reimbursement(question):
+    assert '민법-제626조' not in [t.article_id for t in detect_civil_topics(question)]
+
+
+def test_explicit_repair_cost_request_with_separate_deposit_payment():
+    question = '보증금을 냈습니다. 보일러를 수리하고 비용을 결제했어요. 수리비를 달라고 해도 되나요?'
+    assert [t.article_id for t in detect_civil_topics(question)][:2] == ['민법-제626조', '민법-제623조']

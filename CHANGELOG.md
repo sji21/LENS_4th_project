@@ -19,6 +19,8 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
+- PATCH-010 requires repair-linked payment for the new reimbursement route and avoids resolving ambiguous money requests when other payment purposes are present. Fixes the review counterexample mixing landlord repairs with tenant deposit repayment. (commit: pending)
+
 - PATCH-010 regression tools accept explicit baseline and output paths after integrating PATCH-009's shared dataset, removing developer-specific directories. (commit: `23c52d9`)
 
 - PATCH-010 recognizes repair-expense payment followed by requests for that money, retrieving Civil Act Articles 626 and 623 for the missed reimbursement wording. The 200-input development regression changes only the two DEV-006 inputs; case and guide rankings are unchanged. (commit: `acdabb0`)
