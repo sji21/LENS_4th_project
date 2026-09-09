@@ -9,9 +9,13 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
+- PATCH-008 activates seven prepared Civil Act articles in local operating data, preserving the original 133 law chunks and keeping the 165-record base index separate from seven civil vectors. Records backups, source/structure checks, published regression and DEV retrieval limitations in `docs/patch008-civil-rollout.md`. Generated data stays outside Git. (commit: `b85fd40`)
+
 - PATCH-007 preserves collected statute plaintext snapshots, article sources and paragraph/item/subitem structure alongside unchanged retrieval text and IDs. Adds an explicit legacy-DB backfill and review export; does not expand the corpus or update operating indexes. See `docs/patch007-law-structure.md`. (commit: `2c6db32`)
 
 ### Fixed (Bug Fixes)
+
+- PATCH-008 prevents money nouns such as `보증금이` from matching the crack signal `금이` and incorrectly prepending Article 634. Full tests: 617 passed, 3 skipped; existing law and case regression metrics remain unchanged. (commit: `b85fd40`)
 
 - PATCH-007 exports each newly loaded article's own source URL instead of the document's first article URL, and rolls back failed statute reloads. Full tests: 606 passed, 3 skipped, 124 subtests passed; real-data copy checks preserve all 133 article texts and retrieval fields except 129 corrected URLs on reload. (commit: `2c6db32`)
 

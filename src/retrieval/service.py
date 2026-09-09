@@ -241,7 +241,9 @@ def detect_civil_topics(question: str) -> tuple[CivilTopic, ...]:
          "월세를 깎", "월세 깎", "월세를 줄", "월세 줄", "감액", "중간에 나가",
          "계약을 정리", "해지"),
     )
-    notice = _has_any(q, ("고장", "하자", "금이", "누수", "물이 새", "물 새", "곰팡이", "수리")) and _has_any(
+    # "금이"를 부분 문자열로 찾으면 "보증금이/계약금이"도 균열로 오인한다.
+    crack = bool(re.search(r"(?<![가-힣A-Za-z0-9])금이", q))
+    notice = (crack or _has_any(q, ("고장", "하자", "누수", "물이 새", "물 새", "곰팡이", "수리"))) and _has_any(
         q, ("알려", "말해야", "말 안 하고", "통지", "연락해야", "연락 안 하고")
     )
     arrears = _has_any(q, ("월세", "차임")) and _has_any(q, ("밀", "연체"))
