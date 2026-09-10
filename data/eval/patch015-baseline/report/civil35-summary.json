@@ -1,0 +1,89 @@
+{
+  "primary": {
+    "n": 29,
+    "AnyHit@3": {
+      "hits": 18,
+      "n": 29,
+      "rate": 0.6206896551724138
+    },
+    "AnyHit@5": {
+      "hits": 18,
+      "n": 29,
+      "rate": 0.6206896551724138
+    },
+    "AllRequired@3": {
+      "hits": 16,
+      "n": 29,
+      "rate": 0.5517241379310345
+    },
+    "AllRequired@5": {
+      "hits": 16,
+      "n": 29,
+      "rate": 0.5517241379310345
+    },
+    "data_missing_items": 0,
+    "candidate_not_observed_items": 13,
+    "candidate_present_not_top5_items": 1
+  },
+  "all_targets_held": {
+    "n": 29,
+    "AnyHit@3": {
+      "hits": 18,
+      "n": 29,
+      "rate": 0.6206896551724138
+    },
+    "AnyHit@5": {
+      "hits": 18,
+      "n": 29,
+      "rate": 0.6206896551724138
+    },
+    "AllRequired@3": {
+      "hits": 16,
+      "n": 29,
+      "rate": 0.5517241379310345
+    },
+    "AllRequired@5": {
+      "hits": 16,
+      "n": 29,
+      "rate": 0.5517241379310345
+    },
+    "data_missing_items": 0,
+    "candidate_not_observed_items": 13,
+    "candidate_present_not_top5_items": 1
+  },
+  "scope_provisional": {
+    "n": 1,
+    "AnyHit@3": {
+      "hits": 1,
+      "n": 1,
+      "rate": 1.0
+    },
+    "AnyHit@5": {
+      "hits": 1,
+      "n": 1,
+      "rate": 1.0
+    },
+    "AllRequired@3": {
+      "hits": 1,
+      "n": 1,
+      "rate": 1.0
+    },
+    "AllRequired@5": {
+      "hits": 1,
+      "n": 1,
+      "rate": 1.0
+    },
+    "data_missing_items": 0,
+    "candidate_not_observed_items": 0,
+    "candidate_present_not_top5_items": 0
+  },
+  "diagnostic_only_ids": [
+    "CIV-DRAFT-003",
+    "CIV-DRAFT-011",
+    "CIV-DRAFT-024",
+    "CIV-DRAFT-029",
+    "CIV-DRAFT-032"
+  ],
+  "unit": "article identifier proxy, not paragraph coverage or answer accuracy",
+  "failure_counts_overlap": true
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "patch015-bundle-v1",
+  "files": {
+    "report/dev200-article-diagnostics.json": "447c1d4998eb220095e67d128e663a2c2d1030b567c4d2cf57bdad65d1e4fc35",
+    "capture/audit.json": "b592a5a3436a8df485e4f0cf0588888e6d85143dd275477a2838f0b990532c0c",
+    "report/previous-ranking-changes.json": "36c8ad54d842700dd62135d2f68470a71e342cfaf512ef3c347fd85f736225ac",
+    "report/dev200-summary.json": "23e1124f5c0a156ed0939b68387cb37af63572cce75a6d90eee1dd50b6a67eaf",
+    "report/target-diagnostics.json": "3c68b27b610c11bab421051af8fc4ef50f2b31ca0e2a74bf932a3a5a1aeb3166",
+    "report/report-manifest.json": "9ef556e5f00fdf243a53e15b9543b0b2ed6d276fffdf2209a7507de2f9ee75c9",
+    "report/civil35-summary.json": "3b423994e562888c95ab1b4bb9015d0bb3988b81303b87183d1e47f8e56a9979",
+    "capture/manifest.json": "a02da1c6d06a3f92a5d5bc43c442ccc0c36fd4e9a26e72904a0527ec615dc2c0",
+    "capture/inventory.json": "c607c761e58422015231964cf7a37dfb291186a8de3d4bb98d8496ec4f60e9e9",
+    "capture/results.json": "3834e7c0e8d5f1eb5c2f60bfd6f3106cf1a765fe8f18c535dac444af91029f4c",
+    "report/dev200-missing-primary-articles.json": "cf5693937889e4456a693b357f41910df9075263a1265fd163783599ebe87f0a"
+  }
+}

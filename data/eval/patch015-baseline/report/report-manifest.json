@@ -1,0 +1,10 @@
+{
+  "capture_hashes": {
+    "manifest.json": "a02da1c6d06a3f92a5d5bc43c442ccc0c36fd4e9a26e72904a0527ec615dc2c0",
+    "audit.json": "b592a5a3436a8df485e4f0cf0588888e6d85143dd275477a2838f0b990532c0c",
+    "inventory.json": "c607c761e58422015231964cf7a37dfb291186a8de3d4bb98d8496ec4f60e9e9",
+    "results.json": "3834e7c0e8d5f1eb5c2f60bfd6f3106cf1a765fe8f18c535dac444af91029f4c"
+  },
+  "reporter_sha256": "5ddcc591574089227061baca912769ae264dfba96eeddae00d7db1f931f37371",
+  "metrics_module_sha256": "94458ccd0d1b82b8ec5e924f8d388f37677a64c73db133f0d1970749bea3daf2"
+}
