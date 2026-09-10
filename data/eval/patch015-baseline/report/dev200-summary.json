@@ -1,0 +1,32 @@
+{
+  "unit": "fixed primary law-article anchors; not whole-question or semantic correctness",
+  "items": 100,
+  "saved_inputs": 200,
+  "inventory_law_articles": 140,
+  "new_retrieval_run": true,
+  "input_hash_validated": true,
+  "target_plan_sha256": "1022e31142eacc7acd47861285a3cdc256d899296ce0d0f242f322ae7d1b1fca",
+  "counts": {
+    "question_only": {
+      "필수 조문 전부 미보유": 35,
+      "필수 조문 일부 미보유": 10,
+      "전부 보유·TOP3 전부 반환": 19,
+      "고정 필수 법령 목표 없음": 23,
+      "전부 보유·TOP5 검색 누락": 10,
+      "전부 보유·TOP5만 전부 반환": 1,
+      "시점별 근거 별도 확인": 2
+    },
+    "context_diagnostic": {
+      "필수 조문 전부 미보유": 35,
+      "필수 조문 일부 미보유": 10,
+      "전부 보유·TOP3 전부 반환": 21,
+      "고정 필수 법령 목표 없음": 23,
+      "전부 보유·TOP5만 전부 반환": 2,
+      "전부 보유·TOP5 검색 누락": 7,
+      "시점별 근거 별도 확인": 2
+    }
+  },
+  "unique_missing_primary_articles": 35,
+  "old_scores_comparable": true,
+  "guidance_case_accuracy_computed": false
+}
