@@ -38,7 +38,7 @@ DEV의 75문항 중 45문항은 필수 법령 일부 또는 전부가 DB에 없�
 
 ## 검증·재현
 
-- 관련 테스트 **40개 통과**, 기존 환경의 `DJANGO_SETTINGS_MODULE` 미인식 경고1개.
+- 관련 테스트 **47개 통과**, 기존 환경의 `DJANGO_SETTINGS_MODULE` 미인식 경고1개.
 - 운영 데이터 전체 전후 해시 동일. 235입력의 기존 일반 법령 순서 및 기존 주제 감지 결과 일치.
 - 저장 자료의 필수 파일·해시·감사 기록·질의 연결을 확인하고 공유본 재집계 결과를 대조한다.
 - [집계](../data/eval/patch018-separate/report/summary.json), [입력별 근거·손실](../data/eval/patch018-separate/report/details.json), [수집 기록](../data/eval/patch018-separate/capture/manifest.json), [전후 감사](../data/eval/patch018-separate/capture/audit.json).
@@ -59,3 +59,9 @@ DEV의 75문항 중 45문항은 필수 법령 일부 또는 전부가 DB에 없�
 ```
 
 `--local-capture`는 미공유 수집에만 사용한다. 공유 manifest가 있으면 해시 검증을 생략하지 않는다. 원래 수집 당시 실행기·입력 해시와 미커밋 상태를 그대로 보존하며 새 실행으로 원본을 덮어쓰지 않는다.
+
+## PR 리뷰 보완 — 커밋 파일과 수집 원본 대조
+
+PATCH-015/016의 bundle manifest는 수집 당시 한 파일 안에 LF/CRLF가 섞여 있었지만 Git은 LF로 저장했다. 원래 수집 manifest와 결과를 바꾸지 않고, 수집 실행기는 `capture/runner.py`, 당시 의존 파일 원본은 `capture/source-bytes/`에 보존했다. `.bin` 원본은 Git 개행 변환을 금지한다. 원본 바이트 해시를 수집 기록과 먼저 대조하고, 현재 의존 파일과는 CRLF만 LF로 통일한 바이트를 비교한다. 공백·JSON 값·인코딩 등 다른 내용 변경은 허용하지 않는다. 수정된 재현 실행기는 과거 수집 실행기와 구분한다.
+
+LF/CRLF/혼합 개행 및 실제 내용 변경 차단 테스트를 포함해 47개가 통과했다. Git 인덱스의 실제 저장 바이트를 새 폴더로 추출해 공개 재현 명령 전체를 실행했고, summary.json과 details.json 모두 기존 결과와 바이트 단위로 일치했다. 운영 검색·데이터와 실험 결론은 변경하지 않았다.

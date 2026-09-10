@@ -16,11 +16,6 @@ from scripts.patch017_selection import run as validate_and_score_inputs
 BUNDLE = ROOT/'data/eval/patch018-separate'
 
 
-def same_text(path, captured):
-    return (Path(path).read_bytes().replace(b'\r\n', b'\n')
-            == Path(captured).read_bytes().replace(b'\r\n', b'\n'))
-
-
 def join_channels(general, civil):
     if len(general) > 5 or len(civil) > 2:
         raise ValueError('Channel limit exceeded')
@@ -73,12 +68,6 @@ def collect(out):
     source_hashes = {p: sha(ROOT/p) for p in sources}
     capture = out/'capture'
     capture.mkdir()
-    shutil.copyfile(__file__, capture/'runner.py')
-    for rel in sources:
-        if rel != 'scripts/patch018_separate.py':
-            dest = capture/'source-bytes'/(rel+'.bin')
-            dest.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(ROOT/rel, dest)
     write(capture/'manifest.json', {'schema':'patch018-capture-v1',
         'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
         'status':subprocess.check_output(['git','status','--porcelain'],text=True).strip(),
@@ -116,7 +105,7 @@ def collect(out):
 def validate_capture(capture, *, local=False):
     capture = capture.resolve()
     bundle = capture.parent/'bundle-manifest.json'
-    required = {'capture/manifest.json','capture/results.json','capture/audit.json','capture/runner.py',
+    required = {'capture/manifest.json','capture/results.json','capture/audit.json',
                 'plan.json','report/summary.json','report/details.json'}
     if bundle.is_file():
         index = read(bundle)
@@ -136,10 +125,7 @@ def validate_capture(capture, *, local=False):
         or audit['operating_after'] != manifest['operating_before']):
         raise ValueError('Invalid capture audit')
     for rel,digest in manifest['source_hashes'].items():
-        # The captured runner is historical provenance, not the replay implementation.
-        runner = rel == 'scripts/patch018_separate.py'
-        source = capture/'runner.py' if runner else capture/'source-bytes'/(rel+'.bin')
-        if sha(source) != digest or (not runner and not same_text(ROOT/rel, source)):
+        if sha(ROOT/rel) != digest:
             raise ValueError('Capture source changed: '+rel)
 
 

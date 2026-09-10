@@ -1,0 +1,17 @@
+{
+  "schema": "patch018-plan-v1",
+  "date": "2026-09-11",
+  "inputs": 235,
+  "general": "Fresh general law TOP5 using unchanged routing/model on snapshot indices",
+  "civil": "Reuse verified PATCH-016 RRF candidates",
+  "variants": [
+    "split_original: keep original civil picks, separate slots",
+    "split_gated_top2: existing topic gate only, choose civil RRF TOP2",
+    "split_all_top2: unconditional civil RRF TOP2"
+  ],
+  "metric": "AllRequired over union of general5 + civil0..2; NOT Hit@5 and NOT equal output budget",
+  "zero_policy": "Only existing gate tested; no thresholds or classifiers fitted",
+  "unnecessary_civil": "Absent required gold is an exposure observation, not verified irrelevance. No complete negative labels available.",
+  "cases_guides": "Unchanged saved channels; not re-executed",
+  "stop": "One fixed comparison, no tuning after seeing results; no product adoption in this patch"
+}
