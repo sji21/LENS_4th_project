@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="workspace">
+  <aside class="sidebar" aria-label="상담 메뉴">
+    <a class="brand" href="{% url 'chat:home' %}" aria-label="LENS 홈"><span class="brand-mark">L</span><span>LENS<span class="brand-caption">Lease Evidence Navigation System</span></span></a>
+    <button class="new-chat" id="new-chat" type="button"><span aria-hidden="true">＋</span> 새 대화</button>
+    <div class="section-label">WORKSPACE</div>
+    <div class="nav-current"><span aria-hidden="true">◌</span> 임대차 상담 <span class="nav-dot"></span></div>
+    <section class="documents-section" aria-labelledby="documents-title">
+      <div class="section-heading"><h2 id="documents-title">첨부 문서</h2><span id="document-count" class="count">0</span></div>
+      <div id="documents"><p class="empty-documents">계약서나 등기 문서를 첨부하면<br>문서 내용을 함께 확인할 수 있어요.</p></div>
+      <p class="storage-note">최대 5개 · PDF, JPG, PNG<br>문서는 현재 대화에서만 사용됩니다.</p>
+    </section>
+    <div class="sidebar-bottom"><span class="privacy-icon" aria-hidden="true">⌑</span><div>나의 문서, 나의 대화<p>새 대화를 시작하면 대화와 문서가 삭제됩니다. 미사용 1시간 후 세션이 만료됩니다.</p></div></div>
+    <div class="profile"><span class="avatar guest">G</span><div>{% if user.is_authenticated %}{{ user.get_username }}{% else %}게스트{% endif %}<small>주택임대차 상담 공간</small></div></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><span class="eyebrow">LENS ASSISTANT</span><h1>임대차 상담</h1></div><div class="readiness"><span id="ready-dot" class="status-dot"></span><span id="readiness-text" role="status">검색 준비 상태 확인 중</span><button id="retry-ready" hidden type="button">다시 준비</button></div></header>
+    <div class="conversation-scroll" id="conversation-scroll">
+      <section class="welcome" id="welcome">
+        <div class="welcome-symbol" aria-hidden="true">⌂<span>✦</span></div>
+        <div class="eyebrow">YOUR HOME, YOUR QUESTIONS</div>
+        <h2>내 계약을 이해하는 시간.<br><span>근거부터 함께 살펴볼까요?</span></h2>
+        <p>전입신고부터 보증금 반환까지.<br>법령·판례·공식 안내를 찾아 이해하기 쉽게 설명해 드려요.</p>
+        <div class="suggestions" aria-label="예시 질문">
+          <button type="button" data-question="대항력은 언제부터 생기나요?"><span class="suggestion-icon">⌂</span><strong>처음 계약할 때</strong><span>전입신고의 효력이 궁금해요</span><span class="arrow">↗</span></button>
+          <button type="button" data-question="계약이 끝났는데 보증금을 돌려받지 못하면 어떻게 해야 하나요?"><span class="suggestion-icon">↩</span><strong>보증금을 돌려받을 때</strong><span>계약이 끝났는데 반환이 안 돼요</span><span class="arrow">↗</span></button>
+          <button type="button" id="upload-suggestion"><span class="suggestion-icon">▤</span><strong>내 문서를 확인할 때</strong><span>계약서·등기 문서를 첨부해요</span><span class="arrow">↗</span></button>
+        </div>
+        <div class="evidence-note"><span aria-hidden="true">✓</span> 공식 근거와 출처를 함께 안내합니다.</div>
+      </section>
+      <section id="messages" aria-label="대화 내용" aria-live="polite" aria-relevant="additions"></section>
+      <div id="pending" class="pending" hidden><span class="spinner"></span><span id="pending-text">답변을 준비하고 있어요</span><span id="elapsed"></span></div>
+    </div>
+    <section class="composer-section" aria-label="질문 입력">
+      <div id="notice" class="notice" role="alert" hidden></div>
+      <div id="upload-progress" class="upload-progress" aria-live="polite"></div>
+      <form id="chat-form" class="composer" data-send-url="{% url 'chat:send' %}" data-state-url="{% url 'chat:state' %}" data-upload-url="{% url 'chat:upload' %}" data-reset-url="{% url 'chat:reset' %}" data-readiness-url="{% url 'chat:readiness' %}" data-retry-url="{% url 'chat:retry-readiness' %}">
+        {% csrf_token %}
+        <label class="sr-only" for="question">주택임대차 질문</label>
+        <textarea id="question" name="message" maxlength="2000" rows="2" placeholder="궁금한 내용을 편하게 물어보세요." required></textarea>
+        <div class="composer-tools"><div class="composer-left"><button id="attach" class="attach" type="button" aria-label="문서 첨부">＋ <span>문서 첨부</span></button><label class="sr-only" for="document-select">질문할 문서</label><select id="document-select" aria-label="질문할 문서"><option value="">문서 자동 선택</option></select></div><button id="send" class="send" type="submit" aria-label="질문 보내기" disabled>↑</button></div>
+      </form>
+      <input id="file-input" type="file" accept=".pdf,.png,.jpg,.jpeg" multiple hidden>
+      <p class="disclaimer">LENS는 일반 정보를 제공하며 법률 자문을 대신하지 않습니다. 개별 계약의 안전 여부를 확정하지 않습니다.</p>
+    </section>
+  </main>
+</div>
+<dialog id="reset-dialog"><h2>새 대화를 시작할까요?</h2><p>현재 대화와 첨부 문서가 삭제됩니다.</p><div class="dialog-actions"><button type="button" id="cancel-reset">취소</button><button type="button" id="confirm-reset" class="primary">새 대화 시작</button></div></dialog>
+<dialog id="delete-dialog"><h2>문서를 삭제할까요?</h2><p>삭제한 문서의 내용이 후속 질문에 사용되지 않도록 현재 대화 기록도 함께 삭제됩니다.</p><div class="dialog-actions"><button type="button" id="cancel-delete">취소</button><button type="button" id="confirm-delete" class="primary">문서와 대화 삭제</button></div></dialog>
+<noscript><p class="notice">채팅을 사용하려면 브라우저에서 JavaScript를 활성화해 주세요.</p></noscript>
+<script src="{% static 'chat/app.js' %}" defer></script>
+{% endblock %}

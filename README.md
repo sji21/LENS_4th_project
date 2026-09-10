@@ -14,8 +14,9 @@ LENS는 전세와 월세 계약을 준비하거나 거주 중인 사용자가 �
 대신하지 않습니다. 근거가 없거나 생성된 답변이 검증을 통과하지 못하면 답변을
 보류합니다.
 
-이 저장소는 3차 단위 프로젝트에서 이관한 코드베이스로 시작합니다. 아래에 적힌 기능과
-평가 결과는 3차에서 이어받은 기준선이며, 4차 환경에서 다시 실행·측정한 결과가 아닙니다.
+이 저장소는 3차 단위 프로젝트에서 이관한 코드베이스로 시작합니다. 현재 웹은
+Django와 HTML·CSS·JavaScript로 동작합니다. 아래 평가 결과는 별도 표시가 없으면
+3차에서 이어받은 기준선이며, 웹 전환에 따른 성능 향상을 의미하지 않습니다.
 이관 기준 커밋과 3차 기록 링크는 [`LIST.md`](LIST.md)에 있습니다.
 
 ## 팀 소개
@@ -37,7 +38,7 @@ LENS는 전세와 월세 계약을 준비하거나 거주 중인 사용자가 �
 | 주요 기능 | 임대차 상담, 공식 근거 검색, 계약서·등기 OCR, 위험 신호·작성 항목 확인 |
 | 검색 방식 | BM25 키워드 검색 + KURE-v1 의미 검색 + RRF 순위 결합 |
 | 답변 모델 | Qwen3-8B Q4 · Ollama |
-| 화면 | Streamlit |
+| 웹 | Django 5.2 LTS + HTML·CSS·JavaScript |
 | 저장소 | SQLite 원문·관계 정보 + Chroma 검색 인덱스 |
 | 답변 원칙 | 검색 근거 사용, 출처 표시, 검증 실패 시 답변 보류, 안전 여부 확정 금지 |
 
@@ -303,7 +304,7 @@ Python 환경 준비
 → SQLite·Chroma 기본 저장소 초기화
 → 법령·판례·기관 안내 청크 생성
 → 법령·판례·기관 안내 순서로 Chroma 색인
-→ Streamlit 실행
+→ Django 웹 DB 마이그레이션·서버 실행
 → 테스트
 ```
 
@@ -333,6 +334,14 @@ Copy-Item .env.example .env
 기본값은 Local Ollama이므로 별도의 API 키 없이 챗봇을 실행할 수 있습니다. 국가법령정보
 공동활용 API를 이용한 판례 재수집에는 `.env`의 `LAW_OPEN_API_OC`가 필요하고,
 LangSmith 추적은 선택 기능입니다.
+
+이미 `.env`가 있으면 덮어쓰지 말고 `.env.example`의 누락 항목만 추가합니다.
+다음 명령으로 Django 키를 생성해 로컬 `.env`의 `DJANGO_SECRET_KEY`에 넣습니다.
+키와 `.env`는 Git에 올리지 않습니다. 로컬 HTTP 실행은 `DJANGO_DEBUG=true`를 사용합니다.
+
+```bash
+python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+```
 
 필요한 경우 `.env`에서 다음 경로와 선택 기능을 설정할 수 있습니다.
 
@@ -424,17 +433,25 @@ python -m src.retrieval.index \
 확인하세요. 3차 공개 평가셋을 재사용한 회귀 검증이며 독립 평가 결과는 아닙니다.
 
 ```bash
-streamlit run app/streamlit_app.py
+python manage.py migrate
+python manage.py runserver 127.0.0.1:8000 --noreload
 ```
 
-브라우저에서 `http://localhost:8501`로 접속합니다.
+브라우저에서 `http://127.0.0.1:8000`으로 접속합니다. `--noreload`는 모델의 반복 초기화를
+피하기 위한 옵션이며 Python 코드를 수정하면 서버를 재시작합니다. 웹 계정·세션 DB는
+`data/database/web.sqlite3`이며 RAG 지식 DB와 분리됩니다. 최초 HTML을 연 다음 검색 모델을
+백그라운드로 준비합니다. 실패하면 화면에서 재시도할 수 있습니다.
+
+회원가입 담당자의 연결 지점, API, 개인정보 보관·정리, 실행 제약은
+[`docs/django-web.md`](docs/django-web.md)를 참고하세요. 회원가입 화면은 아직 구현하지 않았습니다.
 
 ## 7. 테스트
 
 ### 전체 회귀 테스트
 
 ```bash
-pytest -q
+pip install -r requirements-dev.txt
+python -m pytest -q
 ```
 
 | 테스트 영역 | 확인 내용 |
@@ -444,7 +461,7 @@ pytest -q
 | Generation | 검색→Prompt→Qwen 연결, 세 가지 답변 상태, RunPod→Local 전환 |
 | Validation | 출처·직접 인용·금액·기간·시점·조건·주체 검사 |
 | 문서 처리 | PDF 검증, OCR, 세션 검색, 개인정보 마스킹 |
-| 화면 | Streamlit 채팅·업로드·출처·오류 처리 |
+| 웹 | Django 채팅·업로드·세션 격리·CSRF·중복 요청·오류 처리, 기존 Streamlit 회귀 |
 
 실제 OCR 통합 테스트는 Tesseract 설치 여부, 실제 LLM 테스트는 Ollama 실행 여부,
 LangSmith 연결 테스트는 관련 환경변수에 따라 달라집니다. Windows에서 긴 PDF 테스트명의
@@ -467,9 +484,10 @@ python -m src.evaluation.compare_law_top3
 
 - 업로드한 PDF·이미지 원본을 공용 DB에 저장하지 않음
 - OCR 전체 문서를 공용 SQLite·Chroma에 적재하지 않음
-- OCR 청크는 현재 Streamlit 세션 메모리에서만 사용
+- 마스킹된 문서 청크·대화는 웹 전용 SQLite에 세션별로 보관하며 마지막 변경 후 1시간이 지나면 접근 만료
+- 만료 자료는 홈페이지 접속 시 또는 `python manage.py purge_chats`로 삭제하며, 정기 실행 전까지 디스크에 남을 수 있음
 - 문서 근거가 포함된 질문은 LangSmith 추적 비활성화
-- 화면과 다운로드 결과에서 주민등록번호 등 민감정보 마스킹
+- 화면·문서 문맥에서 주민등록번호 등 민감정보 마스킹 (모든 개인정보 제거를 보장하지 않음)
 - RunPod 주소를 설정한 경우 답변에 선택된 OCR 근거가 원격 Ollama로 전달될 수 있으므로
   개인정보가 포함된 실제 문서는 Local Ollama 사용 권장
 
@@ -486,8 +504,13 @@ python -m src.evaluation.compare_law_top3
 ## 9. 프로젝트 구조
 
 ```text
-app/
-└─ streamlit_app.py          사용자 화면과 세션 관리
+manage.py                    Django 실행·마이그레이션 명령
+config/                      Django 설정·루트 URL·WSGI·ASGI
+accounts/                    확장 가능한 사용자 모델·관리자 등록
+chat/                        채팅 API·세션 DB·기존 RAG 연결
+templates/                   Django HTML 템플릿
+static/chat/                 CSS·JavaScript
+app/streamlit_app.py          3차 화면 보존 (기본 실행 경로 아님)
 
 src/
 ├─ ingestion/                법령·판례·안내 수집·정제·청크 생성

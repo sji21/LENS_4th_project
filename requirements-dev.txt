@@ -1,0 +1,3 @@
+-r requirements.txt
+# Kept for regression tests and the legacy Streamlit entry point only.
+streamlit

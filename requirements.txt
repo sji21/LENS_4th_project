@@ -7,7 +7,7 @@ langchain-core
 chromadb
 sentence-transformers
 openai
-streamlit
+Django>=5.2.13,<5.3
 pdfplumber
 pypdfium2>=5.13,<6
 Pillow>=12,<13
@@ -16,3 +16,4 @@ ragas
 python-dotenv
 reportlab
 pytest
+pytest-django>=4.11,<5

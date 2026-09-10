@@ -7,6 +7,10 @@ This file records the 4th project from its first change onward.
 
 ## 2026-09-10
 
+### Changed
+
+- PATCH-013 switches the primary web runtime to Django 5.2 and HTML/CSS/JavaScript, retaining existing RAG and legal validation. Adds isolated chat sessions, document upload/removal, source rendering and an extensible user model with a separate web database. Signup screens remain future work. See `docs/django-web.md`. (commit: pending)
+
 ### Fixed (Bug Fixes)
 
 - PATCH-011 rejects bundles missing any of the seven review originals even when their manifest entries are removed, and validates full source/target law-article identifiers rather than article numbers alone. Diagnostic results are unchanged. (commit: `8e30326`)

@@ -1,0 +1,13 @@
+{% load static %}
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="법령과 문서의 근거로 함께 살펴보는 주택임대차 상담, LENS">
+  <title>{% block title %}LENS · 내 계약을 이해하는 시간{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'chat/app.css' %}">
+  {% block head %}{% endblock %}
+</head>
+<body>{% block content %}{% endblock %}</body>
+</html>
