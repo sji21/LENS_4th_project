@@ -1,0 +1,7155 @@
+[
+  {
+    "qid": "DEV-001",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-001",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-002",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-002",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-003",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-003",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-004",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [
+      "민법-제623조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 0,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-004",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [
+      "민법-제623조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 0,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-005",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-005",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-006",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [
+      "민법-제626조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-006",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [
+      "민법-제626조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-007",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-007",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-008",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-008",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-009",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-009",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-010",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-010",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-011",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-011",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-012",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-012",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-013",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-013",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-014",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-014",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-015",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-015",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-016",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-016",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-017",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-017",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-018",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-018",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-019",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-019",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-020",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-020",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-021",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-021",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-022",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-022",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-023",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-023",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-024",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-024",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-025",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-025",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-026",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-026",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-027",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-027",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-028",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-028",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-029",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-029",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-030",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-030",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-031",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-031",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-032",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-032",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-033",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-033",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-034",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-034",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-035",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-035",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-036",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-036",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-037",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-037",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-038",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-038",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-039",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-039",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-040",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-040",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-041",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-041",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-042",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-042",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-043",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-043",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-044",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-044",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-045",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-045",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-046",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-046",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-047",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-047",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-048",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-048",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-049",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-049",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-050",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-050",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-051",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-051",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-052",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-052",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-053",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-053",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-054",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-054",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-055",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [
+      "민법-제623조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 0,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 0,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-055",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [
+      "민법-제623조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-056",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [
+      "민법-제623조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 0,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 0,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-056",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [
+      "민법-제623조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 0,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-057",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [
+      "민법-제626조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-057",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [
+      "민법-제626조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-058",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [
+      "민법-제627조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-058",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [
+      "민법-제627조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-059",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [
+      "민법-제626조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-059",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [
+      "민법-제626조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-060",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-060",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-061",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [
+      "민법-제629조",
+      "민법-제632조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 0,
+        "7": 0
+      },
+      "dense": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 0,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 0,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-061",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [
+      "민법-제629조",
+      "민법-제632조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 0,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 0,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 0,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-062",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [
+      "민법-제629조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 0,
+        "7": 0
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-062",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [
+      "민법-제629조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-063",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [
+      "민법-제640조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-063",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [
+      "민법-제640조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "DEV-064",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-064",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-065",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-065",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-066",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-066",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-067",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-067",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-068",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-068",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-069",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-069",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-070",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-070",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-071",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-071",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-072",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-072",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-073",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-073",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-074",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-074",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-075",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-075",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-076",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-076",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-077",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-077",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-078",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-078",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-079",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-079",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-080",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-080",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-081",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-081",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-082",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-082",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-083",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-083",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-084",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-084",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-085",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-085",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-086",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-086",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-087",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-087",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-088",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-088",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-089",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-089",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-090",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-090",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-091",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-091",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-092",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-092",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-093",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-093",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-094",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-094",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-095",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-095",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-096",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-096",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-097",
+    "mode": "question_only",
+    "cohort": "historical_observation",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-097",
+    "mode": "context_diagnostic",
+    "cohort": "historical_observation",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-098",
+    "mode": "question_only",
+    "cohort": "historical_observation",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-098",
+    "mode": "context_diagnostic",
+    "cohort": "historical_observation",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-099",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-099",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-100",
+    "mode": "question_only",
+    "cohort": "dev_question_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "DEV-100",
+    "mode": "context_diagnostic",
+    "cohort": "dev_context_diagnostic",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-001",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제623조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-002",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제623조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 0,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-003",
+    "mode": "question_context",
+    "cohort": "civil_diagnostic_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-004",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제623조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 0,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-005",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제626조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-006",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제623조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-007",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제634조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-008",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제626조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-009",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제627조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-010",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제627조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-011",
+    "mode": "question_context",
+    "cohort": "civil_diagnostic_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-012",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제627조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-013",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제629조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-014",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제629조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-015",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제629조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-016",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제629조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-017",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제632조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-018",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제632조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-019",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제632조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-020",
+    "mode": "question_context",
+    "cohort": "civil_scope_provisional",
+    "civil_targets": [
+      "민법-제632조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-021",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제634조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-022",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제634조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-023",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제634조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-024",
+    "mode": "question_context",
+    "cohort": "civil_diagnostic_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-025",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제640조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-026",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제640조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-027",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제640조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-028",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제640조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-029",
+    "mode": "question_context",
+    "cohort": "civil_diagnostic_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-030",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제626조"
+    ],
+    "baseline_final_civil_coverage": 1,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-031",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제626조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-032",
+    "mode": "question_context",
+    "cohort": "civil_diagnostic_only",
+    "civil_targets": [],
+    "baseline_final_civil_coverage": null,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-033",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제626조",
+      "민법-제627조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-034",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제626조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  {
+    "qid": "CIV-DRAFT-035",
+    "mode": "question_context",
+    "cohort": "civil_required_law",
+    "civil_targets": [
+      "민법-제627조"
+    ],
+    "baseline_final_civil_coverage": 0,
+    "all_civil_targets_covered": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  }
+]

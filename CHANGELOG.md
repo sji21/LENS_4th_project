@@ -15,9 +15,13 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
+- PATCH-016 validates the published bundle schema, required files, hashes and successful capture audit before replay. Missing manifests require explicit unpublished-local mode, which never bypasses an existing bundle or the audit. Saved experiment results are unchanged. (commit: 2e656a5)
+
 - PATCH-011 rejects bundles missing any of the seven review originals even when their manifest entries are removed, and validates full source/target law-article identifiers rather than article numbers alone. Diagnostic results are unchanged. (commit: `8e30326`)
 
 ### Added
+
+- PATCH-016 measures civil BM25/dense/RRF candidates for the same 235 inputs without altering final retrieval. RRF TOP2 covers civil targets in 29/29 new primary items but only 2/10 existing contextual DEV items; replacement is not adopted. Shares candidate ranks, fixed-depth coverage, provenance and replay tool. (commit: 4bb6745)
 
 - PATCH-015 captures 235 inputs on the latest main without product changes: DEV200 rankings match the saved reference; civil primary AllRequired@3/5 is 16/29 with no missing target articles. Shares snapshot provenance, candidate/filter traces and offline reports; remaining civil misses expose candidate-entry restrictions. Related tests: 33 passed. (commit: 2841e04)
 

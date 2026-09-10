@@ -1,0 +1,148 @@
+{
+  "schema": "patch016-candidates-v1",
+  "commit": "2a8c7017acef645a28e7e94b1eda22dc0a0f9056",
+  "status": "M LIST.md\n?? scripts/patch016_candidates.py\n?? tests/test_patch016_candidates.py",
+  "runner_sha256": "a8140b52156347732b672bce7fb16f0d38ffdc776cfc9804d0982cba8d47ae84",
+  "baseline_manifest_sha256": "a02da1c6d06a3f92a5d5bc43c442ccc0c36fd4e9a26e72904a0527ec615dc2c0",
+  "input_policy_hashes": {
+    "data/eval/civil-review2/retrieval-plan.json": "0d4da52e5636d7e26b3a01d841a15bf474eaf0214974ea108a306b44317408ca",
+    "data/eval/dev100-v2/diagnostic-plan.json": "1022e31142eacc7acd47861285a3cdc256d899296ce0d0f242f322ae7d1b1fca",
+    "data/eval/patch015-baseline/capture/results.json": "3834e7c0e8d5f1eb5c2f60bfd6f3106cf1a765fe8f18c535dac444af91029f4c"
+  },
+  "settings": {
+    "search_k": {
+      "k_law": 5,
+      "k_case": 5,
+      "k_guide": 2
+    },
+    "corpora": {
+      "law": {
+        "name": "법령",
+        "doc_types": [
+          "law",
+          "decree",
+          "rule"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 5,
+        "query_expander": "src.retrieval.terms.expand_law",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [],
+        "retriever": {
+          "rrf_k": 5,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      },
+      "case": {
+        "name": "판례",
+        "doc_types": [
+          "case"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 60,
+        "query_expander": "src.retrieval.terms.expand",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [],
+        "retriever": {
+          "rrf_k": 60,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      },
+      "guide": {
+        "name": "안내",
+        "doc_types": [
+          "guide"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 60,
+        "query_expander": "src.retrieval.terms.expand",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [],
+        "retriever": {
+          "rrf_k": 60,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      },
+      "civil": {
+        "name": "민법",
+        "doc_types": [
+          "law",
+          "decree",
+          "rule"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 5,
+        "query_expander": "src.retrieval.terms.expand_civil",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [
+          "민법-제623조",
+          "민법-제626조",
+          "민법-제627조",
+          "민법-제629조",
+          "민법-제632조",
+          "민법-제634조",
+          "민법-제640조"
+        ],
+        "retriever": {
+          "rrf_k": 5,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      }
+    }
+  },
+  "candidate_ks": [
+    1,
+    2,
+    3,
+    5,
+    7
+  ],
+  "candidate_articles": [
+    "민법-제623조",
+    "민법-제626조",
+    "민법-제627조",
+    "민법-제629조",
+    "민법-제632조",
+    "민법-제634조",
+    "민법-제640조"
+  ],
+  "final_ranking_modified": false,
+  "generation_performed": false,
+  "experiment": "Bypass topic gating only for a separate seven-article candidate search; retain original expansion, weights, RRF and model."
+}
