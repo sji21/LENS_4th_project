@@ -1,0 +1,1730 @@
+{
+  "purpose": "candidate coverage only, no final relevance or legal correctness",
+  "results": {
+    "question_only": {
+      "split_g8_c2": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 23,
+        "held_targets": 49,
+        "held_targets_found": 40,
+        "misses": [
+          {
+            "qid": "DEV-004",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-009",
+            "articles": [
+              "주택임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-055",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-056",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-068",
+            "articles": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 10,
+        "min_candidates": 10,
+        "max_candidates": 10,
+        "median_text_chars": 5140.5,
+        "max_text_chars": 7485
+      },
+      "split_g10_c2": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 23,
+        "held_targets": 49,
+        "held_targets_found": 40,
+        "misses": [
+          {
+            "qid": "DEV-004",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-009",
+            "articles": [
+              "주택임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-055",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-056",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-068",
+            "articles": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 12,
+        "min_candidates": 12,
+        "max_candidates": 12,
+        "median_text_chars": 6356.5,
+        "max_text_chars": 10006
+      },
+      "split_g10_c3": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 23,
+        "held_targets": 49,
+        "held_targets_found": 40,
+        "misses": [
+          {
+            "qid": "DEV-004",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-009",
+            "articles": [
+              "주택임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-055",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-056",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-068",
+            "articles": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 13,
+        "min_candidates": 13,
+        "max_candidates": 13,
+        "median_text_chars": 6485.0,
+        "max_text_chars": 10130
+      },
+      "split_g10_c5": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 24,
+        "held_targets": 49,
+        "held_targets_found": 42,
+        "misses": [
+          {
+            "qid": "DEV-009",
+            "articles": [
+              "주택임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-055",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-056",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조"
+            ]
+          },
+          {
+            "qid": "DEV-068",
+            "articles": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 15,
+        "min_candidates": 15,
+        "max_candidates": 15,
+        "median_text_chars": 6735.5,
+        "max_text_chars": 10415
+      },
+      "split_g13_c7": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 28,
+        "held_targets": 49,
+        "held_targets_found": 46,
+        "misses": [
+          {
+            "qid": "DEV-009",
+            "articles": [
+              "주택임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 20,
+        "min_candidates": 20,
+        "max_candidates": 20,
+        "median_text_chars": 8587.5,
+        "max_text_chars": 12083
+      },
+      "split_g15_c5": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 26,
+        "held_targets": 49,
+        "held_targets_found": 44,
+        "misses": [
+          {
+            "qid": "DEV-055",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-056",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 20,
+        "min_candidates": 20,
+        "max_candidates": 20,
+        "median_text_chars": 9209.5,
+        "max_text_chars": 12619
+      },
+      "split_g17_c3": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 25,
+        "held_targets": 49,
+        "held_targets_found": 42,
+        "misses": [
+          {
+            "qid": "DEV-004",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-055",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-056",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 20,
+        "min_candidates": 20,
+        "max_candidates": 20,
+        "median_text_chars": 9652.0,
+        "max_text_chars": 12523
+      },
+      "split_g20_c7": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 30,
+        "held_targets": 49,
+        "held_targets_found": 48,
+        "misses": [],
+        "mean_candidates": 27,
+        "min_candidates": 27,
+        "max_candidates": 27,
+        "median_text_chars": 11262.5,
+        "max_text_chars": 14194
+      },
+      "unified_10": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 21,
+        "held_targets": 49,
+        "held_targets_found": 37,
+        "misses": [
+          {
+            "qid": "DEV-004",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-009",
+            "articles": [
+              "주택임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-055",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-056",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-058",
+            "articles": [
+              "민법-제627조"
+            ]
+          },
+          {
+            "qid": "DEV-059",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-068",
+            "articles": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 10,
+        "min_candidates": 10,
+        "max_candidates": 10,
+        "median_text_chars": 5690.5,
+        "max_text_chars": 9827
+      },
+      "unified_12": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 21,
+        "held_targets": 49,
+        "held_targets_found": 37,
+        "misses": [
+          {
+            "qid": "DEV-004",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-009",
+            "articles": [
+              "주택임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-055",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-056",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-058",
+            "articles": [
+              "민법-제627조"
+            ]
+          },
+          {
+            "qid": "DEV-059",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-068",
+            "articles": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 12,
+        "min_candidates": 12,
+        "max_candidates": 12,
+        "median_text_chars": 6669.0,
+        "max_text_chars": 10893
+      },
+      "unified_13": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 22,
+        "held_targets": 49,
+        "held_targets_found": 38,
+        "misses": [
+          {
+            "qid": "DEV-004",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-055",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-056",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-058",
+            "articles": [
+              "민법-제627조"
+            ]
+          },
+          {
+            "qid": "DEV-059",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-068",
+            "articles": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 13,
+        "min_candidates": 13,
+        "max_candidates": 13,
+        "median_text_chars": 7196.5,
+        "max_text_chars": 11208
+      },
+      "unified_15": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 23,
+        "held_targets": 49,
+        "held_targets_found": 40,
+        "misses": [
+          {
+            "qid": "DEV-004",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-055",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-056",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-058",
+            "articles": [
+              "민법-제627조"
+            ]
+          },
+          {
+            "qid": "DEV-059",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 15,
+        "min_candidates": 15,
+        "max_candidates": 15,
+        "median_text_chars": 8032.0,
+        "max_text_chars": 12031
+      },
+      "unified_20": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 27,
+        "held_targets": 49,
+        "held_targets_found": 44,
+        "misses": [
+          {
+            "qid": "DEV-055",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-056",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          }
+        ],
+        "mean_candidates": 20,
+        "min_candidates": 20,
+        "max_candidates": 20,
+        "median_text_chars": 9739.0,
+        "max_text_chars": 13319
+      },
+      "general_only_20": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 20,
+        "held_targets": 49,
+        "held_targets_found": 37,
+        "misses": [
+          {
+            "qid": "DEV-004",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-006",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-055",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-056",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-057",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-058",
+            "articles": [
+              "민법-제627조"
+            ]
+          },
+          {
+            "qid": "DEV-059",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-062",
+            "articles": [
+              "민법-제629조"
+            ]
+          },
+          {
+            "qid": "DEV-063",
+            "articles": [
+              "민법-제640조"
+            ]
+          }
+        ],
+        "mean_candidates": 20,
+        "min_candidates": 20,
+        "max_candidates": 20,
+        "median_text_chars": 10387.5,
+        "max_text_chars": 13319
+      }
+    },
+    "context_diagnostic": {
+      "split_g8_c2": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 18,
+        "held_targets": 49,
+        "held_targets_found": 35,
+        "misses": [
+          {
+            "qid": "DEV-004",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-006",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-044",
+            "articles": [
+              "주택임대차보호법-제3조의2"
+            ]
+          },
+          {
+            "qid": "DEV-050",
+            "articles": [
+              "주택임대차보호법-제3조의2"
+            ]
+          },
+          {
+            "qid": "DEV-055",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-056",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-057",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-059",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-062",
+            "articles": [
+              "민법-제629조"
+            ]
+          },
+          {
+            "qid": "DEV-068",
+            "articles": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 10,
+        "min_candidates": 10,
+        "max_candidates": 10,
+        "median_text_chars": 5160.5,
+        "max_text_chars": 7197
+      },
+      "split_g10_c2": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 21,
+        "held_targets": 49,
+        "held_targets_found": 38,
+        "misses": [
+          {
+            "qid": "DEV-004",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-006",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-055",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-056",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-057",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-059",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-062",
+            "articles": [
+              "민법-제629조"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 12,
+        "min_candidates": 12,
+        "max_candidates": 12,
+        "median_text_chars": 6364.5,
+        "max_text_chars": 8749
+      },
+      "split_g10_c3": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 26,
+        "held_targets": 49,
+        "held_targets_found": 43,
+        "misses": [
+          {
+            "qid": "DEV-006",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-056",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 13,
+        "min_candidates": 13,
+        "max_candidates": 13,
+        "median_text_chars": 6499.5,
+        "max_text_chars": 8873
+      },
+      "split_g10_c5": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 28,
+        "held_targets": 49,
+        "held_targets_found": 46,
+        "misses": [
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 15,
+        "min_candidates": 15,
+        "max_candidates": 15,
+        "median_text_chars": 6729.5,
+        "max_text_chars": 9069
+      },
+      "split_g13_c7": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 29,
+        "held_targets": 49,
+        "held_targets_found": 48,
+        "misses": [
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 20,
+        "min_candidates": 20,
+        "max_candidates": 20,
+        "median_text_chars": 8438.0,
+        "max_text_chars": 11535
+      },
+      "split_g15_c5": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 28,
+        "held_targets": 49,
+        "held_targets_found": 47,
+        "misses": [
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 20,
+        "min_candidates": 20,
+        "max_candidates": 20,
+        "median_text_chars": 9073.5,
+        "max_text_chars": 11654
+      },
+      "split_g17_c3": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 26,
+        "held_targets": 49,
+        "held_targets_found": 44,
+        "misses": [
+          {
+            "qid": "DEV-006",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-056",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 20,
+        "min_candidates": 20,
+        "max_candidates": 20,
+        "median_text_chars": 9540.5,
+        "max_text_chars": 12183
+      },
+      "split_g20_c7": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 29,
+        "held_targets": 49,
+        "held_targets_found": 48,
+        "misses": [
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 27,
+        "min_candidates": 27,
+        "max_candidates": 27,
+        "median_text_chars": 11224.5,
+        "max_text_chars": 14569
+      },
+      "unified_10": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 26,
+        "held_targets": 49,
+        "held_targets_found": 43,
+        "misses": [
+          {
+            "qid": "DEV-059",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-068",
+            "articles": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 10,
+        "min_candidates": 10,
+        "max_candidates": 10,
+        "median_text_chars": 5775.5,
+        "max_text_chars": 8462
+      },
+      "unified_12": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 26,
+        "held_targets": 49,
+        "held_targets_found": 44,
+        "misses": [
+          {
+            "qid": "DEV-059",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-068",
+            "articles": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 12,
+        "min_candidates": 12,
+        "max_candidates": 12,
+        "median_text_chars": 6567.0,
+        "max_text_chars": 10345
+      },
+      "unified_13": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 26,
+        "held_targets": 49,
+        "held_targets_found": 44,
+        "misses": [
+          {
+            "qid": "DEV-059",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-068",
+            "articles": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 13,
+        "min_candidates": 13,
+        "max_candidates": 13,
+        "median_text_chars": 6814.5,
+        "max_text_chars": 10660
+      },
+      "unified_15": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 26,
+        "held_targets": 49,
+        "held_targets_found": 44,
+        "misses": [
+          {
+            "qid": "DEV-059",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-068",
+            "articles": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 15,
+        "min_candidates": 15,
+        "max_candidates": 15,
+        "median_text_chars": 7832.0,
+        "max_text_chars": 11047
+      },
+      "unified_20": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 27,
+        "held_targets": 49,
+        "held_targets_found": 45,
+        "misses": [
+          {
+            "qid": "DEV-059",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 20,
+        "min_candidates": 20,
+        "max_candidates": 20,
+        "median_text_chars": 9685.0,
+        "max_text_chars": 12568
+      },
+      "general_only_20": {
+        "inputs": 100,
+        "eligible": 30,
+        "all_required_found": 19,
+        "held_targets": 49,
+        "held_targets_found": 37,
+        "misses": [
+          {
+            "qid": "DEV-004",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-006",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-055",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-056",
+            "articles": [
+              "민법-제623조"
+            ]
+          },
+          {
+            "qid": "DEV-057",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-058",
+            "articles": [
+              "민법-제627조"
+            ]
+          },
+          {
+            "qid": "DEV-059",
+            "articles": [
+              "민법-제626조"
+            ]
+          },
+          {
+            "qid": "DEV-061",
+            "articles": [
+              "민법-제629조",
+              "민법-제632조"
+            ]
+          },
+          {
+            "qid": "DEV-062",
+            "articles": [
+              "민법-제629조"
+            ]
+          },
+          {
+            "qid": "DEV-063",
+            "articles": [
+              "민법-제640조"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "articles": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ],
+        "mean_candidates": 20,
+        "min_candidates": 20,
+        "max_candidates": 20,
+        "median_text_chars": 10349.5,
+        "max_text_chars": 13694
+      }
+    }
+  },
+  "median_seconds": {
+    "split_pair": 0.3751712499979476,
+    "unified": 0.3670141999991756
+  },
+  "inputs": 200,
+  "source_unchanged": true,
+  "independent_evaluation": false,
+  "checks": {
+    "existing_general_prefix_preserved_inputs": 200,
+    "prior_unified_top12_reproduced_inputs": 200,
+    "contracts_passed": 16,
+    "production_code_modified": false,
+    "no_model_reranking": true
+  },
+  "protocol": {
+    "split_budgets": [
+      [
+        8,
+        2
+      ],
+      [
+        10,
+        2
+      ],
+      [
+        10,
+        3
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        13,
+        7
+      ],
+      [
+        15,
+        5
+      ],
+      [
+        17,
+        3
+      ],
+      [
+        20,
+        7
+      ]
+    ],
+    "unified_budgets": [
+      10,
+      12,
+      13,
+      15,
+      20
+    ],
+    "hybrid_member_depth": 20,
+    "inputs": 200,
+    "final_ranking_evaluated": false,
+    "no_reranker_or_generation": true,
+    "source_hashes": {
+      "data\\chunks\\cases.jsonl": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
+      "data\\chunks\\chunks.jsonl": "0c3b03f4e58d9a90ed5c55a4bddfbfdb6a2f6d855a08a396b5290d8f8fdce0c9",
+      "data\\chunks\\civil.jsonl": "d196a2b2f236fcce4a104c6bc03ff2f03b234bb1deb5d784249c37dad165fcdc",
+      "data\\chunks\\guides.jsonl": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
+      "data\\database\\knowledge.sqlite3": "675df0156cd8c5a059d4d366784fd683fd9f585d4747ee053c2b31a31ce27283",
+      "data\\index\\chroma_civil_kurev1_1024\\chroma.sqlite3": "608f5118adff88051a0fee3a7c1a54df2d7b25829087b3a2de48a29c8cbfba09",
+      "data\\index\\chroma_civil_kurev1_1024\\4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4\\data_level0.bin": "a2b156c069cd48545cf98e2ce1c24f741ef10b0a439247bfabca66b028d01e52",
+      "data\\index\\chroma_civil_kurev1_1024\\4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4\\header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+      "data\\index\\chroma_civil_kurev1_1024\\4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4\\length.bin": "6d27e5a57bfc10b3d718e60da8b3748695970e7f1236e24fc3361d804e95e423",
+      "data\\index\\chroma_civil_kurev1_1024\\4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4\\link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "data\\index\\chroma_kurev1_1024\\chroma.sqlite3": "017f715e3357012829ef24d680c103fa4d906c40b9fa5d4bb42125dfb050b26f",
+      "data\\index\\chroma_kurev1_1024\\573bd9ae-81e2-4ec5-8f81-76890ebf4a15\\data_level0.bin": "71357bdf2d82dc95081ba297e86c4b60894a80e92b4510e43db8675121239a03",
+      "data\\index\\chroma_kurev1_1024\\573bd9ae-81e2-4ec5-8f81-76890ebf4a15\\header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+      "data\\index\\chroma_kurev1_1024\\573bd9ae-81e2-4ec5-8f81-76890ebf4a15\\length.bin": "93cd330843cdf20df88e39a044f1fb36f6e9af7c6bd1cabc86769b585469105b",
+      "data\\index\\chroma_kurev1_1024\\573bd9ae-81e2-4ec5-8f81-76890ebf4a15\\link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "questions_sha256": "48952d558a99ad22e726ce778ef045cb48ec8bb250f17aec7e07e15ced0cc964",
+    "plan_sha256": "1022e31142eacc7acd47861285a3cdc256d899296ce0d0f242f322ae7d1b1fca",
+    "probe_sha256": "d64cef341a24aa62a431ca02b80f298fb3253ddab6553e1bfaf308e11f2dbda8",
+    "code_hashes": {
+      "candidate_sweep.py": "0445201d255b024ef993ffcbd81fc84e98537f95ed0d17866c09e19519db1749",
+      "candidate_pipeline.py": "65d9d9697ec48ae618ec93f4ee36c2c67b6e4c2cc86bbb5f95eff23a61297fe9"
+    }
+  },
+  "experiment_parent_commit": "5b13a51b39c55f86dd4e92b01cbbf38fe682da1a",
+  "source_code_hashes": {
+    "src\\retrieval\\dense.py": "d43c8db05e98490d0cbd394bb26e6fc394d299128111314e92a695d93aa5e7f5",
+    "src\\retrieval\\hybrid.py": "421a467c9f9cc1f6c4cd10fedc8bbcae79e75381ccf6c45ac5af5d48355616c6",
+    "src\\retrieval\\index.py": "dd4fd669cbdec1213ed6f6e787f0474a49320d833727d6f95441e806df190d14",
+    "src\\retrieval\\readiness.py": "e2220f8b623697d5ddecdc54e47c5fc3ebdff1c3a1d1842821e352f5937ce95f",
+    "src\\retrieval\\refs.py": "e2ce58238e57aa6469fcc047a81db241529c6f81d777ea8d3fbbb5aef79ad215",
+    "src\\retrieval\\retriever.py": "64e2cbefbc61515a2c8c223cd5289ac624617327eeca3bd7e401cc96f13bae51",
+    "src\\retrieval\\service.py": "f749dac5c388f77dc06e332f8814ca63de289783b3139e5318d8aabbca6eca3f",
+    "src\\retrieval\\terms.py": "34354c085495148a535c15c409f2a5761808e2fbc106b25141874117f5836a6e",
+    "src\\retrieval\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "artifact_hashes": {
+    "pools.jsonl": "a35f18822c4ec54c8e129b8277c5796e79e27890b4402a49554a6abb067b69c4",
+    "probe-pools.jsonl": "52461fd9c53ef86968d76ffafa0b0c240b6fe1b40ea6408e57b1d7add79f2e0e",
+    "protocol.json": "34d04328642195bc2f0de1f211620286a815e351322ae0d3fede2979f8135ebb"
+  },
+  "remaining_miss_details": {
+    "split_g10_c3": [
+      {
+        "qid": "DEV-006",
+        "mode": "context_diagnostic",
+        "targets_missing": [
+          "민법-제626조"
+        ],
+        "general_top20": [
+          "주택임대차보호법-제6조의3",
+          "주택임대차보호법-제3조의3",
+          "주택임대차보호법-제10조의2",
+          "주택임대차보호법시행령-제10조",
+          "주택임대차보호법-제6조의2",
+          "주택임대차보호법-제6조",
+          "주택임대차보호법시행령-제11조",
+          "주택임대차보호법-제3조의2",
+          "주택임대차보호법시행령-제6조",
+          "주택임대차보호법-제9조",
+          "주택임대차보호법-제3조의7",
+          "주택임대차보호법-제8조",
+          "주택임대차보호법시행령-제8조",
+          "주택임대차보호법-제13조",
+          "주택임대차보호법시행령-제33조",
+          "주택임대차보호법-제7조",
+          "주택임대차보호법-제7조의2",
+          "주택임대차보호법-제4조",
+          "주택임대차보호법-제24조",
+          "주택임대차보호법시행령-제28조"
+        ],
+        "civil_top7": [
+          "민법-제627조",
+          "민법-제634조",
+          "민법-제640조",
+          "민법-제626조",
+          "민법-제623조",
+          "민법-제629조",
+          "민법-제632조"
+        ]
+      },
+      {
+        "qid": "DEV-056",
+        "mode": "context_diagnostic",
+        "targets_missing": [
+          "민법-제623조"
+        ],
+        "general_top20": [
+          "주택임대차보호법-제6조의3",
+          "주택임대차보호법-제3조의3",
+          "주택임대차보호법-제4조",
+          "주택임대차보호법-제6조",
+          "주택임대차보호법-제3조의2",
+          "주택임대차보호법-제3조의7",
+          "주택임대차보호법-제10조의2",
+          "주택임대차보호법-제3조",
+          "주택임대차보호법-제8조",
+          "주택임대차보호법-제25조",
+          "주택임대차보호법-제9조",
+          "주택임대차보호법시행령-제22조",
+          "주택임대차보호법-제6조의2",
+          "주택임대차보호법시행령-제4조",
+          "주택임대차보호법-제24조",
+          "주택임대차보호법-제12조",
+          "주택임대차보호법-제3조의4",
+          "주택임대차보호법-제21조",
+          "주택임대차보호법시행령-제19조",
+          "주택임대차보호법-제30조"
+        ],
+        "civil_top7": [
+          "민법-제627조",
+          "민법-제634조",
+          "민법-제626조",
+          "민법-제623조",
+          "민법-제632조",
+          "민법-제629조",
+          "민법-제640조"
+        ]
+      },
+      {
+        "qid": "DEV-061",
+        "mode": "context_diagnostic",
+        "targets_missing": [
+          "민법-제629조",
+          "민법-제632조"
+        ],
+        "general_top20": [
+          "주택임대차보호법-제6조의3",
+          "주택임대차보호법-제6조",
+          "주택임대차보호법-제4조",
+          "주택임대차보호법-제10조의2",
+          "주택임대차보호법시행령-제10조",
+          "주택임대차보호법-제9조",
+          "주택임대차보호법-제7조의2",
+          "주택임대차보호법-제2조",
+          "주택임대차보호법-제8조",
+          "주택임대차보호법-제3조의7",
+          "주택임대차보호법시행령-제6조",
+          "주택임대차보호법-제11조",
+          "주택임대차보호법시행령-제8조",
+          "주택임대차보호법-제12조",
+          "주택임대차보호법-제30조",
+          "주택임대차보호법-제3조의2",
+          "주택임대차보호법-제6조의2",
+          "주택임대차보호법-제7조",
+          "주택임대차보호법시행령-제5조",
+          "주택임대차보호법-제13조"
+        ],
+        "civil_top7": [
+          "민법-제627조",
+          "민법-제623조",
+          "민법-제626조",
+          "민법-제632조",
+          "민법-제634조",
+          "민법-제640조",
+          "민법-제629조"
+        ]
+      },
+      {
+        "qid": "DEV-089",
+        "mode": "context_diagnostic",
+        "targets_missing": [
+          "상가건물임대차보호법-제2조"
+        ],
+        "general_top20": [
+          "상가건물임대차보호법-제10조",
+          "주택임대차보호법-제6조의3",
+          "주택임대차보호법-제6조",
+          "상가건물임대차보호법-제10조의2",
+          "상가건물임대차보호법-제13조",
+          "상가건물임대차보호법-제10조의3",
+          "상가건물임대차보호법시행령-제3조의3",
+          "상가건물임대차보호법-제10조의4",
+          "주택임대차보호법시행령-제6조",
+          "상가건물임대차보호법-제19조의2",
+          "상가건물임대차보호법-제10조의9",
+          "상가건물임대차보호법-제9조",
+          "상가건물임대차보호법-제10조의8",
+          "상가건물임대차보호법시행령-제3조",
+          "주택임대차보호법-제3조의7",
+          "상가건물임대차보호법-제6조",
+          "상가건물임대차보호법-제3조",
+          "상가건물임대차보호법시행령-제8조",
+          "상가건물임대차보호법-제7조",
+          "주택임대차보호법-제6조의2"
+        ],
+        "civil_top7": [
+          "민법-제626조",
+          "민법-제640조",
+          "민법-제629조",
+          "민법-제634조",
+          "민법-제623조",
+          "민법-제627조",
+          "민법-제632조"
+        ]
+      }
+    ],
+    "split_g20_c7": [
+      {
+        "qid": "DEV-089",
+        "mode": "context_diagnostic",
+        "targets_missing": [
+          "상가건물임대차보호법-제2조"
+        ],
+        "general_top20": [
+          "상가건물임대차보호법-제10조",
+          "주택임대차보호법-제6조의3",
+          "주택임대차보호법-제6조",
+          "상가건물임대차보호법-제10조의2",
+          "상가건물임대차보호법-제13조",
+          "상가건물임대차보호법-제10조의3",
+          "상가건물임대차보호법시행령-제3조의3",
+          "상가건물임대차보호법-제10조의4",
+          "주택임대차보호법시행령-제6조",
+          "상가건물임대차보호법-제19조의2",
+          "상가건물임대차보호법-제10조의9",
+          "상가건물임대차보호법-제9조",
+          "상가건물임대차보호법-제10조의8",
+          "상가건물임대차보호법시행령-제3조",
+          "주택임대차보호법-제3조의7",
+          "상가건물임대차보호법-제6조",
+          "상가건물임대차보호법-제3조",
+          "상가건물임대차보호법시행령-제8조",
+          "상가건물임대차보호법-제7조",
+          "주택임대차보호법-제6조의2"
+        ],
+        "civil_top7": [
+          "민법-제626조",
+          "민법-제640조",
+          "민법-제629조",
+          "민법-제634조",
+          "민법-제623조",
+          "민법-제627조",
+          "민법-제632조"
+        ]
+      }
+    ],
+    "unified_20": [
+      {
+        "qid": "DEV-059",
+        "mode": "context_diagnostic",
+        "targets_missing": [
+          "민법-제626조"
+        ],
+        "general_top20": [
+          "주택임대차보호법-제3조의3",
+          "주택임대차보호법-제6조의3",
+          "주택임대차보호법-제3조의2",
+          "주택임대차보호법-제2조",
+          "주택임대차보호법-제6조",
+          "주택임대차보호법시행령-제28조",
+          "주택임대차보호법-제10조의2",
+          "주택임대차보호법시행령-제13조",
+          "주택임대차보호법시행령-제19조",
+          "주택임대차보호법-제4조",
+          "주택임대차보호법-제21조",
+          "주택임대차보호법-제28조",
+          "주택임대차보호법-제20조",
+          "주택임대차보호법시행령-제5조",
+          "주택임대차보호법시행령-제26조",
+          "주택임대차보호법-제30조",
+          "주택임대차보호법-제8조",
+          "주택임대차보호법-제6조의2",
+          "주택임대차보호법시행령-제18조",
+          "주택임대차보호법-제9조"
+        ],
+        "civil_top7": [
+          "민법-제634조",
+          "민법-제627조",
+          "민법-제626조",
+          "민법-제640조",
+          "민법-제623조",
+          "민법-제629조",
+          "민법-제632조"
+        ]
+      },
+      {
+        "qid": "DEV-061",
+        "mode": "context_diagnostic",
+        "targets_missing": [
+          "민법-제629조",
+          "민법-제632조"
+        ],
+        "general_top20": [
+          "주택임대차보호법-제6조의3",
+          "주택임대차보호법-제6조",
+          "주택임대차보호법-제4조",
+          "주택임대차보호법-제10조의2",
+          "주택임대차보호법시행령-제10조",
+          "주택임대차보호법-제9조",
+          "주택임대차보호법-제7조의2",
+          "주택임대차보호법-제2조",
+          "주택임대차보호법-제8조",
+          "주택임대차보호법-제3조의7",
+          "주택임대차보호법시행령-제6조",
+          "주택임대차보호법-제11조",
+          "주택임대차보호법시행령-제8조",
+          "주택임대차보호법-제12조",
+          "주택임대차보호법-제30조",
+          "주택임대차보호법-제3조의2",
+          "주택임대차보호법-제6조의2",
+          "주택임대차보호법-제7조",
+          "주택임대차보호법시행령-제5조",
+          "주택임대차보호법-제13조"
+        ],
+        "civil_top7": [
+          "민법-제627조",
+          "민법-제623조",
+          "민법-제626조",
+          "민법-제632조",
+          "민법-제634조",
+          "민법-제640조",
+          "민법-제629조"
+        ]
+      },
+      {
+        "qid": "DEV-089",
+        "mode": "context_diagnostic",
+        "targets_missing": [
+          "상가건물임대차보호법-제2조"
+        ],
+        "general_top20": [
+          "상가건물임대차보호법-제10조",
+          "주택임대차보호법-제6조의3",
+          "주택임대차보호법-제6조",
+          "상가건물임대차보호법-제10조의2",
+          "상가건물임대차보호법-제13조",
+          "상가건물임대차보호법-제10조의3",
+          "상가건물임대차보호법시행령-제3조의3",
+          "상가건물임대차보호법-제10조의4",
+          "주택임대차보호법시행령-제6조",
+          "상가건물임대차보호법-제19조의2",
+          "상가건물임대차보호법-제10조의9",
+          "상가건물임대차보호법-제9조",
+          "상가건물임대차보호법-제10조의8",
+          "상가건물임대차보호법시행령-제3조",
+          "주택임대차보호법-제3조의7",
+          "상가건물임대차보호법-제6조",
+          "상가건물임대차보호법-제3조",
+          "상가건물임대차보호법시행령-제8조",
+          "상가건물임대차보호법-제7조",
+          "주택임대차보호법-제6조의2"
+        ],
+        "civil_top7": [
+          "민법-제626조",
+          "민법-제640조",
+          "민법-제629조",
+          "민법-제634조",
+          "민법-제623조",
+          "민법-제627조",
+          "민법-제632조"
+        ]
+      }
+    ]
+  }
+}
