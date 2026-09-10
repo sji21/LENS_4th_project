@@ -14,6 +14,38 @@ from pathlib import Path
 from scripts.patch015_baseline import ROOT, norm, read, sha, write
 
 KS = (1, 2, 3, 5, 7)
+REQUIRED_BUNDLE_FILES = {
+    'capture/manifest.json', 'capture/results.json', 'capture/audit.json',
+    'report/summary.json', 'report/details.json',
+}
+
+
+def validate_capture(run, *, local_capture=False):
+    run = Path(run).resolve()
+    bundle_path = run.parent/'bundle-manifest.json'
+    if bundle_path.is_file():
+        bundle = read(bundle_path)
+        if bundle.get('schema') != 'patch016-bundle-v1':
+            raise ValueError('Unsupported candidate bundle schema')
+        files = bundle.get('files', {})
+        if not REQUIRED_BUNDLE_FILES <= set(files):
+            raise ValueError('Candidate bundle omits required files')
+        if run != run.parent/'capture':
+            raise ValueError('Bundle capture directory mismatch')
+        for name, digest in files.items():
+            path = (run.parent/name).resolve()
+            if not path.is_relative_to(run.parent) or not path.is_file() or sha(path) != digest:
+                raise ValueError('Candidate bundle hash/path mismatch: '+name)
+    elif not local_capture:
+        raise ValueError('Missing bundle manifest; use --local-capture only for unpublished captures')
+    for name in ('manifest.json', 'results.json', 'audit.json'):
+        if not (run/name).is_file():
+            raise ValueError('Missing capture file: '+name)
+    audit = read(run/'audit.json')
+    if (type(audit.get('queries')) is not int or audit['queries'] != 235
+            or audit.get('operating_hashes_unchanged') is not True
+            or audit.get('policies_unchanged') is not True):
+        raise ValueError('Incomplete or unsuccessful candidate capture audit')
 
 
 def coverage(targets, ranked, k):
@@ -96,7 +128,8 @@ def collect(out):
     print('CANDIDATE CAPTURE COMPLETE',flush=True)
 
 
-def replay(run,out):
+def replay(run,out, *, local_capture=False):
+    validate_capture(run, local_capture=local_capture)
     manifest=read(run/'manifest.json')
     for p,h in manifest['input_policy_hashes'].items():
         if sha(ROOT/p)!=h: raise ValueError('Changed evaluation inputs')
@@ -145,9 +178,11 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out',type=Path,required=True)
     parser.add_argument('--replay',type=Path)
+    parser.add_argument('--local-capture',action='store_true',help='Allow an unpublished capture without a bundle manifest; audit remains mandatory')
     args=parser.parse_args()
     if not args.out.resolve().is_relative_to(ROOT/'tmp') or args.out.exists(): parser.error('Use a new directory under tmp/')
-    if args.replay: replay(args.replay,args.out)
+    if args.local_capture and not args.replay: parser.error('--local-capture requires --replay')
+    if args.replay: replay(args.replay,args.out,local_capture=args.local_capture)
     else:
         os.environ.update(HF_HUB_OFFLINE='1',TRANSFORMERS_OFFLINE='1',ANONYMIZED_TELEMETRY='False',LANGSMITH_TRACING='false')
         collect(args.out)

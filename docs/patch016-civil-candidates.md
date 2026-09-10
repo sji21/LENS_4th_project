@@ -43,7 +43,9 @@ BM25·dense·RRF의 후보 전체 순위를 저장한 후 사전 지정한 k=1·
 
 원문 질문은 PATCH-015의 저장 입력을 참조하고 새 파일에는 ID·입력 해시만 기록한다. 코드·모델·운영 파일은 PATCH-015 manifest로 연결한다. 실행기는 미커밋 상태에서 사용돼 실제 파일 해시와 dirty 상태를 남겼다. 운영 파일 전후 해시와 평가 기준 불변, 민법 인덱스 7개 본문·메타데이터 일치를 확인했다.
 
-관련 테스트 8개 통과. `DJANGO_SETTINGS_MODULE` 미인식 환경 경고 1개가 있으며 본 테스트는 Django를 사용하지 않는다. 초기 설정 대조는 JSON 목록/런타임 튜플의 표현 차이 때문에 검색 전에 중단됐고, 비교 표현을 통일한 새 실행만 결과에 사용했다. 전체 앱·LLM·OCR·법적 답변·판례 정확도는 평가하지 않았다.
+리뷰 보완 후 관련 테스트 21개 통과. `DJANGO_SETTINGS_MODULE` 미인식 환경 경고 1개가 있으며 본 테스트는 Django를 사용하지 않는다. 초기 설정 대조는 JSON 목록/런타임 튜플의 표현 차이 때문에 검색 전에 중단됐고, 비교 표현을 통일한 새 실행만 결과에 사용했다. 전체 앱·LLM·OCR·법적 답변·판례 정확도는 평가하지 않았다.
+
+재집계는 공유 묶음의 스키마·필수 5개 파일·전체 파일 해시와 감사 기록(235입력 완료, 운영 파일/평가 기준 불변)을 먼저 검사한다. 파일과 해시 항목을 함께 없애거나 정상 조문 ID끼리 순서를 바꿔도 거부한다. 이번 보완은 검증 경로만 수정했으며 기존 측정 자료·runner 해시·집계 결과는 당시 기록 그대로 보존한다. 기존 캡처 실행기는 `4bb6745`에서 확인할 수 있다.
 
 후보 자체의 유용성은 확인했으나 민법 최종 노출 조건, 기존 근거 보존, 민법 7개 외 추가 조문의 일반화는 검증하지 않았다. 따라서 운영 변경이나 신규 라우팅 규칙으로 승격하지 않는다. PATCH-012의 규칙이나 BGE/Qwen 실험을 가져오지 않았다.
 
@@ -53,11 +55,11 @@ BM25·dense·RRF의 후보 전체 순위를 저장한 후 사전 지정한 k=1·
 
 ```powershell
 .venv/Scripts/python -m scripts.patch016_candidates --out tmp/patch016-new-run
-.venv/Scripts/python -m scripts.patch016_candidates --replay tmp/patch016-new-run --out tmp/patch016-new-report
+.venv/Scripts/python -m scripts.patch016_candidates --replay tmp/patch016-new-run --local-capture --out tmp/patch016-new-report
 .venv/Scripts/python -m pytest tests/test_patch016_candidates.py tests/test_patch015_baseline.py -q
 ```
 
-공유 결과만 재집계할 때는 모델이나 운영 DB 없이 아래 명령을 사용한다. 결과 파일 무결성은 공유 해시 목록과 대조한다.
+공유 결과만 재집계할 때는 모델이나 운영 DB 없이 아래 명령을 사용한다. 결과 파일 무결성은 공유 해시 목록과 자동 대조한다. 목록이 없는 새 로컬 캡처만 `--local-capture`로 명시적으로 허용하며 감사 기록은 여전히 필수다. 공유 목록이 존재하면 이 옵션으로 해시 검사를 우회할 수 없다.
 
 ```powershell
 .venv/Scripts/python -m scripts.patch016_candidates --replay data/eval/patch016-candidates/capture --out tmp/patch016-replay

@@ -15,6 +15,8 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
+- PATCH-016 validates the published bundle schema, required files, hashes and successful capture audit before replay. Missing manifests require explicit unpublished-local mode, which never bypasses an existing bundle or the audit. Saved experiment results are unchanged. (commit: pending)
+
 - PATCH-011 rejects bundles missing any of the seven review originals even when their manifest entries are removed, and validates full source/target law-article identifiers rather than article numbers alone. Diagnostic results are unchanged. (commit: `8e30326`)
 
 ### Added
