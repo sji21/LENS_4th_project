@@ -1,0 +1,2498 @@
+[
+  {
+    "qid": "DEV-001",
+    "primary_source_ids": [
+      "C114"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C114",
+        "article_anchor": "민법-제114조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-002",
+    "primary_source_ids": [
+      "C357"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C357",
+        "article_anchor": "민법-제357조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-003",
+    "primary_source_ids": [
+      "TAX109",
+      "TAX97",
+      "LT6",
+      "LT8",
+      "H3_7"
+    ],
+    "law_targets": [
+      {
+        "source_id": "TAX109",
+        "article_anchor": "국세징수법-제109조"
+      },
+      {
+        "source_id": "TAX97",
+        "article_anchor": "국세징수법시행령-제97조"
+      },
+      {
+        "source_id": "LT6",
+        "article_anchor": "지방세징수법-제6조"
+      },
+      {
+        "source_id": "LT8",
+        "article_anchor": "지방세징수법시행령-제8조"
+      },
+      {
+        "source_id": "H3_7",
+        "article_anchor": "주택임대차보호법-제3조의7"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-004",
+    "primary_source_ids": [
+      "C623",
+      "CASE_REPAIR"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C623",
+        "article_anchor": "민법-제623조"
+      }
+    ],
+    "non_flat_law_targets": [
+      "CASE_REPAIR"
+    ],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-005",
+    "primary_source_ids": [
+      "RR16",
+      "H3",
+      "H3_6"
+    ],
+    "law_targets": [
+      {
+        "source_id": "RR16",
+        "article_anchor": "주민등록법-제16조"
+      },
+      {
+        "source_id": "H3",
+        "article_anchor": "주택임대차보호법-제3조"
+      },
+      {
+        "source_id": "H3_6",
+        "article_anchor": "주택임대차보호법-제3조의6"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-006",
+    "primary_source_ids": [
+      "C626"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C626",
+        "article_anchor": "민법-제626조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-039"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-007",
+    "primary_source_ids": [
+      "H3_3"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H3_3",
+        "article_anchor": "주택임대차보호법-제3조의3"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-008",
+    "primary_source_ids": [
+      "HF_OV"
+    ],
+    "law_targets": [],
+    "non_flat_law_targets": [
+      "HF_OV"
+    ],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-040"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-009",
+    "primary_source_ids": [
+      "H2",
+      "M2",
+      "CASE_MIX"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H2",
+        "article_anchor": "주택임대차보호법-제2조"
+      },
+      {
+        "source_id": "M2",
+        "article_anchor": "상가건물임대차보호법-제2조"
+      }
+    ],
+    "non_flat_law_targets": [
+      "CASE_MIX"
+    ],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-010",
+    "primary_source_ids": [
+      "H3_3",
+      "CASE_REG",
+      "CASE_MOVEOUT"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H3_3",
+        "article_anchor": "주택임대차보호법-제3조의3"
+      }
+    ],
+    "non_flat_law_targets": [
+      "CASE_REG",
+      "CASE_MOVEOUT"
+    ],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-011",
+    "primary_source_ids": [
+      "C265"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C265",
+        "article_anchor": "민법-제265조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-012",
+    "primary_source_ids": [
+      "C114"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C114",
+        "article_anchor": "민법-제114조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-013",
+    "primary_source_ids": [
+      "C114"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C114",
+        "article_anchor": "민법-제114조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-014",
+    "primary_source_ids": [
+      "C114"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C114",
+        "article_anchor": "민법-제114조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-017"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-015",
+    "primary_source_ids": [
+      "H3",
+      "C105"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H3",
+        "article_anchor": "주택임대차보호법-제3조"
+      },
+      {
+        "source_id": "C105",
+        "article_anchor": "민법-제105조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-016",
+    "primary_source_ids": [
+      "C114"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C114",
+        "article_anchor": "민법-제114조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-017",
+    "primary_source_ids": [],
+    "law_targets": [],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-018",
+    "primary_source_ids": [],
+    "law_targets": [],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-019",
+    "primary_source_ids": [
+      "TRUST31"
+    ],
+    "law_targets": [
+      {
+        "source_id": "TRUST31",
+        "article_anchor": "신탁법-제31조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-020",
+    "primary_source_ids": [
+      "C357"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C357",
+        "article_anchor": "민법-제357조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-021",
+    "primary_source_ids": [
+      "C357"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C357",
+        "article_anchor": "민법-제357조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-022",
+    "primary_source_ids": [
+      "EX83"
+    ],
+    "law_targets": [
+      {
+        "source_id": "EX83",
+        "article_anchor": "민사집행법-제83조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-023",
+    "primary_source_ids": [
+      "REG88",
+      "REG91"
+    ],
+    "law_targets": [
+      {
+        "source_id": "REG88",
+        "article_anchor": "부동산등기법-제88조"
+      },
+      {
+        "source_id": "REG91",
+        "article_anchor": "부동산등기법-제91조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-024",
+    "primary_source_ids": [],
+    "law_targets": [],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-025",
+    "primary_source_ids": [
+      "TAX109",
+      "TAX97",
+      "LT6",
+      "LT8",
+      "H3_7"
+    ],
+    "law_targets": [
+      {
+        "source_id": "TAX109",
+        "article_anchor": "국세징수법-제109조"
+      },
+      {
+        "source_id": "TAX97",
+        "article_anchor": "국세징수법시행령-제97조"
+      },
+      {
+        "source_id": "LT6",
+        "article_anchor": "지방세징수법-제6조"
+      },
+      {
+        "source_id": "LT8",
+        "article_anchor": "지방세징수법시행령-제8조"
+      },
+      {
+        "source_id": "H3_7",
+        "article_anchor": "주택임대차보호법-제3조의7"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-026",
+    "primary_source_ids": [
+      "TAX109",
+      "TAX97",
+      "LT6",
+      "LT8"
+    ],
+    "law_targets": [
+      {
+        "source_id": "TAX109",
+        "article_anchor": "국세징수법-제109조"
+      },
+      {
+        "source_id": "TAX97",
+        "article_anchor": "국세징수법시행령-제97조"
+      },
+      {
+        "source_id": "LT6",
+        "article_anchor": "지방세징수법-제6조"
+      },
+      {
+        "source_id": "LT8",
+        "article_anchor": "지방세징수법시행령-제8조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-027",
+    "primary_source_ids": [
+      "TAX109",
+      "LT6"
+    ],
+    "law_targets": [
+      {
+        "source_id": "TAX109",
+        "article_anchor": "국세징수법-제109조"
+      },
+      {
+        "source_id": "LT6",
+        "article_anchor": "지방세징수법-제6조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-028",
+    "primary_source_ids": [
+      "TAX109",
+      "TAX97",
+      "LT6",
+      "LT8"
+    ],
+    "law_targets": [
+      {
+        "source_id": "TAX109",
+        "article_anchor": "국세징수법-제109조"
+      },
+      {
+        "source_id": "TAX97",
+        "article_anchor": "국세징수법시행령-제97조"
+      },
+      {
+        "source_id": "LT6",
+        "article_anchor": "지방세징수법-제6조"
+      },
+      {
+        "source_id": "LT8",
+        "article_anchor": "지방세징수법시행령-제8조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-029",
+    "primary_source_ids": [],
+    "law_targets": [],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-030",
+    "primary_source_ids": [],
+    "law_targets": [],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-031",
+    "primary_source_ids": [],
+    "law_targets": [],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-032",
+    "primary_source_ids": [
+      "BROKER25"
+    ],
+    "law_targets": [
+      {
+        "source_id": "BROKER25",
+        "article_anchor": "공인중개사법-제25조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-016"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-033",
+    "primary_source_ids": [
+      "RR16",
+      "H3"
+    ],
+    "law_targets": [
+      {
+        "source_id": "RR16",
+        "article_anchor": "주민등록법-제16조"
+      },
+      {
+        "source_id": "H3",
+        "article_anchor": "주택임대차보호법-제3조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-034",
+    "primary_source_ids": [
+      "C105"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C105",
+        "article_anchor": "민법-제105조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-031",
+      "SUP-032",
+      "SUP-033",
+      "SUP-034",
+      "SUP-035"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-035",
+    "primary_source_ids": [],
+    "law_targets": [],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-036",
+    "primary_source_ids": [],
+    "law_targets": [],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-037",
+    "primary_source_ids": [
+      "BROKER25"
+    ],
+    "law_targets": [
+      {
+        "source_id": "BROKER25",
+        "article_anchor": "공인중개사법-제25조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-038",
+    "primary_source_ids": [
+      "REPORT62",
+      "REPORT_RULE",
+      "RR16",
+      "H3_6"
+    ],
+    "law_targets": [
+      {
+        "source_id": "REPORT62",
+        "article_anchor": "부동산거래신고등에관한법률-제6조의2"
+      },
+      {
+        "source_id": "REPORT_RULE",
+        "article_anchor": "부동산거래신고등에관한법률시행규칙-제6조의2"
+      },
+      {
+        "source_id": "RR16",
+        "article_anchor": "주민등록법-제16조"
+      },
+      {
+        "source_id": "H3_6",
+        "article_anchor": "주택임대차보호법-제3조의6"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-025",
+      "SUP-027"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-039",
+    "primary_source_ids": [
+      "H3_6"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H3_6",
+        "article_anchor": "주택임대차보호법-제3조의6"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-028"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-040",
+    "primary_source_ids": [
+      "RR16",
+      "H3"
+    ],
+    "law_targets": [
+      {
+        "source_id": "RR16",
+        "article_anchor": "주민등록법-제16조"
+      },
+      {
+        "source_id": "H3",
+        "article_anchor": "주택임대차보호법-제3조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-041",
+    "primary_source_ids": [
+      "REPORT62",
+      "REPORT_RULE",
+      "RR16"
+    ],
+    "law_targets": [
+      {
+        "source_id": "REPORT62",
+        "article_anchor": "부동산거래신고등에관한법률-제6조의2"
+      },
+      {
+        "source_id": "REPORT_RULE",
+        "article_anchor": "부동산거래신고등에관한법률시행규칙-제6조의2"
+      },
+      {
+        "source_id": "RR16",
+        "article_anchor": "주민등록법-제16조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-042",
+    "primary_source_ids": [
+      "H3",
+      "CASE_DAGAGU"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H3",
+        "article_anchor": "주택임대차보호법-제3조"
+      }
+    ],
+    "non_flat_law_targets": [
+      "CASE_DAGAGU"
+    ],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-043",
+    "primary_source_ids": [
+      "H3",
+      "CASE_FAMILY"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H3",
+        "article_anchor": "주택임대차보호법-제3조"
+      }
+    ],
+    "non_flat_law_targets": [
+      "CASE_FAMILY"
+    ],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-044",
+    "primary_source_ids": [
+      "H3",
+      "H3_2"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H3",
+        "article_anchor": "주택임대차보호법-제3조"
+      },
+      {
+        "source_id": "H3_2",
+        "article_anchor": "주택임대차보호법-제3조의2"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-045",
+    "primary_source_ids": [],
+    "law_targets": [],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-029"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-046",
+    "primary_source_ids": [
+      "RR16"
+    ],
+    "law_targets": [
+      {
+        "source_id": "RR16",
+        "article_anchor": "주민등록법-제16조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-047",
+    "primary_source_ids": [
+      "H6",
+      "H6_3"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H6",
+        "article_anchor": "주택임대차보호법-제6조"
+      },
+      {
+        "source_id": "H6_3",
+        "article_anchor": "주택임대차보호법-제6조의3"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-048",
+    "primary_source_ids": [
+      "H6_3",
+      "CASE_REAL"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H6_3",
+        "article_anchor": "주택임대차보호법-제6조의3"
+      }
+    ],
+    "non_flat_law_targets": [
+      "CASE_REAL"
+    ],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-049",
+    "primary_source_ids": [
+      "H7"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H7",
+        "article_anchor": "주택임대차보호법-제7조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-050",
+    "primary_source_ids": [
+      "H3_2",
+      "H3_6"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H3_2",
+        "article_anchor": "주택임대차보호법-제3조의2"
+      },
+      {
+        "source_id": "H3_6",
+        "article_anchor": "주택임대차보호법-제3조의6"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-051",
+    "primary_source_ids": [
+      "H6"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H6",
+        "article_anchor": "주택임대차보호법-제6조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-052",
+    "primary_source_ids": [
+      "H6",
+      "H6_2"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H6",
+        "article_anchor": "주택임대차보호법-제6조"
+      },
+      {
+        "source_id": "H6_2",
+        "article_anchor": "주택임대차보호법-제6조의2"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-053",
+    "primary_source_ids": [
+      "H6_3"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H6_3",
+        "article_anchor": "주택임대차보호법-제6조의3"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-054",
+    "primary_source_ids": [
+      "H4"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H4",
+        "article_anchor": "주택임대차보호법-제4조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-055",
+    "primary_source_ids": [
+      "C623"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C623",
+        "article_anchor": "민법-제623조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-056",
+    "primary_source_ids": [
+      "C623"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C623",
+        "article_anchor": "민법-제623조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-057",
+    "primary_source_ids": [
+      "C626"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C626",
+        "article_anchor": "민법-제626조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-039"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-058",
+    "primary_source_ids": [
+      "C627"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C627",
+        "article_anchor": "민법-제627조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-059",
+    "primary_source_ids": [
+      "C626"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C626",
+        "article_anchor": "민법-제626조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-039"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-060",
+    "primary_source_ids": [
+      "C390"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C390",
+        "article_anchor": "민법-제390조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "05: current accidental damage responsibility -> C390; amount calculation and return-stage claims not required by this question.",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-036",
+      "SUP-037",
+      "SUP-038"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-061",
+    "primary_source_ids": [
+      "C629",
+      "C632"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C629",
+        "article_anchor": "민법-제629조"
+      },
+      {
+        "source_id": "C632",
+        "article_anchor": "민법-제632조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-062",
+    "primary_source_ids": [
+      "C629"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C629",
+        "article_anchor": "민법-제629조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-063",
+    "primary_source_ids": [
+      "C640"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C640",
+        "article_anchor": "민법-제640조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-064",
+    "primary_source_ids": [
+      "C105"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C105",
+        "article_anchor": "민법-제105조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-065",
+    "primary_source_ids": [
+      "C105"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C105",
+        "article_anchor": "민법-제105조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-066",
+    "primary_source_ids": [
+      "C105"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C105",
+        "article_anchor": "민법-제105조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-067",
+    "primary_source_ids": [
+      "C536",
+      "H4"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C536",
+        "article_anchor": "민법-제536조"
+      },
+      {
+        "source_id": "H4",
+        "article_anchor": "주택임대차보호법-제4조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-068",
+    "primary_source_ids": [
+      "H3_3"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H3_3",
+        "article_anchor": "주택임대차보호법-제3조의3"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-069",
+    "primary_source_ids": [
+      "H3_3"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H3_3",
+        "article_anchor": "주택임대차보호법-제3조의3"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-070",
+    "primary_source_ids": [
+      "H3_3",
+      "CASE_REG",
+      "CASE_MOVEOUT"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H3_3",
+        "article_anchor": "주택임대차보호법-제3조의3"
+      }
+    ],
+    "non_flat_law_targets": [
+      "CASE_REG",
+      "CASE_MOVEOUT"
+    ],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-071",
+    "primary_source_ids": [
+      "C654",
+      "C615"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C654",
+        "article_anchor": "민법-제654조"
+      },
+      {
+        "source_id": "C615",
+        "article_anchor": "민법-제615조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "05: C654+C615 are the required restoration group; damages/amount rules remain separate conditional propositions.",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-036",
+      "SUP-037",
+      "SUP-038"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-072",
+    "primary_source_ids": [
+      "C105",
+      "C536"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C105",
+        "article_anchor": "민법-제105조"
+      },
+      {
+        "source_id": "C536",
+        "article_anchor": "민법-제536조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-073",
+    "primary_source_ids": [],
+    "law_targets": [],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-074",
+    "primary_source_ids": [
+      "MEDIATION"
+    ],
+    "law_targets": [],
+    "non_flat_law_targets": [
+      "MEDIATION"
+    ],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-075",
+    "primary_source_ids": [
+      "C111",
+      "PROC462"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C111",
+        "article_anchor": "민법-제111조"
+      },
+      {
+        "source_id": "PROC462",
+        "article_anchor": "민사소송법-제462조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-013"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-076",
+    "primary_source_ids": [
+      "HUG_SUPPORT"
+    ],
+    "law_targets": [],
+    "non_flat_law_targets": [
+      "HUG_SUPPORT"
+    ],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-077",
+    "primary_source_ids": [],
+    "law_targets": [],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-078",
+    "primary_source_ids": [
+      "C111",
+      "C113"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C111",
+        "article_anchor": "민법-제111조"
+      },
+      {
+        "source_id": "C113",
+        "article_anchor": "민법-제113조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-022"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-079",
+    "primary_source_ids": [
+      "CR347"
+    ],
+    "law_targets": [
+      {
+        "source_id": "CR347",
+        "article_anchor": "형법-제347조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-080",
+    "primary_source_ids": [],
+    "law_targets": [],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-081",
+    "primary_source_ids": [
+      "HF_OV"
+    ],
+    "law_targets": [],
+    "non_flat_law_targets": [
+      "HF_OV"
+    ],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-041"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-082",
+    "primary_source_ids": [],
+    "law_targets": [],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "05: asking for missing facts or directing user to own institution is not a mandatory external-law retrieval claim.",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-042",
+      "SUP-043"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-083",
+    "primary_source_ids": [],
+    "law_targets": [],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "05: asking for missing facts or directing user to own institution is not a mandatory external-law retrieval claim.",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-044",
+      "SUP-045"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-084",
+    "primary_source_ids": [],
+    "law_targets": [],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "05: asking for missing facts or directing user to own institution is not a mandatory external-law retrieval claim.",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-046",
+      "SUP-047"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-085",
+    "primary_source_ids": [],
+    "law_targets": [],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "05: asking for missing facts or directing user to own institution is not a mandatory external-law retrieval claim.",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-048",
+      "SUP-049"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-086",
+    "primary_source_ids": [
+      "HF_CLAIM"
+    ],
+    "law_targets": [],
+    "non_flat_law_targets": [
+      "HF_CLAIM"
+    ],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "05: general guarantee payout correction needs official general guidance; no unique HF requirement.",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-050",
+      "SUP-051"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-087",
+    "primary_source_ids": [
+      "C186",
+      "C187",
+      "C357"
+    ],
+    "law_targets": [
+      {
+        "source_id": "C186",
+        "article_anchor": "민법-제186조"
+      },
+      {
+        "source_id": "C187",
+        "article_anchor": "민법-제187조"
+      },
+      {
+        "source_id": "C357",
+        "article_anchor": "민법-제357조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-088",
+    "primary_source_ids": [
+      "VAT8",
+      "M3"
+    ],
+    "law_targets": [
+      {
+        "source_id": "VAT8",
+        "article_anchor": "부가가치세법-제8조"
+      },
+      {
+        "source_id": "M3",
+        "article_anchor": "상가건물임대차보호법-제3조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-089",
+    "primary_source_ids": [
+      "M2",
+      "M10"
+    ],
+    "law_targets": [
+      {
+        "source_id": "M2",
+        "article_anchor": "상가건물임대차보호법-제2조"
+      },
+      {
+        "source_id": "M10",
+        "article_anchor": "상가건물임대차보호법-제10조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-090",
+    "primary_source_ids": [
+      "M2",
+      "M6",
+      "C536"
+    ],
+    "law_targets": [
+      {
+        "source_id": "M2",
+        "article_anchor": "상가건물임대차보호법-제2조"
+      },
+      {
+        "source_id": "M6",
+        "article_anchor": "상가건물임대차보호법-제6조"
+      },
+      {
+        "source_id": "C536",
+        "article_anchor": "민법-제536조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-091",
+    "primary_source_ids": [
+      "PUBLIC492"
+    ],
+    "law_targets": [
+      {
+        "source_id": "PUBLIC492",
+        "article_anchor": "공공주택특별법-제49조의2"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-092",
+    "primary_source_ids": [
+      "PUBLIC493"
+    ],
+    "law_targets": [
+      {
+        "source_id": "PUBLIC493",
+        "article_anchor": "공공주택특별법-제49조의3"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-023",
+      "SUP-024"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-093",
+    "primary_source_ids": [],
+    "law_targets": [],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "05: asking for missing facts or directing user to own institution is not a mandatory external-law retrieval claim.",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-052",
+      "SUP-053"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-094",
+    "primary_source_ids": [
+      "PRIVATE5",
+      "PRIVATE6"
+    ],
+    "law_targets": [
+      {
+        "source_id": "PRIVATE5",
+        "article_anchor": "민간임대주택에관한특별법-제5조"
+      },
+      {
+        "source_id": "PRIVATE6",
+        "article_anchor": "민간임대주택에관한특별법-제6조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-010",
+      "SUP-011",
+      "SUP-012"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-095",
+    "primary_source_ids": [
+      "PRIVATE44"
+    ],
+    "law_targets": [
+      {
+        "source_id": "PRIVATE44",
+        "article_anchor": "민간임대주택에관한특별법-제44조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-001",
+      "SUP-002",
+      "SUP-003",
+      "SUP-018",
+      "SUP-019",
+      "SUP-020"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-096",
+    "primary_source_ids": [
+      "PRIVATE45",
+      "PRIVATE46",
+      "PRIVATE47"
+    ],
+    "law_targets": [
+      {
+        "source_id": "PRIVATE45",
+        "article_anchor": "민간임대주택에관한특별법-제45조"
+      },
+      {
+        "source_id": "PRIVATE46",
+        "article_anchor": "민간임대주택에관한특별법-제46조"
+      },
+      {
+        "source_id": "PRIVATE47",
+        "article_anchor": "민간임대주택에관한특별법-제47조"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-004",
+      "SUP-005",
+      "SUP-006",
+      "SUP-007",
+      "SUP-008",
+      "SUP-009",
+      "SUP-021",
+      "SUP-026"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-097",
+    "primary_source_ids": [
+      "HLA_HISTORY"
+    ],
+    "law_targets": [],
+    "non_flat_law_targets": [
+      "HLA_HISTORY"
+    ],
+    "historical_review_required": true,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-098",
+    "primary_source_ids": [
+      "REPORT2021"
+    ],
+    "law_targets": [],
+    "non_flat_law_targets": [
+      "REPORT2021"
+    ],
+    "historical_review_required": true,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-014",
+      "SUP-015"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-099",
+    "primary_source_ids": [
+      "H3_6"
+    ],
+    "law_targets": [
+      {
+        "source_id": "H3_6",
+        "article_anchor": "주택임대차보호법-제3조의6"
+      }
+    ],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "review2 required group retained; supplemental source verification applied",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-030"
+    ],
+    "whole_item_correctness": null
+  },
+  {
+    "qid": "DEV-100",
+    "primary_source_ids": [],
+    "law_targets": [],
+    "non_flat_law_targets": [],
+    "historical_review_required": false,
+    "input_modes": [
+      "question_only",
+      "context_diagnostic"
+    ],
+    "mode_policy": "same basic-topic article targets; unavailable facts must not trigger conditional branches",
+    "selection_basis": "05: asking for missing facts or directing user to own institution is not a mandatory external-law retrieval claim.",
+    "conditional_policy": "not activated; evaluate separately before claiming complete evidence coverage",
+    "supplement_claim_ids": [
+      "SUP-054",
+      "SUP-055"
+    ],
+    "whole_item_correctness": null
+  }
+]

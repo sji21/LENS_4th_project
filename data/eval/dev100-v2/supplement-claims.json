@@ -1,0 +1,1162 @@
+[
+  {
+    "items_text": "DEV-095",
+    "source_expression": "PRIVATE44",
+    "claim": "임대료 증액은 5% 범위 안의 법정 증액 비율을 넘을 수 없다",
+    "role": "필수",
+    "condition": "등록민간임대 적용; 실제 등록·유형 확인",
+    "locator": "제44조제2항 — 발췌: “대통령령으로 정하는 증액 비율을 초과하여 청구해서는 아니 된다”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0044&lsiSeq=276995&urlMode=lsScJoRltInfoR",
+    "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+    "verification": "본문·정부조직법 개정문/부칙 대조로 메타데이터 제한 해소; 2026-09-10 확인",
+    "allowed": "5%가 일률적인 인상 권리가 아님; 시행령의 유형별 비율까지 구분",
+    "held": "실제 인상액·허용 비율의 계산, 등록 전후 개별 적용",
+    "claim_id": "SUP-001",
+    "qids": [
+      "DEV-095"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 11
+    }
+  },
+  {
+    "items_text": "DEV-095",
+    "source_expression": "PRIVATE44",
+    "claim": "계약 또는 약정 증액 후 1년 이내에는 재증액 청구 불가",
+    "role": "필수",
+    "condition": "직전 계약·증액일에 따른 적용",
+    "locator": "제44조제3항 — 발췌: “임대차계약 또는 약정한 임대료의 증액이 있은 후 1년 이내에는 하지 못한다”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0044&lsiSeq=276995&urlMode=lsScJoRltInfoR",
+    "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+    "verification": "본문 및 2018년 개정 부칙 제2조 확인; T1; 2026-09-10 확인",
+    "allowed": "직전 계약·증액일 확인과 1년 제한 안내",
+    "held": "원본에 없는 과거 증액일; 오래된 계약에 대한 개별 적용례",
+    "claim_id": "SUP-002",
+    "qids": [
+      "DEV-095"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 12
+    }
+  },
+  {
+    "items_text": "DEV-095",
+    "source_expression": "PRIVATE44",
+    "claim": "최초 기준 임대료와 증액 시 전환 규정은 별개",
+    "role": "조건부",
+    "condition": "기준 임대료 산정 또는 보증금·월세 상호 전환 설명 시",
+    "locator": "제44조제1항제2호 단서·제4항 — 발췌: “그 종전임대차계약에 따른 임대료”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0044&lsiSeq=276995&urlMode=lsScJoRltInfoR",
+    "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+    "verification": "해당 항 본문 확인; T1; 2026-09-10 확인",
+    "allowed": "등록 당시 존속 계약의 임대료를 확인하고 전환 적용기준은 시행규칙에 연결",
+    "held": "원본 미제공 등록일·계약액; 제1항의 개별 경과규정 적용",
+    "claim_id": "SUP-003",
+    "qids": [
+      "DEV-095"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 13
+    }
+  },
+  {
+    "items_text": "DEV-096",
+    "source_expression": "PRIVATE45",
+    "claim": "사업자 등록기간 동안 법정 사유 없이 해제·해지·재계약 거절 불가",
+    "role": "필수",
+    "condition": "등록민간임대의 임대인 측 종료·갱신 설명",
+    "locator": "제45조제1항 — 발췌: “임대사업자로 등록되어 있는 기간 동안”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0045&lsiSeq=276995&urlMode=lsScJoRltInfoR",
+    "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+    "verification": "본문·개정문 대조 확인; T1; 2026-09-10 확인",
+    "allowed": "임대의무기간과 등록기간을 혼동하지 않는 일반 제한과 예외 존재",
+    "held": "개별 거절 사유 충족 여부",
+    "claim_id": "SUP-004",
+    "qids": [
+      "DEV-096"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 14
+    }
+  },
+  {
+    "items_text": "DEV-096",
+    "source_expression": "PRIVATE45",
+    "claim": "임차인에게도 법정 사유에 의한 해제·해지권이 있다",
+    "role": "조건부",
+    "condition": "임차인 측 종료 사유까지 설명할 때",
+    "locator": "제45조제2항 — 발췌: “중대한 하자가 있다고 인정하는 경우 등 대통령령으로 정하는 경우”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0045&lsiSeq=276995&urlMode=lsScJoRltInfoR",
+    "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+    "verification": "관련 원문 확인; 2026-09-10 확인",
+    "allowed": "거주 곤란의 중대한 하자 등 별도 사유 안내",
+    "held": "모든 하자가 즉시 해지 사유라는 단정",
+    "claim_id": "SUP-005",
+    "qids": [
+      "DEV-096"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 15
+    }
+  },
+  {
+    "items_text": "DEV-096",
+    "source_expression": "PRIVATE46",
+    "claim": "특별법상 계약 신고는 원칙적으로 3개월 이내",
+    "role": "필수",
+    "condition": "해당 사업자의 민간임대 계약·변경 신고",
+    "locator": "제46조제1항 — 발췌: “임대차 계약을 변경한 날부터 3개월 이내”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0046&lsiSeq=276995&urlMode=lsScJoRltInfoR",
+    "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+    "verification": "본문 확인; 2026-09-08 공포/2027-03-09 시행 개정은 평가일 적용 제외(T1); 2026-09-10 확인",
+    "allowed": "체결일(종전 계약이 있으면 등록일) 또는 변경일부터의 특별 신고를 일반 주택 신고와 구분",
+    "held": "등록일·계약 이력에 따른 개별 경과규정",
+    "claim_id": "SUP-006",
+    "qids": [
+      "DEV-096"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 16
+    }
+  },
+  {
+    "items_text": "DEV-096",
+    "source_expression": "PRIVATE46",
+    "claim": "100세대 이상 공동주택 임대사업자의 변경 신고는 사전 신고",
+    "role": "조건부",
+    "condition": "제46조제2항의 규모·변경 신고 요건 충족",
+    "locator": "제46조제2항 — 발췌: “변경예정일 1개월 전까지 신고하여야 한다”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0046&lsiSeq=276995&urlMode=lsScJoRltInfoR",
+    "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+    "verification": "관련 원문 확인; 2026-09-10 확인",
+    "allowed": "원칙 3개월에 예외가 있음을 안내; 구체적으로 설명하면 규모와 변경 신고 조건을 함께 표시",
+    "held": "최초 계약까지 일괄 1개월 전으로 단정; 아직 시행되지 않은 15일 예외 적용",
+    "claim_id": "SUP-007",
+    "qids": [
+      "DEV-096"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 17
+    }
+  },
+  {
+    "items_text": "DEV-096",
+    "source_expression": "PRIVATE47",
+    "claim": "표준임대차계약서 사용 의무",
+    "role": "필수",
+    "condition": "임대사업자가 민간임대 계약을 체결하려는 경우",
+    "locator": "제47조제1항 — 발췌: “표준임대차계약서를 사용하여야 한다”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0047&lsiSeq=276995&urlMode=lsScJoRltInfoR",
+    "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+    "verification": "관련 원문 확인; 2026-09-10 확인",
+    "allowed": "일반 주택 계약과 다른 서류 의무",
+    "held": "실제 사용 서식·작성 누락 여부",
+    "claim_id": "SUP-008",
+    "qids": [
+      "DEV-096"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 18
+    }
+  },
+  {
+    "items_text": "DEV-096",
+    "source_expression": "PRIVATE47",
+    "claim": "표준계약서에 임대료 제한·보증·권리관계 등이 포함되어야 한다",
+    "role": "필수",
+    "condition": "추가 확인할 계약서 내용을 설명",
+    "locator": "제47조제2항제1·3·4·5호 — 발췌: “국세ㆍ지방세의 체납사실 등 권리관계에 관한 사항”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0047&lsiSeq=276995&urlMode=lsScJoRltInfoR",
+    "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+    "verification": "관련 원문 확인; 2026-09-10 확인",
+    "allowed": "계약서의 해당 항목 확인 안내; 기재 자체가 권리 안전을 보장하지 않음",
+    "held": "제시되지 않은 계약 내용의 사실 판정",
+    "claim_id": "SUP-009",
+    "qids": [
+      "DEV-096"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 19
+    }
+  },
+  {
+    "items_text": "DEV-094",
+    "source_expression": "PRIVATE5",
+    "claim": "계약서의 등록 문구와 실제 등록 상태는 구분해야 한다",
+    "role": "필수",
+    "condition": "등록민간임대 해당 여부 확인",
+    "locator": "제5조제1항·제2항제2·3호·제3항 — 발췌: “등록하는 경우 다음 각 호에 따라 구분하여야 한다”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0005&lsiSeq=276995&urlMode=lsScJoRltInfoR",
+    "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+    "verification": "본문과 개정·부칙 대조 확인; T1. 이 조 자체가 렌트홈 화면 사용법을 규정하지는 않음; 2026-09-10 확인",
+    "allowed": "관할 지자체·등록자료에서 등록주택 및 유형·변경을 확인하는 안내",
+    "held": "실제 주택의 등록 여부; 최초 등록 신청일에 따른 경과규정",
+    "claim_id": "SUP-010",
+    "qids": [
+      "DEV-094"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 20
+    }
+  },
+  {
+    "items_text": "DEV-094",
+    "source_expression": "PRIVATE6",
+    "claim": "등록은 말소될 수 있으므로 현재 상태와 이력을 확인",
+    "role": "필수",
+    "condition": "계약서 문구 외 등록 상태 미제공",
+    "locator": "제6조제1항 본문·제3항·제5항 — 발췌: “등록의 전부 또는 일부를 말소할 수 있다”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0006&lsiSeq=276995&urlMode=lsScJoRltInfoR",
+    "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+    "verification": "관련 원문 확인; 2026-09-10 확인",
+    "allowed": "말소 가능성과 일부 종전 유형의 자동 말소가 있어 현재 상태 확인 필요",
+    "held": "모든 유형이 기간 만료에 자동 말소된다는 일반화",
+    "claim_id": "SUP-011",
+    "qids": [
+      "DEV-094"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 21
+    }
+  },
+  {
+    "items_text": "DEV-094",
+    "source_expression": "PRIVATE6",
+    "claim": "말소되어도 기존 계약 기간까지 사업자로 보는 예외가 있다",
+    "role": "조건부",
+    "condition": "등록 말소의 임차인 권리 영향을 설명할 때",
+    "locator": "제6조제6항(제1항제5호 중 제43조제2항 양도 예외 포함) — 발췌: “이미 체결된 임대차계약의 기간이 끝날 때까지”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0006&lsiSeq=276995&urlMode=lsScJoRltInfoR",
+    "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+    "verification": "관련 원문 확인; 2026-09-10 확인",
+    "allowed": "말소 즉시 모든 특별법상 보호가 사라진다고 단정하지 않음",
+    "held": "말소 근거·양도 유형·기존 계약기간 확인 전 개인별 효과",
+    "claim_id": "SUP-012",
+    "qids": [
+      "DEV-094"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 22
+    }
+  },
+  {
+    "items_text": "DEV-075",
+    "source_expression": "PROC462",
+    "claim": "금전 청구의 지급명령은 국내에서 공시송달 외 방법으로 송달 가능해야 한다",
+    "role": "필수(지급명령 경로 설명의 근거)",
+    "condition": "지급명령을 선택지로 설명할 때; 연락 두절만으로 불가 판정하지 않음",
+    "locator": "제462조 본문·단서 — 발췌: “대한민국에서 공시송달 외의 방법으로 송달할 수 있는 경우에 한한다”",
+    "urls": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1033366021",
+    "version": "2025-07-12 시행 / 법률 제19516호; 2026-03-17 공포 제21455호는 2028-03-01 시행",
+    "verification": "본문·개정문·부칙 대조 확인; 기존 2026-03-17 시행판 전제 철회(T2); 2026-09-10 확인",
+    "allowed": "지급명령과 소송을 조건별로 나누어 안내",
+    "held": "실제 송달 가능 여부·개별 관할·인용 결과",
+    "claim_id": "SUP-013",
+    "qids": [
+      "DEV-075"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 23
+    }
+  },
+  {
+    "items_text": "DEV-098",
+    "source_expression": "REPORT2021",
+    "claim": "신고제는 2021-06-01 시행; 시행 후 최초 체결·변경부터 적용",
+    "role": "필수(공식 Q&A 단독 지정 대신 신설 법령 원문으로 대체 가능)",
+    "condition": "2021년 6월 체결은 전부 시행일 이후라는 원본 사실 유지",
+    "locator": "법률 제17483호 부칙 제1·2조 — 발췌: “이 법은 2021년 6월 1일부터 시행한다”",
+    "urls": "https://law.go.kr/LSW/lsRvsDocInfoR.do?lsiSeq=220965",
+    "version": "2021-06-01 시행 / 법률 제17483호(2020-08-18 공포)",
+    "verification": "신설 조문 전문을 포함한 공식 개정문·부칙 직접 확인(T3); 2026-09-10 확인",
+    "allowed": "정확한 일자는 30일 기한 계산에 필요하며 6월 중 시행 전·후를 나누기 위해 필요한 것은 아님",
+    "held": "개별 지역·금액·당시 신고 여부에 따른 의무·위반 판단",
+    "claim_id": "SUP-014",
+    "qids": [
+      "DEV-098"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 24
+    }
+  },
+  {
+    "items_text": "DEV-098",
+    "source_expression": "REPORT2021",
+    "claim": "신고대상 계약은 체결일부터 30일 이내 공동 신고",
+    "role": "필수",
+    "condition": "당시 법정 지역·금액·대상 주택 요건 충족",
+    "locator": "법률 제17483호로 신설된 제6조의2제1·2항 — 발췌: “임대차 계약의 체결일부터 30일 이내”",
+    "urls": "https://law.go.kr/LSW/lsRvsDocInfoR.do?lsiSeq=220965",
+    "version": "2021-06-01 시행 / 법률 제17483호",
+    "verification": "해당 조문 신설 개정문 직접 확인; 당시 시행령까지 완전 확인한 것은 아님; 2026-09-10 확인",
+    "allowed": "계약 체결일 기준 기한과 대상 조건 안내; 일방 국가등의 예외 구분",
+    "held": "2021년 시행령 원문은 미확인; 정확한 지역·금액·계약 유형 미제공",
+    "claim_id": "SUP-015",
+    "qids": [
+      "DEV-098"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 25
+    }
+  },
+  {
+    "items_text": "DEV-032",
+    "source_expression": "BROKER21",
+    "claim": "권리관계·공법상 이용제한과 건물 기본사항을 확인·설명하고 서면에 기재",
+    "role": "조건부·보조(기존 분류 유지)",
+    "condition": "증축 의심에 관한 구두 설명과 해당 없음 기재의 불일치",
+    "locator": "제21조제1항제1·2·4호 및 제3항 — 발췌: “공법상의 거래규제 및 이용제한에 관한 사항”",
+    "urls": "https://law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1024368797",
+    "version": "2026-08-28 시행 / 대통령령 제36590호",
+    "verification": "대체 공식 조문 URL에서 독립 본문 확인; 2026-09-10 확인",
+    "allowed": "해당 위치·허가 및 대장 자료를 확인하고 근거에 맞게 설명서 정정 요청",
+    "held": "증축 부분의 위법성·중개사의 손해배상 책임 자동 확정",
+    "claim_id": "SUP-016",
+    "qids": [
+      "DEV-032"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 26
+    }
+  },
+  {
+    "items_text": "DEV-014",
+    "source_expression": "COM389",
+    "claim": "주식회사 대표자와 직원의 계약 체결 권한을 구분; 공동대표 여부 확인",
+    "role": "조건부·보조",
+    "condition": "원본 임대인은 주식회사; 직원은 대표자가 아님",
+    "locator": "제389조제1·2항 — 발췌: “수인의 대표이사가 공동으로 회사를 대표할 것을 정할 수 있다”",
+    "urls": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?lsJoLnkSeq=1016242805",
+    "version": "확인 조문 표제 2026-07-23 / 법률 제20991호; 제21448호 개정문 등 관련 판본 대조(T4)",
+    "verification": "본문 확인; 2026년 개정문에 제389조 변경 없음 대조; 2026-09-10 확인",
+    "allowed": "대표자·공동대표 등록 및 직원에게 부여한 대리권 확인 안내",
+    "held": "직원이 도장만 찍으면 무효라는 단정; 등기·위임자료 없는 권한 확정",
+    "claim_id": "SUP-017",
+    "qids": [
+      "DEV-014"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 27
+    }
+  },
+  {
+    "items_text": "DEV-095",
+    "source_expression": "PRIVATE442",
+    "claim": "법정 비율을 넘겨 이미 낸 임대료의 초과분 반환 청구",
+    "role": "조건부",
+    "condition": "실제 초과 지급이 있는 분기만; 원본은 아직 증액 제안 단계",
+    "locator": "제44조의2(항·호 없음); 제15730호 신설 개정문 해당 구간 — 발췌: “초과 지급한 임대료 상당금액의 반환을 청구할 수 있다”",
+    "urls": "https://www.law.go.kr/LSW/lsRvsDocListP.do?chrClsCd=010202&lsId=000243&lsRvsGubun=all",
+    "version": "신설 제15730호 / 2019-02-15 시행; 평가일 제21065호 검색 본문과 같은 문구",
+    "verification": "신설 개정 원문 확인으로 보강. 평가일 단독 조문 원문 확인은 미완료(T1); 2026-09-10 확인",
+    "allowed": "초과 지급 시 반환청구 제도가 있음을 설명; 원본 필수 검색에서 제외",
+    "held": "평가일 독립 조문 화면 열람은 실패; 개별 초과액·과거 적용 시점",
+    "claim_id": "SUP-018",
+    "qids": [
+      "DEV-095"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 28
+    }
+  },
+  {
+    "items_text": "DEV-095",
+    "source_expression": "PRIVATE_ENF34",
+    "claim": "증액 비율은 단지 규모·유형에 따라 구별",
+    "role": "조건부",
+    "condition": "법 제44조제2항의 구체 증액 비율까지 설명",
+    "locator": "시행령 제34조의2제1·2호(제34조 아님) — 발췌: “제1호를 제외한 민간임대주택: 임대료의 5퍼센트”",
+    "urls": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lspttninfSeq=150800",
+    "version": "2026-02-26 시행 통합판 / 대통령령 제35340호; 제35811호(2025-10-01) 명칭 개정 반영",
+    "verification": "독립 본문 및 개정문·부칙 확인(T5); 2026-09-10 확인",
+    "allowed": "100세대 이상 단지의 지수·조례 기준과 그 밖의 주택 구분; 20년 이상 특정 공공지원 단지 예외",
+    "held": "지수·조례·단지 규모 미확인인 실제 허용 인상률",
+    "claim_id": "SUP-019",
+    "qids": [
+      "DEV-095"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 29
+    }
+  },
+  {
+    "items_text": "DEV-095",
+    "source_expression": "PRIVATE_RULE18(추가; 기존 PRIVATE_ENF34의 전환 부분 분리)",
+    "claim": "보증금·월세 상호 전환에는 동의와 주임법 전환 범위 적용",
+    "role": "조건부",
+    "condition": "실제 상호 전환이 있을 때; 두 금액 모두 증액 제안이라고 자동 전환으로 보지 않음",
+    "locator": "시행규칙 제18조 전단·후단 — 발췌: “월임대료를 임대보증금으로 전환하는 경우에도 또한 같다”",
+    "urls": "https://law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lspttninfSeq=150799",
+    "version": "2025-12-19 시행 / 국토교통부령 제1544호",
+    "verification": "독립 원문 확인. 시행령 제35조를 전환 규정으로 사용하지 않음; 2026-09-10 확인",
+    "allowed": "전환 시 동의와 주임법 제7조의2의 범위를 확인하는 안내",
+    "held": "구체 전환율·합산 인상액; 원본에 금액이 없으므로 계산 보류",
+    "claim_id": "SUP-020",
+    "qids": [
+      "DEV-095"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 30
+    }
+  },
+  {
+    "items_text": "DEV-096",
+    "source_expression": "PRIVATE_ENF35",
+    "claim": "해제·해지·재계약 거절의 구체 예외 사유",
+    "role": "조건부",
+    "condition": "법 제45조 예외를 상세 설명할 때",
+    "locator": "시행령 제35조제1항 본문·제3호·제6호; 제2항제1·4·5호 — 발췌: “월 임대료를 3개월 이상 연속하여 연체한 경우”",
+    "urls": "https://law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0035&lsiSeq=269343&urlMode=lsScJoRltInfoR",
+    "version": "2026-02-26 시행 통합판 / 대통령령 제35340호",
+    "verification": "제1·2항 본문 확인. 기존 전환 관련 제한 문구는 이 출처에서 삭제; 2026-09-10 확인",
+    "allowed": "등록기간 중 제한에 법정 예외가 있음을 설명; 임차인 측 해지 사유와 분리",
+    "held": "개별 특약 위반·연체·하자 등의 성립, 유형별 추가 자격 기준",
+    "claim_id": "SUP-021",
+    "qids": [
+      "DEV-096"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 31
+    }
+  },
+  {
+    "items_text": "DEV-078",
+    "source_expression": "PROC194",
+    "claim": "소송서류 공시송달은 주소 등 불명 등의 요건과 소명이 필요",
+    "role": "조건부",
+    "condition": "소송서류 송달을 설명할 때; 반환 요구 의사표시 자체는 C113 별도",
+    "locator": "제194조제1·2항 — 발췌: “제1항의 신청에는 그 사유를 소명하여야 한다”",
+    "urls": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?lsJoLnkSeq=900438968",
+    "version": "2025-07-12 시행 / 법률 제19516호; 2026-03-17 공포 개정은 2028-03-01 시행",
+    "verification": "독립 본문 및 개정·부칙 대조 확인(T2); 2026-09-10 확인",
+    "allowed": "수취인 부재로 한 번 반송됐다는 것만으로 자동 공시송달되지 않음",
+    "held": "주소 조사·소명 결과 및 법원의 허용 여부",
+    "claim_id": "SUP-022",
+    "qids": [
+      "DEV-078"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 32
+    }
+  },
+  {
+    "items_text": "DEV-092",
+    "source_expression": "PUBLIC47",
+    "claim": "공공임대는 법정 재계약 거절 사유 및 예외가 있다",
+    "role": "조건부",
+    "condition": "거절 사유까지 설명할 때",
+    "locator": "시행령 제47조제1항제2호·제2항제4호 본문 및 가~다목 — 발췌: “월 임대료를 3개월 이상 연속하여 연체한 경우”",
+    "urls": "https://law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0047&lsiSeq=285441&urlMode=lsScJoRltInfoR",
+    "version": "확인 2026-04-14 / 제36258호; 평가일 2026-09-08 / 제36659호 개정문에서 제47조 불변 대조",
+    "verification": "시행령 해당 항 직접 확인 및 평가일 개정문 대조(T6); 유형별 별표는 미확인; 2026-09-10 확인",
+    "allowed": "무조건 계속 갱신을 보장할 수 없음; 소유주택 취득에도 예외 존재",
+    "held": "소득 초과 수치·가족 변동별 유예기간; 제47조만으로 확정 불가",
+    "claim_id": "SUP-023",
+    "qids": [
+      "DEV-092"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 33
+    }
+  },
+  {
+    "items_text": "DEV-092",
+    "source_expression": "PUBLIC_RULE13_25(추가; PUBLIC47의 규칙 부분 분리)",
+    "claim": "공공임대의 자격·관리 기준은 유형 및 관련 규정에 따라 확인",
+    "role": "조건부·보조",
+    "condition": "유형·가구 변동에 따른 자격 확인 안내",
+    "locator": "시행규칙 제13조제1·3·4항; 제25조제2·4항 — 발췌: “공공주택 유형별로 달리 정할 수 있다”",
+    "urls": "https://law.go.kr/lsLinkCommonInfo.do?lspttninfSeq=124639",
+    "version": "2026-08-24 시행 / 국토교통부령 제1616호",
+    "verification": "제13조·제25조 본문 확인; 유형별 별표·일부 과거 경과규정 미확인; 2026-09-10 확인",
+    "allowed": "유형·현재 가구·소득·자산·주택 소유와 공고·계약을 확인하는 설명",
+    "held": "각 유형 별표의 수치·거주기간·유예 및 실제 재계약 결과",
+    "claim_id": "SUP-024",
+    "qids": [
+      "DEV-092"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 34
+    }
+  },
+  {
+    "items_text": "DEV-038",
+    "source_expression": "REPORT65",
+    "claim": "전입신고에 따른 임대차 신고 의제는 존재하나 두 제도는 동일하지 않다",
+    "role": "조건부",
+    "condition": "신고 절차의 연결까지 설명",
+    "locator": "제6조의5제1항 — 발췌: “전입신고를 하는 경우 이 법에 따른 주택 임대차 계약의 신고를 한 것으로 본다”",
+    "urls": "https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1015159531",
+    "version": "2024-05-17 시행 / 법률 제20194호",
+    "verification": "독립 조문 원문 확인; 실무 제출 절차는 기존 RULE6_2와 함께 확인; 2026-09-10 확인",
+    "allowed": "의제의 방향을 구분; 임대차 신고만 하면 주민등록까지 자동 변경된다고 하지 않음",
+    "held": "계약서 등 실제 접수 요건을 갖추지 않은 전입신고의 처리 결과",
+    "claim_id": "SUP-025",
+    "qids": [
+      "DEV-038"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 35
+    }
+  },
+  {
+    "items_text": "DEV-096",
+    "source_expression": "REPORT65",
+    "claim": "공공·민간 특별법에 따른 사업자 신고의 일반 신고 의제",
+    "role": "조건부",
+    "condition": "특별 신고와 일반 주택 임대차 신고의 관계 설명",
+    "locator": "제6조의5제2항 — 발췌: “주택 임대차 계약의 신고 또는 변경신고를 한 것으로 본다”",
+    "urls": "https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1015159531",
+    "version": "2024-05-17 시행 / 법률 제20194호",
+    "verification": "관련 원문 확인; 2026-09-10 확인",
+    "allowed": "사업자가 관련 법령에 따른 신고·변경신고를 한 경우의 의제",
+    "held": "사업자가 실제 신고했는지; 아무 신고도 필요 없다는 단정",
+    "claim_id": "SUP-026",
+    "qids": [
+      "DEV-096"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 36
+    }
+  },
+  {
+    "items_text": "DEV-038",
+    "source_expression": "REPORT65",
+    "claim": "계약서를 제출한 신고 접수 완료 시 확정일자 의제",
+    "role": "조건부",
+    "condition": "확정일자와의 관계를 부연할 때",
+    "locator": "제6조의5제3항 전단·괄호 — 발췌: “임대차계약서가 제출된 경우로 한정한다”",
+    "urls": "https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1015159531",
+    "version": "2024-05-17 시행 / 법률 제20194호",
+    "verification": "관련 원문 확인; 2026-09-10 확인",
+    "allowed": "계약서 제출과 접수 완료 조건; 확정일자와 대항력은 구분",
+    "held": "단순 신고 시도만으로 확정일자 부여를 단정",
+    "claim_id": "SUP-027",
+    "qids": [
+      "DEV-038"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 37
+    }
+  },
+  {
+    "items_text": "DEV-039",
+    "source_expression": "DATE_RULE",
+    "claim": "입주 전에도 계약증서에 확정일자 신청 가능; 법원·등기소·인터넷 경로 구별",
+    "role": "조건부·보조",
+    "condition": "법원 계통 신청 경로 설명; 주민센터 경로는 주임법·법무부 규칙 별도",
+    "locator": "제3조제1항·제6조제1항·제2항제1호; 제2조제2호 — 발췌: “주택임대차계약증서를 소지한 자는”",
+    "urls": "https://law.go.kr/LSW/lsLinkCommonInfo.do?lspttninfSeq=130109",
+    "version": "2021-06-10 시행 / 대법원규칙 제2986호",
+    "verification": "독립 원문 확인; 적용 범위는 지방법원·지원·등기소(T7); 2026-09-10 확인",
+    "allowed": "제2조는 정의, 신청인은 제6조; 입주를 신청 선행요건으로 만들지 않음",
+    "held": "모든 접수의 당일 부여 또는 특정 전산 화면 보장",
+    "claim_id": "SUP-028",
+    "qids": [
+      "DEV-039"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 38
+    }
+  },
+  {
+    "items_text": "DEV-045",
+    "source_expression": "DATE_RULE",
+    "claim": "확정일자 부여일·번호·기관 표시를 구분한다",
+    "role": "조건부·보조",
+    "condition": "원본 합성 표시는 2026-08-25, 계약일은 08-22",
+    "locator": "제7조제1항; 제9조제1항제1·2호 — 발췌: “확정일자부여일, 확정일자번호, 확정일자부여기관을 표시”",
+    "urls": "https://law.go.kr/LSW/lsLinkCommonInfo.do?lspttninfSeq=130109",
+    "version": "2021-06-10 시행 / 대법원규칙 제2986호",
+    "verification": "독립 원문 확인; 2026-09-10 확인",
+    "allowed": "표시상 날짜는 08-25로 해석; 발급기관·기록으로 진위 확인",
+    "held": "일부 발췌만으로 정식 부여 사실·대항력 확정",
+    "claim_id": "SUP-029",
+    "qids": [
+      "DEV-045"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 39
+    }
+  },
+  {
+    "items_text": "DEV-099",
+    "source_expression": "DATE_RULE",
+    "claim": "계약 당사자는 본인 계약의 확정일자 정보 열람·교부 요청 가능",
+    "role": "조건부·보조",
+    "condition": "2018년 법원 계통 부여 기록을 현재 확인",
+    "locator": "제9조제2항·제10조제1호·제11조제1항·제12조제1항제3·6호 — 발췌: “제1항의 확정일자정보는 20년간 보존한다”",
+    "urls": "https://law.go.kr/LSW/lsLinkCommonInfo.do?lspttninfSeq=130109",
+    "version": "현재 2021-06-10 / 제2986호; 2018년 당시 2017-05-25 / 제2742호 이후 해당 항 변경 없음 대조",
+    "verification": "본문 및 2020·2021 개정문 확인; 원본 과거 부여 사실은 미확인(T7); 2026-09-10 확인",
+    "allowed": "당사자임을 소명하여 기록 확인; 현재 절차로 진행하면서 권리보전도 검토",
+    "held": "실제 부여 기록 존재·과거 효력·주민센터 자료를 같은 전산에서 항상 확인 가능하다는 단정",
+    "claim_id": "SUP-030",
+    "qids": [
+      "DEV-099"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 40
+    }
+  },
+  {
+    "items_text": "DEV-034",
+    "source_expression": "C105",
+    "claim": "보증 불승인 시 계약금 반환 조건·절차를 합의해 명확히 적는다",
+    "role": "필수(합의 내용의 일반 근거)",
+    "condition": "서명 전 특약 설계; 기관·상품·신청기한·불승인 사유·귀책·증빙·반환기한 구체화",
+    "locator": "제105조(항·호 없음) — 발췌: “그 의사에 의한다”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0105&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "version": "2026-03-17 시행 / 법률 제21454호",
+    "verification": "관련 원문 확인; 2026-09-10 확인",
+    "allowed": "강행규정에 반하지 않는 합의 설계 안내. 구체 체크리스트는 분쟁 예방 제안으로 평가",
+    "held": "이 조가 보증 가입 불가 시 법정 자동 환급을 만든다는 단정",
+    "claim_id": "SUP-031",
+    "qids": [
+      "DEV-034"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 41
+    }
+  },
+  {
+    "items_text": "DEV-034",
+    "source_expression": "C147",
+    "claim": "보증 승인 시에 계약 효력이 발생하도록 설계하는 정지조건형",
+    "role": "조건부(조건형 분기)",
+    "condition": "당사자가 정지조건으로 구성한 경우",
+    "locator": "제147조제1항 — 발췌: “조건이 성취한 때로부터 그 효력이 생긴다”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0147&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "version": "2026-03-17 시행 / 법률 제21454호",
+    "verification": "독립 원문 확인으로 기존 미확인 해소; 2026-09-10 확인",
+    "allowed": "승인과 계약 효력 발생을 연결하는 설명; 불승인 시 이미 낸 돈의 반환 합의는 별도 명시",
+    "held": "기관 미지정 상태의 실제 승인 여부·미성취 판단",
+    "claim_id": "SUP-032",
+    "qids": [
+      "DEV-034"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 42
+    }
+  },
+  {
+    "items_text": "DEV-034",
+    "source_expression": "C147",
+    "claim": "정한 불승인 사유 발생 시 효력을 잃는 해제조건형",
+    "role": "조건부(조건형 분기)",
+    "condition": "불승인을 해제조건으로 명확히 정한 경우",
+    "locator": "제147조제2항·제3항 — 발췌: “조건이 성취한 때로부터 그 효력을 잃는다”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0147&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "version": "2026-03-17 시행 / 법률 제21454호",
+    "verification": "제1~3항 직접 확인; 2026-09-10 확인",
+    "allowed": "별도 해제권 행사형과 구별; 소급효는 제3항에 따른 의사 표시를 확인",
+    "held": "모든 해제조건이 자동 소급하거나 제548조가 곧바로 전부 적용된다는 단정",
+    "claim_id": "SUP-033",
+    "qids": [
+      "DEV-034"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 43
+    }
+  },
+  {
+    "items_text": "DEV-034",
+    "source_expression": "C543",
+    "claim": "보증 불승인 시 약정 해제권을 행사하는 방식",
+    "role": "조건부(해제권형 분기)",
+    "condition": "불승인 사유에 약정 해제권을 부여한 경우",
+    "locator": "제543조제1항 — 발췌: “상대방에 대한 의사표시로 한다”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0543&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "version": "2026-03-17 시행 / 법률 제21454호",
+    "verification": "관련 원문 확인; 2026-09-10 확인",
+    "allowed": "약정 사유·통지 방법·기한을 명시; 해제조건의 자동 효력 상실과 구별",
+    "held": "통지 도달 등 개별 사실 및 실제 해제 성립",
+    "claim_id": "SUP-034",
+    "qids": [
+      "DEV-034"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 44
+    }
+  },
+  {
+    "items_text": "DEV-034",
+    "source_expression": "C548",
+    "claim": "해제권 행사로 계약이 해제된 경우 원상회복·계약금 반환",
+    "role": "조건부(해제의 효과 설명); C543과 같은 분기 내 별도 명제",
+    "condition": "해제가 유효하게 성립하고 계약금을 지급한 경우",
+    "locator": "제548조제1항 본문·단서; 이자를 설명하면 제2항 — 발췌: “각 당사자는 그 상대방에 대하여 원상회복의 의무가 있다”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0548&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "version": "2026-03-17 시행 / 법률 제21454호",
+    "verification": "관련 원문 확인; 2026-09-10 확인",
+    "allowed": "해제 성립 후 반환 효과; 제3자 권리 예외, 이자는 설명할 때만 제2항 연결",
+    "held": "모든 보증 불승인 자체가 해제권·반환청구를 발생시킨다는 단정",
+    "claim_id": "SUP-035",
+    "qids": [
+      "DEV-034"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 45
+    }
+  },
+  {
+    "items_text": "DEV-060, DEV-071",
+    "source_expression": "C390",
+    "claim": "귀책 있는 계약상 의무 위반으로 발생한 손해의 배상",
+    "role": "060 필수; 071 조건부(금전배상·공제의 실체 설명)",
+    "condition": "060은 임차인 과실 파손 진술 있음; 071은 원인·책임 미확정",
+    "locator": "제390조 본문·단서 — 발췌: “채권자는 손해배상을 청구할 수 있다”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0390&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "version": "2026-03-17 시행 / 법률 제21454호",
+    "verification": "관련 원문 확인; 2026-09-10 확인",
+    "allowed": "060의 임차인 비용 부담 가능성; 071의 귀책·의무 위반 확인 필요",
+    "held": "금액·책임 비율 확정 및 모든 손상을 임차인 과실로 가정",
+    "claim_id": "SUP-036",
+    "qids": [
+      "DEV-060",
+      "DEV-071"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 46
+    }
+  },
+  {
+    "items_text": "DEV-060, DEV-071",
+    "source_expression": "C393",
+    "claim": "배상액은 실제 통상손해 범위로 검토하며 특별손해는 별도 요건",
+    "role": "조건부(금액·범위를 설명할 때)",
+    "condition": "수리·교체비 등 손해액 명제를 제시",
+    "locator": "제393조제1항; 특별손해 설명 시 제2항 — 발췌: “통상의 손해를 그 한도로 한다”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0393&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "version": "2026-03-17 시행 / 법률 제21454호",
+    "verification": "관련 원문 확인; 2026-09-10 확인",
+    "allowed": "수리 범위·견적·원인 확인; 신품 전체 가격 자동 부담으로 단정하지 않음",
+    "held": "이 조만으로 특정 내용연수·감가율·공제액 산출",
+    "claim_id": "SUP-037",
+    "qids": [
+      "DEV-060",
+      "DEV-071"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 47
+    }
+  },
+  {
+    "items_text": "DEV-060, DEV-071",
+    "source_expression": "C654 + C615",
+    "claim": "목적물 반환 때의 원상회복의무",
+    "role": "060 조건부(반환 단계까지 설명 시); 071 필수 근거 그룹",
+    "condition": "반환 단계의 의무 내용 설명",
+    "locator": "제654조 중 제615조 준용 부분 + 제615조 전단 — 발췌: “차주가 차용물을 반환하는 때에는 이를 원상에 회복하여야 한다”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0654&lsiSeq=284415&urlMode=lsScJoRltInfoR ; https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0615&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "version": "2026-03-17 시행 / 법률 제21454호",
+    "verification": "관련 원문 확인; 2026-09-10 확인",
+    "allowed": "반환·원상회복 의무의 법적 연결. 두 조문은 준용 관계로 함께 연결",
+    "held": "060 현재 사용 중인 파손에 반환 규정만 대어 즉시 금전액 확정; 자연 마모·특약의 범위 단정",
+    "claim_id": "SUP-038",
+    "qids": [
+      "DEV-060",
+      "DEV-071"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 48
+    }
+  },
+  {
+    "items_text": "DEV-006, DEV-057, DEV-059",
+    "source_expression": "C626",
+    "claim": "임차물 보존을 위한 필요비를 지출하면 임대인에게 상환 청구 가능",
+    "role": "필수",
+    "condition": "임대인이 부담할 필요비인지, 지출·원인·특약 등을 확인; 원본 고장·누수 수리",
+    "locator": "제626조제1항 — 발췌: “임차물의 보존에 관한 필요비를 지출한 때에는”",
+    "urls": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0626&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "version": "2026-03-17 시행 / 법률 제21454호",
+    "verification": "관련 원문 확인; 2026-09-10 확인",
+    "allowed": "세 문항 모두 제1항 연결이 적절. 제2항 유익비의 독립 필수 명제는 없음",
+    "held": "원본에 없는 가치증대 공사 가정 및 38만원 전액 상환 확정",
+    "claim_id": "SUP-039",
+    "qids": [
+      "DEV-006",
+      "DEV-057",
+      "DEV-059"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 49
+    }
+  },
+  {
+    "items_text": "DEV-008",
+    "source_expression": "HF_OV 또는 동등한 기관 공식 제도 안내",
+    "claim": "반환보증은 약정한 사고 시 임대인의 보증금 반환을 보증하는 제도",
+    "role": "필수 근거 그룹 내 대체 가능(HF 유일 지정 금지)",
+    "condition": "개념 질문이므로 기관을 먼저 정해야 답할 수 있다고 하지 않음",
+    "locator": "HF 일반전세지킴보증 소개 첫 문단 — 발췌: “공사가 임대인을 대신하여 임차인에게 임차보증금을 지급하는 상품”",
+    "urls": "https://hf.go.kr/ko/sub02/sub02_05_01.do",
+    "version": "확인일 게시 안내(2026-09-10); 2026-09-08 보관본 미확보. HF 사례로만 사용",
+    "verification": "HF 예시 본문 확인; 다른 기관은 같은 개념을 실제 지지하는 공식 자료이면 허용; 2026-09-10 확인",
+    "allowed": "기본 개념에는 공식 제도 설명이 필요하나 개별 보증서·2023 약관은 불필요",
+    "held": "개별 계약 가입 가능성·전액 즉시 지급 보장",
+    "claim_id": "SUP-040",
+    "qids": [
+      "DEV-008"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 50
+    }
+  },
+  {
+    "items_text": "DEV-081",
+    "source_expression": "HF_OV 또는 동등한 기관 공식 가입 안내",
+    "claim": "신청 창구와 기본 준비 자료의 예시",
+    "role": "필수 근거 그룹 내 대체 가능",
+    "condition": "기관 미지정 일반 절차 질문",
+    "locator": "HF 보증이용절차·서류제출 제1·2호 — 발췌: “주민등록등본, 신분증”",
+    "urls": "https://hf.go.kr/ko/sub02/sub02_05_01.do",
+    "version": "확인일 게시 안내(2026-09-10); 2026-09-08 보관본 미확보. HF 사례로만 사용",
+    "verification": "관련 원문 확인; 2026-09-10 확인",
+    "allowed": "기관/취급 창구 확인, 신분·계약·거주 자료 준비라는 실질 안내; HF 조건을 전 기관 필수로 만들지 않음",
+    "held": "상품별 전체 필수 서류·유효기간·신청 기한을 단일화",
+    "claim_id": "SUP-041",
+    "qids": [
+      "DEV-081"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 51
+    }
+  },
+  {
+    "items_text": "DEV-082",
+    "source_expression": "INPUT",
+    "claim": "가입 가능 여부 판단에 빠진 사실을 묻는다",
+    "role": "필수 답변 요소; 외부 검색 근거 불요",
+    "condition": "기관·시작일·종료일·보증금·주택·권리관계 미제공",
+    "locator": "원본 질문·상황 — 발췌 없음(자료 미제공 또는 외부 근거 불요)",
+    "urls": "해당 없음",
+    "version": "해당 없음",
+    "verification": "원본 대조 확인; 2026-09-10 확인",
+    "allowed": "지금 정보만으로 가입 가능 여부를 확정할 수 없고 필요한 항목을 묻는 답변",
+    "held": "기관 미지정 상태의 가입 가능·불가 확정",
+    "claim_id": "SUP-042",
+    "qids": [
+      "DEV-082"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 52
+    }
+  },
+  {
+    "items_text": "DEV-082",
+    "source_expression": "해당 기관·상품의 당시 가입 기준(HF_OV는 예시)",
+    "claim": "신청 기한·주택·금액·권리 요건을 구체 설명",
+    "role": "조건부(구체 조건을 제시할 때 외부 근거 필요)",
+    "condition": "기관·상품·기준일을 명시하고 그 범위만 설명",
+    "locator": "HF 예시: 보증신청시기·보증대상 임대차계약·목적물 — 발췌: “임대차계약기간의 1/2이 경과하기 전까지”",
+    "urls": "https://hf.go.kr/ko/sub02/sub02_05_01.do",
+    "version": "확인일 게시 안내(2026-09-10); 2026-09-08 보관본 미확보. HF 사례로만 사용",
+    "verification": "HF 예시만 확인; 원본 적용 기관·당시 자료 미제공; 2026-09-10 확인",
+    "allowed": "선정된 기관의 실제 조건과 연결한 조건부 설명",
+    "held": "원본 계약에 HF 기준을 자동 적용; 다른 상품의 기한",
+    "claim_id": "SUP-043",
+    "qids": [
+      "DEV-082"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 53
+    }
+  },
+  {
+    "items_text": "DEV-083",
+    "source_expression": "INPUT",
+    "claim": "거부된 서류와 기관을 확인하여 준비 가능한 자료를 나눈다",
+    "role": "필수 답변 요소; 질문·보유자료 확인 자체는 외부 근거 불요",
+    "condition": "임대인이 어떤 서류를 거부했는지 미제공",
+    "locator": "원본 질문·상황 — 발췌 없음(자료 미제공 또는 외부 근거 불요)",
+    "urls": "해당 없음",
+    "version": "해당 없음",
+    "verification": "원본 대조 확인; 2026-09-10 확인",
+    "allowed": "거부 서류 종류·기관을 묻되 이미 준비 중인 사실은 다시 묻지 않음",
+    "held": "임대인 협조가 전부 필요/전부 불필요라는 단정",
+    "claim_id": "SUP-044",
+    "qids": [
+      "DEV-083"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 54
+    }
+  },
+  {
+    "items_text": "DEV-083",
+    "source_expression": "해당 기관 공식 제출서류 안내(HF_OV는 예시)",
+    "claim": "본인·계약 자료를 먼저 준비하고 기관의 대체 서류·생략 가능성을 확인",
+    "role": "조건부(자료의 제출·발급 가능성을 구체적으로 말할 때 필요)",
+    "condition": "원본 기관 미지정; 본인 보유 계약서와 본인 신분·거주 증명 등으로 한정",
+    "locator": "HF 예시: 서류제출 제1·2호 — 발췌: “확정일자부 임대차계약서, 전입세대확인서”; 거부 자료의 대체 기준은 미제공",
+    "urls": "https://hf.go.kr/ko/sub02/sub02_05_01.do",
+    "version": "확인일 게시 안내(2026-09-10); 2026-09-08 보관본 미확보. HF 사례로만 사용",
+    "verification": "기본 서류 예시 본문 확인; 대체·생략 기준 미확인; 2026-09-10 확인",
+    "allowed": "기본 자료와 임대인·제3자 협조 자료를 구분하는 안내",
+    "held": "특정 서류가 반드시 생략 가능하다는 개별 결론",
+    "claim_id": "SUP-045",
+    "qids": [
+      "DEV-083"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 55
+    }
+  },
+  {
+    "items_text": "DEV-084",
+    "source_expression": "INPUT",
+    "claim": "소유자 변경 사실과 보증 등록 정보를 대조하고 기관에 변경 절차를 확인",
+    "role": "필수 답변 요소; 확인 권고 자체는 외부 근거 불요",
+    "condition": "085는 새 연락처 확보·아직 미통지 사실을 전제로 진행",
+    "locator": "원본 질문·상황·이전 대화 — 발췌 없음(자료 미제공 또는 외부 근거 불요)",
+    "urls": "해당 없음",
+    "version": "해당 없음",
+    "verification": "원본 대조 확인; 2026-09-10 확인",
+    "allowed": "기관 문의·변경 접수 여부·필요 서류 확인 안내",
+    "held": "계약 갱신 사건으로 바꾸거나 085에 통지했는지 다시 질문",
+    "claim_id": "SUP-046",
+    "qids": [
+      "DEV-084"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 56
+    }
+  },
+  {
+    "items_text": "DEV-084",
+    "source_expression": "HF_CHANGE 또는 해당 기관 변경 안내·적용 약관",
+    "claim": "임대인 변경 처리 절차·제출 서류가 있을 수 있다",
+    "role": "조건부; 같은 명제의 동등 공식 근거 대체 가능",
+    "condition": "특정 통지 의무·기한·미통지 효과까지 단정하려면 실제 보증 약관 필요",
+    "locator": "HF 조건변경 사유 및 제출서류 중 임대인변경 행 — 발췌: “임대인 확인이 가능한 서류”",
+    "urls": "https://hf.go.kr/ko/sub02/sub02_05_03.do",
+    "version": "확인일 게시 안내(2026-09-10); 2026-09-08 보관본 미확보. HF 사례로만 사용",
+    "verification": "HF 변경 안내 확인; 원본 적용 기관·약관 미제공; 2026-09-10 확인",
+    "allowed": "HF 예시의 변경 신청·확인 서류 안내; 원본에는 자기 기관 확인하도록 안내",
+    "held": "전 기관 공통 통지 기한·자동 면책·자동 무효",
+    "claim_id": "SUP-047",
+    "qids": [
+      "DEV-084"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 57
+    }
+  },
+  {
+    "items_text": "DEV-085",
+    "source_expression": "INPUT",
+    "claim": "소유자 변경 사실과 보증 등록 정보를 대조하고 기관에 변경 절차를 확인",
+    "role": "필수 답변 요소; 확인 권고 자체는 외부 근거 불요",
+    "condition": "085는 새 연락처 확보·아직 미통지 사실을 전제로 진행",
+    "locator": "원본 질문·상황·이전 대화 — 발췌 없음(자료 미제공 또는 외부 근거 불요)",
+    "urls": "해당 없음",
+    "version": "해당 없음",
+    "verification": "원본 대조 확인; 2026-09-10 확인",
+    "allowed": "기관 문의·변경 접수 여부·필요 서류 확인 안내",
+    "held": "계약 갱신 사건으로 바꾸거나 085에 통지했는지 다시 질문",
+    "claim_id": "SUP-048",
+    "qids": [
+      "DEV-085"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 58
+    }
+  },
+  {
+    "items_text": "DEV-085",
+    "source_expression": "HF_CHANGE 또는 해당 기관 변경 안내·적용 약관",
+    "claim": "임대인 변경 처리 절차·제출 서류가 있을 수 있다",
+    "role": "조건부; 같은 명제의 동등 공식 근거 대체 가능",
+    "condition": "특정 통지 의무·기한·미통지 효과까지 단정하려면 실제 보증 약관 필요",
+    "locator": "HF 조건변경 사유 및 제출서류 중 임대인변경 행 — 발췌: “임대인 확인이 가능한 서류”",
+    "urls": "https://hf.go.kr/ko/sub02/sub02_05_03.do",
+    "version": "확인일 게시 안내(2026-09-10); 2026-09-08 보관본 미확보. HF 사례로만 사용",
+    "verification": "HF 변경 안내 확인; 원본 적용 기관·약관 미제공; 2026-09-10 확인",
+    "allowed": "HF 예시의 변경 신청·확인 서류 안내; 원본에는 자기 기관 확인하도록 안내",
+    "held": "전 기관 공통 통지 기한·자동 면책·자동 무효",
+    "claim_id": "SUP-049",
+    "qids": [
+      "DEV-085"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 59
+    }
+  },
+  {
+    "items_text": "DEV-086",
+    "source_expression": "INPUT + SCOPE",
+    "claim": "제공 정보로 개별 보장 결과를 확정하지 않고 필요한 보증 내용을 확인",
+    "role": "필수 답변 요소; 외부 검색 근거 불요",
+    "condition": "보증금액·기간·종료 상태 등이 미제공이고 확정 판정은 서비스 범위 밖",
+    "locator": "원본 질문·서비스 범위 — 발췌 없음(자료 미제공 또는 외부 근거 불요)",
+    "urls": "해당 없음",
+    "version": "해당 없음",
+    "verification": "원본·기존 범위 대조 확인; 2026-09-10 확인",
+    "allowed": "금액·기간·사고·청구 여부를 확인하고 확정 판정은 유보",
+    "held": "모든 법률 서비스가 결과 검토 자체를 금지당한다는 표현",
+    "claim_id": "SUP-050",
+    "qids": [
+      "DEV-086"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 60
+    }
+  },
+  {
+    "items_text": "DEV-086",
+    "source_expression": "HF_CLAIM 또는 동등한 기관 공식 이행 안내",
+    "claim": "가입만으로 만기 즉시 전액 지급되는 것은 아니며 심사·청구 절차를 확인",
+    "role": "필수 근거 그룹 내 대체 가능(일반 제도 설명)",
+    "condition": "기관 미지정; 사례를 전체 기관의 상세 조건으로 일반화하지 않음",
+    "locator": "HF 이행 청구 절차 5~7단계·자가진단 한계 안내 — 발췌: “신청 내용과 서류를 바탕으로 지급 여부 결정”",
+    "urls": "https://hf.go.kr/ko/sub02/sub02_05_07.do",
+    "version": "확인일 게시 안내(2026-09-10); 2026-09-08 보관본 미확보. HF 사례로만 사용",
+    "verification": "관련 원문 확인; 2026-09-10 확인",
+    "allowed": "무조건·즉시·전액이라는 단정의 교정; 보증서와 적용 약관 확인",
+    "held": "원본 계약의 지급 시점·지급액·면책 여부",
+    "claim_id": "SUP-051",
+    "qids": [
+      "DEV-086"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 61
+    }
+  },
+  {
+    "items_text": "DEV-093",
+    "source_expression": "INPUT",
+    "claim": "담당 공급기관에 퇴거·점검·정산 일정과 수리비 근거를 요청",
+    "role": "필수 답변 요소; 자료 요청 권고 자체는 외부 근거 불요",
+    "condition": "공급기관·유형·점검·정산 안내 미제공",
+    "locator": "원본 질문·상황 — 발췌 없음(자료 미제공 또는 외부 근거 불요)",
+    "urls": "해당 없음",
+    "version": "해당 없음",
+    "verification": "원본 대조 확인; 2026-09-10 확인",
+    "allowed": "기관·관리사무소의 담당 창구 확인, 공제 항목·금액·견적·입주 상태 자료 요청",
+    "held": "반드시 며칠 안에 지급한다는 기한·표준 공제율",
+    "claim_id": "SUP-052",
+    "qids": [
+      "DEV-093"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 62
+    }
+  },
+  {
+    "items_text": "DEV-093",
+    "source_expression": "해당 공급기관 공식 퇴거 안내·계약/정산 기준",
+    "claim": "보증금 반환일·공제 요건을 구체적으로 정하는 경우",
+    "role": "조건부(개별 판단에 필요)",
+    "condition": "실제 공급기관·유형 및 당시 계약/안내 확보 후",
+    "locator": "자료 미제공; 확인·발췌 가능한 특정 조항 없음 — 발췌 없음(자료 미제공 또는 외부 근거 불요)",
+    "urls": "해당 없음",
+    "version": "해당 없음",
+    "verification": "사실·기관 자료 부족; 법령 부존재를 뜻하지 않음; 2026-09-10 확인",
+    "allowed": "확정 일정을 답할 수 없다는 설명 및 확인 항목 안내까지",
+    "held": "정산 기한·수리비 부담·공제액의 확정",
+    "claim_id": "SUP-053",
+    "qids": [
+      "DEV-093"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 63
+    }
+  },
+  {
+    "items_text": "DEV-100",
+    "source_expression": "INPUT",
+    "claim": "2023 가입·2025 종료 사실을 유지해 당시 약관과 현재 청구 상황을 확인",
+    "role": "필수 답변 요소; 확인 질문 자체는 외부 검색 근거 불요",
+    "condition": "기관·보증기간·통지·청구·이사 이력 미제공",
+    "locator": "원본 질문·상황 — 발췌 없음(자료 미제공 또는 외부 근거 불요)",
+    "urls": "해당 없음",
+    "version": "해당 없음",
+    "verification": "원본 대조 확인; 2026-09-10 확인",
+    "allowed": "기관·보증서·적용 약관·통지/청구 이력·퇴거/전입 변경을 확인",
+    "held": "2025 종료 사실을 다시 요구하거나 현재 약관을 소급 적용",
+    "claim_id": "SUP-054",
+    "qids": [
+      "DEV-100"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 64
+    }
+  },
+  {
+    "items_text": "DEV-100",
+    "source_expression": "HF_CLAIM(예시) + 실제 2023 가입 약관·보증서·후속 변경약정",
+    "claim": "현재 이행청구 창구를 안내하되 과거 보증의 권리·기한은 당시 자료로 판단",
+    "role": "조건부(특정 현재 절차·개별 기한 명제에 필요)",
+    "condition": "현재 접수 방법과 2023 계약상 권리·2025 사고/종료를 구분",
+    "locator": "HF 현재 이행 청구 절차 5단계; 실제 2023 약관 구간 미확인 — 발췌: “전세지킴보증 사고 발생 신고 및 이행 청구”",
+    "urls": "https://hf.go.kr/ko/sub02/sub02_05_07.do",
+    "version": "현재 안내는 2026-09-10 확인; 실제 2023 적용 약관 미제공. 기존 HF 2025-02-06 PDF는 대체 불가",
+    "verification": "현재 HF 예시 확인; 2023 적용 약관 미확인; 2026-09-10 확인",
+    "allowed": "현재 문의·접수 가능 경로를 기관에 확인하도록 안내; 기한 문제도 지체 없이 확인",
+    "held": "청구권 소멸·가입 보장·당시 면책·현재 지급 가능 확정",
+    "claim_id": "SUP-055",
+    "qids": [
+      "DEV-100"
+    ],
+    "provenance": {
+      "file": "raw/05_리뷰2_최소보완_명제별근거표.md",
+      "line": 65
+    }
+  }
+]

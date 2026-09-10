@@ -1,0 +1,31 @@
+{
+  "schema": "dev100-v2-bundle-1",
+  "gold_version": "review2-supplement-20260910",
+  "purpose": "public development primary-law-article diagnostic, not independent evaluation",
+  "evaluation_date": "2026-09-08",
+  "review_date": "2026-09-10",
+  "items": 100,
+  "inputs": 200,
+  "formal_whole_item_score_ready": false,
+  "v1_question_sha256": "48952d558a99ad22e726ce778ef045cb48ec8bb250f17aec7e07e15ced0cc964",
+  "v1_gold_review_sha256": "4cb59b9057078cc656376c9d1b06b6e722a6d158caeb931ea8056ddebce7a47e",
+  "files": {
+    "changes-v1-v2.json": "9f6ccecbf88d2cb43dca28ba734c1c7ef6a480b64471d0c25188d10c92576e9d",
+    "diagnostic-plan.json": "1022e31142eacc7acd47861285a3cdc256d899296ce0d0f242f322ae7d1b1fca",
+    "expected/article-diagnostics.json": "e22a0165206913a823976efc0166db03ce0cc72f5f11fe381cf6087b3ac50909",
+    "expected/missing-primary-articles.json": "4d1de10ca3ed9921aa07e7bc402651a959285ef408cff00538ebba583d872e45",
+    "expected/summary.json": "5766dd9f46e7f18edf6ef244b026e74871147957c2bce95d8f0d13695a852581",
+    "questions.json": "48952d558a99ad22e726ce778ef045cb48ec8bb250f17aec7e07e15ced0cc964",
+    "raw/01_최종정답_근거통합본.md": "6b01914ada71a229b3ab2067f6b9902324e0baa7302041fea9d8ad8b0f126f41",
+    "raw/02_리뷰1대비_변경표.md": "55d2dafd36347bc5df5ed4f4fbde29f94a1ffe4756fd0437b9f39e0d4b61372f",
+    "raw/03_미확인_판단보류목록.md": "7ec8349955beb5cd06848631a39b9663a353acfbd38bba4047d27e599673bf7d",
+    "raw/04_실제검색_원문확인기록.md": "67a01b06702f751134a05ebcd1f6de93956297c22d57954e4ffbcf970fd55dab",
+    "raw/05_리뷰2_최소보완_명제별근거표.md": "9bf0057e1e31b6e235912662b131367a74bb49dc4fababe756e3491ce598ac8e",
+    "raw/06_최소보완_검색확인기록.md": "674f17babf9cc40d0e680fd56ee6ea328a5f646c7cf228ecb4ab0bcc544564a3",
+    "raw/검토진행.md": "b2341e28e203160a9d0bdb9c1d095d181cf433f45ce16e843b36bd78e462626e",
+    "reference-run.json": "799f0c051a404208fb09a88a6b6fcdc277c572035606b347dffce6dadf57a913",
+    "requirements.json": "90581a70c4b93c3968cef6d1c0acf0e39c17117727b24b56736ed3610b502bd7",
+    "source-registry.json": "9c6ab02b7bf930fe8d78412936b834c8805b9d73f4c56aae5112621f62922e84",
+    "supplement-claims.json": "69694f5b7985ba592d4063912105cabf7744e1eb3f8df57e62f68013d216ad6e"
+  }
+}

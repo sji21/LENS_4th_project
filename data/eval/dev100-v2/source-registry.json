@@ -1,0 +1,4091 @@
+[
+  {
+    "source_id": "C105",
+    "kind": "law",
+    "title": "민법 제105조 임의규정",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0105&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제105조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-004",
+      "DEV-015",
+      "DEV-020",
+      "DEV-030",
+      "DEV-031",
+      "DEV-034",
+      "DEV-064",
+      "DEV-065",
+      "DEV-066",
+      "DEV-068",
+      "DEV-072"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 51
+    },
+    "article_number_from_source": "105",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-004",
+      "DEV-015",
+      "DEV-020",
+      "DEV-030",
+      "DEV-031",
+      "DEV-034",
+      "DEV-064",
+      "DEV-065",
+      "DEV-066",
+      "DEV-068",
+      "DEV-072"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "105",
+    "supplement_claim_ids": [
+      "SUP-031"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-031",
+        "version": "2026-03-17 시행 / 법률 제21454호",
+        "verification": "관련 원문 확인; 2026-09-10 확인",
+        "held": "이 조가 보증 가입 불가 시 법정 자동 환급을 만든다는 단정"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제105조"
+  },
+  {
+    "source_id": "C111",
+    "kind": "law",
+    "title": "민법 제111조 의사표시의 효력발생시기",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0111&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제111조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-047",
+      "DEV-052",
+      "DEV-063",
+      "DEV-075",
+      "DEV-078"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 52
+    },
+    "article_number_from_source": "111",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-047",
+      "DEV-052",
+      "DEV-063",
+      "DEV-075",
+      "DEV-078"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "111",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제111조"
+  },
+  {
+    "source_id": "C113",
+    "kind": "law",
+    "title": "민법 제113조 의사표시의 공시송달",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0113&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제113조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-078"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 53
+    },
+    "article_number_from_source": "113",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-078"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "113",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제113조"
+  },
+  {
+    "source_id": "C114",
+    "kind": "law",
+    "title": "민법 제114조 대리행위의 효력",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0114&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제114조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-001",
+      "DEV-011",
+      "DEV-012",
+      "DEV-013",
+      "DEV-014",
+      "DEV-015",
+      "DEV-016",
+      "DEV-019",
+      "DEV-030",
+      "DEV-036",
+      "DEV-087"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 54
+    },
+    "article_number_from_source": "114",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-001",
+      "DEV-011",
+      "DEV-012",
+      "DEV-013",
+      "DEV-014",
+      "DEV-015",
+      "DEV-016",
+      "DEV-019",
+      "DEV-030",
+      "DEV-036",
+      "DEV-087"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "114",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제114조"
+  },
+  {
+    "source_id": "C118",
+    "kind": "law",
+    "title": "민법 제118조 대리권의 범위",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0118&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제118조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-001",
+      "DEV-012",
+      "DEV-013",
+      "DEV-016"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 55
+    },
+    "article_number_from_source": "118",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-001",
+      "DEV-012",
+      "DEV-013",
+      "DEV-016"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "118",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제118조"
+  },
+  {
+    "source_id": "C186",
+    "kind": "law",
+    "title": "민법 제186조 부동산물권변동의 효력",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0186&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제186조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-087"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 56
+    },
+    "article_number_from_source": "186",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-087"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "186",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제186조"
+  },
+  {
+    "source_id": "C187",
+    "kind": "law",
+    "title": "민법 제187조 등기를 요하지 아니하는 부동산물권취득",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0187&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제187조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-087"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 57
+    },
+    "article_number_from_source": "187",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-087"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "187",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제187조"
+  },
+  {
+    "source_id": "C265",
+    "kind": "law",
+    "title": "민법 제265조 공유물의 관리·보존",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0265&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제265조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-011"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 58
+    },
+    "article_number_from_source": "265",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-011"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "265",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제265조"
+  },
+  {
+    "source_id": "C357",
+    "kind": "law",
+    "title": "민법 제357조 근저당",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0357&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제357조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-002",
+      "DEV-020",
+      "DEV-021",
+      "DEV-036",
+      "DEV-087"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 59
+    },
+    "article_number_from_source": "357",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-002",
+      "DEV-020",
+      "DEV-021",
+      "DEV-036",
+      "DEV-087"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "357",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제357조"
+  },
+  {
+    "source_id": "C390",
+    "kind": "law",
+    "title": "민법 제390조 채무불이행과 손해배상",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0390&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제390조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-056",
+      "DEV-058",
+      "DEV-059",
+      "DEV-060",
+      "DEV-071",
+      "DEV-079"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 60
+    },
+    "article_number_from_source": "390",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-056",
+      "DEV-058",
+      "DEV-059",
+      "DEV-060",
+      "DEV-071",
+      "DEV-079"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "390",
+    "supplement_claim_ids": [
+      "SUP-036"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-036",
+        "version": "2026-03-17 시행 / 법률 제21454호",
+        "verification": "관련 원문 확인; 2026-09-10 확인",
+        "held": "금액·책임 비율 확정 및 모든 손상을 임차인 과실로 가정"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제390조"
+  },
+  {
+    "source_id": "C393",
+    "kind": "law",
+    "title": "민법 제393조 손해배상의 범위",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0393&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제393조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-056",
+      "DEV-058",
+      "DEV-060",
+      "DEV-071"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 61
+    },
+    "article_number_from_source": "393",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-056",
+      "DEV-058",
+      "DEV-060",
+      "DEV-071"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "393",
+    "supplement_claim_ids": [
+      "SUP-037"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-037",
+        "version": "2026-03-17 시행 / 법률 제21454호",
+        "verification": "관련 원문 확인; 2026-09-10 확인",
+        "held": "이 조만으로 특정 내용연수·감가율·공제액 산출"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제393조"
+  },
+  {
+    "source_id": "C470",
+    "kind": "law",
+    "title": "민법 제470조 채권의 준점유자에 대한 변제",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0470&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제470조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-030"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 62
+    },
+    "article_number_from_source": "470",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-030"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "470",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제470조"
+  },
+  {
+    "source_id": "C536",
+    "kind": "law",
+    "title": "민법 제536조 동시이행의 항변권",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0536&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제536조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-010",
+      "DEV-066",
+      "DEV-067",
+      "DEV-072",
+      "DEV-073",
+      "DEV-090",
+      "DEV-093"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 63
+    },
+    "article_number_from_source": "536",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-010",
+      "DEV-066",
+      "DEV-067",
+      "DEV-072",
+      "DEV-073",
+      "DEV-090",
+      "DEV-093"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "536",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제536조"
+  },
+  {
+    "source_id": "C543",
+    "kind": "law",
+    "title": "민법 제543조 해지·해제권",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0543&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제543조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-021",
+      "DEV-034",
+      "DEV-063"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 64
+    },
+    "article_number_from_source": "543",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-021",
+      "DEV-034",
+      "DEV-063"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "543",
+    "supplement_claim_ids": [
+      "SUP-034"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-034",
+        "version": "2026-03-17 시행 / 법률 제21454호",
+        "verification": "관련 원문 확인; 2026-09-10 확인",
+        "held": "통지 도달 등 개별 사실 및 실제 해제 성립"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제543조"
+  },
+  {
+    "source_id": "C548",
+    "kind": "law",
+    "title": "민법 제548조 해제의 효과",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0548&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제548조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-034"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 65
+    },
+    "article_number_from_source": "548",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-034"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "548",
+    "supplement_claim_ids": [
+      "SUP-035"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-035",
+        "version": "2026-03-17 시행 / 법률 제21454호",
+        "verification": "관련 원문 확인; 2026-09-10 확인",
+        "held": "모든 보증 불승인 자체가 해제권·반환청구를 발생시킨다는 단정"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제548조"
+  },
+  {
+    "source_id": "C615",
+    "kind": "law",
+    "title": "민법 제615조 차주의 원상회복의무와 철거권",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0615&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제615조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-060",
+      "DEV-071",
+      "DEV-093"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 66
+    },
+    "article_number_from_source": "615",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-060",
+      "DEV-071",
+      "DEV-093"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "615",
+    "supplement_claim_ids": [
+      "SUP-038"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-038",
+        "version": "2026-03-17 시행 / 법률 제21454호",
+        "verification": "관련 원문 확인; 2026-09-10 확인",
+        "held": "060 현재 사용 중인 파손에 반환 규정만 대어 즉시 금전액 확정; 자연 마모·특약의 범위 단정"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제615조"
+  },
+  {
+    "source_id": "C623",
+    "kind": "law",
+    "title": "민법 제623조 임대인의 의무",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0623&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제623조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-004",
+      "DEV-006",
+      "DEV-055",
+      "DEV-056",
+      "DEV-059"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 67
+    },
+    "article_number_from_source": "623",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-004",
+      "DEV-006",
+      "DEV-055",
+      "DEV-056",
+      "DEV-059"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "623",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제623조"
+  },
+  {
+    "source_id": "C626",
+    "kind": "law",
+    "title": "민법 제626조 임차인의 상환청구권",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0626&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제626조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-006",
+      "DEV-055",
+      "DEV-056",
+      "DEV-057",
+      "DEV-059"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 68
+    },
+    "article_number_from_source": "626",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-006",
+      "DEV-055",
+      "DEV-056",
+      "DEV-057",
+      "DEV-059"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "626",
+    "supplement_claim_ids": [
+      "SUP-039"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-039",
+        "version": "2026-03-17 시행 / 법률 제21454호",
+        "verification": "관련 원문 확인; 2026-09-10 확인",
+        "held": "원본에 없는 가치증대 공사 가정 및 38만원 전액 상환 확정"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제626조"
+  },
+  {
+    "source_id": "C627",
+    "kind": "law",
+    "title": "민법 제627조 일부멸실 등과 감액·해지",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0627&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제627조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-058"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 69
+    },
+    "article_number_from_source": "627",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-058"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "627",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제627조"
+  },
+  {
+    "source_id": "C629",
+    "kind": "law",
+    "title": "민법 제629조 임차권의 양도·전대의 제한",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0629&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제629조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-061",
+      "DEV-062"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 70
+    },
+    "article_number_from_source": "629",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-061",
+      "DEV-062"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "629",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제629조"
+  },
+  {
+    "source_id": "C632",
+    "kind": "law",
+    "title": "민법 제632조 소부분 사용의 예외",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0632&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제632조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-061"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 71
+    },
+    "article_number_from_source": "632",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-061"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "632",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제632조"
+  },
+  {
+    "source_id": "C634",
+    "kind": "law",
+    "title": "민법 제634조 임차인의 통지의무",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0634&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제634조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-006",
+      "DEV-055",
+      "DEV-057",
+      "DEV-059"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 72
+    },
+    "article_number_from_source": "634",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-006",
+      "DEV-055",
+      "DEV-057",
+      "DEV-059"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "634",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제634조"
+  },
+  {
+    "source_id": "C636",
+    "kind": "law",
+    "title": "민법 제636조 기간 약정 임대차의 해지통고",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0636&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제636조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-064",
+      "DEV-065",
+      "DEV-066"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 73
+    },
+    "article_number_from_source": "636",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-064",
+      "DEV-065",
+      "DEV-066"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "636",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제636조"
+  },
+  {
+    "source_id": "C640",
+    "kind": "law",
+    "title": "민법 제640조 차임연체와 해지",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0640&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제640조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-063"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 74
+    },
+    "article_number_from_source": "640",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-063"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "640",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제640조"
+  },
+  {
+    "source_id": "C654",
+    "kind": "law",
+    "title": "민법 제654조 준용규정",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0654&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제654조 전체",
+    "temporal_scope_as_written": "2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-060",
+      "DEV-071",
+      "DEV-093"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 75
+    },
+    "article_number_from_source": "654",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-060",
+      "DEV-071",
+      "DEV-093"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "654",
+    "supplement_claim_ids": [
+      "SUP-038"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-038",
+        "version": "2026-03-17 시행 / 법률 제21454호",
+        "verification": "관련 원문 확인; 2026-09-10 확인",
+        "held": "060 현재 사용 중인 파손에 반환 규정만 대어 즉시 금전액 확정; 자연 마모·특약의 범위 단정"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제654조"
+  },
+  {
+    "source_id": "H2",
+    "kind": "law",
+    "title": "주택임대차보호법 적용범위",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0002&lsiSeq=276291&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제2조 전체",
+    "temporal_scope_as_written": "2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-009",
+      "DEV-046"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 76
+    },
+    "article_number_from_source": "2",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-009",
+      "DEV-046"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "2",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제2조"
+  },
+  {
+    "source_id": "H3",
+    "kind": "law",
+    "title": "주택임대차보호법 대항력·양수인 승계",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제3조 전체",
+    "temporal_scope_as_written": "2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-002",
+      "DEV-005",
+      "DEV-015",
+      "DEV-020",
+      "DEV-021",
+      "DEV-022",
+      "DEV-023",
+      "DEV-024",
+      "DEV-033",
+      "DEV-036",
+      "DEV-038",
+      "DEV-039",
+      "DEV-040",
+      "DEV-042",
+      "DEV-043",
+      "DEV-044",
+      "DEV-084",
+      "DEV-085"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 77
+    },
+    "article_number_from_source": "3",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-002",
+      "DEV-005",
+      "DEV-015",
+      "DEV-020",
+      "DEV-021",
+      "DEV-022",
+      "DEV-023",
+      "DEV-024",
+      "DEV-033",
+      "DEV-036",
+      "DEV-038",
+      "DEV-039",
+      "DEV-040",
+      "DEV-042",
+      "DEV-043",
+      "DEV-044",
+      "DEV-084",
+      "DEV-085"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "3",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제3조"
+  },
+  {
+    "source_id": "H3_2",
+    "kind": "law",
+    "title": "주택임대차보호법 보증금의 회수",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제3조의2 전체",
+    "temporal_scope_as_written": "2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-002",
+      "DEV-005",
+      "DEV-020",
+      "DEV-021",
+      "DEV-022",
+      "DEV-023",
+      "DEV-038",
+      "DEV-039",
+      "DEV-044",
+      "DEV-045",
+      "DEV-050"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 78
+    },
+    "article_number_from_source": "3의2",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-002",
+      "DEV-005",
+      "DEV-020",
+      "DEV-021",
+      "DEV-022",
+      "DEV-023",
+      "DEV-038",
+      "DEV-039",
+      "DEV-044",
+      "DEV-045",
+      "DEV-050"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "3의2",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제3조의2"
+  },
+  {
+    "source_id": "H3_3",
+    "kind": "law",
+    "title": "주택임대차보호법 임차권등기명령",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제3조의3 전체",
+    "temporal_scope_as_written": "2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-007",
+      "DEV-010",
+      "DEV-067",
+      "DEV-068",
+      "DEV-069",
+      "DEV-070",
+      "DEV-072",
+      "DEV-073",
+      "DEV-075",
+      "DEV-076",
+      "DEV-079",
+      "DEV-086",
+      "DEV-099",
+      "DEV-100"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 79
+    },
+    "article_number_from_source": "3의3",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-007",
+      "DEV-010",
+      "DEV-067",
+      "DEV-068",
+      "DEV-069",
+      "DEV-070",
+      "DEV-072",
+      "DEV-073",
+      "DEV-075",
+      "DEV-076",
+      "DEV-079",
+      "DEV-086",
+      "DEV-099",
+      "DEV-100"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "3의3",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제3조의3"
+  },
+  {
+    "source_id": "H3_6",
+    "kind": "law",
+    "title": "주택임대차보호법 확정일자·임대차 정보",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=06&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제3조의6 전체",
+    "temporal_scope_as_written": "2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-005",
+      "DEV-036",
+      "DEV-038",
+      "DEV-039",
+      "DEV-045",
+      "DEV-050",
+      "DEV-053",
+      "DEV-099"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 80
+    },
+    "article_number_from_source": "3의6",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-005",
+      "DEV-036",
+      "DEV-038",
+      "DEV-039",
+      "DEV-045",
+      "DEV-050",
+      "DEV-053",
+      "DEV-099"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "3의6",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제3조의6"
+  },
+  {
+    "source_id": "H3_7",
+    "kind": "law",
+    "title": "주택임대차보호법 임대인의 정보 제시 의무",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=07&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제3조의7 전체",
+    "temporal_scope_as_written": "2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-003",
+      "DEV-025",
+      "DEV-027",
+      "DEV-036"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 81
+    },
+    "article_number_from_source": "3의7",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-003",
+      "DEV-025",
+      "DEV-027",
+      "DEV-036"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "3의7",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제3조의7"
+  },
+  {
+    "source_id": "H4",
+    "kind": "law",
+    "title": "주택임대차보호법 임대차기간",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0004&lsiSeq=276291&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제4조 전체",
+    "temporal_scope_as_written": "2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-007",
+      "DEV-054",
+      "DEV-067"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 82
+    },
+    "article_number_from_source": "4",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-007",
+      "DEV-054",
+      "DEV-067"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "4",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제4조"
+  },
+  {
+    "source_id": "H6",
+    "kind": "law",
+    "title": "주택임대차보호법 묵시적 갱신",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제6조 전체",
+    "temporal_scope_as_written": "2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-007",
+      "DEV-047",
+      "DEV-051",
+      "DEV-052"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 83
+    },
+    "article_number_from_source": "6",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-007",
+      "DEV-047",
+      "DEV-051",
+      "DEV-052"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "6",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제6조"
+  },
+  {
+    "source_id": "H6_2",
+    "kind": "law",
+    "title": "주택임대차보호법 묵시 갱신의 해지",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제6조의2 전체",
+    "temporal_scope_as_written": "2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-007",
+      "DEV-052",
+      "DEV-064",
+      "DEV-065",
+      "DEV-066"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 84
+    },
+    "article_number_from_source": "6의2",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-007",
+      "DEV-052",
+      "DEV-064",
+      "DEV-065",
+      "DEV-066"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "6의2",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제6조의2"
+  },
+  {
+    "source_id": "H6_3",
+    "kind": "law",
+    "title": "주택임대차보호법 계약갱신 요구",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제6조의3 전체",
+    "temporal_scope_as_written": "2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-047",
+      "DEV-048",
+      "DEV-049",
+      "DEV-053",
+      "DEV-061",
+      "DEV-062",
+      "DEV-063",
+      "DEV-064",
+      "DEV-065",
+      "DEV-097"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 85
+    },
+    "article_number_from_source": "6의3",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-047",
+      "DEV-048",
+      "DEV-049",
+      "DEV-053",
+      "DEV-061",
+      "DEV-062",
+      "DEV-063",
+      "DEV-064",
+      "DEV-065",
+      "DEV-097"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "6의3",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제6조의3"
+  },
+  {
+    "source_id": "H7",
+    "kind": "law",
+    "title": "주택임대차보호법 차임 등 증감",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0007&lsiSeq=276291&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제7조 전체",
+    "temporal_scope_as_written": "2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-049",
+      "DEV-050",
+      "DEV-097"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 86
+    },
+    "article_number_from_source": "7",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-049",
+      "DEV-050",
+      "DEV-097"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "7",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제7조"
+  },
+  {
+    "source_id": "H10",
+    "kind": "law",
+    "title": "주택임대차보호법 강행규정",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0010&lsiSeq=276291&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제10조 전체",
+    "temporal_scope_as_written": "2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-033"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 87
+    },
+    "article_number_from_source": "10",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-033"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "10",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제10조"
+  },
+  {
+    "source_id": "M2",
+    "kind": "law",
+    "title": "상가건물 임대차보호법",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0002&lsiSeq=279651&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제2조 전체; 특히 제2조제3항의 초과 계약 적용 목록과 함께 읽음",
+    "temporal_scope_as_written": "2026-05-12 시행, 법률 제21083호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-009",
+      "DEV-089",
+      "DEV-090"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 88
+    },
+    "article_number_from_source": "2",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-009",
+      "DEV-089",
+      "DEV-090"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "2",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "상가건물임대차보호법",
+    "article_anchor_from_source": "상가건물임대차보호법-제2조"
+  },
+  {
+    "source_id": "M3",
+    "kind": "law",
+    "title": "상가건물 임대차보호법",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=279651&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제3조 전체; 특히 제2조제3항의 초과 계약 적용 목록과 함께 읽음",
+    "temporal_scope_as_written": "2026-05-12 시행, 법률 제21083호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-088"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 89
+    },
+    "article_number_from_source": "3",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-088"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "3",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "상가건물임대차보호법",
+    "article_anchor_from_source": "상가건물임대차보호법-제3조"
+  },
+  {
+    "source_id": "M6",
+    "kind": "law",
+    "title": "상가건물 임대차보호법",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0006&lsiSeq=279651&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제6조 전체; 특히 제2조제3항의 초과 계약 적용 목록과 함께 읽음",
+    "temporal_scope_as_written": "2026-05-12 시행, 법률 제21083호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-090"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 90
+    },
+    "article_number_from_source": "6",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-090"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "6",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "상가건물임대차보호법",
+    "article_anchor_from_source": "상가건물임대차보호법-제6조"
+  },
+  {
+    "source_id": "M9",
+    "kind": "law",
+    "title": "상가건물 임대차보호법",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0009&lsiSeq=279651&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제9조 전체; 특히 제2조제3항의 초과 계약 적용 목록과 함께 읽음",
+    "temporal_scope_as_written": "2026-05-12 시행, 법률 제21083호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-090"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 91
+    },
+    "article_number_from_source": "9",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-090"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "9",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "상가건물임대차보호법",
+    "article_anchor_from_source": "상가건물임대차보호법-제9조"
+  },
+  {
+    "source_id": "M10",
+    "kind": "law",
+    "title": "상가건물 임대차보호법",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0010&lsiSeq=279651&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제10조 전체; 특히 제2조제3항의 초과 계약 적용 목록과 함께 읽음",
+    "temporal_scope_as_written": "2026-05-12 시행, 법률 제21083호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-089"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 92
+    },
+    "article_number_from_source": "10",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-089"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "10",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "상가건물임대차보호법",
+    "article_anchor_from_source": "상가건물임대차보호법-제10조"
+  },
+  {
+    "source_id": "M11",
+    "kind": "law",
+    "title": "상가건물 임대차보호법",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0011&lsiSeq=279651&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제11조 전체; 특히 제2조제3항의 초과 계약 적용 목록과 함께 읽음",
+    "temporal_scope_as_written": "2026-05-12 시행, 법률 제21083호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-089"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 93
+    },
+    "article_number_from_source": "11",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-089"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "11",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "상가건물임대차보호법",
+    "article_anchor_from_source": "상가건물임대차보호법-제11조"
+  },
+  {
+    "source_id": "M10_2",
+    "kind": "law",
+    "title": "상가건물 임대차보호법 제10조의2",
+    "url": "https://www.law.go.kr/lsLinkCommonInfo.do?ancYnChk=&chrClsCd=010202&lsJoLnkSeq=1017941419",
+    "locator_as_written": "제10조의2 전문; 초과 보증금 계약 갱신 시 증감청구",
+    "temporal_scope_as_written": "2026-05-12 시행, 법률 제21083호",
+    "verification_as_reported": "대체 공식 조문 URL에서 전문·시행판 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-089"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 94
+    },
+    "article_number_from_source": "10의2",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-089"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "10",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "상가건물임대차보호법",
+    "article_anchor_from_source": "상가건물임대차보호법-제10조의2"
+  },
+  {
+    "source_id": "M_ENF",
+    "kind": "law",
+    "title": "상가건물 임대차보호법 시행령",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0002&lsiSeq=287139&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제2조 전체; 지역별 9억/6.9억/5.4억/3.7억, 환산보증금=보증금+월차임×100",
+    "temporal_scope_as_written": "2026-07-01 시행, 대통령령 제36423호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-089",
+      "DEV-090"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 95
+    },
+    "article_number_from_source": "2",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-089",
+      "DEV-090"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "2",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "상가건물임대차보호법시행령",
+    "article_anchor_from_source": "상가건물임대차보호법시행령-제2조"
+  },
+  {
+    "source_id": "RR16",
+    "kind": "law",
+    "title": "주민등록법",
+    "url": "https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1012776409",
+    "locator_as_written": "제16조 전체; 실제 전입일부터 14일",
+    "temporal_scope_as_written": "2025-07-22 시행, 법률 제20677호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-005",
+      "DEV-033",
+      "DEV-038",
+      "DEV-040",
+      "DEV-041",
+      "DEV-046",
+      "DEV-099"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 96
+    },
+    "article_number_from_source": "16",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-005",
+      "DEV-033",
+      "DEV-038",
+      "DEV-040",
+      "DEV-041",
+      "DEV-046",
+      "DEV-099"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "16",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주민등록법",
+    "article_anchor_from_source": "주민등록법-제16조"
+  },
+  {
+    "source_id": "TAX109",
+    "kind": "law",
+    "title": "국세징수법",
+    "url": "https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1031715859",
+    "locator_as_written": "제109조제1~3항; 동의·무동의·기간",
+    "temporal_scope_as_written": "2026-06-02 시행, 법률 제21713호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-003",
+      "DEV-025",
+      "DEV-026",
+      "DEV-027",
+      "DEV-028",
+      "DEV-029"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 97
+    },
+    "article_number_from_source": "109",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-003",
+      "DEV-025",
+      "DEV-026",
+      "DEV-027",
+      "DEV-028",
+      "DEV-029"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "109",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "국세징수법",
+    "article_anchor_from_source": "국세징수법-제109조"
+  },
+  {
+    "source_id": "TAX97",
+    "kind": "law",
+    "title": "국세징수법 시행령",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0097&lsiSeq=283487&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제97조; 신청자료와 1천만 원 초과 기준",
+    "temporal_scope_as_written": "2026-02-27 시행, 대통령령 제36126호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-003",
+      "DEV-025",
+      "DEV-026",
+      "DEV-028",
+      "DEV-029"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 98
+    },
+    "article_number_from_source": "97",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-003",
+      "DEV-025",
+      "DEV-026",
+      "DEV-028",
+      "DEV-029"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "97",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "국세징수법시행령",
+    "article_anchor_from_source": "국세징수법시행령-제97조"
+  },
+  {
+    "source_id": "LT6",
+    "kind": "law",
+    "title": "지방세징수법",
+    "url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1032085419",
+    "locator_as_written": "제6조; 열람 시기·동의 예외",
+    "temporal_scope_as_written": "2026-02-05 시행, 법률 제21327호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-003",
+      "DEV-025",
+      "DEV-026",
+      "DEV-027",
+      "DEV-028",
+      "DEV-029"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 99
+    },
+    "article_number_from_source": "6",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-003",
+      "DEV-025",
+      "DEV-026",
+      "DEV-027",
+      "DEV-028",
+      "DEV-029"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "6",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "지방세징수법",
+    "article_anchor_from_source": "지방세징수법-제6조"
+  },
+  {
+    "source_id": "LT8",
+    "kind": "law",
+    "title": "지방세징수법 시행령",
+    "url": "https://law.go.kr/lsLinkCommonInfo.do?lspttninfSeq=180045",
+    "locator_as_written": "제8조; 첨부서류와 1천만 원 초과",
+    "temporal_scope_as_written": "2026-02-05 시행, 대통령령 제36076호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-003",
+      "DEV-025",
+      "DEV-026",
+      "DEV-028",
+      "DEV-029"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 100
+    },
+    "article_number_from_source": "8",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-003",
+      "DEV-025",
+      "DEV-026",
+      "DEV-028",
+      "DEV-029"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "8",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "지방세징수법시행령",
+    "article_anchor_from_source": "지방세징수법시행령-제8조"
+  },
+  {
+    "source_id": "REPORT62",
+    "kind": "law",
+    "title": "부동산 거래신고 등에 관한 법률",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0006&lsiSeq=259641&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제6조의2 전체; 30일·공동 신고·거부",
+    "temporal_scope_as_written": "2024-05-17 시행, 법률 제20194호; 평가일 적용판",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-005",
+      "DEV-038",
+      "DEV-041",
+      "DEV-050",
+      "DEV-098"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 101
+    },
+    "article_number_from_source": "6의2",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-005",
+      "DEV-038",
+      "DEV-041",
+      "DEV-050",
+      "DEV-098"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "6의2",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "부동산거래신고등에관한법률",
+    "article_anchor_from_source": "부동산거래신고등에관한법률-제6조의2"
+  },
+  {
+    "source_id": "REPORT_RULE",
+    "kind": "law",
+    "title": "부동산 거래신고 등에 관한 법률 시행규칙",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0006&lsiSeq=283339&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제6조의2 전체, 특히 제3·5·9항",
+    "temporal_scope_as_written": "2026-02-10 시행, 국토교통부령 제1557호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-038",
+      "DEV-041",
+      "DEV-050"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 102
+    },
+    "article_number_from_source": "6의2",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-038",
+      "DEV-041",
+      "DEV-050"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "6의2",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "부동산거래신고등에관한법률시행규칙",
+    "article_anchor_from_source": "부동산거래신고등에관한법률시행규칙-제6조의2"
+  },
+  {
+    "source_id": "REPORT65",
+    "kind": "law",
+    "title": "부동산 거래신고 등에 관한 법률",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=05&joNo=0006&lsiSeq=259641&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제6조의5; 다른 신고 의제",
+    "temporal_scope_as_written": "2024-05-17 시행판 대상",
+    "verification_as_reported": "Lawbot 검색 표시 및 2021년 공식 안내로 제도 확인. 독립 조문 원문 열람 실패; 세부 의제 요건의 완전 검색 성공은 보류; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "limited_as_reported",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-038",
+      "DEV-096"
+    ],
+    "limitation": {
+      "source_id": "REPORT65",
+      "affected_items_as_reported": [
+        "DEV-038",
+        "DEV-096"
+      ],
+      "reported_limitation": "Lawbot 검색 표시 및 2021년 공식 안내로 제도 확인. 독립 조문 원문 열람 실패; 세부 의제 요건의 완전 검색 성공은 보류",
+      "requested_material": "평가일 및 사건 당시의 공식 조문 전문·부칙·시행일 대조",
+      "scoring_boundary": "통합본의 일반 안내와 확인된 다른 근거에 한정. 해당 미확인 세부 요건·계산·절차는 확정 채점 제외.",
+      "source_file": "raw/03_미확인_판단보류목록.md",
+      "line": 11
+    },
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 103
+    },
+    "article_number_from_source": "6의5",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-038",
+      "DEV-096"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "6의5",
+    "supplement_claim_ids": [
+      "SUP-025",
+      "SUP-026",
+      "SUP-027"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-025",
+        "version": "2024-05-17 시행 / 법률 제20194호",
+        "verification": "독립 조문 원문 확인; 실무 제출 절차는 기존 RULE6_2와 함께 확인; 2026-09-10 확인",
+        "held": "계약서 등 실제 접수 요건을 갖추지 않은 전입신고의 처리 결과"
+      },
+      {
+        "claim_id": "SUP-026",
+        "version": "2024-05-17 시행 / 법률 제20194호",
+        "verification": "관련 원문 확인; 2026-09-10 확인",
+        "held": "사업자가 실제 신고했는지; 아무 신고도 필요 없다는 단정"
+      },
+      {
+        "claim_id": "SUP-027",
+        "version": "2024-05-17 시행 / 법률 제20194호",
+        "verification": "관련 원문 확인; 2026-09-10 확인",
+        "held": "단순 신고 시도만으로 확정일자 부여를 단정"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "부동산거래신고등에관한법률",
+    "article_anchor_from_source": "부동산거래신고등에관한법률-제6조의5"
+  },
+  {
+    "source_id": "REPORT_ENF",
+    "kind": "law",
+    "title": "부동산 거래신고 등에 관한 법률 시행령",
+    "url": "https://law.go.kr/LSW/lsLinkCommonInfo.do?lspttninfSeq=168133",
+    "locator_as_written": "제4조의3; 보증금 6천만 원 초과 또는 월차임 30만 원 초과, 지역·갱신 예외",
+    "temporal_scope_as_written": "2026-05-29 시행, 대통령령 제36365호",
+    "verification_as_reported": "제4조의3 전문·시행판 독립 열람 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-038",
+      "DEV-041",
+      "DEV-098"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 104
+    },
+    "article_number_from_source": "4의3",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-038",
+      "DEV-041",
+      "DEV-098"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "4",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "부동산거래신고등에관한법률시행령",
+    "article_anchor_from_source": "부동산거래신고등에관한법률시행령-제4조의3"
+  },
+  {
+    "source_id": "REPORT2021",
+    "kind": "law",
+    "title": "국토교통부 2021년 주택 임대차 신고제 Q&A",
+    "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148888119",
+    "locator_as_written": "2021-05-31 본문·문답 1·2·4·5·8~10",
+    "temporal_scope_as_written": "2021-06-01 도입 당시 공식 안내",
+    "verification_as_reported": "시행일·30일·갱신 예외 확인. 당시 법령 전문·부칙 직접 열람은 실패. 문답 3의 이하 조건 OR 표현은 그대로 채택하지 않음; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "limited_as_reported",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-098"
+    ],
+    "limitation": {
+      "source_id": "REPORT2021",
+      "affected_items_as_reported": [
+        "DEV-098"
+      ],
+      "reported_limitation": "시행일·30일·갱신 예외 확인. 당시 법령 전문·부칙 직접 열람은 실패. 문답 3의 이하 조건 OR 표현은 그대로 채택하지 않음",
+      "requested_material": "2021-06-01 시행 당시 법령·부칙 원문",
+      "scoring_boundary": "통합본의 일반 안내와 확인된 다른 근거에 한정. 해당 미확인 세부 요건·계산·절차는 확정 채점 제외.",
+      "source_file": "raw/03_미확인_판단보류목록.md",
+      "line": 12
+    },
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 105
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-098"
+    ],
+    "item_link_difference": [],
+    "supplement_claim_ids": [
+      "SUP-014",
+      "SUP-015"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-014",
+        "version": "2021-06-01 시행 / 법률 제17483호(2020-08-18 공포)",
+        "verification": "신설 조문 전문을 포함한 공식 개정문·부칙 직접 확인(T3); 2026-09-10 확인",
+        "held": "개별 지역·금액·당시 신고 여부에 따른 의무·위반 판단"
+      },
+      {
+        "claim_id": "SUP-015",
+        "version": "2021-06-01 시행 / 법률 제17483호",
+        "verification": "해당 조문 신설 개정문 직접 확인; 당시 시행령까지 완전 확인한 것은 아님; 2026-09-10 확인",
+        "held": "2021년 시행령 원문은 미확인; 정확한 지역·금액·계약 유형 미제공"
+      }
+    ],
+    "effective_status": "partially_resolved_by_claim",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "BROKER25",
+    "kind": "law",
+    "title": "공인중개사법",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0025&lsiSeq=283713&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제25조 전체; 계약 전 확인·설명, 계약 시 서면 교부",
+    "temporal_scope_as_written": "2026-08-28 시행, 법률 제21409호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-024",
+      "DEV-032",
+      "DEV-035",
+      "DEV-037"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 106
+    },
+    "article_number_from_source": "25",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-024",
+      "DEV-032",
+      "DEV-035",
+      "DEV-037"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "25",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "공인중개사법",
+    "article_anchor_from_source": "공인중개사법-제25조"
+  },
+  {
+    "source_id": "BROKER32",
+    "kind": "law",
+    "title": "공인중개사법",
+    "url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1032085133",
+    "locator_as_written": "제32조 전체; 중개의뢰인의 보수",
+    "temporal_scope_as_written": "2026-08-28 시행, 법률 제21409호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-065"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 107
+    },
+    "article_number_from_source": "32",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-065"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "32",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "공인중개사법",
+    "article_anchor_from_source": "공인중개사법-제32조"
+  },
+  {
+    "source_id": "BROKER21",
+    "kind": "law",
+    "title": "공인중개사법 시행령",
+    "url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1013419401",
+    "locator_as_written": "제21조 확인·설명 세부 항목",
+    "temporal_scope_as_written": "리뷰1 제시 판본 대상",
+    "verification_as_reported": "리뷰2 독립 원문 미확인. 세부 항목을 확정 필수 검색으로 사용하지 않음; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "limited_as_reported",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-032"
+    ],
+    "limitation": {
+      "source_id": "BROKER21",
+      "affected_items_as_reported": [
+        "DEV-032"
+      ],
+      "reported_limitation": "리뷰2 독립 원문 미확인. 세부 항목을 확정 필수 검색으로 사용하지 않음",
+      "requested_material": "평가일 및 사건 당시의 공식 조문 전문·부칙·시행일 대조",
+      "scoring_boundary": "통합본의 일반 안내와 확인된 다른 근거에 한정. 해당 미확인 세부 요건·계산·절차는 확정 채점 제외.",
+      "source_file": "raw/03_미확인_판단보류목록.md",
+      "line": 13
+    },
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 108
+    },
+    "article_number_from_source": "21",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-032"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "21",
+    "supplement_claim_ids": [
+      "SUP-016"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-016",
+        "version": "2026-08-28 시행 / 대통령령 제36590호",
+        "verification": "대체 공식 조문 URL에서 독립 본문 확인; 2026-09-10 확인",
+        "held": "증축 부분의 위법성·중개사의 손해배상 책임 자동 확정"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "공인중개사법시행령",
+    "article_anchor_from_source": "공인중개사법시행령-제21조"
+  },
+  {
+    "source_id": "TRUST31",
+    "kind": "law",
+    "title": "신탁법",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0031&lsiSeq=198564&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제31조 수탁자 권한과 신탁행위의 제한",
+    "temporal_scope_as_written": "2018-11-01 시행, 법률 제15022호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-019"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 109
+    },
+    "article_number_from_source": "31",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-019"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "31",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "신탁법",
+    "article_anchor_from_source": "신탁법-제31조"
+  },
+  {
+    "source_id": "REG88",
+    "kind": "law",
+    "title": "부동산등기법",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0088&lsiSeq=265377&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제88조 전체",
+    "temporal_scope_as_written": "2025-01-31 시행, 법률 제20435호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-023"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 110
+    },
+    "article_number_from_source": "88",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-023"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "88",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "부동산등기법",
+    "article_anchor_from_source": "부동산등기법-제88조"
+  },
+  {
+    "source_id": "REG91",
+    "kind": "law",
+    "title": "부동산등기법",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0091&lsiSeq=265377&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제91조 전체",
+    "temporal_scope_as_written": "2025-01-31 시행, 법률 제20435호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-023"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 111
+    },
+    "article_number_from_source": "91",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-023"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "91",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "부동산등기법",
+    "article_anchor_from_source": "부동산등기법-제91조"
+  },
+  {
+    "source_id": "COM389",
+    "kind": "law",
+    "title": "상법",
+    "url": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1016242805",
+    "locator_as_written": "제389조 대표이사",
+    "temporal_scope_as_written": "리뷰1 제시 2026-07-23 시행판 대상",
+    "verification_as_reported": "직접 열람 실패. 법인 대표권의 세부 공동대표 제한은 추가 확인; 제114조로 일반 대리권 안내 가능; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "limited_as_reported",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-014"
+    ],
+    "limitation": {
+      "source_id": "COM389",
+      "affected_items_as_reported": [
+        "DEV-014"
+      ],
+      "reported_limitation": "직접 열람 실패. 법인 대표권의 세부 공동대표 제한은 추가 확인; 제114조로 일반 대리권 안내 가능",
+      "requested_material": "평가일 및 사건 당시의 공식 조문 전문·부칙·시행일 대조",
+      "scoring_boundary": "통합본의 일반 안내와 확인된 다른 근거에 한정. 해당 미확인 세부 요건·계산·절차는 확정 채점 제외.",
+      "source_file": "raw/03_미확인_판단보류목록.md",
+      "line": 14
+    },
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 112
+    },
+    "article_number_from_source": "389",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-014"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "389",
+    "supplement_claim_ids": [
+      "SUP-017"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-017",
+        "version": "확인 조문 표제 2026-07-23 / 법률 제20991호; 제21448호 개정문 등 관련 판본 대조(T4)",
+        "verification": "본문 확인; 2026년 개정문에 제389조 변경 없음 대조; 2026-09-10 확인",
+        "held": "직원이 도장만 찍으면 무효라는 단정; 등기·위임자료 없는 권한 확정"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "상법",
+    "article_anchor_from_source": "상법-제389조"
+  },
+  {
+    "source_id": "VAT8",
+    "kind": "law",
+    "title": "부가가치세법",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0008&lsiSeq=276117&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제8조 전체; 사업 개시일부터 20일·개시 전 신청",
+    "temporal_scope_as_written": "2026-01-02 시행, 법률 제21065호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-088"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 113
+    },
+    "article_number_from_source": "8",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-088"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "8",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "부가가치세법",
+    "article_anchor_from_source": "부가가치세법-제8조"
+  },
+  {
+    "source_id": "PRIVATE5",
+    "kind": "law",
+    "title": "민간임대주택에 관한 특별법",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0005&lsiSeq=276995&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제5조 전체",
+    "temporal_scope_as_written": "공식 본문 표제 2025-10-01 시행/법률 제21065호; 전체법·Lawbot 표제 2026-01-02와 차이",
+    "verification_as_reported": "조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "limited_as_reported",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-094"
+    ],
+    "limitation": {
+      "source_id": "PRIVATE5",
+      "affected_items_as_reported": [
+        "DEV-094"
+      ],
+      "reported_limitation": "조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도",
+      "requested_material": "평가일 및 사건 당시의 공식 조문 전문·부칙·시행일 대조",
+      "scoring_boundary": "통합본의 일반 안내와 확인된 다른 근거에 한정. 해당 미확인 세부 요건·계산·절차는 확정 채점 제외.",
+      "source_file": "raw/03_미확인_판단보류목록.md",
+      "line": 15
+    },
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 114
+    },
+    "article_number_from_source": "5",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-094"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "5",
+    "supplement_claim_ids": [
+      "SUP-010"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-010",
+        "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+        "verification": "본문과 개정·부칙 대조 확인; T1. 이 조 자체가 렌트홈 화면 사용법을 규정하지는 않음; 2026-09-10 확인",
+        "held": "실제 주택의 등록 여부; 최초 등록 신청일에 따른 경과규정"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민간임대주택에관한특별법",
+    "article_anchor_from_source": "민간임대주택에관한특별법-제5조"
+  },
+  {
+    "source_id": "PRIVATE6",
+    "kind": "law",
+    "title": "민간임대주택에 관한 특별법",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0006&lsiSeq=276995&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제6조 전체",
+    "temporal_scope_as_written": "공식 본문 표제 2025-10-01 시행/법률 제21065호; 전체법·Lawbot 표제 2026-01-02와 차이",
+    "verification_as_reported": "조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "limited_as_reported",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-094"
+    ],
+    "limitation": {
+      "source_id": "PRIVATE6",
+      "affected_items_as_reported": [
+        "DEV-094"
+      ],
+      "reported_limitation": "조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도",
+      "requested_material": "평가일 및 사건 당시의 공식 조문 전문·부칙·시행일 대조",
+      "scoring_boundary": "통합본의 일반 안내와 확인된 다른 근거에 한정. 해당 미확인 세부 요건·계산·절차는 확정 채점 제외.",
+      "source_file": "raw/03_미확인_판단보류목록.md",
+      "line": 16
+    },
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 115
+    },
+    "article_number_from_source": "6",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-094"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "6",
+    "supplement_claim_ids": [
+      "SUP-011",
+      "SUP-012"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-011",
+        "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+        "verification": "관련 원문 확인; 2026-09-10 확인",
+        "held": "모든 유형이 기간 만료에 자동 말소된다는 일반화"
+      },
+      {
+        "claim_id": "SUP-012",
+        "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+        "verification": "관련 원문 확인; 2026-09-10 확인",
+        "held": "말소 근거·양도 유형·기존 계약기간 확인 전 개인별 효과"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민간임대주택에관한특별법",
+    "article_anchor_from_source": "민간임대주택에관한특별법-제6조"
+  },
+  {
+    "source_id": "PRIVATE44",
+    "kind": "law",
+    "title": "민간임대주택에 관한 특별법",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0044&lsiSeq=276995&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제44조 전체",
+    "temporal_scope_as_written": "공식 본문 표제 2025-10-01 시행/법률 제21065호; 전체법·Lawbot 표제 2026-01-02와 차이",
+    "verification_as_reported": "조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "limited_as_reported",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-094",
+      "DEV-095"
+    ],
+    "limitation": {
+      "source_id": "PRIVATE44",
+      "affected_items_as_reported": [
+        "DEV-094",
+        "DEV-095"
+      ],
+      "reported_limitation": "조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도",
+      "requested_material": "평가일 및 사건 당시의 공식 조문 전문·부칙·시행일 대조",
+      "scoring_boundary": "통합본의 일반 안내와 확인된 다른 근거에 한정. 해당 미확인 세부 요건·계산·절차는 확정 채점 제외.",
+      "source_file": "raw/03_미확인_판단보류목록.md",
+      "line": 17
+    },
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 116
+    },
+    "article_number_from_source": "44",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-094",
+      "DEV-095"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "44",
+    "supplement_claim_ids": [
+      "SUP-001",
+      "SUP-002",
+      "SUP-003"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-001",
+        "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+        "verification": "본문·정부조직법 개정문/부칙 대조로 메타데이터 제한 해소; 2026-09-10 확인",
+        "held": "실제 인상액·허용 비율의 계산, 등록 전후 개별 적용"
+      },
+      {
+        "claim_id": "SUP-002",
+        "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+        "verification": "본문 및 2018년 개정 부칙 제2조 확인; T1; 2026-09-10 확인",
+        "held": "원본에 없는 과거 증액일; 오래된 계약에 대한 개별 적용례"
+      },
+      {
+        "claim_id": "SUP-003",
+        "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+        "verification": "해당 항 본문 확인; T1; 2026-09-10 확인",
+        "held": "원본 미제공 등록일·계약액; 제1항의 개별 경과규정 적용"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민간임대주택에관한특별법",
+    "article_anchor_from_source": "민간임대주택에관한특별법-제44조"
+  },
+  {
+    "source_id": "PRIVATE45",
+    "kind": "law",
+    "title": "민간임대주택에 관한 특별법",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0045&lsiSeq=276995&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제45조 전체",
+    "temporal_scope_as_written": "공식 본문 표제 2025-10-01 시행/법률 제21065호; 전체법·Lawbot 표제 2026-01-02와 차이",
+    "verification_as_reported": "조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "limited_as_reported",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-094",
+      "DEV-096"
+    ],
+    "limitation": {
+      "source_id": "PRIVATE45",
+      "affected_items_as_reported": [
+        "DEV-094",
+        "DEV-096"
+      ],
+      "reported_limitation": "조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도",
+      "requested_material": "평가일 및 사건 당시의 공식 조문 전문·부칙·시행일 대조",
+      "scoring_boundary": "통합본의 일반 안내와 확인된 다른 근거에 한정. 해당 미확인 세부 요건·계산·절차는 확정 채점 제외.",
+      "source_file": "raw/03_미확인_판단보류목록.md",
+      "line": 18
+    },
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 117
+    },
+    "article_number_from_source": "45",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-094",
+      "DEV-096"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "45",
+    "supplement_claim_ids": [
+      "SUP-004",
+      "SUP-005"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-004",
+        "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+        "verification": "본문·개정문 대조 확인; T1; 2026-09-10 확인",
+        "held": "개별 거절 사유 충족 여부"
+      },
+      {
+        "claim_id": "SUP-005",
+        "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+        "verification": "관련 원문 확인; 2026-09-10 확인",
+        "held": "모든 하자가 즉시 해지 사유라는 단정"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민간임대주택에관한특별법",
+    "article_anchor_from_source": "민간임대주택에관한특별법-제45조"
+  },
+  {
+    "source_id": "PRIVATE46",
+    "kind": "law",
+    "title": "민간임대주택에 관한 특별법",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0046&lsiSeq=276995&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제46조 전체",
+    "temporal_scope_as_written": "공식 본문 표제 2025-10-01 시행/법률 제21065호; 전체법·Lawbot 표제 2026-01-02와 차이",
+    "verification_as_reported": "조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "limited_as_reported",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-096"
+    ],
+    "limitation": {
+      "source_id": "PRIVATE46",
+      "affected_items_as_reported": [
+        "DEV-096"
+      ],
+      "reported_limitation": "조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도",
+      "requested_material": "평가일 및 사건 당시의 공식 조문 전문·부칙·시행일 대조",
+      "scoring_boundary": "통합본의 일반 안내와 확인된 다른 근거에 한정. 해당 미확인 세부 요건·계산·절차는 확정 채점 제외.",
+      "source_file": "raw/03_미확인_판단보류목록.md",
+      "line": 19
+    },
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 118
+    },
+    "article_number_from_source": "46",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-096"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "46",
+    "supplement_claim_ids": [
+      "SUP-006",
+      "SUP-007"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-006",
+        "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+        "verification": "본문 확인; 2026-09-08 공포/2027-03-09 시행 개정은 평가일 적용 제외(T1); 2026-09-10 확인",
+        "held": "등록일·계약 이력에 따른 개별 경과규정"
+      },
+      {
+        "claim_id": "SUP-007",
+        "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+        "verification": "관련 원문 확인; 2026-09-10 확인",
+        "held": "최초 계약까지 일괄 1개월 전으로 단정; 아직 시행되지 않은 15일 예외 적용"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민간임대주택에관한특별법",
+    "article_anchor_from_source": "민간임대주택에관한특별법-제46조"
+  },
+  {
+    "source_id": "PRIVATE47",
+    "kind": "law",
+    "title": "민간임대주택에 관한 특별법",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0047&lsiSeq=276995&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제47조 전체",
+    "temporal_scope_as_written": "공식 본문 표제 2025-10-01 시행/법률 제21065호; 전체법·Lawbot 표제 2026-01-02와 차이",
+    "verification_as_reported": "조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "limited_as_reported",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-094",
+      "DEV-096"
+    ],
+    "limitation": {
+      "source_id": "PRIVATE47",
+      "affected_items_as_reported": [
+        "DEV-094",
+        "DEV-096"
+      ],
+      "reported_limitation": "조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도",
+      "requested_material": "평가일 및 사건 당시의 공식 조문 전문·부칙·시행일 대조",
+      "scoring_boundary": "통합본의 일반 안내와 확인된 다른 근거에 한정. 해당 미확인 세부 요건·계산·절차는 확정 채점 제외.",
+      "source_file": "raw/03_미확인_판단보류목록.md",
+      "line": 20
+    },
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 119
+    },
+    "article_number_from_source": "47",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-094",
+      "DEV-096"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "47",
+    "supplement_claim_ids": [
+      "SUP-008",
+      "SUP-009"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-008",
+        "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+        "verification": "관련 원문 확인; 2026-09-10 확인",
+        "held": "실제 사용 서식·작성 누락 여부"
+      },
+      {
+        "claim_id": "SUP-009",
+        "version": "평가일 시행 통합판 2026-01-02 / 법률 제21065호(2025-10-01 공포); 판본 대조 T1",
+        "verification": "관련 원문 확인; 2026-09-10 확인",
+        "held": "제시되지 않은 계약 내용의 사실 판정"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민간임대주택에관한특별법",
+    "article_anchor_from_source": "민간임대주택에관한특별법-제47조"
+  },
+  {
+    "source_id": "PRIVATE_ENF34",
+    "kind": "law",
+    "title": "민간임대주택에 관한 특별법 시행령",
+    "url": "https://www.law.go.kr/법령/민간임대주택에관한특별법시행령",
+    "locator_as_written": "제34조의2(증액 비율) 및 법 제44조제4항이 위임한 시행규칙 전환 규정",
+    "temporal_scope_as_written": "해당 계약·행위일 판본 필요",
+    "verification_as_reported": "제34조의2가 증액 비율 위임 조문임은 공식 법제처 해석례 검색에서 확인. 평가일 독립 원문·전환 규칙 미확인; 계산값 확정 제외; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "limited_as_reported",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-095"
+    ],
+    "limitation": {
+      "source_id": "PRIVATE_ENF34",
+      "affected_items_as_reported": [
+        "DEV-095"
+      ],
+      "reported_limitation": "제34조의2가 증액 비율 위임 조문임은 공식 법제처 해석례 검색에서 확인. 평가일 독립 원문·전환 규칙 미확인; 계산값 확정 제외",
+      "requested_material": "평가일 및 사건 당시의 공식 조문 전문·부칙·시행일 대조와 시행규칙·등록 유형별 계산 규정",
+      "scoring_boundary": "통합본의 일반 안내와 확인된 다른 근거에 한정. 해당 미확인 세부 요건·계산·절차는 확정 채점 제외.",
+      "source_file": "raw/03_미확인_판단보류목록.md",
+      "line": 21
+    },
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 120
+    },
+    "article_number_from_source": "34의2",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-095"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "34",
+    "supplement_claim_ids": [
+      "SUP-019",
+      "SUP-020"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-019",
+        "version": "2026-02-26 시행 통합판 / 대통령령 제35340호; 제35811호(2025-10-01) 명칭 개정 반영",
+        "verification": "독립 본문 및 개정문·부칙 확인(T5); 2026-09-10 확인",
+        "held": "지수·조례·단지 규모 미확인인 실제 허용 인상률"
+      },
+      {
+        "claim_id": "SUP-020",
+        "version": "2025-12-19 시행 / 국토교통부령 제1544호",
+        "verification": "독립 원문 확인. 시행령 제35조를 전환 규정으로 사용하지 않음; 2026-09-10 확인",
+        "held": "구체 전환율·합산 인상액; 원본에 금액이 없으므로 계산 보류"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민간임대주택에관한특별법시행령",
+    "article_anchor_from_source": "민간임대주택에관한특별법시행령-제34조의2"
+  },
+  {
+    "source_id": "PRIVATE_ENF35",
+    "kind": "law",
+    "title": "민간임대주택에 관한 특별법 시행령",
+    "url": "https://www.law.go.kr/법령/민간임대주택에관한특별법시행령",
+    "locator_as_written": "제35조 및 위임규정",
+    "temporal_scope_as_written": "해당 계약·행위일 판본 필요",
+    "verification_as_reported": "독립 원문 미확인; 전환은 법 제44조제4항이 위임한 시행규칙도 필요. 정밀 계산·특별 예외 확정 제외; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "limited_as_reported",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-096"
+    ],
+    "limitation": {
+      "source_id": "PRIVATE_ENF35",
+      "affected_items_as_reported": [
+        "DEV-096"
+      ],
+      "reported_limitation": "독립 원문 미확인; 전환은 법 제44조제4항이 위임한 시행규칙도 필요. 정밀 계산·특별 예외 확정 제외",
+      "requested_material": "평가일 및 사건 당시의 공식 조문 전문·부칙·시행일 대조와 시행규칙·등록 유형별 계산 규정",
+      "scoring_boundary": "통합본의 일반 안내와 확인된 다른 근거에 한정. 해당 미확인 세부 요건·계산·절차는 확정 채점 제외.",
+      "source_file": "raw/03_미확인_판단보류목록.md",
+      "line": 22
+    },
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 121
+    },
+    "article_number_from_source": "35",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-096"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "35",
+    "supplement_claim_ids": [
+      "SUP-021"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-021",
+        "version": "2026-02-26 시행 통합판 / 대통령령 제35340호",
+        "verification": "제1·2항 본문 확인. 기존 전환 관련 제한 문구는 이 출처에서 삭제; 2026-09-10 확인",
+        "held": "개별 특약 위반·연체·하자 등의 성립, 유형별 추가 자격 기준"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민간임대주택에관한특별법시행령",
+    "article_anchor_from_source": "민간임대주택에관한특별법시행령-제35조"
+  },
+  {
+    "source_id": "PUBLIC492",
+    "kind": "law",
+    "title": "공공주택 특별법",
+    "url": "https://law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1025400003",
+    "locator_as_written": "제49조의2 전체; 표준계약·입주 전 설명",
+    "temporal_scope_as_written": "2026-09-08 시행, 법률 제21895호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-091",
+      "DEV-093"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 122
+    },
+    "article_number_from_source": "49의2",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-091",
+      "DEV-093"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "49",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "공공주택특별법",
+    "article_anchor_from_source": "공공주택특별법-제49조의2"
+  },
+  {
+    "source_id": "PUBLIC493",
+    "kind": "law",
+    "title": "공공주택 특별법",
+    "url": "https://law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1025400003",
+    "locator_as_written": "제49조의3 전체; 재계약 거절 등",
+    "temporal_scope_as_written": "2026-09-08 시행, 법률 제21895호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-092"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 123
+    },
+    "article_number_from_source": "49의3",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-092"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "49",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "공공주택특별법",
+    "article_anchor_from_source": "공공주택특별법-제49조의3"
+  },
+  {
+    "source_id": "PUBLIC47",
+    "kind": "law",
+    "title": "공공주택 특별법 시행령",
+    "url": "https://www.law.go.kr/법령/공공주택특별법시행령",
+    "locator_as_written": "제47조 및 유형별 시행규칙 제25조·별표",
+    "temporal_scope_as_written": "Lawbot 표시 시행령 2026-04-14/규칙 2026-08-24",
+    "verification_as_reported": "검색 결과까지만 확인. 유형별 전문·별표 미확인; 소득 초과 수치·유예기간 등 확정 제외; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "limited_as_reported",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-092"
+    ],
+    "limitation": {
+      "source_id": "PUBLIC47",
+      "affected_items_as_reported": [
+        "DEV-092"
+      ],
+      "reported_limitation": "검색 결과까지만 확인. 유형별 전문·별표 미확인; 소득 초과 수치·유예기간 등 확정 제외",
+      "requested_material": "평가일 및 사건 당시의 공식 조문 전문·부칙·시행일 대조",
+      "scoring_boundary": "통합본의 일반 안내와 확인된 다른 근거에 한정. 해당 미확인 세부 요건·계산·절차는 확정 채점 제외.",
+      "source_file": "raw/03_미확인_판단보류목록.md",
+      "line": 23
+    },
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 124
+    },
+    "article_number_from_source": "47",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-092"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "47",
+    "supplement_claim_ids": [
+      "SUP-023",
+      "SUP-024"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-023",
+        "version": "확인 2026-04-14 / 제36258호; 평가일 2026-09-08 / 제36659호 개정문에서 제47조 불변 대조",
+        "verification": "시행령 해당 항 직접 확인 및 평가일 개정문 대조(T6); 유형별 별표는 미확인; 2026-09-10 확인",
+        "held": "소득 초과 수치·가족 변동별 유예기간; 제47조만으로 확정 불가"
+      },
+      {
+        "claim_id": "SUP-024",
+        "version": "2026-08-24 시행 / 국토교통부령 제1616호",
+        "verification": "제13조·제25조 본문 확인; 유형별 별표·일부 과거 경과규정 미확인; 2026-09-10 확인",
+        "held": "각 유형 별표의 수치·거주기간·유예 및 실제 재계약 결과"
+      }
+    ],
+    "effective_status": "partially_resolved_by_claim",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "공공주택특별법시행령",
+    "article_anchor_from_source": "공공주택특별법시행령-제47조"
+  },
+  {
+    "source_id": "PROC462",
+    "kind": "law",
+    "title": "민사소송법",
+    "url": "https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1033366021",
+    "locator_as_written": "제462조; 금전 등 청구와 국내 비공시 송달",
+    "temporal_scope_as_written": "실제 표시 2025-07-12 시행/법률 제19516호",
+    "verification_as_reported": "본문 확인. 평가일 2026-03-17 판본 직접 열람 실패로 현행 판본 대조는 제한; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "limited_as_reported",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-010",
+      "DEV-070",
+      "DEV-073",
+      "DEV-075",
+      "DEV-078",
+      "DEV-090"
+    ],
+    "limitation": {
+      "source_id": "PROC462",
+      "affected_items_as_reported": [
+        "DEV-010",
+        "DEV-070",
+        "DEV-073",
+        "DEV-075",
+        "DEV-078",
+        "DEV-090"
+      ],
+      "reported_limitation": "본문 확인. 평가일 2026-03-17 판본 직접 열람 실패로 현행 판본 대조는 제한",
+      "requested_material": "평가일 및 사건 당시의 공식 조문 전문·부칙·시행일 대조",
+      "scoring_boundary": "통합본의 일반 안내와 확인된 다른 근거에 한정. 해당 미확인 세부 요건·계산·절차는 확정 채점 제외.",
+      "source_file": "raw/03_미확인_판단보류목록.md",
+      "line": 24
+    },
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 125
+    },
+    "article_number_from_source": "462",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-010",
+      "DEV-070",
+      "DEV-073",
+      "DEV-075",
+      "DEV-078",
+      "DEV-090"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "462",
+    "supplement_claim_ids": [
+      "SUP-013"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-013",
+        "version": "2025-07-12 시행 / 법률 제19516호; 2026-03-17 공포 제21455호는 2028-03-01 시행",
+        "verification": "본문·개정문·부칙 대조 확인; 기존 2026-03-17 시행판 전제 철회(T2); 2026-09-10 확인",
+        "held": "실제 송달 가능 여부·개별 관할·인용 결과"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민사소송법",
+    "article_anchor_from_source": "민사소송법-제462조"
+  },
+  {
+    "source_id": "PROC194",
+    "kind": "law",
+    "title": "민사소송법",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0194&lsiSeq=284417&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "제194조 소송서류 공시송달",
+    "temporal_scope_as_written": "2026-03-17 시행판 대상",
+    "verification_as_reported": "직접 원문 실패. 의사표시 공시송달은 확인된 민법 제113조로 구분하고 소송 세부요건 확정은 보류; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "limited_as_reported",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-078"
+    ],
+    "limitation": {
+      "source_id": "PROC194",
+      "affected_items_as_reported": [
+        "DEV-078"
+      ],
+      "reported_limitation": "직접 원문 실패. 의사표시 공시송달은 확인된 민법 제113조로 구분하고 소송 세부요건 확정은 보류",
+      "requested_material": "평가일 및 사건 당시의 공식 조문 전문·부칙·시행일 대조",
+      "scoring_boundary": "통합본의 일반 안내와 확인된 다른 근거에 한정. 해당 미확인 세부 요건·계산·절차는 확정 채점 제외.",
+      "source_file": "raw/03_미확인_판단보류목록.md",
+      "line": 25
+    },
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 126
+    },
+    "article_number_from_source": "194",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-078"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "194",
+    "supplement_claim_ids": [
+      "SUP-022"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-022",
+        "version": "2025-07-12 시행 / 법률 제19516호; 2026-03-17 공포 개정은 2028-03-01 시행",
+        "verification": "독립 본문 및 개정·부칙 대조 확인(T2); 2026-09-10 확인",
+        "held": "주소 조사·소명 결과 및 법원의 허용 여부"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민사소송법",
+    "article_anchor_from_source": "민사소송법-제194조"
+  },
+  {
+    "source_id": "EX83",
+    "kind": "law",
+    "title": "민사집행법",
+    "url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1008707393",
+    "locator_as_written": "제83조 전체",
+    "temporal_scope_as_written": "2026-02-01 시행, 법률 제20733호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-017",
+      "DEV-022"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 127
+    },
+    "article_number_from_source": "83",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-017",
+      "DEV-022"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "83",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민사집행법",
+    "article_anchor_from_source": "민사집행법-제83조"
+  },
+  {
+    "source_id": "EX56",
+    "kind": "law",
+    "title": "민사집행법",
+    "url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1018577259",
+    "locator_as_written": "제56조 전체",
+    "temporal_scope_as_written": "2026-02-01 시행, 법률 제20733호",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-075"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 128
+    },
+    "article_number_from_source": "56",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-075"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "56",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민사집행법",
+    "article_anchor_from_source": "민사집행법-제56조"
+  },
+  {
+    "source_id": "CR347",
+    "kind": "law",
+    "title": "형법",
+    "url": "https://law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1000089514",
+    "locator_as_written": "제347조 전체; 기망과 재물·재산상 이익",
+    "temporal_scope_as_written": "2026-03-12 시행, 법률 제21450호; 과거 범행의 법정형으로 소급 적용하지 않음",
+    "verification_as_reported": "관련 조문 본문·요건 확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-076",
+      "DEV-079"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 129
+    },
+    "article_number_from_source": "347",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-076",
+      "DEV-079"
+    ],
+    "item_link_difference": [],
+    "original_article_number_from_source": "347",
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "형법",
+    "article_anchor_from_source": "형법-제347조"
+  },
+  {
+    "source_id": "CASE_REPAIR",
+    "kind": "case",
+    "title": "대법원 94다34692·34708",
+    "url": "https://law.go.kr/LSW/precInfoP.do?evtNo=94%EB%8B%A434692%2C+94%EB%8B%A434708",
+    "locator_as_written": "판시사항·이유 및 사실관계: 여관의 노후 보일러·배관 대규모 교체와 포괄 수선 특약",
+    "temporal_scope_as_written": "1994-12-09 선고/결정. 적용 법령·사실 유사성은 문항별 조건",
+    "verification_as_reported": "판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-004",
+      "DEV-055"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 130
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-004",
+      "DEV-055"
+    ],
+    "item_link_difference": [],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "CASE_REG",
+    "kind": "case",
+    "title": "대법원 2024다326398",
+    "url": "https://www.law.go.kr/precInfoP.do?precSeq=605771",
+    "locator_as_written": "판시사항·이유 및 사실관계: 임차권등기 전 퇴거·전출, 선순위 회복 비소급",
+    "temporal_scope_as_written": "2025-04-15 선고/결정. 적용 법령·사실 유사성은 문항별 조건",
+    "verification_as_reported": "판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-007",
+      "DEV-010",
+      "DEV-044",
+      "DEV-068",
+      "DEV-069",
+      "DEV-070",
+      "DEV-086"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 131
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-007",
+      "DEV-010",
+      "DEV-044",
+      "DEV-068",
+      "DEV-069",
+      "DEV-070",
+      "DEV-086"
+    ],
+    "item_link_difference": [],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "CASE_MOVEOUT",
+    "kind": "case",
+    "title": "대법원 2024마8598",
+    "url": "https://www.law.go.kr/precInfoP.do?precSeq=612117",
+    "locator_as_written": "판시사항·이유 및 사실관계: 보증기관 지급·퇴거 후 재신청과 반환의 의미",
+    "temporal_scope_as_written": "2025-04-15 선고/결정. 적용 법령·사실 유사성은 문항별 조건",
+    "verification_as_reported": "판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-010",
+      "DEV-070"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 132
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-010",
+      "DEV-070"
+    ],
+    "item_link_difference": [],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "CASE_FAMILY",
+    "kind": "case",
+    "title": "대법원 95다30338",
+    "url": "https://law.go.kr/LSW/precInfoP.do?precSeq=198331",
+    "locator_as_written": "판시사항·이유 및 사실관계: 임차인 일시 전출 중 가족 주민등록·점유 지속",
+    "temporal_scope_as_written": "1996-01-26 선고/결정. 적용 법령·사실 유사성은 문항별 조건",
+    "verification_as_reported": "판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-043",
+      "DEV-044",
+      "DEV-070"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 133
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-043",
+      "DEV-044",
+      "DEV-070"
+    ],
+    "item_link_difference": [],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "CASE_TRUST",
+    "kind": "case",
+    "title": "대법원 2018다44879·44886",
+    "url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=206299",
+    "locator_as_written": "판시사항·이유 및 사실관계: 신탁 동의 없는 임대 후 위탁자 소유권 회복 등 특별 사정",
+    "temporal_scope_as_written": "2019-03-28 선고/결정. 적용 법령·사실 유사성은 문항별 조건",
+    "verification_as_reported": "판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-019"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 134
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-019"
+    ],
+    "item_link_difference": [],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "CASE_MIX",
+    "kind": "case",
+    "title": "대법원 87다카2024",
+    "url": "https://law.go.kr/LSW/precInfoP.do?precSeq=104710",
+    "locator_as_written": "판시사항·이유 및 사실관계: 미용실·제과점과 가족 주거 혼합의 실제 구조·사용",
+    "temporal_scope_as_written": "1988-12-27 선고/결정. 적용 법령·사실 유사성은 문항별 조건",
+    "verification_as_reported": "판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-009"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 135
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-009"
+    ],
+    "item_link_difference": [],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "CASE_DAGAGU",
+    "kind": "case",
+    "title": "대법원 97다47828",
+    "url": "https://law.go.kr/LSW/precInfoP.do?evtNo=97다47828",
+    "locator_as_written": "판시사항·이유 및 사실관계: 다가구 단독주택 지번 신고·같은 건물 내 호실 이동",
+    "temporal_scope_as_written": "1998-01-23 선고/결정. 적용 법령·사실 유사성은 문항별 조건",
+    "verification_as_reported": "판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-042"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 136
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-042"
+    ],
+    "item_link_difference": [],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "CASE_RESIDENCE",
+    "kind": "case",
+    "title": "대법원 2008두10997",
+    "url": "https://law.go.kr/LSW/precInfoP.do?evtNo=2008두10997",
+    "locator_as_written": "판시사항·이유 및 사실관계: 무허가 가건물 장기 거주자의 전입신고, 실제 생활근거지 심사",
+    "temporal_scope_as_written": "2009-06-18 선고/결정. 적용 법령·사실 유사성은 문항별 조건",
+    "verification_as_reported": "판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-046"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 137
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-046"
+    ],
+    "item_link_difference": [],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "CASE_REAL",
+    "kind": "case",
+    "title": "대법원 2023다263551",
+    "url": "https://law.go.kr/LSW/precInfoP.do?precSeq=240881",
+    "locator_as_written": "판시사항·이유 및 사실관계: 같은 건물 층간 이주·손자 거주 설명 변경과 실거주 증명책임",
+    "temporal_scope_as_written": "2023-12-21 선고/결정. 적용 법령·사실 유사성은 문항별 조건",
+    "verification_as_reported": "판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-048",
+      "DEV-053"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 138
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-048",
+      "DEV-053"
+    ],
+    "item_link_difference": [],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "DATE_RULE",
+    "kind": "law",
+    "title": "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙",
+    "url": "https://www.law.go.kr/법령/주택임대차계약증서의확정일자부여및정보제공에관한규칙",
+    "locator_as_written": "제2·7·9조 및 정보제공 절차",
+    "temporal_scope_as_written": "Lawbot 표시 2021-06-10 시행/대법원규칙 제2986호",
+    "verification_as_reported": "검색 표시 확인, 독립 원문 URL 열람 실패. 날짜 표시 해석은 입력과 법 제3조의6으로 확정; 세부 전산절차는 미확인; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "limited_as_reported",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-039",
+      "DEV-045",
+      "DEV-099"
+    ],
+    "limitation": {
+      "source_id": "DATE_RULE",
+      "affected_items_as_reported": [
+        "DEV-039",
+        "DEV-045",
+        "DEV-099"
+      ],
+      "reported_limitation": "검색 표시 확인, 독립 원문 URL 열람 실패. 날짜 표시 해석은 입력과 법 제3조의6으로 확정; 세부 전산절차는 미확인",
+      "requested_material": "평가일 및 사건 당시의 공식 조문 전문·부칙·시행일 대조",
+      "scoring_boundary": "통합본의 일반 안내와 확인된 다른 근거에 한정. 해당 미확인 세부 요건·계산·절차는 확정 채점 제외.",
+      "source_file": "raw/03_미확인_판단보류목록.md",
+      "line": 26
+    },
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 139
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-039",
+      "DEV-045",
+      "DEV-099"
+    ],
+    "item_link_difference": [],
+    "supplement_claim_ids": [
+      "SUP-028",
+      "SUP-029",
+      "SUP-030"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-028",
+        "version": "2021-06-10 시행 / 대법원규칙 제2986호",
+        "verification": "독립 원문 확인; 적용 범위는 지방법원·지원·등기소(T7); 2026-09-10 확인",
+        "held": "모든 접수의 당일 부여 또는 특정 전산 화면 보장"
+      },
+      {
+        "claim_id": "SUP-029",
+        "version": "2021-06-10 시행 / 대법원규칙 제2986호",
+        "verification": "독립 원문 확인; 2026-09-10 확인",
+        "held": "일부 발췌만으로 정식 부여 사실·대항력 확정"
+      },
+      {
+        "claim_id": "SUP-030",
+        "version": "현재 2021-06-10 / 제2986호; 2018년 당시 2017-05-25 / 제2742호 이후 해당 항 변경 없음 대조",
+        "verification": "본문 및 2020·2021 개정문 확인; 원본 과거 부여 사실은 미확인(T7); 2026-09-10 확인",
+        "held": "실제 부여 기록 존재·과거 효력·주민센터 자료를 같은 전산에서 항상 확인 가능하다는 단정"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "HLA_HISTORY",
+    "kind": "law",
+    "title": "주택임대차보호법 제정·개정문",
+    "url": "https://law.go.kr/LSW/lsRvsDocListP.do?chrClsCd=010202&lsId=001248&lsRvsGubun=all",
+    "locator_as_written": "법률 제17470호 본문·부칙 제1·2조; 제17363호 본문·부칙 제1·2조",
+    "temporal_scope_as_written": "2020-07-31 시행/2020-12-10 시행 및 적용례",
+    "verification_as_reported": "개정문·부칙 해당 구간 확인; 2020년 개별 계약의 날짜·증액 경위 미제공; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-097"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 140
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-097"
+    ],
+    "item_link_difference": [],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "HF_OV",
+    "kind": "guidance",
+    "title": "HF 전세지킴보증 일반 안내",
+    "url": "https://hf.go.kr/ko/sub02/sub02_05_01.do",
+    "locator_as_written": "신청시기·취급은행·대상자·구비서류·보증조건",
+    "temporal_scope_as_written": "확인일 현재 게시 안내; 게시/개정일 별도 표시 불명",
+    "verification_as_reported": "공식 안내 본문 확인. 평가일 9월 8일의 별도 웹 보관본은 확보하지 않아 9월 10일 조회 내용으로 표시; 기관 특정 예시만 사용; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "institution_and_version_specific",
+    "affected_items_as_reported": [
+      "DEV-008",
+      "DEV-036",
+      "DEV-081",
+      "DEV-082",
+      "DEV-083"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 141
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-008",
+      "DEV-036",
+      "DEV-081",
+      "DEV-082",
+      "DEV-083"
+    ],
+    "item_link_difference": [],
+    "supplement_claim_ids": [
+      "SUP-040",
+      "SUP-041",
+      "SUP-043",
+      "SUP-045"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-040",
+        "version": "확인일 게시 안내(2026-09-10); 2026-09-08 보관본 미확보. HF 사례로만 사용",
+        "verification": "HF 예시 본문 확인; 다른 기관은 같은 개념을 실제 지지하는 공식 자료이면 허용; 2026-09-10 확인",
+        "held": "개별 계약 가입 가능성·전액 즉시 지급 보장"
+      },
+      {
+        "claim_id": "SUP-041",
+        "version": "확인일 게시 안내(2026-09-10); 2026-09-08 보관본 미확보. HF 사례로만 사용",
+        "verification": "관련 원문 확인; 2026-09-10 확인",
+        "held": "상품별 전체 필수 서류·유효기간·신청 기한을 단일화"
+      },
+      {
+        "claim_id": "SUP-043",
+        "version": "확인일 게시 안내(2026-09-10); 2026-09-08 보관본 미확보. HF 사례로만 사용",
+        "verification": "HF 예시만 확인; 원본 적용 기관·당시 자료 미제공; 2026-09-10 확인",
+        "held": "원본 계약에 HF 기준을 자동 적용; 다른 상품의 기한"
+      },
+      {
+        "claim_id": "SUP-045",
+        "version": "확인일 게시 안내(2026-09-10); 2026-09-08 보관본 미확보. HF 사례로만 사용",
+        "verification": "기본 서류 예시 본문 확인; 대체·생략 기준 미확인; 2026-09-10 확인",
+        "held": "특정 서류가 반드시 생략 가능하다는 개별 결론"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "HF_CHANGE",
+    "kind": "guidance",
+    "title": "HF 전세지킴보증 보증조건 변경",
+    "url": "https://hf.go.kr/ko/sub02/sub02_05_03.do",
+    "locator_as_written": "임대인 변경·보증기한 연장 등",
+    "temporal_scope_as_written": "확인일 현재 안내",
+    "verification_as_reported": "본문 확인. HF 예시만 사용하며 다른 기관에 일반화하지 않음; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "institution_and_version_specific",
+    "affected_items_as_reported": [
+      "DEV-084",
+      "DEV-085"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 142
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-084",
+      "DEV-085"
+    ],
+    "item_link_difference": [],
+    "supplement_claim_ids": [
+      "SUP-047",
+      "SUP-049"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-047",
+        "version": "확인일 게시 안내(2026-09-10); 2026-09-08 보관본 미확보. HF 사례로만 사용",
+        "verification": "HF 변경 안내 확인; 원본 적용 기관·약관 미제공; 2026-09-10 확인",
+        "held": "전 기관 공통 통지 기한·자동 면책·자동 무효"
+      },
+      {
+        "claim_id": "SUP-049",
+        "version": "확인일 게시 안내(2026-09-10); 2026-09-08 보관본 미확보. HF 사례로만 사용",
+        "verification": "HF 변경 안내 확인; 원본 적용 기관·약관 미제공; 2026-09-10 확인",
+        "held": "전 기관 공통 통지 기한·자동 면책·자동 무효"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "HF_CLAIM",
+    "kind": "guidance",
+    "title": "HF 전세지킴보증 보증이행 안내",
+    "url": "https://hf.go.kr/ko/sub02/sub02_05_07.do",
+    "locator_as_written": "사고사유·통지·이행청구·심사·이사/지급 절차",
+    "temporal_scope_as_written": "확인일 현재 안내",
+    "verification_as_reported": "본문 확인. 2023년 가입 건 적용 여부는 별도; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "institution_and_version_specific",
+    "affected_items_as_reported": [
+      "DEV-008",
+      "DEV-086"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 143
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-008",
+      "DEV-086"
+    ],
+    "item_link_difference": [],
+    "supplement_claim_ids": [
+      "SUP-051",
+      "SUP-055"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-051",
+        "version": "확인일 게시 안내(2026-09-10); 2026-09-08 보관본 미확보. HF 사례로만 사용",
+        "verification": "관련 원문 확인; 2026-09-10 확인",
+        "held": "원본 계약의 지급 시점·지급액·면책 여부"
+      },
+      {
+        "claim_id": "SUP-055",
+        "version": "현재 안내는 2026-09-10 확인; 실제 2023 적용 약관 미제공. 기존 HF 2025-02-06 PDF는 대체 불가",
+        "verification": "현재 HF 예시 확인; 2023 적용 약관 미확인; 2026-09-10 확인",
+        "held": "청구권 소멸·가입 보장·당시 면책·현재 지급 가능 확정"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "HF_TERMS",
+    "kind": "guidance",
+    "title": "HF 전세지킴보증 약관·안내 PDF",
+    "url": "https://hf.go.kr/cms/etcResourceDown.do?key=$cms$M4VwRgDATA+qmwgVhhAjDK0BsFtoE4A6ABwBMAzIA&site=$cms$NYeyA",
+    "locator_as_written": "PDF 13~20쪽: 제2~6·9~16조 및 안내 3~11쪽",
+    "temporal_scope_as_written": "PDF 약관 표기 개정 2025-02-06; 현재 공식 페이지 연결본",
+    "verification_as_reported": "관련 약관 본문 확인. 보증조건 변경·면책·사고·기한·심사 구별. 2023년 가입 건에 적용됐다고 확인한 것이 아님; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "institution_and_version_specific",
+    "affected_items_as_reported": [
+      "DEV-008",
+      "DEV-081",
+      "DEV-084",
+      "DEV-085",
+      "DEV-086",
+      "DEV-100"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 144
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-008",
+      "DEV-081",
+      "DEV-084",
+      "DEV-085",
+      "DEV-086",
+      "DEV-100"
+    ],
+    "item_link_difference": [],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "MEDIATION",
+    "kind": "guidance",
+    "title": "한국부동산원 임대차분쟁조정 안내",
+    "url": "https://www.reb.or.kr/reb/cm/cntnts/cntntsView.do?cntntsId=1415",
+    "locator_as_written": "신청방법·서식·관할·수수료 및 절차 안내",
+    "temporal_scope_as_written": "확인일 현재 공식 안내",
+    "verification_as_reported": "본문 확인. 구체적인 신청 접수·개인 사건 조회는 하지 않음; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "institution_and_version_specific",
+    "affected_items_as_reported": [
+      "DEV-074"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 145
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-074"
+    ],
+    "item_link_difference": [],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "HUG_SUPPORT",
+    "kind": "guidance",
+    "title": "HUG 안심전세포털 피해지원 프로그램",
+    "url": "https://www.khug.or.kr/jeonse/web/s01/s010002.jsp",
+    "locator_as_written": "법률상담·지원 창구·접수 경로",
+    "temporal_scope_as_written": "확인일 현재 페이지; 일부 표는 2023년 기준 표시",
+    "verification_as_reported": "상담·기관 경로 확인. 과거 소득표·개별 지원 자격·특별법 결정은 확정 근거로 사용하지 않음; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "institution_and_version_specific",
+    "affected_items_as_reported": [
+      "DEV-076"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 146
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-076"
+    ],
+    "item_link_difference": [],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "RENTHOME",
+    "kind": "guidance",
+    "title": "렌트홈 제공 서비스 안내",
+    "url": "https://www.renthome.go.kr/webportal/cont/rntHmGdncView.open",
+    "locator_as_written": "민간임대주택 지도찾기·등록/말소 서비스 안내",
+    "temporal_scope_as_written": "확인일 현재 안내",
+    "verification_as_reported": "페이지 본문 확인. 실제 특정 주택 조회는 실행하지 않음; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "reviewer_reported_confirmed",
+    "temporal_use": "institution_and_version_specific",
+    "affected_items_as_reported": [
+      "DEV-094"
+    ],
+    "limitation": null,
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 147
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-094"
+    ],
+    "item_link_difference": [],
+    "effective_status": "reviewer_reported_confirmed",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "PRIVATE442",
+    "kind": "law",
+    "title": "민간임대주택에 관한 특별법 제44조의2",
+    "url": "https://www.law.go.kr/LSW/lsInfoP.do?ancYnChk=0&chrClsCd=010202&efYd=20260102&lsiSeq=276995&urlMode=lsInfoP",
+    "locator_as_written": "초과 임대료의 반환 청구",
+    "temporal_scope_as_written": "2026-01-02 시행판 공식 검색 본문",
+    "verification_as_reported": "공식 검색 본문에서 조문 존재·내용 확인, 독립 조문 원문은 미확인. 없다고 판단하지 않으며 이미 초과 지급한 경우의 조건부 근거; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "limited_as_reported",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-095"
+    ],
+    "limitation": {
+      "source_id": "PRIVATE442",
+      "affected_items_as_reported": [
+        "DEV-095"
+      ],
+      "reported_limitation": "공식 검색 본문에서 조문 존재·내용 확인, 독립 조문 원문은 미확인. 없다고 판단하지 않으며 이미 초과 지급한 경우의 조건부 근거",
+      "requested_material": "평가일 및 사건 당시의 공식 조문 전문·부칙·시행일 대조",
+      "scoring_boundary": "통합본의 일반 안내와 확인된 다른 근거에 한정. 해당 미확인 세부 요건·계산·절차는 확정 채점 제외.",
+      "source_file": "raw/03_미확인_판단보류목록.md",
+      "line": 27
+    },
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 148
+    },
+    "article_number_from_source": null,
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-095"
+    ],
+    "item_link_difference": [],
+    "supplement_claim_ids": [
+      "SUP-018"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-018",
+        "version": "신설 제15730호 / 2019-02-15 시행; 평가일 제21065호 검색 본문과 같은 문구",
+        "verification": "신설 개정 원문 확인으로 보강. 평가일 단독 조문 원문 확인은 미완료(T1); 2026-09-10 확인",
+        "held": "평가일 독립 조문 화면 열람은 실패; 개별 초과액·과거 적용 시점"
+      }
+    ],
+    "effective_status": "partially_resolved_by_claim",
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "C147",
+    "kind": "law",
+    "title": "민법 제147조 조건성취의 효과",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0147&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+    "locator_as_written": "정지·해제조건의 효과",
+    "temporal_scope_as_written": "2026-03-17 시행판 대상",
+    "verification_as_reported": "리뷰1 부록 제시; 리뷰2 독립 원문 미확인. 조건형을 배제하지 않되 세부 소급효 판단을 확정 채점하지 않음; 확인일 2026-09-10",
+    "independent_verification_by_compiler": false,
+    "verification_status": "limited_as_reported",
+    "temporal_use": "respect_stated_effective_version",
+    "affected_items_as_reported": [
+      "DEV-034"
+    ],
+    "limitation": {
+      "source_id": "C147",
+      "affected_items_as_reported": [
+        "DEV-034"
+      ],
+      "reported_limitation": "리뷰1 부록 제시; 리뷰2 독립 원문 미확인. 조건형을 배제하지 않되 세부 소급효 판단을 확정 채점하지 않음",
+      "requested_material": "평가일 및 사건 당시의 공식 조문 전문·부칙·시행일 대조",
+      "scoring_boundary": "통합본의 일반 안내와 확인된 다른 근거에 한정. 해당 미확인 세부 요건·계산·절차는 확정 채점 제외.",
+      "source_file": "raw/03_미확인_판단보류목록.md",
+      "line": 28
+    },
+    "provenance": {
+      "file": "raw/04_실제검색_원문확인기록.md",
+      "line": 149
+    },
+    "article_number_from_source": "147",
+    "paragraph_item_locator_complete": false,
+    "affected_items_compiled": [
+      "DEV-034"
+    ],
+    "item_link_difference": [],
+    "supplement_claim_ids": [
+      "SUP-032",
+      "SUP-033"
+    ],
+    "supplement_verification": [
+      {
+        "claim_id": "SUP-032",
+        "version": "2026-03-17 시행 / 법률 제21454호",
+        "verification": "독립 원문 확인으로 기존 미확인 해소; 2026-09-10 확인",
+        "held": "기관 미지정 상태의 실제 승인 여부·미성취 판단"
+      },
+      {
+        "claim_id": "SUP-033",
+        "version": "2026-03-17 시행 / 법률 제21454호",
+        "verification": "제1~3항 직접 확인; 2026-09-10 확인",
+        "held": "모든 해제조건이 자동 소급하거나 제548조가 곧바로 전부 적용된다는 단정"
+      }
+    ],
+    "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제147조"
+  },
+  {
+    "source_id": "PRIVATE_RULE18",
+    "kind": "law",
+    "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
+    "supplement_claim_ids": [
+      "SUP-020"
+    ],
+    "independently_reverified_this_run": false
+  },
+  {
+    "source_id": "PUBLIC_RULE13_25",
+    "kind": "law",
+    "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
+    "supplement_claim_ids": [
+      "SUP-024"
+    ],
+    "independently_reverified_this_run": false
+  }
+]
