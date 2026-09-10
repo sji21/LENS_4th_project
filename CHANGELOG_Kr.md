@@ -9,7 +9,7 @@
 
 ### 변경
 
-- 민법 검색 재설계를 위해 PATCH-012를 보류하고 후보 통합·로컬 의미 선택의 별도 실험을 공유한다. 최종 순위 품질과 지연이 채택 기준을 충족하지 못해 앱 기본 경로는 교체하지 않았다. `docs/patch012-redesign-experiment.md` 참고. (commit: pending)
+- 민법 검색 재설계를 위해 PATCH-012를 보류하고 후보 통합·로컬 의미 선택의 별도 실험을 공유한다. 최종 순위 품질과 지연이 채택 기준을 충족하지 못해 앱 기본 경로는 교체하지 않았다. `docs/patch012-redesign-experiment.md` 참고. (commit: `60ed80e`)
 
 ### 버그 수정 (Fixed)
 

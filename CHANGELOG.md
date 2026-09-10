@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-012 remains on hold while civil retrieval is redesigned. An opt-in unified-candidate and local semantic-selection experiment is shared; neither variant is adopted as the application default because final ranking quality and latency are not acceptable. See `docs/patch012-redesign-experiment.md`. (commit: pending)
+- PATCH-012 remains on hold while civil retrieval is redesigned. An opt-in unified-candidate and local semantic-selection experiment is shared; neither variant is adopted as the application default because final ranking quality and latency are not acceptable. See `docs/patch012-redesign-experiment.md`. (commit: `60ed80e`)
 
 ### Fixed (Bug Fixes)
 
