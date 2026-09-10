@@ -1,2 +1,2 @@
 * text eol=lf
-capture/source-bytes/** -text
+capture/source-bytes/** -text -diff
