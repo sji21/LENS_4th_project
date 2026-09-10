@@ -7,6 +7,10 @@ This file records the 4th project from its first change onward.
 
 ## 2026-09-10
 
+### Fixed (Bug Fixes)
+
+- PATCH-011 rejects bundles missing any of the seven review originals even when their manifest entries are removed, and validates full source/target law-article identifiers rather than article numbers alone. Diagnostic results are unchanged. (commit: pending)
+
 ### Added
 
 - PATCH-011 shares the reviewed DEV v2 evidence, claim-level supplements, fixed primary-law targets, and saved 200-input rankings while preserving v1. An offline diagnostic validates fingerprints and reproduces article coverage/rank results without a model or operational DB; this is not whole-answer accuracy. See `docs/patch011-dev100-v2.md`. (commit: `8c82531`)

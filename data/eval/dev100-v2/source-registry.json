@@ -57,7 +57,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제105조"
   },
   {
     "source_id": "C111",
@@ -94,7 +96,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "111",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제111조"
   },
   {
     "source_id": "C113",
@@ -123,7 +127,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "113",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제113조"
   },
   {
     "source_id": "C114",
@@ -172,7 +178,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "114",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제114조"
   },
   {
     "source_id": "C118",
@@ -207,7 +215,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "118",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제118조"
   },
   {
     "source_id": "C186",
@@ -236,7 +246,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "186",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제186조"
   },
   {
     "source_id": "C187",
@@ -265,7 +277,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "187",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제187조"
   },
   {
     "source_id": "C265",
@@ -294,7 +308,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "265",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제265조"
   },
   {
     "source_id": "C357",
@@ -331,7 +347,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "357",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제357조"
   },
   {
     "source_id": "C390",
@@ -381,7 +399,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제390조"
   },
   {
     "source_id": "C393",
@@ -427,7 +447,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제393조"
   },
   {
     "source_id": "C470",
@@ -456,7 +478,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "470",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제470조"
   },
   {
     "source_id": "C536",
@@ -497,7 +521,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "536",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제536조"
   },
   {
     "source_id": "C543",
@@ -541,7 +567,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제543조"
   },
   {
     "source_id": "C548",
@@ -581,7 +609,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제548조"
   },
   {
     "source_id": "C615",
@@ -625,7 +655,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제615조"
   },
   {
     "source_id": "C623",
@@ -662,7 +694,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "623",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제623조"
   },
   {
     "source_id": "C626",
@@ -710,7 +744,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제626조"
   },
   {
     "source_id": "C627",
@@ -739,7 +775,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "627",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제627조"
   },
   {
     "source_id": "C629",
@@ -770,7 +808,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "629",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제629조"
   },
   {
     "source_id": "C632",
@@ -799,7 +839,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "632",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제632조"
   },
   {
     "source_id": "C634",
@@ -834,7 +876,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "634",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제634조"
   },
   {
     "source_id": "C636",
@@ -867,7 +911,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "636",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제636조"
   },
   {
     "source_id": "C640",
@@ -896,7 +942,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "640",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제640조"
   },
   {
     "source_id": "C654",
@@ -940,7 +988,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제654조"
   },
   {
     "source_id": "H2",
@@ -971,7 +1021,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "2",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제2조"
   },
   {
     "source_id": "H3",
@@ -1034,7 +1086,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "3",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제3조"
   },
   {
     "source_id": "H3_2",
@@ -1083,7 +1137,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "3의2",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제3조의2"
   },
   {
     "source_id": "H3_3",
@@ -1138,7 +1194,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "3의3",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제3조의3"
   },
   {
     "source_id": "H3_6",
@@ -1181,7 +1239,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "3의6",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제3조의6"
   },
   {
     "source_id": "H3_7",
@@ -1216,7 +1276,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "3의7",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제3조의7"
   },
   {
     "source_id": "H4",
@@ -1249,7 +1311,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "4",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제4조"
   },
   {
     "source_id": "H6",
@@ -1284,7 +1348,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "6",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제6조"
   },
   {
     "source_id": "H6_2",
@@ -1321,7 +1387,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "6의2",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제6조의2"
   },
   {
     "source_id": "H6_3",
@@ -1368,7 +1436,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "6의3",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제6조의3"
   },
   {
     "source_id": "H7",
@@ -1401,7 +1471,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "7",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제7조"
   },
   {
     "source_id": "H10",
@@ -1430,7 +1502,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "10",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주택임대차보호법",
+    "article_anchor_from_source": "주택임대차보호법-제10조"
   },
   {
     "source_id": "M2",
@@ -1463,7 +1537,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "2",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "상가건물임대차보호법",
+    "article_anchor_from_source": "상가건물임대차보호법-제2조"
   },
   {
     "source_id": "M3",
@@ -1492,7 +1568,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "3",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "상가건물임대차보호법",
+    "article_anchor_from_source": "상가건물임대차보호법-제3조"
   },
   {
     "source_id": "M6",
@@ -1521,7 +1599,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "6",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "상가건물임대차보호법",
+    "article_anchor_from_source": "상가건물임대차보호법-제6조"
   },
   {
     "source_id": "M9",
@@ -1550,7 +1630,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "9",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "상가건물임대차보호법",
+    "article_anchor_from_source": "상가건물임대차보호법-제9조"
   },
   {
     "source_id": "M10",
@@ -1579,7 +1661,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "10",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "상가건물임대차보호법",
+    "article_anchor_from_source": "상가건물임대차보호법-제10조"
   },
   {
     "source_id": "M11",
@@ -1608,7 +1692,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "11",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "상가건물임대차보호법",
+    "article_anchor_from_source": "상가건물임대차보호법-제11조"
   },
   {
     "source_id": "M10_2",
@@ -1637,7 +1723,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "10",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "상가건물임대차보호법",
+    "article_anchor_from_source": "상가건물임대차보호법-제10조의2"
   },
   {
     "source_id": "M_ENF",
@@ -1668,7 +1756,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "2",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "상가건물임대차보호법시행령",
+    "article_anchor_from_source": "상가건물임대차보호법시행령-제2조"
   },
   {
     "source_id": "RR16",
@@ -1709,7 +1799,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "16",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "주민등록법",
+    "article_anchor_from_source": "주민등록법-제16조"
   },
   {
     "source_id": "TAX109",
@@ -1748,7 +1840,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "109",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "국세징수법",
+    "article_anchor_from_source": "국세징수법-제109조"
   },
   {
     "source_id": "TAX97",
@@ -1785,7 +1879,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "97",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "국세징수법시행령",
+    "article_anchor_from_source": "국세징수법시행령-제97조"
   },
   {
     "source_id": "LT6",
@@ -1824,7 +1920,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "6",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "지방세징수법",
+    "article_anchor_from_source": "지방세징수법-제6조"
   },
   {
     "source_id": "LT8",
@@ -1861,7 +1959,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "8",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "지방세징수법시행령",
+    "article_anchor_from_source": "지방세징수법시행령-제8조"
   },
   {
     "source_id": "REPORT62",
@@ -1898,7 +1998,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "6의2",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "부동산거래신고등에관한법률",
+    "article_anchor_from_source": "부동산거래신고등에관한법률-제6조의2"
   },
   {
     "source_id": "REPORT_RULE",
@@ -1931,7 +2033,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "6의2",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "부동산거래신고등에관한법률시행규칙",
+    "article_anchor_from_source": "부동산거래신고등에관한법률시행규칙-제6조의2"
   },
   {
     "source_id": "REPORT65",
@@ -1998,7 +2102,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "부동산거래신고등에관한법률",
+    "article_anchor_from_source": "부동산거래신고등에관한법률-제6조의5"
   },
   {
     "source_id": "REPORT_ENF",
@@ -2031,7 +2137,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "4",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "부동산거래신고등에관한법률시행령",
+    "article_anchor_from_source": "부동산거래신고등에관한법률시행령-제4조의3"
   },
   {
     "source_id": "REPORT2021",
@@ -2122,7 +2230,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "25",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "공인중개사법",
+    "article_anchor_from_source": "공인중개사법-제25조"
   },
   {
     "source_id": "BROKER32",
@@ -2151,7 +2261,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "32",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "공인중개사법",
+    "article_anchor_from_source": "공인중개사법-제32조"
   },
   {
     "source_id": "BROKER21",
@@ -2201,7 +2313,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "공인중개사법시행령",
+    "article_anchor_from_source": "공인중개사법시행령-제21조"
   },
   {
     "source_id": "TRUST31",
@@ -2230,7 +2344,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "31",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "신탁법",
+    "article_anchor_from_source": "신탁법-제31조"
   },
   {
     "source_id": "REG88",
@@ -2259,7 +2375,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "88",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "부동산등기법",
+    "article_anchor_from_source": "부동산등기법-제88조"
   },
   {
     "source_id": "REG91",
@@ -2288,7 +2406,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "91",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "부동산등기법",
+    "article_anchor_from_source": "부동산등기법-제91조"
   },
   {
     "source_id": "COM389",
@@ -2338,7 +2458,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "상법",
+    "article_anchor_from_source": "상법-제389조"
   },
   {
     "source_id": "VAT8",
@@ -2367,7 +2489,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "8",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "부가가치세법",
+    "article_anchor_from_source": "부가가치세법-제8조"
   },
   {
     "source_id": "PRIVATE5",
@@ -2417,7 +2541,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민간임대주택에관한특별법",
+    "article_anchor_from_source": "민간임대주택에관한특별법-제5조"
   },
   {
     "source_id": "PRIVATE6",
@@ -2474,7 +2600,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민간임대주택에관한특별법",
+    "article_anchor_from_source": "민간임대주택에관한특별법-제6조"
   },
   {
     "source_id": "PRIVATE44",
@@ -2541,7 +2669,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민간임대주택에관한특별법",
+    "article_anchor_from_source": "민간임대주택에관한특별법-제44조"
   },
   {
     "source_id": "PRIVATE45",
@@ -2601,7 +2731,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민간임대주택에관한특별법",
+    "article_anchor_from_source": "민간임대주택에관한특별법-제45조"
   },
   {
     "source_id": "PRIVATE46",
@@ -2658,7 +2790,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민간임대주택에관한특별법",
+    "article_anchor_from_source": "민간임대주택에관한특별법-제46조"
   },
   {
     "source_id": "PRIVATE47",
@@ -2718,7 +2852,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민간임대주택에관한특별법",
+    "article_anchor_from_source": "민간임대주택에관한특별법-제47조"
   },
   {
     "source_id": "PRIVATE_ENF34",
@@ -2775,7 +2911,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민간임대주택에관한특별법시행령",
+    "article_anchor_from_source": "민간임대주택에관한특별법시행령-제34조의2"
   },
   {
     "source_id": "PRIVATE_ENF35",
@@ -2825,7 +2963,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민간임대주택에관한특별법시행령",
+    "article_anchor_from_source": "민간임대주택에관한특별법시행령-제35조"
   },
   {
     "source_id": "PUBLIC492",
@@ -2856,7 +2996,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "49",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "공공주택특별법",
+    "article_anchor_from_source": "공공주택특별법-제49조의2"
   },
   {
     "source_id": "PUBLIC493",
@@ -2885,7 +3027,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "49",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "공공주택특별법",
+    "article_anchor_from_source": "공공주택특별법-제49조의3"
   },
   {
     "source_id": "PUBLIC47",
@@ -2942,7 +3086,9 @@
       }
     ],
     "effective_status": "partially_resolved_by_claim",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "공공주택특별법시행령",
+    "article_anchor_from_source": "공공주택특별법시행령-제47조"
   },
   {
     "source_id": "PROC462",
@@ -3007,7 +3153,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민사소송법",
+    "article_anchor_from_source": "민사소송법-제462조"
   },
   {
     "source_id": "PROC194",
@@ -3057,7 +3205,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민사소송법",
+    "article_anchor_from_source": "민사소송법-제194조"
   },
   {
     "source_id": "EX83",
@@ -3088,7 +3238,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "83",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민사집행법",
+    "article_anchor_from_source": "민사집행법-제83조"
   },
   {
     "source_id": "EX56",
@@ -3117,7 +3269,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "56",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민사집행법",
+    "article_anchor_from_source": "민사집행법-제56조"
   },
   {
     "source_id": "CR347",
@@ -3148,7 +3302,9 @@
     "item_link_difference": [],
     "original_article_number_from_source": "347",
     "effective_status": "reviewer_reported_confirmed",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "형법",
+    "article_anchor_from_source": "형법-제347조"
   },
   {
     "source_id": "CASE_REPAIR",
@@ -3910,7 +4066,9 @@
       }
     ],
     "effective_status": "reviewer_reported_confirmed_for_supplement_claims",
-    "independently_reverified_this_run": false
+    "independently_reverified_this_run": false,
+    "law_name_normalized": "민법",
+    "article_anchor_from_source": "민법-제147조"
   },
   {
     "source_id": "PRIVATE_RULE18",

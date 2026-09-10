@@ -21,6 +21,10 @@ CATEGORIES = (
     "고정 필수 법령 목표 없음", "시점별 근거 별도 확인",
 )
 REQUIRED_FILES = {
+    "raw/01_최종정답_근거통합본.md", "raw/02_리뷰1대비_변경표.md",
+    "raw/03_미확인_판단보류목록.md", "raw/04_실제검색_원문확인기록.md",
+    "raw/05_리뷰2_최소보완_명제별근거표.md", "raw/06_최소보완_검색확인기록.md",
+    "raw/검토진행.md",
     "questions.json", "requirements.json", "source-registry.json",
     "supplement-claims.json", "changes-v1-v2.json", "diagnostic-plan.json",
     "reference-run.json", "expected/summary.json", "expected/article-diagnostics.json",
@@ -53,6 +57,15 @@ def validate_data(questions, plan, reference, sources):
     plans = keyed(plan, "qid", "plan IDs")
     require(set(qs) == set(plans) == expected_ids, "Expected exactly DEV-001..100")
     src = keyed(sources, "source_id", "source IDs")
+    for source in sources:
+        number = source.get("article_number_from_source")
+        if source["kind"] == "law" and number:
+            law = source.get("law_name_normalized", "")
+            require(bool(law) and law == "".join(law.split()), "Invalid normalized law name")
+            parts = number.split("의")
+            article = "제" + parts[0] + "조" + ("의" + parts[1] if len(parts) > 1 else "")
+            require(source.get("article_anchor_from_source") == law + "-" + article,
+                    "Source law/article metadata mismatch")
     inventory = keyed(reference["inventory"], "chunk_id", "inventory chunk IDs")
     require(len(inventory) == 140, "Reference run must have 140 law articles")
     require(len({r["article_anchor"] for r in inventory.values()}) == 140,
@@ -76,6 +89,8 @@ def validate_data(questions, plan, reference, sources):
             article = match[2] + ("의" + match[3] if match[3] else "")
             require(article == src[sid]["article_number_from_source"],
                     f"Wrong branch article for {sid}")
+            require(target["article_anchor"] == src[sid].get("article_anchor_from_source"),
+                    f"Source/target law article mismatch for {sid}")
     seen = set()
     for row in reference["results"]:
         pair = (row["qid"], row["mode"])

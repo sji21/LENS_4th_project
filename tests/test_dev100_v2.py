@@ -1,5 +1,6 @@
 """Scope and data-integrity regressions for the offline DEV v2 diagnostic."""
 import copy
+import json
 import shutil
 
 import pytest
@@ -30,6 +31,7 @@ def test_public_bundle_replays_all_expected_outputs():
     ("wrong_query", "Query hash mismatch"),
     ("changed_body", "Returned body hash mismatch"),
     ("wrong_branch", "Wrong branch article"),
+    ("wrong_law", "Source/target law article mismatch"),
     ("invalid_rank", "Invalid ranks"),
     ("unknown_source", "Unknown primary source"),
 ])
@@ -48,6 +50,10 @@ def test_rejects_corrupt_or_misaligned_reference_data(inputs, mutation, error):
     elif mutation == "wrong_branch":
         target = next(p for p in plan if p["qid"] == "DEV-091")["law_targets"][0]
         target["article_anchor"] = "공공주택특별법-제49조"
+    elif mutation == "wrong_law":
+        target = next(p for p in plan if p["qid"] == "DEV-001")["law_targets"][0]
+        assert target["source_id"] == "C114"
+        target["article_anchor"] = "형법-제114조"
     elif mutation == "invalid_rank":
         reference["results"][0]["laws"][0]["rank"] = 2
     elif mutation == "unknown_source":
@@ -62,6 +68,24 @@ def test_tampered_file_rejected_before_replay(tmp_path):
     with (dataset / "questions.json").open("a", encoding="utf-8") as f:
         f.write(" ")
     with pytest.raises(ValueError, match="hash mismatch"):
+        load_dataset(dataset)
+
+
+@pytest.mark.parametrize("name", [
+    "01_최종정답_근거통합본.md", "02_리뷰1대비_변경표.md",
+    "03_미확인_판단보류목록.md", "04_실제검색_원문확인기록.md",
+    "05_리뷰2_최소보완_명제별근거표.md", "06_최소보완_검색확인기록.md",
+    "검토진행.md",
+])
+def test_missing_raw_file_and_manifest_entry_rejected(tmp_path, name):
+    dataset = tmp_path / "dataset"
+    shutil.copytree(DEFAULT_DATASET, dataset)
+    relative = "raw/" + name
+    (dataset / relative).unlink()
+    manifest = read_json(dataset / "manifest.json")
+    del manifest["files"][relative]
+    (dataset / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+    with pytest.raises(ValueError, match="Manifest omits required files"):
         load_dataset(dataset)
 
 
