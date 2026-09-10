@@ -1,0 +1,48 @@
+{
+  "schema": "civil-review2-bundle-v1",
+  "received_on": "2026-09-10",
+  "transformations": [
+    "UTF-8 LF normalization",
+    "Reviewer machine absolute paths replaced with portable relative paths; no legal content edits"
+  ],
+  "files": [
+    {
+      "path": "review/00_검토결과_안내.md",
+      "received_sha256": "a1dc1d05d67eb95446a3d9b71b994a3fbfb335dad78b1c9f1b12356b8c542f4b",
+      "stored_sha256": "e5b17a42b169339a9d67b71d32fdf5f4863d43eed3605ad0ca4b7f04ac0c2075"
+    },
+    {
+      "path": "review/01_최종정답_근거통합본.md",
+      "received_sha256": "ae54f7ef11bf2328cef0f4ac92217bad1e384bd2430e5e6cc2fe4641c4e779ce",
+      "stored_sha256": "ae54f7ef11bf2328cef0f4ac92217bad1e384bd2430e5e6cc2fe4641c4e779ce"
+    },
+    {
+      "path": "review/02_리뷰1대비_변경표.md",
+      "received_sha256": "241712bcab6df62c23b8b241b7a65e8e9bde71b88843b411469bfc704236ec3d",
+      "stored_sha256": "241712bcab6df62c23b8b241b7a65e8e9bde71b88843b411469bfc704236ec3d"
+    },
+    {
+      "path": "review/03_미확인_판단보류목록.md",
+      "received_sha256": "08a0359495304b990137e07f3c7d8a3c5e6239916e92cef5f1d0410fc46698e3",
+      "stored_sha256": "08a0359495304b990137e07f3c7d8a3c5e6239916e92cef5f1d0410fc46698e3"
+    },
+    {
+      "path": "review/04_실제검색_원문확인기록.md",
+      "received_sha256": "d44bdc6dfea321399bd89baea092a35812299126f0d8cadab6053302d0d86822",
+      "stored_sha256": "d44bdc6dfea321399bd89baea092a35812299126f0d8cadab6053302d0d86822"
+    },
+    {
+      "path": "review/civil-selection-review2.json",
+      "received_sha256": "f7311473ccb56fcfb3746b298866e1018d3bfdf69ce6bda7ac1106c0f422cfee",
+      "stored_sha256": "320b85ddeaec714867d22fd1fb4340864b3f568f7d19395cbd71bfbf4e0e7664"
+    },
+    {
+      "path": "retrieval-plan.json",
+      "stored_sha256": "0d4da52e5636d7e26b3a01d841a15bf474eaf0214974ea108a306b44317408ca"
+    },
+    {
+      "path": "retrieval-targets.md",
+      "stored_sha256": "55be7749a18445c35e60e3db48ac6b20139fc1ed797bd260da48c965dd135a00"
+    }
+  ]
+}

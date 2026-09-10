@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-014 records PATCH-012 cancellation without merging its product changes or experiments, and transfers only 35 pending civil-law review drafts plus a concise handoff. Legal criteria remain unconfirmed; current main behavior is unchanged. (commit: b6a72a6)
+- PATCH-014 preserves the unmerged PATCH-012 cancellation and original 35-item draft, incorporates the revised second legal review, and defines article retrieval targets and denominators (29 primary, 1 scope-provisional, 5 diagnostic-only). Conditional evidence and answer quality remain separate; measurements are deferred to PATCH-015. Source/shared hashes document path-only and newline normalization. Product code and data are unchanged. (commit: b6a72a6, pending)
 
 - PATCH-013 switches the primary web runtime to Django 5.2 and HTML/CSS/JavaScript, retaining existing RAG and legal validation. Adds isolated chat sessions, document upload/removal, source rendering and an extensible user model with a separate web database. Signup screens remain future work. See `docs/django-web.md`. (commit: `0eaf594`)
 

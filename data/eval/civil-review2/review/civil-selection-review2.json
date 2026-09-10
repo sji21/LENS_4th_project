@@ -1,0 +1,4090 @@
+{
+  "metadata": {
+    "title": "PATCH-014 신규 민법 35문항 리뷰2",
+    "schema": "civil-review2-propositions-v1",
+    "evaluation_date": "2026-09-10",
+    "checked_on": "2026-09-10",
+    "item_count": 35,
+    "reviewed_item_count": 35,
+    "unreviewed_item_ids": [],
+    "purpose": "공개 개발용 법적 답변·근거 명제 검토. 독립 holdout 아님.",
+    "source_schema": "civil-selection-review-draft-v1",
+    "independent": false,
+    "original_facts_preserved": true,
+    "models_or_retrievers_executed": false,
+    "operational_ranking_gold_finalized": false,
+    "scope_source": "../../dev100/gold-review.md",
+    "scope_section_only": true,
+    "scope_section": "## 합의된 서비스 범위\n\n**대상:** 대한민국 주택 전세·월세 임차인. 계약 전부터 거주·계약 종료·보증금 반환까지 권리, 의무, 절차와 확인사항을 근거에 따라 안내.\n\n**핵심 11개 영역:** 계약 상대방·대리인 권한 / 등기·근저당·신탁 / 임대인 체납 / 계약서·특약·중개사 / 신고·전입·확정일자·대항력 / 갱신·기간·증액 / 수선·비용 / 전대·연체·중도종료 / 보증금 반환·임차권등기 / 분쟁·회수·피해지원 / 반환보증.\n\n**별도 하위 범위:** 상가, 공공임대, 등록민간임대, 과거 시점의 계약·사건.\n\n**제공하지 않는 결론·기능:** 최종 안전 판정, 계약·투자 추천, 시세 산정, 소송 승패·보증금 회수 가능성 예측, 개인의 비공개 신용·체납정보 직접 조회.\n\n",
+    "scope_file_sha256": "4cb59b9057078cc656376c9d1b06b6e722a6d158caeb931ea8056ddebce7a47e",
+    "scope_confirmed_by_user": "상가는 별도 하위 범위; 주차장·기기 사용법은 경계 사례이며 지원 자동 확정 금지",
+    "event_date_policy": "Unspecified event dates must not be invented; historical applicability needs separate review.",
+    "lawbot_status": "페이지 열람 가능·검색 실행 미수행",
+    "lawbot_executed_queries": [],
+    "input_files": [
+      {
+        "file": "civil-selection-review-draft.json",
+        "sha256": "e838df5dd7a4389a568c9a9cc5a35df6a3f2e8322c0a1705dc8e7aa4980ad73c"
+      },
+      {
+        "file": "PATCH-014_민법35문항_정답검토_2026-09-10.md",
+        "sha256": "c437beeaa2122a926d4c64d5146d00d0e4d85aeb849b80c3d564b20b73732e58"
+      },
+      {
+        "file": "patch014-civil-review-handoff.md",
+        "sha256": "83f7828462a858c81c45dd0b9d3f7d8f166824262972ff75bc42a35469567434"
+      }
+    ]
+  },
+  "original_dataset_metadata": {
+    "schema": "civil-selection-review-draft-v1",
+    "purpose": "public development review; not gold or executable scoring",
+    "created_by": "implementation_assistant",
+    "independent": false,
+    "code_and_failure_results_seen": true,
+    "legal_review_status": "pending",
+    "evaluation_date_for_review": "2026-09-10",
+    "event_date_policy": "Unspecified event dates must not be invented; historical applicability needs separate review.",
+    "existing_dev100_and_probe_labels_modified": false,
+    "roles": {
+      "direct_issue": "명시적 질문의 근거 후보. 적용 결론이나 최상위 순위를 보장하지 않는다.",
+      "conditional_issue": "조건·예외 설명용 후보. 핵심 사실 미확정을 검색 금지로 바꾸지 않는다.",
+      "not_auto_priority": "이 문맥만으로 해당 조문을 강제 우선하지 않는다. 절대 검색 금지가 아니다.",
+      "review_needed": "관계·범위·지시 대상 또는 기준의 추가 검토가 필요하다."
+    }
+  },
+  "grading_policy": "G1. 법적 명제와 검색 위치를 분리한다. 법적 필수 근거가 있다고 특정 랭킹·가중치·강제 우선 알고리즘이 자동 확정되지는 않는다. 리뷰1의 “강제 우선: 예”는 구현 가능한 의미가 정의되지 않아 그대로 점수 기준으로 사용하지 않는다. 이를 리뷰1이 반드시 1위를 뜻했다고 해석하지도 않는다. 모든 expected_final_rank와 forced_priority는 null로 둔다. not_auto_priority 및 absolute_retrieval_ban=false를 검색 금지로 바꾸지 않는다.\n\nG2. 필수는 현재 요청을 해결할 최소 명제의 충족 기준이다. 필수 그룹들을 모두 충족하되, 출처의 파일 수·검색 문서 수를 고정하지 않는다. 예: 033은 수리비와 감액이라는 두 명제가 AND이며 한 원문 문서가 둘을 충족할 수 있다. 034는 제626조 양 항이 필요하다. 하나의 청구 근거를 전혀 다른 청구 근거와 전역 OR로 바꾸지 않는다.\n\nG3. 조건부는 명시된 사실 또는 해당 설명 분기가 활성화될 때만 평가한다. 보조는 없어도 핵심 정답을 통과시킬 수 있는 보강 자료다. 대체는 동일한 명제를 실제로 지지하는 공식 원문만 허용한다. 특정 사건번호 문자열 누락만으로 정상적인 답을 오답 처리하지 않는다. 목록 밖 근거도 사실·요건·시행판을 검증해 동등하면 수용한다. 검증된 대체 근거가 없는 곳에 임의 OR를 생성하지 않는다.\n\nG4. 사실 부족과 답변 불가능은 다르다. 현재 정보의 조건 설명·관련 추가 질문은 확정 채점할 수 있다. 제공된 사실을 반복 요구하거나 가정을 사실화한 답은 감점하되, 필요한 증빙의 내용 확인은 허용한다. 아래 최종 답변은 바로 반영 가능한 예시이며 모든 문장·선택적 분기를 암기 일치 대상으로 삼지 않는다. 특히 표현 개선의 세부 생략을 법적 오류와 동일하게 처리하지 않는다. 부분 성공은 명제별로 기록하고 완전 성공과 혼동하지 않는다.\n\nG5. 본 기준은 질문+상황(이전 발화 포함)을 함께 입력하는 평가다. 질문 단독 평가에는 빠진 상황을 알고 있다고 요구하지 않는다. 법률 답변의 질, 필수 명제 근거 확보, 지원 범위 분류, 랭킹 성능은 각각 별도 지표다. 포커스 조문 본문을 얻어야만 모든 문항이 기본 성공이라는 리뷰1의 공통 정의는 교체한다. 추가 질문·비법률 요청 문항은 법률 원문 미검색이 정상일 수 있다. 수치 점수·가중치·분모의 운영 확정은 별도 평가 프로토콜이 필요하며 이번에 모델이나 검색 시스템을 실행해 조정하지 않았다.\n\n서비스 지원이 미확정인 003·024의 기기 확인 질문은 비법률 요청을 제대로 읽은 답변 예시다. 이를 해당 기능 지원의 확정으로 보지 않는다. 향후 명시된 지원 정책에 따라 적절히 범위를 안내하는 답도 허용하되, 단순히 법률과 무관하다는 이유를 법적 금지로 설명해서는 안 된다.",
+  "sources": {
+    "C623": {
+      "name": "민법 제623조",
+      "section": "전체",
+      "proposition": "인도 및 계약 존속 중 사용·수익에 필요한 상태 유지",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0623&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C626_1": {
+      "name": "민법 제626조",
+      "section": "제1항",
+      "proposition": "임차인이 임차물 보존에 관한 필요비를 지출하면 임대인에게 상환청구",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0626&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C626_2": {
+      "name": "민법 제626조",
+      "section": "제2항 전단·후단",
+      "proposition": "유익비는 종료 시 가액 증가 현존 요건, 지출액 또는 증가액 상환; 임대인 청구로 법원 상환기간 허여 가능",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0626&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C627_1": {
+      "name": "민법 제627조",
+      "section": "제1항",
+      "proposition": "임차인 과실 없이 일부를 사용·수익할 수 없으면 그 부분 비율의 감액청구",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0627&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C627_2": {
+      "name": "민법 제627조",
+      "section": "제2항 및 제1항 연결",
+      "proposition": "제1항의 경우 잔존부분으로 임차 목적 달성 불가능하면 임차인 해지권",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0627&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C629_1": {
+      "name": "민법 제629조",
+      "section": "제1항",
+      "proposition": "임차권 양도·전대는 임대인 동의 필요",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0629&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C629_2": {
+      "name": "민법 제629조",
+      "section": "제2항 및 제1항 연결",
+      "proposition": "제1항 위반 시 임대인 해지권; 별도 판례 예외와 구별",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0629&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C632": {
+      "name": "민법 제632조",
+      "section": "전체",
+      "proposition": "건물 임차인이 그 건물 소부분을 타인에게 사용하게 하면 제629~631조 적용 제외",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0632&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C634": {
+      "name": "민법 제634조",
+      "section": "본문·단서",
+      "proposition": "수리 필요 또는 제3자 권리 주장 시 지체 없는 통지; 임대인 기존 인지 예외. 사진이라는 형식 지정 없음",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0634&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C640": {
+      "name": "민법 제640조",
+      "section": "전체",
+      "proposition": "건물 기타 공작물 차임연체액 2기 도달 시 임대인 해지권",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0640&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C652": {
+      "name": "민법 제652조",
+      "section": "전체, 특히 제627·640조 열거",
+      "proposition": "열거 조문에 위반하며 임차인·전차인에게 불리한 약정 무효. 제623·626·632조는 열거되지 않음",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0652&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C653": {
+      "name": "민법 제653조",
+      "section": "전체",
+      "proposition": "명백한 일시사용 임대차·전대차에 제640·652조 등 열거 규정 미적용. 제627조 자체는 열거 안 됨",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0653&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C105": {
+      "name": "민법 제105조",
+      "section": "전체",
+      "proposition": "임의규정과 다른 당사자 의사에 따름; 강행규정까지 배제하는 규정 아님",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0105&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C380": {
+      "name": "민법 제380조",
+      "section": "전체",
+      "proposition": "선택채권의 선택권은 다른 법률·약정 없으면 채무자에게 귀속",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0380&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C618": {
+      "name": "민법 제618조",
+      "section": "전체",
+      "proposition": "목적물 사용·수익과 차임 지급의 약정인 임대차",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0618&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C390": {
+      "name": "민법 제390조",
+      "section": "본문·단서",
+      "proposition": "채무불이행 손해배상 및 무귀책 이행불능 단서",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0390&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C536": {
+      "name": "민법 제536조",
+      "section": "제1항(제2항도 원문 확인)",
+      "proposition": "쌍무계약에서 상대방 이행제공 전 자기 이행 거절, 상대방 채무 변제기 예외",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0536&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C543": {
+      "name": "민법 제543조",
+      "section": "제1항(제2항도 원문 확인)",
+      "proposition": "해제·해지권 행사에는 상대방에 대한 의사표시 필요",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0543&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C544": {
+      "name": "민법 제544조",
+      "section": "본문·단서",
+      "proposition": "이행지체 해제는 상당 기간 최고와 불이행; 미리 이행거절 의사 표시 시 최고 예외",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0544&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C548": {
+      "name": "민법 제548조",
+      "section": "제1항·제2항",
+      "proposition": "해제의 원상회복, 제3자 권리 보호, 반환 금전의 받은 날부터 이자",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0548&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C550": {
+      "name": "민법 제550조",
+      "section": "전체",
+      "proposition": "해지의 효과는 장래를 향함",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0550&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C565": {
+      "name": "민법 제565조",
+      "section": "제1항(제2항도 원문 확인)",
+      "proposition": "다른 약정 없고 어느 당사자도 이행 착수 전이면 계약금 교부자 포기·수령자 배액 상환에 의한 해제",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0565&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C567": {
+      "name": "민법 제567조",
+      "section": "본문·단서",
+      "proposition": "매매 외 유상계약에 준용하되 계약 성질이 허용하지 않으면 제외",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0567&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C109": {
+      "name": "민법 제109조",
+      "section": "제1항·제2항",
+      "proposition": "중요부분 착오 취소, 중과실 및 선의 제3자 제한",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0109&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C110": {
+      "name": "민법 제110조",
+      "section": "제1항~제3항",
+      "proposition": "사기·강박 취소, 제3자 사기 시 상대방 인지 요건 및 선의 제3자 보호",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0110&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C141": {
+      "name": "민법 제141조",
+      "section": "본문·단서",
+      "proposition": "취소된 행위의 소급 무효, 제한능력자의 현존이익 한도",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0141&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C741": {
+      "name": "민법 제741조",
+      "section": "전체",
+      "proposition": "법률상 원인 없는 이익으로 타인에게 손해를 준 경우 반환",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0741&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C630": {
+      "name": "민법 제630조",
+      "section": "제1항·제2항",
+      "proposition": "동의 있는 전대에서 전차인의 직접 의무 및 원임차인에 대한 권리 유지",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0630&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C631": {
+      "name": "민법 제631조",
+      "section": "전체",
+      "proposition": "동의 있는 전대의 전차인 권리는 임대인·임차인 합의 종료로 소멸하지 않음",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0631&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C633": {
+      "name": "민법 제633조",
+      "section": "전체",
+      "proposition": "다른 약정 없을 때 건물 차임 매월 말 지급 등",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0633&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C635": {
+      "name": "민법 제635조",
+      "section": "제1항·제2항제1호(제2호도 확인)",
+      "proposition": "기간 약정 없는 일반 임대차 해지통고; 토지·건물은 임차인 통고 1월. 주택 특별법 우선 확인",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0635&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "C636": {
+      "name": "민법 제636조",
+      "section": "전체",
+      "proposition": "기간을 약정해도 중도해지권을 유보하면 제635조 준용",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0636&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+      "version": "2026-03-17 시행, 법률 제21454호(2026-03-17 공포). 개정문 부칙 제1조 확인; 이번 개정은 상속 관련으로 아래 조문 변경 없음.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "H2": {
+      "name": "주택임대차보호법 제2조",
+      "section": "전체",
+      "proposition": "주거용 건물 전부·일부 임대차 적용",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0002&lsiSeq=276291&urlMode=lsScJoRltInfoR",
+      "version": "2026-01-02 시행, 법률 제21065호(2025-10-01 공포). 개정문 부칙 제1조·제7조제121항 확인: 제8조의2 정부부처 명칭 변경.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "H4": {
+      "name": "주택임대차보호법 제4조",
+      "section": "제1항·제2항",
+      "proposition": "기간 미정 또는 2년 미만 주택 임대차의 2년 간주 및 임차인 보호",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0004&lsiSeq=276291&urlMode=lsScJoRltInfoR",
+      "version": "2026-01-02 시행, 법률 제21065호(2025-10-01 공포). 개정문 부칙 제1조·제7조제121항 확인: 제8조의2 정부부처 명칭 변경.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "H6": {
+      "name": "주택임대차보호법 제6조",
+      "section": "제1항~제3항",
+      "proposition": "묵시 갱신 요건과 2기 연체·현저한 의무위반 제외",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR",
+      "version": "2026-01-02 시행, 법률 제21065호(2025-10-01 공포). 개정문 부칙 제1조·제7조제121항 확인: 제8조의2 정부부처 명칭 변경.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "H6_2": {
+      "name": "주택임대차보호법 제6조의2",
+      "section": "제1항·제2항",
+      "proposition": "묵시 갱신 임차인 해지 통지 및 임대인 수령 후 3개월",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR",
+      "version": "2026-01-02 시행, 법률 제21065호(2025-10-01 공포). 개정문 부칙 제1조·제7조제121항 확인: 제8조의2 정부부처 명칭 변경.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "H6_3": {
+      "name": "주택임대차보호법 제6조의3",
+      "section": "제1항제1·4호, 제4항 중심",
+      "proposition": "갱신요구권 행사에 따른 갱신 해지는 제6조의2 준용. 연체 이력·무단전대의 갱신거절 사유는 현재 해지와 구분",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR",
+      "version": "2026-01-02 시행, 법률 제21065호(2025-10-01 공포). 개정문 부칙 제1조·제7조제121항 확인: 제8조의2 정부부처 명칭 변경.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "H11": {
+      "name": "주택임대차보호법 제11조",
+      "section": "전체",
+      "proposition": "명백한 일시사용에 주택임대차보호법 미적용",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0011&lsiSeq=276291&urlMode=lsScJoRltInfoR",
+      "version": "2026-01-02 시행, 법률 제21065호(2025-10-01 공포). 개정문 부칙 제1조·제7조제121항 확인: 제8조의2 정부부처 명칭 변경.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "S2": {
+      "name": "상가건물 임대차보호법 제2조",
+      "section": "제1항·제3항",
+      "proposition": "사업자등록 대상 건물 등 적용범위; 제10조의8은 보증금 상한 초과 임대차에도 적용",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0002&lsiSeq=279651&urlMode=lsScJoRltInfoR",
+      "version": "2026-05-12 시행, 법률 제21083호(2025-11-11 공포). 개정문·부칙 제1·2조 확인: 관리비 내역 신설이며 제2조·제10조의8 변경 아님.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "S10_8": {
+      "name": "상가건물 임대차보호법 제10조의8",
+      "section": "전체",
+      "proposition": "차임연체액 3기 도달 시 임대인 해지권",
+      "url": "https://law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1033113799",
+      "version": "2026-05-12 시행, 법률 제21083호(2025-11-11 공포). 개정문·부칙 제1·2조 확인: 관리비 내역 신설이며 제2조·제10조의8 변경 아님.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "S15": {
+      "name": "상가건물 임대차보호법 제15조",
+      "section": "전체",
+      "proposition": "임차인 불리한 위반 약정 효력 없음",
+      "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0015&lsiSeq=279651&urlMode=lsScJoRltInfoR",
+      "version": "2026-05-12 시행, 법률 제21083호(2025-11-11 공포). 개정문·부칙 제1·2조 확인: 관리비 내역 신설이며 제2조·제10조의8 변경 아님.",
+      "checked_on": "2026-09-10",
+      "verification_status": "원문·해당 구간 확인",
+      "limitations": "개별 사건의 사실·과거 적용은 별도 확인"
+    },
+    "S16": {
+      "name": "상가건물 임대차보호법 제16조",
+      "section": "2009년 전부개정문 제16조 및 이후 개정문",
+      "proposition": "명백한 일시사용 임대차 적용 제외",
+      "url": "https://www.law.go.kr/LSW/lsRvsDocListP.do?chrClsCd=010202&lsId=009276&lsRvsGubun=all",
+      "version": "2026-05-12 시행, 법률 제21083호(2025-11-11 공포). 개정문·부칙 제1·2조 확인: 관리비 내역 신설이며 제2조·제10조의8 변경 아님.",
+      "checked_on": "2026-09-10",
+      "verification_status": "2009년 원문·이후 개정문 확인; 2026 단독 조문 URL 열람 실패",
+      "limitations": "일시사용 예외의 구체 적용은 계약 목적·사실 확인. 단독 화면 실패는 규정 부존재 아님"
+    },
+    "P_REPAIR": {
+      "name": "대법원 94다34692·94다34708",
+      "section": "1994-12-09 선고, 판결요지 가·나 및 이유 1·2",
+      "proposition": "사소한 수선과 사용수익 불가능 하자의 구분; 범위 불명확한 수선특약은 대규모 수선까지 당연히 포함하지 않음",
+      "url": "https://www.law.go.kr/LSW/precInfoP.do?evtNo=94%EB%8B%A434692,+94%EB%8B%A434708",
+      "version": "1994-12-09 선고",
+      "checked_on": "2026-09-10",
+      "verification_status": "판결 원문·사실관계 확인",
+      "limitations": "1991년 여관의 노후 배관·보일러 전면 교체 및 수선비 특약 사건. 모든 보일러 고장에 같은 결론을 적용하지 않음"
+    },
+    "P_COST": {
+      "name": "대법원 2016다227694",
+      "section": "2019-11-14 선고, 판결요지 [2] 및 이유 1·2",
+      "proposition": "필요비 정의와 즉시 상환; 특별한 사정 없으면 지출 필요비 한도 차임 지급거절",
+      "url": "https://www.law.go.kr/precInfoP.do?evtNo=2016%EB%8B%A4227694&mode=0",
+      "version": "2019-11-14 선고",
+      "checked_on": "2026-09-10",
+      "verification_status": "판결 원문·사실관계 확인",
+      "limitations": "2012년 영화관 임대차, 2013년 화재 후 1,500만원 보수, 2014년 해지 통지 사건. 당시 상가 2기 적용 결론을 현행 상가에 옮기지 않음"
+    },
+    "P_TRUST": {
+      "name": "대법원 92다45308",
+      "section": "1993-04-27 선고, 판결요지 나·다 및 이유 1~3",
+      "proposition": "배신적 행위로 볼 수 없는 특별한 사정이면 무단양도·전대 해지권 발생하지 않음",
+      "url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=122938",
+      "version": "1993-04-27 선고",
+      "checked_on": "2026-09-10",
+      "verification_status": "판결 원문·사실관계 확인",
+      "limitations": "부부가 함께 가구점 운영, 건물부지 임대차 및 이혼 위자료로 건물 양도한 사정. 친분이나 소부분만으로 예외 확정 안 됨"
+    },
+    "P_SMALL": {
+      "name": "서울고법 2024나2015320·2015337",
+      "section": "2024-10-16 선고, 이유 1 중 제21~22면 변경 인용 부분",
+      "proposition": "제632조는 원임대차 종료 후 전차인에게 계속 점유권을 주는 조항이 아님",
+      "url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=606545",
+      "version": "2024-10-16 선고",
+      "checked_on": "2026-09-10",
+      "verification_status": "공식 원문 확인; 상고판결 별도 확인",
+      "limitations": "시설관리공단·회사·전차인 다수의 인도 사건. 면적·독립성 종합판정 기준 또는 방 하나 예외를 확정한 판례로 쓰지 않음"
+    },
+    "P_SMALL_APPEAL": {
+      "name": "대법원 2024다317332·317349",
+      "section": "2025-05-15 선고, 판시사항 [1]~[3], 주문",
+      "proposition": "상계 소급효가 과거 동시이행항변권·점유권원을 소급 소멸시키지 않음",
+      "url": "https://law.go.kr/LSW/precInfoP.do?mode=0&precSeq=606173",
+      "version": "2025-05-15 선고",
+      "checked_on": "2026-09-10",
+      "verification_status": "원심 관계·주문·판시사항 확인",
+      "limitations": "위 서울고법 판결 일부 파기자판(손해배상 기간 관련), 나머지 상고 기각. 소부분 판정기준 확립 근거로 사용하지 않음"
+    },
+    "P_ARREARS_NEW": {
+      "name": "대법원 2024다320215",
+      "section": "2026-06-24 선고, 법원도서관 공식 중요판결 요약",
+      "proposition": "상가 3기 해지권 발생과 행사·도달 전 변제의 효과를 구분해야 함",
+      "url": "https://www.scourt.go.kr/supreme/news/NewsViewAction2.work?gubun=4&searchOption=&searchWord=&seqnum=11165",
+      "version": "2026-06-24 선고",
+      "checked_on": "2026-09-10",
+      "verification_status": "공식 검색 결과 요약 확인; 판결 전문 열람 미완료",
+      "limitations": "소 제기 후 송달 전 일부 변제 사례의 공식 요약만 확보. 세부 법리의 확정 채점 및 주택 2기에 대한 일반화는 보류"
+    }
+  },
+  "items": [
+    {
+      "id": "CIV-DRAFT-001",
+      "original": {
+        "id": "CIV-DRAFT-001",
+        "scenario_family": "D623",
+        "focus_article": "민법-제623조",
+        "question": "집주인이 잔금을 받고도 열쇠를 안 줍니다. 집을 넘겨달라고 요구할 때 어떤 의무를 근거로 말하나요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "집주인",
+          "request_span": "집을 넘겨달라고",
+          "assertion": "asserted",
+          "missing_facts": [
+            "인도 약정일",
+            "잔금 외 미이행 의무"
+          ]
+        },
+        "proposed_retrieval_role": "direct_issue",
+        "proposal_reason": "수선이 아닌 인도 의무도 후보 범위에 포함한다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제623조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "direct_issue",
+        "request_and_fact_scope": "임대인이 잔금을 받았지만 열쇠를 주지 않은 사실; 임차인이 인도의무의 근거를 묻는다.",
+        "final_answer": "민법 제623조에 따라 임대인은 임차인에게 집을 인도할 의무가 있습니다. 잔금 지급은 이미 하셨으므로 약정한 인도일을 확인해 열쇠와 집의 인도를 요구할 수 있습니다. 인도일이 지났는지에 따라 이행지체 판단이 달라집니다.",
+        "additional_facts": "인도 약정일, 인도 조건으로 약정된 다른 의무의 내용만 추가 확인. 잔금 지급 여부를 다시 묻지 않음.",
+        "avoid": "잔금 지급만으로 약정일 전부터 즉시 지체라고 단정; 수선의무만 설명; 검색 1위 불일치를 법적 오답 처리.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C623"
+            ],
+            "combination": "single",
+            "proposition": "임대인 인도의무",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C390"
+            ],
+            "combination": "single",
+            "proposition": "인도지체 손해배상",
+            "activation_condition": "손해배상까지 설명할 때"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C536"
+            ],
+            "combination": "single",
+            "proposition": "동시이행 관계",
+            "activation_condition": "별도 미이행 의무를 주장할 때"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "direct_issue",
+        "review1_status": "확정",
+        "review1_content": "C623 필수·강제 우선 예·확정",
+        "change_reason": "인도의무는 유지. 법적 관련성에서 검색 순위의 강제를 도출할 근거는 없어 순위 필드는 미확정으로 분리.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 인도의무는 유지. 법적 관련성에서 검색 순위의 강제를 도출할 근거는 없어 순위 필드는 미확정으로 분리.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "임대인 인도의무"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-002",
+      "original": {
+        "id": "CIV-DRAFT-002",
+        "scenario_family": "D623",
+        "focus_article": "민법-제623조",
+        "question": "입주한 집 보일러가 고장 났어요. 집주인에게 수리를 요구하려면 무엇을 확인해야 하나요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "집주인",
+          "request_span": "수리를 요구하려면",
+          "assertion": "asserted",
+          "missing_facts": [
+            "고장 원인",
+            "특약",
+            "사용 지장"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "책임을 확정하지 않고 유지 의무와 적용 조건을 검색한다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제623조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "현재 보일러 고장은 긍정; 책임의 사전 확인 방법을 묻는 질문.",
+        "final_answer": "보일러 고장이 난 원인, 난방·온수 사용에 생긴 지장, 수리·교체 규모, 계약의 수선특약을 확인하세요. 임대인은 사용·수익에 필요한 상태를 유지할 의무가 있지만 모든 사소한 고장을 무조건 부담하는 것은 아닙니다. 수선비를 임차인이 부담한다는 특약도 범위가 불명확하면 기본 설비의 전면 교체까지 당연히 포함하지는 않습니다. 집주인이 아직 모르면 고장 내용을 알리고 수리를 요청하세요.",
+        "additional_facts": "원인·지장·진단·특약 구체 문구·임대인의 인지. 이미 고장 난 사실은 재확인 필수 아님.",
+        "avoid": "고장=임대인 전액 부담; 특약=모든 대수선 임차인 부담; 아직 지출하지 않은 돈의 상환으로 질문 변경.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C623"
+            ],
+            "combination": "single",
+            "proposition": "사용수익 상태 유지의무와 확인할 조건",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "P_REPAIR"
+            ],
+            "combination": "single",
+            "proposition": "사소한 수선·불명확한 특약의 범위",
+            "activation_condition": "그 해석까지 제시할 때"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C634"
+            ],
+            "combination": "single",
+            "proposition": "수리 필요 통지",
+            "activation_condition": "임대인이 모를 때 통지 안내"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C626_1"
+            ],
+            "combination": "single",
+            "proposition": "필요비 상환",
+            "activation_condition": "임차인이 먼저 지출한 별도 분기"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "C623+94다34692를 일괄 필수·강제 우선",
+        "change_reason": "기본 조문과 특약 해석 명제를 분리. 충분한 기본 설명에 특정 판례 미검색을 이유로 일괄 감점하지 않음.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 기본 조문과 특약 해석 명제를 분리. 충분한 기본 설명에 특정 판례 미검색을 이유로 일괄 감점하지 않음.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "사용수익 상태 유지의무와 확인할 조건"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-003",
+      "original": {
+        "id": "CIV-DRAFT-003",
+        "scenario_family": "D623",
+        "focus_article": "민법-제623조",
+        "question": "보일러는 고장 난 게 아니라 사용법을 모르겠어요. 예약 버튼은 어떻게 누르나요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "보일러",
+          "request_span": "예약 버튼은 어떻게 누르나요",
+          "assertion": "denied",
+          "missing_facts": []
+        },
+        "proposed_retrieval_role": "not_auto_priority",
+        "proposal_reason": "수선의무 쟁점이 아니라 기기 사용법 요청이다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제623조"
+      },
+      "review2": {
+        "final_decision": "정답 수정",
+        "final_retrieval_role": "not_auto_priority",
+        "request_and_fact_scope": "고장은 명시적으로 부정되고 예약 버튼 사용법만 요청한다.",
+        "final_answer": "예약 버튼의 작동 방식은 보일러와 조절기 모델에 따라 다릅니다. 제조사와 조절기 모델명 또는 버튼 표기를 알려 주시면 해당 설명서에 맞춰 안내할 수 있습니다. 현재 질문만으로 특정 버튼 순서나 예약 단위를 단정하지 않습니다.",
+        "additional_facts": "제조사·조절기 모델 또는 버튼 표기. 서비스가 법률 전용인지에 따른 안내 범위는 별도 정책 확인.",
+        "avoid": "기종을 추정해 조작 순서 생성; 고장이 부정됐는데 임대인 수선책임 확정; 법적으로 사용법 안내 금지라고 설명.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [],
+            "combination": "input_only",
+            "proposition": "기기 식별정보를 요청하거나 제조사 설명서 확인 안내",
+            "activation_condition": "항상"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "제623조 강제 검색 불필요: 기기 사용법",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "입력 해석·추가 질문 확정; 서비스 지원 여부 보류",
+        "remaining_uncertainty": "보일러 예약 기능 사용법은 법률 비쟁점. 합의 범위 절로 기기 안내 지원 여부가 확정되지 않음.",
+        "review1_role": "not_auto_priority",
+        "review1_status": "확정",
+        "review1_content": "추가 사실 없이 개념 또는 비적용 판단 가능, 제품 매뉴얼 보조",
+        "change_reason": "법률 비쟁점 판단은 맞지만 실제 사용법 답변에는 모델 식별이 필요. 적절한 추가 질문도 정답으로 인정.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "최종안에 따른 사실 유지·답변 또는 추가 질문을 정답 인정. 기존의 잘못된 분기는 통과시키지 않음. 법률 비쟁점 판단은 맞지만 실제 사용법 답변에는 모델 식별이 필요. 적절한 추가 질문도 정답으로 인정.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "경계 사례: 법적 관련성과 서비스 지원을 분리. 지원 여부는 합의 범위 절만으로 확정되지 않아 보류.",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "기기 식별정보를 요청하거나 제조사 설명서 확인 안내"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-004",
+      "original": {
+        "id": "CIV-DRAFT-004",
+        "scenario_family": "D623",
+        "focus_article": "민법-제623조",
+        "question": "아직 고장은 없는데 나중에 보일러가 고장 나면 집주인에게 어떤 조치를 요구할 수 있나요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "집주인",
+          "request_span": "어떤 조치를 요구할 수 있나요",
+          "assertion": "hypothetical",
+          "missing_facts": [
+            "가정한 고장 원인",
+            "계약 내용"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "가정 질문도 의무 안내를 요구하므로 부정 표현만으로 제외하지 않는다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제623조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "현재 고장 부정은 장래 고장에 대한 가정 질문을 부정하지 않는다.",
+        "final_answer": "나중에 보일러 고장이 사용·수익에 지장을 주면 집주인에게 필요한 수선을 요구할 수 있습니다. 실제 원인과 수리 규모, 수선특약에 따라 부담이 달라집니다. 발생하면 집주인이 모르는 고장 내용을 알리고 수리를 요청하는 것이 좋습니다. 현재 고장이나 지출이 없으므로 지금 수리비 청구권이 생겼다고 보지는 않습니다.",
+        "additional_facts": "가정 질문에는 실제 고장 사실을 먼저 제출하도록 요구하지 않음. 구체 사건이 생기면 원인·특약·지장 확인.",
+        "avoid": "고장이 없다는 이유로 제623조 관련성 배제; 장래의 모든 비용을 확정.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C623"
+            ],
+            "combination": "single",
+            "proposition": "장래 고장 시 유지·수선의무의 조건 설명",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C634"
+            ],
+            "combination": "single",
+            "proposition": "고장 발생 시 통지",
+            "activation_condition": "임대인이 모르는 경우"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "P_REPAIR"
+            ],
+            "combination": "single",
+            "proposition": "수선 규모·특약 해석",
+            "activation_condition": "구체 책임 설명 시"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C626_1"
+            ],
+            "combination": "single",
+            "proposition": "지출 후 필요비 상환",
+            "activation_condition": "추후 실제 비용 지출 시"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "장래 질문에 C623 필수·강제 우선",
+        "change_reason": "가정 질문의 관련성 유지. 검색 후보 포함 필요성과 최상위 순위를 분리.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 가정 질문의 관련성 유지. 검색 후보 포함 필요성과 최상위 순위를 분리.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "장래 고장 시 유지·수선의무의 조건 설명"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-005",
+      "original": {
+        "id": "CIV-DRAFT-005",
+        "scenario_family": "D626",
+        "focus_article": "민법-제626조",
+        "question": "누수 수리업체에 제가 38만 원을 냈습니다. 집주인에게 이 수리비를 돌려달라고 할 수 있나요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "제가",
+          "request_span": "이 수리비를 돌려달라고",
+          "assertion": "asserted",
+          "missing_facts": [
+            "수리 필요성",
+            "원인",
+            "지출 증빙"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "지출자와 반환 대상은 연결되지만 필요비 해당성은 미확정이다.",
+        "related_articles_for_review": [
+          "민법-제623조",
+          "민법-제634조"
+        ],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "임차인이 업체에 38만원을 지급한 것은 제공 사실; 필요비 해당성만 미정.",
+        "final_answer": "지급하신 누수 수리비 38만원이 집을 보존하는 데 필요한 비용이고 임대인이 부담할 비용이라면 임대인에게 상환을 청구할 수 있습니다. 필요비는 계약이 끝날 때까지 기다려야 하는 유익비와 다릅니다. 누수 원인, 수리 내용과 적정한 금액, 수선특약을 확인하고 영수증·작업내역으로 청구하세요.",
+        "additional_facts": "원인·필요성·금액 내역·특약·통지 경위. 지급 여부를 처음부터 다시 묻지 않음.",
+        "avoid": "38만원 무조건 전액 상환; 사전 동의나 통지 없으면 항상 상환 불가; 종료 시 가치 증가 요건을 필요비에 적용.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C626_1"
+            ],
+            "combination": "single",
+            "proposition": "보존 필요비 상환",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C623"
+            ],
+            "combination": "single",
+            "proposition": "비용 부담의 수선의무 관계",
+            "activation_condition": "원인·부담을 설명할 때"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C634"
+            ],
+            "combination": "single",
+            "proposition": "수리 필요 통지",
+            "activation_condition": "통지 문제를 함께 설명할 때"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C105"
+            ],
+            "combination": "single",
+            "proposition": "특약 범위",
+            "activation_condition": "특약이 제시될 때"
+          },
+          {
+            "category": "보조",
+            "source_ids": [
+              "P_COST"
+            ],
+            "combination": "single",
+            "proposition": "필요비 의미·즉시 상환 법리 보충",
+            "activation_condition": "보조; 특정 판례 검색 자체 필수 아님"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "C626(1)와2016다227694 모두 필수",
+        "change_reason": "C626(1) 중심 결론 유지. 판례는 동일 기본 명제 보강이며 전 문항 의무 검색으로 고정하지 않음.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. C626(1) 중심 결론 유지. 판례는 동일 기본 명제 보강이며 전 문항 의무 검색으로 고정하지 않음.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [
+          {
+            "proposition": "보존 필요비의 임차인→임대인 상환 및 즉시 청구",
+            "source_sets": [
+              [
+                "C626_1"
+              ],
+              [
+                "P_COST"
+              ]
+            ],
+            "combination": "OR",
+            "condition": "법리 명제 충족 평가에 한함. 법령 원문 자체를 요청하는 별도 평가에는 판례로 대체하지 않음. 033의 감액 명제는 별도로 필요."
+          }
+        ],
+        "minimum_answer_requirements": [
+          "보존 필요비 상환"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-006",
+      "original": {
+        "id": "CIV-DRAFT-006",
+        "scenario_family": "D626",
+        "focus_article": "민법-제626조",
+        "question": "집주인이 수리업체에 비용을 냈고 저에게 그 돈을 내라고 해요. 제가 임차인인데 누구 부담인지 확인하고 싶어요.",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "집주인",
+          "request_span": "누구 부담인지 확인하고 싶어요",
+          "assertion": "asserted",
+          "missing_facts": [
+            "원인",
+            "특약",
+            "청구 근거"
+          ]
+        },
+        "proposed_retrieval_role": "not_auto_priority",
+        "proposal_reason": "임차인의 상환청구와 반대 방향이다. 제626조를 자동 최우선하지 않는다는 제안이며 법령 자체 금지는 아니다.",
+        "related_articles_for_review": [
+          "민법-제623조"
+        ],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+      },
+      "review2": {
+        "final_decision": "기존 유지",
+        "final_retrieval_role": "not_auto_priority",
+        "request_and_fact_scope": "임대인→업체 지급 후 임대인→임차인 청구. 임차인의 상환청구와 반대 방향.",
+        "final_answer": "집주인이 업체에 먼저 냈다는 이유만으로 비용이 전부 임차인 부담이 되지는 않습니다. 임대인의 수선의무에 속하는지, 임차인의 잘못으로 생긴 손상인지, 비용 부담 특약이 있는지 확인해야 합니다. 임차인이 지출한 필요비를 돌려받는 민법 제626조를 집주인의 청구 근거로 그대로 적용할 수는 없습니다.",
+        "additional_facts": "손상 원인·수리 내용·특약·청구 근거와 금액. 지출자가 집주인이라는 사실 유지.",
+        "avoid": "지출자를 임차인으로 바꿈; 집주인이 낸 돈이므로 무조건 임차인 지급; C626을 검색했다는 사실만으로 실패 처리.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C623"
+            ],
+            "combination": "single",
+            "proposition": "임대인 수선부담의 기본 규범",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C390"
+            ],
+            "combination": "single",
+            "proposition": "임차인 채무불이행 손해",
+            "activation_condition": "임차인 귀책·의무위반을 주장하는 분기"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C105"
+            ],
+            "combination": "single",
+            "proposition": "유효한 비용부담 약정",
+            "activation_condition": "특약 존재 시"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "P_REPAIR"
+            ],
+            "combination": "single",
+            "proposition": "특약의 수선 범위",
+            "activation_condition": "범위 해석 시"
+          },
+          {
+            "category": "보조",
+            "source_ids": [
+              "C626_1"
+            ],
+            "combination": "single",
+            "proposition": "상환청구의 방향 비교",
+            "activation_condition": "비적용 설명 시"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "제626조는 청구 방향의 비적용 비교용 보조",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "not_auto_priority",
+        "review1_status": "조건부",
+        "review1_content": "C623·특약 중심, C390 조건부, C626 자동 우선 아님",
+        "change_reason": "지출자·청구 방향 및 조건부 판단을 채택. 개별 부담은 추가 사실에 따름.",
+        "review1_adoption": "채택",
+        "scoring_impact": "기존 핵심 정답 통과 유지. G1~G5 공통 정의만 적용. 지출자·청구 방향 및 조건부 판단을 채택. 개별 부담은 추가 사실에 따름.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "임대인 수선부담의 기본 규범"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-007",
+      "original": {
+        "id": "CIV-DRAFT-007",
+        "scenario_family": "D626",
+        "focus_article": "민법-제626조",
+        "question": "집주인에게 돈을 돌려달라는 건 아닙니다. 수리할 곳을 사진으로 알려야 하는지가 궁금해요.",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "집주인",
+          "request_span": "사진으로 알려야 하는지",
+          "assertion": "denied",
+          "missing_facts": [
+            "임대인의 인지 여부"
+          ]
+        },
+        "proposed_retrieval_role": "not_auto_priority",
+        "proposal_reason": "상환 요청의 부정과 통지 요청을 분리한다.",
+        "related_articles_for_review": [
+          "민법-제634조"
+        ],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+      },
+      "review2": {
+        "final_decision": "기존 유지",
+        "final_retrieval_role": "not_auto_priority",
+        "request_and_fact_scope": "반환 요청만 부정; 수리할 곳의 통지 및 사진 형식은 실제 요청.",
+        "final_answer": "집주인이 아직 수리 필요를 모르면 지체 없이 알려야 합니다. 다만 민법 제634조가 사진 전송을 필수 형식으로 정하지는 않습니다. 사진은 위치와 상태를 정확히 알리고 기록을 남기는 데 도움이 됩니다. 집주인이 이미 알고 있는 같은 내용이면 반복 통지의무는 없습니다.",
+        "additional_facts": "임대인 기존 인지 여부. 사진 전송을 따로 약정했는지는 약정이 문제 될 때만 확인.",
+        "avoid": "법정 사진 첨부 의무; 비용상환 질문으로 변경; 사진 미제출=수리비 상환권 자동 소멸.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C634"
+            ],
+            "combination": "single",
+            "proposition": "통지의무·기존 인지 예외·사진 형식 미지정",
+            "activation_condition": "항상"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "제626조 불필요; 제634조 통지 명제가 필수",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "not_auto_priority",
+        "review1_status": "확정",
+        "review1_content": "C634 본문·단서 필수, 사진은 법정 형식 아님",
+        "change_reason": "현재 정답과 C626 비필수 판단을 유지.",
+        "review1_adoption": "채택",
+        "scoring_impact": "기존 핵심 정답 통과 유지. G1~G5 공통 정의만 적용. 현재 정답과 C626 비필수 판단을 유지.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "통지의무·기존 인지 예외·사진 형식 미지정"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-008",
+      "original": {
+        "id": "CIV-DRAFT-008",
+        "scenario_family": "D626",
+        "focus_article": "민법-제626조",
+        "question": "제가 돈을 들여 집의 가치를 높였는데 곧 계약이 끝나요. 개선 비용도 돌려받을 수 있나요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "제가",
+          "request_span": "개선 비용도 돌려받을 수 있나요",
+          "assertion": "asserted",
+          "missing_facts": [
+            "개선 내용",
+            "가치 증가의 현존",
+            "종료 시점",
+            "특약"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "수리 키워드가 없는 유익비 쟁점으로 제2항 범위를 점검한다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "임차인이 가치 향상을 위해 지출했고 곧 종료 예정; 법적 유익비·현존액은 따로 판단.",
+        "final_answer": "개선 지출이 유익비에 해당하고 임대차 종료 시 그 가치 증가가 남아 있다면 상환을 구할 수 있습니다. 지출액 전액이 자동 반환되는 것은 아니고 지출액 또는 증가액을 상환하는 구조입니다. 개선 내용, 종료 시 남은 증가가치와 비용상환 관련 특약을 확인해야 합니다.",
+        "additional_facts": "개선 내용·지출액·종료 시 증가가치·정확한 종료일·특약. 사용자의 가치 향상 진술을 무시하지 않되 산정은 미확정.",
+        "avoid": "임차인이 큰 금액 선택; 지출액+증가액 합산; 유익비를 즉시 전액 상환; 포기 특약은 언제나 무효.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C626_2"
+            ],
+            "combination": "single",
+            "proposition": "유익비 해당성·종료 시 증가가치 현존·상환 시기 및 지출액 또는 증가액 구조",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C380"
+            ],
+            "combination": "single",
+            "proposition": "다른 규정·약정 없을 때 임대인의 선택",
+            "activation_condition": "지출액과 증가액 중 누가 선택하는지까지 설명할 때"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C626_2"
+            ],
+            "combination": "single",
+            "proposition": "법원은 임대인의 청구로 상당한 상환기간을 허여할 수 있음",
+            "activation_condition": "법원의 상환기간 허여까지 설명할 때"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C105"
+            ],
+            "combination": "single",
+            "proposition": "상환특약의 효력·범위",
+            "activation_condition": "특약 제시 시"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "C626(2) 종료·현존·지출액 또는 증가액, 선택주체·기간 허여 생략",
+        "change_reason": "리뷰1의 기본 상환 요건 설명은 채택. 리뷰2 초판이 제380조를 조건을 붙인 필수로, 법원 기간 허여를 항상 필수 명제로 둔 것은 과도했다. 선택 주체와 기간 허여는 추가 설명 때의 조건부 명제로 분리하며 생략만으로 감점하지 않는다.",
+        "review1_adoption": "핵심 판단 채택·리뷰2 초판의 필수 범위 축소",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 리뷰1의 기본 상환 요건 설명은 채택. 리뷰2 초판이 제380조를 조건을 붙인 필수로, 법원 기간 허여를 항상 필수 명제로 둔 것은 과도했다. 선택 주체와 기간 허여는 추가 설명 때의 조건부 명제로 분리하며 생략만으로 감점하지 않는다.",
+        "optional_explanations": [
+          "선택 주체까지 설명한다면 다른 규정·약정이 없는 경우 임대인에게 선택권이 있음을 정확히 설명한다(제380조).",
+          "법원에 의한 상환기간 허여를 설명한다면 임대인의 청구가 필요함을 함께 설명한다(제626조 제2항 후단)."
+        ],
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "유익비 해당성·종료 시 증가가치 현존·상환 시기 및 지출액 또는 증가액 구조"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-009",
+      "original": {
+        "id": "CIV-DRAFT-009",
+        "scenario_family": "D627",
+        "focus_article": "민법-제627조",
+        "question": "배관 공사로 집에서 물을 일주일간 못 쓰게 됐어요. 그 기간 월세를 줄여달라고 할 수 있나요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "배관 공사",
+          "request_span": "월세를 줄여달라고",
+          "assertion": "asserted",
+          "missing_facts": [
+            "실제 사용 제한 범위",
+            "귀책",
+            "기간"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "사용 제한과 감액 요청을 연결하되 감액 요건 충족은 단정하지 않는다.",
+        "related_articles_for_review": [
+          "민법-제623조"
+        ],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제627조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "일주일 단수 및 감액 요청은 주어진 사실. 기간을 다시 처음부터 묻지 않는다.",
+        "final_answer": "임차인 과실 없이 배관 공사로 집의 일부를 사용·수익할 수 없었다면 그 제한에 맞는 차임 감액을 청구할 수 있습니다. 일주일 동안의 물 사용 불능이 주거 사용에 미친 범위와 원인·귀책을 확인해야 합니다. 일주일이라는 이유만으로 월세 전액이나 일정 비율이 자동 면제되는 것은 아닙니다.",
+        "additional_facts": "임차인 귀책 유무, 급수 외 실제 주거 제한 범위, 약정 차임, 필요하면 정확한 시작·종료일. 일주일 자체는 제공됨.",
+        "avoid": "기간 미제공 취급; 감액에 임대인 과실까지 반드시 필요하다고 추가; 물 불편=항상 전액 지급거절.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C627_1"
+            ],
+            "combination": "single",
+            "proposition": "일부 사용불능 비율의 감액 요건",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C652"
+            ],
+            "combination": "single",
+            "proposition": "불리한 감액 배제 약정 효력",
+            "activation_condition": "해당 특약이 있거나 이를 설명할 때"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C623",
+              "P_COST"
+            ],
+            "combination": "AND",
+            "proposition": "임대인 사용수익의무 불이행과 제한 한도 지급거절",
+            "activation_condition": "감액과 별도의 지급거절을 설명할 때"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "C627(1)+C652 일괄 필수, 부족 사실에 기간",
+        "change_reason": "C652를 특약 분기로 조정하고 일주일은 기지 사실로 고정. 감액·지급거절을 같은 청구로 섞지 않음.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. C652를 특약 분기로 조정하고 일주일은 기지 사실로 고정. 감액·지급거절을 같은 청구로 섞지 않음.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "일부 사용불능 비율의 감액 요건"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-010",
+      "original": {
+        "id": "CIV-DRAFT-010",
+        "scenario_family": "D627",
+        "focus_article": "민법-제627조",
+        "question": "단수지만 물을 못 쓰는 것은 아닙니다. 월세를 줄일 수 있는지는 무엇을 확인해야 하나요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "물",
+          "request_span": "무엇을 확인해야 하나요",
+          "assertion": "denied",
+          "missing_facts": [
+            "실제 사용 지장",
+            "감액 요청의 다른 사유"
+          ]
+        },
+        "proposed_retrieval_role": "review_needed",
+        "proposal_reason": "적용 조건 자체를 묻고 있어 제627조의 절대 금지는 정답 검토가 필요하다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제627조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "단수는 있으나 물 사용불능은 부정. 감액 조건을 묻는다.",
+        "final_answer": "단수라는 표현만으로 월세 감액을 확정할 수는 없습니다. 실제로 집의 어느 부분을 얼마나 사용·수익하지 못하는지, 그 원인이 임차인의 잘못인지 확인해야 합니다. 말씀처럼 물을 쓸 수 있고 다른 사용 제한도 없다면 그 단수 사실만으로 제627조의 감액 요건을 충족한다고 보기는 어렵습니다. 별도의 감액 사유가 있는지도 구분해 확인할 수 있습니다.",
+        "additional_facts": "실제 사용 제한의 내용·범위·기간·원인. 물을 전혀 못 쓴다고 역으로 단정하지 않음.",
+        "avoid": "단수 키워드만으로 감액 허용; 부정 표현 때문에 조문 검색 금지.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C627_1"
+            ],
+            "combination": "single",
+            "proposition": "감액 적용·비적용 조건 설명",
+            "activation_condition": "항상"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "review_needed→conditional_issue, C627 필수·강제 우선",
+        "change_reason": "리뷰1 역할 수정은 채택. 조건 설명의 필요성과 검색 최상위 강제를 분리.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 리뷰1 역할 수정은 채택. 조건 설명의 필요성과 검색 최상위 강제를 분리.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "감액 적용·비적용 조건 설명"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-011",
+      "original": {
+        "id": "CIV-DRAFT-011",
+        "scenario_family": "D627",
+        "focus_article": "민법-제627조",
+        "question": "집을 못 쓰는 상황은 없어요. 월세 이체 날짜만 바꾸고 싶은데 집주인에게 어떻게 얘기하죠?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "집",
+          "request_span": "월세 이체 날짜만 바꾸고 싶은데",
+          "assertion": "denied",
+          "missing_facts": []
+        },
+        "proposed_retrieval_role": "not_auto_priority",
+        "proposal_reason": "사용불능 감액과 납부일 변경을 구분한다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제627조"
+      },
+      "review2": {
+        "final_decision": "표현 개선",
+        "final_retrieval_role": "not_auto_priority",
+        "request_and_fact_scope": "사용불능 부정, 월세 이체일 변경 협의 문구가 요청.",
+        "final_answer": "“개인 일정 때문에 월세 지급일을 매월 ○일에서 △일로 바꾸고 싶습니다. 변경 시작 월과 첫 달 정산 방식도 함께 정하면 좋겠습니다”라고 제안할 수 있습니다. 지급일 변경은 집주인과 합의해 기록으로 남기고, 합의 전에는 기존 약정일을 기준으로 보세요.",
+        "additional_facts": "정확한 문구를 맞추려면 기존일·희망일·시작 월. 빈칸 예시 제공에는 추가 사실 불필요.",
+        "avoid": "사용불능 감액으로 전환; 일방 통지만으로 납부일 변경 완료; 약정 있어도 무조건 매월 말 지급.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [],
+            "combination": "input_only",
+            "proposition": "납부일 변경 협의 문구 제공",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "보조",
+            "source_ids": [
+              "C105"
+            ],
+            "combination": "single",
+            "proposition": "지급일 변경 합의",
+            "activation_condition": "법적 원리 설명 시"
+          },
+          {
+            "category": "보조",
+            "source_ids": [
+              "C633"
+            ],
+            "combination": "single",
+            "proposition": "약정 없는 경우 지급시기",
+            "activation_condition": "약정 부재의 별도 질문 시"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "제627조 불필요: 납부일 협의",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보로 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "not_auto_priority",
+        "review1_status": "확정",
+        "review1_content": "납부일 변경은 합의 중심; 예시 문구 없음",
+        "change_reason": "법적 판단은 유지하며 요청한 말하기 예시를 추가. 예시 표현의 일치는 채점 요건으로 삼지 않음.",
+        "review1_adoption": "핵심 판단 채택·표현 보완",
+        "scoring_impact": "문장 일치·선택 설명 미포함으로 핵심 정답을 오답 처리하지 않음. 법적 판단은 유지하며 요청한 말하기 예시를 추가. 예시 표현의 일치는 채점 요건으로 삼지 않음.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "납부일 변경 협의 문구 제공"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-012",
+      "original": {
+        "id": "CIV-DRAFT-012",
+        "scenario_family": "D627",
+        "focus_article": "민법-제627조",
+        "question": "집 일부가 무너져 남은 공간으로는 살기 어려워요. 감액 말고 계약 종료도 가능한가요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "집 일부",
+          "request_span": "계약 종료도 가능한가요",
+          "assertion": "asserted",
+          "missing_facts": [
+            "잔존 부분의 사용 가능성",
+            "귀책",
+            "계약 목적"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "감액만 아니라 제2항 종료 조건도 후보로 검토한다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제627조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "집 일부 붕괴·남은 공간 거주 어려움은 진술됨; 해지 요건 충족의 법적 평가가 쟁점.",
+        "final_answer": "임차인의 과실 없이 집 일부가 무너졌고 남은 공간으로 주거라는 임차 목적을 달성할 수 없다면 제627조 제2항에 따라 계약을 해지할 수 있습니다. 단순 불편을 넘는지, 붕괴 원인과 잔존 공간의 안전·사용 가능성을 확인해야 합니다. 해지권이 생겨도 계약은 저절로 끝나는 것이 아니라 상대방에게 해지 의사를 표시해야 합니다.",
+        "additional_facts": "귀책·붕괴 범위·안전 및 사용 가능성·계약 목적·해지 통보. 이미 일부 붕괴했다는 사실은 유지.",
+        "avoid": "조금 불편하면 무조건 해지; 임대인 과실이 반드시 있어야 함; 자동 종료.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C627_1",
+              "C627_2"
+            ],
+            "combination": "AND",
+            "proposition": "임차인 과실 없는 일부 사용불능과 잔존부분 목적 달성 불가",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C543",
+              "C550"
+            ],
+            "combination": "AND",
+            "proposition": "해지 행사 및 장래효",
+            "activation_condition": "행사·효과 안내 시"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C652"
+            ],
+            "combination": "single",
+            "proposition": "임차인 불리 특약 제한",
+            "activation_condition": "특약 문제 시"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C623"
+            ],
+            "combination": "single",
+            "proposition": "수선 요구",
+            "activation_condition": "수선 분기 설명 시"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "C627(1)(2)+C652 일괄 필수",
+        "change_reason": "해지 결론의 조건은 유지. C652는 특약 분리하고 행사 근거를 보완.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 해지 결론의 조건은 유지. C652는 특약 분리하고 행사 근거를 보완.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "임차인 과실 없는 일부 사용불능과 잔존부분 목적 달성 불가"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-013",
+      "original": {
+        "id": "CIV-DRAFT-013",
+        "scenario_family": "D629",
+        "focus_article": "민법-제629조",
+        "question": "제가 빌린 집 전체를 다른 사람에게 다시 빌려주고 이사하려고 해요. 집주인 동의가 필요한가요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "제가",
+          "request_span": "집주인 동의가 필요한가요",
+          "assertion": "planned",
+          "missing_facts": [
+            "동의 내용",
+            "권리 양도인지 전대인지"
+          ]
+        },
+        "proposed_retrieval_role": "direct_issue",
+        "proposal_reason": "동의 여부를 묻는 계획 단계도 관련 조문 후보를 요구한다.",
+        "related_articles_for_review": [
+          "민법-제632조"
+        ],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제629조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "direct_issue",
+        "request_and_fact_scope": "임차인이 집 전체를 다시 빌려줄 계획. 동의 필요성을 묻는다.",
+        "final_answer": "네. 빌린 집 전체를 다른 사람에게 다시 빌려주는 전대에는 원칙적으로 집주인의 동의가 필요합니다. 동의 없이 진행하면 임대인의 해지권이 문제 될 수 있습니다. 집 전체를 넘기는 계획이므로 건물 소부분 사용 예외를 전제로 진행해서는 안 됩니다.",
+        "additional_facts": "동의가 이미 있다면 대상·기간 등 그 범위와 계획의 일치 여부. 전체 사용은 제공 사실.",
+        "avoid": "계획 단계라 설명 불가; 동의 없는 전대는 언제나 자동 종료; 작은 집 전체도 소부분.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C629_1"
+            ],
+            "combination": "single",
+            "proposition": "전체 전대에 임대인 동의 필요",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C629_2",
+              "P_TRUST"
+            ],
+            "combination": "AND",
+            "proposition": "위반 시 해지권과 배신적 행위 아닌 특별한 사정의 예외",
+            "activation_condition": "해지 효과를 구체적으로 설명할 때"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C632"
+            ],
+            "combination": "single",
+            "proposition": "전체 전대와 소부분 예외 구분",
+            "activation_condition": "예외 비교 시"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "direct_issue",
+        "review1_status": "조건부",
+        "review1_content": "C629(1)(2) 일괄 필수·강제 우선",
+        "change_reason": "동의 질문의 필수 근거는 제1항. 해지 효과와 판례 예외는 별도 분기로 분류하고 순위 강제 제거.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 동의 질문의 필수 근거는 제1항. 해지 효과와 판례 예외는 별도 분기로 분류하고 순위 강제 제거.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "전체 전대에 임대인 동의 필요"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-014",
+      "original": {
+        "id": "CIV-DRAFT-014",
+        "scenario_family": "D629",
+        "focus_article": "민법-제629조",
+        "question": "집주인이 자기 소유의 빈집을 다른 사람에게 빌려준대요. 그게 제가 전대한 것으로 되는 건가요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "집주인",
+          "request_span": "제가 전대한 것으로 되는 건가요",
+          "assertion": "asserted",
+          "missing_facts": [
+            "대상 주택 관계"
+          ]
+        },
+        "proposed_retrieval_role": "review_needed",
+        "proposal_reason": "임대인의 임대와 임차인의 전대를 혼동한 설명 요청이므로 적용 구분 근거는 필요할 수 있다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제629조"
+      },
+      "review2": {
+        "final_decision": "정답 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "임대 행위자는 집주인. 별도 집인지 같은 집인지는 미제공.",
+        "final_answer": "집주인이 자기 소유의 집을 다른 사람에게 빌려주는 행위 자체가 임차인인 당신의 전대가 되지는 않습니다. 제629조는 임차인의 임차권 양도·전대를 다룹니다. 그 빈집이 당신이 임차한 집과 같다면 기존 임차권과 충돌하는 다른 문제가 있는지 따로 확인해야 합니다.",
+        "additional_facts": "사용자 권리 침해까지 검토할 때 동일 주택 여부와 기존 임대차 관계 확인. 행위자 구분은 이 확인 전에도 가능.",
+        "avoid": "원문에 없는 별도 빈집을 추가; 집주인 행위를 사용자 전대로 전환; 대상관계 확인 전 모든 답변 보류.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C629_1"
+            ],
+            "combination": "single",
+            "proposition": "임차인의 전대와 임대인의 임대 구분",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C623"
+            ],
+            "combination": "single",
+            "proposition": "기존 임차인 인도·사용수익 보장",
+            "activation_condition": "동일 목적물의 중복 임대가 문제 될 때"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "제629조 행위자 비교 명제 필요; 사용자 전대의 적용 확정 아님",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "임대인의 별도 빈집 임대와 구분, 대상관계 확인 선행",
+        "change_reason": "별도라는 사실 추가 삭제. 현재 가능한 행위자 구분부터 답하고 대상관계는 다른 권리 문제 분기로 둠.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "최종안에 따른 사실 유지·답변 또는 추가 질문을 정답 인정. 기존의 잘못된 분기는 통과시키지 않음. 별도라는 사실 추가 삭제. 현재 가능한 행위자 구분부터 답하고 대상관계는 다른 권리 문제 분기로 둠.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "임차인의 전대와 임대인의 임대 구분"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-015",
+      "original": {
+        "id": "CIV-DRAFT-015",
+        "scenario_family": "D629",
+        "focus_article": "민법-제629조",
+        "question": "친구가 하루 놀러 와서 잤어요. 집을 빌려준 건 아닌데 이것도 전대인지 궁금해요.",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "친구",
+          "request_span": "이것도 전대인지",
+          "assertion": "denied",
+          "missing_facts": [
+            "사용 관계",
+            "독립 점유",
+            "대가 여부"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "부정한 용어 자체보다 실제 사용 관계에 관한 질문을 본다.",
+        "related_articles_for_review": [
+          "민법-제632조"
+        ],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제629조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "하루 방문·숙박이고 집을 빌려준 것은 아니라는 설명을 기준으로 한다.",
+        "final_answer": "말씀하신 대로 친구가 하루 놀러 와 자고 간 단순 방문이라면, 그 사실만으로 전대라고 보기는 어렵습니다. 방문이라는 이름과 달리 실제로 일정 공간을 별도로 빌려준 관계라면 약정 내용과 사용 범위를 확인해야 합니다. 하루라는 기간만으로 모든 경우가 전대에서 제외되는 것은 아닙니다.",
+        "additional_facts": "별도의 사용 약정이 문제 된 경우 사용 범위·대가·기간 확인. 단순 방문 진술을 무시하고 모든 사실 재요구하지 않음.",
+        "avoid": "친구 숙박=무단전대; 하루 또는 무상이면 어떤 사용관계도 동의 문제 없음.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C629_1"
+            ],
+            "combination": "single",
+            "proposition": "제공된 단순 방문·숙박을 임차물 전대로 자동 취급하지 않고 구별",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C618"
+            ],
+            "combination": "single",
+            "proposition": "목적물 사용·수익과 차임 지급 약정이라는 임대차 성립 구조",
+            "activation_condition": "임대차의 성립 요소까지 추가 설명할 때"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C632"
+            ],
+            "combination": "single",
+            "proposition": "소부분 사용 예외",
+            "activation_condition": "단순 방문을 넘어 실제 소부분 사용 예외가 문제 될 때"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "방문 자동 전대 아님, 사용관계 추가 확인",
+        "change_reason": "방문과 전대 구분은 현재 질문 자체의 핵심이므로 제629조 관련 명제는 필수이며 활성 조건을 항상으로 정정. 제618조는 임대차 성립 요소를 추가 설명할 때의 조건부 근거로 분리해 제618조+제629조 AND 검색을 강제하지 않는다. 제629조가 단순 방문의 상세 정의를 직접 규정한다고 해석하지 않는다.",
+        "review1_adoption": "핵심 판단 채택·리뷰2 초판의 제618조 AND 필수 철회",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 방문과 전대 구분은 현재 질문 자체의 핵심이므로 제629조 관련 명제는 필수이며 활성 조건을 항상으로 정정. 제618조는 임대차 성립 요소를 추가 설명할 때의 조건부 근거로 분리해 제618조+제629조 AND 검색을 강제하지 않는다. 제629조가 단순 방문의 상세 정의를 직접 규정한다고 해석하지 않는다.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "제공된 단순 방문·숙박을 임차물 전대로 자동 취급하지 않고 구별"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-016",
+      "original": {
+        "id": "CIV-DRAFT-016",
+        "scenario_family": "D629",
+        "focus_article": "민법-제629조",
+        "question": "집주인이 서면으로 동의해서 제가 집 전체를 다시 빌려줬어요. 그래도 동의 없는 전대라며 나가라고 할 수 있나요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "집주인",
+          "request_span": "동의 없는 전대라며 나가라고 할 수 있나요",
+          "assertion": "asserted",
+          "missing_facts": [
+            "동의 범위",
+            "실제 사용과 동의의 일치"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "동의가 있다는 사실과 무단 전대라는 인용 주장을 분리한다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제629조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "서면 동의 사실과 집주인의 무단전대 주장을 구분한다.",
+        "final_answer": "서면 동의에 맞게 전대한 것이라면 그 전대를 동의 없는 전대라고 하여 제629조 제2항으로 해지할 수는 없습니다. 동의서 존재는 이미 주어졌으므로 다툼이 있다면 동의한 대상·기간·조건과 실제 사용이 일치하는지 확인하면 됩니다. 다른 별개의 해지 사유까지 없어지는 것은 아닙니다.",
+        "additional_facts": "쟁점이 된 동의 조건과 실제 전대의 일치. 서면 동의 존재를 다시 필수 질문으로 삼지 않음.",
+        "avoid": "전체 전대는 동의 있어도 무단전대; 집주인 주장만으로 동의 부존재 확정; 동의 있으면 어떤 종료도 불가.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C629_1",
+              "C629_2"
+            ],
+            "combination": "AND",
+            "proposition": "동의 범위 내 전대에 무단전대 해지 사유 부정",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C630"
+            ],
+            "combination": "single",
+            "proposition": "동의 있는 전대의 전차인 직접 의무",
+            "activation_condition": "그 효과까지 질문할 때"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "C629(1) 필수, 제2항은 동의범위 위반 때 조건부",
+        "change_reason": "해지 불가라는 부정 결론에도 제2항 요건이 필요해 양 항 결합으로 조정. 기본 결론 유지.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 해지 불가라는 부정 결론에도 제2항 요건이 필요해 양 항 결합으로 조정. 기본 결론 유지.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "동의 범위 내 전대에 무단전대 해지 사유 부정"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-017",
+      "original": {
+        "id": "CIV-DRAFT-017",
+        "scenario_family": "D632",
+        "focus_article": "민법-제632조",
+        "question": "제가 사는 집의 아주 작은 일부를 다른 사람이 쓰게 하려는데 전대 동의 규정에 예외가 있나요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "제가",
+          "request_span": "전대 동의 규정에 예외가 있나요",
+          "assertion": "planned",
+          "missing_facts": [
+            "전체 대비 범위",
+            "독립 사용 형태"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "예외 검토용 후보이지 예외 적용 확정이 아니다.",
+        "related_articles_for_review": [
+          "민법-제629조"
+        ],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제632조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "작은 일부를 사용할 계획. 예외 존재와 실제 소부분 해당성을 구분한다.",
+        "final_answer": "민법 제632조에 예외가 있습니다. 건물 임차인이 그 건물의 소부분을 다른 사람에게 사용하게 하면 제629조부터 제631조까지 적용하지 않습니다. 다만 아주 작다는 표현만으로 해당 여부를 확정할 수는 없어 임차 범위와 넘길 공간·사용 형태를 확인해야 합니다. 이 예외만으로 별도 사용 제한 특약이나 다른 법률의 모든 제한까지 없어지는 것은 아닙니다.",
+        "additional_facts": "계약상 임차 대상·전체 대비 사용 공간·사용 형태·관련 특약. 확인 항목을 판례가 확립한 정량·종합 테스트로 표시하지 않음.",
+        "avoid": "방 하나나 일정 비율이면 자동 예외; 제632조가 모든 특약 무효화; 확인되지 않은 판례 기준을 정설로 채점.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C632"
+            ],
+            "combination": "single",
+            "proposition": "소부분 예외와 제629~631조 적용 제외",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C629_1"
+            ],
+            "combination": "single",
+            "proposition": "기본 동의 규정",
+            "activation_condition": "예외 비교"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C105",
+              "C652"
+            ],
+            "combination": "AND",
+            "proposition": "별도 특약과 강행규정 열거 범위",
+            "activation_condition": "특약 효력을 설명할 때"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "H6_3"
+            ],
+            "combination": "single",
+            "proposition": "주택 갱신거절 규정",
+            "activation_condition": "갱신거절까지 확장될 때"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "구체 소부분 해당성 미확정. 면적·형태 기준을 더 세밀하게 확정하려면 추가 공식 판례 필요.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "제632조 필수; 판례는 비율·사용형태 종합이라고 일반화",
+        "change_reason": "조문 결론 유지. 확인 판례가 뒷받침하지 않는 확립된 종합판정 기준이라는 설명은 철회하고 사실확인 항목으로 한정.",
+        "review1_adoption": "조문 결론 채택·판례 판정기준 용도 철회",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 조문 결론 유지. 확인 판례가 뒷받침하지 않는 확립된 종합판정 기준이라는 설명은 철회하고 사실확인 항목으로 한정.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "소부분 예외와 제629~631조 적용 제외"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-018",
+      "original": {
+        "id": "CIV-DRAFT-018",
+        "scenario_family": "D632",
+        "focus_article": "민법-제632조",
+        "question": "방 하나를 친구에게 쓰게 하면 무조건 소부분 예외인가요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "친구",
+          "request_span": "무조건 소부분 예외인가요",
+          "assertion": "hypothetical",
+          "missing_facts": [
+            "전체 방 수·면적",
+            "사용 범위",
+            "점유 형태"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "방 하나라는 표현만으로 소부분을 확정하지 않는다.",
+        "related_articles_for_review": [
+          "민법-제629조"
+        ],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제632조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "방 하나와 친분만 제시된 가정 질문.",
+        "final_answer": "방 하나라는 이유만으로 소부분 예외가 되는 것은 아닙니다. 제632조는 건물의 소부분 사용을 요건으로 하므로 실제로 빌린 공간 전체와 친구에게 쓰게 할 공간·사용 관계를 확인해야 합니다. 조문은 방 개수나 면적 비율 하나로 예외를 정하지 않습니다.",
+        "additional_facts": "임차 전체 범위와 방 면적·사용 공간·약정. 친구 관계만으로 예외 확정하지 않음.",
+        "avoid": "방 하나=소부분; 서울고법 2024나2015320·2015337을 면적·독립성 판정공식의 근거로 요구; 상고심을 확인하지 않고 하급심 전부 확정·전부 파기라고 설명.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C632"
+            ],
+            "combination": "single",
+            "proposition": "소부분 요건과 방 하나만으로 확정 불가",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C629_1"
+            ],
+            "combination": "single",
+            "proposition": "예외 밖 동의 문제",
+            "activation_condition": "기본 규칙 비교"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "소부분 구체 판례 기준은 추가 검증 대상. 확인한 하급심·상고심은 출처대장에서 용도를 제한.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "필요하면 서울고법 2024나2015320·2015337 사실비교 판례 보조",
+        "change_reason": "해당 판결은 원임대차 종료 후 점유권 등 사건으로 방 하나의 소부분 판정기준을 뒷받침하지 않음. 그 용도의 인용을 철회하고 상고심 관계를 별도 확인.",
+        "review1_adoption": "조문 결론 채택·판례 판정기준 용도 철회",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 해당 판결은 원임대차 종료 후 점유권 등 사건으로 방 하나의 소부분 판정기준을 뒷받침하지 않음. 그 용도의 인용을 철회하고 상고심 관계를 별도 확인.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "소부분 요건과 방 하나만으로 확정 불가"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-019",
+      "original": {
+        "id": "CIV-DRAFT-019",
+        "scenario_family": "D632",
+        "focus_article": "민법-제632조",
+        "question": "집 전체를 다른 사람에게 넘기고 저는 나갔어요. 방이 작은 집이면 소부분 예외인가요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "저는",
+          "request_span": "소부분 예외인가요",
+          "assertion": "asserted",
+          "missing_facts": [
+            "건물과 임차 범위",
+            "권리 양도인지 전대인지"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "작은 집과 임차건물의 소부분을 구분하는 예외 설명 요청이다.",
+        "related_articles_for_review": [
+          "민법-제629조"
+        ],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제632조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "빌린 집 전체를 넘기고 퇴거한 사실. 절대 크기와 일부 사용은 다르다.",
+        "final_answer": "빌린 집 전체를 넘겼다면 집이나 방이 작다는 이유로 소부분 사용 예외가 되지는 않습니다. 전체 양도·전대 관계라면 제629조의 집주인 동의 문제를 따로 확인해야 합니다.",
+        "additional_facts": "계약상 대상이 설명과 다른 경우에만 임차 범위 추가 확인. 동의 여부·넘긴 권리 내용은 후속 책임 판단에 필요.",
+        "avoid": "작은 원룸 전체도 소부분; 전체를 넘겼다는 사실 삭제; 곧바로 무조건 퇴거 확정.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C632"
+            ],
+            "combination": "single",
+            "proposition": "전체 이전과 건물 소부분 사용 구분",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C629_1",
+              "C629_2",
+              "P_TRUST"
+            ],
+            "combination": "AND",
+            "proposition": "전체 양도·전대 동의와 해지 문제",
+            "activation_condition": "후속 효과 설명"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "작은 집과 소부분 구분, C632 필수·강제 우선",
+        "change_reason": "법적 판단 채택. 전체 이전 사실 유지 및 검색 순위 강제 제거.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 법적 판단 채택. 전체 이전 사실 유지 및 검색 순위 강제 제거.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "전체 이전과 건물 소부분 사용 구분"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-020",
+      "original": {
+        "id": "CIV-DRAFT-020",
+        "scenario_family": "D632",
+        "focus_article": "민법-제632조",
+        "question": "임대한 주차장 일부를 다른 사람에게 쓰게 하면 건물 소부분 예외가 적용되나요?",
+        "context": "주거용 건물 내부인지 별도 토지·시설인지 제시되지 않은 합성 상황.",
+        "annotation": {
+          "entity_span": "다른 사람",
+          "request_span": "건물 소부분 예외가 적용되나요",
+          "assertion": "hypothetical",
+          "missing_facts": [
+            "목적물 유형",
+            "계약 대상",
+            "서비스 범위"
+          ]
+        },
+        "proposed_retrieval_role": "review_needed",
+        "proposal_reason": "건물이라는 적용 범위와 서비스 경계를 별도 검토한다.",
+        "related_articles_for_review": [
+          "민법-제629조"
+        ],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제632조"
+      },
+      "review2": {
+        "final_decision": "정답 수정",
+        "final_retrieval_role": "review_needed",
+        "request_and_fact_scope": "임대한만으로 임차인·임대인 지위 미확정. 주차장 유형도 미정.",
+        "final_answer": "제632조는 건물 임차인이 그 건물의 소부분을 타인에게 사용하게 하는 경우의 예외입니다. 먼저 주차장을 빌린 임차인인지, 빌려주는 소유자·임대인인지와 계약 대상이 건물 일부인지 별도 토지·시설인지를 확인해야 합니다. 건물 소부분 사용에 해당하지 않는 별도 토지라면 이 조문을 그대로 적용할 수 없습니다. 현재 정보로 예외 적용 자체를 확정할 수는 없습니다.",
+        "additional_facts": "사용자 지위, 계약 목적물·주차장 구조와 주택 임대차 관계, 타인 사용 범위·약정. 서비스 지원 여부는 별도 보류.",
+        "avoid": "주차장은 항상 적용 또는 항상 법률 검토 불가; 임대한을 임차한으로 치환; 문항 포함=서비스 지원 확정.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C632"
+            ],
+            "combination": "single",
+            "proposition": "건물 임차인·그 건물 소부분이라는 적용 조건",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C629_1"
+            ],
+            "combination": "single",
+            "proposition": "전대 동의 기본 규칙",
+            "activation_condition": "임차인 지위와 사용관계가 확인된 때"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "제632조의 적용 조건 설명에 관련; 지위·목적물 확정 전 직접 적용 보류",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "조건 설명·추가 질문 확정; 구체 적용·지원 보류",
+        "remaining_uncertainty": "사실 부족: 지위·목적물. 서비스 지원: 기존 범위 절로 주차장 지원 확정 불가.",
+        "review1_role": "review_needed",
+        "review1_status": "보류",
+        "review1_content": "목적물 유형·서비스 범위 확인 후 전반 보류",
+        "change_reason": "지위의 모호성 추가. 설명 가능한 조건·추가 질문은 확정하고 구체 법 적용과 서비스 지원을 각각 보류.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "최종안에 따른 사실 유지·답변 또는 추가 질문을 정답 인정. 기존의 잘못된 분기는 통과시키지 않음. 지위의 모호성 추가. 설명 가능한 조건·추가 질문은 확정하고 구체 법 적용과 서비스 지원을 각각 보류.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "경계 사례: 법적 관련성과 서비스 지원을 분리. 지원 여부는 합의 범위 절만으로 확정되지 않아 보류.",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "건물 임차인·그 건물 소부분이라는 적용 조건"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-021",
+      "original": {
+        "id": "CIV-DRAFT-021",
+        "scenario_family": "D634",
+        "focus_article": "민법-제634조",
+        "question": "천장에서 물이 새는 걸 발견했어요. 집주인에게 바로 알려야 하나요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "집주인",
+          "request_span": "바로 알려야 하나요",
+          "assertion": "asserted",
+          "missing_facts": [
+            "임대인 인지 여부"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "수리 필요와 통지 요청을 연결한다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제634조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "누수 발견에 관한 통지 질문.",
+        "final_answer": "수리가 필요한 누수를 발견했고 집주인이 아직 모른다면 지체 없이 알려야 합니다. 이미 같은 누수 사실을 알고 있다면 제634조 단서에 따라 반복 통지의무는 없습니다. 문자나 사진은 전달·기록 수단이며 조문이 특정 형식을 요구하지는 않습니다.",
+        "additional_facts": "집주인 기존 인지. 누수 발견 사실을 다시 증명하도록 요구하지 않음.",
+        "avoid": "사진 없으면 통지 무효; 통지 질문에서 모든 비용 부담 확정; 기존 인지 예외 누락.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C634"
+            ],
+            "combination": "single",
+            "proposition": "수리 필요 통지와 기존 인지 예외",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C626_1"
+            ],
+            "combination": "single",
+            "proposition": "필요비 상환",
+            "activation_condition": "추가로 직접 비용 지출한 때"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건 설명 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "conditional_issue",
+        "review1_status": "확정",
+        "review1_content": "C634 본문·단서 필수·강제 우선",
+        "change_reason": "정답 유지. 검색 순위 강제만 분리. 선택적 전달 방법 안내는 필수 채점 아님.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 정답 유지. 검색 순위 강제만 분리. 선택적 전달 방법 안내는 필수 채점 아님.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "수리 필요 통지와 기존 인지 예외"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-022",
+      "original": {
+        "id": "CIV-DRAFT-022",
+        "scenario_family": "D634",
+        "focus_article": "민법-제634조",
+        "question": "모르는 사람이 이 집에 자기 권리가 있다며 찾아왔어요. 집주인에게 알려야 하나요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "모르는 사람",
+          "request_span": "집주인에게 알려야 하나요",
+          "assertion": "asserted",
+          "missing_facts": [
+            "어떤 권리 주장인지",
+            "임대인 인지 여부"
+          ]
+        },
+        "proposed_retrieval_role": "direct_issue",
+        "proposal_reason": "수리 표현이 없어도 제3자 권리 주장에 대한 통지 범위다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제634조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "direct_issue",
+        "request_and_fact_scope": "제3자 권리 주장은 있었음. 진실성 확정이 통지의 선결 요건은 아님.",
+        "final_answer": "제3자가 임차한 집에 자기 권리가 있다고 주장하면 집주인이 이미 그 사실을 아는 경우를 제외하고 지체 없이 알려야 합니다. 어떤 주장을 했는지 전달하되, 통지해야 한다는 것과 실제 권리자인지는 별개입니다.",
+        "additional_facts": "집주인의 기존 인지와 전달할 주장 내용. 권리 유효성을 먼저 확정할 필요 없음.",
+        "avoid": "권리 증명 전에는 통지의무 없음; 주장만으로 집이나 돈을 넘기라고 안내.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C634"
+            ],
+            "combination": "single",
+            "proposition": "권리 주장에 대한 통지와 기존 인지 예외",
+            "activation_condition": "항상"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건 설명 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "direct_issue",
+        "review1_status": "확정",
+        "review1_content": "C634 두 번째 유형·강제 우선",
+        "change_reason": "실체 권리와 통지 구분, 결론 채택. 검색 순위만 미확정.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 실체 권리와 통지 구분, 결론 채택. 검색 순위만 미확정.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "권리 주장에 대한 통지와 기존 인지 예외"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-023",
+      "original": {
+        "id": "CIV-DRAFT-023",
+        "scenario_family": "D634",
+        "focus_article": "민법-제634조",
+        "question": "집주인이 직접 누수를 보고 이미 수리 접수를 했어요. 제가 다시 통지해야 하나요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "집주인",
+          "request_span": "제가 다시 통지해야 하나요",
+          "assertion": "asserted",
+          "missing_facts": [
+            "이미 인지한 범위"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "임대인이 이미 아는 경우의 예외 확인에 조문이 필요하다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제634조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "집주인이 직접 보고 수리 접수해 같은 누수를 이미 안다는 사실이 제공됨.",
+        "final_answer": "집주인이 누수를 직접 보고 수리까지 접수했다면 그 누수에 대해 다시 통지할 의무는 없습니다. 제634조는 임대인이 이미 아는 경우를 예외로 둡니다. 나중에 집주인이 모르는 다른 누수나 추가 손상이 생기면 새로운 내용의 통지를 별도로 보게 됩니다.",
+        "additional_facts": "현재 답변에 추가 사실 불필요. 새로운 사정이 실제 제시될 때만 확인.",
+        "avoid": "인지 사실 무시하고 무조건 재통지; 앞으로 모든 하자 통지 면제.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C634"
+            ],
+            "combination": "single",
+            "proposition": "이미 인지한 동일 누수의 통지 예외",
+            "activation_condition": "항상"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보로 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "conditional_issue",
+        "review1_status": "확정",
+        "review1_content": "단서 예외 확정, 인지 범위 부족 사실·강제 우선",
+        "change_reason": "동일 누수 인지는 제공 사실로 고정. 새로운 사정은 별도 분기이며 재질문 필수화하지 않음.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 동일 누수 인지는 제공 사실로 고정. 새로운 사정은 별도 분기이며 재질문 필수화하지 않음.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "이미 인지한 동일 누수의 통지 예외"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-024",
+      "original": {
+        "id": "CIV-DRAFT-024",
+        "scenario_family": "D634",
+        "focus_article": "민법-제634조",
+        "question": "고장이 있는 게 아니라 집주인 연락처를 휴대폰에 저장하려고요. 연락처 이름은 어떻게 바꾸죠?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "집주인",
+          "request_span": "연락처 이름은 어떻게 바꾸죠",
+          "assertion": "denied",
+          "missing_facts": []
+        },
+        "proposed_retrieval_role": "not_auto_priority",
+        "proposal_reason": "연락이라는 단어만으로 법적 통지 의무를 앞세우지 않는다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제634조"
+      },
+      "review2": {
+        "final_decision": "정답 수정",
+        "final_retrieval_role": "not_auto_priority",
+        "request_and_fact_scope": "고장 부정, 휴대폰 연락처 편집 요청.",
+        "final_answer": "연락처 이름 변경 방법은 사용하는 휴대폰과 연락처 앱에 맞춰 안내해야 합니다. 아이폰인지 안드로이드인지, 어떤 연락처 앱인지 알려 주세요. 이 요청은 임대인에 대한 법적 통지의무 질문은 아닙니다.",
+        "additional_facts": "기기·연락처 앱. 서비스가 비법률 사용법을 실제 제공할지는 지원 정책 확인 전 보류.",
+        "avoid": "기기를 추정한 버튼 경로 확정; 연락처 저장이 법정 통지의무; 법으로 사용법 안내 금지; 제634조 검색 자체를 실패 처리.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [],
+            "combination": "input_only",
+            "proposition": "비법률 요청 인식과 필요한 기기 정보 질문",
+            "activation_condition": "항상"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "제634조 강제 검색 불필요: 연락처 편집",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "입력 해석·추가 질문 확정; 지원 여부 보류",
+        "remaining_uncertainty": "비법률 기기 안내 지원 여부 미확정. 기종별 조작법은 이번 확정 법률 채점 대상 아님.",
+        "review1_role": "not_auto_priority",
+        "review1_status": "확정",
+        "review1_content": "추가 사실 없이 비적용 판단 가능, 사용법 보조",
+        "change_reason": "비적용 판단은 유지. 실제 요청 해결에 필요한 기기 확인을 포함하고 지원 정책과 근거 관련성을 분리.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "최종안에 따른 사실 유지·답변 또는 추가 질문을 정답 인정. 기존의 잘못된 분기는 통과시키지 않음. 비적용 판단은 유지. 실제 요청 해결에 필요한 기기 확인을 포함하고 지원 정책과 근거 관련성을 분리.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "경계 사례: 법적 관련성과 서비스 지원을 분리. 지원 여부는 합의 범위 절만으로 확정되지 않아 보류.",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "비법률 요청 인식과 필요한 기기 정보 질문"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-025",
+      "original": {
+        "id": "CIV-DRAFT-025",
+        "scenario_family": "D640",
+        "focus_article": "민법-제640조",
+        "question": "주택 월세가 밀려 집주인이 계약을 해지하겠대요. 연체액이 얼마인지 확인해야 하나요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "집주인",
+          "request_span": "연체액이 얼마인지 확인해야 하나요",
+          "assertion": "asserted",
+          "missing_facts": [
+            "약정 차임",
+            "연체액",
+            "상환 내역",
+            "해지 통보"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "기간 표현만으로 연체액 기준을 충족한다고 단정하지 않는다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제640조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "주택 연체액 확인 요청. 해지하겠다는 말의 통지 여부도 확인 대상.",
+        "final_answer": "네. 일반 주택 임대차에서는 차임연체액이 2기의 차임액에 이르면 임대인의 해지권이 문제 됩니다. 약정 월세와 납기별 미지급액·변제 내역을 확인해야 합니다. 월세 약정이면 두 달치 금액이 기준이며 두 달 연속 전액 미납만 뜻하지는 않습니다. 해지가 언제 어떻게 통보됐는지, 차임 지급을 거절할 정당한 사유가 있었는지도 확인해야 합니다. 연체만으로 계약이 자동 종료되지는 않습니다.",
+        "additional_facts": "약정 차임·납기·누적 미지급과 변제 시점·통보 내용·도달·적법한 지급거절 사유.",
+        "avoid": "기간만 보고 연체액 확정; 2회 미납=언제나 2기 금액; 자동 종료; 통보 전 일부 변제면 언제나 해지 불가; 갱신거절 이력과 현재 해지 혼동.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C640"
+            ],
+            "combination": "single",
+            "proposition": "일반 주택 2기 차임연체액과 임대인 해지권",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C543"
+            ],
+            "combination": "single",
+            "proposition": "해지 의사표시",
+            "activation_condition": "자동 종료 여부 설명"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C652"
+            ],
+            "combination": "single",
+            "proposition": "불리한 해지 기준 특약 제한",
+            "activation_condition": "특약 분기"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C653",
+              "H11"
+            ],
+            "combination": "AND",
+            "proposition": "명백한 일시사용",
+            "activation_condition": "그 사실 제시 시"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C623",
+              "C536",
+              "P_COST"
+            ],
+            "combination": "AND",
+            "proposition": "수선 불이행·필요비의 적법한 지급거절",
+            "activation_condition": "그 사유 제시 시"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "2024다320215는 상가 공식 요약만 확인. 주택의 모든 해지 전 변제 효과로 일반화하는 채점 보류.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "C640+C652 일괄 필수, 변제·통보 확인",
+        "change_reason": "2기 금액과 시점 확인 유지. 특약 없는 경우 제652조 일괄 필수 해제. 해지권 발생·행사·변제 효과는 구별.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 2기 금액과 시점 확인 유지. 특약 없는 경우 제652조 일괄 필수 해제. 해지권 발생·행사·변제 효과는 구별.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "일반 주택 2기 차임연체액과 임대인 해지권"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-026",
+      "original": {
+        "id": "CIV-DRAFT-026",
+        "scenario_family": "D640",
+        "focus_article": "민법-제640조",
+        "question": "월세는 모두 냈고 관리비만 밀렸어요. 집주인이 월세 연체로 해지한다고 하는데 같은 건가요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "집주인",
+          "request_span": "같은 건가요",
+          "assertion": "asserted",
+          "missing_facts": [
+            "관리비 항목",
+            "약정 내용",
+            "청구 근거"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "월세 부정과 관리비 연체, 상대방의 인용 주장을 구분한다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제640조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "월세 전액 지급·관리비만 연체는 사용자 사실. 집주인 주장을 그 사실보다 우선하지 않음.",
+        "final_answer": "별도 관리비만 밀린 것을 제640조의 월세 연체와 바로 같다고 볼 수는 없습니다. 월세는 모두 냈다는 설명을 기준으로 관리비 항목과 차임·관리비 약정 구분을 확인해야 합니다. 명칭만 관리비인지 실질적으로 별도 비용인지도 구별합니다. 별도 관리비 위반을 이유로 다른 해지 사유를 주장하면 약정·위반 정도·최고 등 요건을 별도로 검토해야 하며 현재 정보로 그 해지가 유효하다고 확정할 수는 없습니다.",
+        "additional_facts": "관리비 항목·약정·연체 규모 및 기간·실제 해지 근거. 이미 낸 월세를 미지급으로 가정하지 않음.",
+        "avoid": "관리비 전부를 차임에 더해 2기 계산; 관리비 명칭이면 실질 확인 불필요; 관리비는 어떤 경우도 종료와 무관; 제544조 하나로 자동 해지.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C640"
+            ],
+            "combination": "single",
+            "proposition": "차임연체액과 별도 관리비 채무 구분",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C105",
+              "C543",
+              "C544"
+            ],
+            "combination": "AND",
+            "proposition": "별도 약정·일반 해지 검토의 출발점",
+            "activation_condition": "다른 해지 사유 제시 시; 이 조문만으로 구체 효력 확정 불가"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "관리비 채무 위반의 중대성·약정 효력·개별 해지는 관련 사실과 공식 판례 추가 확인 필요.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "차임·관리비 구별, 일반 해지 제544조 등 조건부",
+        "change_reason": "주된 결론 채택. 일반 해지의 구체 유효성은 사실·판례 추가 확인 대상이며 완결된 대체 근거로 채점하지 않음.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 주된 결론 채택. 일반 해지의 구체 유효성은 사실·판례 추가 확인 대상이며 완결된 대체 근거로 채점하지 않음.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "차임연체액과 별도 관리비 채무 구분"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-027",
+      "original": {
+        "id": "CIV-DRAFT-027",
+        "scenario_family": "D640",
+        "focus_article": "민법-제640조",
+        "question": "월세가 밀렸지만 집주인은 해지 얘기를 안 했어요. 제 사정 때문에 제가 계약을 끝내고 싶은데 연체하면 나갈 수 있나요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "제가",
+          "request_span": "연체하면 나갈 수 있나요",
+          "assertion": "asserted",
+          "missing_facts": [
+            "계약 종류",
+            "기간",
+            "합의 여부"
+          ]
+        },
+        "proposed_retrieval_role": "not_auto_priority",
+        "proposal_reason": "임차인의 중도 종료 요청을 임대인의 연체 해지권 행사로 자동 해석하지 않는다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제640조"
+      },
+      "review2": {
+        "final_decision": "정답 수정",
+        "final_retrieval_role": "not_auto_priority",
+        "request_and_fact_scope": "임대인 해지 통보 없음. 임차인이 자신의 사정으로 종료할 권리를 묻는다.",
+        "final_answer": "월세를 연체한다고 임차인에게 중도해지권이 생기거나 계약이 자동 종료되지는 않습니다. 제640조는 임대인의 해지권입니다. 임차인 종료는 계약기간·중도해지 약정·합의·갱신 경위를 확인해야 합니다. 주택법상 묵시 갱신이나 갱신요구권 행사로 갱신한 경우에는 임차인이 해지를 통지할 수 있고 임대인이 통지를 받은 날부터 3개월 후 효력이 생깁니다. 기간을 정하지 않은 주택이라는 이유로 민법상 1개월 통고를 바로 적용해서는 안 됩니다.",
+        "additional_facts": "주택법 적용·기간·묵시/요구권/합의 갱신 구별·갱신 당시 연체·중도해지 약정·합의. 현재 연체만으로 과거 갱신 여부까지 부정하지 않음.",
+        "avoid": "연체하면 임차인 즉시 종료 가능; 무통보 자동 종료; 모든 주택은 1개월 또는 3개월 통지로 종료.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C640"
+            ],
+            "combination": "single",
+            "proposition": "연체 해지권 주체는 임대인이라는 비교",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "H2",
+              "H4"
+            ],
+            "combination": "AND",
+            "proposition": "주택 기간 미정의 2년 간주",
+            "activation_condition": "기간 미정 분기"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "H6",
+              "H6_2"
+            ],
+            "combination": "AND",
+            "proposition": "묵시 갱신 요건과 해지 3개월",
+            "activation_condition": "묵시 갱신 분기"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "H6_3",
+              "H6_2"
+            ],
+            "combination": "AND",
+            "proposition": "갱신요구권에 따른 갱신 후 해지",
+            "activation_condition": "갱신요구권 분기"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C105",
+              "C636"
+            ],
+            "combination": "AND",
+            "proposition": "합의와 중도해지권 유보",
+            "activation_condition": "약정·합의 분기"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C635"
+            ],
+            "combination": "single",
+            "proposition": "기간 미정 일반 임대차 통고",
+            "activation_condition": "주택 특별법 관계 확인 후"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "제640조의 주체 비교 명제 필요; 임차인 해지권의 직접 근거 아님",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "not_auto_priority",
+        "review1_status": "조건부",
+        "review1_content": "제640조 필수라면서 후보 불필요; 종료는635·636 중심",
+        "change_reason": "주택법 제4·6·6의2·6의3조 누락 보완. 제640조는 임차인 해지권 직접 근거는 아니나 비교 명제에 필요하다고 정리.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "최종안에 따른 사실 유지·답변 또는 추가 질문을 정답 인정. 기존의 잘못된 분기는 통과시키지 않음. 주택법 제4·6·6의2·6의3조 누락 보완. 제640조는 임차인 해지권 직접 근거는 아니나 비교 명제에 필요하다고 정리.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "연체 해지권 주체는 임대인이라는 비교"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-028",
+      "original": {
+        "id": "CIV-DRAFT-028",
+        "scenario_family": "D640",
+        "focus_article": "민법-제640조",
+        "question": "가게 월세가 밀렸고 임대인이 해지하겠대요. 주택과 기준이 같나요?",
+        "context": "상가 임대차라는 사실만 주어진 합성 상황.",
+        "annotation": {
+          "entity_span": "임대인",
+          "request_span": "주택과 기준이 같나요",
+          "assertion": "asserted",
+          "missing_facts": [
+            "상가 적용 범위",
+            "차임액",
+            "연체액",
+            "시점"
+          ]
+        },
+        "proposed_retrieval_role": "review_needed",
+        "proposal_reason": "특별법 검토가 먼저 필요한지 확인하며 민법 기준을 단독 적용하지 않는다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제640조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "상가와 주택 기준의 비교 요청. 상가는 합의된 별도 하위 범위.",
+        "final_answer": "기준이 다릅니다. 일반 주택은 민법 제640조의 2기 차임액, 상가건물 임대차보호법이 적용되는 가게는 제10조의8의 3기 차임액에 이르는 연체가 임대인의 해지권 기준입니다. 상가의 이 규정은 보증금 상한을 넘는 임대차에도 적용됩니다. 실제로는 사업용 건물 등 적용 대상인지, 명백한 일시사용인지, 약정 차임·연체액·변제·통보 시점을 확인해야 합니다. 현재 규칙을 날짜가 불명인 과거 사건에 그대로 적용하지는 않습니다.",
+        "additional_facts": "상가법 적용 대상·계약 목적·일시사용·약정 차임·연체·해지와 변제 시점. 상가이므로 서비스 밖이라고 처리하지 않음.",
+        "avoid": "현행 상가도 무조건 2기; 상한 초과면10의8 배제; 2014 상가 판례의2기를 현재에 적용; 비교에서 주택 기준 누락.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C640"
+            ],
+            "combination": "single",
+            "proposition": "일반 주택 2기 비교 기준",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "필수",
+            "source_ids": [
+              "S2",
+              "S10_8"
+            ],
+            "combination": "AND",
+            "proposition": "상가 3기 기준과 상한 초과 적용",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "S16"
+            ],
+            "combination": "single",
+            "proposition": "명백한 일시사용 제외",
+            "activation_condition": "일시사용 문제"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C543"
+            ],
+            "combination": "single",
+            "proposition": "해지 행사",
+            "activation_condition": "통보 효과 설명"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "S15"
+            ],
+            "combination": "single",
+            "proposition": "불리한 약정 효력",
+            "activation_condition": "약정 문제"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "제640조 주택 비교와 상가법 제10조의8 명제 모두 필요",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "2024다320215 전문 미확인으로 세부 변제효과 채점 보류. S16은 구법 원문·이후 개정 이력 확인, 현행 단독 화면 열람 실패.",
+        "review1_role": "review_needed",
+        "review1_status": "조건부",
+        "review1_content": "상가10의8 필수, 민법640 보조·review_needed",
+        "change_reason": "3기 결론 채택. 비교에 필요한 주택 2기도 필수 명제로 수정. 구체 적용 미정과 조건 설명 가능을 분리해 conditional_issue로 수정.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 3기 결론 채택. 비교에 필요한 주택 2기도 필수 명제로 수정. 구체 적용 미정과 조건 설명 가능을 분리해 conditional_issue로 수정.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "상가: 합의된 별도 하위 범위. 자동 범위 밖 처리 금지.",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "일반 주택 2기 비교 기준",
+          "상가 3기 기준과 상한 초과 적용"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-029",
+      "original": {
+        "id": "CIV-DRAFT-029",
+        "scenario_family": "X-PAYMENT",
+        "focus_article": "민법-제626조",
+        "question": "보일러 수리는 집주인이 끝냈어요. 저는 계약금을 냈습니다. 계약이 취소됐는데 이 돈 달라고 할 수 있나요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "집주인",
+          "request_span": "이 돈 달라고",
+          "assertion": "asserted",
+          "missing_facts": [
+            "취소 사유",
+            "계약금 약정"
+          ]
+        },
+        "proposed_retrieval_role": "not_auto_priority",
+        "proposal_reason": "수리와 무관한 계약금의 지급·반환 관계를 연결하지 않는다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+      },
+      "review2": {
+        "final_decision": "정답 수정",
+        "final_retrieval_role": "not_auto_priority",
+        "request_and_fact_scope": "수리는 임대인이 하고 사용자는 계약금을 냈다. 취소의 법적 원인은 미정.",
+        "final_answer": "돌려받고 싶은 돈은 본인이 낸 계약금으로 이해됩니다. 임차인 수리비 상환인 제626조로 처리할 문제는 아닙니다. 누가 어떤 사유로 계약을 취소·해제했는지와 계약금 약정을 확인해야 합니다. 적법한 해제라면 원상회복, 착오·사기 등의 취소라면 취소의 효력과 반환, 합의 종료라면 합의 내용에 따라 달라집니다. 해약금 해제라면 다른 약정이 없고 어느 쪽도 이행에 착수하기 전인지에 따라 교부자 포기·수령자 배액상환이 문제 됩니다. 집주인이 한 수리가 이 계약의 이행인지도 확인해야 하므로 무조건 전액·배액 반환이라고 단정할 수 없습니다.",
+        "additional_facts": "취소·해제 주체와 사유·통지·계약금 수령자·약정·양측 이행착수·보일러 수리의 계약상 관계. 수리비 지출자를 임차인으로 바꾸지 않음.",
+        "avoid": "사용자가 수리비를 냈다고 변경; 계약 취소면 언제나 전액·배액; 수리는 모든 법적 분기와 무관; 임대차 해약금에서 준용 근거 누락.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [],
+            "combination": "input_only",
+            "proposition": "계약금 식별과 종료 원인·약정 확인",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C543",
+              "C544",
+              "C548"
+            ],
+            "combination": "AND",
+            "proposition": "적법한 채무불이행 해제와 원상회복",
+            "activation_condition": "해당 분기"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C141",
+              "C741"
+            ],
+            "combination": "AND",
+            "proposition": "적법한 취소의 효력·반환",
+            "activation_condition": "취소 분기"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C109"
+            ],
+            "combination": "single",
+            "proposition": "착오 취소 요건",
+            "activation_condition": "착오 주장 시"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C110"
+            ],
+            "combination": "single",
+            "proposition": "사기·강박 취소 요건",
+            "activation_condition": "사기·강박 주장 시"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C105"
+            ],
+            "combination": "single",
+            "proposition": "합의 종료 반환 약정",
+            "activation_condition": "합의 분기"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C565",
+              "C567"
+            ],
+            "combination": "AND",
+            "proposition": "계약금 해약금 해제의 임대차 준용",
+            "activation_condition": "해약금 분기"
+          },
+          {
+            "category": "보조",
+            "source_ids": [
+              "C626_1"
+            ],
+            "combination": "single",
+            "proposition": "수리비 상환과 다른 돈의 비교",
+            "activation_condition": "필요 시"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "제626조 비필수; 계약금 분기와 추가 질문 중심",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "식별·조건 설명·추가 질문 확정; 구체 반환 보류",
+        "remaining_uncertainty": "종료 원인·약정·이행착수 없어 반환의무자·금액 미확정. 수리의 이행착수 여부를 다투면 계약과 추가 판례 필요.",
+        "review1_role": "not_auto_priority",
+        "review1_status": "보류",
+        "review1_content": "계약금 분기·보류, 제565조 준용 여부 미정",
+        "change_reason": "제567조 준용 확인으로 분기 구체화. 계약금 식별·조건 설명·추가 질문은 확정하고 반환액은 보류.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "최종안에 따른 사실 유지·답변 또는 추가 질문을 정답 인정. 기존의 잘못된 분기는 통과시키지 않음. 제567조 준용 확인으로 분기 구체화. 계약금 식별·조건 설명·추가 질문은 확정하고 반환액은 보류.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "계약금 식별과 종료 원인·약정 확인"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-030",
+      "original": {
+        "id": "CIV-DRAFT-030",
+        "scenario_family": "X-NEGATION",
+        "focus_article": "민법-제626조",
+        "question": "집주인이 수리를 안 해줘서 제가 수리비를 냈어요. 그 돈을 집주인에게 청구할 수 있나요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "제가",
+          "request_span": "그 돈을 집주인에게 청구할 수 있나요",
+          "assertion": "asserted",
+          "missing_facts": [
+            "수리 필요성",
+            "원인",
+            "증빙"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "부정은 임대인의 수리 행위에 걸리고 임차인의 지출·청구는 긍정이다.",
+        "related_articles_for_review": [
+          "민법-제623조",
+          "민법-제634조"
+        ],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "부정은 임대인 수리에 한정. 임차인의 지출·청구는 긍정.",
+        "final_answer": "본인이 낸 수리비가 임차물 보존에 필요한 임대인 부담 비용이라면 임대인에게 상환을 청구할 수 있습니다. 수리 원인·내용·금액과 비용부담 특약, 영수증·작업내역을 확인하세요. 필요비는 계약 종료까지 기다려야만 청구할 수 있는 것이 아닙니다. 집주인이 수리를 안 했다는 사실만으로 모든 지출액이 자동 인정되지는 않습니다.",
+        "additional_facts": "필요성·원인·금액 증빙·특약·통지 경위. 사용자 지출을 부정된 사실로 읽지 않음.",
+        "avoid": "부정 표현을 임차인 지출 부정으로 확장; 사전 승인 없으면 항상 상환 불가; 무조건 전액.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C626_1"
+            ],
+            "combination": "single",
+            "proposition": "임차인 필요비의 임대인 상대 상환",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C623"
+            ],
+            "combination": "single",
+            "proposition": "수선 부담",
+            "activation_condition": "부담 설명"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C634"
+            ],
+            "combination": "single",
+            "proposition": "통지",
+            "activation_condition": "인지·통지 문제"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C105"
+            ],
+            "combination": "single",
+            "proposition": "상환 약정",
+            "activation_condition": "특약 문제"
+          },
+          {
+            "category": "보조",
+            "source_ids": [
+              "P_COST"
+            ],
+            "combination": "single",
+            "proposition": "필요비·즉시 상환 보강",
+            "activation_condition": "보조"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "C626(1)+2016다227694 일괄 필수·강제 우선",
+        "change_reason": "지출 방향·결론 유지. 특정 판례와 순위 일괄 강제 제거.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 지출 방향·결론 유지. 특정 판례와 순위 일괄 강제 제거.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [
+          {
+            "proposition": "보존 필요비의 임차인→임대인 상환 및 즉시 청구",
+            "source_sets": [
+              [
+                "C626_1"
+              ],
+              [
+                "P_COST"
+              ]
+            ],
+            "combination": "OR",
+            "condition": "법리 명제 충족 평가에 한함. 법령 원문 자체를 요청하는 별도 평가에는 판례로 대체하지 않음. 033의 감액 명제는 별도로 필요."
+          }
+        ],
+        "minimum_answer_requirements": [
+          "임차인 필요비의 임대인 상대 상환"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-031",
+      "original": {
+        "id": "CIV-DRAFT-031",
+        "scenario_family": "X-QUOTE",
+        "focus_article": "민법-제626조",
+        "question": "집주인은 “당신이 수리비를 낸 게 아니다”라고 해요. 저는 제 카드 영수증이 있는데 누구에게 상환을 요구하죠?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "저는",
+          "request_span": "누구에게 상환을 요구하죠",
+          "assertion": "disputed",
+          "missing_facts": [
+            "실제 지출 사실",
+            "증빙 내용",
+            "비용 성격"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "상대방 주장과 사용자 주장을 하나의 확정 사실로 합치지 않는다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "임대인 부인과 사용자 카드 영수증 주장이 대립. 어느 쪽도 자동 사실 확정하지 않음.",
+        "final_answer": "본인이 보존 필요비를 실제 지출했다면 상환을 요구할 상대방은 임대인입니다. 카드 영수증은 지출 자료로 확인하되 결제 내용과 수리의 연결, 실제 부담과 비용 성격을 함께 보아야 합니다. 집주인이 부인했다는 이유로 청구가 없어지지 않고 영수증 하나로 모든 요건이 자동 증명되는 것도 아닙니다.",
+        "additional_facts": "영수증과 해당 수리 연결·실제 지출·필요비 성격·특약. 영수증 보유 여부 자체는 다시 요구하지 않음.",
+        "avoid": "집주인 부인=지출 없음; 카드 영수증=모든 요건 인정; 수리 업체가 항상 상환 상대.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C626_1"
+            ],
+            "combination": "single",
+            "proposition": "실제 지출 임차인→임대인 상환 구조",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C623",
+              "C105"
+            ],
+            "combination": "AND",
+            "proposition": "비용 부담과 특약",
+            "activation_condition": "부담 다툼 시"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "제626조, 지출·증빙·필요비 확인·강제 우선",
+        "change_reason": "실체 결론과 인용 해석 채택. 순위 강제 분리 및 영수증 내용 확인으로 명료화.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 실체 결론과 인용 해석 채택. 순위 강제 분리 및 영수증 내용 확인으로 명료화.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [
+          {
+            "proposition": "보존 필요비의 임차인→임대인 상환 및 즉시 청구",
+            "source_sets": [
+              [
+                "C626_1"
+              ],
+              [
+                "P_COST"
+              ]
+            ],
+            "combination": "OR",
+            "condition": "법리 명제 충족 평가에 한함. 법령 원문 자체를 요청하는 별도 평가에는 판례로 대체하지 않음. 033의 감액 명제는 별도로 필요."
+          }
+        ],
+        "minimum_answer_requirements": [
+          "실제 지출 임차인→임대인 상환 구조"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-032",
+      "original": {
+        "id": "CIV-DRAFT-032",
+        "scenario_family": "X-HISTORY",
+        "focus_article": "민법-제626조",
+        "question": "그 돈은 누가 돌려줘야 하나요?",
+        "context": "이전 사용자 발화: 누수 수리비는 집주인이 냈고 저는 계약금을 냈어요. 최신 발화의 “그 돈”이 어느 돈인지 지정하지 않음.",
+        "annotation": {
+          "entity_span": "집주인",
+          "request_span": "그 돈은 누가 돌려줘야 하나요",
+          "assertion": "unknown",
+          "missing_facts": [
+            "그 돈의 지시 대상"
+          ]
+        },
+        "proposed_retrieval_role": "review_needed",
+        "proposal_reason": "대화가 있다는 이유만으로 수리비로 확정하지 않는다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+      },
+      "review2": {
+        "final_decision": "정답 수정",
+        "final_retrieval_role": "review_needed",
+        "request_and_fact_scope": "이전 대화에 수리비는 집주인, 계약금은 사용자 지급으로 제시. 그 돈만 불명.",
+        "final_answer": "“그 돈”은 집주인이 낸 누수 수리비인가요, 아니면 본인이 낸 계약금인가요? 두 돈의 지급자가 다르므로 어느 돈의 어떤 반환을 뜻하는지 확인해야 합니다. 수리비라면 집주인이 낸 비용을 누가 부담하는지의 문제이고, 계약금이라면 반환을 요구하는 사유와 약정에 따라 달라집니다.",
+        "additional_facts": "지시 대상과 반환 사유. 두 돈의 지급자는 이미 제공됐으므로 다시 미정으로 삼지 않음. 이 문항에는 계약 취소·해제 사실도 없음.",
+        "avoid": "수리비면 즉시 임차인 제626조 청구; 이전 대화 삭제; 029의 계약 취소를 이 문항에 이식; 지급자만 다시 질문.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [],
+            "combination": "input_only",
+            "proposition": "두 지급자를 유지하며 그 돈의 지시 대상 질문",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C623",
+              "C105"
+            ],
+            "combination": "AND",
+            "proposition": "임대인이 낸 수리비 부담 관계",
+            "activation_condition": "수리비가 대상일 때"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C390"
+            ],
+            "combination": "single",
+            "proposition": "임차인 귀책에 따른 부담",
+            "activation_condition": "의무위반이 문제 될 때"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C548"
+            ],
+            "combination": "single",
+            "proposition": "계약금 원상회복",
+            "activation_condition": "계약금이고 적법한 해제가 확인된 때"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C565",
+              "C567"
+            ],
+            "combination": "AND",
+            "proposition": "해약금 분기",
+            "activation_condition": "계약금·해약금 해제 사실 추가 시"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "명확화 질문에 제626조 검색 필수 아님. 기존 수리비 지급자는 임대인",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "대화 해석·추가 질문 확정; 구체 반환 보류",
+        "remaining_uncertainty": "지시 대상·반환 사유 미정. 추가 질문 적절성은 확정 채점 가능하고 특정 검색 순위는 확정 불가.",
+        "review1_role": "review_needed",
+        "review1_status": "보류",
+        "review1_content": "지시 대상 확인 후 수리비라면626, 계약금이면548",
+        "change_reason": "추가 질문은 채택. 임대인이 지출했다는 대화와 모순되는626 분기는 철회. 돈만 정해지면 자동 반환 확정하는 오류도 차단.",
+        "review1_adoption": "명확화 질문 채택·수리비→제626조 분기 철회",
+        "scoring_impact": "최종안에 따른 사실 유지·답변 또는 추가 질문을 정답 인정. 기존의 잘못된 분기는 통과시키지 않음. 추가 질문은 채택. 임대인이 지출했다는 대화와 모순되는626 분기는 철회. 돈만 정해지면 자동 반환 확정하는 오류도 차단.",
+        "question_only_evaluation": "질문 단독이면 어떤 돈인지 묻는 답을 수용. 질문+이전 대화 입력이면 수리비=집주인 지급, 계약금=사용자 지급을 유지해야 함.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "두 지급자를 유지하며 그 돈의 지시 대상 질문"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-033",
+      "original": {
+        "id": "CIV-DRAFT-033",
+        "scenario_family": "X-MULTI",
+        "focus_article": "민법-제626조",
+        "question": "제가 누수 수리비를 냈고 방도 한 달 못 썼어요. 수리비 반환과 월세 감액을 둘 다 알아보고 싶어요.",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "제가",
+          "request_span": "수리비 반환과 월세 감액을 둘 다",
+          "assertion": "asserted",
+          "missing_facts": [
+            "수리 원인",
+            "지출 증빙",
+            "사용 제한 범위",
+            "귀책"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "서로 다른 요청을 한 주제로 줄이거나 임의 2개 조문에 고정하지 않는다.",
+        "related_articles_for_review": [
+          "민법-제627조",
+          "민법-제623조",
+          "민법-제634조"
+        ],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+      },
+      "review2": {
+        "final_decision": "근거·채점 기준 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "본인 지출·한 달 방 사용불능·두 청구 요청을 유지한다.",
+        "final_answer": "수리비 상환과 월세 감액을 각각 검토할 수 있습니다. 본인이 낸 돈이 임차물 보존에 필요한 임대인 부담 비용이면 제626조 제1항에 따른 상환을 청구할 수 있습니다. 또 임차인 과실 없이 방을 한 달 사용·수익하지 못했다면 제627조 제1항에 따라 그 제한에 맞는 차임 감액을 청구할 수 있습니다. 수리 원인·내용·증빙과 사용 제한 범위를 확인하고 각 청구 요건을 별도로 판단해야 합니다.",
+        "additional_facts": "수리 원인·필요성·금액·증빙·특약, 사용 제한 범위·귀책. 한 달과 임차인 지출은 제공 사실.",
+        "avoid": "둘 중 하나만 설명; 두 조문 중 하나면 전체 성공; 방 한 달 불사용=전체 월세 면제; 정확히 두 문서만 검색해야 성공.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C626_1"
+            ],
+            "combination": "single",
+            "proposition": "필요비 상환 명제",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "필수",
+            "source_ids": [
+              "C627_1"
+            ],
+            "combination": "single",
+            "proposition": "일부 사용불능 차임 감액 명제",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C623"
+            ],
+            "combination": "single",
+            "proposition": "수선 부담",
+            "activation_condition": "부담 분기"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C634"
+            ],
+            "combination": "single",
+            "proposition": "통지",
+            "activation_condition": "인지·통지 분기"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C652"
+            ],
+            "combination": "single",
+            "proposition": "감액 배제 특약",
+            "activation_condition": "그 특약 분기"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C105"
+            ],
+            "combination": "single",
+            "proposition": "비용상환 특약",
+            "activation_condition": "그 특약 분기"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "C626·C627 각각 필수, 복합질문 축소 금지·강제 우선",
+        "change_reason": "두 독립 명제의 AND 유지. 조문·문서 개수 및 순위가 아니라 각 명제 근거 충족으로 평가.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "필수 명제·조건부 분리, 순위 강제 제외. 두 독립 명제의 AND 유지. 조문·문서 개수 및 순위가 아니라 각 명제 근거 충족으로 평가.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [
+          {
+            "proposition": "보존 필요비의 임차인→임대인 상환 및 즉시 청구",
+            "source_sets": [
+              [
+                "C626_1"
+              ],
+              [
+                "P_COST"
+              ]
+            ],
+            "combination": "OR",
+            "condition": "법리 명제 충족 평가에 한함. 법령 원문 자체를 요청하는 별도 평가에는 판례로 대체하지 않음. 033의 감액 명제는 별도로 필요."
+          }
+        ],
+        "minimum_answer_requirements": [
+          "필요비 상환 명제",
+          "일부 사용불능 차임 감액 명제"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-034",
+      "original": {
+        "id": "CIV-DRAFT-034",
+        "scenario_family": "X-CONCEPT",
+        "focus_article": "민법-제626조",
+        "question": "아직 수리하거나 돈을 낸 적은 없어요. 필요비와 유익비 상환은 뭐가 다른가요?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "돈",
+          "request_span": "필요비와 유익비 상환은 뭐가 다른가요",
+          "assertion": "denied",
+          "missing_facts": []
+        },
+        "proposed_retrieval_role": "direct_issue",
+        "proposal_reason": "사건이 없다는 부정은 개념 설명에 필요한 조문을 배제할 이유가 아니다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+      },
+      "review2": {
+        "final_decision": "표현 개선",
+        "final_retrieval_role": "direct_issue",
+        "request_and_fact_scope": "수리·지출 없음은 개념 비교를 부정하지 않는다.",
+        "final_answer": "필요비는 임차물 보존에 필요한 비용으로 임차인이 지출하면 임대인에게 상환을 청구할 수 있습니다. 유익비는 가치를 높이는 비용으로 종료 시 증가가치가 남아 있어야 하고 지출액 또는 증가액을 상환하는 구조입니다. 다른 법률·약정이 없으면 선택은 임대인에게 있고 법원은 임대인의 청구로 상당한 상환기간을 줄 수 있습니다. 아직 지출하지 않았어도 차이를 설명할 수 있으며 실제 청구는 비용 성격·특약 등을 확인해야 합니다.",
+        "additional_facts": "개념 설명에 실제 사건·영수증 제출 불필요. 지출 시 성격·금액·종료 시 가치·특약 확인.",
+        "avoid": "지출 없으니 조문 불필요; 필요비도 종료 시 증가가치 필요; 유익비는 임차인이 큰 금액 선택; 둘 다 즉시 전액.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C626_1",
+              "C626_2"
+            ],
+            "combination": "AND",
+            "proposition": "필요비·유익비의 요건과 시기 차이",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C380"
+            ],
+            "combination": "single",
+            "proposition": "유익비 선택 주체",
+            "activation_condition": "선택 구조 설명 시"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C105"
+            ],
+            "combination": "single",
+            "proposition": "특약 범위",
+            "activation_condition": "효력 설명 시"
+          },
+          {
+            "category": "보조",
+            "source_ids": [
+              "P_COST"
+            ],
+            "combination": "single",
+            "proposition": "필요비 의미·즉시 상환",
+            "activation_condition": "보조"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보로 개념 답변 기준 확정",
+        "remaining_uncertainty": "추가 확인 사항에 따른 개별 책임·금액은 미확정. 사건 날짜가 제시되면 당시 적용법을 재검토.",
+        "review1_role": "direct_issue",
+        "review1_status": "확정",
+        "review1_content": "양 항 필수, 개념 비교·강제 우선",
+        "change_reason": "개념 설명 가능 판단 유지. 선택 및 법원 기간 허여 보완. 선택적 세부 설명 누락은 본질적 개념 오류와 같은 수준으로 감점하지 않음.",
+        "review1_adoption": "핵심 판단 채택·표현 보완",
+        "scoring_impact": "문장 일치·선택 설명 미포함으로 핵심 정답을 오답 처리하지 않음. 개념 설명 가능 판단 유지. 선택 및 법원 기간 허여 보완. 선택적 세부 설명 누락은 본질적 개념 오류와 같은 수준으로 감점하지 않음.",
+        "question_only_evaluation": "상황 포함은 임대차 비용상환 비교. 질문 단독의 필요비·유익비는 점유자 등 다른 법적 관계도 가능하므로 임차인 맥락을 확정하거나 제626조만을 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "필요비·유익비의 요건과 시기 차이"
+        ]
+      }
+    },
+    {
+      "id": "CIV-DRAFT-035",
+      "original": {
+        "id": "CIV-DRAFT-035",
+        "scenario_family": "X-UNKNOWN",
+        "focus_article": "민법-제627조",
+        "question": "집을 제대로 못 쓰는 것 같아요. 월세는 어떻게 해야 하죠?",
+        "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+        "annotation": {
+          "entity_span": "집",
+          "request_span": "월세는 어떻게 해야 하죠",
+          "assertion": "uncertain",
+          "missing_facts": [
+            "구체적 지장",
+            "기간",
+            "원인",
+            "귀책"
+          ]
+        },
+        "proposed_retrieval_role": "conditional_issue",
+        "proposal_reason": "정보 부족은 자동 제외가 아니라 조건 안내용 후보와 추가 확인을 구분할 사유다.",
+        "related_articles_for_review": [],
+        "legal_review_status": "pending",
+        "expected_final_rank": null,
+        "absolute_retrieval_ban": false,
+        "basis_url": "https://www.law.go.kr/법령/민법/제627조"
+      },
+      "review2": {
+        "final_decision": "정답 수정",
+        "final_retrieval_role": "conditional_issue",
+        "request_and_fact_scope": "막연한 사용 지장. 감액·지급거절·해지의 요건을 분리한다.",
+        "final_answer": "어느 공간을 어떻게 못 쓰는지, 언제부터인지, 원인과 임차인 잘못이 있는지 확인해야 합니다. 임차인 과실 없이 일부를 사용·수익할 수 없다면 그 제한에 맞게 월세 감액을 청구할 수 있습니다. 임대인의 사용·수익 보장 의무 불이행으로 사용이 제한되면 그 한도에서 차임 지급을 거절할 수 있는지도 별도로 검토합니다. 현재 말만으로 월세 전액을 내지 않아도 된다고 단정할 수 없지만 정당한 감액·지급거절 가능성까지 모두 부정해서도 안 됩니다.",
+        "additional_facts": "구체 지장·부분/전부 사용불능·기간·원인·귀책·수선 요청·임대인 인지·계약 내용. 현재 정보로 조건 설명과 추가 질문 가능.",
+        "avoid": "정보 부족=모든 설명 불가; 제대로 못 씀=전액 면제; 무조건 전액 납부만 정답; 전부 멸실을627(2)의 일부 멸실·잔존부분과 동일시.",
+        "evidence_groups": [
+          {
+            "category": "필수",
+            "source_ids": [
+              "C627_1"
+            ],
+            "combination": "single",
+            "proposition": "일부 사용불능 감액 조건",
+            "activation_condition": "항상"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C623",
+              "C536",
+              "P_COST"
+            ],
+            "combination": "AND",
+            "proposition": "사용수익 의무 불이행과 제한 한도 지급거절",
+            "activation_condition": "지급거절 설명 시"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C627_1",
+              "C627_2"
+            ],
+            "combination": "AND",
+            "proposition": "일부 사용불능 후 잔존부분의 목적 달성 불가 시 해지",
+            "activation_condition": "이 요건이 확인되어 해지 검토 시"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C634"
+            ],
+            "combination": "single",
+            "proposition": "수리 필요 통지",
+            "activation_condition": "수리 필요 구체화"
+          },
+          {
+            "category": "조건부",
+            "source_ids": [
+              "C652"
+            ],
+            "combination": "single",
+            "proposition": "불리한 감액 특약",
+            "activation_condition": "특약 분기"
+          }
+        ],
+        "alternative_basis_policy": "동일 명제를 실제로 뒷받침하는 다른 공식 조문·판례는 개별 확인 후 수용. 서로 다른 청구·조건의 근거를 전역 OR로 묶지 않음.",
+        "focus_candidate": "포커스 조문의 관련 명제 필요. 구체 적용 및 순위와는 구별.",
+        "expected_final_rank": null,
+        "forced_priority": null,
+        "absolute_retrieval_ban": false,
+        "verification_status": "현재 정보의 조건부 답변 기준 확정",
+        "remaining_uncertainty": "전부 멸실이 확인되면 위험부담 등 추가 근거 검증 필요. 이번 정보로 그 분기의 최종 차임·종료 결론은 보류.",
+        "review1_role": "conditional_issue",
+        "review1_status": "조건부",
+        "review1_content": "제627(1), 전부/중대한 하자면623 또는627(2)",
+        "change_reason": "제627(2)의 제1항 연결 요건을 명확히 하고 지급거절을 감액과 구분. 전부 멸실 등 다른 문제를 사실 확인 없이 같은 조문으로 포괄하지 않음.",
+        "review1_adoption": "일부 채택·수정",
+        "scoring_impact": "최종안에 따른 사실 유지·답변 또는 추가 질문을 정답 인정. 기존의 잘못된 분기는 통과시키지 않음. 제627(2)의 제1항 연결 요건을 명확히 하고 지급거절을 감액과 구분. 전부 멸실 등 다른 문제를 사실 확인 없이 같은 조문으로 포괄하지 않음.",
+        "question_only_evaluation": "이 결과는 원본 상황을 포함한 기준. 질문 단독 입력에 빠진 임대차 유형·사건 맥락까지 추론하도록 강제하지 않음.",
+        "service_scope": "주택 전세·월세 중심 범위",
+        "alternative_verified_groups": [],
+        "minimum_answer_requirements": [
+          "일부 사용불능 감액 조건"
+        ]
+      }
+    }
+  ],
+  "search_queries": [
+    {
+      "sequence": 1,
+      "type": "쟁점별 추가 검색",
+      "query": "주택 임대차 집주인이 잔금 받고 열쇠 인도 보일러 고장 수리 요구 의무 site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 1,
+      "type": "쟁점별 추가 검색",
+      "query": "임차인 누수 수리비 지출 필요비 유익비 가치 증가 종료 상환 site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 1,
+      "type": "쟁점별 추가 검색",
+      "query": "주택 배관 공사 물 일주일 사용 불능 월세 감액 계약 해지 site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 1,
+      "type": "쟁점별 추가 검색",
+      "query": "임차인 집 전체 다시 빌려주기 집주인 동의 건물 소부분 예외 site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 2,
+      "type": "쟁점별 추가 검색",
+      "query": "임차인 집 수리 필요 제삼자 권리 주장 집주인 통지 site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 2,
+      "type": "쟁점별 추가 검색",
+      "query": "주택 월세 관리비 연체 임대인 계약 해지 상가 3기 site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 2,
+      "type": "쟁점별 추가 검색",
+      "query": "임대차 계약금 취소 반환 해약금 유상계약 site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 2,
+      "type": "쟁점별 추가 검색",
+      "query": "단수 임차인 차임감액 site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 3,
+      "type": "원문 질문 검색 · CIV-DRAFT-001",
+      "query": "집주인이 잔금을 받고도 열쇠를 안 줍니다. 집을 넘겨달라고 요구할 때 어떤 의무를 근거로 말하나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-001"
+    },
+    {
+      "sequence": 3,
+      "type": "원문 질문 검색 · CIV-DRAFT-002",
+      "query": "입주한 집 보일러가 고장 났어요. 집주인에게 수리를 요구하려면 무엇을 확인해야 하나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-002"
+    },
+    {
+      "sequence": 3,
+      "type": "원문 질문 검색 · CIV-DRAFT-003",
+      "query": "보일러는 고장 난 게 아니라 사용법을 모르겠어요. 예약 버튼은 어떻게 누르나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-003"
+    },
+    {
+      "sequence": 3,
+      "type": "원문 질문 검색 · CIV-DRAFT-004",
+      "query": "아직 고장은 없는데 나중에 보일러가 고장 나면 집주인에게 어떤 조치를 요구할 수 있나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-004"
+    },
+    {
+      "sequence": 4,
+      "type": "원문 질문 검색 · CIV-DRAFT-005",
+      "query": "누수 수리업체에 제가 38만 원을 냈습니다. 집주인에게 이 수리비를 돌려달라고 할 수 있나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-005"
+    },
+    {
+      "sequence": 4,
+      "type": "원문 질문 검색 · CIV-DRAFT-006",
+      "query": "집주인이 수리업체에 비용을 냈고 저에게 그 돈을 내라고 해요. 제가 임차인인데 누구 부담인지 확인하고 싶어요. site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-006"
+    },
+    {
+      "sequence": 4,
+      "type": "원문 질문 검색 · CIV-DRAFT-007",
+      "query": "집주인에게 돈을 돌려달라는 건 아닙니다. 수리할 곳을 사진으로 알려야 하는지가 궁금해요. site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-007"
+    },
+    {
+      "sequence": 4,
+      "type": "원문 질문 검색 · CIV-DRAFT-008",
+      "query": "제가 돈을 들여 집의 가치를 높였는데 곧 계약이 끝나요. 개선 비용도 돌려받을 수 있나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-008"
+    },
+    {
+      "sequence": 5,
+      "type": "원문 질문 검색 · CIV-DRAFT-009",
+      "query": "배관 공사로 집에서 물을 일주일간 못 쓰게 됐어요. 그 기간 월세를 줄여달라고 할 수 있나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-009"
+    },
+    {
+      "sequence": 5,
+      "type": "원문 질문 검색 · CIV-DRAFT-010",
+      "query": "단수지만 물을 못 쓰는 것은 아닙니다. 월세를 줄일 수 있는지는 무엇을 확인해야 하나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-010"
+    },
+    {
+      "sequence": 5,
+      "type": "원문 질문 검색 · CIV-DRAFT-011",
+      "query": "집을 못 쓰는 상황은 없어요. 월세 이체 날짜만 바꾸고 싶은데 집주인에게 어떻게 얘기하죠? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-011"
+    },
+    {
+      "sequence": 5,
+      "type": "원문 질문 검색 · CIV-DRAFT-012",
+      "query": "집 일부가 무너져 남은 공간으로는 살기 어려워요. 감액 말고 계약 종료도 가능한가요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-012"
+    },
+    {
+      "sequence": 6,
+      "type": "원문 질문 검색 · CIV-DRAFT-013",
+      "query": "제가 빌린 집 전체를 다른 사람에게 다시 빌려주고 이사하려고 해요. 집주인 동의가 필요한가요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-013"
+    },
+    {
+      "sequence": 6,
+      "type": "원문 질문 검색 · CIV-DRAFT-014",
+      "query": "집주인이 자기 소유의 빈집을 다른 사람에게 빌려준대요. 그게 제가 전대한 것으로 되는 건가요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-014"
+    },
+    {
+      "sequence": 6,
+      "type": "원문 질문 검색 · CIV-DRAFT-015",
+      "query": "친구가 하루 놀러 와서 잤어요. 집을 빌려준 건 아닌데 이것도 전대인지 궁금해요. site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-015"
+    },
+    {
+      "sequence": 6,
+      "type": "원문 질문 검색 · CIV-DRAFT-016",
+      "query": "집주인이 서면으로 동의해서 제가 집 전체를 다시 빌려줬어요. 그래도 동의 없는 전대라며 나가라고 할 수 있나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-016"
+    },
+    {
+      "sequence": 7,
+      "type": "원문 질문 검색 · CIV-DRAFT-017",
+      "query": "제가 사는 집의 아주 작은 일부를 다른 사람이 쓰게 하려는데 전대 동의 규정에 예외가 있나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-017"
+    },
+    {
+      "sequence": 7,
+      "type": "원문 질문 검색 · CIV-DRAFT-018",
+      "query": "방 하나를 친구에게 쓰게 하면 무조건 소부분 예외인가요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-018"
+    },
+    {
+      "sequence": 7,
+      "type": "원문 질문 검색 · CIV-DRAFT-019",
+      "query": "집 전체를 다른 사람에게 넘기고 저는 나갔어요. 방이 작은 집이면 소부분 예외인가요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-019"
+    },
+    {
+      "sequence": 7,
+      "type": "원문 질문 검색 · CIV-DRAFT-020",
+      "query": "임대한 주차장 일부를 다른 사람에게 쓰게 하면 건물 소부분 예외가 적용되나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-020"
+    },
+    {
+      "sequence": 8,
+      "type": "원문 질문 검색 · CIV-DRAFT-021",
+      "query": "천장에서 물이 새는 걸 발견했어요. 집주인에게 바로 알려야 하나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-021"
+    },
+    {
+      "sequence": 8,
+      "type": "원문 질문 검색 · CIV-DRAFT-022",
+      "query": "모르는 사람이 이 집에 자기 권리가 있다며 찾아왔어요. 집주인에게 알려야 하나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-022"
+    },
+    {
+      "sequence": 8,
+      "type": "원문 질문 검색 · CIV-DRAFT-023",
+      "query": "집주인이 직접 누수를 보고 이미 수리 접수를 했어요. 제가 다시 통지해야 하나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-023"
+    },
+    {
+      "sequence": 8,
+      "type": "원문 질문 검색 · CIV-DRAFT-024",
+      "query": "고장이 있는 게 아니라 집주인 연락처를 휴대폰에 저장하려고요. 연락처 이름은 어떻게 바꾸죠? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-024"
+    },
+    {
+      "sequence": 9,
+      "type": "원문 질문 검색 · CIV-DRAFT-025",
+      "query": "주택 월세가 밀려 집주인이 계약을 해지하겠대요. 연체액이 얼마인지 확인해야 하나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-025"
+    },
+    {
+      "sequence": 9,
+      "type": "원문 질문 검색 · CIV-DRAFT-026",
+      "query": "월세는 모두 냈고 관리비만 밀렸어요. 집주인이 월세 연체로 해지한다고 하는데 같은 건가요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-026"
+    },
+    {
+      "sequence": 9,
+      "type": "원문 질문 검색 · CIV-DRAFT-027",
+      "query": "월세가 밀렸지만 집주인은 해지 얘기를 안 했어요. 제 사정 때문에 제가 계약을 끝내고 싶은데 연체하면 나갈 수 있나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-027"
+    },
+    {
+      "sequence": 9,
+      "type": "원문 질문 검색 · CIV-DRAFT-028",
+      "query": "가게 월세가 밀렸고 임대인이 해지하겠대요. 주택과 기준이 같나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-028"
+    },
+    {
+      "sequence": 10,
+      "type": "원문 질문 검색 · CIV-DRAFT-029",
+      "query": "보일러 수리는 집주인이 끝냈어요. 저는 계약금을 냈습니다. 계약이 취소됐는데 이 돈 달라고 할 수 있나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-029"
+    },
+    {
+      "sequence": 10,
+      "type": "원문 질문 검색 · CIV-DRAFT-030",
+      "query": "집주인이 수리를 안 해줘서 제가 수리비를 냈어요. 그 돈을 집주인에게 청구할 수 있나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-030"
+    },
+    {
+      "sequence": 10,
+      "type": "원문 질문 검색 · CIV-DRAFT-031",
+      "query": "집주인은 “당신이 수리비를 낸 게 아니다”라고 해요. 저는 제 카드 영수증이 있는데 누구에게 상환을 요구하죠? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-031"
+    },
+    {
+      "sequence": 10,
+      "type": "원문 질문 검색 · CIV-DRAFT-032",
+      "query": "그 돈은 누가 돌려줘야 하나요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-032"
+    },
+    {
+      "sequence": 11,
+      "type": "원문 질문 검색 · CIV-DRAFT-033",
+      "query": "제가 누수 수리비를 냈고 방도 한 달 못 썼어요. 수리비 반환과 월세 감액을 둘 다 알아보고 싶어요. site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-033"
+    },
+    {
+      "sequence": 11,
+      "type": "원문 질문 검색 · CIV-DRAFT-034",
+      "query": "아직 수리하거나 돈을 낸 적은 없어요. 필요비와 유익비 상환은 뭐가 다른가요? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-034"
+    },
+    {
+      "sequence": 11,
+      "type": "원문 질문 검색 · CIV-DRAFT-035",
+      "query": "집을 제대로 못 쓰는 것 같아요. 월세는 어떻게 해야 하죠? site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": "CIV-DRAFT-035"
+    },
+    {
+      "sequence": 15,
+      "type": "기존 조문명·사건번호 직접 검색(쟁점 키워드 병용 가능)",
+      "query": "site:law.go.kr \"2024나2015320\"",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 15,
+      "type": "쟁점별 추가 검색",
+      "query": "site:law.go.kr \"유익비\" \"임대인의 선택\"",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 15,
+      "type": "쟁점별 추가 검색",
+      "query": "site:law.go.kr \"관리비\" \"해지\" \"차임\" \"544\"",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 15,
+      "type": "기존 조문명·사건번호 직접 검색(쟁점 키워드 병용 가능)",
+      "query": "site:law.go.kr \"제627조\" \"일시\" \"수선\"",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 17,
+      "type": "쟁점별 추가 검색",
+      "query": "site:law.go.kr \"유익비\" \"선택\" \"626\"",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 17,
+      "type": "기존 조문명·사건번호 직접 검색(쟁점 키워드 병용 가능)",
+      "query": "site:law.go.kr \"상가건물 임대차보호법\" \"제2조\" \"제10조의8\"",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 17,
+      "type": "기존 조문명·사건번호 직접 검색(쟁점 키워드 병용 가능)",
+      "query": "site:law.go.kr \"주택임대차보호법\" \"제6조의3\" \"제6조의2\"",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 28,
+      "type": "쟁점별 추가 검색",
+      "query": "site:law.go.kr \"유익비\" \"임대인의 선택\"",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 29,
+      "type": "쟁점별 추가 검색",
+      "query": "\"유익비\" \"상환\" \"선택권\" site:easylaw.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 29,
+      "type": "쟁점별 추가 검색",
+      "query": "\"해지 의사표시가 기재된 소장\" \"차임\"",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 29,
+      "type": "기존 조문명·사건번호 직접 검색(쟁점 키워드 병용 가능)",
+      "query": "\"상가건물 임대차보호법\" \"제16조\" \"일시사용\"",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 30,
+      "type": "쟁점별 추가 검색",
+      "query": "\"유익비\" \"임대인\" \"선택\" site:easylaw.go.kr/CSP",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 30,
+      "type": "기존 조문명·사건번호 직접 검색(쟁점 키워드 병용 가능)",
+      "query": "\"상가건물\" \"제16조(일시사용\" site:law.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 34,
+      "type": "기존 조문명·사건번호 직접 검색(쟁점 키워드 병용 가능)",
+      "query": "\"2024다320215\" site:law.go.kr/precInfoP.do",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    },
+    {
+      "sequence": 34,
+      "type": "쟁점별 추가 검색",
+      "query": "\"민법\" \"필요비\" \"유익비\" \"선택\" site:easylaw.go.kr",
+      "provider": "대체 일반 웹검색",
+      "lawbot": false,
+      "item_id": null
+    }
+  ]
+}
