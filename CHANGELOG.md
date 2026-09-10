@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-012 adds a seven-article civil-law selection review draft, 35 unscored development scenarios, and read-only observations of current topic rules. Candidate relevance is separated from forced priority; no production rules or existing gold labels change. (commit: pending)
+- PATCH-012 adds a seven-article civil-law selection review draft, 35 unscored development scenarios, and read-only observations of current topic rules. Candidate relevance is separated from forced priority; no production rules or existing gold labels change. (commit: dfdd5e2)
 
 - PATCH-012 evaluates an isolated GPU BGE cross-encoder on 200 development inputs and 24 contrast probes. Ranking is fast but underperforms the saved baseline, so the model remains unadopted and no production dependencies or indexes change. (commit: b538f81)
 
