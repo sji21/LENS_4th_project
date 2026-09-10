@@ -11,6 +11,10 @@ This file records the 4th project from its first change onward.
 
 - PATCH-017 compares three predeclared rank-fusion weights using the saved 235 inputs. All three fail the adoption gate: the conservative weight adds no benefit, while stronger weights improve new civil items but displace required evidence in existing inputs. Shares per-input rankings and loss diagnostics; production behavior is unchanged. (commit: a55d9c0)
 
+### Fixed (Bug Fixes)
+
+- PATCH-017 replay accepts LF/CRLF checkout differences against original source hashes while rejecting actual code changes. Original capture and experiment results are preserved. (commit: pending)
+
 ## 2026-09-10
 
 ### Changed

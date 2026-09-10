@@ -15,6 +15,17 @@ from scripts.patch016_candidates import validate_capture
 PLAN = ROOT/'data/eval/patch017-selection/plan.json'
 
 
+def validate_product_code(root, hashes):
+    """Accept LF/CRLF checkout differences against the original raw hashes."""
+    for rel, expected in hashes.items():
+        raw = (root/rel).read_bytes()
+        lf = raw.replace(b'\r\n', b'\n')
+        # The original capture used CRLF for some files and LF for others.
+        variants = (raw, lf, lf.replace(b'\n', b'\r\n'))
+        if not any(hashlib.sha256(data).hexdigest() == expected for data in variants):
+            raise ValueError(f'Baseline product code changed: {rel}')
+
+
 def blend(baseline, civil, weight, rrf_k=5):
     baseline, civil = [norm(a) for a in baseline], [norm(a) for a in civil]
     if len(set(baseline)) != len(baseline) or len(set(civil)) != len(civil):
@@ -65,8 +76,7 @@ def run(out):
             or audit['dataset_unchanged'] is not True
             or original_manifest['operating_hashes_before']!=audit['operating_hashes_after']):
         raise ValueError('Invalid baseline audit')
-    for rel,digest in original_manifest['code_hashes'].items():
-        if sha(ROOT/rel)!=digest: raise ValueError('Baseline product code changed')
+    validate_product_code(ROOT, original_manifest['code_hashes'])
     m16=read(b16/'manifest.json')
     if sha(b15/'manifest.json')!=m16['baseline_manifest_sha256']:
         raise ValueError('Candidate/baseline link mismatch')

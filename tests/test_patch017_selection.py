@@ -1,7 +1,26 @@
 """Fixed fusion is deterministic and must not hide lost evidence."""
 import pytest
+import hashlib
 
-from scripts.patch017_selection import blend, measure
+from scripts.patch017_selection import blend, measure, validate_product_code
+
+
+@pytest.mark.parametrize('checkout_eol', [b'\n', b'\r\n'])
+def test_mixed_capture_hashes_accept_clean_checkout(tmp_path, checkout_eol):
+    hashes = {}
+    for name, captured_eol in [('a.py', b'\r\n'), ('b.py', b'\n')]:
+        content = b'value = 1\nprint(value)\n'
+        hashes[name] = hashlib.sha256(content.replace(b'\n', captured_eol)).hexdigest()
+        (tmp_path/name).write_bytes(content.replace(b'\n', checkout_eol))
+    validate_product_code(tmp_path, hashes)
+
+
+@pytest.mark.parametrize('checkout_eol', [b'\n', b'\r\n'])
+def test_real_code_change_is_rejected(tmp_path, checkout_eol):
+    expected = hashlib.sha256(b'value = 1\r\n').hexdigest()
+    (tmp_path/'a.py').write_bytes(b'value = 2' + checkout_eol)
+    with pytest.raises(ValueError, match='Baseline product code changed: a.py'):
+        validate_product_code(tmp_path, {'a.py': expected})
 
 
 def test_equal_scores_preserve_existing_rank_and_alternate_lists():
