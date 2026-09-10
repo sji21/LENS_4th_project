@@ -1,0 +1,170 @@
+{
+  "civil_diagnostic_only": {
+    "scorable_n": 0,
+    "targetless_observation_n": 5,
+    "baseline_final_civil_coverage": null,
+    "candidate_coverage": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  },
+  "civil_required_law": {
+    "scorable_n": 29,
+    "targetless_observation_n": 0,
+    "baseline_final_civil_coverage": 16,
+    "candidate_coverage": {
+      "bm25": {
+        "1": 22,
+        "2": 25,
+        "3": 27,
+        "5": 29,
+        "7": 29
+      },
+      "dense": {
+        "1": 22,
+        "2": 24,
+        "3": 27,
+        "5": 27,
+        "7": 29
+      },
+      "rrf": {
+        "1": 23,
+        "2": 29,
+        "3": 29,
+        "5": 29,
+        "7": 29
+      }
+    }
+  },
+  "civil_scope_provisional": {
+    "scorable_n": 1,
+    "targetless_observation_n": 0,
+    "baseline_final_civil_coverage": 1,
+    "candidate_coverage": {
+      "bm25": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "dense": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      },
+      "rrf": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "5": 1,
+        "7": 1
+      }
+    }
+  },
+  "dev_context_diagnostic": {
+    "scorable_n": 10,
+    "targetless_observation_n": 88,
+    "baseline_final_civil_coverage": 7,
+    "candidate_coverage": {
+      "bm25": {
+        "1": 2,
+        "2": 4,
+        "3": 6,
+        "5": 9,
+        "7": 10
+      },
+      "dense": {
+        "1": 2,
+        "2": 4,
+        "3": 4,
+        "5": 7,
+        "7": 10
+      },
+      "rrf": {
+        "1": 2,
+        "2": 2,
+        "3": 7,
+        "5": 9,
+        "7": 10
+      }
+    }
+  },
+  "dev_question_only": {
+    "scorable_n": 10,
+    "targetless_observation_n": 88,
+    "baseline_final_civil_coverage": 7,
+    "candidate_coverage": {
+      "bm25": {
+        "1": 2,
+        "2": 4,
+        "3": 7,
+        "5": 8,
+        "7": 8
+      },
+      "dense": {
+        "1": 4,
+        "2": 4,
+        "3": 6,
+        "5": 6,
+        "7": 10
+      },
+      "rrf": {
+        "1": 5,
+        "2": 6,
+        "3": 6,
+        "5": 7,
+        "7": 10
+      }
+    }
+  },
+  "historical_observation": {
+    "scorable_n": 0,
+    "targetless_observation_n": 4,
+    "baseline_final_civil_coverage": null,
+    "candidate_coverage": {
+      "bm25": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "dense": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      },
+      "rrf": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "5": null,
+        "7": null
+      }
+    }
+  }
+}
