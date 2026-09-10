@@ -7,6 +7,10 @@ This file records the 4th project from its first change onward.
 
 ## 2026-09-10
 
+### Changed
+
+- PATCH-012 remains on hold while civil retrieval is redesigned. An opt-in unified-candidate and local semantic-selection experiment is shared; neither variant is adopted as the application default because final ranking quality and latency are not acceptable. See `docs/patch012-redesign-experiment.md`. (commit: pending)
+
 ### Fixed (Bug Fixes)
 
 - PATCH-012 distinguishes affirmative landlord repair/payment actions from negated repair duties before the tenant subject switch, preserving tenant reimbursement queries such as “the landlord did not repair it, so I replaced it.” (commit: `f4fc3c3`)
