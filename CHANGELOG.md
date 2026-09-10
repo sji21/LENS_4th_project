@@ -19,7 +19,7 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
-- PATCH-015 captures 235 inputs on the latest main without product changes: DEV200 rankings match the saved reference; civil primary AllRequired@3/5 is 16/29 with no missing target articles. Shares snapshot provenance, candidate/filter traces and offline reports; remaining civil misses expose candidate-entry restrictions. Related tests: 33 passed. (commit: pending)
+- PATCH-015 captures 235 inputs on the latest main without product changes: DEV200 rankings match the saved reference; civil primary AllRequired@3/5 is 16/29 with no missing target articles. Shares snapshot provenance, candidate/filter traces and offline reports; remaining civil misses expose candidate-entry restrictions. Related tests: 33 passed. (commit: 2841e04)
 
 - PATCH-011 shares the reviewed DEV v2 evidence, claim-level supplements, fixed primary-law targets, and saved 200-input rankings while preserving v1. An offline diagnostic validates fingerprints and reproduces article coverage/rank results without a model or operational DB; this is not whole-answer accuracy. See `docs/patch011-dev100-v2.md`. (commit: `8c82531`)
 
