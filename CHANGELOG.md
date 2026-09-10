@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-012 adds a candidate-only comparison of eight separate-corpus budgets, five equal-budget unified controls, and one general-only baseline. All 200 inputs preserve existing general-law prefixes; two candidate configurations are retained for later reranking, with no production switch. (commit: pending)
+- PATCH-012 adds a candidate-only comparison of eight separate-corpus budgets, five equal-budget unified controls, and one general-only baseline. All 200 inputs preserve existing general-law prefixes; two candidate configurations are retained for later reranking, with no production switch. (commit: 43412ed)
 
 - PATCH-012 remains on hold while civil retrieval is redesigned. An opt-in unified-candidate and local semantic-selection experiment is shared; neither variant is adopted as the application default because final ranking quality and latency are not acceptable. See `docs/patch012-redesign-experiment.md`. (commit: `60ed80e`)
 
