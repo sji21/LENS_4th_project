@@ -5,6 +5,16 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-11
+
+### Added
+
+- PATCH-017 compares three predeclared rank-fusion weights using the saved 235 inputs. All three fail the adoption gate: the conservative weight adds no benefit, while stronger weights improve new civil items but displace required evidence in existing inputs. Shares per-input rankings and loss diagnostics; production behavior is unchanged. (commit: a55d9c0)
+
+### Fixed (Bug Fixes)
+
+- PATCH-017 replay accepts LF/CRLF checkout differences against original source hashes while rejecting actual code changes. Original capture and experiment results are preserved. (commit: dd91fa3)
+
 ## 2026-09-10
 
 ### Changed

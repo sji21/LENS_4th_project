@@ -1,0 +1,1090 @@
+{
+  "baseline": {
+    "civil_diagnostic_only": {
+      "n": 5,
+      "scorable_n": 0,
+      "targetless_n": 5,
+      "metrics": {
+        "3": {
+          "AnyHit": null,
+          "AllRequired": null,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": null,
+          "AllRequired": null,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 0
+    },
+    "civil_required_law": {
+      "n": 29,
+      "scorable_n": 29,
+      "targetless_n": 0,
+      "metrics": {
+        "3": {
+          "AnyHit": 18,
+          "AllRequired": 16,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": 18,
+          "AllRequired": 16,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 0
+    },
+    "civil_scope_provisional": {
+      "n": 1,
+      "scorable_n": 1,
+      "targetless_n": 0,
+      "metrics": {
+        "3": {
+          "AnyHit": 1,
+          "AllRequired": 1,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": 1,
+          "AllRequired": 1,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 0
+    },
+    "dev_context_diagnostic": {
+      "n": 98,
+      "scorable_n": 75,
+      "targetless_n": 23,
+      "metrics": {
+        "3": {
+          "AnyHit": 30,
+          "AllRequired": 21,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": 34,
+          "AllRequired": 23,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 0
+    },
+    "dev_question_only": {
+      "n": 98,
+      "scorable_n": 75,
+      "targetless_n": 23,
+      "metrics": {
+        "3": {
+          "AnyHit": 29,
+          "AllRequired": 19,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": 31,
+          "AllRequired": 20,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 0
+    },
+    "historical_observation": {
+      "n": 4,
+      "scorable_n": 0,
+      "targetless_n": 4,
+      "metrics": {
+        "3": {
+          "AnyHit": null,
+          "AllRequired": null,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": null,
+          "AllRequired": null,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 0
+    }
+  },
+  "civil_half": {
+    "civil_diagnostic_only": {
+      "n": 5,
+      "scorable_n": 0,
+      "targetless_n": 5,
+      "metrics": {
+        "3": {
+          "AnyHit": null,
+          "AllRequired": null,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": null,
+          "AllRequired": null,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 0
+    },
+    "civil_required_law": {
+      "n": 29,
+      "scorable_n": 29,
+      "targetless_n": 0,
+      "metrics": {
+        "3": {
+          "AnyHit": 18,
+          "AllRequired": 16,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": 18,
+          "AllRequired": 16,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 1
+    },
+    "civil_scope_provisional": {
+      "n": 1,
+      "scorable_n": 1,
+      "targetless_n": 0,
+      "metrics": {
+        "3": {
+          "AnyHit": 1,
+          "AllRequired": 1,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": 1,
+          "AllRequired": 1,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 1
+    },
+    "dev_context_diagnostic": {
+      "n": 98,
+      "scorable_n": 75,
+      "targetless_n": 23,
+      "metrics": {
+        "3": {
+          "AnyHit": 30,
+          "AllRequired": 21,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": 34,
+          "AllRequired": 23,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 0
+    },
+    "dev_question_only": {
+      "n": 98,
+      "scorable_n": 75,
+      "targetless_n": 23,
+      "metrics": {
+        "3": {
+          "AnyHit": 29,
+          "AllRequired": 19,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": 31,
+          "AllRequired": 20,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 0
+    },
+    "historical_observation": {
+      "n": 4,
+      "scorable_n": 0,
+      "targetless_n": 4,
+      "metrics": {
+        "3": {
+          "AnyHit": null,
+          "AllRequired": null,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": null,
+          "AllRequired": null,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 0
+    }
+  },
+  "civil_equal": {
+    "civil_diagnostic_only": {
+      "n": 5,
+      "scorable_n": 0,
+      "targetless_n": 5,
+      "metrics": {
+        "3": {
+          "AnyHit": null,
+          "AllRequired": null,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": null,
+          "AllRequired": null,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 5
+    },
+    "civil_required_law": {
+      "n": 29,
+      "scorable_n": 29,
+      "targetless_n": 0,
+      "metrics": {
+        "3": {
+          "AnyHit": 28,
+          "AllRequired": 27,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": 29,
+          "AllRequired": 28,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 29
+    },
+    "civil_scope_provisional": {
+      "n": 1,
+      "scorable_n": 1,
+      "targetless_n": 0,
+      "metrics": {
+        "3": {
+          "AnyHit": 1,
+          "AllRequired": 1,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": 1,
+          "AllRequired": 1,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 1
+    },
+    "dev_context_diagnostic": {
+      "n": 98,
+      "scorable_n": 75,
+      "targetless_n": 23,
+      "metrics": {
+        "3": {
+          "AnyHit": 27,
+          "AllRequired": 19,
+          "lost_required_inputs": [
+            {
+              "qid": "DEV-005",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조의6"
+              ]
+            },
+            {
+              "qid": "DEV-009",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제2조"
+              ]
+            },
+            {
+              "qid": "DEV-010",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조의3"
+              ]
+            },
+            {
+              "qid": "DEV-040",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-047",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제6조의3"
+              ]
+            },
+            {
+              "qid": "DEV-088",
+              "mode": "context_diagnostic",
+              "articles": [
+                "상가건물임대차보호법-제3조"
+              ]
+            }
+          ]
+        },
+        "5": {
+          "AnyHit": 32,
+          "AllRequired": 23,
+          "lost_required_inputs": [
+            {
+              "qid": "DEV-005",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-015",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-042",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-050",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조의6"
+              ]
+            },
+            {
+              "qid": "DEV-099",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조의6"
+              ]
+            }
+          ]
+        }
+      },
+      "changed_ranking_n": 98
+    },
+    "dev_question_only": {
+      "n": 98,
+      "scorable_n": 75,
+      "targetless_n": 23,
+      "metrics": {
+        "3": {
+          "AnyHit": 28,
+          "AllRequired": 19,
+          "lost_required_inputs": [
+            {
+              "qid": "DEV-010",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조의3"
+              ]
+            },
+            {
+              "qid": "DEV-044",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-047",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제6조의3"
+              ]
+            },
+            {
+              "qid": "DEV-088",
+              "mode": "question_only",
+              "articles": [
+                "상가건물임대차보호법-제3조"
+              ]
+            }
+          ]
+        },
+        "5": {
+          "AnyHit": 32,
+          "AllRequired": 22,
+          "lost_required_inputs": [
+            {
+              "qid": "DEV-042",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-067",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제4조"
+              ]
+            }
+          ]
+        }
+      },
+      "changed_ranking_n": 98
+    },
+    "historical_observation": {
+      "n": 4,
+      "scorable_n": 0,
+      "targetless_n": 4,
+      "metrics": {
+        "3": {
+          "AnyHit": null,
+          "AllRequired": null,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": null,
+          "AllRequired": null,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 4
+    }
+  },
+  "civil_strong": {
+    "civil_diagnostic_only": {
+      "n": 5,
+      "scorable_n": 0,
+      "targetless_n": 5,
+      "metrics": {
+        "3": {
+          "AnyHit": null,
+          "AllRequired": null,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": null,
+          "AllRequired": null,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 5
+    },
+    "civil_required_law": {
+      "n": 29,
+      "scorable_n": 29,
+      "targetless_n": 0,
+      "metrics": {
+        "3": {
+          "AnyHit": 29,
+          "AllRequired": 28,
+          "lost_required_inputs": [
+            {
+              "qid": "CIV-DRAFT-028",
+              "mode": "question_context",
+              "articles": [
+                "상가건물임대차보호법-제10조의8"
+              ]
+            }
+          ]
+        },
+        "5": {
+          "AnyHit": 29,
+          "AllRequired": 28,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 29
+    },
+    "civil_scope_provisional": {
+      "n": 1,
+      "scorable_n": 1,
+      "targetless_n": 0,
+      "metrics": {
+        "3": {
+          "AnyHit": 1,
+          "AllRequired": 1,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": 1,
+          "AllRequired": 1,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 1
+    },
+    "dev_context_diagnostic": {
+      "n": 98,
+      "scorable_n": 75,
+      "targetless_n": 23,
+      "metrics": {
+        "3": {
+          "AnyHit": 9,
+          "AllRequired": 9,
+          "lost_required_inputs": [
+            {
+              "qid": "DEV-003",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조의7"
+              ]
+            },
+            {
+              "qid": "DEV-005",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조의6"
+              ]
+            },
+            {
+              "qid": "DEV-007",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조의3"
+              ]
+            },
+            {
+              "qid": "DEV-009",
+              "mode": "context_diagnostic",
+              "articles": [
+                "상가건물임대차보호법-제2조",
+                "주택임대차보호법-제2조"
+              ]
+            },
+            {
+              "qid": "DEV-010",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조의3"
+              ]
+            },
+            {
+              "qid": "DEV-025",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조의7"
+              ]
+            },
+            {
+              "qid": "DEV-033",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-039",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조의6"
+              ]
+            },
+            {
+              "qid": "DEV-040",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-043",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-044",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-047",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제6조",
+                "주택임대차보호법-제6조의3"
+              ]
+            },
+            {
+              "qid": "DEV-048",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제6조의3"
+              ]
+            },
+            {
+              "qid": "DEV-049",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제7조"
+              ]
+            },
+            {
+              "qid": "DEV-051",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제6조"
+              ]
+            },
+            {
+              "qid": "DEV-052",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제6조",
+                "주택임대차보호법-제6조의2"
+              ]
+            },
+            {
+              "qid": "DEV-053",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제6조의3"
+              ]
+            },
+            {
+              "qid": "DEV-054",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제4조"
+              ]
+            },
+            {
+              "qid": "DEV-067",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제4조"
+              ]
+            },
+            {
+              "qid": "DEV-069",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조의3"
+              ]
+            },
+            {
+              "qid": "DEV-070",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조의3"
+              ]
+            },
+            {
+              "qid": "DEV-088",
+              "mode": "context_diagnostic",
+              "articles": [
+                "상가건물임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-089",
+              "mode": "context_diagnostic",
+              "articles": [
+                "상가건물임대차보호법-제10조"
+              ]
+            }
+          ]
+        },
+        "5": {
+          "AnyHit": 23,
+          "AllRequired": 17,
+          "lost_required_inputs": [
+            {
+              "qid": "DEV-005",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조",
+                "주택임대차보호법-제3조의6"
+              ]
+            },
+            {
+              "qid": "DEV-009",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제2조"
+              ]
+            },
+            {
+              "qid": "DEV-010",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조의3"
+              ]
+            },
+            {
+              "qid": "DEV-015",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-033",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-040",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-042",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-043",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-047",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제6조",
+                "주택임대차보호법-제6조의3"
+              ]
+            },
+            {
+              "qid": "DEV-049",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제7조"
+              ]
+            },
+            {
+              "qid": "DEV-050",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조의6"
+              ]
+            },
+            {
+              "qid": "DEV-052",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제6조"
+              ]
+            },
+            {
+              "qid": "DEV-054",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제4조"
+              ]
+            },
+            {
+              "qid": "DEV-067",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제4조"
+              ]
+            },
+            {
+              "qid": "DEV-088",
+              "mode": "context_diagnostic",
+              "articles": [
+                "상가건물임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-099",
+              "mode": "context_diagnostic",
+              "articles": [
+                "주택임대차보호법-제3조의6"
+              ]
+            }
+          ]
+        }
+      },
+      "changed_ranking_n": 98
+    },
+    "dev_question_only": {
+      "n": 98,
+      "scorable_n": 75,
+      "targetless_n": 23,
+      "metrics": {
+        "3": {
+          "AnyHit": 10,
+          "AllRequired": 10,
+          "lost_required_inputs": [
+            {
+              "qid": "DEV-003",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조의7"
+              ]
+            },
+            {
+              "qid": "DEV-005",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조",
+                "주택임대차보호법-제3조의6"
+              ]
+            },
+            {
+              "qid": "DEV-007",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조의3"
+              ]
+            },
+            {
+              "qid": "DEV-009",
+              "mode": "question_only",
+              "articles": [
+                "상가건물임대차보호법-제2조"
+              ]
+            },
+            {
+              "qid": "DEV-010",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조의3"
+              ]
+            },
+            {
+              "qid": "DEV-025",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조의7"
+              ]
+            },
+            {
+              "qid": "DEV-033",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-039",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조의6"
+              ]
+            },
+            {
+              "qid": "DEV-040",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-043",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-044",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-047",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제6조",
+                "주택임대차보호법-제6조의3"
+              ]
+            },
+            {
+              "qid": "DEV-048",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제6조의3"
+              ]
+            },
+            {
+              "qid": "DEV-049",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제7조"
+              ]
+            },
+            {
+              "qid": "DEV-050",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조의6"
+              ]
+            },
+            {
+              "qid": "DEV-051",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제6조"
+              ]
+            },
+            {
+              "qid": "DEV-052",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제6조",
+                "주택임대차보호법-제6조의2"
+              ]
+            },
+            {
+              "qid": "DEV-069",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조의3"
+              ]
+            },
+            {
+              "qid": "DEV-070",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조의3"
+              ]
+            },
+            {
+              "qid": "DEV-088",
+              "mode": "question_only",
+              "articles": [
+                "상가건물임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-089",
+              "mode": "question_only",
+              "articles": [
+                "상가건물임대차보호법-제10조"
+              ]
+            },
+            {
+              "qid": "DEV-099",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조의6"
+              ]
+            }
+          ]
+        },
+        "5": {
+          "AnyHit": 25,
+          "AllRequired": 19,
+          "lost_required_inputs": [
+            {
+              "qid": "DEV-005",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-009",
+              "mode": "question_only",
+              "articles": [
+                "상가건물임대차보호법-제2조"
+              ]
+            },
+            {
+              "qid": "DEV-010",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조의3"
+              ]
+            },
+            {
+              "qid": "DEV-040",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-042",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-044",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-047",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제6조",
+                "주택임대차보호법-제6조의3"
+              ]
+            },
+            {
+              "qid": "DEV-052",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제6조"
+              ]
+            },
+            {
+              "qid": "DEV-067",
+              "mode": "question_only",
+              "articles": [
+                "주택임대차보호법-제4조"
+              ]
+            },
+            {
+              "qid": "DEV-088",
+              "mode": "question_only",
+              "articles": [
+                "상가건물임대차보호법-제3조"
+              ]
+            },
+            {
+              "qid": "DEV-089",
+              "mode": "question_only",
+              "articles": [
+                "상가건물임대차보호법-제10조"
+              ]
+            }
+          ]
+        }
+      },
+      "changed_ranking_n": 98
+    },
+    "historical_observation": {
+      "n": 4,
+      "scorable_n": 0,
+      "targetless_n": 4,
+      "metrics": {
+        "3": {
+          "AnyHit": null,
+          "AllRequired": null,
+          "lost_required_inputs": []
+        },
+        "5": {
+          "AnyHit": null,
+          "AllRequired": null,
+          "lost_required_inputs": []
+        }
+      },
+      "changed_ranking_n": 4
+    }
+  }
+}

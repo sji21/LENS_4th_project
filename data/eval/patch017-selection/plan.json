@@ -1,0 +1,20 @@
+{
+  "schema": "patch017-selection-plan-v1",
+  "date": "2026-09-11",
+  "purpose": "Bounded offline final-list recombination; not live retrieval or independent evaluation",
+  "inputs": "PATCH-015 final law TOP5 plus PATCH-016 civil RRF TOP7 for the same 235 inputs",
+  "fusion": "score = 1/(5+baseline_rank) + civil_weight/(5+civil_rank); absent contribution is zero",
+  "tie_break": "existing baseline rank first, then normalized article identifier",
+  "rrf_k": 5,
+  "variants": [
+    {"name": "civil_half", "civil_weight": "0.5"},
+    {"name": "civil_equal", "civil_weight": "1"},
+    {"name": "civil_strong", "civil_weight": "1.5"}
+  ],
+  "output_limit": 5,
+  "score_ks": [3, 5],
+  "technical_gate": "For both K values: no loss of any previously returned required article in nonhistorical DEV inputs or CIV primary29, and strictly higher primary29 AllRequired count than baseline. A pass is only eligibility for later runtime and boundary review, not deployment approval.",
+  "unscored": "Historical DEV, targetless queries and CIV scope-provisional remain reported separately; no automatic failure or success labels.",
+  "stop_rule": "Report all three variants and accept/reject the technical gate without adding weights or changing gold after observing results.",
+  "product_changes": false
+}
