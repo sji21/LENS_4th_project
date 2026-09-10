@@ -170,7 +170,7 @@
     "src\\retrieval\\readiness.py": "e2220f8b623697d5ddecdc54e47c5fc3ebdff1c3a1d1842821e352f5937ce95f",
     "src\\retrieval\\refs.py": "e2ce58238e57aa6469fcc047a81db241529c6f81d777ea8d3fbbb5aef79ad215",
     "src\\retrieval\\retriever.py": "64e2cbefbc61515a2c8c223cd5289ac624617327eeca3bd7e401cc96f13bae51",
-    "src\\retrieval\\service.py": "6f77175c12212de07a11fe717e84d3b7bbe9ba19a1d671b962d028f7e94b774c",
+    "src\\retrieval\\service.py": "f749dac5c388f77dc06e332f8814ca63de289783b3139e5318d8aabbca6eca3f",
     "src\\retrieval\\terms.py": "34354c085495148a535c15c409f2a5761808e2fbc106b25141874117f5836a6e",
     "src\\retrieval\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
@@ -203,9 +203,9 @@
   "questions_sha256": "48952d558a99ad22e726ce778ef045cb48ec8bb250f17aec7e07e15ced0cc964",
   "plan_sha256": "1022e31142eacc7acd47861285a3cdc256d899296ce0d0f242f322ae7d1b1fca",
   "tests": {
-    "related_passed": 131,
+    "related_passed": 136,
     "related_subtests": 86,
-    "full_passed": 691,
+    "full_passed": 696,
     "full_skipped": 3,
     "full_subtests": 124
   },
@@ -248,14 +248,15 @@
   },
   "artifact_hashes": {
     "tmp/patch012-before/results.json": "b5a6b88fda5ff267c337d3fd3e0e5e865e5690c36ce1ac6ff18fc6849a9cb7c5",
-    "tmp/patch012-review-after/results.json": "5cce0ddad68c9678c85f53148f329d291f98a8c30a18ff58f1f65d8dcfbd17ee",
-    "tmp/patch012-review-after/public-regression.json": "84648b712cb463f249ba5fdaefd0699d58ac4b1ece9ba12a8abca4c6b6d115fe"
+    "tmp/patch012-review2-after/results.json": "5cce0ddad68c9678c85f53148f329d291f98a8c30a18ff58f1f65d8dcfbd17ee",
+    "tmp/patch012-review2-after/public-regression.json": "a8b671e40c4fd19fa41a02c948e62bd598ed7bc369a5b04250362caa87d7783d"
   },
   "review_fix": {
-    "previous_implementation_commit": "4503f4d",
-    "reviewed_head": "8b8abfe",
+    "previous_implementation_commit": "c34a6df",
+    "reviewed_head": "c1e16ed",
     "counterexamples_reproduced": 4,
-    "added_positive_cases": 2,
+    "added_positive_cases": 4,
+    "added_negative_cases": 1,
     "all_200_rankings_unchanged_from_pre_review": true
   }
 }

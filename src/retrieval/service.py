@@ -266,15 +266,20 @@ def detect_civil_topics(question: str) -> tuple[CivilTopic, ...]:
         re.search(r"먼저\s*낸\s*(?:[\d,]+\s*만?\s*원|돈|비용).*누구(?:한테|에게)", sentence)
         for sentence in sentences
     )
-    # 임대인이 수리하거나 비용을 요구한 것은 임차인의 상환 청구와 반대다.
-    # 임차인 주어가 새로 등장하면 그 뒤의 행동을 임대인에게 귀속하지 않는다.
+    # 임대인 주어 뒤의 수리 명사만으로는 부족하다. "수리를 안 해줘서 제가"
+    # 같은 문장은 빼고, 주어 전환 전의 완료/지출/반환 요구 동사를 확인한다.
     landlord_expense_actor = any(
         re.search(
-            r"(?:집주인|임대인)(?:이|은|가)"
-            r"(?:(?!제가|저는|임차인).){0,40}?"
-            r"(?:수리|수선|교체|고쳤|고쳐|고치|비용|돈)", sentence,
+            r"(?:수리|수선)(?:를)?\s*(?:했|마쳤|끝냈|해\s*줬|해주었|완료했)"
+            r"|교체했|고쳤"
+            r"|(?:수리비|수선비|교체비(?:용)?|비용|돈)(?:을|를)?\s*"
+            r"(?:돌려달라|냈|지불했|결제했)", actor_clause,
         )
+        and not re.search(r"(?:했다고|했다는).*아니", actor_clause)
         for sentence in sentences
+        for actor_clause in re.findall(
+            r"(?:집주인|임대인)(?:이|은|가)((?:(?!제가|저는|임차인).)*)", sentence,
+        )
     )
     linked_reclaim = not landlord_expense_actor and not _has_any(q, other_money) and (
         (completed_repair and cost_return) or (repair_payment and prepaid_question)

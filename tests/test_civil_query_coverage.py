@@ -49,9 +49,20 @@ def test_unrelated_ambiguous_or_missing_repair_payment(question):
     '보일러가 고장 나서 임대인이 수리했어요. 수리비를 돌려달라고 하는데 제가 내야 하나요?',
     '보일러가 고장 나서 집주인이 수리하고 돈을 냈어요. 비용을 돌려달라고 하네요.',
     '보일러가 고장 나서 제가 수리했어요. 집주인이 저에게 수리비를 돌려달라고 하네요.',
+    '보일러가 고장 나서 임대인이 수리를 해 줬어요. 비용을 돌려달라고 하네요.',
 ])
 def test_landlord_repair_or_reclaim_is_not_tenant_reimbursement(question):
     assert '민법-제626조' not in articles(question)
+
+
+@pytest.mark.parametrize('question', [
+    '집주인이 수리를 안 해줘서 제가 보일러를 교체했어요. 비용을 돌려달라고 할 수 있나요?',
+    '임대인이 수리하지 않아서 제가 잠금장치를 교체했어요. 비용을 돌려달라고 할 수 있나요?',
+    '집주인이 수리를 거절해서 제가 보일러를 교체했어요. 비용을 돌려달라고 할 수 있나요?',
+    '집주인이 수리한 것은 아니고 제가 고장 난 보일러를 교체했어요. 비용을 돌려달라고 할 수 있나요?',
+])
+def test_negated_landlord_repair_preserves_tenant_reimbursement(question):
+    assert '민법-제626조' in articles(question)
 
 
 @pytest.mark.parametrize('question', [
