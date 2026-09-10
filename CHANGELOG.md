@@ -13,7 +13,7 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
-- PATCH-017 replay accepts LF/CRLF checkout differences against original source hashes while rejecting actual code changes. Original capture and experiment results are preserved. (commit: pending)
+- PATCH-017 replay accepts LF/CRLF checkout differences against original source hashes while rejecting actual code changes. Original capture and experiment results are preserved. (commit: dd91fa3)
 
 ## 2026-09-10
 
