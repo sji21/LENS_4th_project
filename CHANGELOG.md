@@ -9,9 +9,13 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
+- PATCH-018 tests separate general TOP5 and civil channels on the same 235 inputs. General evidence is preserved, but civil TOP2 substitution loses prior civil evidence in 10 DEV inputs; unrestricted delivery raises exposure. Shares fixed comparisons and replay artifacts; production adoption is deferred. (commit: de628b3)
+
 - PATCH-017 compares three predeclared rank-fusion weights using the saved 235 inputs. All three fail the adoption gate: the conservative weight adds no benefit, while stronger weights improve new civil items but displace required evidence in existing inputs. Shares per-input rankings and loss diagnostics; production behavior is unchanged. (commit: a55d9c0)
 
 ### Fixed (Bug Fixes)
+
+- PATCH-018 preserves captured source bytes and validates current dependencies after newline normalization, allowing clean Git checkouts to replay mixed-newline captures while rejecting content changes. The historical runner and original results remain preserved. (commit: 52b2d5f)
 
 - PATCH-017 replay accepts LF/CRLF checkout differences against original source hashes while rejecting actual code changes. Original capture and experiment results are preserved. (commit: dd91fa3)
 
