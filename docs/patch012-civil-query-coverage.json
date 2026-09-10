@@ -1,0 +1,254 @@
+{
+  "inputs": 200,
+  "baseline_matches_patch011_saved_rankings": true,
+  "same_data_model_settings": true,
+  "changes": [
+    {
+      "qid": "DEV-057",
+      "mode": "question_only",
+      "changed": [
+        "laws"
+      ],
+      "before": [
+        "민법-제623조",
+        "주택임대차보호법-제3조의3",
+        "주택임대차보호법시행령-제30조",
+        "주택임대차보호법-제6조의3",
+        "주택임대차보호법-제3조의7"
+      ],
+      "after": [
+        "민법-제626조",
+        "민법-제623조",
+        "주택임대차보호법-제3조의3",
+        "주택임대차보호법시행령-제30조",
+        "주택임대차보호법-제6조의3"
+      ]
+    },
+    {
+      "qid": "DEV-057",
+      "mode": "context_diagnostic",
+      "changed": [
+        "laws"
+      ],
+      "before": [
+        "민법-제623조",
+        "주택임대차보호법-제6조의2",
+        "주택임대차보호법-제3조의3",
+        "주택임대차보호법-제3조의7",
+        "주택임대차보호법-제6조"
+      ],
+      "after": [
+        "민법-제626조",
+        "민법-제623조",
+        "주택임대차보호법-제6조의2",
+        "주택임대차보호법-제3조의3",
+        "주택임대차보호법-제3조의7"
+      ]
+    },
+    {
+      "qid": "DEV-058",
+      "mode": "question_only",
+      "changed": [
+        "laws"
+      ],
+      "before": [
+        "주택임대차보호법-제6조의3",
+        "주택임대차보호법-제6조",
+        "주택임대차보호법-제7조의2",
+        "주택임대차보호법-제4조",
+        "주택임대차보호법-제10조의2"
+      ],
+      "after": [
+        "민법-제627조",
+        "주택임대차보호법-제6조의3",
+        "주택임대차보호법-제6조",
+        "주택임대차보호법-제7조의2",
+        "주택임대차보호법-제4조"
+      ]
+    },
+    {
+      "qid": "DEV-058",
+      "mode": "context_diagnostic",
+      "changed": [
+        "laws"
+      ],
+      "before": [
+        "주택임대차보호법-제6조의3",
+        "주택임대차보호법-제6조",
+        "주택임대차보호법-제11조",
+        "주택임대차보호법-제2조",
+        "주택임대차보호법-제6조의2"
+      ],
+      "after": [
+        "민법-제627조",
+        "주택임대차보호법-제6조의3",
+        "주택임대차보호법-제6조",
+        "주택임대차보호법-제11조",
+        "주택임대차보호법-제2조"
+      ]
+    },
+    {
+      "qid": "DEV-059",
+      "mode": "context_diagnostic",
+      "changed": [
+        "laws"
+      ],
+      "before": [
+        "민법-제623조",
+        "주택임대차보호법-제3조의3",
+        "주택임대차보호법-제6조의3",
+        "주택임대차보호법-제3조의2",
+        "주택임대차보호법-제2조"
+      ],
+      "after": [
+        "민법-제626조",
+        "민법-제623조",
+        "주택임대차보호법-제3조의3",
+        "주택임대차보호법-제6조의3",
+        "주택임대차보호법-제3조의2"
+      ]
+    }
+  ],
+  "counts": {
+    "before": {
+      "question_only": {
+        "필수 조문 전부 미보유": 35,
+        "필수 조문 일부 미보유": 10,
+        "전부 보유·TOP3 전부 반환": 19,
+        "고정 필수 법령 목표 없음": 23,
+        "전부 보유·TOP5 검색 누락": 10,
+        "전부 보유·TOP5만 전부 반환": 1,
+        "시점별 근거 별도 확인": 2
+      },
+      "context_diagnostic": {
+        "필수 조문 전부 미보유": 35,
+        "필수 조문 일부 미보유": 10,
+        "전부 보유·TOP3 전부 반환": 21,
+        "고정 필수 법령 목표 없음": 23,
+        "전부 보유·TOP5만 전부 반환": 2,
+        "전부 보유·TOP5 검색 누락": 7,
+        "시점별 근거 별도 확인": 2
+      }
+    },
+    "after": {
+      "question_only": {
+        "필수 조문 전부 미보유": 35,
+        "필수 조문 일부 미보유": 10,
+        "전부 보유·TOP3 전부 반환": 21,
+        "고정 필수 법령 목표 없음": 23,
+        "전부 보유·TOP5 검색 누락": 8,
+        "전부 보유·TOP5만 전부 반환": 1,
+        "시점별 근거 별도 확인": 2
+      },
+      "context_diagnostic": {
+        "필수 조문 전부 미보유": 35,
+        "필수 조문 일부 미보유": 10,
+        "전부 보유·TOP3 전부 반환": 24,
+        "고정 필수 법령 목표 없음": 23,
+        "전부 보유·TOP5만 전부 반환": 2,
+        "전부 보유·TOP5 검색 누락": 4,
+        "시점별 근거 별도 확인": 2
+      }
+    }
+  },
+  "operating_files_unchanged": true,
+  "code_hashes_before": {
+    "src\\retrieval\\dense.py": "d43c8db05e98490d0cbd394bb26e6fc394d299128111314e92a695d93aa5e7f5",
+    "src\\retrieval\\hybrid.py": "421a467c9f9cc1f6c4cd10fedc8bbcae79e75381ccf6c45ac5af5d48355616c6",
+    "src\\retrieval\\index.py": "dd4fd669cbdec1213ed6f6e787f0474a49320d833727d6f95441e806df190d14",
+    "src\\retrieval\\readiness.py": "e2220f8b623697d5ddecdc54e47c5fc3ebdff1c3a1d1842821e352f5937ce95f",
+    "src\\retrieval\\refs.py": "e2ce58238e57aa6469fcc047a81db241529c6f81d777ea8d3fbbb5aef79ad215",
+    "src\\retrieval\\retriever.py": "64e2cbefbc61515a2c8c223cd5289ac624617327eeca3bd7e401cc96f13bae51",
+    "src\\retrieval\\service.py": "ee11744daf25d40fb3ed2ddf0124e569e3db3f6c3b5f8398db0fd00c8985d404",
+    "src\\retrieval\\terms.py": "34354c085495148a535c15c409f2a5761808e2fbc106b25141874117f5836a6e",
+    "src\\retrieval\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "code_hashes_after": {
+    "src\\retrieval\\dense.py": "d43c8db05e98490d0cbd394bb26e6fc394d299128111314e92a695d93aa5e7f5",
+    "src\\retrieval\\hybrid.py": "421a467c9f9cc1f6c4cd10fedc8bbcae79e75381ccf6c45ac5af5d48355616c6",
+    "src\\retrieval\\index.py": "dd4fd669cbdec1213ed6f6e787f0474a49320d833727d6f95441e806df190d14",
+    "src\\retrieval\\readiness.py": "e2220f8b623697d5ddecdc54e47c5fc3ebdff1c3a1d1842821e352f5937ce95f",
+    "src\\retrieval\\refs.py": "e2ce58238e57aa6469fcc047a81db241529c6f81d777ea8d3fbbb5aef79ad215",
+    "src\\retrieval\\retriever.py": "64e2cbefbc61515a2c8c223cd5289ac624617327eeca3bd7e401cc96f13bae51",
+    "src\\retrieval\\service.py": "b6804100d686396bb035467b6c6c7b265a7b7c452cf1090891c45143f7a48bb9",
+    "src\\retrieval\\terms.py": "34354c085495148a535c15c409f2a5761808e2fbc106b25141874117f5836a6e",
+    "src\\retrieval\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "base_commit": "b6844d3f1614071a0a8f6f19ff81dd1df41603a1",
+  "measured_worktree": true,
+  "model": "nlpai-lab/KURE-v1",
+  "python": "3.11.9",
+  "search_k": {
+    "law": 5,
+    "case": 5,
+    "guide": 2
+  },
+  "source_data_hashes": {
+    "data\\database\\knowledge.sqlite3": "b7914d6e6e416609561cc2c3812ca390e7a4edbd92527e24862a729ae06961ac",
+    "data\\chunks\\chunks.jsonl": "0c3b03f4e58d9a90ed5c55a4bddfbfdb6a2f6d855a08a396b5290d8f8fdce0c9",
+    "data\\chunks\\cases.jsonl": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
+    "data\\chunks\\guides.jsonl": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
+    "data\\chunks\\civil.jsonl": "d196a2b2f236fcce4a104c6bc03ff2f03b234bb1deb5d784249c37dad165fcdc",
+    "data\\index\\chroma_kurev1_1024\\chroma.sqlite3": "2f762d33b396be31826ca92c3993eb01ffbf3935f6b46febf11e7d1b28126f29",
+    "data\\index\\chroma_kurev1_1024\\573bd9ae-81e2-4ec5-8f81-76890ebf4a15\\data_level0.bin": "9f32b4c48e8c4644d9bfd739a52b08de3859c13d33407fb2e4b299a25ae6b6a8",
+    "data\\index\\chroma_kurev1_1024\\573bd9ae-81e2-4ec5-8f81-76890ebf4a15\\header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+    "data\\index\\chroma_kurev1_1024\\573bd9ae-81e2-4ec5-8f81-76890ebf4a15\\length.bin": "20b96a595c4d2e53da5a7043a90f1aa1e8cdf2e687f8873ff218fde133cee4b7",
+    "data\\index\\chroma_kurev1_1024\\573bd9ae-81e2-4ec5-8f81-76890ebf4a15\\link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data\\index\\chroma_civil_kurev1_1024\\chroma.sqlite3": "ca522013ffbbbd45fad31d4654e01db12dd529e27655920893bad43c28907b46",
+    "data\\index\\chroma_civil_kurev1_1024\\4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4\\data_level0.bin": "1daf3a5efbe8575b413f99599feb56883cb613d7e9e88523ef51a679d2529dc1",
+    "data\\index\\chroma_civil_kurev1_1024\\4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4\\header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+    "data\\index\\chroma_civil_kurev1_1024\\4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4\\length.bin": "ec20e110939f37c9aec4f313648241f1881ac3eba743f9e495372ca79cc426f4",
+    "data\\index\\chroma_civil_kurev1_1024\\4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4\\link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "questions_sha256": "48952d558a99ad22e726ce778ef045cb48ec8bb250f17aec7e07e15ced0cc964",
+  "plan_sha256": "1022e31142eacc7acd47861285a3cdc256d899296ce0d0f242f322ae7d1b1fca",
+  "tests": {
+    "related_passed": 125,
+    "related_subtests": 86,
+    "full_passed": 685,
+    "full_skipped": 3,
+    "full_subtests": 124
+  },
+  "independent_evaluation": false,
+  "llm_evaluation": false,
+  "public_regression": {
+    "dev": {
+      "hit@1": 0.7916666666666666,
+      "hit@2": 0.9166666666666666,
+      "hit@3": 1.0,
+      "hit@5": 1.0,
+      "recall@1": 0.7083333333333334,
+      "recall@2": 0.8541666666666666,
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "mrr": 0.8819444444444443
+    },
+    "holdout": {
+      "hit@1": 0.6666666666666666,
+      "hit@2": 0.9444444444444444,
+      "hit@3": 0.9444444444444444,
+      "hit@5": 0.9444444444444444,
+      "recall@1": 0.5555555555555556,
+      "recall@2": 0.7685185185185186,
+      "recall@3": 0.8240740740740741,
+      "recall@5": 0.8888888888888888,
+      "mrr": 0.8055555555555556
+    },
+    "civil_published_regression": {
+      "hit@1": 0.6666666666666666,
+      "hit@2": 0.7333333333333333,
+      "hit@3": 0.8,
+      "hit@5": 0.8666666666666667,
+      "recall@1": 0.6222222222222221,
+      "recall@2": 0.6555555555555554,
+      "recall@3": 0.7222222222222222,
+      "recall@5": 0.788888888888889,
+      "mrr": 0.7388888888888888
+    }
+  },
+  "artifact_hashes": {
+    "tmp/patch012-before/results.json": "b5a6b88fda5ff267c337d3fd3e0e5e865e5690c36ce1ac6ff18fc6849a9cb7c5",
+    "tmp/patch012-after/results.json": "5cce0ddad68c9678c85f53148f329d291f98a8c30a18ff58f1f65d8dcfbd17ee",
+    "tmp/patch012-after/public-regression.json": "5a2171776ef9e7d9e89e3134b946b8ab6bde7abbf06fd8eeda143f01e8d9a5af"
+  }
+}

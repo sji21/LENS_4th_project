@@ -248,7 +248,28 @@ def detect_civil_topics(question: str) -> tuple[CivilTopic, ...]:
         _has_any(sentence, other_money) for sentence in payment_sentences
     )
     paid_repair_reclaim = repair_payment and (explicit_reclaim or implicit_reclaim)
-    reimbursement = repair and (paid_repair_reclaim or _has_any(
+    # 새 간접 표현은 수리 완료/지출과 반환 대상을 함께 확인한다. 다른 돈이
+    # 등장하면 일반적인 "비용", "먼저 낸 돈"의 대상을 임의로 연결하지 않는다.
+    sentences = re.split(r"[.!?\n]+", q)
+    completed_repair = repair_payment or any(
+        re.search(r"(?:수리|수선)(?:를)?\s*(?:마쳤|끝냈|했)|고쳤|교체했", sentence)
+        and not _has_any(sentence, other_money)
+        for sentence in sentences
+    )
+    cost_return = any(
+        re.search(r"(?:수리비|수선비|교체비(?:용)?|비용)(?:을|를)?\s*돌려달라", sentence)
+        and not _has_any(sentence, other_money)
+        and not re.search(r"돌려달라.*(?:않|아니|안\s*했)", sentence)
+        for sentence in sentences
+    )
+    prepaid_question = any(
+        re.search(r"먼저\s*낸\s*(?:[\d,]+\s*만?\s*원|돈|비용).*누구(?:한테|에게)", sentence)
+        for sentence in sentences
+    )
+    linked_reclaim = not _has_any(q, other_money) and (
+        (completed_repair and cost_return) or (repair_payment and prepaid_question)
+    )
+    reimbursement = repair and (linked_reclaim or paid_repair_reclaim or _has_any(
         q,
         ("제 돈", "먼저 내", "먼저 냈", "먼저 지불", "비용을 받", "비용 받을",
          "돌려받", "청구", "업체 불러서 고쳤", "사람 불러 고쳤"),
@@ -259,6 +280,18 @@ def detect_civil_topics(question: str) -> tuple[CivilTopic, ...]:
          "월세를 깎", "월세 깎", "월세를 줄", "월세 줄", "감액", "중간에 나가",
          "계약을 정리", "해지"),
     )
+    # 공사·단수 언급만으로 감액 조문을 추가하지 않는다. 물 사용의 불능이
+    # 같은 문장에 명시된 경우만 확장하며, 숙박비 자체의 배상 판단과 구분한다.
+    water_unusable = any(
+        _has_any(sentence, ("단수", "배관 공사", "배관공사"))
+        and re.search(
+            r"물(?:을|은|이)?(?:\s*(?:약|일주일|이주일|한 달|\d+\s*(?:일|시간)|동안|간))*"
+            r"\s*(?:못\s*쓰|못\s*쓴|쓰지\s*못|사용할\s*수\s*없)", sentence,
+        )
+        and not re.search(r"(?:못\s*쓰|못\s*쓴|사용할\s*수\s*없).*(?:아니|않)", sentence)
+        for sentence in sentences
+    )
+    unusable = unusable or water_unusable
     # "금이"를 부분 문자열로 찾으면 "보증금이/계약금이"도 균열로 오인한다.
     crack = bool(re.search(r"(?<![가-힣A-Za-z0-9])금이", q))
     notice = (crack or _has_any(q, ("고장", "하자", "누수", "물이 새", "물 새", "곰팡이", "수리"))) and _has_any(
