@@ -25,6 +25,8 @@ def test_development_context_routes(qid, article):
     '잠금장치가 고장 나서 제가 교체했어요. 비용을 돌려달라고 하려면 영수증이 필요한가요?',
     '보일러 수리를 마쳤어요. 수리비를 돌려달라고 할 수 있나요?',
     '수리하고 20만 원을 냈는데요. 먼저 낸 20만 원은 누구에게 얘기해야 하나요?',
+    '집주인이 연락이 안 돼서 제가 잠금장치를 교체했어요. 고장 수리 비용을 돌려달라고 할 수 있나요?',
+    '보일러가 고장 나서 제가 수리했어요. 집주인에게 수리비를 돌려달라고 할 수 있나요?',
 ])
 def test_repair_reimbursement_variants(question):
     assert '민법-제626조' in articles(question)
@@ -39,6 +41,16 @@ def test_repair_reimbursement_variants(question):
     '기사님이 윗집 문제래요. 먼저 낸 38만 원은 누구한테 얘기해야 하나요?',
 ])
 def test_unrelated_ambiguous_or_missing_repair_payment(question):
+    assert '민법-제626조' not in articles(question)
+
+
+@pytest.mark.parametrize('question', [
+    '보일러가 고장 나서 집주인이 수리했어요. 집주인이 수리비를 돌려달라고 하는데 제가 내야 하나요?',
+    '보일러가 고장 나서 임대인이 수리했어요. 수리비를 돌려달라고 하는데 제가 내야 하나요?',
+    '보일러가 고장 나서 집주인이 수리하고 돈을 냈어요. 비용을 돌려달라고 하네요.',
+    '보일러가 고장 나서 제가 수리했어요. 집주인이 저에게 수리비를 돌려달라고 하네요.',
+])
+def test_landlord_repair_or_reclaim_is_not_tenant_reimbursement(question):
     assert '민법-제626조' not in articles(question)
 
 

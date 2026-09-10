@@ -266,7 +266,17 @@ def detect_civil_topics(question: str) -> tuple[CivilTopic, ...]:
         re.search(r"먼저\s*낸\s*(?:[\d,]+\s*만?\s*원|돈|비용).*누구(?:한테|에게)", sentence)
         for sentence in sentences
     )
-    linked_reclaim = not _has_any(q, other_money) and (
+    # 임대인이 수리하거나 비용을 요구한 것은 임차인의 상환 청구와 반대다.
+    # 임차인 주어가 새로 등장하면 그 뒤의 행동을 임대인에게 귀속하지 않는다.
+    landlord_expense_actor = any(
+        re.search(
+            r"(?:집주인|임대인)(?:이|은|가)"
+            r"(?:(?!제가|저는|임차인).){0,40}?"
+            r"(?:수리|수선|교체|고쳤|고쳐|고치|비용|돈)", sentence,
+        )
+        for sentence in sentences
+    )
+    linked_reclaim = not landlord_expense_actor and not _has_any(q, other_money) and (
         (completed_repair and cost_return) or (repair_payment and prepaid_question)
     )
     reimbursement = repair and (linked_reclaim or paid_repair_reclaim or _has_any(
