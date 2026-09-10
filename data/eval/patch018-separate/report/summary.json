@@ -1,0 +1,206 @@
+{
+  "civil_diagnostic_only": {
+    "n": 5,
+    "scorable_n": 0,
+    "baseline_all_required": null,
+    "variants": {
+      "split_original": {
+        "all_required": null,
+        "lost_required_inputs": 0,
+        "zero_civil_inputs": 1,
+        "mean_total_law_articles": 5.8,
+        "no_required_civil_gold_n": 5,
+        "civil_returned_without_required_civil_gold_n": 4,
+        "outside_required_gold_articles": 4
+      },
+      "split_gated_top2": {
+        "all_required": null,
+        "lost_required_inputs": 0,
+        "zero_civil_inputs": 1,
+        "mean_total_law_articles": 6.6,
+        "no_required_civil_gold_n": 5,
+        "civil_returned_without_required_civil_gold_n": 4,
+        "outside_required_gold_articles": 8
+      },
+      "split_all_top2": {
+        "all_required": null,
+        "lost_required_inputs": 0,
+        "zero_civil_inputs": 0,
+        "mean_total_law_articles": 7.0,
+        "no_required_civil_gold_n": 5,
+        "civil_returned_without_required_civil_gold_n": 5,
+        "outside_required_gold_articles": 10
+      }
+    }
+  },
+  "civil_required_law": {
+    "n": 29,
+    "scorable_n": 29,
+    "baseline_all_required": 16,
+    "variants": {
+      "split_original": {
+        "all_required": 16,
+        "lost_required_inputs": 0,
+        "zero_civil_inputs": 9,
+        "mean_total_law_articles": 5.9655172413793105,
+        "no_required_civil_gold_n": 0,
+        "civil_returned_without_required_civil_gold_n": 0,
+        "outside_required_gold_articles": 11
+      },
+      "split_gated_top2": {
+        "all_required": 20,
+        "lost_required_inputs": 0,
+        "zero_civil_inputs": 9,
+        "mean_total_law_articles": 6.379310344827586,
+        "no_required_civil_gold_n": 0,
+        "civil_returned_without_required_civil_gold_n": 0,
+        "outside_required_gold_articles": 19
+      },
+      "split_all_top2": {
+        "all_required": 28,
+        "lost_required_inputs": 0,
+        "zero_civil_inputs": 0,
+        "mean_total_law_articles": 7.0,
+        "no_required_civil_gold_n": 0,
+        "civil_returned_without_required_civil_gold_n": 0,
+        "outside_required_gold_articles": 28
+      }
+    }
+  },
+  "civil_scope_provisional": {
+    "n": 1,
+    "scorable_n": 1,
+    "baseline_all_required": 1,
+    "variants": {
+      "split_original": {
+        "all_required": 1,
+        "lost_required_inputs": 0,
+        "zero_civil_inputs": 0,
+        "mean_total_law_articles": 7.0,
+        "no_required_civil_gold_n": 0,
+        "civil_returned_without_required_civil_gold_n": 0,
+        "outside_required_gold_articles": 1
+      },
+      "split_gated_top2": {
+        "all_required": 1,
+        "lost_required_inputs": 0,
+        "zero_civil_inputs": 0,
+        "mean_total_law_articles": 7.0,
+        "no_required_civil_gold_n": 0,
+        "civil_returned_without_required_civil_gold_n": 0,
+        "outside_required_gold_articles": 1
+      },
+      "split_all_top2": {
+        "all_required": 1,
+        "lost_required_inputs": 0,
+        "zero_civil_inputs": 0,
+        "mean_total_law_articles": 7.0,
+        "no_required_civil_gold_n": 0,
+        "civil_returned_without_required_civil_gold_n": 0,
+        "outside_required_gold_articles": 1
+      }
+    }
+  },
+  "dev_context_diagnostic": {
+    "n": 98,
+    "scorable_n": 75,
+    "baseline_all_required": 23,
+    "variants": {
+      "split_original": {
+        "all_required": 23,
+        "lost_required_inputs": 0,
+        "zero_civil_inputs": 86,
+        "mean_total_law_articles": 5.153061224489796,
+        "no_required_civil_gold_n": 66,
+        "civil_returned_without_required_civil_gold_n": 1,
+        "outside_required_gold_articles": 7
+      },
+      "split_gated_top2": {
+        "all_required": 17,
+        "lost_required_inputs": 6,
+        "zero_civil_inputs": 86,
+        "mean_total_law_articles": 5.244897959183674,
+        "no_required_civil_gold_n": 66,
+        "civil_returned_without_required_civil_gold_n": 1,
+        "outside_required_gold_articles": 23
+      },
+      "split_all_top2": {
+        "all_required": 18,
+        "lost_required_inputs": 6,
+        "zero_civil_inputs": 0,
+        "mean_total_law_articles": 7.0,
+        "no_required_civil_gold_n": 66,
+        "civil_returned_without_required_civil_gold_n": 66,
+        "outside_required_gold_articles": 194
+      }
+    }
+  },
+  "dev_question_only": {
+    "n": 98,
+    "scorable_n": 75,
+    "baseline_all_required": 20,
+    "variants": {
+      "split_original": {
+        "all_required": 20,
+        "lost_required_inputs": 0,
+        "zero_civil_inputs": 87,
+        "mean_total_law_articles": 5.142857142857143,
+        "no_required_civil_gold_n": 66,
+        "civil_returned_without_required_civil_gold_n": 1,
+        "outside_required_gold_articles": 6
+      },
+      "split_gated_top2": {
+        "all_required": 17,
+        "lost_required_inputs": 4,
+        "zero_civil_inputs": 87,
+        "mean_total_law_articles": 5.224489795918367,
+        "no_required_civil_gold_n": 66,
+        "civil_returned_without_required_civil_gold_n": 1,
+        "outside_required_gold_articles": 18
+      },
+      "split_all_top2": {
+        "all_required": 19,
+        "lost_required_inputs": 4,
+        "zero_civil_inputs": 0,
+        "mean_total_law_articles": 7.0,
+        "no_required_civil_gold_n": 66,
+        "civil_returned_without_required_civil_gold_n": 66,
+        "outside_required_gold_articles": 190
+      }
+    }
+  },
+  "historical_observation": {
+    "n": 4,
+    "scorable_n": 0,
+    "baseline_all_required": null,
+    "variants": {
+      "split_original": {
+        "all_required": null,
+        "lost_required_inputs": 0,
+        "zero_civil_inputs": 4,
+        "mean_total_law_articles": 5.0,
+        "no_required_civil_gold_n": 4,
+        "civil_returned_without_required_civil_gold_n": 0,
+        "outside_required_gold_articles": 0
+      },
+      "split_gated_top2": {
+        "all_required": null,
+        "lost_required_inputs": 0,
+        "zero_civil_inputs": 4,
+        "mean_total_law_articles": 5.0,
+        "no_required_civil_gold_n": 4,
+        "civil_returned_without_required_civil_gold_n": 0,
+        "outside_required_gold_articles": 0
+      },
+      "split_all_top2": {
+        "all_required": null,
+        "lost_required_inputs": 0,
+        "zero_civil_inputs": 0,
+        "mean_total_law_articles": 7.0,
+        "no_required_civil_gold_n": 4,
+        "civil_returned_without_required_civil_gold_n": 4,
+        "outside_required_gold_articles": 8
+      }
+    }
+  }
+}

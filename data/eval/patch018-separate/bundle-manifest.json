@@ -1,0 +1,11 @@
+{
+  "schema": "patch018-bundle-v1",
+  "files": {
+    "plan.json": "7648e6357750653bf32650109be28d40be9a5596eff896c3a7bfb1aa70dcae15",
+    "capture/audit.json": "5ae7621f0d349a34660abee31b0884bdbebc5e2ded9a9a8126801197f27d57b5",
+    "capture/manifest.json": "2ae7d9b7e417ef99e22079c5e72af3fe6060c8b77098093a501183f35ecc059a",
+    "capture/results.json": "f1b8483d4d922ef1993e3cb07b916cab0ba8a2f86121d34dc734c11328a502aa",
+    "report/details.json": "3aec74dd4151fa1f8566eb43fc37d4622a264c4f8c55ee7a208f23588ff01b51",
+    "report/summary.json": "8ad5f21e27ecb43e8ba20e9f611886e3630176032e55ab3d3d77d6c986df7588"
+  }
+}
