@@ -1,0 +1,1523 @@
+{
+  "schema": "civil-review2-retrieval-plan-v1",
+  "evaluation_date": "2026-09-10",
+  "purpose": "Public development article retrieval diagnostic; not independent evaluation or legal-answer scoring",
+  "review_sha256": "320b85ddeaec714867d22fd1fb4340864b3f568f7d19395cbd71bfbf4e0e7664",
+  "input_format": "question + two LF characters + context, verbatim; no answer/source labels added",
+  "metric_unit": "law article identifier proxy; paragraph/proposition coverage not proven",
+  "primary_track": "required_law",
+  "k_values": [
+    3,
+    5
+  ],
+  "items": [
+    {
+      "id": "CIV-DRAFT-001",
+      "input_mode": "question_context",
+      "input_text": "집주인이 잔금을 받고도 열쇠를 안 줍니다. 집을 넘겨달라고 요구할 때 어떤 의무를 근거로 말하나요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "임대인 인도의무",
+          "source_ids": [
+            "C623"
+          ],
+          "article_targets_all_of": [
+            "민법-제623조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C390"
+          ],
+          "combination": "single",
+          "proposition": "인도지체 손해배상",
+          "activation_condition": "손해배상까지 설명할 때"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C536"
+          ],
+          "combination": "single",
+          "proposition": "동시이행 관계",
+          "activation_condition": "별도 미이행 의무를 주장할 때"
+        }
+      ],
+      "review_role": "direct_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-002",
+      "input_mode": "question_context",
+      "input_text": "입주한 집 보일러가 고장 났어요. 집주인에게 수리를 요구하려면 무엇을 확인해야 하나요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "사용수익 상태 유지의무와 확인할 조건",
+          "source_ids": [
+            "C623"
+          ],
+          "article_targets_all_of": [
+            "민법-제623조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "P_REPAIR"
+          ],
+          "combination": "single",
+          "proposition": "사소한 수선·불명확한 특약의 범위",
+          "activation_condition": "그 해석까지 제시할 때"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C634"
+          ],
+          "combination": "single",
+          "proposition": "수리 필요 통지",
+          "activation_condition": "임대인이 모를 때 통지 안내"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C626_1"
+          ],
+          "combination": "single",
+          "proposition": "필요비 상환",
+          "activation_condition": "임차인이 먼저 지출한 별도 분기"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-003",
+      "input_mode": "question_context",
+      "input_text": "보일러는 고장 난 게 아니라 사용법을 모르겠어요. 예약 버튼은 어떻게 누르나요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "diagnostic_only",
+      "scope_status": "unconfirmed",
+      "required_groups_all_of": [],
+      "conditional_and_supplemental_groups": [],
+      "review_role": "not_auto_priority",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-004",
+      "input_mode": "question_context",
+      "input_text": "아직 고장은 없는데 나중에 보일러가 고장 나면 집주인에게 어떤 조치를 요구할 수 있나요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "장래 고장 시 유지·수선의무의 조건 설명",
+          "source_ids": [
+            "C623"
+          ],
+          "article_targets_all_of": [
+            "민법-제623조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C634"
+          ],
+          "combination": "single",
+          "proposition": "고장 발생 시 통지",
+          "activation_condition": "임대인이 모르는 경우"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "P_REPAIR"
+          ],
+          "combination": "single",
+          "proposition": "수선 규모·특약 해석",
+          "activation_condition": "구체 책임 설명 시"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C626_1"
+          ],
+          "combination": "single",
+          "proposition": "지출 후 필요비 상환",
+          "activation_condition": "추후 실제 비용 지출 시"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-005",
+      "input_mode": "question_context",
+      "input_text": "누수 수리업체에 제가 38만 원을 냈습니다. 집주인에게 이 수리비를 돌려달라고 할 수 있나요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "보존 필요비 상환",
+          "source_ids": [
+            "C626_1"
+          ],
+          "article_targets_all_of": [
+            "민법-제626조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C623"
+          ],
+          "combination": "single",
+          "proposition": "비용 부담의 수선의무 관계",
+          "activation_condition": "원인·부담을 설명할 때"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C634"
+          ],
+          "combination": "single",
+          "proposition": "수리 필요 통지",
+          "activation_condition": "통지 문제를 함께 설명할 때"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C105"
+          ],
+          "combination": "single",
+          "proposition": "특약 범위",
+          "activation_condition": "특약이 제시될 때"
+        },
+        {
+          "category": "보조",
+          "source_ids": [
+            "P_COST"
+          ],
+          "combination": "single",
+          "proposition": "필요비 의미·즉시 상환 법리 보충",
+          "activation_condition": "보조; 특정 판례 검색 자체 필수 아님"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-006",
+      "input_mode": "question_context",
+      "input_text": "집주인이 수리업체에 비용을 냈고 저에게 그 돈을 내라고 해요. 제가 임차인인데 누구 부담인지 확인하고 싶어요.\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "임대인 수선부담의 기본 규범",
+          "source_ids": [
+            "C623"
+          ],
+          "article_targets_all_of": [
+            "민법-제623조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C390"
+          ],
+          "combination": "single",
+          "proposition": "임차인 채무불이행 손해",
+          "activation_condition": "임차인 귀책·의무위반을 주장하는 분기"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C105"
+          ],
+          "combination": "single",
+          "proposition": "유효한 비용부담 약정",
+          "activation_condition": "특약 존재 시"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "P_REPAIR"
+          ],
+          "combination": "single",
+          "proposition": "특약의 수선 범위",
+          "activation_condition": "범위 해석 시"
+        },
+        {
+          "category": "보조",
+          "source_ids": [
+            "C626_1"
+          ],
+          "combination": "single",
+          "proposition": "상환청구의 방향 비교",
+          "activation_condition": "비적용 설명 시"
+        }
+      ],
+      "review_role": "not_auto_priority",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-007",
+      "input_mode": "question_context",
+      "input_text": "집주인에게 돈을 돌려달라는 건 아닙니다. 수리할 곳을 사진으로 알려야 하는지가 궁금해요.\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "통지의무·기존 인지 예외·사진 형식 미지정",
+          "source_ids": [
+            "C634"
+          ],
+          "article_targets_all_of": [
+            "민법-제634조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [],
+      "review_role": "not_auto_priority",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-008",
+      "input_mode": "question_context",
+      "input_text": "제가 돈을 들여 집의 가치를 높였는데 곧 계약이 끝나요. 개선 비용도 돌려받을 수 있나요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "유익비 해당성·종료 시 증가가치 현존·상환 시기 및 지출액 또는 증가액 구조",
+          "source_ids": [
+            "C626_2"
+          ],
+          "article_targets_all_of": [
+            "민법-제626조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C380"
+          ],
+          "combination": "single",
+          "proposition": "다른 규정·약정 없을 때 임대인의 선택",
+          "activation_condition": "지출액과 증가액 중 누가 선택하는지까지 설명할 때"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C626_2"
+          ],
+          "combination": "single",
+          "proposition": "법원은 임대인의 청구로 상당한 상환기간을 허여할 수 있음",
+          "activation_condition": "법원의 상환기간 허여까지 설명할 때"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C105"
+          ],
+          "combination": "single",
+          "proposition": "상환특약의 효력·범위",
+          "activation_condition": "특약 제시 시"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-009",
+      "input_mode": "question_context",
+      "input_text": "배관 공사로 집에서 물을 일주일간 못 쓰게 됐어요. 그 기간 월세를 줄여달라고 할 수 있나요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "일부 사용불능 비율의 감액 요건",
+          "source_ids": [
+            "C627_1"
+          ],
+          "article_targets_all_of": [
+            "민법-제627조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C652"
+          ],
+          "combination": "single",
+          "proposition": "불리한 감액 배제 약정 효력",
+          "activation_condition": "해당 특약이 있거나 이를 설명할 때"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C623",
+            "P_COST"
+          ],
+          "combination": "AND",
+          "proposition": "임대인 사용수익의무 불이행과 제한 한도 지급거절",
+          "activation_condition": "감액과 별도의 지급거절을 설명할 때"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-010",
+      "input_mode": "question_context",
+      "input_text": "단수지만 물을 못 쓰는 것은 아닙니다. 월세를 줄일 수 있는지는 무엇을 확인해야 하나요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "감액 적용·비적용 조건 설명",
+          "source_ids": [
+            "C627_1"
+          ],
+          "article_targets_all_of": [
+            "민법-제627조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-011",
+      "input_mode": "question_context",
+      "input_text": "집을 못 쓰는 상황은 없어요. 월세 이체 날짜만 바꾸고 싶은데 집주인에게 어떻게 얘기하죠?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "diagnostic_only",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "보조",
+          "source_ids": [
+            "C105"
+          ],
+          "combination": "single",
+          "proposition": "지급일 변경 합의",
+          "activation_condition": "법적 원리 설명 시"
+        },
+        {
+          "category": "보조",
+          "source_ids": [
+            "C633"
+          ],
+          "combination": "single",
+          "proposition": "약정 없는 경우 지급시기",
+          "activation_condition": "약정 부재의 별도 질문 시"
+        }
+      ],
+      "review_role": "not_auto_priority",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-012",
+      "input_mode": "question_context",
+      "input_text": "집 일부가 무너져 남은 공간으로는 살기 어려워요. 감액 말고 계약 종료도 가능한가요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "임차인 과실 없는 일부 사용불능과 잔존부분 목적 달성 불가",
+          "source_ids": [
+            "C627_1",
+            "C627_2"
+          ],
+          "article_targets_all_of": [
+            "민법-제627조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C543",
+            "C550"
+          ],
+          "combination": "AND",
+          "proposition": "해지 행사 및 장래효",
+          "activation_condition": "행사·효과 안내 시"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C652"
+          ],
+          "combination": "single",
+          "proposition": "임차인 불리 특약 제한",
+          "activation_condition": "특약 문제 시"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C623"
+          ],
+          "combination": "single",
+          "proposition": "수선 요구",
+          "activation_condition": "수선 분기 설명 시"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-013",
+      "input_mode": "question_context",
+      "input_text": "제가 빌린 집 전체를 다른 사람에게 다시 빌려주고 이사하려고 해요. 집주인 동의가 필요한가요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "전체 전대에 임대인 동의 필요",
+          "source_ids": [
+            "C629_1"
+          ],
+          "article_targets_all_of": [
+            "민법-제629조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C629_2",
+            "P_TRUST"
+          ],
+          "combination": "AND",
+          "proposition": "위반 시 해지권과 배신적 행위 아닌 특별한 사정의 예외",
+          "activation_condition": "해지 효과를 구체적으로 설명할 때"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C632"
+          ],
+          "combination": "single",
+          "proposition": "전체 전대와 소부분 예외 구분",
+          "activation_condition": "예외 비교 시"
+        }
+      ],
+      "review_role": "direct_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-014",
+      "input_mode": "question_context",
+      "input_text": "집주인이 자기 소유의 빈집을 다른 사람에게 빌려준대요. 그게 제가 전대한 것으로 되는 건가요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "임차인의 전대와 임대인의 임대 구분",
+          "source_ids": [
+            "C629_1"
+          ],
+          "article_targets_all_of": [
+            "민법-제629조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C623"
+          ],
+          "combination": "single",
+          "proposition": "기존 임차인 인도·사용수익 보장",
+          "activation_condition": "동일 목적물의 중복 임대가 문제 될 때"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-015",
+      "input_mode": "question_context",
+      "input_text": "친구가 하루 놀러 와서 잤어요. 집을 빌려준 건 아닌데 이것도 전대인지 궁금해요.\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "제공된 단순 방문·숙박을 임차물 전대로 자동 취급하지 않고 구별",
+          "source_ids": [
+            "C629_1"
+          ],
+          "article_targets_all_of": [
+            "민법-제629조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C618"
+          ],
+          "combination": "single",
+          "proposition": "목적물 사용·수익과 차임 지급 약정이라는 임대차 성립 구조",
+          "activation_condition": "임대차의 성립 요소까지 추가 설명할 때"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C632"
+          ],
+          "combination": "single",
+          "proposition": "소부분 사용 예외",
+          "activation_condition": "단순 방문을 넘어 실제 소부분 사용 예외가 문제 될 때"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-016",
+      "input_mode": "question_context",
+      "input_text": "집주인이 서면으로 동의해서 제가 집 전체를 다시 빌려줬어요. 그래도 동의 없는 전대라며 나가라고 할 수 있나요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "동의 범위 내 전대에 무단전대 해지 사유 부정",
+          "source_ids": [
+            "C629_1",
+            "C629_2"
+          ],
+          "article_targets_all_of": [
+            "민법-제629조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C630"
+          ],
+          "combination": "single",
+          "proposition": "동의 있는 전대의 전차인 직접 의무",
+          "activation_condition": "그 효과까지 질문할 때"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-017",
+      "input_mode": "question_context",
+      "input_text": "제가 사는 집의 아주 작은 일부를 다른 사람이 쓰게 하려는데 전대 동의 규정에 예외가 있나요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "소부분 예외와 제629~631조 적용 제외",
+          "source_ids": [
+            "C632"
+          ],
+          "article_targets_all_of": [
+            "민법-제632조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C629_1"
+          ],
+          "combination": "single",
+          "proposition": "기본 동의 규정",
+          "activation_condition": "예외 비교"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C105",
+            "C652"
+          ],
+          "combination": "AND",
+          "proposition": "별도 특약과 강행규정 열거 범위",
+          "activation_condition": "특약 효력을 설명할 때"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "H6_3"
+          ],
+          "combination": "single",
+          "proposition": "주택 갱신거절 규정",
+          "activation_condition": "갱신거절까지 확장될 때"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-018",
+      "input_mode": "question_context",
+      "input_text": "방 하나를 친구에게 쓰게 하면 무조건 소부분 예외인가요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "소부분 요건과 방 하나만으로 확정 불가",
+          "source_ids": [
+            "C632"
+          ],
+          "article_targets_all_of": [
+            "민법-제632조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C629_1"
+          ],
+          "combination": "single",
+          "proposition": "예외 밖 동의 문제",
+          "activation_condition": "기본 규칙 비교"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-019",
+      "input_mode": "question_context",
+      "input_text": "집 전체를 다른 사람에게 넘기고 저는 나갔어요. 방이 작은 집이면 소부분 예외인가요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "전체 이전과 건물 소부분 사용 구분",
+          "source_ids": [
+            "C632"
+          ],
+          "article_targets_all_of": [
+            "민법-제632조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C629_1",
+            "C629_2",
+            "P_TRUST"
+          ],
+          "combination": "AND",
+          "proposition": "전체 양도·전대 동의와 해지 문제",
+          "activation_condition": "후속 효과 설명"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-020",
+      "input_mode": "question_context",
+      "input_text": "임대한 주차장 일부를 다른 사람에게 쓰게 하면 건물 소부분 예외가 적용되나요?\n\n주거용 건물 내부인지 별도 토지·시설인지 제시되지 않은 합성 상황.",
+      "track": "scope_provisional",
+      "scope_status": "unconfirmed",
+      "required_groups_all_of": [
+        {
+          "proposition": "건물 임차인·그 건물 소부분이라는 적용 조건",
+          "source_ids": [
+            "C632"
+          ],
+          "article_targets_all_of": [
+            "민법-제632조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C629_1"
+          ],
+          "combination": "single",
+          "proposition": "전대 동의 기본 규칙",
+          "activation_condition": "임차인 지위와 사용관계가 확인된 때"
+        }
+      ],
+      "review_role": "review_needed",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-021",
+      "input_mode": "question_context",
+      "input_text": "천장에서 물이 새는 걸 발견했어요. 집주인에게 바로 알려야 하나요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "수리 필요 통지와 기존 인지 예외",
+          "source_ids": [
+            "C634"
+          ],
+          "article_targets_all_of": [
+            "민법-제634조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C626_1"
+          ],
+          "combination": "single",
+          "proposition": "필요비 상환",
+          "activation_condition": "추가로 직접 비용 지출한 때"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-022",
+      "input_mode": "question_context",
+      "input_text": "모르는 사람이 이 집에 자기 권리가 있다며 찾아왔어요. 집주인에게 알려야 하나요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "권리 주장에 대한 통지와 기존 인지 예외",
+          "source_ids": [
+            "C634"
+          ],
+          "article_targets_all_of": [
+            "민법-제634조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [],
+      "review_role": "direct_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-023",
+      "input_mode": "question_context",
+      "input_text": "집주인이 직접 누수를 보고 이미 수리 접수를 했어요. 제가 다시 통지해야 하나요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "이미 인지한 동일 누수의 통지 예외",
+          "source_ids": [
+            "C634"
+          ],
+          "article_targets_all_of": [
+            "민법-제634조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-024",
+      "input_mode": "question_context",
+      "input_text": "고장이 있는 게 아니라 집주인 연락처를 휴대폰에 저장하려고요. 연락처 이름은 어떻게 바꾸죠?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "diagnostic_only",
+      "scope_status": "unconfirmed",
+      "required_groups_all_of": [],
+      "conditional_and_supplemental_groups": [],
+      "review_role": "not_auto_priority",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-025",
+      "input_mode": "question_context",
+      "input_text": "주택 월세가 밀려 집주인이 계약을 해지하겠대요. 연체액이 얼마인지 확인해야 하나요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "일반 주택 2기 차임연체액과 임대인 해지권",
+          "source_ids": [
+            "C640"
+          ],
+          "article_targets_all_of": [
+            "민법-제640조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C543"
+          ],
+          "combination": "single",
+          "proposition": "해지 의사표시",
+          "activation_condition": "자동 종료 여부 설명"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C652"
+          ],
+          "combination": "single",
+          "proposition": "불리한 해지 기준 특약 제한",
+          "activation_condition": "특약 분기"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C653",
+            "H11"
+          ],
+          "combination": "AND",
+          "proposition": "명백한 일시사용",
+          "activation_condition": "그 사실 제시 시"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C623",
+            "C536",
+            "P_COST"
+          ],
+          "combination": "AND",
+          "proposition": "수선 불이행·필요비의 적법한 지급거절",
+          "activation_condition": "그 사유 제시 시"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-026",
+      "input_mode": "question_context",
+      "input_text": "월세는 모두 냈고 관리비만 밀렸어요. 집주인이 월세 연체로 해지한다고 하는데 같은 건가요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "차임연체액과 별도 관리비 채무 구분",
+          "source_ids": [
+            "C640"
+          ],
+          "article_targets_all_of": [
+            "민법-제640조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C105",
+            "C543",
+            "C544"
+          ],
+          "combination": "AND",
+          "proposition": "별도 약정·일반 해지 검토의 출발점",
+          "activation_condition": "다른 해지 사유 제시 시; 이 조문만으로 구체 효력 확정 불가"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-027",
+      "input_mode": "question_context",
+      "input_text": "월세가 밀렸지만 집주인은 해지 얘기를 안 했어요. 제 사정 때문에 제가 계약을 끝내고 싶은데 연체하면 나갈 수 있나요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "연체 해지권 주체는 임대인이라는 비교",
+          "source_ids": [
+            "C640"
+          ],
+          "article_targets_all_of": [
+            "민법-제640조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "H2",
+            "H4"
+          ],
+          "combination": "AND",
+          "proposition": "주택 기간 미정의 2년 간주",
+          "activation_condition": "기간 미정 분기"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "H6",
+            "H6_2"
+          ],
+          "combination": "AND",
+          "proposition": "묵시 갱신 요건과 해지 3개월",
+          "activation_condition": "묵시 갱신 분기"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "H6_3",
+            "H6_2"
+          ],
+          "combination": "AND",
+          "proposition": "갱신요구권에 따른 갱신 후 해지",
+          "activation_condition": "갱신요구권 분기"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C105",
+            "C636"
+          ],
+          "combination": "AND",
+          "proposition": "합의와 중도해지권 유보",
+          "activation_condition": "약정·합의 분기"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C635"
+          ],
+          "combination": "single",
+          "proposition": "기간 미정 일반 임대차 통고",
+          "activation_condition": "주택 특별법 관계 확인 후"
+        }
+      ],
+      "review_role": "not_auto_priority",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-028",
+      "input_mode": "question_context",
+      "input_text": "가게 월세가 밀렸고 임대인이 해지하겠대요. 주택과 기준이 같나요?\n\n상가 임대차라는 사실만 주어진 합성 상황.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "일반 주택 2기 비교 기준",
+          "source_ids": [
+            "C640"
+          ],
+          "article_targets_all_of": [
+            "민법-제640조"
+          ]
+        },
+        {
+          "proposition": "상가 3기 기준과 상한 초과 적용",
+          "source_ids": [
+            "S2",
+            "S10_8"
+          ],
+          "article_targets_all_of": [
+            "상가건물 임대차보호법-제2조",
+            "상가건물 임대차보호법-제10조의8"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "S16"
+          ],
+          "combination": "single",
+          "proposition": "명백한 일시사용 제외",
+          "activation_condition": "일시사용 문제"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C543"
+          ],
+          "combination": "single",
+          "proposition": "해지 행사",
+          "activation_condition": "통보 효과 설명"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "S15"
+          ],
+          "combination": "single",
+          "proposition": "불리한 약정 효력",
+          "activation_condition": "약정 문제"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-029",
+      "input_mode": "question_context",
+      "input_text": "보일러 수리는 집주인이 끝냈어요. 저는 계약금을 냈습니다. 계약이 취소됐는데 이 돈 달라고 할 수 있나요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "diagnostic_only",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C543",
+            "C544",
+            "C548"
+          ],
+          "combination": "AND",
+          "proposition": "적법한 채무불이행 해제와 원상회복",
+          "activation_condition": "해당 분기"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C141",
+            "C741"
+          ],
+          "combination": "AND",
+          "proposition": "적법한 취소의 효력·반환",
+          "activation_condition": "취소 분기"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C109"
+          ],
+          "combination": "single",
+          "proposition": "착오 취소 요건",
+          "activation_condition": "착오 주장 시"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C110"
+          ],
+          "combination": "single",
+          "proposition": "사기·강박 취소 요건",
+          "activation_condition": "사기·강박 주장 시"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C105"
+          ],
+          "combination": "single",
+          "proposition": "합의 종료 반환 약정",
+          "activation_condition": "합의 분기"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C565",
+            "C567"
+          ],
+          "combination": "AND",
+          "proposition": "계약금 해약금 해제의 임대차 준용",
+          "activation_condition": "해약금 분기"
+        },
+        {
+          "category": "보조",
+          "source_ids": [
+            "C626_1"
+          ],
+          "combination": "single",
+          "proposition": "수리비 상환과 다른 돈의 비교",
+          "activation_condition": "필요 시"
+        }
+      ],
+      "review_role": "not_auto_priority",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-030",
+      "input_mode": "question_context",
+      "input_text": "집주인이 수리를 안 해줘서 제가 수리비를 냈어요. 그 돈을 집주인에게 청구할 수 있나요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "임차인 필요비의 임대인 상대 상환",
+          "source_ids": [
+            "C626_1"
+          ],
+          "article_targets_all_of": [
+            "민법-제626조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C623"
+          ],
+          "combination": "single",
+          "proposition": "수선 부담",
+          "activation_condition": "부담 설명"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C634"
+          ],
+          "combination": "single",
+          "proposition": "통지",
+          "activation_condition": "인지·통지 문제"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C105"
+          ],
+          "combination": "single",
+          "proposition": "상환 약정",
+          "activation_condition": "특약 문제"
+        },
+        {
+          "category": "보조",
+          "source_ids": [
+            "P_COST"
+          ],
+          "combination": "single",
+          "proposition": "필요비·즉시 상환 보강",
+          "activation_condition": "보조"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-031",
+      "input_mode": "question_context",
+      "input_text": "집주인은 “당신이 수리비를 낸 게 아니다”라고 해요. 저는 제 카드 영수증이 있는데 누구에게 상환을 요구하죠?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "실제 지출 임차인→임대인 상환 구조",
+          "source_ids": [
+            "C626_1"
+          ],
+          "article_targets_all_of": [
+            "민법-제626조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C623",
+            "C105"
+          ],
+          "combination": "AND",
+          "proposition": "비용 부담과 특약",
+          "activation_condition": "부담 다툼 시"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-032",
+      "input_mode": "question_context",
+      "input_text": "그 돈은 누가 돌려줘야 하나요?\n\n이전 사용자 발화: 누수 수리비는 집주인이 냈고 저는 계약금을 냈어요. 최신 발화의 “그 돈”이 어느 돈인지 지정하지 않음.",
+      "track": "diagnostic_only",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C623",
+            "C105"
+          ],
+          "combination": "AND",
+          "proposition": "임대인이 낸 수리비 부담 관계",
+          "activation_condition": "수리비가 대상일 때"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C390"
+          ],
+          "combination": "single",
+          "proposition": "임차인 귀책에 따른 부담",
+          "activation_condition": "의무위반이 문제 될 때"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C548"
+          ],
+          "combination": "single",
+          "proposition": "계약금 원상회복",
+          "activation_condition": "계약금이고 적법한 해제가 확인된 때"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C565",
+            "C567"
+          ],
+          "combination": "AND",
+          "proposition": "해약금 분기",
+          "activation_condition": "계약금·해약금 해제 사실 추가 시"
+        }
+      ],
+      "review_role": "review_needed",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-033",
+      "input_mode": "question_context",
+      "input_text": "제가 누수 수리비를 냈고 방도 한 달 못 썼어요. 수리비 반환과 월세 감액을 둘 다 알아보고 싶어요.\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "필요비 상환 명제",
+          "source_ids": [
+            "C626_1"
+          ],
+          "article_targets_all_of": [
+            "민법-제626조"
+          ]
+        },
+        {
+          "proposition": "일부 사용불능 차임 감액 명제",
+          "source_ids": [
+            "C627_1"
+          ],
+          "article_targets_all_of": [
+            "민법-제627조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C623"
+          ],
+          "combination": "single",
+          "proposition": "수선 부담",
+          "activation_condition": "부담 분기"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C634"
+          ],
+          "combination": "single",
+          "proposition": "통지",
+          "activation_condition": "인지·통지 분기"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C652"
+          ],
+          "combination": "single",
+          "proposition": "감액 배제 특약",
+          "activation_condition": "그 특약 분기"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C105"
+          ],
+          "combination": "single",
+          "proposition": "비용상환 특약",
+          "activation_condition": "그 특약 분기"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-034",
+      "input_mode": "question_context",
+      "input_text": "아직 수리하거나 돈을 낸 적은 없어요. 필요비와 유익비 상환은 뭐가 다른가요?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "필요비·유익비의 요건과 시기 차이",
+          "source_ids": [
+            "C626_1",
+            "C626_2"
+          ],
+          "article_targets_all_of": [
+            "민법-제626조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C380"
+          ],
+          "combination": "single",
+          "proposition": "유익비 선택 주체",
+          "activation_condition": "선택 구조 설명 시"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C105"
+          ],
+          "combination": "single",
+          "proposition": "특약 범위",
+          "activation_condition": "효력 설명 시"
+        },
+        {
+          "category": "보조",
+          "source_ids": [
+            "P_COST"
+          ],
+          "combination": "single",
+          "proposition": "필요비 의미·즉시 상환",
+          "activation_condition": "보조"
+        }
+      ],
+      "review_role": "direct_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    },
+    {
+      "id": "CIV-DRAFT-035",
+      "input_mode": "question_context",
+      "input_text": "집을 제대로 못 쓰는 것 같아요. 월세는 어떻게 해야 하죠?\n\n일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "track": "required_law",
+      "scope_status": "within_review_scope",
+      "required_groups_all_of": [
+        {
+          "proposition": "일부 사용불능 감액 조건",
+          "source_ids": [
+            "C627_1"
+          ],
+          "article_targets_all_of": [
+            "민법-제627조"
+          ]
+        }
+      ],
+      "conditional_and_supplemental_groups": [
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C623",
+            "C536",
+            "P_COST"
+          ],
+          "combination": "AND",
+          "proposition": "사용수익 의무 불이행과 제한 한도 지급거절",
+          "activation_condition": "지급거절 설명 시"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C627_1",
+            "C627_2"
+          ],
+          "combination": "AND",
+          "proposition": "일부 사용불능 후 잔존부분의 목적 달성 불가 시 해지",
+          "activation_condition": "이 요건이 확인되어 해지 검토 시"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C634"
+          ],
+          "combination": "single",
+          "proposition": "수리 필요 통지",
+          "activation_condition": "수리 필요 구체화"
+        },
+        {
+          "category": "조건부",
+          "source_ids": [
+            "C652"
+          ],
+          "combination": "single",
+          "proposition": "불리한 감액 특약",
+          "activation_condition": "특약 분기"
+        }
+      ],
+      "review_role": "conditional_issue",
+      "rank_target": null,
+      "absolute_retrieval_ban": false
+    }
+  ]
+}

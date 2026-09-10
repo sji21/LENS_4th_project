@@ -1,0 +1,857 @@
+{
+  "schema": "civil-selection-review-draft-v1",
+  "purpose": "public development review; not gold or executable scoring",
+  "created_by": "implementation_assistant",
+  "independent": false,
+  "code_and_failure_results_seen": true,
+  "legal_review_status": "pending",
+  "evaluation_date_for_review": "2026-09-10",
+  "event_date_policy": "Unspecified event dates must not be invented; historical applicability needs separate review.",
+  "existing_dev100_and_probe_labels_modified": false,
+  "roles": {
+    "direct_issue": "명시적 질문의 근거 후보. 적용 결론이나 최상위 순위를 보장하지 않는다.",
+    "conditional_issue": "조건·예외 설명용 후보. 핵심 사실 미확정을 검색 금지로 바꾸지 않는다.",
+    "not_auto_priority": "이 문맥만으로 해당 조문을 강제 우선하지 않는다. 절대 검색 금지가 아니다.",
+    "review_needed": "관계·범위·지시 대상 또는 기준의 추가 검토가 필요하다."
+  },
+  "items": [
+    {
+      "id": "CIV-DRAFT-001",
+      "scenario_family": "D623",
+      "focus_article": "민법-제623조",
+      "question": "집주인이 잔금을 받고도 열쇠를 안 줍니다. 집을 넘겨달라고 요구할 때 어떤 의무를 근거로 말하나요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "집주인",
+        "request_span": "집을 넘겨달라고",
+        "assertion": "asserted",
+        "missing_facts": [
+          "인도 약정일",
+          "잔금 외 미이행 의무"
+        ]
+      },
+      "proposed_retrieval_role": "direct_issue",
+      "proposal_reason": "수선이 아닌 인도 의무도 후보 범위에 포함한다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제623조"
+    },
+    {
+      "id": "CIV-DRAFT-002",
+      "scenario_family": "D623",
+      "focus_article": "민법-제623조",
+      "question": "입주한 집 보일러가 고장 났어요. 집주인에게 수리를 요구하려면 무엇을 확인해야 하나요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "집주인",
+        "request_span": "수리를 요구하려면",
+        "assertion": "asserted",
+        "missing_facts": [
+          "고장 원인",
+          "특약",
+          "사용 지장"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "책임을 확정하지 않고 유지 의무와 적용 조건을 검색한다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제623조"
+    },
+    {
+      "id": "CIV-DRAFT-003",
+      "scenario_family": "D623",
+      "focus_article": "민법-제623조",
+      "question": "보일러는 고장 난 게 아니라 사용법을 모르겠어요. 예약 버튼은 어떻게 누르나요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "보일러",
+        "request_span": "예약 버튼은 어떻게 누르나요",
+        "assertion": "denied",
+        "missing_facts": []
+      },
+      "proposed_retrieval_role": "not_auto_priority",
+      "proposal_reason": "수선의무 쟁점이 아니라 기기 사용법 요청이다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제623조"
+    },
+    {
+      "id": "CIV-DRAFT-004",
+      "scenario_family": "D623",
+      "focus_article": "민법-제623조",
+      "question": "아직 고장은 없는데 나중에 보일러가 고장 나면 집주인에게 어떤 조치를 요구할 수 있나요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "집주인",
+        "request_span": "어떤 조치를 요구할 수 있나요",
+        "assertion": "hypothetical",
+        "missing_facts": [
+          "가정한 고장 원인",
+          "계약 내용"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "가정 질문도 의무 안내를 요구하므로 부정 표현만으로 제외하지 않는다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제623조"
+    },
+    {
+      "id": "CIV-DRAFT-005",
+      "scenario_family": "D626",
+      "focus_article": "민법-제626조",
+      "question": "누수 수리업체에 제가 38만 원을 냈습니다. 집주인에게 이 수리비를 돌려달라고 할 수 있나요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "제가",
+        "request_span": "이 수리비를 돌려달라고",
+        "assertion": "asserted",
+        "missing_facts": [
+          "수리 필요성",
+          "원인",
+          "지출 증빙"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "지출자와 반환 대상은 연결되지만 필요비 해당성은 미확정이다.",
+      "related_articles_for_review": [
+        "민법-제623조",
+        "민법-제634조"
+      ],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+    },
+    {
+      "id": "CIV-DRAFT-006",
+      "scenario_family": "D626",
+      "focus_article": "민법-제626조",
+      "question": "집주인이 수리업체에 비용을 냈고 저에게 그 돈을 내라고 해요. 제가 임차인인데 누구 부담인지 확인하고 싶어요.",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "집주인",
+        "request_span": "누구 부담인지 확인하고 싶어요",
+        "assertion": "asserted",
+        "missing_facts": [
+          "원인",
+          "특약",
+          "청구 근거"
+        ]
+      },
+      "proposed_retrieval_role": "not_auto_priority",
+      "proposal_reason": "임차인의 상환청구와 반대 방향이다. 제626조를 자동 최우선하지 않는다는 제안이며 법령 자체 금지는 아니다.",
+      "related_articles_for_review": [
+        "민법-제623조"
+      ],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+    },
+    {
+      "id": "CIV-DRAFT-007",
+      "scenario_family": "D626",
+      "focus_article": "민법-제626조",
+      "question": "집주인에게 돈을 돌려달라는 건 아닙니다. 수리할 곳을 사진으로 알려야 하는지가 궁금해요.",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "집주인",
+        "request_span": "사진으로 알려야 하는지",
+        "assertion": "denied",
+        "missing_facts": [
+          "임대인의 인지 여부"
+        ]
+      },
+      "proposed_retrieval_role": "not_auto_priority",
+      "proposal_reason": "상환 요청의 부정과 통지 요청을 분리한다.",
+      "related_articles_for_review": [
+        "민법-제634조"
+      ],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+    },
+    {
+      "id": "CIV-DRAFT-008",
+      "scenario_family": "D626",
+      "focus_article": "민법-제626조",
+      "question": "제가 돈을 들여 집의 가치를 높였는데 곧 계약이 끝나요. 개선 비용도 돌려받을 수 있나요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "제가",
+        "request_span": "개선 비용도 돌려받을 수 있나요",
+        "assertion": "asserted",
+        "missing_facts": [
+          "개선 내용",
+          "가치 증가의 현존",
+          "종료 시점",
+          "특약"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "수리 키워드가 없는 유익비 쟁점으로 제2항 범위를 점검한다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+    },
+    {
+      "id": "CIV-DRAFT-009",
+      "scenario_family": "D627",
+      "focus_article": "민법-제627조",
+      "question": "배관 공사로 집에서 물을 일주일간 못 쓰게 됐어요. 그 기간 월세를 줄여달라고 할 수 있나요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "배관 공사",
+        "request_span": "월세를 줄여달라고",
+        "assertion": "asserted",
+        "missing_facts": [
+          "실제 사용 제한 범위",
+          "귀책",
+          "기간"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "사용 제한과 감액 요청을 연결하되 감액 요건 충족은 단정하지 않는다.",
+      "related_articles_for_review": [
+        "민법-제623조"
+      ],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제627조"
+    },
+    {
+      "id": "CIV-DRAFT-010",
+      "scenario_family": "D627",
+      "focus_article": "민법-제627조",
+      "question": "단수지만 물을 못 쓰는 것은 아닙니다. 월세를 줄일 수 있는지는 무엇을 확인해야 하나요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "물",
+        "request_span": "무엇을 확인해야 하나요",
+        "assertion": "denied",
+        "missing_facts": [
+          "실제 사용 지장",
+          "감액 요청의 다른 사유"
+        ]
+      },
+      "proposed_retrieval_role": "review_needed",
+      "proposal_reason": "적용 조건 자체를 묻고 있어 제627조의 절대 금지는 정답 검토가 필요하다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제627조"
+    },
+    {
+      "id": "CIV-DRAFT-011",
+      "scenario_family": "D627",
+      "focus_article": "민법-제627조",
+      "question": "집을 못 쓰는 상황은 없어요. 월세 이체 날짜만 바꾸고 싶은데 집주인에게 어떻게 얘기하죠?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "집",
+        "request_span": "월세 이체 날짜만 바꾸고 싶은데",
+        "assertion": "denied",
+        "missing_facts": []
+      },
+      "proposed_retrieval_role": "not_auto_priority",
+      "proposal_reason": "사용불능 감액과 납부일 변경을 구분한다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제627조"
+    },
+    {
+      "id": "CIV-DRAFT-012",
+      "scenario_family": "D627",
+      "focus_article": "민법-제627조",
+      "question": "집 일부가 무너져 남은 공간으로는 살기 어려워요. 감액 말고 계약 종료도 가능한가요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "집 일부",
+        "request_span": "계약 종료도 가능한가요",
+        "assertion": "asserted",
+        "missing_facts": [
+          "잔존 부분의 사용 가능성",
+          "귀책",
+          "계약 목적"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "감액만 아니라 제2항 종료 조건도 후보로 검토한다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제627조"
+    },
+    {
+      "id": "CIV-DRAFT-013",
+      "scenario_family": "D629",
+      "focus_article": "민법-제629조",
+      "question": "제가 빌린 집 전체를 다른 사람에게 다시 빌려주고 이사하려고 해요. 집주인 동의가 필요한가요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "제가",
+        "request_span": "집주인 동의가 필요한가요",
+        "assertion": "planned",
+        "missing_facts": [
+          "동의 내용",
+          "권리 양도인지 전대인지"
+        ]
+      },
+      "proposed_retrieval_role": "direct_issue",
+      "proposal_reason": "동의 여부를 묻는 계획 단계도 관련 조문 후보를 요구한다.",
+      "related_articles_for_review": [
+        "민법-제632조"
+      ],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제629조"
+    },
+    {
+      "id": "CIV-DRAFT-014",
+      "scenario_family": "D629",
+      "focus_article": "민법-제629조",
+      "question": "집주인이 자기 소유의 빈집을 다른 사람에게 빌려준대요. 그게 제가 전대한 것으로 되는 건가요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "집주인",
+        "request_span": "제가 전대한 것으로 되는 건가요",
+        "assertion": "asserted",
+        "missing_facts": [
+          "대상 주택 관계"
+        ]
+      },
+      "proposed_retrieval_role": "review_needed",
+      "proposal_reason": "임대인의 임대와 임차인의 전대를 혼동한 설명 요청이므로 적용 구분 근거는 필요할 수 있다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제629조"
+    },
+    {
+      "id": "CIV-DRAFT-015",
+      "scenario_family": "D629",
+      "focus_article": "민법-제629조",
+      "question": "친구가 하루 놀러 와서 잤어요. 집을 빌려준 건 아닌데 이것도 전대인지 궁금해요.",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "친구",
+        "request_span": "이것도 전대인지",
+        "assertion": "denied",
+        "missing_facts": [
+          "사용 관계",
+          "독립 점유",
+          "대가 여부"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "부정한 용어 자체보다 실제 사용 관계에 관한 질문을 본다.",
+      "related_articles_for_review": [
+        "민법-제632조"
+      ],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제629조"
+    },
+    {
+      "id": "CIV-DRAFT-016",
+      "scenario_family": "D629",
+      "focus_article": "민법-제629조",
+      "question": "집주인이 서면으로 동의해서 제가 집 전체를 다시 빌려줬어요. 그래도 동의 없는 전대라며 나가라고 할 수 있나요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "집주인",
+        "request_span": "동의 없는 전대라며 나가라고 할 수 있나요",
+        "assertion": "asserted",
+        "missing_facts": [
+          "동의 범위",
+          "실제 사용과 동의의 일치"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "동의가 있다는 사실과 무단 전대라는 인용 주장을 분리한다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제629조"
+    },
+    {
+      "id": "CIV-DRAFT-017",
+      "scenario_family": "D632",
+      "focus_article": "민법-제632조",
+      "question": "제가 사는 집의 아주 작은 일부를 다른 사람이 쓰게 하려는데 전대 동의 규정에 예외가 있나요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "제가",
+        "request_span": "전대 동의 규정에 예외가 있나요",
+        "assertion": "planned",
+        "missing_facts": [
+          "전체 대비 범위",
+          "독립 사용 형태"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "예외 검토용 후보이지 예외 적용 확정이 아니다.",
+      "related_articles_for_review": [
+        "민법-제629조"
+      ],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제632조"
+    },
+    {
+      "id": "CIV-DRAFT-018",
+      "scenario_family": "D632",
+      "focus_article": "민법-제632조",
+      "question": "방 하나를 친구에게 쓰게 하면 무조건 소부분 예외인가요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "친구",
+        "request_span": "무조건 소부분 예외인가요",
+        "assertion": "hypothetical",
+        "missing_facts": [
+          "전체 방 수·면적",
+          "사용 범위",
+          "점유 형태"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "방 하나라는 표현만으로 소부분을 확정하지 않는다.",
+      "related_articles_for_review": [
+        "민법-제629조"
+      ],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제632조"
+    },
+    {
+      "id": "CIV-DRAFT-019",
+      "scenario_family": "D632",
+      "focus_article": "민법-제632조",
+      "question": "집 전체를 다른 사람에게 넘기고 저는 나갔어요. 방이 작은 집이면 소부분 예외인가요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "저는",
+        "request_span": "소부분 예외인가요",
+        "assertion": "asserted",
+        "missing_facts": [
+          "건물과 임차 범위",
+          "권리 양도인지 전대인지"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "작은 집과 임차건물의 소부분을 구분하는 예외 설명 요청이다.",
+      "related_articles_for_review": [
+        "민법-제629조"
+      ],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제632조"
+    },
+    {
+      "id": "CIV-DRAFT-020",
+      "scenario_family": "D632",
+      "focus_article": "민법-제632조",
+      "question": "임대한 주차장 일부를 다른 사람에게 쓰게 하면 건물 소부분 예외가 적용되나요?",
+      "context": "주거용 건물 내부인지 별도 토지·시설인지 제시되지 않은 합성 상황.",
+      "annotation": {
+        "entity_span": "다른 사람",
+        "request_span": "건물 소부분 예외가 적용되나요",
+        "assertion": "hypothetical",
+        "missing_facts": [
+          "목적물 유형",
+          "계약 대상",
+          "서비스 범위"
+        ]
+      },
+      "proposed_retrieval_role": "review_needed",
+      "proposal_reason": "건물이라는 적용 범위와 서비스 경계를 별도 검토한다.",
+      "related_articles_for_review": [
+        "민법-제629조"
+      ],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제632조"
+    },
+    {
+      "id": "CIV-DRAFT-021",
+      "scenario_family": "D634",
+      "focus_article": "민법-제634조",
+      "question": "천장에서 물이 새는 걸 발견했어요. 집주인에게 바로 알려야 하나요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "집주인",
+        "request_span": "바로 알려야 하나요",
+        "assertion": "asserted",
+        "missing_facts": [
+          "임대인 인지 여부"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "수리 필요와 통지 요청을 연결한다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제634조"
+    },
+    {
+      "id": "CIV-DRAFT-022",
+      "scenario_family": "D634",
+      "focus_article": "민법-제634조",
+      "question": "모르는 사람이 이 집에 자기 권리가 있다며 찾아왔어요. 집주인에게 알려야 하나요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "모르는 사람",
+        "request_span": "집주인에게 알려야 하나요",
+        "assertion": "asserted",
+        "missing_facts": [
+          "어떤 권리 주장인지",
+          "임대인 인지 여부"
+        ]
+      },
+      "proposed_retrieval_role": "direct_issue",
+      "proposal_reason": "수리 표현이 없어도 제3자 권리 주장에 대한 통지 범위다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제634조"
+    },
+    {
+      "id": "CIV-DRAFT-023",
+      "scenario_family": "D634",
+      "focus_article": "민법-제634조",
+      "question": "집주인이 직접 누수를 보고 이미 수리 접수를 했어요. 제가 다시 통지해야 하나요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "집주인",
+        "request_span": "제가 다시 통지해야 하나요",
+        "assertion": "asserted",
+        "missing_facts": [
+          "이미 인지한 범위"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "임대인이 이미 아는 경우의 예외 확인에 조문이 필요하다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제634조"
+    },
+    {
+      "id": "CIV-DRAFT-024",
+      "scenario_family": "D634",
+      "focus_article": "민법-제634조",
+      "question": "고장이 있는 게 아니라 집주인 연락처를 휴대폰에 저장하려고요. 연락처 이름은 어떻게 바꾸죠?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "집주인",
+        "request_span": "연락처 이름은 어떻게 바꾸죠",
+        "assertion": "denied",
+        "missing_facts": []
+      },
+      "proposed_retrieval_role": "not_auto_priority",
+      "proposal_reason": "연락이라는 단어만으로 법적 통지 의무를 앞세우지 않는다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제634조"
+    },
+    {
+      "id": "CIV-DRAFT-025",
+      "scenario_family": "D640",
+      "focus_article": "민법-제640조",
+      "question": "주택 월세가 밀려 집주인이 계약을 해지하겠대요. 연체액이 얼마인지 확인해야 하나요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "집주인",
+        "request_span": "연체액이 얼마인지 확인해야 하나요",
+        "assertion": "asserted",
+        "missing_facts": [
+          "약정 차임",
+          "연체액",
+          "상환 내역",
+          "해지 통보"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "기간 표현만으로 연체액 기준을 충족한다고 단정하지 않는다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제640조"
+    },
+    {
+      "id": "CIV-DRAFT-026",
+      "scenario_family": "D640",
+      "focus_article": "민법-제640조",
+      "question": "월세는 모두 냈고 관리비만 밀렸어요. 집주인이 월세 연체로 해지한다고 하는데 같은 건가요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "집주인",
+        "request_span": "같은 건가요",
+        "assertion": "asserted",
+        "missing_facts": [
+          "관리비 항목",
+          "약정 내용",
+          "청구 근거"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "월세 부정과 관리비 연체, 상대방의 인용 주장을 구분한다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제640조"
+    },
+    {
+      "id": "CIV-DRAFT-027",
+      "scenario_family": "D640",
+      "focus_article": "민법-제640조",
+      "question": "월세가 밀렸지만 집주인은 해지 얘기를 안 했어요. 제 사정 때문에 제가 계약을 끝내고 싶은데 연체하면 나갈 수 있나요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "제가",
+        "request_span": "연체하면 나갈 수 있나요",
+        "assertion": "asserted",
+        "missing_facts": [
+          "계약 종류",
+          "기간",
+          "합의 여부"
+        ]
+      },
+      "proposed_retrieval_role": "not_auto_priority",
+      "proposal_reason": "임차인의 중도 종료 요청을 임대인의 연체 해지권 행사로 자동 해석하지 않는다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제640조"
+    },
+    {
+      "id": "CIV-DRAFT-028",
+      "scenario_family": "D640",
+      "focus_article": "민법-제640조",
+      "question": "가게 월세가 밀렸고 임대인이 해지하겠대요. 주택과 기준이 같나요?",
+      "context": "상가 임대차라는 사실만 주어진 합성 상황.",
+      "annotation": {
+        "entity_span": "임대인",
+        "request_span": "주택과 기준이 같나요",
+        "assertion": "asserted",
+        "missing_facts": [
+          "상가 적용 범위",
+          "차임액",
+          "연체액",
+          "시점"
+        ]
+      },
+      "proposed_retrieval_role": "review_needed",
+      "proposal_reason": "특별법 검토가 먼저 필요한지 확인하며 민법 기준을 단독 적용하지 않는다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제640조"
+    },
+    {
+      "id": "CIV-DRAFT-029",
+      "scenario_family": "X-PAYMENT",
+      "focus_article": "민법-제626조",
+      "question": "보일러 수리는 집주인이 끝냈어요. 저는 계약금을 냈습니다. 계약이 취소됐는데 이 돈 달라고 할 수 있나요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "집주인",
+        "request_span": "이 돈 달라고",
+        "assertion": "asserted",
+        "missing_facts": [
+          "취소 사유",
+          "계약금 약정"
+        ]
+      },
+      "proposed_retrieval_role": "not_auto_priority",
+      "proposal_reason": "수리와 무관한 계약금의 지급·반환 관계를 연결하지 않는다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+    },
+    {
+      "id": "CIV-DRAFT-030",
+      "scenario_family": "X-NEGATION",
+      "focus_article": "민법-제626조",
+      "question": "집주인이 수리를 안 해줘서 제가 수리비를 냈어요. 그 돈을 집주인에게 청구할 수 있나요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "제가",
+        "request_span": "그 돈을 집주인에게 청구할 수 있나요",
+        "assertion": "asserted",
+        "missing_facts": [
+          "수리 필요성",
+          "원인",
+          "증빙"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "부정은 임대인의 수리 행위에 걸리고 임차인의 지출·청구는 긍정이다.",
+      "related_articles_for_review": [
+        "민법-제623조",
+        "민법-제634조"
+      ],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+    },
+    {
+      "id": "CIV-DRAFT-031",
+      "scenario_family": "X-QUOTE",
+      "focus_article": "민법-제626조",
+      "question": "집주인은 “당신이 수리비를 낸 게 아니다”라고 해요. 저는 제 카드 영수증이 있는데 누구에게 상환을 요구하죠?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "저는",
+        "request_span": "누구에게 상환을 요구하죠",
+        "assertion": "disputed",
+        "missing_facts": [
+          "실제 지출 사실",
+          "증빙 내용",
+          "비용 성격"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "상대방 주장과 사용자 주장을 하나의 확정 사실로 합치지 않는다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+    },
+    {
+      "id": "CIV-DRAFT-032",
+      "scenario_family": "X-HISTORY",
+      "focus_article": "민법-제626조",
+      "question": "그 돈은 누가 돌려줘야 하나요?",
+      "context": "이전 사용자 발화: 누수 수리비는 집주인이 냈고 저는 계약금을 냈어요. 최신 발화의 “그 돈”이 어느 돈인지 지정하지 않음.",
+      "annotation": {
+        "entity_span": "집주인",
+        "request_span": "그 돈은 누가 돌려줘야 하나요",
+        "assertion": "unknown",
+        "missing_facts": [
+          "그 돈의 지시 대상"
+        ]
+      },
+      "proposed_retrieval_role": "review_needed",
+      "proposal_reason": "대화가 있다는 이유만으로 수리비로 확정하지 않는다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+    },
+    {
+      "id": "CIV-DRAFT-033",
+      "scenario_family": "X-MULTI",
+      "focus_article": "민법-제626조",
+      "question": "제가 누수 수리비를 냈고 방도 한 달 못 썼어요. 수리비 반환과 월세 감액을 둘 다 알아보고 싶어요.",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "제가",
+        "request_span": "수리비 반환과 월세 감액을 둘 다",
+        "assertion": "asserted",
+        "missing_facts": [
+          "수리 원인",
+          "지출 증빙",
+          "사용 제한 범위",
+          "귀책"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "서로 다른 요청을 한 주제로 줄이거나 임의 2개 조문에 고정하지 않는다.",
+      "related_articles_for_review": [
+        "민법-제627조",
+        "민법-제623조",
+        "민법-제634조"
+      ],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+    },
+    {
+      "id": "CIV-DRAFT-034",
+      "scenario_family": "X-CONCEPT",
+      "focus_article": "민법-제626조",
+      "question": "아직 수리하거나 돈을 낸 적은 없어요. 필요비와 유익비 상환은 뭐가 다른가요?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "돈",
+        "request_span": "필요비와 유익비 상환은 뭐가 다른가요",
+        "assertion": "denied",
+        "missing_facts": []
+      },
+      "proposed_retrieval_role": "direct_issue",
+      "proposal_reason": "사건이 없다는 부정은 개념 설명에 필요한 조문을 배제할 이유가 아니다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제626조"
+    },
+    {
+      "id": "CIV-DRAFT-035",
+      "scenario_family": "X-UNKNOWN",
+      "focus_article": "민법-제627조",
+      "question": "집을 제대로 못 쓰는 것 같아요. 월세는 어떻게 해야 하죠?",
+      "context": "일반 주택 임대차를 전제로 한 합성 상황. 구체적인 계약·사건 날짜는 별도 제시하지 않음.",
+      "annotation": {
+        "entity_span": "집",
+        "request_span": "월세는 어떻게 해야 하죠",
+        "assertion": "uncertain",
+        "missing_facts": [
+          "구체적 지장",
+          "기간",
+          "원인",
+          "귀책"
+        ]
+      },
+      "proposed_retrieval_role": "conditional_issue",
+      "proposal_reason": "정보 부족은 자동 제외가 아니라 조건 안내용 후보와 추가 확인을 구분할 사유다.",
+      "related_articles_for_review": [],
+      "legal_review_status": "pending",
+      "expected_final_rank": null,
+      "absolute_retrieval_ban": false,
+      "basis_url": "https://www.law.go.kr/법령/민법/제627조"
+    }
+  ]
+}
