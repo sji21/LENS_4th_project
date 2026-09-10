@@ -1,0 +1,20 @@
+{
+  "civil_half": {
+    "technical_gate_passed": false,
+    "regressed_inputs": 0,
+    "civil_primary_improves_both_k": false,
+    "deployment_approved": false
+  },
+  "civil_equal": {
+    "technical_gate_passed": false,
+    "regressed_inputs": 16,
+    "civil_primary_improves_both_k": true,
+    "deployment_approved": false
+  },
+  "civil_strong": {
+    "technical_gate_passed": false,
+    "regressed_inputs": 52,
+    "civil_primary_improves_both_k": true,
+    "deployment_approved": false
+  }
+}

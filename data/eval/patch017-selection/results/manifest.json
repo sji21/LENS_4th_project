@@ -1,0 +1,35 @@
+{
+  "schema": "patch017-selection-run-v1",
+  "commit": "8678c42b553316f358f56b4310b80817a8fd1ca4",
+  "status": "M LIST.md\n M scripts/.gitattributes\n?? data/eval/patch017-selection/\n?? scripts/patch017_selection.py\n?? tests/test_patch017_selection.py",
+  "script_sha256": "12476997b8b22aa17483cb2ece425df8825de5433fe4b166bc0cbee8570928c6",
+  "input_hashes": {
+    "data/eval/patch017-selection/plan.json": "f37922ea328ad53408ff4b7f3b3576f0404c004a07269cca10bc872241d71225",
+    "data/eval/patch015-baseline/capture/results.json": "3834e7c0e8d5f1eb5c2f60bfd6f3106cf1a765fe8f18c535dac444af91029f4c",
+    "data/eval/patch015-baseline/capture/manifest.json": "a02da1c6d06a3f92a5d5bc43c442ccc0c36fd4e9a26e72904a0527ec615dc2c0",
+    "data/eval/patch015-baseline/bundle-manifest.json": "db2eadf16cc85355af108e501abaf2b5d1d19b0875f7f64ca3c3078abec6a27d",
+    "data/eval/patch016-candidates/capture/results.json": "d4e1a7a5586ee4b7be83c991bfd26fff2acf737e4011c09c0dfeba46e86bfd33",
+    "data/eval/patch016-candidates/capture/manifest.json": "da76e1a877069752f52a0611ff941bf9d56717ab889d63ba9b02eb79b7fee5eb",
+    "data/eval/patch016-candidates/bundle-manifest.json": "fc1de054b09c1b01eb1539fca215538efc58158e87b536ef51204ae79b5890b0",
+    "data/eval/civil-review2/retrieval-plan.json": "0d4da52e5636d7e26b3a01d841a15bf474eaf0214974ea108a306b44317408ca",
+    "data/eval/dev100-v2/diagnostic-plan.json": "1022e31142eacc7acd47861285a3cdc256d899296ce0d0f242f322ae7d1b1fca"
+  },
+  "new_retrieval_executed": false,
+  "generation_performed": false,
+  "product_modified": false,
+  "rows": 235,
+  "variants": [
+    {
+      "name": "civil_half",
+      "civil_weight": "0.5"
+    },
+    {
+      "name": "civil_equal",
+      "civil_weight": "1"
+    },
+    {
+      "name": "civil_strong",
+      "civil_weight": "1.5"
+    }
+  ]
+}

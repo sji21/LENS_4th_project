@@ -1,0 +1,10 @@
+{
+  "files": {
+    "results/summary.json": "1d6147ff846f8308d481fb0b254059512fe8596f83921d24de496ecfd1983774",
+    "results/details.json": "fcbaf6dfac4de55b7a75d35d05cea5ab7ffe323b2c580de04461ecb59872f0ab",
+    "results/decisions.json": "59282119930f0452ff7cfed76406d36daa8a80df34219a67bb08c3b985342860",
+    "plan.json": "f37922ea328ad53408ff4b7f3b3576f0404c004a07269cca10bc872241d71225",
+    "results/manifest.json": "44875880968ab0596deedfd35281b473c09f46d76656d4382d1b9f5c75279a44"
+  },
+  "schema": "patch017-bundle-v1"
+}
