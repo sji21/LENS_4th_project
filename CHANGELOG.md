@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
-- PATCH-012 rejects landlord-as-repairer/claimant wording in its new indirect reimbursement route, preventing a landlord's repair-cost demand from being interpreted as the tenant's reimbursement claim. (commit: pending)
+- PATCH-012 rejects landlord-as-repairer/claimant wording in its new indirect reimbursement route, preventing a landlord's repair-cost demand from being interpreted as the tenant's reimbursement claim. (commit: `c34a6df`)
 
 - PATCH-012 recognizes repair-cost return requests, prepaid repair follow-ups, and explicit water-use loss during plumbing work. Five development inputs gain the required civil article; the other 195 inputs and all case/guide rankings remain unchanged. No corpus or gold changes. (commit: `4503f4d`)
 
