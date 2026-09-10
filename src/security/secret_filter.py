@@ -56,7 +56,7 @@ class SecretFilterResult:
 # 키 이름이 명시된 assignment는 값 모양이 일반 문자열이어도 비밀값으로 본다.
 # 빈 값은 .env.example처럼 안전한 템플릿일 수 있으므로 탐지하지 않는다.
 _SECRET_LABEL = (
-    r"(?:OPENAI_API_KEY|LAW_GO_KR_API_KEY|HF_TOKEN|HUGGINGFACE_TOKEN|"
+    r"(?:OPENAI_API_KEY|LAW_OPEN_API_OC|LAW_GO_KR_API_KEY|HF_TOKEN|HUGGINGFACE_TOKEN|"
     r"GITHUB_TOKEN|GITHUB_PAT|SLACK_TOKEN|API_KEY|ACCESS_TOKEN|"
     r"AUTH_TOKEN|CLIENT_SECRET|SECRET_KEY|PASSWORD|PASSWD)"
 )
@@ -118,23 +118,23 @@ _SLACK_TOKEN_RE = re.compile(
 
 
 _PATTERN_SPECS: tuple[
-    tuple[SecretKind, re.Pattern[str], bool],
+    tuple[SecretKind, re.Pattern[str]],
     ...,
 ] = (
-    ("named_secret", _NAMED_QUOTED_SECRET_RE, True),
-    ("named_secret", _NAMED_SECRET_RE, True),
-    ("bearer_token", _BEARER_RE, True),
-    ("openai_key", _OPENAI_KEY_RE, False),
-    ("github_token", _GITHUB_TOKEN_RE, False),
-    ("huggingface_token", _HUGGINGFACE_TOKEN_RE, False),
-    ("slack_token", _SLACK_TOKEN_RE, False),
+    ("named_secret", _NAMED_QUOTED_SECRET_RE),
+    ("named_secret", _NAMED_SECRET_RE),
+    ("bearer_token", _BEARER_RE),
+    ("openai_key", _OPENAI_KEY_RE),
+    ("github_token", _GITHUB_TOKEN_RE),
+    ("huggingface_token", _HUGGINGFACE_TOKEN_RE),
+    ("slack_token", _SLACK_TOKEN_RE),
 )
 
 
 def _candidate_findings(text: str) -> list[SecretFinding]:
     findings: list[SecretFinding] = []
 
-    for kind, pattern, has_prefix in _PATTERN_SPECS:
+    for kind, pattern in _PATTERN_SPECS:
         for match in pattern.finditer(text or ""):
             start, end = match.span("value")
             label = ""

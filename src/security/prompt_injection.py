@@ -13,8 +13,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import re
-import unicodedata
 from typing import Callable, Literal
+
+from src.security.text_normalization import normalize_security_text
 
 
 InjectionReason = Literal[
@@ -66,10 +67,18 @@ _SPACE_RE = re.compile(r"\s+")
 
 _OVERRIDE_PATTERNS = (
     re.compile(
-        r"(?:이전|앞선|기존|위의|위)\s*"
-        r"(?:지시|명령|규칙|프롬프트|메시지)"
+        # "위"는 범위·상위·하위·단위·우선순위처럼 흔한 낱말 안에도 들어 있다.
+        # 앞 글자가 한글이면 그 낱말의 일부이므로 지시 대명사로 보지 않는다.
+        # 핵심어의 음절 사이에도 공백을 허용해 자간 삽입 우회를 막는다. 이 패턴은
+        # 공백을 유지한 view에도 적용되므로 "모두 위 지 시"의 위 경계가 보존된다.
+        r"(?:이\s*전|앞\s*선|앞\s*서|기\s*존|"
+        r"(?<![가-힣])(?:위\s*에\s*서|위\s*의|위))\s*"
+        r"(?:(?:주\s*어\s*진|준|받\s*은)\s*)?"
+        r"(?:지\s*시|명\s*령|규\s*칙|프\s*롬\s*프\s*트|메\s*시\s*지)"
         r".{0,20}?"
-        r"(?:무시|잊어|취소|따르지|덮어써|우회)",
+        # "잊지"는 "잊지 마세요"처럼 오히려 지키라는 뜻이라 무효화 신호가 아니다.
+        r"(?:무\s*시|잊(?!\s*지)|취\s*소|따\s*르\s*지\s*(?:마|말)|"
+        r"덮\s*어\s*써|우\s*회)",
         re.IGNORECASE,
     ),
     re.compile(
@@ -81,7 +90,9 @@ _OVERRIDE_PATTERNS = (
         re.IGNORECASE,
     ),
     re.compile(
-        r"ignore\s+(?:all\s+)?(?:previous|prior|system|developer)"
+        # compact view에서도 영문 공격을 잡을 수 있게 단어 사이 공백을 선택적으로
+        # 허용한다. 음절/철자 자간은 compact view에서 이미 제거된다.
+        r"ignore\s*(?:all\s*)?(?:previous|prior|system|developer)"
         r".{0,20}?(?:instructions?|prompts?|messages?)",
         re.IGNORECASE,
     ),
@@ -91,6 +102,21 @@ _OVERRIDE_PATTERNS = (
         r"(?:system|developer|previous|prior)"
         r".{0,20}?"
         r"(?:instructions?|prompts?|messages?)",
+        re.IGNORECASE,
+    ),
+)
+
+# "위 규칙을 따르지 않으면 어떻게 되나요?"처럼 제3자의 미준수를 묻는 법률
+# 질문과 "위 규칙을 따르지 않고 답해" 같은 우회 지시는 정규식 구조가 같다.
+# 명령형(따르지 마/말라)은 위에서 즉시 차단하고, 나머지는 semantic judge가
+# 문맥을 판정하도록 보낸다.
+_AMBIGUOUS_OVERRIDE_PATTERNS = (
+    re.compile(
+        r"(?:이\s*전|앞\s*선|앞\s*서|기\s*존|"
+        r"(?<![가-힣])(?:위\s*에\s*서|위\s*의|위))\s*"
+        r"(?:(?:주\s*어\s*진|준|받\s*은)\s*)?"
+        r"(?:지\s*시|명\s*령|규\s*칙|프\s*롬\s*프\s*트|메\s*시\s*지)"
+        r".{0,20}?따\s*르\s*지",
         re.IGNORECASE,
     ),
 )
@@ -115,7 +141,7 @@ _EXFILTRATION_PATTERNS = (
     re.compile(
         r"(?:reveal|show|print|dump|expose)"
         r".{0,20}?"
-        r"(?:system\s+prompt|developer\s+message|hidden\s+instructions?)",
+        r"(?:system\s*prompt|developer\s*message|hidden\s*instructions?)",
         re.IGNORECASE,
     ),
 )
@@ -144,9 +170,9 @@ _PRIORITY_PATTERNS = (
         re.IGNORECASE,
     ),
     re.compile(
-        r"(?:user|my)\s+instructions?"
+        r"(?:user|my)\s*instructions?"
         r".{0,20}?"
-        r"(?:take\s+priority|override|supersede)"
+        r"(?:take\s*priority|override|supersede)"
         r".{0,20}?"
         r"(?:system|developer)",
         re.IGNORECASE,
@@ -206,25 +232,51 @@ def build_prompt_injection_judge_prompt(text: str) -> str:
 
 
 def _normalize(text: str) -> str:
-    normalized = unicodedata.normalize("NFKC", text or "").casefold()
+    normalized = normalize_security_text(text)
     return _SPACE_RE.sub(" ", normalized).strip()
 
 
-def _matches_any(text: str, patterns: tuple[re.Pattern[str], ...]) -> bool:
+def _match_views(text: str) -> tuple[str, ...]:
+    """원문형과 자간 공백을 제거한 보안 비교형을 함께 반환한다.
+
+    공백 없는 문자열은 보안 정규식에만 사용한다. 검색·LLM 입력 원문은 바꾸지
+    않으므로 정상 질문의 단어 경계와 표시 형식에는 영향을 주지 않는다.
+    """
+
     normalized = _normalize(text)
-    return any(pattern.search(normalized) is not None for pattern in patterns)
+    compact = _SPACE_RE.sub("", normalized)
+    if not compact or compact == normalized:
+        return (normalized,)
+    return normalized, compact
+
+
+def _matches_any(text: str, patterns: tuple[re.Pattern[str], ...]) -> bool:
+    return any(
+        pattern.search(view) is not None
+        for view in _match_views(text)
+        for pattern in patterns
+    )
 
 
 def _contains_ambiguous_cue(text: str) -> bool:
-    normalized = _normalize(text)
-    return any(_normalize(cue) in normalized for cue in _AMBIGUOUS_CUES)
+    compact = _normalize(text).replace(" ", "")
+    return any(
+        _normalize(cue).replace(" ", "") in compact
+        for cue in _AMBIGUOUS_CUES
+    )
 
 
 def _mentions_protected_instructions(text: str) -> bool:
-    normalized = _normalize(text)
+    compact = _normalize(text).replace(" ", "")
     return (
-        any(_normalize(cue) in normalized for cue in _PROTECTED_CONTEXT_CUES)
-        and any(_normalize(cue) in normalized for cue in _INSTRUCTION_OBJECT_CUES)
+        any(
+            _normalize(cue).replace(" ", "") in compact
+            for cue in _PROTECTED_CONTEXT_CUES
+        )
+        and any(
+            _normalize(cue).replace(" ", "") in compact
+            for cue in _INSTRUCTION_OBJECT_CUES
+        )
     )
 
 
@@ -235,11 +287,24 @@ def classify_prompt_injection(
     """입력의 프롬프트 인젝션 여부를 보수적으로 판정한다.
 
     명백한 공격은 코드가 즉시 차단한다. 그 외 입력은 semantic judge가 연결된
-    런타임에서 LLM이 한 번 더 본다. judge가 없거나 호출에 실패하면 정상 질문을
-    과잉 차단하지 않도록 기본 통과시키되 검토 필요 여부를 남긴다.
+    런타임에서 LLM이 한 번 더 본다. judge가 없거나 호출에 실패하면 검토 필요
+    여부를 반환한다. 운영 graph/chain은 재판정 후에도 미해결이면 진행을 차단한다.
     """
 
-    if _matches_any(text, _OVERRIDE_PATTERNS):
+    # 자간이 벌어진 상위·하위·범위·단위·순위·지위는 단독 '위'와
+    # 구별이 불확실하다. 자동 허용하지 않고 문맥 재판정으로 넘긴다.
+    ambiguous_word_boundary = False
+    hard_override = False
+    for view in _match_views(text):
+        for match in _OVERRIDE_PATTERNS[0].finditer(view):
+            if match.group().startswith("위") and re.search(
+                r"[상하범단순지]\s+$", view[:match.start()]
+            ):
+                ambiguous_word_boundary = True
+            else:
+                hard_override = True
+
+    if hard_override or _matches_any(text, _OVERRIDE_PATTERNS[1:]):
         return PromptInjectionDecision(
             blocked=True,
             reason="instruction_override",
@@ -261,8 +326,10 @@ def classify_prompt_injection(
         )
 
     needs_review = (
-        _contains_ambiguous_cue(text)
+        ambiguous_word_boundary
+        or _contains_ambiguous_cue(text)
         or _mentions_protected_instructions(text)
+        or _matches_any(text, _AMBIGUOUS_OVERRIDE_PATTERNS)
     )
 
     if semantic_judge is None:

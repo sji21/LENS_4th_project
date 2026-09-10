@@ -1,7 +1,10 @@
 """현재 dev 평가셋을 실제 Retrieval + Qwen runtime으로 평가한다.
 
 기존 ``src.evaluation.run_eval``은 검색기만 평가한다. 이 실행기는
-``src.generation.chain.answer_question``을 그대로 호출해 최종 서비스 흐름을 본다.
+운영 웹과 동일한 ``src.generation.graph.answer_question``으로 단일 질문의 생성
+흐름을 평가한다. 웹 세션·멀티턴·업로드 UI 평가는 포함하지 않는다.
+생성 모듈을 가져오기 전에 프로젝트 ``.env``를 로드하므로 Django를
+거치지 않고 명령행에서 실행해도 동일한 LLM 설정을 사용한다.
 
 기본 실행:
     python -m src.evaluation.run_generation_eval
@@ -26,13 +29,22 @@ from datetime import datetime
 from pathlib import Path
 from typing import Iterable
 
-from src.generation.chain import answer_question, get_default_service
+from src.environment import load_project_environment
+
+# src.generation.llm은 import 시점에 환경 변수를 읽으므로 반드시 생성 모듈보다
+# 먼저 로드한다. 셸에서 명시한 값은 load_project_environment()가 덮어쓰지 않는다.
+load_project_environment()
+
+from src.generation.chain import get_default_service  # noqa: E402
+from src.generation.graph import answer_question  # noqa: E402
 from src.generation.models import Answer
 from src.retrieval.retriever import load_chunks
 from src.retrieval.service import CASE_CHUNKS, GUIDE_CHUNKS, LAW_CHUNKS
 
 DEFAULT_EVAL_SET = Path("data/eval/dev.jsonl")
 DEFAULT_OUTPUT_DIR = Path("data/eval/runs/generation")
+RUNNER_NAME = "langgraph"
+RUNNER_VERSION = 1
 
 
 @dataclass
@@ -403,6 +415,7 @@ def main() -> None:
     payload = {
         "run_id": run_id,
         "eval_set": str(args.eval_set),
+        "runner": {"name": RUNNER_NAME, "version": RUNNER_VERSION},
         "generation_mode": "integrated-main-prompt",
         "retrieval_mode": mode,
         "summary": summary,
