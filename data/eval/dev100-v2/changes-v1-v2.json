@@ -1,0 +1,1302 @@
+[
+  {
+    "qid": "DEV-001",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 민법 제114조 제1항(대리행위의 효력)\n- **대체/보강 근거:** 대리권 범위가 별도로 정해지지 않은 경우 민법 제118조\n- **보조 근거:** 등기사항증명서·위임장·본인확인 자료",
+    "v2_evidence": "필수 C114; 조건부 C118; 보조 INPUT\n\n- **C114**: [민법 제114조 대리행위의 효력](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0114&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제114조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C118**: [민법 제118조 대리권의 범위](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0118&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제118조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "제114조는 대리의 효력, 제118조는 권한을 정하지 않은 경우의 범위이므로 서로 전면 대체하지 않는다. 실무 확인서류를 모두 법정 성립요건으로 채점하지 않는다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 5
+    }
+  },
+  {
+    "qid": "DEV-002",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 민법 제357조 제1·2항(근저당)\n- **대체/보강 근거:** 주택임대차보호법 제3조의2 제2항(우선변제권)\n- **보조 근거:** 전체 등기·채무잔액·가격자료",
+    "v2_evidence": "필수 C357; 조건부 H3,H3_2; 보조 INPUT\n\n- **C357**: [민법 제357조 근저당](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0357&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제357조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3**: [주택임대차보호법 대항력·양수인 승계](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_2**: [주택임대차보호법 보증금의 회수](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의2 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "질문이 계약 전 확인사항도 요구하므로 이를 선택 설명에서 필수 답변으로 올린다. 실제 채무와 담보 한도를 구분하는 기존 판단은 채택한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 35
+    }
+  },
+  {
+    "qid": "DEV-003",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 국세징수법 제109조 및 시행령 제97조; 지방세징수법 제6조 및 시행령 제8조\n- **대체/보강 근거:** 주택임대차보호법 제3조의7\n- **보조 근거:** 납세증명서·공식 열람 신청자료",
+    "v2_evidence": "필수 TAX109,TAX97,LT6,LT8,H3_7,SCOPE\n\n- **TAX109**: [국세징수법](https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1031715859) — 제109조제1~3항; 동의·무동의·기간; 적용 시점: 2026-06-02 시행, 법률 제21713호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **TAX97**: [국세징수법 시행령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0097&lsiSeq=283487&urlMode=lsScJoRltInfoR) — 제97조; 신청자료와 1천만 원 초과 기준; 적용 시점: 2026-02-27 시행, 대통령령 제36126호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **LT6**: [지방세징수법](https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1032085419) — 제6조; 열람 시기·동의 예외; 적용 시점: 2026-02-05 시행, 법률 제21327호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **LT8**: [지방세징수법 시행령](https://law.go.kr/lsLinkCommonInfo.do?lspttninfSeq=180045) — 제8조; 첨부서류와 1천만 원 초과; 적용 시점: 2026-02-05 시행, 대통령령 제36076호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_7**: [주택임대차보호법 임대인의 정보 제시 의무](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=07&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의7 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **SCOPE**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "동의 없는 열람의 시기·금액 요건을 구체화하고 주택임대차보호법상 정보 제시 의무를 보완한다. 서비스 기능 제한과 법적 금지를 분리한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 66
+    }
+  },
+  {
+    "qid": "DEV-004",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 민법 제623조\n- **대체/보강 근거:** 대법원 1994.12.9. 선고 94다34692,94다34708\n- **보조 근거:** 계약서 전체·시설 상태",
+    "v2_evidence": "필수 C623,CASE_REPAIR; 조건부 C105; 보조 INPUT,SCOPE\n\n- **C623**: [민법 제623조 임대인의 의무](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0623&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제623조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **CASE_REPAIR**: [대법원 94다34692·34708](https://law.go.kr/LSW/precInfoP.do?evtNo=94%EB%8B%A434692%2C+94%EB%8B%A434708) — 판시사항·이유 및 사실관계: 여관의 노후 보일러·배관 대규모 교체와 포괄 수선 특약; 적용 시점: 1994-12-09 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **C105**: [민법 제105조 임의규정](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0105&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제105조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.\n- **SCOPE**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "특약 해석이 핵심이므로 민법 제623조와 실제 판례의 해석을 함께 본다. 판례는 여관의 노후 배관·보일러 등 대규모 교체 사례로 사실 차이를 표시한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 100
+    }
+  },
+  {
+    "qid": "DEV-005",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조 제1항; 쟁점에 따라 제3조의2 제2항·제3조의6 + 주민등록법 제16조\n- **대체/보강 근거:** 임대차 신고가 쟁점이면 부동산거래신고법 제6조의2·제6조의5 및 시행령 제4조의3·시행규칙 제6조의2\n- **보조 근거:** 계약서·주민등록·공적 주소자료",
+    "v2_evidence": "필수 RR16,H3,H3_6; 조건부 H3_2,REPORT62\n\n- **RR16**: [주민등록법](https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1012776409) — 제16조 전체; 실제 전입일부터 14일; 적용 시점: 2025-07-22 시행, 법률 제20677호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3**: [주택임대차보호법 대항력·양수인 승계](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_6**: [주택임대차보호법 확정일자·임대차 정보](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=06&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의6 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_2**: [주택임대차보호법 보증금의 회수](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의2 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **REPORT62**: [부동산 거래신고 등에 관한 법률](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0006&lsiSeq=259641&urlMode=lsScJoRltInfoR) — 제6조의2 전체; 30일·공동 신고·거부; 적용 시점: 2024-05-17 시행, 법률 제20194호; 평가일 적용판; 확인일 2026-09-10; 관련 조문 본문·요건 확인.",
+    "v1_gold_status": "일부 미확인",
+    "change_reason_as_reported": "날짜를 원본대로 반영하고 전입·확정일자·대항력 발생을 분리한다. 조건부 날짜 예시를 확정 결론으로 채점하지 않는다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 132
+    }
+  },
+  {
+    "qid": "DEV-006",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 민법 제623조 및 제626조 제1항; 원인·통지가 쟁점이면 제634조\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 수선 영수증·사진·전문가 소견",
+    "v2_evidence": "필수 C626; 조건부 C623,C634; 보조 INPUT\n\n- **C626**: [민법 제626조 임차인의 상환청구권](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0626&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제626조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C623**: [민법 제623조 임대인의 의무](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0623&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제623조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C634**: [민법 제634조 임차인의 통지의무](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0634&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제634조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "지출 후 필요비 상환의 직접 근거는 제626조다. 제623조만으로 상환 요건을 대체하지 않고 통지 의무와 연락 시도를 반영한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 167
+    }
+  },
+  {
+    "qid": "DEV-007",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조의3 제1항·제5항\n- **대체/보강 근거:** 대법원 2025.4.15. 선고 2024다326398; 퇴거 후 신청은 2024마8598\n- **보조 근거:** 등기사항증명서·종료/전출 일정",
+    "v2_evidence": "필수 H3_3; 조건부 H6,H6_2,H4,CASE_REG; 보조 INPUT\n\n- **H3_3**: [주택임대차보호법 임차권등기명령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H6**: [주택임대차보호법 묵시적 갱신](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H6_2**: [주택임대차보호법 묵시 갱신의 해지](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조의2 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H4**: [주택임대차보호법 임대차기간](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0004&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제4조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **CASE_REG**: [대법원 2024다326398](https://www.law.go.kr/precInfoP.do?precSeq=605771) — 판시사항·이유 및 사실관계: 임차권등기 전 퇴거·전출, 선순위 회복 비소급; 적용 시점: 2025-04-15 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "신청·완료의 차이와 같은 날 이사 일정의 현실적 제약을 필수화한다. 개별 종료 여부 미확인을 제도 안내 전체 보류로 처리하지 않는다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 198
+    }
+  },
+  {
+    "qid": "DEV-008",
+    "category": "정답 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- `공식 보증기관의 현재 상품개요` 중 하나 이상을 **기관명을 밝혀 예시**로 사용.\n- 기관이 여러 곳임을 설명하면 HF 2026-09-07 보도자료 등 공식 자료를 보조 가능.\n\n**조건부 근거**\n- 정확한 보증사고·통지·이행기한을 말하면 **그 기관의 약관/이행안내**가 필요.\n- HUG를 예로 들면 `약관 및 상담연락처`의 `보증사고 / 사고통지 / 이행청구` 구간.\n\n**대체 가능한 집합**\n- HUG 상품개요\n- HF 일반전세지킴보증\n- 확인된 SGI 공식 반환보증 페이지\n중 하나 이상.  \n단, 정확한 세부조건을 말하면 그 조건을 제공하는 **같은 기관의 원문**이어야 함.\n\n**검색 성공 기준**\n- 기본: 공식 기관 상품개요로 `무엇을 보증하는지`.\n- 완전: 사용한 사고 예시와 절차가 해당 기관 약관의 실제 구간과 일치.",
+    "v2_evidence": "필수 HF_OV 또는 동등한 공식 반환보증 개요; 조건부 HF_CLAIM,HF_TERMS\n\n- **HF_OV**: [HF 전세지킴보증 일반 안내](https://hf.go.kr/ko/sub02/sub02_05_01.do) — 신청시기·취급은행·대상자·구비서류·보증조건; 적용 시점: 확인일 현재 게시 안내; 게시/개정일 별도 표시 불명; 확인일 2026-09-10; 공식 안내 본문 확인. 평가일 9월 8일의 별도 웹 보관본은 확보하지 않아 9월 10일 조회 내용으로 표시; 기관 특정 예시만 사용.\n- **HF_CLAIM**: [HF 전세지킴보증 보증이행 안내](https://hf.go.kr/ko/sub02/sub02_05_07.do) — 사고사유·통지·이행청구·심사·이사/지급 절차; 적용 시점: 확인일 현재 안내; 확인일 2026-09-10; 본문 확인. 2023년 가입 건 적용 여부는 별도.\n- **HF_TERMS**: [HF 전세지킴보증 약관·안내 PDF](https://hf.go.kr/cms/etcResourceDown.do?key=$cms$M4VwRgDATA+qmwgVhhAjDK0BsFtoE4A6ABwBMAzIA&site=$cms$NYeyA) — PDF 13~20쪽: 제2~6·9~16조 및 안내 3~11쪽; 적용 시점: PDF 약관 표기 개정 2025-02-06; 현재 공식 페이지 연결본; 확인일 2026-09-10; 관련 약관 본문 확인. 보증조건 변경·면책·사고·기한·심사 구별. 2023년 가입 건에 적용됐다고 확인한 것이 아님.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "기관별 실제 사례를 보완하되 기관 미지정 문항에 특정 기관 약관이나 개인 보증서를 일률 필수 검색자료로 요구하지 않는다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 232
+    }
+  },
+  {
+    "qid": "DEV-009",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제2조\n- **대체/보강 근거:** 대법원 87다카2024; 96다5971; 95다51953\n- **보조 근거:** 실제 구조·용도·영업/거주 자료",
+    "v2_evidence": "필수 H2,M2,CASE_MIX; 보조 INPUT\n\n- **H2**: [주택임대차보호법 적용범위](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0002&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제2조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **M2**: [상가건물 임대차보호법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0002&lsiSeq=279651&urlMode=lsScJoRltInfoR) — 제2조 전체; 특히 제2조제3항의 초과 계약 적용 목록과 함께 읽음; 적용 시점: 2026-05-12 시행, 법률 제21083호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **CASE_MIX**: [대법원 87다카2024](https://law.go.kr/LSW/precInfoP.do?precSeq=104710) — 판시사항·이유 및 사실관계: 미용실·제과점과 가족 주거 혼합의 실제 구조·사용; 적용 시점: 1988-12-27 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "Lawbot이 상가 조문만 반환했으나 주택 제2조와 실제 용도 판례도 필요하다. 부록의 대체 근거를 동일 결론을 뒷받침하는 경우로 제한한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 282
+    }
+  },
+  {
+    "qid": "DEV-010",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조의3 제1항\n- **대체/보강 근거:** 대법원 2024마8598, 2024다326398, 2002다20957\n- **보조 근거:** 2021년 당시 날짜·등기·절차 자료",
+    "v2_evidence": "필수 H3_3,CASE_REG,CASE_MOVEOUT; 조건부 PROC462,C536; 보조 INPUT\n\n- **H3_3**: [주택임대차보호법 임차권등기명령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **CASE_REG**: [대법원 2024다326398](https://www.law.go.kr/precInfoP.do?precSeq=605771) — 판시사항·이유 및 사실관계: 임차권등기 전 퇴거·전출, 선순위 회복 비소급; 적용 시점: 2025-04-15 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **CASE_MOVEOUT**: [대법원 2024마8598](https://www.law.go.kr/precInfoP.do?precSeq=612117) — 판시사항·이유 및 사실관계: 보증기관 지급·퇴거 후 재신청과 반환의 의미; 적용 시점: 2025-04-15 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **PROC462**: [민사소송법](https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1033366021) — 제462조; 금전 등 청구와 국내 비공시 송달; 적용 시점: 실제 표시 2025-07-12 시행/법률 제19516호; 확인일 2026-09-10; 본문 확인. 평가일 2026-03-17 판본 직접 열람 실패로 현행 판본 대조는 제한.\n- **C536**: [민법 제536조 동시이행의 항변권](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0536&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제536조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "일부 미확인",
+    "change_reason_as_reported": "이미 전출한 사실을 승계하고 현재 가능한 절차를 먼저 확정한다. 과거 순위와 시효의 개별 결론은 유보한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 314
+    }
+  },
+  {
+    "qid": "DEV-011",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 민법 제265조(공유물의 관리·과반수) + 대리 시 민법 제114조\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 공동소유 지분·위임서류",
+    "v2_evidence": "필수 C265; 조건부 C114; 보조 INPUT\n\n- **C265**: [민법 제265조 공유물의 관리·보존](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0265&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제265조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C114**: [민법 제114조 대리행위의 효력](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0114&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제114조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "제265조의 지분 기준을 추가한다. 가족관계나 제114조만으로 공유물 관리의 결정을 대체하지 않는다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 348
+    }
+  },
+  {
+    "qid": "DEV-012",
+    "category": "기존 유지",
+    "v1_effective_evidence": "- **필수 근거:** 민법 제114조 제1항(대리행위의 효력)\n- **대체/보강 근거:** 대리권 범위가 별도로 정해지지 않은 경우 민법 제118조\n- **보조 근거:** 등기사항증명서·위임장·본인확인 자료",
+    "v2_evidence": "필수 C114,SCOPE; 조건부 C118; 보조 INPUT\n\n- **C114**: [민법 제114조 대리행위의 효력](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0114&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제114조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **SCOPE**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.\n- **C118**: [민법 제118조 대리권의 범위](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0118&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제118조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "서비스 인증 불가와 권한 확인 방법 안내를 구분한 기존 판단을 채택한다. 검증 완료 표시는 독립 확인 결과로 새로 부여한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 378
+    }
+  },
+  {
+    "qid": "DEV-013",
+    "category": "표현 개선",
+    "v1_effective_evidence": "- **필수 근거:** 민법 제114조 제1항(대리행위의 효력)\n- **대체/보강 근거:** 대리권 범위가 별도로 정해지지 않은 경우 민법 제118조\n- **보조 근거:** 등기사항증명서·위임장·본인확인 자료",
+    "v2_evidence": "필수 C114; 조건부 C118; 보조 INPUT\n\n- **C114**: [민법 제114조 대리행위의 효력](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0114&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제114조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C118**: [민법 제118조 대리권의 범위](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0118&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제118조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "권한을 추가 확인한다는 결론은 유지하되 별도 문구를 절대적 법정 요건으로 읽지 않도록 표현을 한정한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 408
+    }
+  },
+  {
+    "qid": "DEV-014",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 상법 제389조(대표이사) 및 민법 제114조\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 법인등기사항증명서·위임장·사용인감 관련 자료",
+    "v2_evidence": "필수 C114; 조건부 COM389; 보조 INPUT\n\n- **C114**: [민법 제114조 대리행위의 효력](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0114&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제114조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **COM389**: [상법](https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1016242805) — 제389조 대표이사; 적용 시점: 리뷰1 제시 2026-07-23 시행판 대상; 확인일 2026-09-10; 직접 열람 실패. 법인 대표권의 세부 공동대표 제한은 추가 확인; 제114조로 일반 대리권 안내 가능.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "대리권 원칙을 유지하고 법인의 대표권 근거를 별도 연결한다. 상법 판본 확인 범위는 출처표에 표시한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 438
+    }
+  },
+  {
+    "qid": "DEV-015",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조 제4항(양수인의 임대인 지위 승계) + 민법상 채권·변제 법리\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 소유권이전등기·당사자 지급지시",
+    "v2_evidence": "필수 H3,C105; 조건부 C114; 보조 INPUT\n\n- **H3**: [주택임대차보호법 대항력·양수인 승계](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C105**: [민법 제105조 임의규정](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0105&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제105조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C114**: [민법 제114조 대리행위의 효력](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0114&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제114조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "입주 전 계약금 단계와 대항력 있는 임대차의 법정 승계를 구별하는 조건을 추가한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 468
+    }
+  },
+  {
+    "qid": "DEV-016",
+    "category": "표현 개선",
+    "v1_effective_evidence": "- **필수 근거:** 민법 제114조 제1항(대리행위의 효력)\n- **대체/보강 근거:** 대리권 범위가 별도로 정해지지 않은 경우 민법 제118조\n- **보조 근거:** 등기사항증명서·위임장·본인확인 자료",
+    "v2_evidence": "필수 C114; 조건부 C118; 보조 INPUT\n\n- **C114**: [민법 제114조 대리행위의 효력](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0114&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제114조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C118**: [민법 제118조 대리권의 범위](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0118&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제118조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "후속 질문에 직접 답하는 기존 방향을 유지하고 별도 확인과 별도 서면의 법정 의무를 구분한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 499
+    }
+  },
+  {
+    "qid": "DEV-017",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- 최신 등기사항증명서의 실제 `압류` 등기 원인·채권자·접수일.\n- `압류`가 어떤 절차에서 발생했는지 확인하기 전에는 민사집행 압류와 조세체납 압류를 하나로 단정하지 않는다.\n\n**조건부 근거**\n- 강제경매 관련 압류이면: **민사집행법 제83조·제94조**.\n- 국세 체납처분이면: 국세징수법의 압류 규정.\n- 지방세 체납처분이면: 지방세징수법의 압류 규정.\n- 임차인의 순위·배당 영향까지 설명할 때만 주택임대차보호법 제3조·제3조의2.\n\n**검색 성공 기준**\n- 기본: `압류 원인 확인 필요` + 해당 등기.\n- 완전: 압류 유형에 맞는 집행/세법 근거를 선택.\n- 주택임대차보호법 순위조문만 찾은 것은 핵심 의미 설명의 완전 성공이 아님.",
+    "v2_evidence": "조건부 EX83; 보조 INPUT\n\n- **EX83**: [민사집행법](https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1008707393) — 제83조 전체; 적용 시점: 2026-02-01 시행, 법률 제20733호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "압류 유형이 특정되지 않았으므로 주택임대차 조문이나 민사집행 조문 하나를 모든 압류의 필수 검색 정답으로 삼지 않는다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 529
+    }
+  },
+  {
+    "qid": "DEV-018",
+    "category": "기존 유지",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- **제공 문서 자체**:\n  `갑구 순위번호 4 / 3번 가압류 말소`.\n- 이 문항은 문서 내용 확인이 핵심이므로 법령을 억지로 항상 필수화하지 않는다.\n\n**조건부 근거**\n- 말소등기의 법적 효과나 재등기·후속권리까지 묻는 경우에만 부동산등기법/민사집행법 관련 규정을 확인.\n\n**검색 성공 기준**\n- 기본·완전 모두 우선적으로 제공 문서 위치를 정확히 읽는 것.\n- 주택임대차보호법 제3조·제3조의2 검색은 이 질문의 핵심 채점 근거가 아님.",
+    "v2_evidence": "필수 INPUT; 보조 없음\n\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "부록의 검색 비필수 분류를 채택한다. 합성 문서에 명시된 말소 관계의 독해는 법령 검색 적중을 합격 요건으로 삼지 않는다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 573
+    }
+  },
+  {
+    "qid": "DEV-019",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 신탁법 제31조 + 대법원 2019.3.28. 선고 2018다44879,44886\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 신탁원부·신탁계약·수탁자 동의",
+    "v2_evidence": "필수 TRUST31; 조건부 C114,CASE_TRUST; 보조 INPUT\n\n- **TRUST31**: [신탁법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0031&lsiSeq=198564&urlMode=lsScJoRltInfoR) — 제31조 수탁자 권한과 신탁행위의 제한; 적용 시점: 2018-11-01 시행, 법률 제15022호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C114**: [민법 제114조 대리행위의 효력](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0114&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제114조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **CASE_TRUST**: [대법원 2018다44879·44886](https://www.law.go.kr/LSW/precInfoP.do?precSeq=206299) — 판시사항·이유 및 사실관계: 신탁 동의 없는 임대 후 위탁자 소유권 회복 등 특별 사정; 적용 시점: 2019-03-28 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "신탁 권한의 직접 규정과 판례를 구분한다. 판례는 사후 소유권 회복 등 특별한 사실의 효과를 다뤄 모든 무동의 계약의 일반 유효 근거가 아니다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 613
+    }
+  },
+  {
+    "qid": "DEV-020",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 민법 제357조 및 주택임대차보호법 제3조·제3조의2\n- **대체/보강 근거:** 계약 해제는 실제 특약·채무불이행 내용에 따라 민법 관련 규정\n- **보조 근거:** 상환확인서·말소접수·최신 등기",
+    "v2_evidence": "필수 C357; 조건부 C105,H3,H3_2; 보조 INPUT\n\n- **C357**: [민법 제357조 근저당](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0357&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제357조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C105**: [민법 제105조 임의규정](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0105&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제105조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3**: [주택임대차보호법 대항력·양수인 승계](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_2**: [주택임대차보호법 보증금의 회수](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의2 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "질문이 순서를 요구하므로 기존의 추상적 연동 안내를 실제 확인 순서로 보완한다. 대항력 조문은 순위 설명 시 조건부다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 644
+    }
+  },
+  {
+    "qid": "DEV-021",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 민법 제357조 및 주택임대차보호법 제3조·제3조의2\n- **대체/보강 근거:** 계약 해제는 실제 특약·채무불이행 내용에 따라 민법 관련 규정\n- **보조 근거:** 상환확인서·말소접수·최신 등기",
+    "v2_evidence": "필수 C357; 조건부 H3,H3_2,C543; 보조 INPUT\n\n- **C357**: [민법 제357조 근저당](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0357&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제357조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3**: [주택임대차보호법 대항력·양수인 승계](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_2**: [주택임대차보호법 보증금의 회수](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의2 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C543**: [민법 제543조 해지·해제권](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0543&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제543조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "기존 결론을 유지하면서 근저당의 의미와 실제 해제 판단의 조건부 근거를 분리한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 676
+    }
+  },
+  {
+    "qid": "DEV-022",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- 제공 등기 발췌.\n- **민사집행법 제83조 제1항·제4항**:\n  경매개시결정과 동시에 압류를 명하고, 송달 또는 등기에 따라 압류 효력 발생.\n- 경매개시결정 등기 자체를 설명하면 **제94조**.\n\n**조건부 근거**\n- 임차인이 계약 후 어느 순위로 배당받는지까지 설명할 때:\n  주택임대차보호법 제3조·제3조의2 등.\n- 최종 안전성은 서비스 범위상 판정하지 않음.\n\n**검색 성공 기준**\n- 기본: 제83조.\n- 완전: 제83조 + 제94조 + 실제 경매 진행단계.\n- 주택임대차 순위조문만으로는 `경매개시결정의 의미` 검색 성공으로 보지 않음.",
+    "v2_evidence": "필수 EX83,SCOPE; 조건부 H3,H3_2; 보조 INPUT\n\n- **EX83**: [민사집행법](https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1008707393) — 제83조 전체; 적용 시점: 2026-02-01 시행, 법률 제20733호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **SCOPE**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.\n- **H3**: [주택임대차보호법 대항력·양수인 승계](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_2**: [주택임대차보호법 보증금의 회수](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의2 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "이미 강제경매가 명시되어 집행 규정을 직접 근거로 올린다. 서비스 제한을 단순 정보 부족과 구분한다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 708
+    }
+  },
+  {
+    "qid": "DEV-023",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- **부동산등기법 제88조**: 가등기가 장래 권리의 설정·이전 등의 청구권을 보전하기 위한 등기라는 점.\n- **부동산등기법 제91조**: 가등기에 의한 본등기 순위가 가등기 순위를 따름.\n\n**조건부 근거**\n- 본등기 후 가등기 이후의 권리 처리까지 설명: **제92조**, 부동산등기규칙 제146조·제147조.\n- 임차권과의 실제 충돌·대항관계를 계산할 때만 주택임대차보호법 관련 순위 규정.\n\n**검색 성공 기준**\n- 기본: 제88조 + 제91조.\n- 완전: 본등기 가능성·가등기 원인·제92조까지 필요한 범위 확인.\n- `가등기 있으니 계약 불가` 같은 결론을 만들지 않음.",
+    "v2_evidence": "필수 REG88,REG91; 조건부 H3,H3_2; 보조 INPUT\n\n- **REG88**: [부동산등기법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0088&lsiSeq=265377&urlMode=lsScJoRltInfoR) — 제88조 전체; 적용 시점: 2025-01-31 시행, 법률 제20435호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **REG91**: [부동산등기법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0091&lsiSeq=265377&urlMode=lsScJoRltInfoR) — 제91조 전체; 적용 시점: 2025-01-31 시행, 법률 제20435호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3**: [주택임대차보호법 대항력·양수인 승계](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_2**: [주택임대차보호법 보증금의 회수](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의2 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "가등기의 직접 근거인 부동산등기법 제88조·제91조로 필수 검색 기준을 교정한다. 주택임대차 조문만으로 가등기 성질을 뒷받침하지 못한다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 755
+    }
+  },
+  {
+    "qid": "DEV-024",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- 법률상 `잔금일 재열람 의무`를 일반적으로 선언하는 조문을 억지로 만들지 않는다.\n- **국토교통부 안심 전세계약 체크리스트** 등 공식 예방 안내가 핵심 근거로 적합.\n\n**조건부 근거**\n- 중개사가 관여하고 잔금 전 권리변동 확인·설명의무를 다루면 **공인중개사법 제25조** 관련 근거.\n- 새 근저당·압류가 실제 발견되면 해당 권리별 법령을 추가.\n\n**검색 성공 기준**\n- 기본: 공식 체크리스트의 `계약·잔금 전 최신 등기 재확인` 안내 확보.\n- 완전: 실제 새 권리 발생 시 그 권리의 법적 의미까지 연결.\n- 주택임대차보호법 제3조·제3조의2는 재열람 권고 그 자체의 항상 필수 근거가 아님.\n\n---",
+    "v2_evidence": "보조 BROKER25,H3,INPUT\n\n- **BROKER25**: [공인중개사법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0025&lsiSeq=283713&urlMode=lsScJoRltInfoR) — 제25조 전체; 계약 전 확인·설명, 계약 시 서면 교부; 적용 시점: 2026-08-28 시행, 법률 제21409호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3**: [주택임대차보호법 대항력·양수인 승계](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "실무적 재확인 권고를 특정 조문의 명시적 잔금일 의무로 채점하지 않는다. 일반 안내에는 특정 개인 등기 검색이 필수 아니다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 800
+    }
+  },
+  {
+    "qid": "DEV-025",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 국세징수법 제109조 및 시행령 제97조; 지방세징수법 제6조 및 시행령 제8조\n- **대체/보강 근거:** 주택임대차보호법 제3조의7\n- **보조 근거:** 납세증명서·공식 열람 신청자료",
+    "v2_evidence": "필수 TAX109,TAX97,LT6,LT8,H3_7\n\n- **TAX109**: [국세징수법](https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1031715859) — 제109조제1~3항; 동의·무동의·기간; 적용 시점: 2026-06-02 시행, 법률 제21713호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **TAX97**: [국세징수법 시행령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0097&lsiSeq=283487&urlMode=lsScJoRltInfoR) — 제97조; 신청자료와 1천만 원 초과 기준; 적용 시점: 2026-02-27 시행, 대통령령 제36126호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **LT6**: [지방세징수법](https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1032085419) — 제6조; 열람 시기·동의 예외; 적용 시점: 2026-02-05 시행, 법률 제21327호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **LT8**: [지방세징수법 시행령](https://law.go.kr/lsLinkCommonInfo.do?lspttninfSeq=180045) — 제8조; 첨부서류와 1천만 원 초과; 적용 시점: 2026-02-05 시행, 대통령령 제36076호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_7**: [주택임대차보호법 임대인의 정보 제시 의무](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=07&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의7 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "이미 주어진 단계를 반영해 현재 가능한 절차를 먼저 답하도록 수정한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 845
+    }
+  },
+  {
+    "qid": "DEV-026",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 국세징수법 제109조 및 시행령 제97조; 지방세징수법 제6조 및 시행령 제8조\n- **대체/보강 근거:** 주택임대차보호법 제3조의7\n- **보조 근거:** 납세증명서·공식 열람 신청자료",
+    "v2_evidence": "필수 TAX109,TAX97,LT6,LT8\n\n- **TAX109**: [국세징수법](https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1031715859) — 제109조제1~3항; 동의·무동의·기간; 적용 시점: 2026-06-02 시행, 법률 제21713호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **TAX97**: [국세징수법 시행령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0097&lsiSeq=283487&urlMode=lsScJoRltInfoR) — 제97조; 신청자료와 1천만 원 초과 기준; 적용 시점: 2026-02-27 시행, 대통령령 제36126호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **LT6**: [지방세징수법](https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1032085419) — 제6조; 열람 시기·동의 예외; 적용 시점: 2026-02-05 시행, 법률 제21327호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **LT8**: [지방세징수법 시행령](https://law.go.kr/lsLinkCommonInfo.do?lspttninfSeq=180045) — 제8조; 첨부서류와 1천만 원 초과; 적용 시점: 2026-02-05 시행, 대통령령 제36076호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "무동의 열람 요건과 시작일을 포함한 기간을 명확히 하며 이미 제공된 계약 단계 재질문을 제거한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 878
+    }
+  },
+  {
+    "qid": "DEV-027",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 국세징수법 제109조 및 시행령 제97조; 지방세징수법 제6조 및 시행령 제8조\n- **대체/보강 근거:** 주택임대차보호법 제3조의7\n- **보조 근거:** 납세증명서·공식 열람 신청자료",
+    "v2_evidence": "필수 TAX109,LT6; 조건부 H3_7; 보조 SCOPE\n\n- **TAX109**: [국세징수법](https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1031715859) — 제109조제1~3항; 동의·무동의·기간; 적용 시점: 2026-06-02 시행, 법률 제21713호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **LT6**: [지방세징수법](https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1032085419) — 제6조; 열람 시기·동의 예외; 적용 시점: 2026-02-05 시행, 법률 제21327호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_7**: [주택임대차보호법 임대인의 정보 제시 의무](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=07&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의7 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **SCOPE**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "동의 열람에도 시작일까지라는 범위가 있어 입주 후 절차를 구분한다. 현재 정보로 가능한 안내를 보류하지 않는다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 910
+    }
+  },
+  {
+    "qid": "DEV-028",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 국세징수법 제109조 및 시행령 제97조; 지방세징수법 제6조 및 시행령 제8조\n- **대체/보강 근거:** 주택임대차보호법 제3조의7\n- **보조 근거:** 납세증명서·공식 열람 신청자료",
+    "v2_evidence": "필수 TAX109,TAX97,LT6,LT8\n\n- **TAX109**: [국세징수법](https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1031715859) — 제109조제1~3항; 동의·무동의·기간; 적용 시점: 2026-06-02 시행, 법률 제21713호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **TAX97**: [국세징수법 시행령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0097&lsiSeq=283487&urlMode=lsScJoRltInfoR) — 제97조; 신청자료와 1천만 원 초과 기준; 적용 시점: 2026-02-27 시행, 대통령령 제36126호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **LT6**: [지방세징수법](https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1032085419) — 제6조; 열람 시기·동의 예외; 적용 시점: 2026-02-05 시행, 법률 제21327호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **LT8**: [지방세징수법 시행령](https://law.go.kr/lsLinkCommonInfo.do?lspttninfSeq=180045) — 제8조; 첨부서류와 1천만 원 초과; 적용 시점: 2026-02-05 시행, 대통령령 제36076호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "주택 전세·월세 공통의 절차를 확정하고 금액·단계는 개별 무동의 여부에만 추가 확인한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 941
+    }
+  },
+  {
+    "qid": "DEV-029",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 국세징수법 제109조 및 시행령 제97조; 지방세징수법 제6조 및 시행령 제8조\n- **대체/보강 근거:** 주택임대차보호법 제3조의7\n- **보조 근거:** 납세증명서·공식 열람 신청자료",
+    "v2_evidence": "필수 SCOPE; 조건부 TAX109,LT6,TAX97,LT8\n\n- **SCOPE**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.\n- **TAX109**: [국세징수법](https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1031715859) — 제109조제1~3항; 동의·무동의·기간; 적용 시점: 2026-06-02 시행, 법률 제21713호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **LT6**: [지방세징수법](https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1032085419) — 제6조; 열람 시기·동의 예외; 적용 시점: 2026-02-05 시행, 법률 제21327호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **TAX97**: [국세징수법 시행령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0097&lsiSeq=283487&urlMode=lsScJoRltInfoR) — 제97조; 신청자료와 1천만 원 초과 기준; 적용 시점: 2026-02-27 시행, 대통령령 제36126호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **LT8**: [지방세징수법 시행령](https://law.go.kr/lsLinkCommonInfo.do?lspttninfSeq=180045) — 제8조; 첨부서류와 1천만 원 초과; 적용 시점: 2026-02-05 시행, 대통령령 제36076호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "기능 제한 응답과 법률상 열람 가능성을 나누고 모든 관련 세법을 무조건 검색해야 통과하는 기준을 제거한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 973
+    }
+  },
+  {
+    "qid": "DEV-030",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n1. 제공 계약서 발췌: 임대인 `장○○` / 계좌 예금주 `김○○`라는 불일치.\n2. **민법 제105조** — 당사자가 정한 계약상 지급방법·계좌지정의 의미를 설명할 때.\n3. 계약 상대방 또는 적법한 권한자의 실제 계좌지정/수령위임 사실.\n\n**조건부 근거**\n- 제3자 계좌를 **대리인이 지정**했다면: **민법 제114조 제1항**과 실제 대리권 범위.\n- 이미 권한 없는 사람에게 지급한 뒤 변제효력이 문제되면: **민법 제470조** 또는 관련 판례.  \n  → 제470조는 계약 전 안전한 지급방법의 일반 근거가 아니라, **권한 없는 외관상 수령자에게 이미 변제한 경우의 예외적 효력**을 다룰 때만 사용.\n\n**대체 가능한 집합**\n- 국토교통부 `안심 전세계약 체크리스트`의 임대인·계좌·권리확인 안내 + 민법 제105조.\n- 대리인 개입 시 민법 제114조를 추가.\n\n**보조 근거**\n- 임대인 본인 확인, 위임장, 계좌지정서, 통화·메시지 기록.\n\n**검색 성공 기준**\n- 기본: `제105조 + 제공 계약서 불일치`.\n- 완전: `제3자 계좌가 누구의 지시인지`에 따라 제114조까지 조건부 연결하고, 제470조를 일반 안전근거로 오용하지 않음.\n\n---",
+    "v2_evidence": "필수 INPUT; 조건부 C105,C114,C470\n\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.\n- **C105**: [민법 제105조 임의규정](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0105&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제105조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C114**: [민법 제114조 대리행위의 효력](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0114&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제114조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C470**: [민법 제470조 채권의 준점유자에 대한 변제](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0470&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제470조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "부록이 제470조를 지급 후 분기로 분리한 판단은 채택한다. 다만 제공 문서의 명의 불일치와 확인 절차에 답하는 경우까지 제105조 문자열 적중을 고정 필수로 삼지 않도록 기준을 완화한다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1005
+    }
+  },
+  {
+    "qid": "DEV-031",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- **민법 제105조**: 당사자가 정한 계약조건의 효력 구조.\n- `반려견 허용을 서면에 남기는 것이 분쟁 예방에 유리하다`는 부분은 법률상 서면요건의 문제가 아니라 **계약 내용과 증거 명확화에 관한 실무 안내**임을 표시.\n\n**조건부 근거**\n- 특약이 주택임대차보호법의 강행규정과 충돌하는 내용까지 포함할 경우에만 **주택임대차보호법 제10조**를 확인.\n- 단순한 반려견 허용 자체를 설명하는 데 제10조는 항상 필요한 근거가 아님.\n\n**대체 가능한 집합**\n- 민법 제105조 + 제공 계약서/구두합의 증빙.\n- 공식 표준계약서·임대차 체크리스트의 특약 명확화 안내가 있으면 보조 대체 가능.\n\n**검색 성공 기준**\n- 기본: 민법 제105조.\n- 완전: `서면으로 적는 것이 법적 성립요건`이라고 잘못 만들지 않고, 제10조는 강행규정 충돌 때만 조건부로 사용.\n\n---",
+    "v2_evidence": "필수 INPUT; 조건부 C105\n\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.\n- **C105**: [민법 제105조 임의규정](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0105&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제105조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "부록의 제10조 조건부 분류와 서면화가 성립요건이 아니라는 판단을 채택한다. 구두 합의·증거 확인 안내만으로도 적절한 답변일 수 있어 제105조 적중을 일률 합격 요건으로 두지 않는다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1059
+    }
+  },
+  {
+    "qid": "DEV-032",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 공인중개사법 제25조 및 시행령 제21조\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 중개대상물 확인·설명서와 근거자료",
+    "v2_evidence": "필수 BROKER25; 조건부 BROKER21; 보조 INPUT\n\n- **BROKER25**: [공인중개사법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0025&lsiSeq=283713&urlMode=lsScJoRltInfoR) — 제25조 전체; 계약 전 확인·설명, 계약 시 서면 교부; 적용 시점: 2026-08-28 시행, 법률 제21409호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **BROKER21**: [공인중개사법 시행령](https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1013419401) — 제21조 확인·설명 세부 항목; 적용 시점: 리뷰1 제시 판본 대상; 확인일 2026-09-10; 리뷰2 독립 원문 미확인. 세부 항목을 확정 필수 검색으로 사용하지 않음.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "설명 의무의 근거는 유지하되 원본에 없는 건축 위반 사실을 가정하지 않는다. 세부 확인 항목의 시행령 원문 확인 한계는 별도 표시한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1106
+    }
+  },
+  {
+    "qid": "DEV-033",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조 제1항 + 제10조\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 특약 문언·등기변동 계획",
+    "v2_evidence": "필수 RR16,H3; 조건부 H10; 보조 INPUT; 필수 SCOPE\n\n- **RR16**: [주민등록법](https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1012776409) — 제16조 전체; 실제 전입일부터 14일; 적용 시점: 2025-07-22 시행, 법률 제20677호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3**: [주택임대차보호법 대항력·양수인 승계](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H10**: [주택임대차보호법 강행규정](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0010&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제10조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.\n- **SCOPE**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "법정 신고기한을 추가한다. 사법상 특약 효력과 행정상 신고 의무를 혼동하는 답변을 배제한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1136
+    }
+  },
+  {
+    "qid": "DEV-034",
+    "category": "정답 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n1. **민법 제105조** — 특약으로 계약효과를 정할 수 있는 기본 구조.\n2. 어떤 보증기관·상품을 전제로 하는지 확인해야 한다는 사실.\n\n**조건부 근거**\n- 특약을 `보증 가입 가능 여부`라는 **조건**으로 설계하면: **민법 제147조**.\n- 상대방이 고의로 조건 성취를 방해하는 문제까지 다루면: 민법 제150조를 추가 확인.\n- 특약이 `불가입 시 계약을 해제하고 계약금을 반환`하는 구조라면:\n  - **민법 제543조** — 약정 해제권 행사,\n  - **민법 제548조 제1항·제2항** — 해제 후 원상회복·금전반환.\n- HUG/HF 등 특정 상품을 실제 특약 기준으로 삼는 경우에만 해당 기관의 **신청기한·보증대상·불가입 사유** 구간을 확인.\n\n**대체 가능한 집합**\n- `{민법 제105조 + 제147조}` 또는\n- 해제형 특약이면 `{민법 제105조 + 제543조 + 제548조}`.\n\n**보조 근거**\n- 특정 보증기관의 공식 상품개요·신청기한 안내.\n\n**검색 성공 기준**\n- 기본: 특약의 법적 구조에 맞는 민법 조문.\n- 완전: `조건형인지 해제권형인지`를 구분하고, 기관 미지정인데 HUG 한 기관의 기준을 보편조건으로 만들지 않음.\n\n---",
+    "v2_evidence": "필수 C105; 조건부 C543,C548; 대체 C147(조건형 설명 시); 보조 INPUT\n\n- **C105**: [민법 제105조 임의규정](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0105&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제105조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C543**: [민법 제543조 해지·해제권](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0543&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제543조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C548**: [민법 제548조 해제의 효과](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0548&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제548조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C147**: [민법 제147조 조건성취의 효과](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0147&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 정지·해제조건의 효과; 적용 시점: 2026-03-17 시행판 대상; 확인일 2026-09-10; 리뷰1 부록 제시; 리뷰2 독립 원문 미확인. 조건형을 배제하지 않되 세부 소급효 판단을 확정 채점하지 않음.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "부록의 계약 구조에 맞는 근거 선택을 채택한다. 최종 문구는 해제형을 예시로 들며 조건형 제147조도 동등하게 허용한다. 특정 기관·임차인 무귀책만을 유일한 특약 구조로 강제하지 않는다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1168
+    }
+  },
+  {
+    "qid": "DEV-035",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 공인중개사법 제25조 및 시행령 제21조\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 중개대상물 확인·설명서와 근거자료",
+    "v2_evidence": "보조 BROKER25,INPUT\n\n- **BROKER25**: [공인중개사법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0025&lsiSeq=283713&urlMode=lsScJoRltInfoR) — 제25조 전체; 계약 전 확인·설명, 계약 시 서면 교부; 적용 시점: 2026-08-28 시행, 법률 제21409호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "재확인 권고는 유지하고 명시적 법정 의무의 범위를 과장하는 검색채점을 방지한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1224
+    }
+  },
+  {
+    "qid": "DEV-036",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- **단일 조문 하나를 항상 필수로 요구하지 않는다.**\n- 질문이 `직거래 시 무엇을 확인할지`라는 종합 체크리스트이므로,\n  **국토교통부 안심 전세계약 체크리스트** 또는 HUG 안심전세 공식 체크리스트를 중심 근거로 허용.\n\n**조건부 근거**\n답변이 각 세부 항목을 구체적으로 설명할 때만 해당 법령을 추가:\n- 소유자·대리권 → 민법 제114조.\n- 근저당 의미 → 민법 제357조.\n- 체납 → 국세징수법 제109조 / 지방세징수법 제6조.\n- 대항력 → 주택임대차보호법 제3조 제1항.\n- 우선변제 → 제3조의2 제2항.\n- 확정일자 → 제3조의6.\n- 임대차 신고 → 부동산거래신고법 제6조의2 등.\n- 반환보증 → 선택한 보증기관 공식 안내.\n\n**대체 가능한 집합**\n- `국토교통부 2025 안심 전세계약 체크리스트`\n- 또는 HUG 안심전세 공식 체크리스트/전세계약 유의사항.\n\n**검색 성공 기준**\n- 기본: 공식 종합 체크리스트에서 계약 전·계약 시·계약 후 확인항목 확보.\n- 완전: 답변에서 실제 설명한 세부 항목마다 그 세부 법령까지 연결.\n- `민법 일반` 한 줄만으로는 완전 성공 아님.\n\n---",
+    "v2_evidence": "보조 H3_7,H3,H3_6,C114,C357; 조건부 HF_OV; 필수 SCOPE\n\n- **H3_7**: [주택임대차보호법 임대인의 정보 제시 의무](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=07&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의7 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3**: [주택임대차보호법 대항력·양수인 승계](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_6**: [주택임대차보호법 확정일자·임대차 정보](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=06&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의6 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C114**: [민법 제114조 대리행위의 효력](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0114&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제114조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C357**: [민법 제357조 근저당](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0357&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제357조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **HF_OV**: [HF 전세지킴보증 일반 안내](https://hf.go.kr/ko/sub02/sub02_05_01.do) — 신청시기·취급은행·대상자·구비서류·보증조건; 적용 시점: 확인일 현재 게시 안내; 게시/개정일 별도 표시 불명; 확인일 2026-09-10; 공식 안내 본문 확인. 평가일 9월 8일의 별도 웹 보관본은 확보하지 않아 9월 10일 조회 내용으로 표시; 기관 특정 예시만 사용.\n- **SCOPE**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "부록의 단일 조문 비필수 분류를 채택한다. 직거래 체크리스트는 확인 항목별 공식 근거를 묶어 제시하는 방식도 허용한다. 중개 확인설명서는 직거래의 필수 서류로 요구하지 않는다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1253
+    }
+  },
+  {
+    "qid": "DEV-037",
+    "category": "기존 유지",
+    "v1_effective_evidence": "- **필수 근거:** 공인중개사법 제25조 및 시행령 제21조\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 중개대상물 확인·설명서와 근거자료",
+    "v2_evidence": "필수 BROKER25; 보조 INPUT\n\n- **BROKER25**: [공인중개사법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0025&lsiSeq=283713&urlMode=lsScJoRltInfoR) — 제25조 전체; 계약 전 확인·설명, 계약 시 서면 교부; 적용 시점: 2026-08-28 시행, 법률 제21409호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "설명 의무와 서명의 증거 의미를 구분하는 기존 판단을 채택한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1314
+    }
+  },
+  {
+    "qid": "DEV-038",
+    "category": "정답 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n1. **부동산 거래신고 등에 관한 법률 제6조의2 제1항**\n   - 신고 주체: 임대차계약당사자\n   - 신고기한: 계약 체결일부터 30일\n2. **주민등록법 제16조 제1항**\n   - 전입신고가 별도의 주민등록 절차임을 구분.\n\n**조건부 근거**\n- 신고대상 `지역·금액`을 설명할 때: **시행령 제4조의3**.\n- 상대방 거부 시 단독신고를 설명할 때:\n  - 법 제6조의2 제3항\n  - 시행규칙 제6조의2 제5항\n- 전입신고와 임대차 신고의 **의제 관계**까지 설명할 때:\n  - 법 제6조의5 제1항\n  - 시행규칙 제6조의6\n- 확정일자 의제까지 설명하는 경우에는 관련 법률 조항을 추가 확인.\n\n**대체 가능한 집합**\n- 이 문항의 기본 근거를 주택임대차보호법 제3조·제3조의6으로 대체하지 않는다.\n- 신고가 주 질문이므로 **부동산거래신고법이 항상 필요한 기본 근거**다.\n\n**검색 성공 기준**\n- 기본: 제6조의2 제1항 + 주민등록법 제16조.\n- 완전: 대상 지역·금액, 단독신고 또는 의제를 실제 답변한 범위까지 확보.",
+    "v2_evidence": "필수 REPORT62,REPORT_RULE,RR16,H3_6; 조건부 REPORT65,REPORT_ENF,H3,H3_2\n\n- **REPORT62**: [부동산 거래신고 등에 관한 법률](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0006&lsiSeq=259641&urlMode=lsScJoRltInfoR) — 제6조의2 전체; 30일·공동 신고·거부; 적용 시점: 2024-05-17 시행, 법률 제20194호; 평가일 적용판; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **REPORT_RULE**: [부동산 거래신고 등에 관한 법률 시행규칙](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0006&lsiSeq=283339&urlMode=lsScJoRltInfoR) — 제6조의2 전체, 특히 제3·5·9항; 적용 시점: 2026-02-10 시행, 국토교통부령 제1557호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **RR16**: [주민등록법](https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1012776409) — 제16조 전체; 실제 전입일부터 14일; 적용 시점: 2025-07-22 시행, 법률 제20677호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_6**: [주택임대차보호법 확정일자·임대차 정보](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=06&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의6 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **REPORT65**: [부동산 거래신고 등에 관한 법률](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=05&joNo=0006&lsiSeq=259641&urlMode=lsScJoRltInfoR) — 제6조의5; 다른 신고 의제; 적용 시점: 2024-05-17 시행판 대상; 확인일 2026-09-10; Lawbot 검색 표시 및 2021년 공식 안내로 제도 확인. 독립 조문 원문 열람 실패; 세부 의제 요건의 완전 검색 성공은 보류.\n- **REPORT_ENF**: [부동산 거래신고 등에 관한 법률 시행령](https://law.go.kr/LSW/lsLinkCommonInfo.do?lspttninfSeq=168133) — 제4조의3; 보증금 6천만 원 초과 또는 월차임 30만 원 초과, 지역·갱신 예외; 적용 시점: 2026-05-29 시행, 대통령령 제36365호; 확인일 2026-09-10; 제4조의3 전문·시행판 독립 열람 확인.\n- **H3**: [주택임대차보호법 대항력·양수인 승계](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_2**: [주택임대차보호법 보증금의 회수](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의2 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.",
+    "v1_gold_status": "일부 미확인",
+    "change_reason_as_reported": "30일 및 공동/한쪽 제출 경로를 구체화하고 연계를 조건부로 채점한다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1343
+    }
+  },
+  {
+    "qid": "DEV-039",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조 제1항; 쟁점에 따라 제3조의2 제2항·제3조의6 + 주민등록법 제16조\n- **대체/보강 근거:** 임대차 신고가 쟁점이면 부동산거래신고법 제6조의2·제6조의5 및 시행령 제4조의3·시행규칙 제6조의2\n- **보조 근거:** 계약서·주민등록·공적 주소자료",
+    "v2_evidence": "필수 H3_6; 조건부 H3,H3_2; 보조 DATE_RULE\n\n- **H3_6**: [주택임대차보호법 확정일자·임대차 정보](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=06&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의6 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3**: [주택임대차보호법 대항력·양수인 승계](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_2**: [주택임대차보호법 보증금의 회수](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의2 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **DATE_RULE**: [주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙](https://www.law.go.kr/법령/주택임대차계약증서의확정일자부여및정보제공에관한규칙) — 제2·7·9조 및 정보제공 절차; 적용 시점: Lawbot 표시 2021-06-10 시행/대법원규칙 제2986호; 확인일 2026-09-10; 검색 표시 확인, 독립 원문 URL 열람 실패. 날짜 표시 해석은 입력과 법 제3조의6으로 확정; 세부 전산절차는 미확인.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "어디서 어떻게라는 질문에 부여기관을 직접 답한다. 주민등록법 제16조를 확정일자 부여 절차의 필수 근거로 삼지 않는다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1405
+    }
+  },
+  {
+    "qid": "DEV-040",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조 제1항; 쟁점에 따라 제3조의2 제2항·제3조의6 + 주민등록법 제16조\n- **대체/보강 근거:** 임대차 신고가 쟁점이면 부동산거래신고법 제6조의2·제6조의5 및 시행령 제4조의3·시행규칙 제6조의2\n- **보조 근거:** 계약서·주민등록·공적 주소자료",
+    "v2_evidence": "필수 RR16,H3; 보조 INPUT\n\n- **RR16**: [주민등록법](https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1012776409) — 제16조 전체; 실제 전입일부터 14일; 적용 시점: 2025-07-22 시행, 법률 제20677호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3**: [주택임대차보호법 대항력·양수인 승계](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "DEV-005 후속의 예정일과 열쇠 수령 사실을 승계하고 실제 생활 이전과 형식적 주소 변경을 구분한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1437
+    }
+  },
+  {
+    "qid": "DEV-041",
+    "category": "정답 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n1. **부동산거래신고법 제6조의2 제3항** — 상대방 거부 시 단독신고 가능.\n2. **시행규칙 제6조의2 제5항** — 단독신고서류·단독신고사유서.\n3. **주민등록법 제16조** — 전입신고는 별도의 절차.\n\n**조건부 근거**\n- 애초 신고대상 계약인지 판단: 시행령 제4조의3.\n- 전입신고로 신고가 의제되는 구조를 설명: 법 제6조의5 제1항 + 시행규칙 제6조의6.\n\n**대체 가능한 집합**\n- 단독신고의 핵심 근거를 주택임대차보호법 제3조로 대체하지 않는다.\n- 제3조는 대항력 설명을 추가할 때만 조건부 보강.\n\n**검색 성공 기준**\n- 기본: `제6조의2 제3항 + 시행규칙 제6조의2 제5항`.\n- 완전: `신고대상 여부 + 전입신고 별개 + 의제 조건`까지 답변 범위에 맞춰 확보.\n\n---",
+    "v2_evidence": "필수 REPORT62,REPORT_RULE; 조건부 REPORT_ENF; 보조 INPUT; 필수 RR16\n\n- **REPORT62**: [부동산 거래신고 등에 관한 법률](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0006&lsiSeq=259641&urlMode=lsScJoRltInfoR) — 제6조의2 전체; 30일·공동 신고·거부; 적용 시점: 2024-05-17 시행, 법률 제20194호; 평가일 적용판; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **REPORT_RULE**: [부동산 거래신고 등에 관한 법률 시행규칙](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0006&lsiSeq=283339&urlMode=lsScJoRltInfoR) — 제6조의2 전체, 특히 제3·5·9항; 적용 시점: 2026-02-10 시행, 국토교통부령 제1557호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **REPORT_ENF**: [부동산 거래신고 등에 관한 법률 시행령](https://law.go.kr/LSW/lsLinkCommonInfo.do?lspttninfSeq=168133) — 제4조의3; 보증금 6천만 원 초과 또는 월차임 30만 원 초과, 지역·갱신 예외; 적용 시점: 2026-05-29 시행, 대통령령 제36365호; 확인일 2026-09-10; 제4조의3 전문·시행판 독립 열람 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.\n- **RR16**: [주민등록법](https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1012776409) — 제16조 전체; 실제 전입일부터 14일; 적용 시점: 2025-07-22 시행, 법률 제20677호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.",
+    "v1_gold_status": "일부 미확인",
+    "change_reason_as_reported": "부록에서 제6조의2제5항만 필수로 좁힌 기준을 수정한다. 같은 조 제3항·제9항의 공동 신고 간주 경로를 정답으로 인정한다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1467
+    }
+  },
+  {
+    "qid": "DEV-042",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조 제1항; 쟁점에 따라 제3조의2 제2항·제3조의6 + 주민등록법 제16조\n- **대체/보강 근거:** 임대차 신고가 쟁점이면 부동산거래신고법 제6조의2·제6조의5 및 시행령 제4조의3·시행규칙 제6조의2\n- **보조 근거:** 계약서·주민등록·공적 주소자료",
+    "v2_evidence": "필수 H3,CASE_DAGAGU; 보조 INPUT\n\n- **H3**: [주택임대차보호법 대항력·양수인 승계](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **CASE_DAGAGU**: [대법원 97다47828](https://law.go.kr/LSW/precInfoP.do?evtNo=97다47828) — 판시사항·이유 및 사실관계: 다가구 단독주택 지번 신고·같은 건물 내 호실 이동; 적용 시점: 1998-01-23 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "제공된 다가구 사실을 반영하고 단독주택 판례를 필수 쟁점 근거로 보완한다. 개별 주소의 적정성은 별도 확인한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1518
+    }
+  },
+  {
+    "qid": "DEV-043",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조 제1항; 쟁점에 따라 제3조의2 제2항·제3조의6 + 주민등록법 제16조\n- **대체/보강 근거:** 임대차 신고가 쟁점이면 부동산거래신고법 제6조의2·제6조의5 및 시행령 제4조의3·시행규칙 제6조의2\n- **보조 근거:** 계약서·주민등록·공적 주소자료",
+    "v2_evidence": "필수 H3,CASE_FAMILY; 보조 INPUT\n\n- **H3**: [주택임대차보호법 대항력·양수인 승계](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **CASE_FAMILY**: [대법원 95다30338](https://law.go.kr/LSW/precInfoP.do?precSeq=198331) — 판시사항·이유 및 사실관계: 임차인 일시 전출 중 가족 주민등록·점유 지속; 적용 시점: 1996-01-26 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "가족 주민등록 판례를 직접 연결하고 형식적 명의만으로 오답 처리하지 않는다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1548
+    }
+  },
+  {
+    "qid": "DEV-044",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조 제1항; 쟁점에 따라 제3조의2 제2항·제3조의6 + 주민등록법 제16조\n- **대체/보강 근거:** 임대차 신고가 쟁점이면 부동산거래신고법 제6조의2·제6조의5 및 시행령 제4조의3·시행규칙 제6조의2\n- **보조 근거:** 계약서·주민등록·공적 주소자료",
+    "v2_evidence": "필수 H3,H3_2; 조건부 CASE_FAMILY,CASE_REG; 보조 INPUT\n\n- **H3**: [주택임대차보호법 대항력·양수인 승계](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_2**: [주택임대차보호법 보증금의 회수](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의2 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **CASE_FAMILY**: [대법원 95다30338](https://law.go.kr/LSW/precInfoP.do?precSeq=198331) — 판시사항·이유 및 사실관계: 임차인 일시 전출 중 가족 주민등록·점유 지속; 적용 시점: 1996-01-26 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **CASE_REG**: [대법원 2024다326398](https://www.law.go.kr/precInfoP.do?precSeq=605771) — 판시사항·이유 및 사실관계: 임차권등기 전 퇴거·전출, 선순위 회복 비소급; 적용 시점: 2025-04-15 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "확정일자라는 기록과 그에 결합되는 우선변제권을 분리한다. 임대차 신고 조문을 일률 필수로 요구하지 않는다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1579
+    }
+  },
+  {
+    "qid": "DEV-045",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조 제1항; 쟁점에 따라 제3조의2 제2항·제3조의6 + 주민등록법 제16조\n- **대체/보강 근거:** 임대차 신고가 쟁점이면 부동산거래신고법 제6조의2·제6조의5 및 시행령 제4조의3·시행규칙 제6조의2\n- **보조 근거:** 계약서·주민등록·공적 주소자료",
+    "v2_evidence": "필수 INPUT; 조건부 H3_6,H3_2; 보조 DATE_RULE\n\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.\n- **H3_6**: [주택임대차보호법 확정일자·임대차 정보](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=06&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의6 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_2**: [주택임대차보호법 보증금의 회수](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의2 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **DATE_RULE**: [주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙](https://www.law.go.kr/법령/주택임대차계약증서의확정일자부여및정보제공에관한규칙) — 제2·7·9조 및 정보제공 절차; 적용 시점: Lawbot 표시 2021-06-10 시행/대법원규칙 제2986호; 확인일 2026-09-10; 검색 표시 확인, 독립 원문 URL 열람 실패. 날짜 표시 해석은 입력과 법 제3조의6으로 확정; 세부 전산절차는 미확인.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "합성 문서 독해에 전입신고 조문을 필수 검색으로 요구하지 않는다. 날짜의 의미를 확장하는 경우만 관련 근거를 요구한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1611
+    }
+  },
+  {
+    "qid": "DEV-046",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조 제1항; 쟁점에 따라 제3조의2 제2항·제3조의6 + 주민등록법 제16조\n- **대체/보강 근거:** 임대차 신고가 쟁점이면 부동산거래신고법 제6조의2·제6조의5 및 시행령 제4조의3·시행규칙 제6조의2\n- **보조 근거:** 계약서·주민등록·공적 주소자료",
+    "v2_evidence": "필수 RR16; 조건부 H2,CASE_RESIDENCE; 보조 INPUT\n\n- **RR16**: [주민등록법](https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1012776409) — 제16조 전체; 실제 전입일부터 14일; 적용 시점: 2025-07-22 시행, 법률 제20677호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H2**: [주택임대차보호법 적용범위](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0002&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제2조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **CASE_RESIDENCE**: [대법원 2008두10997](https://law.go.kr/LSW/precInfoP.do?evtNo=2008두10997) — 판시사항·이유 및 사실관계: 무허가 가건물 장기 거주자의 전입신고, 실제 생활근거지 심사; 적용 시점: 2009-06-18 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "오피스텔의 주소·실제 거주 확인에 직접 답한다. 무허가 가건물에 관한 판례는 행정 심사 원칙의 조건부 근거이며 오피스텔 자체의 위법성을 가정하지 않는다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1642
+    }
+  },
+  {
+    "qid": "DEV-047",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제6조·제6조의2·제6조의3\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 통지 메시지·도달시점·실제 거주자료",
+    "v2_evidence": "필수 H6,H6_3; 조건부 C111; 보조 INPUT\n\n- **H6**: [주택임대차보호법 묵시적 갱신](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H6_3**: [주택임대차보호법 계약갱신 요구](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C111**: [민법 제111조 의사표시의 효력발생시기](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0111&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제111조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "핵심 기간과 횟수를 최종 문구에 명시해 질문에 직접 답하도록 한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1674
+    }
+  },
+  {
+    "qid": "DEV-048",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제6조·제6조의2·제6조의3\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 통지 메시지·도달시점·실제 거주자료",
+    "v2_evidence": "필수 H6_3,CASE_REAL; 보조 INPUT\n\n- **H6_3**: [주택임대차보호법 계약갱신 요구](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **CASE_REAL**: [대법원 2023다263551](https://law.go.kr/LSW/precInfoP.do?precSeq=240881) — 판시사항·이유 및 사실관계: 같은 건물 층간 이주·손자 거주 설명 변경과 실거주 증명책임; 적용 시점: 2023-12-21 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "실제 원문을 확인한 2023다263551 판결로 입증책임을 연결한다. 확인하지 못한 2022다279795 사건번호만을 필수 적중으로 고정하지 않는다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1705
+    }
+  },
+  {
+    "qid": "DEV-049",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제7조(차임 등의 증감청구권) 및 민법 제628조\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 직전 증액일·금액·특약",
+    "v2_evidence": "필수 H7; 조건부 H6_3; 보조 INPUT\n\n- **H7**: [주택임대차보호법 차임 등 증감](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0007&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제7조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H6_3**: [주택임대차보호법 계약갱신 요구](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "상한과 자동 인상 권리를 구별하고 제628조를 특별법 제한의 전면 대체 근거에서 제외한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1735
+    }
+  },
+  {
+    "qid": "DEV-050",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조의2 제2항(확정일자·우선변제) + 제7조(증액)\n- **대체/보강 근거:** 임대차 신고 변경이 문제되면 부동산거래신고법 제6조의3\n- **보조 근거:** 기존/변경계약서·확정일자",
+    "v2_evidence": "필수 H3_2,H3_6; 조건부 H7,REPORT62,REPORT_RULE; 보조 INPUT\n\n- **H3_2**: [주택임대차보호법 보증금의 회수](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의2 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_6**: [주택임대차보호법 확정일자·임대차 정보](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=06&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의6 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H7**: [주택임대차보호법 차임 등 증감](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0007&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제7조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **REPORT62**: [부동산 거래신고 등에 관한 법률](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0006&lsiSeq=259641&urlMode=lsScJoRltInfoR) — 제6조의2 전체; 30일·공동 신고·거부; 적용 시점: 2024-05-17 시행, 법률 제20194호; 평가일 적용판; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **REPORT_RULE**: [부동산 거래신고 등에 관한 법률 시행규칙](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0006&lsiSeq=283339&urlMode=lsScJoRltInfoR) — 제6조의2 전체, 특히 제3·5·9항; 적용 시점: 2026-02-10 시행, 국토교통부령 제1557호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "계약 효력·기존 보증금 보호·증액분 보호를 분리하고 관련 없는 절차를 일률 필수로 요구하지 않는다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1765
+    }
+  },
+  {
+    "qid": "DEV-051",
+    "category": "기존 유지",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제6조·제6조의2·제6조의3\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 통지 메시지·도달시점·실제 거주자료",
+    "v2_evidence": "필수 H6; 보조 INPUT\n\n- **H6**: [주택임대차보호법 묵시적 갱신](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "묵시적 갱신의 기존 핵심 결론과 예외를 채택한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1798
+    }
+  },
+  {
+    "qid": "DEV-052",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제6조·제6조의2·제6조의3\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 통지 메시지·도달시점·실제 거주자료",
+    "v2_evidence": "필수 H6,H6_2; 조건부 C111; 보조 INPUT\n\n- **H6**: [주택임대차보호법 묵시적 갱신](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H6_2**: [주택임대차보호법 묵시 갱신의 해지](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조의2 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C111**: [민법 제111조 의사표시의 효력발생시기](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0111&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제111조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "3개월 기산점을 도달로 명시하고 서면 부재와 갱신 유형을 구분한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1827
+    }
+  },
+  {
+    "qid": "DEV-053",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제6조·제6조의2·제6조의3\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 통지 메시지·도달시점·실제 거주자료",
+    "v2_evidence": "필수 H6_3; 조건부 H3_6,CASE_REAL; 보조 INPUT\n\n- **H6_3**: [주택임대차보호법 계약갱신 요구](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_6**: [주택임대차보호법 확정일자·임대차 정보](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=06&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의6 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **CASE_REAL**: [대법원 2023다263551](https://law.go.kr/LSW/precInfoP.do?precSeq=240881) — 판시사항·이유 및 사실관계: 같은 건물 층간 이주·손자 거주 설명 변경과 실거주 증명책임; 적용 시점: 2023-12-21 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "일부 미확인",
+    "change_reason_as_reported": "현재 정보로 가능한 요건·자료 안내를 확정하고 개별 책임·배상액만 유보한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1858
+    }
+  },
+  {
+    "qid": "DEV-054",
+    "category": "기존 유지",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제4조 제1항\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 계약서·갱신통지",
+    "v2_evidence": "필수 H4; 보조 INPUT\n\n- **H4**: [주택임대차보호법 임대차기간](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0004&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제4조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "임차인에게 유리한 단기 약정과 2년 보장을 구별한 기존 판단을 채택한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1889
+    }
+  },
+  {
+    "qid": "DEV-055",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 민법 제623조 및 제626조 제1항; 원인·통지가 쟁점이면 제634조\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 수선 영수증·사진·전문가 소견",
+    "v2_evidence": "필수 C623; 조건부 C626,CASE_REPAIR,C634; 보조 INPUT\n\n- **C623**: [민법 제623조 임대인의 의무](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0623&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제623조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C626**: [민법 제626조 임차인의 상환청구권](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0626&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제626조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **CASE_REPAIR**: [대법원 94다34692·34708](https://law.go.kr/LSW/precInfoP.do?evtNo=94%EB%8B%A434692%2C+94%EB%8B%A434708) — 판시사항·이유 및 사실관계: 여관의 노후 보일러·배관 대규모 교체와 포괄 수선 특약; 적용 시점: 1994-12-09 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **C634**: [민법 제634조 임차인의 통지의무](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0634&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제634조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "수선 요청의 직접 근거는 제623조이고 제626조는 지출 후 분기에만 필수다. 핵심 방향은 유지한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1918
+    }
+  },
+  {
+    "qid": "DEV-056",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 민법 제623조 및 제626조 제1항; 원인·통지가 쟁점이면 제634조\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 수선 영수증·사진·전문가 소견",
+    "v2_evidence": "필수 C623; 조건부 C390,C393,C626; 보조 INPUT\n\n- **C623**: [민법 제623조 임대인의 의무](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0623&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제623조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C390**: [민법 제390조 채무불이행과 손해배상](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0390&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제390조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C393**: [민법 제393조 손해배상의 범위](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0393&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제393조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C626**: [민법 제626조 임차인의 상환청구권](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0626&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제626조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "원인별 분기 안내는 채택하되 비용 상환·손해배상 근거를 실제 해당 분기로 나눈다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1950
+    }
+  },
+  {
+    "qid": "DEV-057",
+    "category": "기존 유지",
+    "v1_effective_evidence": "- **필수 근거:** 민법 제623조 및 제626조 제1항; 원인·통지가 쟁점이면 제634조\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 수선 영수증·사진·전문가 소견",
+    "v2_evidence": "필수 C626; 조건부 C634; 보조 INPUT\n\n- **C626**: [민법 제626조 임차인의 상환청구권](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0626&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제626조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C634**: [민법 제634조 임차인의 통지의무](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0634&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제634조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "증빙 보존과 조건부 비용 상환이라는 기존 기준을 채택한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 1982
+    }
+  },
+  {
+    "qid": "DEV-058",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 민법 제627조(일부 멸실 등과 차임 감액·해지) + 제623조\n- **대체/보강 근거:** 추가 손해배상은 민법 제390조 등 채무불이행 법리\n- **보조 근거:** 공사 안내·대체거처·실비 자료",
+    "v2_evidence": "필수 C627; 조건부 C390,C393; 보조 INPUT\n\n- **C627**: [민법 제627조 일부멸실 등과 감액·해지](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0627&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제627조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C390**: [민법 제390조 채무불이행과 손해배상](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0390&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제390조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C393**: [민법 제393조 손해배상의 범위](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0393&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제393조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "차임 감액과 별도 손해배상의 요건을 분리해 채점한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2012
+    }
+  },
+  {
+    "qid": "DEV-059",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 민법 제623조 및 제626조 제1항; 원인·통지가 쟁점이면 제634조\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 수선 영수증·사진·전문가 소견",
+    "v2_evidence": "필수 C626; 조건부 C623,C634,C390; 보조 INPUT\n\n- **C626**: [민법 제626조 임차인의 상환청구권](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0626&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제626조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C623**: [민법 제623조 임대인의 의무](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0623&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제623조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C634**: [민법 제634조 임차인의 통지의무](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0634&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제634조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C390**: [민법 제390조 채무불이행과 손해배상](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0390&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제390조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "제3자 원인 가능성이 생겨도 이미 지출한 비용 상환이라는 후속 질문에 답해야 한다. 제626조를 연결하고 기존 ‘손해배상할’을 ‘청구할’로 정정한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2043
+    }
+  },
+  {
+    "qid": "DEV-060",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- **민법 제390조** — 임차인의 귀책 있는 계약상 의무 위반과 손해배상.\n- **민법 제654조 + 제615조** — 임대차 종료 시 원상회복 구조.\n\n**조건부 근거**\n- 손해액 범위를 구체적으로 설명할 때: **민법 제393조 제1항·제2항**.\n- `임대 당시 상태까지만 회복하면 되는지`, 기존 상태·타인의 변경부분 문제를 설명할 때:\n  **대법원 2023다249661**.\n  → 이 사건은 토지·종전 임차인 설치물 사안이므로, `깨진 인덕션의 감가상각을 직접 판시한 사건`처럼 쓰지 않는다.\n\n**대체 가능한 집합**\n- `{제390조 + 제393조}`는 손해배상 범위 중심.\n- `{제654조 + 제615조}`는 원상회복의무 중심.\n- 문항의 결론을 충분히 설명하려면 두 집합을 함께 쓰는 것이 가장 안정적.\n\n**보조 근거**\n- 입주 전 사진, 제품 연식, 수리 가능 여부, 견적서.\n\n**검색 성공 기준**\n- 기본: 귀책 손해배상 또는 원상회복의 정확한 조문 확보.\n- 완전: `무조건 새 제품 전액`을 피하도록 제393조와 실제 손해자료까지 연결.\n\n---",
+    "v2_evidence": "필수 C390,C393; 대체 C654 및 C615(반환·원상회복 설명); 보조 INPUT\n\n- **C390**: [민법 제390조 채무불이행과 손해배상](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0390&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제390조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C393**: [민법 제393조 손해배상의 범위](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0393&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제393조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C654**: [민법 제654조 준용규정](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0654&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제654조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C615**: [민법 제615조 차주의 원상회복의무와 철거권](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0615&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제615조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "손해 산정에 직접 맞는 근거를 채택한다. 토지·기존 건물 철거 사안인 2023다249661을 가전 감가상각의 필수 판례로 요구하지 않는다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2075
+    }
+  },
+  {
+    "qid": "DEV-061",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 민법 제629조(임차권 양도·전대 제한) 및 제632조(건물 소부분 예외)\n- **대체/보강 근거:** 주택임대차보호법 제6조의3 제1항 제4호(무단전대와 갱신거절)\n- **보조 근거:** 계약 특약·실제 사용관계",
+    "v2_evidence": "필수 C629,C632; 조건부 H6_3; 보조 INPUT\n\n- **C629**: [민법 제629조 임차권의 양도·전대의 제한](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0629&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제629조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C632**: [민법 제632조 소부분 사용의 예외](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0632&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제632조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H6_3**: [주택임대차보호법 계약갱신 요구](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "소부분 예외를 인정하되 개별 적용을 단정하지 않는다. 갱신거절 규정은 해당 분기에만 연결한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2131
+    }
+  },
+  {
+    "qid": "DEV-062",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 민법 제629조(임차권 양도·전대 제한) 및 제632조(건물 소부분 예외)\n- **대체/보강 근거:** 주택임대차보호법 제6조의3 제1항 제4호(무단전대와 갱신거절)\n- **보조 근거:** 계약 특약·실제 사용관계",
+    "v2_evidence": "필수 C629; 조건부 H6_3; 보조 INPUT\n\n- **C629**: [민법 제629조 임차권의 양도·전대의 제한](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0629&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제629조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H6_3**: [주택임대차보호법 계약갱신 요구](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "전체 주택이라는 사실에 맞춰 제632조를 일률 필수 검색 근거에서 제외한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2163
+    }
+  },
+  {
+    "qid": "DEV-063",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 민법 제640조(차임연체와 해지)\n- **대체/보강 근거:** 주택임대차보호법 제6조·제6조의3의 2기 연체 규정(갱신 문맥)\n- **보조 근거:** 연체·납부·해지 통지 일자",
+    "v2_evidence": "필수 C640; 조건부 C111,C543,H6_3; 보조 INPUT\n\n- **C640**: [민법 제640조 차임연체와 해지](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0640&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제640조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C111**: [민법 제111조 의사표시의 효력발생시기](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0111&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제111조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C543**: [민법 제543조 해지·해제권](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0543&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제543조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H6_3**: [주택임대차보호법 계약갱신 요구](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "금액 기준과 의사표시·시점을 명확히 하고 해지와 갱신거절의 다른 요건을 분리한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2193
+    }
+  },
+  {
+    "qid": "DEV-064",
+    "category": "정답 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- **계약서의 중도해지 특약/해지권 유보 여부**.\n- `기간이 정해진 임대차에서 해지권을 유보한 경우`에만 **민법 제636조**가 핵심 조문.\n\n**조건부 근거**\n- 제636조가 적용되는 경우에만 **제635조**의 해지통고 효력을 준용.\n- 당사자가 별도로 중도 종료에 합의했다면 **민법 제105조**와 합의 내용이 중심.\n\n**주의**\n- **민법 제635조를 기간 있는 임대차의 일반 중도해지권 근거로 단독 사용하면 안 됨.**\n- 회사 발령 자체를 법정해지사유로 만드는 일반 조문은 없음.\n\n**대체 가능한 집합**\n- `계약상 중도해지권 + 제636조`\n- 또는 `당사자 합의 + 제105조`.\n\n**검색 성공 기준**\n- 기본: 제636조의 조건(`기간 내 해지권 유보`)을 함께 확보.\n- 완전: 제635조를 바로 적용하지 않고 특약·합의 유무에 따라 분기.\n\n---",
+    "v2_evidence": "필수 C105; 조건부 C636,H6_2,H6_3; 보조 INPUT\n\n- **C105**: [민법 제105조 임의규정](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0105&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제105조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C636**: [민법 제636조 기간 약정 임대차의 해지통고](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0636&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제636조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H6_2**: [주택임대차보호법 묵시 갱신의 해지](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조의2 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H6_3**: [주택임대차보호법 계약갱신 요구](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "민법 제635조의 기간 없는 임대차 규정을 기간 약정 주택계약에 일률 적용하지 않는다. 법정 갱신 계약의 3개월 분기를 보완한다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2226
+    }
+  },
+  {
+    "qid": "DEV-065",
+    "category": "정답 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- 기존 임대차의 **중도종료 합의 내용**.\n- 새 임차인을 구했다는 사실만으로 기존 임차인의 의무가 자동 종료되지 않는다는 계약 해석 구조: **민법 제105조**.\n\n**조건부 근거**\n- 기존 계약에 기간 중 해지권 유보가 있으면: **제636조**.\n- 중개보수의 법정 구조를 설명할 경우: **공인중개사법 제32조 제1항·제4항**.\n  - 제32조는 `개업공인중개사가 중개의뢰인에게 보수를 받는 구조`를 확인하는 근거.\n  - 기존 임차인이 언제나 새 계약의 중개보수를 법적으로 전액 부담한다는 근거가 아님.\n- 실제 보수 상한은 해당 지역 조례·국토교통부령 등까지 조건부 확인.\n\n**대체 가능한 집합**\n- `{민법 제105조 + 중도종료 합의}`\n- 중개비까지 답하면 `{공인중개사법 제32조 + 해당 지역 보수기준}` 추가.\n\n**검색 성공 기준**\n- 기본: 기존 종료합의와 새 계약을 구분.\n- 완전: `중개보수 지급의무`와 `중도종료를 위한 사적 합의상 부담`을 구분.\n\n---",
+    "v2_evidence": "필수 C105; 조건부 C636,H6_2,H6_3,BROKER32; 보조 INPUT\n\n- **C105**: [민법 제105조 임의규정](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0105&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제105조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C636**: [민법 제636조 기간 약정 임대차의 해지통고](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0636&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제636조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H6_2**: [주택임대차보호법 묵시 갱신의 해지](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조의2 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H6_3**: [주택임대차보호법 계약갱신 요구](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **BROKER32**: [공인중개사법](https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1032085133) — 제32조 전체; 중개의뢰인의 보수; 적용 시점: 2026-08-28 시행, 법률 제21409호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "임대차 조기 종료 합의와 중개보수 지급 의무를 분리한다. 제32조만으로 기존 임차인 자동 부담을 도출하지 않는다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2280
+    }
+  },
+  {
+    "qid": "DEV-066",
+    "category": "정답 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- 임대인의 메시지 `\"새 세입자를 구하면 퇴거에 동의\"`의 구체적 의미와 당사자 합의.\n- **민법 제105조** — 합의한 종료조건 해석의 기본.\n\n**조건부 근거**\n- 별도 해지권 유보가 계약에 있으면 **민법 제636조**.\n- 월세 정산이 특정 인도일·새 임차인 입주일과 연결되도록 합의했다면 그 문서가 직접 근거.\n\n**대체 가능한 집합**\n- 계약/메시지 합의 자체 + 민법 제105조.\n- 법정 중도해지 조문을 억지로 필수 지정하지 않음.\n\n**검색 성공 기준**\n- 기본: `새 계약 서명일 ≠ 자동 기존 월세 종료일`이라는 합의 해석.\n- 완전: 새 임차인 잔금·입주일, 기존 임차인 인도일, 마지막 차임 합의까지 확인.\n\n---",
+    "v2_evidence": "필수 C105; 조건부 H6_2,C636,C536; 보조 INPUT\n\n- **C105**: [민법 제105조 임의규정](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0105&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제105조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H6_2**: [주택임대차보호법 묵시 갱신의 해지](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조의2 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C636**: [민법 제636조 기간 약정 임대차의 해지통고](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0636&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제636조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C536**: [민법 제536조 동시이행의 항변권](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0536&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제536조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "알려진 입주 간격을 재질문하지 않고 월세 책임을 결정하는 계약 종료 조건을 확인한다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2334
+    }
+  },
+  {
+    "qid": "DEV-067",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제4조 제2항 + 민법 제536조 등 동시이행 법리\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 계약 종료·인도·지급 일정",
+    "v2_evidence": "필수 C536,H4; 조건부 H3_3; 보조 INPUT\n\n- **C536**: [민법 제536조 동시이행의 항변권](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0536&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제536조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H4**: [주택임대차보호법 임대차기간](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0004&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제4조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_3**: [주택임대차보호법 임차권등기명령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "동시이행의 기존 결론을 채택하고 종료와 권리 보전은 별도 조건으로 정리한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2384
+    }
+  },
+  {
+    "qid": "DEV-068",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조의3 제1항·제5항\n- **대체/보강 근거:** 대법원 2025.4.15. 선고 2024다326398; 퇴거 후 신청은 2024마8598\n- **보조 근거:** 등기사항증명서·종료/전출 일정",
+    "v2_evidence": "필수 H3_3; 조건부 C105,CASE_REG; 보조 INPUT\n\n- **H3_3**: [주택임대차보호법 임차권등기명령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C105**: [민법 제105조 임의규정](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0105&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제105조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **CASE_REG**: [대법원 2024다326398](https://www.law.go.kr/precInfoP.do?precSeq=605771) — 판시사항·이유 및 사실관계: 임차권등기 전 퇴거·전출, 선순위 회복 비소급; 적용 시점: 2025-04-15 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "일부 미반환도 포함됨을 직접 답하고 합의의 의미를 단정하지 않는다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2416
+    }
+  },
+  {
+    "qid": "DEV-069",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조의3 제1항·제5항\n- **대체/보강 근거:** 대법원 2025.4.15. 선고 2024다326398; 퇴거 후 신청은 2024마8598\n- **보조 근거:** 등기사항증명서·종료/전출 일정",
+    "v2_evidence": "필수 H3_3; 조건부 CASE_REG; 보조 INPUT\n\n- **H3_3**: [주택임대차보호법 임차권등기명령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **CASE_REG**: [대법원 2024다326398](https://www.law.go.kr/precInfoP.do?precSeq=605771) — 판시사항·이유 및 사실관계: 임차권등기 전 퇴거·전출, 선순위 회복 비소급; 적용 시점: 2025-04-15 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "DEV-007 후속의 ‘이미 신청’ 사실을 승계하고 핵심 채점 대상을 완료 여부로 고정한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2447
+    }
+  },
+  {
+    "qid": "DEV-070",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조의3 제1항·제5항\n- **대체/보강 근거:** 대법원 2025.4.15. 선고 2024다326398; 퇴거 후 신청은 2024마8598\n- **보조 근거:** 등기사항증명서·종료/전출 일정",
+    "v2_evidence": "필수 H3_3,CASE_REG,CASE_MOVEOUT; 조건부 PROC462,CASE_FAMILY; 보조 INPUT\n\n- **H3_3**: [주택임대차보호법 임차권등기명령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **CASE_REG**: [대법원 2024다326398](https://www.law.go.kr/precInfoP.do?precSeq=605771) — 판시사항·이유 및 사실관계: 임차권등기 전 퇴거·전출, 선순위 회복 비소급; 적용 시점: 2025-04-15 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **CASE_MOVEOUT**: [대법원 2024마8598](https://www.law.go.kr/precInfoP.do?precSeq=612117) — 판시사항·이유 및 사실관계: 보증기관 지급·퇴거 후 재신청과 반환의 의미; 적용 시점: 2025-04-15 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **PROC462**: [민사소송법](https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1033366021) — 제462조; 금전 등 청구와 국내 비공시 송달; 적용 시점: 실제 표시 2025-07-12 시행/법률 제19516호; 확인일 2026-09-10; 본문 확인. 평가일 2026-03-17 판본 직접 열람 실패로 현행 판본 대조는 제한.\n- **CASE_FAMILY**: [대법원 95다30338](https://law.go.kr/LSW/precInfoP.do?precSeq=198331) — 판시사항·이유 및 사실관계: 임차인 일시 전출 중 가족 주민등록·점유 지속; 적용 시점: 1996-01-26 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "미등기 상태를 반영하고 보호 상실 위험과 반환채권 존속을 나누어 설명한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2477
+    }
+  },
+  {
+    "qid": "DEV-071",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- **민법 제654조 + 제615조** — 임차인의 원상회복의무.\n- 손상이 임차인 귀책인지 문제되면 **민법 제390조**.\n\n**조건부 근거**\n- 손해액·공제액 범위를 설명할 때: **민법 제393조**.\n- 임대 당시 상태와 반환 시 상태의 범위를 설명할 때: **대법원 2023다249661**을 보강근거로 허용.\n  - 이 판례는 `자연손모는 언제나 임대인 부담`이라는 문구를 직접 판시한 사건으로 오인하지 않는다.\n\n**대체 가능한 집합**\n- `{제654조 + 제615조}`\n- 귀책/손해액까지 다루면 `{제390조 + 제393조}` 추가.\n\n**보조 근거**\n- 입주 전후 사진, 상태확인서, 견적·영수증.\n\n**검색 성공 기준**\n- 기본: 원상회복의 법적 출발점 확보.\n- 완전: 손상 원인과 실제 손해액을 분리하여 공제액 자동확정 금지.\n\n---",
+    "v2_evidence": "필수 C654,C615; 대체 C390,C393(손해배상 범위); 보조 INPUT\n\n- **C654**: [민법 제654조 준용규정](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0654&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제654조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C615**: [민법 제615조 차주의 원상회복의무와 철거권](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0615&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제615조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C390**: [민법 제390조 채무불이행과 손해배상](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0390&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제390조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C393**: [민법 제393조 손해배상의 범위](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0393&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제393조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "2023다249661은 토지와 기존 시설 철거 사안이므로 정상 마모·감가상각의 필수 판례로 강제하지 않는다. 실제 손해와 원상회복 범위를 구분한다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2510
+    }
+  },
+  {
+    "qid": "DEV-072",
+    "category": "표현 개선",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조의3 제1항·제5항\n- **대체/보강 근거:** 대법원 2025.4.15. 선고 2024다326398; 퇴거 후 신청은 2024마8598\n- **보조 근거:** 등기사항증명서·종료/전출 일정",
+    "v2_evidence": "필수 C105,C536; 조건부 H3_3; 보조 INPUT\n\n- **C105**: [민법 제105조 임의규정](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0105&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제105조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C536**: [민법 제536조 동시이행의 항변권](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0536&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제536조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_3**: [주택임대차보호법 임차권등기명령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "원본의 30일 표현을 유지하고 임의로 1개월로 바꾸지 않는다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2564
+    }
+  },
+  {
+    "qid": "DEV-073",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조의3 등 보전·회수절차 관련 규정\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 등기·보증·집행 자료",
+    "v2_evidence": "필수 SCOPE; 조건부 H3_3,PROC462,C536; 보조 INPUT\n\n- **SCOPE**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.\n- **H3_3**: [주택임대차보호법 임차권등기명령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **PROC462**: [민사소송법](https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1033366021) — 제462조; 금전 등 청구와 국내 비공시 송달; 적용 시점: 실제 표시 2025-07-12 시행/법률 제19516호; 확인일 2026-09-10; 본문 확인. 평가일 2026-03-17 판본 직접 열람 실패로 현행 판본 대조는 제한.\n- **C536**: [민법 제536조 동시이행의 항변권](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0536&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제536조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "기능 범위와 사실 부족을 구분하고 범위 내 절차 안내는 인정한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2595
+    }
+  },
+  {
+    "qid": "DEV-074",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제14조 이하 및 제21조(조정 신청)\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 분쟁조정위원회 공식 신청 안내",
+    "v2_evidence": "필수 MEDIATION; 보조 INPUT\n\n- **MEDIATION**: [한국부동산원 임대차분쟁조정 안내](https://www.reb.or.kr/reb/cm/cntnts/cntntsView.do?cntntsId=1415) — 신청방법·서식·관할·수수료 및 절차 안내; 적용 시점: 확인일 현재 공식 안내; 확인일 2026-09-10; 본문 확인. 구체적인 신청 접수·개인 사건 조회는 하지 않음.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "어디서 어떻게 신청하는지 직접 답하도록 공식 한국부동산원 안내·서식 경로를 추가한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2626
+    }
+  },
+  {
+    "qid": "DEV-075",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조의3 + 민사소송법 제462조 이하(지급명령) + 민사집행법 제56조 등\n- **대체/보강 근거:** 주택임대차분쟁조정위원회 규정\n- **보조 근거:** 내용증명·송달자료·집행권원",
+    "v2_evidence": "필수 C111,PROC462; 조건부 H3_3; 보조 INPUT; 조건부 EX56\n\n- **C111**: [민법 제111조 의사표시의 효력발생시기](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0111&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제111조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **PROC462**: [민사소송법](https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1033366021) — 제462조; 금전 등 청구와 국내 비공시 송달; 적용 시점: 실제 표시 2025-07-12 시행/법률 제19516호; 확인일 2026-09-10; 본문 확인. 평가일 2026-03-17 판본 직접 열람 실패로 현행 판본 대조는 제한.\n- **H3_3**: [주택임대차보호법 임차권등기명령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.\n- **EX56**: [민사집행법](https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1018577259) — 제56조 전체; 적용 시점: 2026-02-01 시행, 법률 제20733호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "통지 증거와 집행권원, 지급명령의 송달 조건을 분리한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2655
+    }
+  },
+  {
+    "qid": "DEV-076",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 전세사기피해자 지원 및 주거안정에 관한 특별법 제3조 등\n- **대체/보강 근거:** 민·형사 책임은 각각 민법·형법의 해당 요건\n- **보조 근거:** 등기·경매·피해자 결정 자료",
+    "v2_evidence": "필수 HUG_SUPPORT; 조건부 H3_3,CR347; 보조 INPUT\n\n- **HUG_SUPPORT**: [HUG 안심전세포털 피해지원 프로그램](https://www.khug.or.kr/jeonse/web/s01/s010002.jsp) — 법률상담·지원 창구·접수 경로; 적용 시점: 확인일 현재 페이지; 일부 표는 2023년 기준 표시; 확인일 2026-09-10; 상담·기관 경로 확인. 과거 소득표·개별 지원 자격·특별법 결정은 확정 근거로 사용하지 않음.\n- **H3_3**: [주택임대차보호법 임차권등기명령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **CR347**: [형법](https://law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1000089514) — 제347조 전체; 기망과 재물·재산상 이익; 적용 시점: 2026-03-12 시행, 법률 제21450호; 과거 범행의 법정형으로 소급 적용하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "실제 상담·접수 경로를 추가한다. 공식 안내 페이지의 과거 소득표 등을 현재 보편 기준으로 전재하지 않고 개별 지원 결정은 유보한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2687
+    }
+  },
+  {
+    "qid": "DEV-077",
+    "category": "기존 유지",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- **서비스 범위 자체**: `소송 승패·보증금 회수 가능성 예측은 제공하지 않음`.\n- 이 서비스 경계 결론을 위해 **민법 또는 주택임대차보호법 조문을 억지로 필수 지정하지 않는다.**\n\n**조건부 근거**\n사용자가 문서를 제공하고 `쟁점·청구요건·입증자료` 분석을 요청하면:\n- 구체 청구원인에 맞는 민법/주택임대차보호법/민사절차 근거를 그때 선택.\n- 예: 보증금반환청구면 계약 종료·보증금 반환의무 관련 근거, 임차권등기면 제3조의3 등.\n\n**대체 가능한 집합**\n- 법률 근거 없음도 정답 가능: 이 문항의 핵심은 **기능 제한**.\n- 추가 법률 분석을 제공하는 경우에만 구체 쟁점별 근거 필요.\n\n**검색 성공 기준**\n- 기본: 서비스 범위에서 수치 승패예측 불가를 정확히 인식.\n- 완전: \"대신 무엇을 검토할 수 있는지\"를 문서 기반 쟁점 분석으로 분리.\n\n---",
+    "v2_evidence": "필수 SCOPE; 보조 INPUT\n\n- **SCOPE**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "부록의 서비스 범위 기준 및 법령 검색 비필수 판단을 채택한다. 문항은 계약 추천이 아니라 승소 확률 요청이다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2718
+    }
+  },
+  {
+    "qid": "DEV-078",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 민사소송법 제194조~제196조(공시송달) 및 실제 소송·지급명령 송달규정\n- **대체/보강 근거:** 주택임대차보호법상 반환·임차권등기 절차\n- **보조 근거:** 반송봉투·주소자료",
+    "v2_evidence": "필수 C111,C113; 조건부 PROC194,PROC462; 보조 INPUT\n\n- **C111**: [민법 제111조 의사표시의 효력발생시기](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0111&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제111조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C113**: [민법 제113조 의사표시의 공시송달](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0113&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제113조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **PROC194**: [민사소송법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0194&lsiSeq=284417&urlMode=lsScJoRltInfoR) — 제194조 소송서류 공시송달; 적용 시점: 2026-03-17 시행판 대상; 확인일 2026-09-10; 직접 원문 실패. 의사표시 공시송달은 확인된 민법 제113조로 구분하고 소송 세부요건 확정은 보류.\n- **PROC462**: [민사소송법](https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1033366021) — 제462조; 금전 등 청구와 국내 비공시 송달; 적용 시점: 실제 표시 2025-07-12 시행/법률 제19516호; 확인일 2026-09-10; 본문 확인. 평가일 2026-03-17 판본 직접 열람 실패로 현행 판본 대조는 제한.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "계약 종료 의사표시의 직접 근거 제113조를 추가하고 소송법 제194조만으로 대체하지 않는다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2765
+    }
+  },
+  {
+    "qid": "DEV-079",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 형법 제347조(사기) + 보증금 반환의 민사상 청구근거\n- **대체/보강 근거:** 전세사기피해자 지원 특별법 제3조 등\n- **보조 근거:** 계약 당시 설명·다수피해·재산자료",
+    "v2_evidence": "필수 CR347; 조건부 C390,H3_3; 보조 INPUT\n\n- **CR347**: [형법](https://law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1000089514) — 제347조 전체; 기망과 재물·재산상 이익; 적용 시점: 2026-03-12 시행, 법률 제21450호; 과거 범행의 법정형으로 소급 적용하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C390**: [민법 제390조 채무불이행과 손해배상](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0390&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제390조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H3_3**: [주택임대차보호법 임차권등기명령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "기망과 미이행을 구분하는 방향을 유지한다. 개별 범의 판단은 판례 사실 대조가 추가로 필요한 해석·사실 영역이다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2797
+    }
+  },
+  {
+    "qid": "DEV-080",
+    "category": "기존 유지",
+    "v1_effective_evidence": "- **필수 근거:** 주택임대차보호법 제3조의3 + 민사소송·집행 절차의 해당 규정(절차 진행 시 구체화)\n- **대체/보강 근거:** 주택임대차분쟁조정위원회 규정\n- **보조 근거:** 내용증명·송달자료·집행권원",
+    "v2_evidence": "필수 SCOPE; 보조 INPUT\n\n- **SCOPE**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "부록의 검색 비필수 분류와 대체 가능한 문안 지원을 채택한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2828
+    }
+  },
+  {
+    "qid": "DEV-081",
+    "category": "정답 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- 기관이 미지정이므로 `기관별 신청창구·서류가 다르다`는 분기.\n- 예시를 들 경우 선택한 기관의 **이용절차 및 제출서류** 공식 페이지.\n\n**조건부 근거**\n- HUG 예시: `이용절차 및 제출서류` 페이지.\n- HF 예시: `일반전세지킴보증`의 신청/취급은행/보증요건 구간.\n\n**대체 가능한 집합**\n- HUG 공식 이용절차/서류\n- HF 공식 상품·신청 안내\n- SGI 공식 신청안내(실제로 확인한 경우)\n\n**검색 성공 기준**\n- 기본: 특정 기관을 예시로 명시하고 공식 절차 페이지 확보.\n- 완전: 기관 미지정인데 한 기관의 서류를 모든 반환보증 공통서류처럼 쓰지 않음.",
+    "v2_evidence": "필수 HF_OV 또는 해당 기관 공식 가입 안내; 조건부 HF_TERMS\n\n- **HF_OV**: [HF 전세지킴보증 일반 안내](https://hf.go.kr/ko/sub02/sub02_05_01.do) — 신청시기·취급은행·대상자·구비서류·보증조건; 적용 시점: 확인일 현재 게시 안내; 게시/개정일 별도 표시 불명; 확인일 2026-09-10; 공식 안내 본문 확인. 평가일 9월 8일의 별도 웹 보관본은 확보하지 않아 9월 10일 조회 내용으로 표시; 기관 특정 예시만 사용.\n- **HF_TERMS**: [HF 전세지킴보증 약관·안내 PDF](https://hf.go.kr/cms/etcResourceDown.do?key=$cms$M4VwRgDATA+qmwgVhhAjDK0BsFtoE4A6ABwBMAzIA&site=$cms$NYeyA) — PDF 13~20쪽: 제2~6·9~16조 및 안내 3~11쪽; 적용 시점: PDF 약관 표기 개정 2025-02-06; 현재 공식 페이지 연결본; 확인일 2026-09-10; 관련 약관 본문 확인. 보증조건 변경·면책·사고·기한·심사 구별. 2023년 가입 건에 적용됐다고 확인한 것이 아님.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "구체적인 공식 신청 경로의 예를 제시하되 기관 미지정 상태를 임의로 HUG/HF 계약으로 바꾸지 않는다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2856
+    }
+  },
+  {
+    "qid": "DEV-082",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- 가입기관·상품, 계약 시작일·종료일 확인이 우선.\n- **단일 보편 신청기한을 요구하지 않음.**\n\n**조건부 근거**\n- HUG를 선택한 경우: 상품개요의 `신청기한` 구간.\n- HF를 선택한 경우: HF 일반전세지킴보증의 `보증대상 임대차계약/신청 절차` 구간.\n- 가입시점 변경 특례가 존재하면 그 시점의 공지·약관.\n\n**검색 성공 기준**\n- 기본: 기관/계약기간 없이는 가입 가능 여부 확정 불가.\n- 완전: 선택 기관의 실제 신청기한과 계약 날짜를 대조.",
+    "v2_evidence": "필수 해당 기관 공식 가입 요건(기관 특정 시); 보조 HF_OV\n\n- **HF_OV**: [HF 전세지킴보증 일반 안내](https://hf.go.kr/ko/sub02/sub02_05_01.do) — 신청시기·취급은행·대상자·구비서류·보증조건; 적용 시점: 확인일 현재 게시 안내; 게시/개정일 별도 표시 불명; 확인일 2026-09-10; 공식 안내 본문 확인. 평가일 9월 8일의 별도 웹 보관본은 확보하지 않아 9월 10일 조회 내용으로 표시; 기관 특정 예시만 사용.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "개별 가입 결론과 현재 가능한 안내를 구분한다. 개인 보증서·특정 기관 검색 적중을 모든 답변의 필수 요건으로 삼지 않는다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2903
+    }
+  },
+  {
+    "qid": "DEV-083",
+    "category": "정답 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- 어느 기관인지, 임대인이 거부한 `구체 서류`가 무엇인지 확인.\n- 일반적으로 `임대인 협조가 없으면 무조건 가입 불가`라고 하지 않음.\n\n**조건부 근거**\n- 선택 기관의 `제출서류` 목록과 대체 제출·전자조회 가능 여부.\n- 임대인 확인/동의가 특정 상품에서 필요한 경우 그 상품 공식 조건.\n\n**대체 가능한 집합**\n- HUG 이용절차 및 제출서류\n- HF 일반전세지킴보증의 제출/심사 안내\n- 선택 기관의 FAQ.\n\n**검색 성공 기준**\n- 기본: 기관·거부서류 확인 질문.\n- 완전: 실제 해당 서류가 필수인지, 대체 가능한지를 같은 기관 원문에서 확인.",
+    "v2_evidence": "필수 해당 기관 공식 서류 안내(상품 특정 시); 보조 HF_OV\n\n- **HF_OV**: [HF 전세지킴보증 일반 안내](https://hf.go.kr/ko/sub02/sub02_05_01.do) — 신청시기·취급은행·대상자·구비서류·보증조건; 적용 시점: 확인일 현재 게시 안내; 게시/개정일 별도 표시 불명; 확인일 2026-09-10; 공식 안내 본문 확인. 평가일 9월 8일의 별도 웹 보관본은 확보하지 않아 9월 10일 조회 내용으로 표시; 기관 특정 예시만 사용.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "질문이 요구한 ‘내가 준비/임대인 협조’ 구분을 필수 답변으로 추가한다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2944
+    }
+  },
+  {
+    "qid": "DEV-084",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- 가입한 보증기관의 `임대인 변경/알릴 의무/조건변경` 규정.\n- 주택임대차법상 임대인 지위승계를 같이 설명할 경우:\n  **주택임대차보호법 제3조 제4항**(대항요건을 갖춘 임차인의 양수인 지위승계).\n\n**조건부 근거**\n- HUG: 약관의 `알릴 의무` 중 주채무자 변경 구간.\n- HF: `조건변경 → 임대인변경` 구간.\n\n**대체 가능한 집합**\n- HUG 변경통지 규정 또는 HF 조건변경 안내 등 **가입기관에 맞는 한 세트**.\n- 서로 다른 기관 자료를 섞어 하나의 의무처럼 만들지 않음.\n\n**검색 성공 기준**\n- 기본: 소유자 변경을 `보증기관 정보변경 확인사유`로 인식.\n- 완전: 실제 가입기관의 통지/변경 절차와 법정 임대인 지위승계를 구분.",
+    "v2_evidence": "필수 해당 기관 적용 변경 규정; 보조 HF_CHANGE; 조건부 HF_TERMS,H3\n\n- **HF_CHANGE**: [HF 전세지킴보증 보증조건 변경](https://hf.go.kr/ko/sub02/sub02_05_03.do) — 임대인 변경·보증기한 연장 등; 적용 시점: 확인일 현재 안내; 확인일 2026-09-10; 본문 확인. HF 예시만 사용하며 다른 기관에 일반화하지 않음.\n- **HF_TERMS**: [HF 전세지킴보증 약관·안내 PDF](https://hf.go.kr/cms/etcResourceDown.do?key=$cms$M4VwRgDATA+qmwgVhhAjDK0BsFtoE4A6ABwBMAzIA&site=$cms$NYeyA) — PDF 13~20쪽: 제2~6·9~16조 및 안내 3~11쪽; 적용 시점: PDF 약관 표기 개정 2025-02-06; 현재 공식 페이지 연결본; 확인일 2026-09-10; 관련 약관 본문 확인. 보증조건 변경·면책·사고·기한·심사 구별. 2023년 가입 건에 적용됐다고 확인한 것이 아님.\n- **H3**: [주택임대차보호법 대항력·양수인 승계](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "원본은 계약 갱신이 아니라 소유자 변경이다. 법정 임대인 승계와 보증기관 정보 변경을 구분하고 기관 미지정 상태의 기본 안내를 확정한다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 2990
+    }
+  },
+  {
+    "qid": "DEV-085",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- 실제 등기상 새 소유자 + 보증기관 등록정보의 불일치 확인.\n- 가입기관의 `임대인변경/조건변경` 공식 안내.\n\n**조건부 근거**\n- HF라면 `조건변경 → 임대인변경` 페이지가 직접 근거.\n- HUG라면 약관의 `주채무자 변경 알릴 의무`와 해당 변경신청 안내를 확인.\n\n**검색 성공 기준**\n- 기본: 화면 표시만으로 보증 무효/유효 단정 금지.\n- 완전: 가입기관별 변경절차와 필요한 서류 확보.",
+    "v2_evidence": "필수 해당 기관 적용 약관; 보조 HF_CHANGE; 조건부 HF_TERMS,H3\n\n- **HF_CHANGE**: [HF 전세지킴보증 보증조건 변경](https://hf.go.kr/ko/sub02/sub02_05_03.do) — 임대인 변경·보증기한 연장 등; 적용 시점: 확인일 현재 안내; 확인일 2026-09-10; 본문 확인. HF 예시만 사용하며 다른 기관에 일반화하지 않음.\n- **HF_TERMS**: [HF 전세지킴보증 약관·안내 PDF](https://hf.go.kr/cms/etcResourceDown.do?key=$cms$M4VwRgDATA+qmwgVhhAjDK0BsFtoE4A6ABwBMAzIA&site=$cms$NYeyA) — PDF 13~20쪽: 제2~6·9~16조 및 안내 3~11쪽; 적용 시점: PDF 약관 표기 개정 2025-02-06; 현재 공식 페이지 연결본; 확인일 2026-09-10; 관련 약관 본문 확인. 보증조건 변경·면책·사고·기한·심사 구별. 2023년 가입 건에 적용됐다고 확인한 것이 아님.\n- **H3**: [주택임대차보호법 대항력·양수인 승계](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "제공된 미통지 사실을 반영하고 위반의 효과를 해당 약관·손해 요건에 따라 검토하도록 한정한다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 3038
+    }
+  },
+  {
+    "qid": "DEV-086",
+    "category": "정답 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- 가입한 보증기관의:\n  1. 보증금액/보증한도,\n  2. 보증기간,\n  3. 보증사고,\n  4. 이행청구 절차.\n- 기관 미지정 상태에서는 `전액 즉시 지급`을 부정하는 일반 안내까지만 가능하고, 구체 지급시점은 특정 기관 약관을 찾아야 함.\n\n**조건부 근거**\n- HUG를 예로 들면 `약관 및 상담연락처`의:\n  - 보증사고,\n  - 사고통지,\n  - 이행청구,\n  - 이행시기\n  구간을 함께 확보.\n\n**검색 성공 기준**\n- 기본: 가입 ≠ 자동 즉시 지급.\n- 완전: 실제 기관·보증증서와 사고요건·청구절차까지 대조.",
+    "v2_evidence": "필수 해당 기관 적용 약관·이행 안내; 보조 HF_CLAIM; 조건부 HF_TERMS,H3_3,CASE_REG\n\n- **HF_CLAIM**: [HF 전세지킴보증 보증이행 안내](https://hf.go.kr/ko/sub02/sub02_05_07.do) — 사고사유·통지·이행청구·심사·이사/지급 절차; 적용 시점: 확인일 현재 안내; 확인일 2026-09-10; 본문 확인. 2023년 가입 건 적용 여부는 별도.\n- **HF_TERMS**: [HF 전세지킴보증 약관·안내 PDF](https://hf.go.kr/cms/etcResourceDown.do?key=$cms$M4VwRgDATA+qmwgVhhAjDK0BsFtoE4A6ABwBMAzIA&site=$cms$NYeyA) — PDF 13~20쪽: 제2~6·9~16조 및 안내 3~11쪽; 적용 시점: PDF 약관 표기 개정 2025-02-06; 현재 공식 페이지 연결본; 확인일 2026-09-10; 관련 약관 본문 확인. 보증조건 변경·면책·사고·기한·심사 구별. 2023년 가입 건에 적용됐다고 확인한 것이 아님.\n- **H3_3**: [주택임대차보호법 임차권등기명령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **CASE_REG**: [대법원 2024다326398](https://www.law.go.kr/precInfoP.do?precSeq=605771) — 판시사항·이유 및 사실관계: 임차권등기 전 퇴거·전출, 선순위 회복 비소급; 적용 시점: 2025-04-15 선고/결정. 적용 법령·사실 유사성은 문항별 조건; 확인일 2026-09-10; 판례 원문 이유·사건 사실 확인; 모든 사건에 결과를 그대로 일반화하지 않음.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "즉시 지급을 부정하는 일반 설명은 확정하고 개별 지급 요건은 해당 기관 분기로 남긴다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 3081
+    }
+  },
+  {
+    "qid": "DEV-087",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- **민법 제186조** — 부동산 물권변동과 등기.\n  공식 조문:\n  https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0186&lsiSeq=284415&urlMode=lsScJoRltInfoR\n- 근저당권이 실제 보이면: **민법 제357조**.\n  https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0357&lsiSeq=284415&urlMode=lsScJoRltInfoR\n- 최신 등기사항증명서.\n\n**조건부 근거**\n- 상가에 입주한 뒤 대항력·우선변제를 설명할 때만 **상가건물 임대차보호법 제3조 등**.\n- 계약 전 `진짜 소유자인지·담보가 무엇인지`만 묻는 핵심에는 상가법 대항력 조문이 항상 필요한 근거가 아님.\n\n**대체 가능한 집합**\n- `{민법 제186조 + 등기사항증명서}`\n- 담보 의미까지 설명하면 `+ 제357조`.\n\n**검색 성공 기준**\n- 기본: 소유권·근저당의 등기 근거를 직접 연결.\n- 완전: 상가법 대항요건을 주택법처럼 섞지 않고, 입주 후 보호설명에만 조건부로 사용.\n\n---",
+    "v2_evidence": "필수 C186,C187; 조건부 C114; 보조 INPUT; 필수 C357\n\n- **C186**: [민법 제186조 부동산물권변동의 효력](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0186&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제186조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C187**: [민법 제187조 등기를 요하지 아니하는 부동산물권취득](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0187&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제187조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C114**: [민법 제114조 대리행위의 효력](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0114&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제114조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.\n- **C357**: [민법 제357조 근저당](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0357&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제357조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "권리 취득의 직접 근거를 제시하고 상가 임차인의 대항력 규정을 계약 권한의 전면 대체로 삼지 않는다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 3133
+    }
+  },
+  {
+    "qid": "DEV-088",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 상가건물 임대차보호법 제3조(대항력 등)\n- **대체/보강 근거:** 부가가치세법상 사업자등록 절차(구체 신청시 추가 확인)\n- **보조 근거:** 점포 인도·사업자등록 신청 자료",
+    "v2_evidence": "필수 VAT8,M3; 보조 INPUT\n\n- **VAT8**: [부가가치세법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0008&lsiSeq=276117&urlMode=lsScJoRltInfoR) — 제8조 전체; 사업 개시일부터 20일·개시 전 신청; 적용 시점: 2026-01-02 시행, 법률 제21065호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **M3**: [상가건물 임대차보호법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0003&lsiSeq=279651&urlMode=lsScJoRltInfoR) — 제3조 전체; 특히 제2조제3항의 초과 계약 적용 목록과 함께 읽음; 적용 시점: 2026-05-12 시행, 법률 제21083호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "일부 미확인",
+    "change_reason_as_reported": "사업자등록의 법정 시기와 대항력의 다음 날 요건을 직접 보완한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 3187
+    }
+  },
+  {
+    "qid": "DEV-089",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 상가건물 임대차보호법 제10조(계약갱신 요구 등)·제11조(차임 등의 증감청구권)\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 과거 갱신·증액 이력",
+    "v2_evidence": "필수 M2,M10; 조건부 M11,M10_2,M_ENF; 보조 INPUT\n\n- **M2**: [상가건물 임대차보호법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0002&lsiSeq=279651&urlMode=lsScJoRltInfoR) — 제2조 전체; 특히 제2조제3항의 초과 계약 적용 목록과 함께 읽음; 적용 시점: 2026-05-12 시행, 법률 제21083호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **M10**: [상가건물 임대차보호법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0010&lsiSeq=279651&urlMode=lsScJoRltInfoR) — 제10조 전체; 특히 제2조제3항의 초과 계약 적용 목록과 함께 읽음; 적용 시점: 2026-05-12 시행, 법률 제21083호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **M11**: [상가건물 임대차보호법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0011&lsiSeq=279651&urlMode=lsScJoRltInfoR) — 제11조 전체; 특히 제2조제3항의 초과 계약 적용 목록과 함께 읽음; 적용 시점: 2026-05-12 시행, 법률 제21083호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **M10_2**: [상가건물 임대차보호법 제10조의2](https://www.law.go.kr/lsLinkCommonInfo.do?ancYnChk=&chrClsCd=010202&lsJoLnkSeq=1017941419) — 제10조의2 전문; 초과 보증금 계약 갱신 시 증감청구; 적용 시점: 2026-05-12 시행, 법률 제21083호; 확인일 2026-09-10; 대체 공식 조문 URL에서 전문·시행판 확인.\n- **M_ENF**: [상가건물 임대차보호법 시행령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0002&lsiSeq=287139&urlMode=lsScJoRltInfoR) — 제2조 전체; 지역별 9억/6.9억/5.4억/3.7억, 환산보증금=보증금+월차임×100; 적용 시점: 2026-07-01 시행, 대통령령 제36423호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "상가 적용 범위를 빠뜨리면 잘못된 증액 답변이 통과하므로 기준 초과 분기를 필수화한다. 세부 환산액·경과규정은 개별 조건부다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 3217
+    }
+  },
+  {
+    "qid": "DEV-090",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 상가건물 임대차보호법 제6조(임차권등기명령)·제9조 제2항\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 종료·인도·사업자등록 상태",
+    "v2_evidence": "필수 M2,M6,C536; 조건부 M9,M_ENF; 보조 INPUT; 조건부 PROC462\n\n- **M2**: [상가건물 임대차보호법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0002&lsiSeq=279651&urlMode=lsScJoRltInfoR) — 제2조 전체; 특히 제2조제3항의 초과 계약 적용 목록과 함께 읽음; 적용 시점: 2026-05-12 시행, 법률 제21083호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **M6**: [상가건물 임대차보호법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0006&lsiSeq=279651&urlMode=lsScJoRltInfoR) — 제6조 전체; 특히 제2조제3항의 초과 계약 적용 목록과 함께 읽음; 적용 시점: 2026-05-12 시행, 법률 제21083호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C536**: [민법 제536조 동시이행의 항변권](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0536&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제536조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **M9**: [상가건물 임대차보호법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0009&lsiSeq=279651&urlMode=lsScJoRltInfoR) — 제9조 전체; 특히 제2조제3항의 초과 계약 적용 목록과 함께 읽음; 적용 시점: 2026-05-12 시행, 법률 제21083호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **M_ENF**: [상가건물 임대차보호법 시행령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0002&lsiSeq=287139&urlMode=lsScJoRltInfoR) — 제2조 전체; 지역별 9억/6.9억/5.4억/3.7억, 환산보증금=보증금+월차임×100; 적용 시점: 2026-07-01 시행, 대통령령 제36423호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.\n- **PROC462**: [민사소송법](https://www.law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1033366021) — 제462조; 금전 등 청구와 국내 비공시 송달; 적용 시점: 실제 표시 2025-07-12 시행/법률 제19516호; 확인일 2026-09-10; 본문 확인. 평가일 2026-03-17 판본 직접 열람 실패로 현행 판본 대조는 제한.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "제2조제3항의 초과 임대차 적용 목록에 제6조·제9조가 없다는 점을 반영한다. 주택 임차권등기와 동일시한 기준을 철회한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 3250
+    }
+  },
+  {
+    "qid": "DEV-091",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 공공주택 특별법 제49조의2(공공임대주택의 임대차계약 등)\n- **대체/보강 근거:** 공급유형별 시행령·공급규칙\n- **보조 근거:** 공급기관 계약안내문",
+    "v2_evidence": "필수 PUBLIC492; 보조 INPUT\n\n- **PUBLIC492**: [공공주택 특별법](https://law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1025400003) — 제49조의2 전체; 표준계약·입주 전 설명; 적용 시점: 2026-09-08 시행, 법률 제21895호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "기본 안내는 유지한다. 리뷰1의 2026년 1월 판본 대신 평가일인 2026년 9월 8일 시행판의 제49조의2·제49조의3 전문을 독립 확인했다. 유형별 기관 안내는 미제공이다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 3284
+    }
+  },
+  {
+    "qid": "DEV-092",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 공공주택 특별법 제49조의3 및 시행령 제47조 등 재계약·해제 관련 규정\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 공급유형·소득·자산·가구자료",
+    "v2_evidence": "필수 PUBLIC493; 조건부 PUBLIC47; 보조 INPUT\n\n- **PUBLIC493**: [공공주택 특별법](https://law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1025400003) — 제49조의3 전체; 재계약 거절 등; 적용 시점: 2026-09-08 시행, 법률 제21895호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **PUBLIC47**: [공공주택 특별법 시행령](https://www.law.go.kr/법령/공공주택특별법시행령) — 제47조 및 유형별 시행규칙 제25조·별표; 적용 시점: Lawbot 표시 시행령 2026-04-14/규칙 2026-08-24; 확인일 2026-09-10; 검색 결과까지만 확인. 유형별 전문·별표 미확인; 소득 초과 수치·유예기간 등 확정 제외.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "제49조의3의 구별을 확인하고 미제공 유형별 세부 수치·유예는 확정 채점에서 제외한다. 일반 설명까지 판단 보류하지 않는다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 3313
+    }
+  },
+  {
+    "qid": "DEV-093",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 공공주택 특별법·표준임대차계약 및 해당 공급기관 퇴거·정산 규정\n- **대체/보강 근거:** 민법상 원상회복 법리\n- **보조 근거:** 퇴거점검표·정산서",
+    "v2_evidence": "필수 해당 공급기관 퇴거·정산 안내(미제공); 조건부 PUBLIC492,C536,C654,C615; 보조 INPUT\n\n- **PUBLIC492**: [공공주택 특별법](https://law.go.kr/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1025400003) — 제49조의2 전체; 표준계약·입주 전 설명; 적용 시점: 2026-09-08 시행, 법률 제21895호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C536**: [민법 제536조 동시이행의 항변권](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0536&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제536조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C654**: [민법 제654조 준용규정](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0654&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제654조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **C615**: [민법 제615조 차주의 원상회복의무와 철거권](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0615&lsiSeq=284415&urlMode=lsScJoRltInfoR) — 제615조 전체; 적용 시점: 2026-03-17 시행, 법률 제21454호. 과거 사건의 개별 적용은 당시 판본 추가 대조; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "확인할 창구·정산 항목의 안내는 확정하고 특정 지급기한·공제 적정성만 유보한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 3343
+    }
+  },
+  {
+    "qid": "DEV-094",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 민간임대주택에 관한 특별법 제47조(표준임대차계약서)·제48조(설명의무)\n- **대체/보강 근거:** 제46조(임대차계약 신고)\n- **보조 근거:** 등록정보·표준계약서",
+    "v2_evidence": "필수 PRIVATE5,PRIVATE6; 조건부 PRIVATE47; 보조 RENTHOME,INPUT; 조건부 PRIVATE44,PRIVATE45\n\n- **PRIVATE5**: [민간임대주택에 관한 특별법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0005&lsiSeq=276995&urlMode=lsScJoRltInfoR) — 제5조 전체; 적용 시점: 공식 본문 표제 2025-10-01 시행/법률 제21065호; 전체법·Lawbot 표제 2026-01-02와 차이; 확인일 2026-09-10; 조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도.\n- **PRIVATE6**: [민간임대주택에 관한 특별법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0006&lsiSeq=276995&urlMode=lsScJoRltInfoR) — 제6조 전체; 적용 시점: 공식 본문 표제 2025-10-01 시행/법률 제21065호; 전체법·Lawbot 표제 2026-01-02와 차이; 확인일 2026-09-10; 조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도.\n- **PRIVATE47**: [민간임대주택에 관한 특별법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0047&lsiSeq=276995&urlMode=lsScJoRltInfoR) — 제47조 전체; 적용 시점: 공식 본문 표제 2025-10-01 시행/법률 제21065호; 전체법·Lawbot 표제 2026-01-02와 차이; 확인일 2026-09-10; 조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도.\n- **RENTHOME**: [렌트홈 제공 서비스 안내](https://www.renthome.go.kr/webportal/cont/rntHmGdncView.open) — 민간임대주택 지도찾기·등록/말소 서비스 안내; 적용 시점: 확인일 현재 안내; 확인일 2026-09-10; 페이지 본문 확인. 실제 특정 주택 조회는 실행하지 않음.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.\n- **PRIVATE44**: [민간임대주택에 관한 특별법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0044&lsiSeq=276995&urlMode=lsScJoRltInfoR) — 제44조 전체; 적용 시점: 공식 본문 표제 2025-10-01 시행/법률 제21065호; 전체법·Lawbot 표제 2026-01-02와 차이; 확인일 2026-09-10; 조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도.\n- **PRIVATE45**: [민간임대주택에 관한 특별법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0045&lsiSeq=276995&urlMode=lsScJoRltInfoR) — 제45조 전체; 적용 시점: 공식 본문 표제 2025-10-01 시행/법률 제21065호; 전체법·Lawbot 표제 2026-01-02와 차이; 확인일 2026-09-10; 조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "등록·말소 확인의 직접 근거를 제5조·제6조로 보완한다. 렌트홈 공식 안내에서 지도찾기 제공을 확인했지만 실제 특정 주택 등록 조회를 수행한 것은 아니다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 3375
+    }
+  },
+  {
+    "qid": "DEV-095",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 민간임대주택에 관한 특별법 제44조·제44조의2\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 등록상태·직전 임대료",
+    "v2_evidence": "필수 PRIVATE44; 조건부 PRIVATE_ENF34,PRIVATE442; 보조 INPUT\n\n- **PRIVATE44**: [민간임대주택에 관한 특별법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0044&lsiSeq=276995&urlMode=lsScJoRltInfoR) — 제44조 전체; 적용 시점: 공식 본문 표제 2025-10-01 시행/법률 제21065호; 전체법·Lawbot 표제 2026-01-02와 차이; 확인일 2026-09-10; 조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도.\n- **PRIVATE_ENF34**: [민간임대주택에 관한 특별법 시행령](https://www.law.go.kr/법령/민간임대주택에관한특별법시행령) — 제34조의2(증액 비율) 및 법 제44조제4항이 위임한 시행규칙 전환 규정; 적용 시점: 해당 계약·행위일 판본 필요; 확인일 2026-09-10; 제34조의2가 증액 비율 위임 조문임은 공식 법제처 해석례 검색에서 확인. 평가일 독립 원문·전환 규칙 미확인; 계산값 확정 제외.\n- **PRIVATE442**: [민간임대주택에 관한 특별법 제44조의2](https://www.law.go.kr/LSW/lsInfoP.do?ancYnChk=0&chrClsCd=010202&efYd=20260102&lsiSeq=276995&urlMode=lsInfoP) — 초과 임대료의 반환 청구; 적용 시점: 2026-01-02 시행판 공식 검색 본문; 확인일 2026-09-10; 공식 검색 본문에서 조문 존재·내용 확인, 독립 조문 원문은 미확인. 없다고 판단하지 않으며 이미 초과 지급한 경우의 조건부 근거.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "검증 완료",
+    "change_reason_as_reported": "제44조의2는 실제 존재하는 초과 지급 임대료의 반환청구 조문이다. 앞으로의 인상 확인 질문에서는 제44조를 필수, 이미 초과 지급한 경우 제44조의2를 조건부로 분류한다. 검색 실패를 조문 부존재로 판단하지 않는다. 증액 비율의 하위규정은 시행령 제34조의2이며 전환은 별도 위임 규정을 확인한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 3409
+    }
+  },
+  {
+    "qid": "DEV-096",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 민간임대주택에 관한 특별법 제46조·제47조\n- **대체/보강 근거:** 부동산거래신고법 제6조의5 제2항(신고 의제)\n- **보조 근거:** 등록상태·신고자료",
+    "v2_evidence": "필수 PRIVATE45,PRIVATE46,PRIVATE47; 조건부 PRIVATE_ENF35,REPORT65; 보조 INPUT\n\n- **PRIVATE45**: [민간임대주택에 관한 특별법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0045&lsiSeq=276995&urlMode=lsScJoRltInfoR) — 제45조 전체; 적용 시점: 공식 본문 표제 2025-10-01 시행/법률 제21065호; 전체법·Lawbot 표제 2026-01-02와 차이; 확인일 2026-09-10; 조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도.\n- **PRIVATE46**: [민간임대주택에 관한 특별법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0046&lsiSeq=276995&urlMode=lsScJoRltInfoR) — 제46조 전체; 적용 시점: 공식 본문 표제 2025-10-01 시행/법률 제21065호; 전체법·Lawbot 표제 2026-01-02와 차이; 확인일 2026-09-10; 조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도.\n- **PRIVATE47**: [민간임대주택에 관한 특별법](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0047&lsiSeq=276995&urlMode=lsScJoRltInfoR) — 제47조 전체; 적용 시점: 공식 본문 표제 2025-10-01 시행/법률 제21065호; 전체법·Lawbot 표제 2026-01-02와 차이; 확인일 2026-09-10; 조문 본문 확인. 동일 법률번호의 화면별 시행일 차이로 평가일 판본 메타데이터 제한 확인; 개별 등록시점 경과규정 별도.\n- **PRIVATE_ENF35**: [민간임대주택에 관한 특별법 시행령](https://www.law.go.kr/법령/민간임대주택에관한특별법시행령) — 제35조 및 위임규정; 적용 시점: 해당 계약·행위일 판본 필요; 확인일 2026-09-10; 독립 원문 미확인; 전환은 법 제44조제4항이 위임한 시행규칙도 필요. 정밀 계산·특별 예외 확정 제외.\n- **REPORT65**: [부동산 거래신고 등에 관한 법률](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=05&joNo=0006&lsiSeq=259641&urlMode=lsScJoRltInfoR) — 제6조의5; 다른 신고 의제; 적용 시점: 2024-05-17 시행판 대상; 확인일 2026-09-10; Lawbot 검색 표시 및 2021년 공식 안내로 제도 확인. 독립 조문 원문 열람 실패; 세부 의제 요건의 완전 검색 성공은 보류.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "일부 미확인",
+    "change_reason_as_reported": "표준계약·특별 신고·갱신제한을 분리하고 3개월 원칙의 예외를 표시한다. 일반 안내는 확정하되 개별 예외는 유형별 확인한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 3440
+    }
+  },
+  {
+    "qid": "DEV-097",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 2020년 재계약일 당시 주택임대차보호법 제6조의3·제7조 및 2020년 개정 부칙/적용례(정확한 날짜 후 확정)\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 당시 계약서·인상 이력",
+    "v2_evidence": "필수 HLA_HISTORY; 조건부 H6_3,H7; 보조 INPUT\n\n- **HLA_HISTORY**: [주택임대차보호법 제정·개정문](https://law.go.kr/LSW/lsRvsDocListP.do?chrClsCd=010202&lsId=001248&lsRvsGubun=all) — 법률 제17470호 본문·부칙 제1·2조; 제17363호 본문·부칙 제1·2조; 적용 시점: 2020-07-31 시행/2020-12-10 시행 및 적용례; 확인일 2026-09-10; 개정문·부칙 해당 구간 확인; 2020년 개별 계약의 날짜·증액 경위 미제공.\n- **H6_3**: [주택임대차보호법 계약갱신 요구](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0006&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제6조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **H7**: [주택임대차보호법 차임 등 증감](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0007&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제7조 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "일부 미확인",
+    "change_reason_as_reported": "과거 개별 결론과 현재 준비 안내를 분리한다. 당시 갱신 통지 기간 변경의 경과규정도 날짜 확인 후 적용한다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 3473
+    }
+  },
+  {
+    "qid": "DEV-098",
+    "category": "정답 수정",
+    "v1_effective_evidence": "- **필수 근거:** 부동산거래신고법 2020.8.18. 개정법의 제6조의2 및 시행 부칙(2021-06-01 시행·적용례)\n- **대체/보강 근거:** 법령만으로 충분한 경우 별도 판례를 억지로 필수 지정하지 않음.\n- **보조 근거:** 정확한 계약일·지역·보증금·월세",
+    "v2_evidence": "필수 REPORT2021; 조건부 REPORT_ENF,REPORT62; 보조 INPUT\n\n- **REPORT2021**: [국토교통부 2021년 주택 임대차 신고제 Q&A](https://www.korea.kr/news/policyNewsView.do?newsId=148888119) — 2021-05-31 본문·문답 1·2·4·5·8~10; 적용 시점: 2021-06-01 도입 당시 공식 안내; 확인일 2026-09-10; 시행일·30일·갱신 예외 확인. 당시 법령 전문·부칙 직접 열람은 실패. 문답 3의 이하 조건 OR 표현은 그대로 채택하지 않음.\n- **REPORT_ENF**: [부동산 거래신고 등에 관한 법률 시행령](https://law.go.kr/LSW/lsLinkCommonInfo.do?lspttninfSeq=168133) — 제4조의3; 보증금 6천만 원 초과 또는 월차임 30만 원 초과, 지역·갱신 예외; 적용 시점: 2026-05-29 시행, 대통령령 제36365호; 확인일 2026-09-10; 제4조의3 전문·시행판 독립 열람 확인.\n- **REPORT62**: [부동산 거래신고 등에 관한 법률](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=02&joNo=0006&lsiSeq=259641&urlMode=lsScJoRltInfoR) — 제6조의2 전체; 30일·공동 신고·거부; 적용 시점: 2024-05-17 시행, 법률 제20194호; 평가일 적용판; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "일부 미확인",
+    "change_reason_as_reported": "리뷰1의 시행 전후 정보 부족 판단을 수정한다. 당시 공식 안내로 6월 1일 시행과 30일을 확인했으며 과거 법령 전문·현재 제재는 확인 한계를 남긴다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 3504
+    }
+  },
+  {
+    "qid": "DEV-099",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "- **필수 근거:** 2018년 당시 주택임대차보호법 제3조·제3조의2(정확한 날짜 후 판본 확정)\n- **대체/보강 근거:** 현재 절차는 현행 제3조의3\n- **보조 근거:** 전입이력·확정일자 기록·등기",
+    "v2_evidence": "필수 H3_6; 보조 RR16,DATE_RULE,INPUT; 조건부 H3_3\n\n- **H3_6**: [주택임대차보호법 확정일자·임대차 정보](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=06&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의6 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **RR16**: [주민등록법](https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1012776409) — 제16조 전체; 실제 전입일부터 14일; 적용 시점: 2025-07-22 시행, 법률 제20677호; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **DATE_RULE**: [주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙](https://www.law.go.kr/법령/주택임대차계약증서의확정일자부여및정보제공에관한규칙) — 제2·7·9조 및 정보제공 절차; 적용 시점: Lawbot 표시 2021-06-10 시행/대법원규칙 제2986호; 확인일 2026-09-10; 검색 표시 확인, 독립 원문 URL 열람 실패. 날짜 표시 해석은 입력과 법 제3조의6으로 확정; 세부 전산절차는 미확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.\n- **H3_3**: [주택임대차보호법 임차권등기명령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.",
+    "v1_gold_status": "일부 미확인",
+    "change_reason_as_reported": "기록 확인 방법은 확정하고 과거 권리순위 판단을 별도 분기로 둔다. 온라인 세부 화면·보존기간은 확인되지 않은 숫자를 채점하지 않는다.",
+    "v1_requirement_origin": "original_section_6",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 3536
+    }
+  },
+  {
+    "qid": "DEV-100",
+    "category": "근거·채점 기준 수정",
+    "v1_effective_evidence": "**항상 필요한 근거**\n- **2023년 실제 가입기관·보증증서·발급일·보증번호**\n- **2025년 정확한 계약 종료일과 사고 발생일**\n- 현재 상품페이지가 아니라 **가입 당시 또는 해당 보증증서에 편입된 약관**이 우선.\n\n**조건부 근거**\n- 가입기관이 확인된 후:\n  - 당시 약관의 `보증기간`\n  - `보증사고 정의`\n  - `사고 통지`\n  - `이행청구 기한·서류`\n  - `알릴 의무/면책`\n  구간을 확보.\n- 현재 임차권등기 등 보전절차를 설명할 때만 현행 주택임대차보호법 제3조의3 추가.\n\n**대체 가능한 집합**\n- 가입기관의 보증증서에 명시된 약관 원문.\n- 기관의 과거 약관 아카이브/발급문서.\n\n**검색 성공 기준**\n- 기본: `현재 2026 상품조건을 2023 보증에 그대로 적용하지 않음`.\n- 완전: 실제 기관·가입일·사고일에 맞는 약관 원문 확보.\n- 현재 문항은 기관·정확한 날짜가 없어 `의도된 사실 부족`에 따른 일부 미확인으로 유지.\n\n---",
+    "v2_evidence": "필수 실제 적용 보증서·당시 약관(미제공); 보조 HF_TERMS; 조건부 H3_3; 보조 INPUT\n\n- **HF_TERMS**: [HF 전세지킴보증 약관·안내 PDF](https://hf.go.kr/cms/etcResourceDown.do?key=$cms$M4VwRgDATA+qmwgVhhAjDK0BsFtoE4A6ABwBMAzIA&site=$cms$NYeyA) — PDF 13~20쪽: 제2~6·9~16조 및 안내 3~11쪽; 적용 시점: PDF 약관 표기 개정 2025-02-06; 현재 공식 페이지 연결본; 확인일 2026-09-10; 관련 약관 본문 확인. 보증조건 변경·면책·사고·기한·심사 구별. 2023년 가입 건에 적용됐다고 확인한 것이 아님.\n- **H3_3**: [주택임대차보호법 임차권등기명령](https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=03&joNo=0003&lsiSeq=276291&urlMode=lsScJoRltInfoR) — 제3조의3 전체; 적용 시점: 2026-01-02 시행, 법률 제21065호. 2020년·그 이전 사건에 자동 소급하지 않음; 확인일 2026-09-10; 관련 조문 본문·요건 확인.\n- **INPUT**: 제공된 원본 사실 또는 위 서비스 범위 전제. 외부 법령 검색 대상이 아니며 법적 금지의 근거로 사용하지 않는다.",
+    "v1_gold_status": "일부 미확인",
+    "change_reason_as_reported": "일반 준비·즉시 확인 안내는 확정한다. 기관 미지정 과거 보증의 지급·면책·청구기한 결론은 보류하며 현재 약관은 시점 구분의 예시만 허용한다.",
+    "v1_requirement_origin": "appendix_override",
+    "provenance": {
+      "file": "raw/02_리뷰1대비_변경표.md",
+      "line": 3568
+    }
+  }
+]

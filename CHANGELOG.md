@@ -5,6 +5,12 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-10
+
+### Added
+
+- PATCH-011 shares the reviewed DEV v2 evidence, claim-level supplements, fixed primary-law targets, and saved 200-input rankings while preserving v1. An offline diagnostic validates fingerprints and reproduces article coverage/rank results without a model or operational DB; this is not whole-answer accuracy. See `docs/patch011-dev100-v2.md`. (commit: pending)
+
 ## 2026-09-09
 
 ### Added
