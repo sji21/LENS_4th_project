@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
-- PATCH-012 distinguishes affirmative landlord repair/payment actions from negated repair duties before the tenant subject switch, preserving tenant reimbursement queries such as “the landlord did not repair it, so I replaced it.” (commit: pending)
+- PATCH-012 distinguishes affirmative landlord repair/payment actions from negated repair duties before the tenant subject switch, preserving tenant reimbursement queries such as “the landlord did not repair it, so I replaced it.” (commit: `f4fc3c3`)
 
 - PATCH-012 rejects landlord-as-repairer/claimant wording in its new indirect reimbursement route, preventing a landlord's repair-cost demand from being interpreted as the tenant's reimbursement claim. (commit: `c34a6df`)
 
