@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
-- PATCH-020 compares retaining existing civil picks and filling RRF candidates at budgets 2 through 7. On the public development inputs, budget4 covers all held required civil targets without losing prior evidence, versus budget7 for RRF alone. General TOP5 stays fixed. The provisional handoff budget is TOP3 based on the user-reported LLM constraint; DEV-059 context remains a known miss for later tuning. Operating integration and applicability judgment remain unvalidated. (commit: pending)
+- PATCH-020 compares retaining existing civil picks and filling RRF candidates at budgets 2 through 7. On the public development inputs, budget4 covers all held required civil targets without losing prior evidence, versus budget7 for RRF alone. General TOP5 stays fixed. The provisional handoff budget is TOP3 based on the user-reported LLM constraint; DEV-059 context remains a known miss for later tuning. Operating integration and applicability judgment remain unvalidated. (commit: e83976f)
 
 - PATCH-018 tests separate general TOP5 and civil channels on the same 235 inputs. General evidence is preserved, but civil TOP2 substitution loses prior civil evidence in 10 DEV inputs; unrestricted delivery raises exposure. Shares fixed comparisons and replay artifacts; production adoption is deferred. (commit: de628b3)
 
