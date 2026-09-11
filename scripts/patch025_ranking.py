@@ -36,7 +36,11 @@ def capture(out):
         raise ValueError('Commit the capture source first')
     expected=read(ROOT/'data/eval/patch024-expansion/adoption.json')
     files=expected['before'] | expected['adopted']
-    if any(sha(ROOT/p)!=v for p,v in files.items()): raise ValueError('Data differs from PATCH-024')
+    actual_files={p:sha(ROOT/p) for p in files}
+    byte_differences=[p for p in files if files[p]!=actual_files[p]]
+    if any(not p.startswith('data/index/') for p in byte_differences):
+        raise ValueError('Source data differs from PATCH-024')
+    files=actual_files
     svc=RetrievalService.from_index()
     original=svc.dense.backend.embed
     cache={}
@@ -47,8 +51,13 @@ def capture(out):
     svc.dense.backend.embed=cached
     assert svc.civil_dense.backend is svc.dense.backend
     indexed=svc.civil_dense.collection.get(include=['documents','metadatas'])
-    for cid,body,meta in zip(indexed['ids'],indexed['documents'],indexed['metadatas']):
-        assert body==svc._chunks[cid]['text'] and meta==clean_metadata(svc._chunks[cid]['metadata'])
+    allids=[]
+    for retriever in (svc.dense,svc.civil_dense):
+        content=retriever.collection.get(include=['documents','metadatas'])
+        allids.extend(content['ids'])
+        for cid,body,meta in zip(content['ids'],content['documents'],content['metadatas']):
+            assert body==svc._chunks[cid]['text'] and meta==clean_metadata(svc._chunks[cid]['metadata'])
+    assert len(allids)==len(set(allids)) and set(allids)==set(svc._chunks)
     assert len(indexed['ids'])==10
     anchor=lambda cid:norm(svc._chunks[cid]['metadata']['article_id'])
     previous={(r['qid'],r['mode']):r for r in read(ROOT/'data/eval/patch024-expansion/results.json')}
@@ -77,7 +86,9 @@ def capture(out):
     dependencies=['data/eval/patch024-expansion/results.json','data/eval/patch024-expansion/report.json',
                   'data/eval/patch015-baseline/capture/results.json','data/eval/patch015-baseline/capture/inventory.json']
     write(out/'audit.json',{'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
-        'clean':True,'data_hashes':files,'model_files':original_manifest['model_files'],
+        'clean':True,'data_hashes':files,'index_byte_differences_from_patch024':byte_differences,
+        'index_note':'Byte-identical reproduction is not claimed; all documents/metadata and 235 baseline outputs are checked.',
+        'model_files':original_manifest['model_files'],
         'settings':settings(svc),'policies':POLICIES,'baseline_matches':len(rows),
         'candidate_ids':{cid:anchor(cid) for cid in indexed['ids']},
         'dependencies':{p:hashlib.sha256((ROOT/p).read_bytes().replace(b'\r\n',b'\n')).hexdigest() for p in dependencies},
