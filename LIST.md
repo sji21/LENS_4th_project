@@ -29,7 +29,7 @@
 
 | [x] | PATCH-022 | 완료 | sji21 | `fix/patch-022-paragraph-validation` | 버그 수정 | 높음 | F-06 항 인용 검증의 법령·조문·항 소속 확인 | 교차 인용·가지번호 혼동 차단, 정확한 항 유지 및 chain/graph 검증. DB·인덱스 변경 없음. | PATCH-021 | - | 2026-09-11 | 2026-09-11 | (commit: 47d492d, e226c2e, dcb71c0) |
 
-| [ ] | PATCH-023 | 진행 중 | sji21 | `test/patch-023-separated-retrieval-baseline` | 테스트 | 높음 | 분리 채널 최신 main 재평가 | DEV200·민법35 재검색 및 일반5·민법3 순위/근거 공백 분리 집계. 검색 코드·자료 변경 없음. | PATCH-021, PATCH-022 | - | 2026-09-11 | - | (commit: pending) |
+| [x] | PATCH-023 | 완료 | sji21 | `test/patch-023-separated-retrieval-baseline` | 테스트 | 높음 | 분리 채널 최신 main 재평가 | DEV200·민법35 재검색 및 일반5·민법3 순위/근거 공백 분리 집계. 검색 코드·자료 변경 없음. | PATCH-021, PATCH-022 | - | 2026-09-11 | 2026-09-11 | (commit: ee6c55a) |
 
 ## 패치 번호 기준
 
