@@ -1,0 +1,170 @@
+{
+  "commit": "e640d3a7aa92ba7147ad0437523da48884df0d19",
+  "dirty": false,
+  "runner_lf_sha256": "20863a8c8dd4309c4180a0a632f8f654c8d7a847ccbb1c8fc5e2a55231c3ea1a",
+  "source_sha256": "d7533cfcad78f583466b11a79bdb6684062c64fea907956a9c79af59c02da5d0",
+  "before": {
+    "data/database/knowledge.sqlite3": "b7914d6e6e416609561cc2c3812ca390e7a4edbd92527e24862a729ae06961ac",
+    "data/chunks/chunks.jsonl": "0c3b03f4e58d9a90ed5c55a4bddfbfdb6a2f6d855a08a396b5290d8f8fdce0c9",
+    "data/chunks/cases.jsonl": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
+    "data/chunks/guides.jsonl": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
+    "data/chunks/civil.jsonl": "d196a2b2f236fcce4a104c6bc03ff2f03b234bb1deb5d784249c37dad165fcdc",
+    "data/index/chroma_kurev1_1024/chroma.sqlite3": "2f762d33b396be31826ca92c3993eb01ffbf3935f6b46febf11e7d1b28126f29",
+    "data/index/chroma_kurev1_1024/573bd9ae-81e2-4ec5-8f81-76890ebf4a15/data_level0.bin": "9f32b4c48e8c4644d9bfd739a52b08de3859c13d33407fb2e4b299a25ae6b6a8",
+    "data/index/chroma_kurev1_1024/573bd9ae-81e2-4ec5-8f81-76890ebf4a15/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+    "data/index/chroma_kurev1_1024/573bd9ae-81e2-4ec5-8f81-76890ebf4a15/length.bin": "20b96a595c4d2e53da5a7043a90f1aa1e8cdf2e687f8873ff218fde133cee4b7",
+    "data/index/chroma_kurev1_1024/573bd9ae-81e2-4ec5-8f81-76890ebf4a15/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/index/chroma_civil_kurev1_1024/chroma.sqlite3": "ca522013ffbbbd45fad31d4654e01db12dd529e27655920893bad43c28907b46",
+    "data/index/chroma_civil_kurev1_1024/4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4/data_level0.bin": "1daf3a5efbe8575b413f99599feb56883cb613d7e9e88523ef51a679d2529dc1",
+    "data/index/chroma_civil_kurev1_1024/4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+    "data/index/chroma_civil_kurev1_1024/4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4/length.bin": "ec20e110939f37c9aec4f313648241f1881ac3eba743f9e495372ca79cc426f4",
+    "data/index/chroma_civil_kurev1_1024/4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "after": {
+    "data/database/knowledge.sqlite3": "b7914d6e6e416609561cc2c3812ca390e7a4edbd92527e24862a729ae06961ac",
+    "data/chunks/chunks.jsonl": "0c3b03f4e58d9a90ed5c55a4bddfbfdb6a2f6d855a08a396b5290d8f8fdce0c9",
+    "data/chunks/cases.jsonl": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
+    "data/chunks/guides.jsonl": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
+    "data/chunks/civil.jsonl": "d196a2b2f236fcce4a104c6bc03ff2f03b234bb1deb5d784249c37dad165fcdc",
+    "data/index/chroma_kurev1_1024/chroma.sqlite3": "2f762d33b396be31826ca92c3993eb01ffbf3935f6b46febf11e7d1b28126f29",
+    "data/index/chroma_kurev1_1024/573bd9ae-81e2-4ec5-8f81-76890ebf4a15/data_level0.bin": "9f32b4c48e8c4644d9bfd739a52b08de3859c13d33407fb2e4b299a25ae6b6a8",
+    "data/index/chroma_kurev1_1024/573bd9ae-81e2-4ec5-8f81-76890ebf4a15/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+    "data/index/chroma_kurev1_1024/573bd9ae-81e2-4ec5-8f81-76890ebf4a15/length.bin": "20b96a595c4d2e53da5a7043a90f1aa1e8cdf2e687f8873ff218fde133cee4b7",
+    "data/index/chroma_kurev1_1024/573bd9ae-81e2-4ec5-8f81-76890ebf4a15/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/index/chroma_civil_kurev1_1024/chroma.sqlite3": "ca522013ffbbbd45fad31d4654e01db12dd529e27655920893bad43c28907b46",
+    "data/index/chroma_civil_kurev1_1024/4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4/data_level0.bin": "1daf3a5efbe8575b413f99599feb56883cb613d7e9e88523ef51a679d2529dc1",
+    "data/index/chroma_civil_kurev1_1024/4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+    "data/index/chroma_civil_kurev1_1024/4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4/length.bin": "ec20e110939f37c9aec4f313648241f1881ac3eba743f9e495372ca79cc426f4",
+    "data/index/chroma_civil_kurev1_1024/4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "settings": {
+    "search_k": {
+      "k_law": 5,
+      "k_case": 5,
+      "k_guide": 2,
+      "k_civil": 3
+    },
+    "corpora": {
+      "law": {
+        "name": "법령",
+        "doc_types": [
+          "law",
+          "decree",
+          "rule"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 5,
+        "query_expander": "src.retrieval.terms.expand_law",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [],
+        "retriever": {
+          "rrf_k": 5,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      },
+      "case": {
+        "name": "판례",
+        "doc_types": [
+          "case"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 60,
+        "query_expander": "src.retrieval.terms.expand",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [],
+        "retriever": {
+          "rrf_k": 60,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      },
+      "guide": {
+        "name": "안내",
+        "doc_types": [
+          "guide"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 60,
+        "query_expander": "src.retrieval.terms.expand",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [],
+        "retriever": {
+          "rrf_k": 60,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      },
+      "civil": {
+        "name": "민법",
+        "doc_types": [
+          "law",
+          "decree",
+          "rule"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 5,
+        "query_expander": "src.retrieval.terms.expand_civil",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [
+          "민법-제623조",
+          "민법-제626조",
+          "민법-제627조",
+          "민법-제629조",
+          "민법-제632조",
+          "민법-제634조",
+          "민법-제640조",
+          "민법-제105조",
+          "민법-제114조",
+          "민법-제357조"
+        ],
+        "retriever": {
+          "rrf_k": 5,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      }
+    }
+  },
+  "old_civil_vectors_preserved": true,
+  "other_channels_preserved": true,
+  "added_articles": [
+    "제105조",
+    "제114조",
+    "제357조"
+  ],
+  "candidate_only": true,
+  "queries": 235
+}
