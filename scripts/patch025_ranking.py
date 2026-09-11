@@ -16,6 +16,13 @@ POLICIES = {'baseline':(1,1,True), 'retain_dense2':(1,2,True),
             'dense2_only':(1,2,False)}
 
 
+def index_digest(retriever):
+    data=retriever.collection.get(include=['documents','metadatas','embeddings'])
+    entries=sorted((cid,data['documents'][i],data['metadatas'][i],data['embeddings'][i].tolist())
+                   for i,cid in enumerate(data['ids']))
+    return hashlib.sha256(json.dumps(entries,ensure_ascii=False,sort_keys=True).encode()).hexdigest()
+
+
 def select(row, policy):
     bw,dw,retain=POLICIES[policy]
     scores={}
@@ -59,6 +66,7 @@ def capture(out):
             assert body==svc._chunks[cid]['text'] and meta==clean_metadata(svc._chunks[cid]['metadata'])
     assert len(allids)==len(set(allids)) and set(allids)==set(svc._chunks)
     assert len(indexed['ids'])==10
+    index_before=[index_digest(r) for r in (svc.dense,svc.civil_dense)]
     anchor=lambda cid:norm(svc._chunks[cid]['metadata']['article_id'])
     previous={(r['qid'],r['mode']):r for r in read(ROOT/'data/eval/patch024-expansion/results.json')}
     rows=[]
@@ -77,7 +85,11 @@ def capture(out):
         assert select(row,'baseline')==[e.chunk_id for e in result.civil_laws]
         rows.append(row)
         if len(rows)%25==0: print(f'{len(rows)}/235 candidate traces',flush=True)
-    if any(sha(ROOT/p)!=v for p,v in files.items()): raise ValueError('Data changed during capture')
+    after={p:sha(ROOT/p) for p in files}
+    if any(after[p]!=v for p,v in files.items() if not p.startswith('data/index/')):
+        raise ValueError('Source data changed during capture')
+    if index_before!=[index_digest(r) for r in (svc.dense,svc.civil_dense)]:
+        raise ValueError('Index contents/vectors changed during capture')
     if subprocess.check_output(['git','status','--porcelain'],text=True).strip(): raise ValueError('Source changed')
     original_manifest=read(ROOT/'data/eval/patch015-baseline/capture/manifest.json')
     modelroot=Path.home()/'.cache/huggingface/hub/models--nlpai-lab--KURE-v1'
@@ -86,7 +98,8 @@ def capture(out):
     dependencies=['data/eval/patch024-expansion/results.json','data/eval/patch024-expansion/report.json',
                   'data/eval/patch015-baseline/capture/results.json','data/eval/patch015-baseline/capture/inventory.json']
     write(out/'audit.json',{'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
-        'clean':True,'data_hashes':files,'index_byte_differences_from_patch024':byte_differences,
+        'clean':True,'data_hashes':files,'data_hashes_after':after,'index_semantic_hashes':index_before,
+        'index_byte_differences_from_patch024':byte_differences,
         'index_note':'Byte-identical reproduction is not claimed; all documents/metadata and 235 baseline outputs are checked.',
         'model_files':original_manifest['model_files'],
         'settings':settings(svc),'policies':POLICIES,'baseline_matches':len(rows),
