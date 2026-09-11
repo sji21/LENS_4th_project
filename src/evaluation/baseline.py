@@ -20,7 +20,7 @@ from src.retrieval.service import (
     LAW, LAW_CHUNKS, LAW_TYPES, DEFAULT_CIVIL_INDEX, RetrievalService,
 )
 
-SEARCH_K = {"k_law": 5, "k_case": 5, "k_guide": 2}
+SEARCH_K = {"k_law": 5, "k_case": 5, "k_guide": 2, "k_civil": 3}
 
 
 def fingerprint(path: Path) -> dict:
@@ -83,7 +83,21 @@ def prepare_questions(rows: list[dict], chunks: list[dict], kind: str) -> tuple[
     return selected, excluded
 
 
-def evaluate(service, questions: list[dict], chunks: list[dict], kind: str) -> dict:
+def evaluate(service, questions: list[dict], chunks: list[dict], kind: str,
+             *, law_scope: str = "general") -> dict:
+    if kind not in ("law", "case") or law_scope not in ("general", "civil", "combined"):
+        raise ValueError("Invalid evaluation scope")
+    if kind == "case" and law_scope != "general":
+        raise ValueError("law_scope only applies to law evaluation")
+    combined = kind == "law" and law_scope == "combined"
+    civil = kind == "law" and law_scope == "civil"
+    cutoffs = (1, 2, 3) if civil else (1, 2, 3, 5)
+    for question in questions:
+        if not question["gold"]:
+            raise ValueError("No gold for scoring")
+        if kind == "law" and not combined:
+            if any(a.startswith("민법-") != civil for a in question["gold"]):
+                raise ValueError("Gold outside law_scope; select civil or combined explicitly")
     id_key = "article_id" if kind == "law" else "case_id"
     types = LAW_TYPES if kind == "law" else ("case",)
     ids = {c["chunk_id"]: c["metadata"][id_key] for c in chunks if c["metadata"].get("doc_type") in types}
@@ -92,20 +106,37 @@ def evaluate(service, questions: list[dict], chunks: list[dict], kind: str) -> d
         started = perf_counter()
         result = service.search(question["question"], **SEARCH_K)
         elapsed = perf_counter() - started
-        evidence = result.laws if kind == "law" else result.cases
+        if combined:
+            channels = {"general": result.laws[:5], "civil": result.civil_laws[:3]}
+            evidence = channels["general"] + channels["civil"]
+        else:
+            evidence = (result.civil_laws[:3] if civil else
+                        result.laws[:5] if kind == "law" else result.cases[:5])
         ranked = list(dict.fromkeys(ids[e.chunk_id] for e in evidence))
         gold = question["gold"]
-        metrics = {f"hit@{k}": int(hit_at_k(ranked, gold, k)) for k in (1, 2, 3, 5)}
-        metrics.update({f"recall@{k}": recall_at_k(ranked, gold, k) for k in (1, 2, 3, 5)})
-        metrics["mrr"] = reciprocal_rank(ranked, gold)
+        if combined:
+            found = set(ranked) & set(gold)
+            metrics = {"hit@law5+civil3": int(bool(found)),
+                       "all@law5+civil3": int(set(gold) <= set(ranked)),
+                       "recall@law5+civil3": len(found) / len(set(gold))}
+        else:
+            metrics = {f"hit@{k}": int(hit_at_k(ranked, gold, k)) for k in cutoffs}
+            metrics.update({f"recall@{k}": recall_at_k(ranked, gold, k) for k in cutoffs})
+            metrics["mrr"] = reciprocal_rank(ranked, gold)
         rows.append({"qid": question["qid"], "gold": gold, "retrieved_ids": ranked,
-                     "gold_ranks": {x: ranked.index(x) + 1 if x in ranked else None for x in gold},
+                     **({"channel_retrieved_ids": {
+                         name: list(dict.fromkeys(ids[e.chunk_id] for e in items))
+                         for name, items in channels.items()}} if combined else
+                        {"gold_ranks": {x: ranked.index(x) + 1 if x in ranked else None for x in gold}}),
                      "chunk_ids": [e.chunk_id for e in evidence],
                      "guide_count": len(result.guides), "seconds": elapsed, **metrics})
     if not rows:
         raise ValueError("No scorable questions")
-    keys = [f"{name}@{k}" for name in ("hit", "recall") for k in (1, 2, 3, 5)] + ["mrr"]
-    return {"n": len(rows), "metrics": {k: sum(r[k] for r in rows) / len(rows) for k in keys},
+    keys = list(metrics)
+    ranking = ("unordered union of general 5 and civil 3 chunks; no merged rank/MRR" if combined else
+               f"deduplicate IDs after {3 if civil else 5} returned chunks; MRR truncated at {3 if civil else 5}")
+    return {"scope": law_scope if kind == "law" else "case", "ranking": ranking,
+            "n": len(rows), "metrics": {k: sum(r[k] for r in rows) / len(rows) for k in keys},
             "mean_search_seconds": sum(r["seconds"] for r in rows) / len(rows), "questions": rows}
 
 
@@ -137,6 +168,7 @@ def settings(service) -> dict:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--kind", required=True, choices=("law", "case"))
+    parser.add_argument("--law-scope", choices=("general", "civil", "combined"), default="general")
     parser.add_argument("--eval-set", required=True, type=Path)
     parser.add_argument("--out", required=True, type=Path)
     parser.add_argument("--law-chunks", type=Path, default=LAW_CHUNKS)
@@ -146,6 +178,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--civil-index", type=Path, default=DEFAULT_CIVIL_INDEX)
     parser.add_argument("--model", default=DEFAULT_MODEL)
     args = parser.parse_args(argv)
+    if args.kind == "case" and args.law_scope != "general":
+        parser.error("--law-scope only applies to --kind law")
     # Never replace a frozen dataset, baseline report, or index by accident.
     if args.out.exists():
         parser.error("Output already exists; use a new report path")
@@ -175,7 +209,7 @@ def main(argv: list[str] | None = None) -> int:
         for cid, document, metadata in zip(indexed["ids"], indexed["documents"], indexed["metadatas"]):
             if document != expected[cid]["text"] or metadata != clean_metadata(expected[cid]["metadata"]):
                 raise ValueError(f"Index/chunk content mismatch: {cid}")
-        result = evaluate(service, questions, chunks, args.kind)
+        result = evaluate(service, questions, chunks, args.kind, law_scope=args.law_scope)
         revision = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True).stdout.strip()
         dirty = bool(subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True, check=True).stdout.strip())
         payload = {"created_at": datetime.now(timezone.utc).isoformat(), "code_commit": revision,
@@ -186,7 +220,6 @@ def main(argv: list[str] | None = None) -> int:
                    "inputs": inputs, "index_sqlite_before_run": index_db,
                    "civil_index_sqlite_before_run": civil_index_db,
                    "index_records_verified": len(expected), "exclusions": exclusions,
-                   "ranking": "deduplicate article_id/case_id after 5 returned chunks; MRR truncated at 5",
                    "guide_evaluation": "counts only; no guide accuracy", **result}
         args.out.parent.mkdir(parents=True, exist_ok=True)
         with args.out.open("x", encoding="utf-8") as target:

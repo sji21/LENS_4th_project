@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
+- PATCH-021 separates civil_laws (up to3 retained-and-filled candidates) from general law slots and carries civil evidence through staged retrieval, prompt, answer and citation/source validation. Existing generation general-law3/case2 limits stay unchanged. All235 live inputs match PATCH-020 and case/guide rankings are preserved. TOP3 DEV-059 context miss remains known; automatic irrelevant-civil exclusion is not implemented. (commit: 35be974)
+
 - PATCH-020 compares retaining existing civil picks and filling RRF candidates at budgets 2 through 7. On the public development inputs, budget4 covers all held required civil targets without losing prior evidence, versus budget7 for RRF alone. General TOP5 stays fixed. The provisional handoff budget is TOP3 based on the user-reported LLM constraint; DEV-059 context remains a known miss for later tuning. Operating integration and applicability judgment remain unvalidated. (commit: e83976f)
 
 - PATCH-018 tests separate general TOP5 and civil channels on the same 235 inputs. General evidence is preserved, but civil TOP2 substitution loses prior civil evidence in 10 DEV inputs; unrestricted delivery raises exposure. Shares fixed comparisons and replay artifacts; production adoption is deferred. (commit: de628b3)
@@ -16,6 +18,14 @@ This file records the 4th project from its first change onward.
 - PATCH-017 compares three predeclared rank-fusion weights using the saved 235 inputs. All three fail the adoption gate: the conservative weight adds no benefit, while stronger weights improve new civil items but displace required evidence in existing inputs. Shares per-input rankings and loss diagnostics; production behavior is unchanged. (commit: a55d9c0)
 
 ### Fixed (Bug Fixes)
+
+- PATCH-021 migrates the remaining public regression diagnostic to explicit scopes. Legacy mixed-TOP5 scores are not treated as expected split-channel scores; required-evidence gains/losses remain visible and mismatched questions/gold are rejected. (commit: 496e896)
+
+- PATCH-021 uses the same explicit civil budget (k_civil=3) for evaluation calls and captured settings; verification checks legacy settings separately from the added civil budget. (commit: 5384961)
+
+- PATCH-021 verification requires a clean committed tree, compares runner/service Git bytes with LF-normalized working bytes, and checks provenance again after retrieval. (commit: 373c465)
+
+- PATCH-021 scores general and civil result channels explicitly; mixed published regression uses general5+civil3 union coverage without a fictitious merged rank. Reports actual civil exposure and rejects mismatched gold scopes. (commit: 4878ea4)
 
 - PATCH-018 preserves captured source bytes and validates current dependencies after newline normalization, allowing clean Git checkouts to replay mixed-newline captures while rejecting content changes. The historical runner and original results remain preserved. (commit: 52b2d5f)
 

@@ -83,7 +83,7 @@ def primary_evidence_is_sufficient(
         return False
     if question_type == "guide":
         return bool(result.guides)
-    return bool(result.laws)
+    return bool(result.laws or result.civil_laws)
 
 
 def retrieve_staged(
@@ -107,6 +107,8 @@ def retrieve_staged(
     primary = RetrievalResult(
         question=question,
         laws=list(primary_raw.laws),
+        civil_laws=list(primary_raw.civil_laws),
+        civil_topics=primary_raw.civil_topics,
         guides=list(primary_raw.guides),
     )
     sufficient = primary_evidence_is_sufficient(question_type, primary)
@@ -127,6 +129,8 @@ def retrieve_staged(
     selected = RetrievalResult(
         question=question,
         laws=list(primary.laws),
+        civil_laws=list(primary.civil_laws),
+        civil_topics=primary.civil_topics,
         cases=list(secondary_raw.cases),
         guides=list(primary.guides),
     )

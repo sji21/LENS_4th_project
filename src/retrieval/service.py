@@ -437,6 +437,7 @@ class RetrievalResult:
     cases: list[Evidence] = field(default_factory=list)
     guides: list[Evidence] = field(default_factory=list)
     civil_topics: tuple[str, ...] = ()
+    civil_laws: list[Evidence] = field(default_factory=list)
 
     def as_prompt_context(self) -> str:
         """법령과 판례를 구분해 붙인 근거 묶음.
@@ -454,6 +455,10 @@ class RetrievalResult:
             parts.append(
                 "## 관련 판례\n" + "\n\n".join(e.as_prompt_block() for e in self.cases)
             )
+        if self.civil_laws:
+            parts.append(
+                "## 관련 민법 후보\n" + "\n\n".join(e.as_prompt_block() for e in self.civil_laws)
+            )
         if self.guides:
             # 안내는 맨 뒤에 두고 법적 근거가 아님을 제목에 박는다. 조문과 같은
             # 무게로 읽으면 모델이 "법에 따르면 보증 한도는…" 같은 문장을 쓴다.
@@ -464,7 +469,11 @@ class RetrievalResult:
         return "\n\n".join(parts)
 
     def is_empty(self) -> bool:
-        return not self.laws and not self.cases and not self.guides
+        return not self.laws and not self.cases and not self.guides and not self.civil_laws
+
+    @property
+    def evidences(self) -> list[Evidence]:
+        return self.laws + self.cases + self.civil_laws + self.guides
 
 
 def citation_of(metadata: dict) -> str:
@@ -656,12 +665,19 @@ class RetrievalService:
         k_law: int = 5,
         k_case: int = 5,
         k_guide: int = 2,
+        *,
+        k_civil: int | None = None,
     ) -> RetrievalResult:
         """법령 k_law 건, 판례 k_case 건, 공식 안내 k_guide 건을 각각 뽑는다.
 
         k_guide 는 **상한**이다. 실제 건수는 질문 주제에 따라 0~k_guide 로 달라진다
         (`_search_guides` 참고). 안내가 법적 근거가 아니라 실무 절차를 보태는
         자리이므로 상한을 낮게 둔다. 0 으로 주면 안내를 끄는 것이다.
+
+        민법은 civil_laws에 별도 최대3건 반환한다. 기존 규칙 선택을 보존하고
+        검색 후보로 보충하며, 법령 k_law 자리를 차감하지 않는다. k_civil=0은
+        민법만 끈다. 생략 시 k_law>0이면3, 아니면0으로 기존 검색 비활성 계약을
+        유지한다. 이 개수는 적용 확정이 아닌 후보 수다.
 
         질문이 비어 있으면 빈 결과를 준다. BM25 는 토큰이 없어 스스로 아무것도
         내지 않지만, 임베딩은 공백도 벡터로 바꿔 아무 문서나 가장 가까운 것으로
@@ -672,22 +688,19 @@ class RetrievalService:
             return RetrievalResult(question=question)
 
         law, case, guide = self.corpora
-        topics = detect_civil_topics(question) if k_law > 0 else ()
-        civil_laws = self._search_civil(question, topics, min(2, k_law))
+        # Preserve the historical all-law disable switch unless civil is explicit.
+        civil_limit = min(3, max(0, k_civil if k_civil is not None else (3 if k_law > 0 else 0)))
+        topics = detect_civil_topics(question) if civil_limit > 0 else ()
+        civil_laws = self._search_civil_candidates(question, topics, civil_limit)
         standard_laws = self._search_one(
             route_law_corpus(question, law),
             question,
-            max(0, k_law - len(civil_laws)),
+            max(0, k_law),
         )
-        # 민법은 질문 의도를 직접 설명하는 조문이라 앞에 둔다. Evidence.rank는
-        # 각 검색기의 내부 순위가 아니라 LLM이 보는 최종 순위로 다시 매긴다.
-        laws = [
-            replace(evidence, rank=rank)
-            for rank, evidence in enumerate(civil_laws + standard_laws, start=1)
-        ]
         return RetrievalResult(
             question=question,
-            laws=laws,
+            laws=standard_laws,
+            civil_laws=civil_laws,
             cases=self._search_one(case, question, k_case),
             guides=self._search_guides(guide, question, k_guide),
             civil_topics=tuple(topic.name for topic in topics if any(
@@ -696,6 +709,24 @@ class RetrievalService:
                 for evidence in civil_laws
             )),
         )
+
+    def _search_civil_candidates(
+        self, question: str, topics: tuple[CivilTopic, ...], limit: int,
+    ) -> list[Evidence]:
+        """기존 최대2개 선택을 우선 보존하고 중복 없이 후보를 보충한다."""
+        if limit <= 0:
+            return []
+        picked = self._search_civil(question, topics, min(2, limit))
+        seen = {e.chunk_id for e in picked}
+        if len(picked) < limit:
+            candidates = self._search_one(self.civil, question, len(self.civil.include_ids))
+            for evidence in candidates:
+                if evidence.chunk_id not in seen:
+                    picked.append(evidence)
+                    seen.add(evidence.chunk_id)
+                if len(picked) >= limit:
+                    break
+        return [replace(e, rank=i) for i, e in enumerate(picked, 1)]
 
     def _search_civil(
         self,

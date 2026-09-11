@@ -378,7 +378,7 @@ class WhereClauseTests(unittest.TestCase):
 
 
 class CivilRoutingTests(unittest.TestCase):
-    """민법은 의도가 확인될 때만 0~2건, 전체 법령 3칸 안에서 나온다."""
+    """민법 후보는 별도 최대3건이며 기존 규칙 선택을 우선 보존한다."""
 
     def service(self, dense: bool = True) -> RetrievalService:
         chunks = CHUNKS + CIVIL_CHUNKS
@@ -390,33 +390,33 @@ class CivilRoutingTests(unittest.TestCase):
             {f"민법-제{number}조" for number in (623, 626, 627, 629, 632, 634, 640)},
         )
 
-    def test_unrelated_question_gets_no_civil_article(self):
+    def test_unrelated_question_keeps_general_channel_separate(self):
         question = "전입신고를 늦게 하면 어떤 문제가 생기나요?"
         self.assertEqual(detect_civil_topics(question), ())
         result = self.service().search(question, k_law=3, k_case=0)
         self.assertFalse(any(e.citation.startswith("민법") for e in result.laws))
         self.assertEqual(result.civil_topics, ())
 
-    def test_repair_question_uses_one_of_three_law_slots(self):
+    def test_repair_question_preserves_general_slots(self):
         result = self.service().search(
             "보일러가 고장 났는데 집주인이 고쳐주는 게 맞나요?",
             k_law=3,
             k_case=0,
         )
         self.assertEqual(len(result.laws), 3)
-        self.assertEqual(result.laws[0].citation.split()[0], "민법")
-        self.assertIn("제623조", result.laws[0].citation)
+        self.assertEqual(result.civil_laws[0].citation.split()[0], "민법")
+        self.assertIn("제623조", result.civil_laws[0].citation)
         self.assertEqual(result.civil_topics, ("수선의무",))
 
-    def test_two_distinct_repair_grounds_use_at_most_two_slots(self):
+    def test_two_existing_grounds_are_preserved_with_candidate_fill(self):
         result = self.service().search(
             "보일러가 고장 나서 제 돈으로 먼저 수리비를 냈는데 돌려받을 수 있나요?",
             k_law=3,
             k_case=0,
         )
-        civil = [e for e in result.laws if e.citation.startswith("민법")]
+        civil = result.civil_laws
         self.assertEqual(len(result.laws), 3)
-        self.assertEqual(len(civil), 2)
+        self.assertEqual(len(civil), 3)
         self.assertTrue(any("제623조" in e.citation for e in civil))
         self.assertTrue(any("제626조" in e.citation for e in civil))
 
@@ -424,7 +424,7 @@ class CivilRoutingTests(unittest.TestCase):
         result = self.service().search(
             "월세를 두 달 밀렸다고 바로 나가라고 합니다.", k_law=3, k_case=0
         )
-        self.assertIn("제640조", result.laws[0].citation)
+        self.assertIn("제640조", result.civil_laws[0].citation)
 
     def test_arrears_renewal_question_stays_in_housing_law(self):
         question = "월세를 두 달 밀렸는데 다음 계약 갱신을 거절할 수 있나요?"
@@ -438,7 +438,7 @@ class CivilRoutingTests(unittest.TestCase):
             k_law=3,
             k_case=0,
         )
-        self.assertIn("제629조", result.laws[0].citation)
+        self.assertIn("제629조", result.civil_laws[0].citation)
 
     def test_natural_reimbursement_wording_routes_to_article_626(self):
         result = self.service().search(
@@ -446,7 +446,7 @@ class CivilRoutingTests(unittest.TestCase):
             k_law=3,
             k_case=0,
         )
-        self.assertTrue(any("제626조" in e.citation for e in result.laws[:2]))
+        self.assertTrue(any("제626조" in e.citation for e in result.civil_laws[:2]))
 
     def test_natural_sublet_wording_routes_to_article_629(self):
         result = self.service().search(
@@ -454,7 +454,7 @@ class CivilRoutingTests(unittest.TestCase):
             k_law=3,
             k_case=0,
         )
-        self.assertIn("제629조", result.laws[0].citation)
+        self.assertIn("제629조", result.civil_laws[0].citation)
 
     def test_unusable_room_wording_routes_to_article_627(self):
         result = self.service().search(
@@ -462,7 +462,7 @@ class CivilRoutingTests(unittest.TestCase):
             k_law=3,
             k_case=0,
         )
-        self.assertIn("제627조", result.laws[0].citation)
+        self.assertIn("제627조", result.civil_laws[0].citation)
 
     def test_repair_notice_wording_routes_to_article_634(self):
         result = self.service().search(
@@ -470,12 +470,28 @@ class CivilRoutingTests(unittest.TestCase):
             k_law=3,
             k_case=0,
         )
-        self.assertIn("제634조", result.laws[0].citation)
+        self.assertIn("제634조", result.civil_laws[0].citation)
 
     def test_zero_law_limit_also_disables_civil_search(self):
         result = self.service().search("보일러가 고장 났어요", k_law=0, k_case=0)
         self.assertEqual(result.laws, [])
+        self.assertEqual(result.civil_laws, [])
         self.assertEqual(result.civil_topics, ())
+
+    def test_civil_limit_is_separate_and_capped_at_three(self):
+        service = self.service()
+        result = service.search("보일러 수리가 필요해요", k_law=1, k_civil=99)
+        self.assertEqual(len(result.laws), 1)
+        self.assertEqual(len(result.civil_laws), 3)
+        self.assertEqual([e.rank for e in result.civil_laws], [1, 2, 3])
+        self.assertEqual(len({e.chunk_id for e in result.civil_laws}), 3)
+        self.assertTrue(all(not e.citation.startswith("민법") for e in result.laws))
+        disabled = service.search("보일러 수리가 필요해요", k_law=3, k_civil=0)
+        self.assertEqual(len(disabled.laws), 3)
+        self.assertEqual(disabled.civil_laws, [])
+        only_civil = service.search("보일러 수리가 필요해요", k_law=0, k_case=0, k_guide=0, k_civil=2)
+        self.assertEqual(only_civil.laws, [])
+        self.assertEqual(len(only_civil.civil_laws), 2)
 
     def test_bm25_indexes_are_physically_separated(self):
         service = self.service(dense=False)
@@ -490,7 +506,7 @@ class CivilRoutingTests(unittest.TestCase):
         service = RetrievalService(CHUNKS + CIVIL_CHUNKS, standard_dense, civil_dense=civil_dense)
         self.assertIs(service._retrievers[CIVIL.name].members[1].retriever, civil_dense)
         self.assertIs(service._retrievers[LAW.name].members[1].retriever, standard_dense)
-        self.assertIn("제623조", service.search("보일러가 고장 났어요", k_law=3).laws[0].citation)
+        self.assertIn("제623조", service.search("보일러가 고장 났어요", k_law=3).civil_laws[0].citation)
 
     def test_or_clause_is_supported_too(self):
         where = {"$or": [{"doc_type": "law"}, {"doc_type": "case"}]}
@@ -542,8 +558,8 @@ class CivilNaturalWordingTests(unittest.TestCase):
         result = RetrievalService(chunks, FakeDense(chunks)).search(
             "제가 사는 집 방 하나를 세를 놓아도 되나요?", k_law=3, k_case=0,
         )
-        self.assertIn("제629조", result.laws[0].citation)
-        self.assertIn("제632조", result.laws[1].citation)
+        self.assertIn("제629조", result.civil_laws[0].citation)
+        self.assertIn("제632조", result.civil_laws[1].citation)
         self.assertEqual(len(result.laws), 3)
 
     def test_natural_wording_is_detected(self):
