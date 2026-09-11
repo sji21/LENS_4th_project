@@ -36,18 +36,18 @@
     "data/index/chroma_civil_kurev1_1024/4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4/length.bin": "ec20e110939f37c9aec4f313648241f1881ac3eba743f9e495372ca79cc426f4",
     "data/index/chroma_civil_kurev1_1024/4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
-  "commit": "53849616542a8aeafdd419b783e7e2a2699f7745",
+  "commit": "373c465d93d30944832b451f890ef7c7f6e5dbce",
   "status": "",
   "source_provenance": {
-    "commit": "53849616542a8aeafdd419b783e7e2a2699f7745",
-    "tree": "a4d2028807f6e808026f063d3954436730c953ca",
+    "commit": "373c465d93d30944832b451f890ef7c7f6e5dbce",
+    "tree": "3f3b9d54c149c185cdda8f3b1358df94613f4403",
     "status": "",
     "normalization": "CRLF to LF only",
     "sources": {
       "scripts/patch021_verify.py": {
-        "working_sha256": "72cffc023a80b6d2687e43afc5fa050f55367ab0140c074e68475dcbf8d2d05f",
-        "git_sha256": "72cffc023a80b6d2687e43afc5fa050f55367ab0140c074e68475dcbf8d2d05f",
-        "lf_sha256": "72cffc023a80b6d2687e43afc5fa050f55367ab0140c074e68475dcbf8d2d05f"
+        "working_sha256": "2450e900a76be410e127f92d44875687c211d4479c5595d1905fc98fb52d65a9",
+        "git_sha256": "2450e900a76be410e127f92d44875687c211d4479c5595d1905fc98fb52d65a9",
+        "lf_sha256": "2450e900a76be410e127f92d44875687c211d4479c5595d1905fc98fb52d65a9"
       },
       "src/retrieval/service.py": {
         "working_sha256": "add19d5a7e551e5c85f19fb0ac7c57b259de9d62a869190ea31b82ca6b3791cc",
@@ -56,7 +56,7 @@
       }
     }
   },
-  "runner_sha256": "72cffc023a80b6d2687e43afc5fa050f55367ab0140c074e68475dcbf8d2d05f",
+  "runner_sha256": "2450e900a76be410e127f92d44875687c211d4479c5595d1905fc98fb52d65a9",
   "service_sha256": "add19d5a7e551e5c85f19fb0ac7c57b259de9d62a869190ea31b82ca6b3791cc",
   "expected_bundle_sha256": "138dbe3f93ecb9719d2626d2b8550b04294d830fb1b2cf78798334ef1870aef6",
   "model_files": {
@@ -75,8 +75,7 @@
     "search_k": {
       "k_law": 5,
       "k_case": 5,
-      "k_guide": 2,
-      "k_civil": 3
+      "k_guide": 2
     },
     "corpora": {
       "law": {
@@ -187,12 +186,6 @@
           }
         }
       }
-    }
-  },
-  "settings_comparison": {
-    "legacy_settings_unchanged": true,
-    "added_search_k": {
-      "k_civil": 3
     }
   },
   "generation": false
