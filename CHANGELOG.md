@@ -19,7 +19,7 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
-- PATCH-022 validates all paragraphs in article-linked lists/ranges and preserves explicit paragraph structure across recognized dated history notes, while still rejecting mixed article headings. (commit: pending)
+- PATCH-022 validates all paragraphs in article-linked lists/ranges and preserves explicit paragraph structure across recognized dated history notes, while still rejecting mixed article headings. (commit: e226c2e)
 
 - PATCH-022 fixes F-06 paragraph validation: require the exact named law/article and explicit paragraph structure in that evidence. Cross-references, quoted numbering, ambiguous excerpts and unnumbered text cannot establish paragraph existence. Includes civil evidence and chain/graph regression coverage. (commit: 47d492d)
 
