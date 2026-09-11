@@ -18,6 +18,7 @@ from django.views.decorators.http import require_GET, require_POST
 
 from src.document_check.extraction import DocumentValidationError, OcrUnavailableError
 from .models import Conversation
+from .leases import heartbeat
 from . import services
 
 logger = logging.getLogger(__name__)
@@ -142,10 +143,11 @@ def exclusive_conversation(request, payload):
     conversation.refresh_from_db()
     duplicate = request_id in conversation.state.get("completed_requests", [])
     try:
-        yield conversation, duplicate
+        with heartbeat(conversation.pk, token):
+            yield conversation, duplicate
         if not duplicate:
             conversation.state["completed_requests"] = (conversation.state.get("completed_requests", []) + [request_id])[-32:]
-        updated = Conversation.objects.filter(pk=conversation.pk, lease_token=token).update(
+        updated = Conversation.objects.filter(pk=conversation.pk, lease_token=token, busy_until__gt=timezone.now()).update(
             state=conversation.state, expires_at=timezone.now() + timedelta(seconds=settings.CHAT_TTL_SECONDS),
         )
         if not updated:
@@ -216,6 +218,20 @@ def delete_document(request, document_id):
             conversation.state["documents"] = [d for d in documents if d["document_id"] != document_id]
             # Drop history too: deleted document facts must not survive in follow-up prompts.
             conversation.state["messages"] = []
+    return JsonResponse(services.public_state(conversation))
+
+
+@api
+@require_POST
+def simplify_message(request):
+    payload = json_body(request)
+    message_id = payload.get("message_id")
+    if not isinstance(message_id, str) or not message_id.strip():
+        raise ApiError("다시 설명할 답변을 찾지 못했습니다.")
+    with exclusive_conversation(request, payload) as (conversation, duplicate):
+        if not duplicate:
+            if services.simplify_message(conversation.state, message_id.strip()) is None:
+                raise ApiError("현재 대화의 답변을 선택해 주세요.", 404)
     return JsonResponse(services.public_state(conversation))
 
 
