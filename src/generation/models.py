@@ -52,6 +52,7 @@ class Answer:
     requires_official_citation: bool = True
     # 최종 답변이 어디까지 검증됐는지 평가·운영 로그에서 확인하기 위한 값.
     validation_mode: ValidationMode = "not_applicable"
+    civil_laws: tuple[Evidence, ...] = ()
 
     @property
     def evidences(self) -> tuple[Evidence, ...]:
@@ -61,7 +62,7 @@ class Answer:
           그것을 인용하는데, 여기에 없으면 인용 검증(citation.py)이 근거에 없는
           출처로 보고 환각으로 잡는다.
         """
-        return self.laws + self.cases + self.guides
+        return self.laws + self.cases + self.civil_laws + self.guides
 
     def sources(self) -> list[dict]:
         """화면·JSON 출력용 출처 목록.

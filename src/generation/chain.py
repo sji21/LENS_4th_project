@@ -439,6 +439,7 @@ def _abstained_after_validation(
         status="abstained",
         text=f"{_VALIDATION_FAILED_TEXT}\n\n{prompt_module.DISCLAIMER}",
         laws=tuple(result.laws),
+        civil_laws=tuple(result.civil_laws),
         cases=tuple(result.cases),
         guides=tuple(result.guides),
         document_evidences=document_evidences,
@@ -591,6 +592,7 @@ def answer_question(
             status="abstained",
             text=f"{prompt_module.GENERATION_FAILED_TEXT}\n\n{prompt_module.DISCLAIMER}",
             laws=tuple(result.laws),
+            civil_laws=tuple(result.civil_laws),
             cases=tuple(result.cases),
             guides=tuple(result.guides),
             document_evidences=document_evidences,
@@ -608,12 +610,13 @@ def answer_question(
             status="abstained",
             text=f"{prompt_module.GENERATION_FAILED_TEXT}\n\n{prompt_module.DISCLAIMER}",
             laws=tuple(result.laws),
+            civil_laws=tuple(result.civil_laws),
             cases=tuple(result.cases),
             guides=tuple(result.guides),
             document_evidences=document_evidences,
         )
 
-    evidences = tuple(result.laws + result.cases + result.guides)
+    evidences = tuple(result.evidences)
     grounded_text = ground_answer_conditions(raw_text, evidences)
     if grounded_text != raw_text:
         logger.info("검색 근거의 시점 표현으로 생성 답변의 오기를 교정했습니다.")
@@ -627,6 +630,7 @@ def answer_question(
         text=f"{raw_text}\n\n{prompt_module.DISCLAIMER}",
         raw_text=raw_text,
         laws=tuple(result.laws),
+        civil_laws=tuple(result.civil_laws),
         cases=tuple(result.cases),
         guides=tuple(result.guides),
         document_evidences=document_evidences,

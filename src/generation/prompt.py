@@ -244,6 +244,7 @@ def _answer_source_names(result: RetrievalResult) -> str:
     groups = (
         ("관련 법령", result.laws),
         ("관련 판례", result.cases),
+        ("관련 민법 후보", result.civil_laws),
         ("관련 기관 안내", result.guides),
     )
     lines = ["[답변에 쓸 출처명]"]
