@@ -38,3 +38,24 @@ def test_replay_preserves_top_two_and_deduplicates():
     row={'seed':['a','b'],'bm25':['c','d'],'dense':['d','c']}
     assert select(row,'baseline')==['a','b','c']
     assert select(row,'keep_top2_dense2')==['a','b','d']
+
+
+def test_published_capture_and_live_results_replay():
+    from scripts.patch025_ranking import ROOT, check
+    result=check(ROOT/'data/eval/patch025-ranking')
+    assert result['policies']['keep_top2_dense2']['lost_required']==[]
+    assert result['policies']['keep_top2_dense2']['groups']['context_diagnostic']['union_all_required']['hits']==30
+
+
+def test_missing_published_evidence_is_rejected_even_with_updated_manifest(tmp_path):
+    import json
+    from scripts.patch025_ranking import report
+    (tmp_path/'manifest.json').write_text(json.dumps({}),encoding='utf-8')
+    with pytest.raises(ValueError,match='Incomplete published bundle'):
+        report(tmp_path)
+
+
+def test_report_float_tolerance_does_not_hide_count_changes():
+    from scripts.patch025_ranking import close
+    assert close({'rate':0.1+0.2},{'rate':0.3})
+    assert not close({'hits':29},{'hits':30})

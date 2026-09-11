@@ -7,6 +7,10 @@ This file records the 4th project from its first change onward.
 
 ## 2026-09-11
 
+### Changed
+
+- PATCH-025 preserves civil TOP2 and uses double dense weight only for the third candidate. Nine policies were compared on235 inputs; DEV context full targets29→30, Hit1 preserved and zero prior required-evidence losses. All235 live results match. Third candidates change on72 inputs; legal relevance and LLM quality are not established. No data/model changes. (commit: 23ad5bb, 0ee906e)
+
 ### Added
 
 - PATCH-024 adds Civil Act articles 105/114/357 (7→10 candidates, unchanged TOP3) after 235-input comparison with zero prior required-evidence losses and unchanged general/case/guide rankings. DEV question/context complete targets rise 23→28/25→29; data gaps fall 45→32. Backed-up local adoption matches all235 candidate results. Publishes evidence and offline replay; search tuning remains separate. (commit: e640d3a, 0056ae6, 486e57f)

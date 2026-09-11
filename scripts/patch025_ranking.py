@@ -112,6 +112,12 @@ def capture(out):
 
 
 def report(run):
+    run=run.resolve()
+    if not run.is_relative_to(ROOT/'tmp'):
+        manifest=read(run/'manifest.json')
+        if set(manifest)!= {'audit.json','traces.json','live-verification.json','summary.json'}:
+            raise ValueError('Incomplete published bundle')
+        if any(sha(run/p)!=v for p,v in manifest.items()): raise ValueError('Published evidence changed')
     audit=read(run/'audit.json'); rows=read(run/'traces.json')
     if sha(run/'traces.json')!=audit['traces_sha256']: raise ValueError('Trace changed')
     for p,v in audit['dependencies'].items():
@@ -119,6 +125,8 @@ def report(run):
     prior=read(ROOT/'data/eval/patch024-expansion/report.json')['details']
     old={(r['qid'],r['mode']):r for r in prior}
     if len(rows)!=235 or {(r['qid'],r['mode']) for r in rows}!=set(old): raise ValueError('Incomplete capture')
+    queries={(r['qid'],r['mode']):r['query_sha256'] for r in read(ROOT/'data/eval/patch015-baseline/capture/results.json')}
+    if any(r['query_sha256']!=queries[r['qid'],r['mode']] for r in rows): raise ValueError('Query mismatch')
     anchors=audit['candidate_ids']
     available={r['article_anchor'] for r in read(ROOT/'data/eval/patch015-baseline/capture/inventory.json')} | set(anchors.values())
     results={}; misses=[]
@@ -144,6 +152,34 @@ def report(run):
         groups.update({t:summarize([d for d in details if d['track']==t]) for t in ('required_law','scope_provisional','diagnostic_only')})
         results[policy]={'groups':groups,'lost_required':[{'qid':d['qid'],'mode':d['mode'],'lost':d['lost']} for d in details if d['lost']], 'details':details}
     return {'policies':results,'miss_causes':misses}
+
+
+def compact(result):
+    baseline=result['policies']['baseline']['details']
+    selected=result['policies']['keep_top2_dense2']['details']
+    changed=[{'qid':a['qid'],'mode':a['mode'],'before':b['channels']['civil'],'after':a['channels']['civil']}
+             for b,a in zip(baseline,selected) if b['channels']['civil']!=a['channels']['civil']]
+    return {'selected':'keep_top2_dense2','exploratory_followups':['keep_top2_dense2','keep_top2_dense'],
+            'policies':{k:{'groups':v['groups'],'lost_required':v['lost_required']} for k,v in result['policies'].items()},
+            'miss_causes':result['miss_causes'],'changed_inputs':changed}
+
+
+def close(a,b):
+    if type(a)!=type(b): return False
+    if isinstance(a,float): return __import__('math').isclose(a,b,rel_tol=0,abs_tol=1e-12)
+    if isinstance(a,dict): return a.keys()==b.keys() and all(close(a[k],b[k]) for k in a)
+    if isinstance(a,list): return len(a)==len(b) and all(close(x,y) for x,y in zip(a,b))
+    return a==b
+
+
+def check(run):
+    result=report(run)
+    if not close(compact(result),read(run/'summary.json')): raise ValueError('Summary mismatch')
+    live=read(run/'live-verification.json')['rows']
+    expected={(r['qid'],r['mode']):r['channels']['civil'] for r in result['policies']['keep_top2_dense2']['details']}
+    if len(live)!=235 or {(r['qid'],r['mode']) for r in live}!=set(expected): raise ValueError('Incomplete live verification')
+    if any(r['civil_laws']!=expected[r['qid'],r['mode']] for r in live): raise ValueError('Live ranking mismatch')
+    return result
 
 
 def verify_live(run):
@@ -177,10 +213,13 @@ def verify_live(run):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--capture',type=Path);p.add_argument('--report',type=Path);p.add_argument('--verify-live',type=Path);args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--capture',type=Path);p.add_argument('--report',type=Path);p.add_argument('--verify-live',type=Path);p.add_argument('--check',type=Path);args=p.parse_args()
     os.environ.update(HF_HUB_OFFLINE='1',TRANSFORMERS_OFFLINE='1',LANGSMITH_TRACING='false',ANONYMIZED_TELEMETRY='False')
     if args.capture:
         os.environ.update(HF_HUB_OFFLINE='1',TRANSFORMERS_OFFLINE='1',LANGSMITH_TRACING='false',ANONYMIZED_TELEMETRY='False')
         capture(args.capture)
     if args.report: write(args.report/'comparison.json',report(args.report))
     if args.verify_live: verify_live(args.verify_live)
+    if args.check:
+        check(args.check)
+        print('235 inputs, 9 policies and live adoption verified')
