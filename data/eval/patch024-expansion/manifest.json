@@ -1,0 +1,18 @@
+{
+  "files": {
+    "adoption.json": "f7c4b122d7436d737bdc24baee776a3768eff73927ec0adb2d387b5dde535b01",
+    "audit.json": "8dc24e512767e8aa7322511df94a8bac5a4f319b0b2a80920f3f77b75f1600dc",
+    "new-chunks.jsonl": "8215dec9d224db52cc9f33141f3978acff75fe3166dbdd2646f7dbd46e479b27",
+    "operating-verification.json": "47a82f3bbb6f75aa94809a688bb4d5564e6d8bb18b941d52a6c633aca84fa558",
+    "operating-verifier.py": "f062b1747d38e1d504098c19123a8766c5c62e1db8e1cabcdaa136bfc8e68e0c",
+    "provenance.json": "fd571553abc9244bc42b16aa73b3dd6c4eae5da12cbf2b2d8873c9ba854e6898",
+    "report.json": "4c791dde3e9e2395a55903d3df21ff81f6e93c1f6181a8a12b87992c4439391d",
+    "results.json": "c9fa20cc92276be8408d63826d36bcfae87be9f60e60896a11018cdc26282ba4"
+  },
+  "baseline_files": {
+    "data/eval/patch023-baseline/report.json": "75c3f44cd2af78009c07296c3b09ecdf9b7054a868a05bde8939865901a98476",
+    "data/eval/patch023-baseline/capture/results.json": "039d7b4982fdce6cd5b8d26fced66e30a6fc4af5829a0f77b30fb8ad09ff9e35",
+    "data/eval/patch015-baseline/capture/inventory.json": "c607c761e58422015231964cf7a37dfb291186a8de3d4bb98d8496ec4f60e9e9",
+    "data/eval/patch015-baseline/capture/results.json": "3834e7c0e8d5f1eb5c2f60bfd6f3106cf1a765fe8f18c535dac444af91029f4c"
+  }
+}

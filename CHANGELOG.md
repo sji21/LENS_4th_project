@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
+- PATCH-024 adds Civil Act articles 105/114/357 (7→10 candidates, unchanged TOP3) after 235-input comparison with zero prior required-evidence losses and unchanged general/case/guide rankings. DEV question/context complete targets rise 23→28/25→29; data gaps fall 45→32. Backed-up local adoption matches all235 candidate results. Publishes evidence and offline replay; search tuning remains separate. (commit: e640d3a, 0056ae6, 486e57f)
+
 - PATCH-023 records a fresh main-based 235-input separated retrieval baseline: DEV question/context complete fixed targets 23/25 of100, data gaps45, held-target misses7/5, unscored25. Civil required track covers civil29/29 and all law28/29. No production changes. (commit: ee6c55a)
 
 - PATCH-021 separates civil_laws (up to3 retained-and-filled candidates) from general law slots and carries civil evidence through staged retrieval, prompt, answer and citation/source validation. Existing generation general-law3/case2 limits stay unchanged. All235 live inputs match PATCH-020 and case/guide rankings are preserved. TOP3 DEV-059 context miss remains known; automatic irrelevant-civil exclusion is not implemented. (commit: 35be974)

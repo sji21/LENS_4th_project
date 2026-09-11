@@ -1,0 +1,61 @@
+{
+  "model_files": {
+    "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/config.json": "852d42e020c7f989c2acaf30fc683b7f768e8c6d1ab17166e835442162bd825d",
+    "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/config_sentence_transformers.json": "8c73684c2160f2209f3706d6cbe0e933287fe6945d9546042be4c105cdb5252e",
+    "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/model.safetensors": "c18156e80caf8ff45eb84a24a853130c3bca03087ccb41b051f86e7556bae02c",
+    "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/modules.json": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+    "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/README.md": "39e4b634e81d17d98067dd5ffbedafe2f17ca29e292d1ac9ef000d9b9a24f36f",
+    "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/sentence_bert_config.json": "eb9b44b13c0f52a3b3685c3b1cbdea1ba8b04bea123b98f61610048940776eb1",
+    "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/special_tokens_map.json": "8c785abebea9ae3257b61681b4e6fd8365ceafde980c21970d001e834cf10835",
+    "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/tokenizer.json": "fb3c3b93c46fd5a8634e262e1b7de7da11a18b527aa2282b312952b692781dfd",
+    "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/tokenizer_config.json": "b87c8703482b0300d3da30e201519aa641f6a450f5eb5bf1e624afbf70c74d80",
+    "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/1_Pooling/config.json": "13e69897522ee8255104483ed9f219465d1be3936654a54a318758738052789e"
+  },
+  "packages": {
+    "torch": "2.14.0",
+    "transformers": "5.16.1",
+    "sentence-transformers": "6.0.1",
+    "chromadb": "1.5.9"
+  },
+  "criteria_lf_sha256": {
+    "data/eval/dev100-v2/.gitattributes": "c70938aced3b7f1e0ddc7d45151e4c341d43cfccb7cb546fde9c48823af60109",
+    "data/eval/dev100-v2/changes-v1-v2.json": "aa0faa0ee6bf72c854e27a7fef42cf4aeaa4be3a2a66760aa52efa3b76a91e26",
+    "data/eval/dev100-v2/diagnostic-plan.json": "925b6dd195e7b7553ab5389317260576d69a5553cfd8bc0ff93309f1e8eb5d10",
+    "data/eval/dev100-v2/manifest.json": "b16eeff53de21b3ffd3ddd10e07c01210b0a2f8cab18413ce0fadf58bfdc92d8",
+    "data/eval/dev100-v2/questions.json": "efc9c97d06a5a56bdaa7c0b71ebd44e99819f9033202baee5f7823f025f60a6b",
+    "data/eval/dev100-v2/README.md": "f42fe65d5372c6f09a77880625cf39b1ecfd43c93e190128965f11eb3b969308",
+    "data/eval/dev100-v2/reference-run.json": "d668a92a791e96de134f090b972fc7d58e8aa24044141475f9125ef5a7fbe6eb",
+    "data/eval/dev100-v2/requirements.json": "8df87ff1e6112273add2402a94a9986502cb5f1dca6bf03117c5a1a9a88ac597",
+    "data/eval/dev100-v2/source-registry.json": "972370640759cd61446b0b3dd379760fe618fa49f6cd982fc55efa1d0afb9bd9",
+    "data/eval/dev100-v2/supplement-claims.json": "1bc467fad8ce90d610398a3edbb7da6280444fad6323db736749c380ad74e9d4",
+    "data/eval/dev100-v2/expected/article-diagnostics.json": "4927b4d23504d110fbdee27050cf13d41a5f96d3e695396b9354bca6170f2f1d",
+    "data/eval/dev100-v2/expected/missing-primary-articles.json": "cf5693937889e4456a693b357f41910df9075263a1265fd163783599ebe87f0a",
+    "data/eval/dev100-v2/expected/summary.json": "d6a18f99f5f6584c9f23958d549dd555a8b4c830b863a00ca40ac5d30dd21188",
+    "data/eval/dev100-v2/raw/01_최종정답_근거통합본.md": "6b01914ada71a229b3ab2067f6b9902324e0baa7302041fea9d8ad8b0f126f41",
+    "data/eval/dev100-v2/raw/02_리뷰1대비_변경표.md": "55d2dafd36347bc5df5ed4f4fbde29f94a1ffe4756fd0437b9f39e0d4b61372f",
+    "data/eval/dev100-v2/raw/03_미확인_판단보류목록.md": "7ec8349955beb5cd06848631a39b9663a353acfbd38bba4047d27e599673bf7d",
+    "data/eval/dev100-v2/raw/04_실제검색_원문확인기록.md": "67a01b06702f751134a05ebcd1f6de93956297c22d57954e4ffbcf970fd55dab",
+    "data/eval/dev100-v2/raw/05_리뷰2_최소보완_명제별근거표.md": "9bf0057e1e31b6e235912662b131367a74bb49dc4fababe756e3491ce598ac8e",
+    "data/eval/dev100-v2/raw/06_최소보완_검색확인기록.md": "674f17babf9cc40d0e680fd56ee6ea328a5f646c7cf228ecb4ab0bcc544564a3",
+    "data/eval/dev100-v2/raw/검토진행.md": "b2341e28e203160a9d0bdb9c1d095d181cf433f45ce16e843b36bd78e462626e",
+    "data/eval/civil-review2/.gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    "data/eval/civil-review2/manifest.json": "8e0c95c8e3e69b0420c5d54c0e284db31942479b08fe0c06a5a9a48043664362",
+    "data/eval/civil-review2/README.md": "e22c183e8a94778c63a02eaaa1d2cf36f7360ea3f13ed014d21683e31a256077",
+    "data/eval/civil-review2/retrieval-plan.json": "0d4da52e5636d7e26b3a01d841a15bf474eaf0214974ea108a306b44317408ca",
+    "data/eval/civil-review2/retrieval-targets.md": "55be7749a18445c35e60e3db48ac6b20139fc1ed797bd260da48c965dd135a00",
+    "data/eval/civil-review2/review/00_검토결과_안내.md": "e5b17a42b169339a9d67b71d32fdf5f4863d43eed3605ad0ca4b7f04ac0c2075",
+    "data/eval/civil-review2/review/01_최종정답_근거통합본.md": "ae54f7ef11bf2328cef0f4ac92217bad1e384bd2430e5e6cc2fe4641c4e779ce",
+    "data/eval/civil-review2/review/02_리뷰1대비_변경표.md": "241712bcab6df62c23b8b241b7a65e8e9bde71b88843b411469bfc704236ec3d",
+    "data/eval/civil-review2/review/03_미확인_판단보류목록.md": "08a0359495304b990137e07f3c7d8a3c5e6239916e92cef5f1d0410fc46698e3",
+    "data/eval/civil-review2/review/04_실제검색_원문확인기록.md": "d44bdc6dfea321399bd89baea092a35812299126f0d8cadab6053302d0d86822",
+    "data/eval/civil-review2/review/civil-selection-review2.json": "320b85ddeaec714867d22fd1fb4340864b3f568f7d19395cbd71bfbf4e0e7664"
+  },
+  "tests": {
+    "passed": 846,
+    "skipped": 3,
+    "subtests": 124
+  },
+  "candidate_commit": "e640d3a7aa92ba7147ad0437523da48884df0d19",
+  "operating_service_commit": "0056ae6",
+  "operating_verification_note": "Source service unchanged during verification; report packaging may make the overall working tree dirty."
+}
