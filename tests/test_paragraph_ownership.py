@@ -79,6 +79,7 @@ def test_all_list_and_range_paragraphs_are_checked(suffix, last, valid):
 
 @pytest.mark.parametrize('note', [
     '[제2조에서 이동, 종전 제8조는 제15조로 이동 <2013. 12. 30.>]',
+    '[종전 제7조는 제14조로 이동 <2013. 12. 30.>]',
     '[전문개정 2013. 12. 30.]', '[본조신설 2013. 12. 30.]'])
 def test_history_notes_preserve_real_paragraphs(note):
     ev = evidence('[주택임대차보호법 시행령 제8조]\n① 첫 항\n② 둘째 항\n' + note,

@@ -14,7 +14,8 @@ _CONTINUATION = re.compile(
 _ARTICLE = r'제\s*\d+\s*조(?:\s*의\s*\d+)?'
 _HISTORY = re.compile(
     r'\[(?:(?:전문개정|본조신설|제목개정|제목변경)\s*'
-    r'|'+_ARTICLE+r'에서\s*이동(?:,\s*종전\s*'+_ARTICLE+r'는\s*'+_ARTICLE+r'로\s*이동)?\s*)'
+    r'|'+_ARTICLE+r'에서\s*이동(?:,\s*종전\s*'+_ARTICLE+r'는\s*'+_ARTICLE+r'로\s*이동)?\s*'
+    r'|종전\s*'+_ARTICLE+r'는\s*'+_ARTICLE+r'로\s*이동\s*)'
     r'<?\d{4}\.\s*\d{1,2}\.\s*\d{1,2}\.?>?\]')
 
 
