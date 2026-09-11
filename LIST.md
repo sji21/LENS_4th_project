@@ -25,7 +25,7 @@
 | [x] | PATCH-020 | 완료 | sji21 | `test/patch-020-civil-candidate-budget` | 테스트 | 높음 | 기존 민법 보존·후보 수별 확보율 비교 | 기존 선택 보존 후 RRF 후보 보충. 2~7개에서 기존 근거 보존·필수 민법 확보·노출량 비교. 잠정 TOP3, DEV-059 문맥 누락 후속 검토. 운영 변경 없음. | PATCH-018 | - | 2026-09-11 | 2026-09-11 | (commit: e83976f) |
 | [x] | PATCH-021 | 완료 | sji21 | `feat/patch-021-civil-result-channel` | 기능 변경 | 높음 | 일반 법령·민법 후보 반환 분리 | 일반 법령 슬롯 보존, 민법 TOP3 별도 필드와 프롬프트·인용·출처 연결. 기존 선택 보존·후보 보충 및 회귀 검증. 평가기 일반·민법·합집합 채점 범위 정정. | PATCH-020 | - | 2026-09-11 | 2026-09-11 | (commit: 35be974, 4878ea4, 373c465, 5384961, 496e896) |
 | [x] | PATCH-022 | 완료 | sji21 | `fix/patch-022-paragraph-validation` | 버그 수정 | 높음 | F-06 항 인용 검증의 법령·조문·항 소속 확인 | 교차 인용·가지번호 혼동 차단, 정확한 항 유지 및 chain/graph 검증. DB·인덱스 변경 없음. | PATCH-021 | - | 2026-09-11 | 2026-09-11 | (commit: 47d492d, e226c2e, dcb71c0) |
-| [x] | PATCH-023 | 완료 | sji21 | `test/patch-023-separated-retrieval-baseline` | 테스트 | 높음 | 분리 채널 최신 main 재평가 | DEV200·민법35 재검색 및 일반5·민법3 순위/근거 공백 분리 집계. 검색 코드·자료 변경 없음. | PATCH-021, PATCH-022 | - | 2026-09-11 | 2026-09-11 | (commit: ee6c55a) |
+| [x] | PATCH-023 | 완료 | sji21 | `test/patch-023-separated-retrieval-baseline` | 테스트 | 높음 | 분리 채널 최신 main 재평가 | DEV200·민법35 재검색 및 일반5·민법3 순위/근거 공백 분리 집계. 검색 코드·자료 변경 없음. | PATCH-021, PATCH-022 | - | 2026-09-11 | 2026-09-11 | (commit: ee6c55a, 88bf3c3) |
 
 ## 패치 번호 기준
 
