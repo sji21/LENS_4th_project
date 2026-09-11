@@ -21,6 +21,8 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
+- PATCH-023 removes blank lines inside the LIST.md patch table so PATCH-020 onward renders as table rows. (commit: pending)
+
 - PATCH-022 also accepts dated standalone former-article relocation notes; held decree articles 7 and 8 retain valid paragraph recognition. (commit: dcb71c0)
 
 - PATCH-022 validates all paragraphs in article-linked lists/ranges and preserves explicit paragraph structure across recognized dated history notes, while still rejecting mixed article headings. (commit: e226c2e)
