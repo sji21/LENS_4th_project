@@ -384,10 +384,10 @@ class CivilRoutingTests(unittest.TestCase):
         chunks = CHUNKS + CIVIL_CHUNKS
         return RetrievalService(chunks, FakeDense(chunks) if dense else None)
 
-    def test_candidate_ids_are_locked_to_the_reviewed_seven_articles(self):
+    def test_candidate_ids_are_locked_to_the_reviewed_ten_articles(self):
         self.assertEqual(
             set(CIVIL_ARTICLE_IDS),
-            {f"민법-제{number}조" for number in (623, 626, 627, 629, 632, 634, 640)},
+            {f"민법-제{number}조" for number in (623, 626, 627, 629, 632, 634, 640, 105, 114, 357)},
         )
 
     def test_unrelated_question_keeps_general_channel_separate(self):
@@ -622,7 +622,10 @@ class CivilCorpusWarningTests(unittest.TestCase):
         self.assertNotIn("data/chunks/knowledge_chunks.jsonl", message)
 
     def test_complete_civil_corpus_is_silent(self):
-        chunks = CHUNKS + CIVIL_CHUNKS
+        chunks = CHUNKS + CIVIL_CHUNKS + [
+            law_chunk(f"civil-{n}", "추가 조문 검증 본문", f"제{n}조", title="민법")
+            for n in (105, 114, 357)
+        ]
         logger = logging.getLogger("src.retrieval.service")
         with patch.object(logger, "warning") as warned:
             RetrievalService(chunks, None)

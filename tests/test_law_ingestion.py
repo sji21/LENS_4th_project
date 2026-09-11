@@ -120,14 +120,14 @@ class MinbeopCollectionTests(unittest.TestCase):
             for number in articles
         )
 
-    def test_collects_only_the_locked_seven_articles(self):
+    def test_collects_only_the_locked_ten_articles(self):
         records = collect_records(self.source())
         self.assertEqual(tuple(record.article_number for record in records), MINBEOP_ARTICLES)
         self.assertTrue(all(record.law_name == "민법" for record in records))
         self.assertTrue(all(record.validate() == [] for record in records))
 
     def test_missing_candidate_article_fails_instead_of_silently_shrinking(self):
-        with self.assertRaisesRegex(ValueError, "제640조"):
+        with self.assertRaisesRegex(ValueError, "제357조"):
             collect_records(self.source(MINBEOP_ARTICLES[:-1]))
 
     def test_unreviewed_effective_date_is_rejected(self):

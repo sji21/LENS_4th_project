@@ -27,7 +27,7 @@ def records_from_source(text):
     if header['effective_from'] != '2026-03-17' or '21454' not in header['proclamation_number']:
         raise ValueError('Unexpected Civil Act version')
     parsed = {n:(title,body) for n,title,body in parse_articles(text)}
-    numbers = tuple(a.split('-')[1] for a in CIVIL.include_ids) + ADDED
+    numbers = tuple(dict.fromkeys(tuple(a.split('-')[1] for a in CIVIL.include_ids) + ADDED))
     if len(set(numbers)) != 10 or any(n not in parsed for n in numbers):
         raise ValueError('Unexpected article selection')
     return [LawArticleRecord(law_name='민법',law_type='법률',ministry=header['ministry'] or '법무부',
@@ -102,7 +102,7 @@ def run(out):
         for cid,body,meta in zip(found['ids'],found['documents'],found['metadatas']):
             if body!=byid[cid]['text'] or meta!=clean_metadata(byid[cid]['metadata']): raise ValueError('Index/chunk mismatch')
     if dense.collection.count()+civil_dense.collection.count()!=len(byid): raise ValueError('Index coverage mismatch')
-    candidate=replace(CIVIL,include_ids=CIVIL.include_ids+tuple('민법-'+n for n in ADDED))
+    candidate=replace(CIVIL,include_ids=tuple(dict.fromkeys(CIVIL.include_ids+tuple('민법-'+n for n in ADDED))))
     svc=RetrievalService(chunks,dense,civil=candidate,civil_dense=civil_dense)
     actual=json.loads(json.dumps(settings(svc)))
     expected=json.loads(json.dumps(oldaudit['settings']))
