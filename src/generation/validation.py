@@ -16,7 +16,7 @@ from typing import Callable, Literal
 
 from src.generation.citation import audit_citations
 from src.generation.models import Answer
-from src.generation.paragraph import claim_identity, evidence_paragraphs
+from src.generation.paragraph import claim_identity, evidence_paragraphs, paragraph_group
 from src.retrieval.service import Evidence
 
 
@@ -706,16 +706,17 @@ def _paragraph_issues(answer: Answer) -> list[ValidationIssue]:
     issues = []
 
     for match in _PARAGRAPH_RE.finditer(answer.raw_text):
-        paragraph = int(match.group("paragraph"))
+        paragraphs, reference = paragraph_group(answer.raw_text, match)
         identity = claim_identity(answer.raw_text, match.span("article"))
-        supported = any(paragraph in evidence_paragraphs(evidence, identity)
-                        for evidence in law_evidences)
+        available = [evidence_paragraphs(evidence, identity) for evidence in law_evidences]
+        supported = all(any(paragraph in numbers for numbers in available)
+                        for paragraph in paragraphs)
 
         if not supported:
             issues.append(
                 ValidationIssue(
                     kind="paragraph",
-                    text=match.group(0),
+                    text=reference,
                     detail="해당 조문의 항 번호를 검색 근거에서 확인할 수 없습니다.",
                 )
             )

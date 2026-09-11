@@ -8,6 +8,35 @@ import unicodedata
 
 from src.generation.citation import _law_mentions
 
+_CONTINUATION = re.compile(
+    r'\s*(?P<join>부터|내지|[~～–—-]|[·ㆍ,](?:\s*및)?|및|와|과|또는)'
+    r'\s*(?:제\s*)?(?P<number>\d+)\s*항(?:\s*까지)?')
+_ARTICLE = r'제\s*\d+\s*조(?:\s*의\s*\d+)?'
+_HISTORY = re.compile(
+    r'\[(?:(?:전문개정|본조신설|제목개정|제목변경)\s*'
+    r'|'+_ARTICLE+r'에서\s*이동(?:,\s*종전\s*'+_ARTICLE+r'는\s*'+_ARTICLE+r'로\s*이동)?\s*)'
+    r'<?\d{4}\.\s*\d{1,2}\.\s*\d{1,2}\.?>?\]')
+
+
+def paragraph_group(text, match):
+    """Read only contiguous list/range suffixes owned by this article mention."""
+    previous = int(match.group('paragraph'))
+    numbers = {previous}
+    end = match.end()
+    while tail := _CONTINUATION.match(text, end):
+        number = int(tail['number'])
+        if tail['join'] in ('부터', '내지', '~', '～', '–', '—', '-'):
+            # Evidence markers currently support 1..50. Refuse invalid or huge
+            # ranges without allocating attacker-controlled ranges.
+            if not 1 <= previous <= number <= 50:
+                numbers.add(0)
+            else:
+                numbers.update(range(previous, number + 1))
+        else:
+            numbers.add(number)
+        previous, end = number, tail.end()
+    return numbers, text[match.start():end]
+
 
 def claim_identity(text, article_span):
     for match, law, article in _law_mentions(text):
@@ -53,6 +82,8 @@ def evidence_paragraphs(evidence, identity):
     for line in text.splitlines():
         line = line.strip()
         if not line:
+            continue
+        if _HISTORY.fullmatch(line):
             continue
         # Additional article headings make the excerpt's ownership ambiguous.
         if line.startswith('[') or re.match(r'제\s*\d+\s*조', line) or (
