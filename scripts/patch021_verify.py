@@ -1,5 +1,6 @@
 """Verify live separated retrieval against the frozen PATCH-020 TOP3 experiment."""
 import argparse
+import hashlib
 import json
 import os
 import shutil
@@ -12,7 +13,31 @@ from scripts.patch018_separate import validate_capture
 from scripts.patch020_budget import check_bundle
 
 
+def committed_source(root=ROOT):
+    def git(*args):
+        return subprocess.check_output(['git', '-C', str(root), *args])
+    status = git('status', '--porcelain').decode().strip()
+    if status:
+        raise ValueError('Verification requires a clean committed tree')
+    revision = git('rev-parse', 'HEAD').decode().strip()
+    sources = {}
+    for rel in ('scripts/patch021_verify.py', 'src/retrieval/service.py'):
+        working = (root / rel).read_bytes()
+        committed = git('show', f'{revision}:{rel}')
+        normalized = working.replace(b'\r\n', b'\n')
+        if normalized != committed.replace(b'\r\n', b'\n'):
+            raise ValueError('Source differs from commit: ' + rel)
+        sources[rel] = {
+            'working_sha256': hashlib.sha256(working).hexdigest(),
+            'git_sha256': hashlib.sha256(committed).hexdigest(),
+            'lf_sha256': hashlib.sha256(normalized).hexdigest(),
+        }
+    return {'commit': revision, 'tree': git('rev-parse', 'HEAD^{tree}').decode().strip(),
+            'status': status, 'normalization': 'CRLF to LF only', 'sources': sources}
+
+
 def run(out):
+    source = committed_source()
     check_bundle()
     check_shared_bundle(ROOT/'data/eval/patch015-baseline/capture')
     validate_capture(ROOT/'data/eval/patch018-separate/capture')
@@ -58,11 +83,12 @@ def run(out):
         if len(results)%25==0:print(f'{len(results)}/235 verified',flush=True)
     after={p:sha(ROOT/p) for p in before}
     if before!=after:raise ValueError('Operating files changed')
+    if committed_source() != source:
+        raise ValueError('Source changed during verification')
     write(out/'results.json',results)
     write(out/'audit.json',{'queries':len(results),'general_and_civil_match_patch020':True,
         'case_and_guide_match_patch015':True,'operating_before':before,'operating_after':after,
-        'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
-        'status':subprocess.check_output(['git','status','--porcelain'],text=True).strip(),
+        'commit':source['commit'], 'status':source['status'], 'source_provenance':source,
         'runner_sha256':sha(__file__),'service_sha256':sha(ROOT/'src/retrieval/service.py'),
         'expected_bundle_sha256':sha(ROOT/'data/eval/patch020-budget/bundle-manifest.json'),
         'model_files':original['model_files'],'settings':settings(svc),'generation':False})
