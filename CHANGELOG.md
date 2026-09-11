@@ -19,6 +19,12 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
+- PATCH-022 also accepts dated standalone former-article relocation notes; held decree articles 7 and 8 retain valid paragraph recognition. (commit: dcb71c0)
+
+- PATCH-022 validates all paragraphs in article-linked lists/ranges and preserves explicit paragraph structure across recognized dated history notes, while still rejecting mixed article headings. (commit: e226c2e)
+
+- PATCH-022 fixes F-06 paragraph validation: require the exact named law/article and explicit paragraph structure in that evidence. Cross-references, quoted numbering, ambiguous excerpts and unnumbered text cannot establish paragraph existence. Includes civil evidence and chain/graph regression coverage. (commit: 47d492d)
+
 - PATCH-021 migrates the remaining public regression diagnostic to explicit scopes. Legacy mixed-TOP5 scores are not treated as expected split-channel scores; required-evidence gains/losses remain visible and mismatched questions/gold are rejected. (commit: 496e896)
 
 - PATCH-021 uses the same explicit civil budget (k_civil=3) for evaluation calls and captured settings; verification checks legacy settings separately from the added civil budget. (commit: 5384961)
