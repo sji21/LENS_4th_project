@@ -1,7 +1,10 @@
 {
-  "schema": "patch021-verification-v1",
+  "schema": "patch021-verification-v2",
   "files": {
-    "audit.json": "0c9234bdc537b0d711ed7cfee72d360b418e5acc6df95cb7c34164727db2c547",
-    "results.json": "039d7b4982fdce6cd5b8d26fced66e30a6fc4af5829a0f77b30fb8ad09ff9e35"
+    "audit.json": "3caf3d14c0acceae775f95b46d432a93d38238351b14386771a7b437df541bfb",
+    "results.json": "039d7b4982fdce6cd5b8d26fced66e30a6fc4af5829a0f77b30fb8ad09ff9e35",
+    "initial-capture/audit.json": "0c9234bdc537b0d711ed7cfee72d360b418e5acc6df95cb7c34164727db2c547",
+    "initial-capture/results.json": "039d7b4982fdce6cd5b8d26fced66e30a6fc4af5829a0f77b30fb8ad09ff9e35",
+    "initial-capture/bundle-manifest.json": "0c65395736dd6825f516804b23f3ef4d1ab332541f49d1665e37c1b907f5fab9"
   }
 }
