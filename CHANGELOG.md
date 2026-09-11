@@ -19,7 +19,7 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
-- PATCH-021 scores general and civil result channels explicitly; mixed published regression uses general5+civil3 union coverage without a fictitious merged rank. Reports actual civil exposure and rejects mismatched gold scopes. (commit: pending)
+- PATCH-021 scores general and civil result channels explicitly; mixed published regression uses general5+civil3 union coverage without a fictitious merged rank. Reports actual civil exposure and rejects mismatched gold scopes. (commit: 4878ea4)
 
 - PATCH-018 preserves captured source bytes and validates current dependencies after newline normalization, allowing clean Git checkouts to replay mixed-newline captures while rejecting content changes. The historical runner and original results remain preserved. (commit: 52b2d5f)
 
