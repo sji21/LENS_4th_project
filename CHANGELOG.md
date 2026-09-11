@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
+- PATCH-023 records a fresh main-based 235-input separated retrieval baseline: DEV question/context complete fixed targets 23/25 of100, data gaps45, held-target misses7/5, unscored25. Civil required track covers civil29/29 and all law28/29. No production changes. (commit: ee6c55a)
+
 - PATCH-021 separates civil_laws (up to3 retained-and-filled candidates) from general law slots and carries civil evidence through staged retrieval, prompt, answer and citation/source validation. Existing generation general-law3/case2 limits stay unchanged. All235 live inputs match PATCH-020 and case/guide rankings are preserved. TOP3 DEV-059 context miss remains known; automatic irrelevant-civil exclusion is not implemented. (commit: 35be974)
 
 - PATCH-020 compares retaining existing civil picks and filling RRF candidates at budgets 2 through 7. On the public development inputs, budget4 covers all held required civil targets without losing prior evidence, versus budget7 for RRF alone. General TOP5 stays fixed. The provisional handoff budget is TOP3 based on the user-reported LLM constraint; DEV-059 context remains a known miss for later tuning. Operating integration and applicability judgment remain unvalidated. (commit: e83976f)
@@ -18,6 +20,8 @@ This file records the 4th project from its first change onward.
 - PATCH-017 compares three predeclared rank-fusion weights using the saved 235 inputs. All three fail the adoption gate: the conservative weight adds no benefit, while stronger weights improve new civil items but displace required evidence in existing inputs. Shares per-input rankings and loss diagnostics; production behavior is unchanged. (commit: a55d9c0)
 
 ### Fixed (Bug Fixes)
+
+- PATCH-023 removes blank lines inside the LIST.md patch table so PATCH-020 onward renders as table rows. (commit: 88bf3c3)
 
 - PATCH-022 also accepts dated standalone former-article relocation notes; held decree articles 7 and 8 retain valid paragraph recognition. (commit: dcb71c0)
 
