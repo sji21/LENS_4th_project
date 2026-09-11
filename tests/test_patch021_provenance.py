@@ -2,7 +2,7 @@ import hashlib
 
 import pytest
 
-from scripts.patch021_verify import committed_source
+from scripts.patch021_verify import check_settings, committed_source
 
 
 def setup_source(tmp_path, monkeypatch, *, dirty=False, changed=False):
@@ -42,3 +42,15 @@ def test_committed_source_rejects_hidden_content_change(tmp_path, monkeypatch):
     setup_source(tmp_path, monkeypatch, changed=True)
     with pytest.raises(ValueError, match='Source differs'):
         committed_source(tmp_path)
+
+
+def test_settings_separate_new_civil_budget_from_legacy():
+    old = {'search_k': {'k_law': 5, 'k_case': 5, 'k_guide': 2}, 'corpora': {}}
+    current = {**old, 'search_k': {**old['search_k'], 'k_civil': 3}}
+    assert check_settings(current, old) == {
+        'legacy_settings_unchanged': True, 'added_search_k': {'k_civil': 3}}
+    assert current['search_k']['k_civil'] == 3
+    for key, value in [('k_civil', 2), ('k_civil', None), ('k_law', 4)]:
+        invalid = {**current, 'search_k': {**current['search_k'], key: value}}
+        with pytest.raises(ValueError, match='Unexpected search settings'):
+            check_settings(invalid, old)

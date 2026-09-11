@@ -20,7 +20,7 @@ from src.retrieval.service import (
     LAW, LAW_CHUNKS, LAW_TYPES, DEFAULT_CIVIL_INDEX, RetrievalService,
 )
 
-SEARCH_K = {"k_law": 5, "k_case": 5, "k_guide": 2}
+SEARCH_K = {"k_law": 5, "k_case": 5, "k_guide": 2, "k_civil": 3}
 
 
 def fingerprint(path: Path) -> dict:
@@ -104,8 +104,7 @@ def evaluate(service, questions: list[dict], chunks: list[dict], kind: str,
     rows = []
     for question in questions:
         started = perf_counter()
-        search_k = {**SEARCH_K, "k_civil": 3} if civil or combined else SEARCH_K
-        result = service.search(question["question"], **search_k)
+        result = service.search(question["question"], **SEARCH_K)
         elapsed = perf_counter() - started
         if combined:
             channels = {"general": result.laws[:5], "civil": result.civil_laws[:3]}

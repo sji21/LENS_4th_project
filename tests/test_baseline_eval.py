@@ -16,7 +16,9 @@ def test_settings_include_actual_civil_and_custom_law_configuration():
     chunks = [chunk("law", "a"), chunk("civil", "민법-제632조")]
     chunks[1]["metadata"]["title"] = "민법"
     service = RetrievalService(chunks, law=replace(LAW, rrf_k=9))
-    config = settings(service)["corpora"]
+    captured = settings(service)
+    assert captured["search_k"] == {"k_law": 5, "k_case": 5, "k_guide": 2, "k_civil": 3}
+    config = captured["corpora"]
     assert config["law"]["rrf_k"] == config["law"]["retriever"]["rrf_k"] == 9
     assert "민법-제632조" in config["civil"]["include_ids"]
     assert config["civil"]["retriever"]["rrf_k"] == 5
@@ -38,7 +40,7 @@ def test_fixed_service_call_and_distinct_article_metrics():
                                    guides=[object()])
 
     result = evaluate(Service(), [{"qid": "q", "question": "query", "gold": ["b", "missing"]}], chunks, "law")
-    assert calls == [{"k_law": 5, "k_case": 5, "k_guide": 2}]
+    assert calls == [{"k_law": 5, "k_case": 5, "k_guide": 2, "k_civil": 3}]
     assert result["metrics"]["hit@1"] == 0
     assert result["metrics"]["hit@2"] == 1
     assert result["metrics"]["recall@3"] == .5

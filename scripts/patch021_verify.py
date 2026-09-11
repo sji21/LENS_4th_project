@@ -13,6 +13,14 @@ from scripts.patch018_separate import validate_capture
 from scripts.patch020_budget import check_bundle
 
 
+def check_settings(current, original):
+    legacy = json.loads(json.dumps(current))
+    civil_budget = legacy['search_k'].pop('k_civil', None)
+    if civil_budget != 3 or legacy != original:
+        raise ValueError('Unexpected search settings change')
+    return {'legacy_settings_unchanged': True, 'added_search_k': {'k_civil': civil_budget}}
+
+
 def committed_source(root=ROOT):
     def git(*args):
         return subprocess.check_output(['git', '-C', str(root), *args])
@@ -52,13 +60,12 @@ def run(out):
             target=snapshot/rel;target.parent.mkdir(parents=True,exist_ok=True)
             shutil.copy2(ROOT/rel,target)
     from src.retrieval.service import RetrievalService
-    from src.evaluation.baseline import settings
+    from src.evaluation.baseline import SEARCH_K, settings
     svc=RetrievalService.from_index(
         chunk_paths=tuple(snapshot/'data/chunks'/f'{n}.jsonl' for n in ('chunks','cases','guides')),
         index_path=snapshot/'data/index/chroma_kurev1_1024',
         civil_index_path=snapshot/'data/index/chroma_civil_kurev1_1024')
-    if json.loads(json.dumps(settings(svc)))!=original['settings']:
-        raise ValueError('Unexpected search settings change')
+    settings_comparison = check_settings(settings(svc), original['settings'])
     cache=Path.home()/'.cache/huggingface/hub/models--nlpai-lab--KURE-v1'
     if any(sha(cache/p)!=digest for p,digest in original['model_files'].items()):
         raise ValueError('Model changed')
@@ -70,7 +77,7 @@ def run(out):
     results=[]
     anchors=lambda hits:[norm(svc._chunks[e.chunk_id]['metadata']['article_id']) for e in hits]
     for q in queries:
-        result=svc.search(q['query'],k_law=5,k_case=5,k_guide=2)
+        result=svc.search(q['query'], **SEARCH_K)
         target=expected[q['qid'],q['mode']]
         laws,civil=anchors(result.laws),anchors(result.civil_laws)
         if laws!=target['general'] or civil!=target['policies']['retain_3']['civil']:
@@ -91,7 +98,8 @@ def run(out):
         'commit':source['commit'], 'status':source['status'], 'source_provenance':source,
         'runner_sha256':sha(__file__),'service_sha256':sha(ROOT/'src/retrieval/service.py'),
         'expected_bundle_sha256':sha(ROOT/'data/eval/patch020-budget/bundle-manifest.json'),
-        'model_files':original['model_files'],'settings':settings(svc),'generation':False})
+        'model_files':original['model_files'],'settings':settings(svc),
+        'settings_comparison':settings_comparison,'generation':False})
 
 
 if __name__=='__main__':

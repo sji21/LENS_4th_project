@@ -19,6 +19,8 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
+- PATCH-021 uses the same explicit civil budget (k_civil=3) for evaluation calls and captured settings; verification checks legacy settings separately from the added civil budget. (commit: pending)
+
 - PATCH-021 verification requires a clean committed tree, compares runner/service Git bytes with LF-normalized working bytes, and checks provenance again after retrieval. (commit: 373c465)
 
 - PATCH-021 scores general and civil result channels explicitly; mixed published regression uses general5+civil3 union coverage without a fictitious merged rank. Reports actual civil exposure and rejects mismatched gold scopes. (commit: 4878ea4)
