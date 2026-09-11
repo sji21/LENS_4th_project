@@ -1,0 +1,692 @@
+{
+  "cohorts": {
+    "civil_diagnostic_only": {
+      "n": 5,
+      "policies": {
+        "retain_2": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 7.0,
+          "outside_required_gold_articles": 10
+        },
+        "rrf_2": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 7.0,
+          "outside_required_gold_articles": 10
+        },
+        "retain_3": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 8.0,
+          "outside_required_gold_articles": 15
+        },
+        "rrf_3": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 8.0,
+          "outside_required_gold_articles": 15
+        },
+        "retain_4": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 9.0,
+          "outside_required_gold_articles": 20
+        },
+        "rrf_4": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 9.0,
+          "outside_required_gold_articles": 20
+        },
+        "retain_5": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 10.0,
+          "outside_required_gold_articles": 25
+        },
+        "rrf_5": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 10.0,
+          "outside_required_gold_articles": 25
+        },
+        "retain_6": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 11.0,
+          "outside_required_gold_articles": 30
+        },
+        "rrf_6": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 11.0,
+          "outside_required_gold_articles": 30
+        },
+        "retain_7": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 12.0,
+          "outside_required_gold_articles": 35
+        },
+        "rrf_7": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 12.0,
+          "outside_required_gold_articles": 35
+        }
+      }
+    },
+    "civil_required_law": {
+      "n": 29,
+      "policies": {
+        "retain_2": {
+          "all_required": 28,
+          "all_required_n": 29,
+          "held_civil_all": 29,
+          "held_civil_n": 29,
+          "lost_required_inputs": 0,
+          "mean_law_count": 7.0,
+          "outside_required_gold_articles": 28
+        },
+        "rrf_2": {
+          "all_required": 28,
+          "all_required_n": 29,
+          "held_civil_all": 29,
+          "held_civil_n": 29,
+          "lost_required_inputs": 0,
+          "mean_law_count": 7.0,
+          "outside_required_gold_articles": 28
+        },
+        "retain_3": {
+          "all_required": 28,
+          "all_required_n": 29,
+          "held_civil_all": 29,
+          "held_civil_n": 29,
+          "lost_required_inputs": 0,
+          "mean_law_count": 8.0,
+          "outside_required_gold_articles": 57
+        },
+        "rrf_3": {
+          "all_required": 28,
+          "all_required_n": 29,
+          "held_civil_all": 29,
+          "held_civil_n": 29,
+          "lost_required_inputs": 0,
+          "mean_law_count": 8.0,
+          "outside_required_gold_articles": 57
+        },
+        "retain_4": {
+          "all_required": 28,
+          "all_required_n": 29,
+          "held_civil_all": 29,
+          "held_civil_n": 29,
+          "lost_required_inputs": 0,
+          "mean_law_count": 9.0,
+          "outside_required_gold_articles": 86
+        },
+        "rrf_4": {
+          "all_required": 28,
+          "all_required_n": 29,
+          "held_civil_all": 29,
+          "held_civil_n": 29,
+          "lost_required_inputs": 0,
+          "mean_law_count": 9.0,
+          "outside_required_gold_articles": 86
+        },
+        "retain_5": {
+          "all_required": 28,
+          "all_required_n": 29,
+          "held_civil_all": 29,
+          "held_civil_n": 29,
+          "lost_required_inputs": 0,
+          "mean_law_count": 10.0,
+          "outside_required_gold_articles": 115
+        },
+        "rrf_5": {
+          "all_required": 28,
+          "all_required_n": 29,
+          "held_civil_all": 29,
+          "held_civil_n": 29,
+          "lost_required_inputs": 0,
+          "mean_law_count": 10.0,
+          "outside_required_gold_articles": 115
+        },
+        "retain_6": {
+          "all_required": 28,
+          "all_required_n": 29,
+          "held_civil_all": 29,
+          "held_civil_n": 29,
+          "lost_required_inputs": 0,
+          "mean_law_count": 11.0,
+          "outside_required_gold_articles": 144
+        },
+        "rrf_6": {
+          "all_required": 28,
+          "all_required_n": 29,
+          "held_civil_all": 29,
+          "held_civil_n": 29,
+          "lost_required_inputs": 0,
+          "mean_law_count": 11.0,
+          "outside_required_gold_articles": 144
+        },
+        "retain_7": {
+          "all_required": 28,
+          "all_required_n": 29,
+          "held_civil_all": 29,
+          "held_civil_n": 29,
+          "lost_required_inputs": 0,
+          "mean_law_count": 12.0,
+          "outside_required_gold_articles": 173
+        },
+        "rrf_7": {
+          "all_required": 28,
+          "all_required_n": 29,
+          "held_civil_all": 29,
+          "held_civil_n": 29,
+          "lost_required_inputs": 0,
+          "mean_law_count": 12.0,
+          "outside_required_gold_articles": 173
+        }
+      }
+    },
+    "civil_scope_provisional": {
+      "n": 1,
+      "policies": {
+        "retain_2": {
+          "all_required": 1,
+          "all_required_n": 1,
+          "held_civil_all": 1,
+          "held_civil_n": 1,
+          "lost_required_inputs": 0,
+          "mean_law_count": 7.0,
+          "outside_required_gold_articles": 1
+        },
+        "rrf_2": {
+          "all_required": 1,
+          "all_required_n": 1,
+          "held_civil_all": 1,
+          "held_civil_n": 1,
+          "lost_required_inputs": 0,
+          "mean_law_count": 7.0,
+          "outside_required_gold_articles": 1
+        },
+        "retain_3": {
+          "all_required": 1,
+          "all_required_n": 1,
+          "held_civil_all": 1,
+          "held_civil_n": 1,
+          "lost_required_inputs": 0,
+          "mean_law_count": 8.0,
+          "outside_required_gold_articles": 2
+        },
+        "rrf_3": {
+          "all_required": 1,
+          "all_required_n": 1,
+          "held_civil_all": 1,
+          "held_civil_n": 1,
+          "lost_required_inputs": 0,
+          "mean_law_count": 8.0,
+          "outside_required_gold_articles": 2
+        },
+        "retain_4": {
+          "all_required": 1,
+          "all_required_n": 1,
+          "held_civil_all": 1,
+          "held_civil_n": 1,
+          "lost_required_inputs": 0,
+          "mean_law_count": 9.0,
+          "outside_required_gold_articles": 3
+        },
+        "rrf_4": {
+          "all_required": 1,
+          "all_required_n": 1,
+          "held_civil_all": 1,
+          "held_civil_n": 1,
+          "lost_required_inputs": 0,
+          "mean_law_count": 9.0,
+          "outside_required_gold_articles": 3
+        },
+        "retain_5": {
+          "all_required": 1,
+          "all_required_n": 1,
+          "held_civil_all": 1,
+          "held_civil_n": 1,
+          "lost_required_inputs": 0,
+          "mean_law_count": 10.0,
+          "outside_required_gold_articles": 4
+        },
+        "rrf_5": {
+          "all_required": 1,
+          "all_required_n": 1,
+          "held_civil_all": 1,
+          "held_civil_n": 1,
+          "lost_required_inputs": 0,
+          "mean_law_count": 10.0,
+          "outside_required_gold_articles": 4
+        },
+        "retain_6": {
+          "all_required": 1,
+          "all_required_n": 1,
+          "held_civil_all": 1,
+          "held_civil_n": 1,
+          "lost_required_inputs": 0,
+          "mean_law_count": 11.0,
+          "outside_required_gold_articles": 5
+        },
+        "rrf_6": {
+          "all_required": 1,
+          "all_required_n": 1,
+          "held_civil_all": 1,
+          "held_civil_n": 1,
+          "lost_required_inputs": 0,
+          "mean_law_count": 11.0,
+          "outside_required_gold_articles": 5
+        },
+        "retain_7": {
+          "all_required": 1,
+          "all_required_n": 1,
+          "held_civil_all": 1,
+          "held_civil_n": 1,
+          "lost_required_inputs": 0,
+          "mean_law_count": 12.0,
+          "outside_required_gold_articles": 6
+        },
+        "rrf_7": {
+          "all_required": 1,
+          "all_required_n": 1,
+          "held_civil_all": 1,
+          "held_civil_n": 1,
+          "lost_required_inputs": 0,
+          "mean_law_count": 12.0,
+          "outside_required_gold_articles": 6
+        }
+      }
+    },
+    "dev_context_diagnostic": {
+      "n": 98,
+      "policies": {
+        "retain_2": {
+          "all_required": 24,
+          "all_required_n": 75,
+          "held_civil_all": 8,
+          "held_civil_n": 10,
+          "lost_required_inputs": 0,
+          "mean_law_count": 7.0,
+          "outside_required_gold_articles": 187
+        },
+        "rrf_2": {
+          "all_required": 18,
+          "all_required_n": 75,
+          "held_civil_all": 2,
+          "held_civil_n": 10,
+          "lost_required_inputs": 6,
+          "mean_law_count": 7.0,
+          "outside_required_gold_articles": 194
+        },
+        "retain_3": {
+          "all_required": 25,
+          "all_required_n": 75,
+          "held_civil_all": 9,
+          "held_civil_n": 10,
+          "lost_required_inputs": 0,
+          "mean_law_count": 8.0,
+          "outside_required_gold_articles": 284
+        },
+        "rrf_3": {
+          "all_required": 23,
+          "all_required_n": 75,
+          "held_civil_all": 7,
+          "held_civil_n": 10,
+          "lost_required_inputs": 3,
+          "mean_law_count": 8.0,
+          "outside_required_gold_articles": 287
+        },
+        "retain_4": {
+          "all_required": 26,
+          "all_required_n": 75,
+          "held_civil_all": 10,
+          "held_civil_n": 10,
+          "lost_required_inputs": 0,
+          "mean_law_count": 9.0,
+          "outside_required_gold_articles": 381
+        },
+        "rrf_4": {
+          "all_required": 25,
+          "all_required_n": 75,
+          "held_civil_all": 9,
+          "held_civil_n": 10,
+          "lost_required_inputs": 1,
+          "mean_law_count": 9.0,
+          "outside_required_gold_articles": 382
+        },
+        "retain_5": {
+          "all_required": 26,
+          "all_required_n": 75,
+          "held_civil_all": 10,
+          "held_civil_n": 10,
+          "lost_required_inputs": 0,
+          "mean_law_count": 10.0,
+          "outside_required_gold_articles": 479
+        },
+        "rrf_5": {
+          "all_required": 25,
+          "all_required_n": 75,
+          "held_civil_all": 9,
+          "held_civil_n": 10,
+          "lost_required_inputs": 1,
+          "mean_law_count": 10.0,
+          "outside_required_gold_articles": 480
+        },
+        "retain_6": {
+          "all_required": 26,
+          "all_required_n": 75,
+          "held_civil_all": 10,
+          "held_civil_n": 10,
+          "lost_required_inputs": 0,
+          "mean_law_count": 11.0,
+          "outside_required_gold_articles": 577
+        },
+        "rrf_6": {
+          "all_required": 25,
+          "all_required_n": 75,
+          "held_civil_all": 9,
+          "held_civil_n": 10,
+          "lost_required_inputs": 1,
+          "mean_law_count": 11.0,
+          "outside_required_gold_articles": 578
+        },
+        "retain_7": {
+          "all_required": 26,
+          "all_required_n": 75,
+          "held_civil_all": 10,
+          "held_civil_n": 10,
+          "lost_required_inputs": 0,
+          "mean_law_count": 12.0,
+          "outside_required_gold_articles": 675
+        },
+        "rrf_7": {
+          "all_required": 26,
+          "all_required_n": 75,
+          "held_civil_all": 10,
+          "held_civil_n": 10,
+          "lost_required_inputs": 0,
+          "mean_law_count": 12.0,
+          "outside_required_gold_articles": 675
+        }
+      }
+    },
+    "dev_question_only": {
+      "n": 98,
+      "policies": {
+        "retain_2": {
+          "all_required": 23,
+          "all_required_n": 75,
+          "held_civil_all": 10,
+          "held_civil_n": 10,
+          "lost_required_inputs": 0,
+          "mean_law_count": 7.0,
+          "outside_required_gold_articles": 185
+        },
+        "rrf_2": {
+          "all_required": 19,
+          "all_required_n": 75,
+          "held_civil_all": 6,
+          "held_civil_n": 10,
+          "lost_required_inputs": 4,
+          "mean_law_count": 7.0,
+          "outside_required_gold_articles": 190
+        },
+        "retain_3": {
+          "all_required": 23,
+          "all_required_n": 75,
+          "held_civil_all": 10,
+          "held_civil_n": 10,
+          "lost_required_inputs": 0,
+          "mean_law_count": 8.0,
+          "outside_required_gold_articles": 283
+        },
+        "rrf_3": {
+          "all_required": 19,
+          "all_required_n": 75,
+          "held_civil_all": 6,
+          "held_civil_n": 10,
+          "lost_required_inputs": 4,
+          "mean_law_count": 8.0,
+          "outside_required_gold_articles": 288
+        },
+        "retain_4": {
+          "all_required": 23,
+          "all_required_n": 75,
+          "held_civil_all": 10,
+          "held_civil_n": 10,
+          "lost_required_inputs": 0,
+          "mean_law_count": 9.0,
+          "outside_required_gold_articles": 381
+        },
+        "rrf_4": {
+          "all_required": 20,
+          "all_required_n": 75,
+          "held_civil_all": 7,
+          "held_civil_n": 10,
+          "lost_required_inputs": 3,
+          "mean_law_count": 9.0,
+          "outside_required_gold_articles": 385
+        },
+        "retain_5": {
+          "all_required": 23,
+          "all_required_n": 75,
+          "held_civil_all": 10,
+          "held_civil_n": 10,
+          "lost_required_inputs": 0,
+          "mean_law_count": 10.0,
+          "outside_required_gold_articles": 479
+        },
+        "rrf_5": {
+          "all_required": 20,
+          "all_required_n": 75,
+          "held_civil_all": 7,
+          "held_civil_n": 10,
+          "lost_required_inputs": 3,
+          "mean_law_count": 10.0,
+          "outside_required_gold_articles": 482
+        },
+        "retain_6": {
+          "all_required": 23,
+          "all_required_n": 75,
+          "held_civil_all": 10,
+          "held_civil_n": 10,
+          "lost_required_inputs": 0,
+          "mean_law_count": 11.0,
+          "outside_required_gold_articles": 577
+        },
+        "rrf_6": {
+          "all_required": 22,
+          "all_required_n": 75,
+          "held_civil_all": 9,
+          "held_civil_n": 10,
+          "lost_required_inputs": 1,
+          "mean_law_count": 11.0,
+          "outside_required_gold_articles": 578
+        },
+        "retain_7": {
+          "all_required": 23,
+          "all_required_n": 75,
+          "held_civil_all": 10,
+          "held_civil_n": 10,
+          "lost_required_inputs": 0,
+          "mean_law_count": 12.0,
+          "outside_required_gold_articles": 675
+        },
+        "rrf_7": {
+          "all_required": 23,
+          "all_required_n": 75,
+          "held_civil_all": 10,
+          "held_civil_n": 10,
+          "lost_required_inputs": 0,
+          "mean_law_count": 12.0,
+          "outside_required_gold_articles": 675
+        }
+      }
+    },
+    "historical_observation": {
+      "n": 4,
+      "policies": {
+        "retain_2": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 7.0,
+          "outside_required_gold_articles": 8
+        },
+        "rrf_2": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 7.0,
+          "outside_required_gold_articles": 8
+        },
+        "retain_3": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 8.0,
+          "outside_required_gold_articles": 12
+        },
+        "rrf_3": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 8.0,
+          "outside_required_gold_articles": 12
+        },
+        "retain_4": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 9.0,
+          "outside_required_gold_articles": 16
+        },
+        "rrf_4": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 9.0,
+          "outside_required_gold_articles": 16
+        },
+        "retain_5": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 10.0,
+          "outside_required_gold_articles": 20
+        },
+        "rrf_5": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 10.0,
+          "outside_required_gold_articles": 20
+        },
+        "retain_6": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 11.0,
+          "outside_required_gold_articles": 24
+        },
+        "rrf_6": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 11.0,
+          "outside_required_gold_articles": 24
+        },
+        "retain_7": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 12.0,
+          "outside_required_gold_articles": 28
+        },
+        "rrf_7": {
+          "all_required": null,
+          "all_required_n": 0,
+          "held_civil_all": null,
+          "held_civil_n": 0,
+          "lost_required_inputs": 0,
+          "mean_law_count": 12.0,
+          "outside_required_gold_articles": 28
+        }
+      }
+    }
+  },
+  "decision": {
+    "retain": {
+      "smallest_observed_budget": 4,
+      "deployment_approved": false
+    },
+    "rrf": {
+      "smallest_observed_budget": 7,
+      "deployment_approved": false
+    }
+  }
+}

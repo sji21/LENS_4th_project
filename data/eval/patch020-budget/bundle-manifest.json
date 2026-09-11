@@ -1,0 +1,9 @@
+{
+  "schema": "patch020-bundle-v1",
+  "files": {
+    "plan.json": "fcc6c240e8a6677f67f21c808dfdc4a42692141be74d06624b5d214ae3510fa0",
+    "results/details.json": "3fb5622ce73bb7d87b04823c7bf9d76f454555f9462c77e98dcbbff5dd9c86e5",
+    "results/manifest.json": "9661725ce103af1082ca221bd1ab00dc8ca34f09e27bc601a52030337d38a098",
+    "results/summary.json": "59fd12158d9c1ec92ba2f2518ab7c9c541a2b74459eae2f1d796e2a6d6898e24"
+  }
+}
