@@ -72,3 +72,11 @@ PATCH-020의 잠정 TOP3 결정을 실제 검색·생성 연결에 반영했다.
 최신 대표 감사 기록은 `5384961`의 clean tree에서 재실행한 결과다. 평가기와 검증기는 공통 `SEARCH_K`의 명시적 `k_civil=3`으로 호출하고 같은 값을 settings에 기록한다. 검증기는 기존 PATCH-015의 설정을 소급 수정하지 않고, 기존 법령5·판례5·안내2 및 코퍼스 설정 일치와 추가 민법3 예산을 별도 확인한다. 민법 예산 누락·변경 또는 기존 설정 변경은 거부한다.
 
 235입력 결과는 이전 결과와 바이트 단위 동일하고 운영 자료 전후 해시도 같다. 전체 테스트772 passed, 3 skipped, 124 subtests passed. 앞선 `373c465` 감사 기록과 당시 manifest는 `provenance-capture/`에 보존했다. 과거 PATCH-015~020 재현은 당시 코드의 별도 체크아웃을 사용한다.
+
+
+## 남은 공개 회귀 진단 호출부 정정
+
+`repair_public_regression.py`의 DEV/Holdout은 general, 민법 포함 공개15문항은 combined로 명시했다. 예전 PATCH-008 혼합 TOP5 보고서는 새 지표의 기대값으로 사용할 수 없어 `metrics_comparable=false`와 이유를 기록한다. 대신 같은 문항·같은 정답인지 검증한 뒤 필수 근거 확보/손실을 문항별로 보고한다. scope와 ranking이 같은 보고서에 한해서만 점수·순위 동일성도 기록한다. 출력은 settings와 results를 갖는 진단 보고서이며, 실행 완료 자체가 회귀 없음이나 채택 통과를 뜻하지 않는다. `comparison.has_required_evidence_loss` 및 비교 가능할 때 metrics_equal/rankings_equal을 확인해야 한다.
+
+실제 공개20문항(채점15, 제외5)을 이용한 모의 검색으로 CLI가 끝까지 보고서를 생성하는지 검증했다. 모델 검색 성능 수치가 아니라 채점·출력 회귀 테스트다. 기존 보고서 덮어쓰기·질문 및 정답 불일치를 차단하는 테스트도 포함했다. 이번에는 검색·평가기·검증기 코드를 바꾸지 않아235입력 재실행 없이 기존 감사 기록을 유지했다.
+전체 테스트: 776 passed, 3 skipped, 124 subtests passed.
