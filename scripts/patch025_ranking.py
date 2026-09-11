@@ -13,7 +13,9 @@ from scripts.patch023_report import diagnose, summarize
 POLICIES = {'baseline':(1,1,True), 'retain_dense2':(1,2,True),
             'retain_bm252':(2,1,True), 'retain_dense':(0,1,True),
             'retain_bm25':(1,0,True), 'rrf_only':(1,1,False),
-            'dense2_only':(1,2,False)}
+            'dense2_only':(1,2,False),
+            # Exploratory follow-ups after the six initial alternatives:
+            'keep_top2_dense2':(1,2,True), 'keep_top2_dense':(0,1,True)}
 
 
 def index_digest(retriever):
@@ -31,7 +33,8 @@ def select(row, policy):
         for rank,cid in enumerate(row[name],1):
             scores[cid]=scores.get(cid,0)+weight/(5+rank)
     ranked=sorted(scores,key=lambda c:(-scores[c],c))
-    return list(dict.fromkeys((row['seed'] if retain else [])+ranked))[:3]
+    kept=select(row,'baseline')[:2] if policy.startswith('keep_top2_') else (row['seed'] if retain else [])
+    return list(dict.fromkeys(kept+ranked))[:3]
 
 
 def capture(out):
@@ -143,9 +146,41 @@ def report(run):
     return {'policies':results,'miss_causes':misses}
 
 
+def verify_live(run):
+    from src.retrieval.service import RetrievalService
+    from src.evaluation.baseline import SEARCH_K, settings
+    if subprocess.check_output(['git','status','--porcelain'],text=True).strip(): raise ValueError('Dirty source')
+    svc=RetrievalService.from_index()
+    original=svc.dense.backend.embed; cache={}
+    def cached(texts):
+        key=tuple(texts)
+        if key not in cache: cache[key]=original(texts)
+        return cache[key]
+    svc.dense.backend.embed=cached
+    before=[index_digest(r) for r in (svc.dense,svc.civil_dense)]
+    traces={(r['qid'],r['mode']):r for r in read(run/'traces.json')}
+    old={(r['qid'],r['mode']):r for r in read(ROOT/'data/eval/patch024-expansion/results.json')}
+    checked=[]
+    for q in read(ROOT/'data/eval/patch015-baseline/capture/results.json'):
+        key=q['qid'],q['mode']; result=svc.search(q['query'],**SEARCH_K)
+        anchor=lambda e:norm(svc._chunks[e.chunk_id]['metadata']['article_id'])
+        assert [e.chunk_id for e in result.civil_laws]==select(traces[key],'keep_top2_dense2')
+        assert [anchor(e) for e in result.laws]==old[key]['laws']
+        assert [e.chunk_id for e in result.cases]==old[key]['cases']
+        assert [e.chunk_id for e in result.guides]==old[key]['guides']
+        checked.append({'qid':q['qid'],'mode':q['mode'],'civil_laws':[anchor(e) for e in result.civil_laws]})
+        if len(checked)%25==0: print(f'{len(checked)}/235 adopted policy verified',flush=True)
+    assert before==[index_digest(r) for r in (svc.dense,svc.civil_dense)]
+    if subprocess.check_output(['git','status','--porcelain'],text=True).strip(): raise ValueError('Source changed')
+    write(run/'live-verification.json',{'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+        'clean':True,'settings':settings(svc),'rows':checked,'other_channels_unchanged':True,'index_semantic_hashes':before})
+
+
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--capture',type=Path);p.add_argument('--report',type=Path);args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--capture',type=Path);p.add_argument('--report',type=Path);p.add_argument('--verify-live',type=Path);args=p.parse_args()
+    os.environ.update(HF_HUB_OFFLINE='1',TRANSFORMERS_OFFLINE='1',LANGSMITH_TRACING='false',ANONYMIZED_TELEMETRY='False')
     if args.capture:
         os.environ.update(HF_HUB_OFFLINE='1',TRANSFORMERS_OFFLINE='1',LANGSMITH_TRACING='false',ANONYMIZED_TELEMETRY='False')
         capture(args.capture)
     if args.report: write(args.report/'comparison.json',report(args.report))
+    if args.verify_live: verify_live(args.verify_live)
