@@ -19,6 +19,15 @@ def test_legacy_missing_observation_is_not_an_empty_fact_set():
     assert result == {"action": "rag", "intent": None, "facts": None, "query": "질문"}
 
 
+def test_upgrade_seed_restores_only_provided_prior_user_statements():
+    case = {"initial_state": {"topic": "보증금반환", "facts": {"contract_type": "월세"}, "pending_question": "계약은 끝났나요?", "pending_field": "contract_ended"}}
+    state = seed_state(case, dialogue_enabled=True)
+    assert state["dialogue"]["facts"]["contract_type"]["source"] == "user_statement"
+    assert state["dialogue"]["pending"]["field"] == "contract_ended"
+    assert state["dialogue"]["last_answer"] is None
+    assert observed_state(state, {}, "query", dialogue_enabled=False)["facts"] is None
+
+
 def test_execution_failure_is_not_a_successful_rag_action():
     assert observed_state({}, {"status": "error"}, "attempted query")["action"] is None
     assert observed_state({}, {"status": "abstained"}, "")["action"] is None

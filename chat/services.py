@@ -17,6 +17,7 @@ from src.generation import graph
 from src.generation.chain import get_default_service
 from src.generation.conversation import resolve_question
 from src.retrieval.readiness import BackgroundServiceLoader
+from .dialogue_state import empty_dialogue
 
 LABELS = {"registry": "등기사항증명서", "contract": "임대차계약서", "unknown": "종류 확인 필요"}
 
@@ -31,7 +32,7 @@ def retrieval_loader():
 
 
 def initial_state():
-    return {"messages": [], "documents": [], "completed_requests": []}
+    return {"messages": [], "documents": [], "completed_requests": [], "dialogue": empty_dialogue()}
 
 
 def public_state(conversation):
