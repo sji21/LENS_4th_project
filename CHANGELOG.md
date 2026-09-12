@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
+- PATCH-025 rejects PATCH-015 baseline captures outside the historical checkout whose candidate trace contract they reproduce, avoiding false candidate-stage diagnostics on newer retrieval paths. (commit: 69610f5)
+
 - PATCH-025 keeps Civil Act member rankings request-local while re-ranking the third candidate, preventing concurrent searches from mixing candidate ranks. (commit: 9fd078f)
 
 ## 2026-09-11
