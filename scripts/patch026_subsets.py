@@ -9,7 +9,7 @@ from pathlib import Path
 from scripts.patch026_expand import ROOT, read, write, sha, norm, score, settings, SEARCH_K
 from src.ingestion.load_laws import read_records, load_records
 from src.retrieval.retriever import load_chunks
-from src.retrieval.service import RetrievalService
+from src.retrieval.service import RetrievalService, DEFAULT_MODEL
 from src.retrieval.dense import SentenceTransformerEmbedding, ChromaRetriever
 from scripts.patch025_ranking import index_digest
 
@@ -17,11 +17,11 @@ from scripts.patch025_ranking import index_digest
 def run():
     if subprocess.check_output(['git','status','--porcelain'],text=True).strip(): raise ValueError('Commit first')
     source=ROOT/'tmp/patch026-evaluation'
-    out=ROOT/'tmp/patch026-subsets'; out.mkdir(exist_ok=False)
+    out=ROOT/'tmp/patch026-subsets-v2'; out.mkdir(exist_ok=False)
     before=read(source/'before.json'); records=read_records(ROOT/'data/eval/patch026-expansion/records.jsonl')
     allnew={norm(r.law_name+'-'+r.article_number) for r in records}
     newchunks=[c for c in load_chunks(source/'export.jsonl') if norm(c['metadata']['article_id']) in allnew]
-    backend=SentenceTransformerEmbedding(); original=backend.embed; cache={}
+    backend=SentenceTransformerEmbedding(DEFAULT_MODEL); original=backend.embed; cache={}
     def cached(texts):
         key=tuple(texts)
         if key not in cache: cache[key]=original(texts)
