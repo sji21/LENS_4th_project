@@ -293,6 +293,80 @@ def test_explicit_correction_to_monthly_rent_and_unknown_value_are_accepted():
     assert unknown.updates["contract_ended"]["value"] == "모름"
 
 
+@pytest.mark.parametrize("evidence", [
+    "전세 계약이 끝났는데 보증금을 못 받았어요",
+    "전세 계약이 끝났지만 보증금을 못 받았어요",
+    "전세 계약이 끝났고 보증금을 못 받았어요",
+    "전세 계약이 끝났어요. 보증금을 못 받았어요",
+])
+def test_whole_quote_can_record_ended_contract_and_unpaid_deposit(evidence):
+    state = session()
+    before = deepcopy(state)
+    result = parse(
+        decision_payload(action="clarify", search_query="", clarify_field="details", updates={
+            "contract_ended": {"value": "예", "evidence": evidence},
+            "deposit_returned": {"value": "아니요", "evidence": evidence},
+        }),
+        state=state, user=evidence,
+    )
+    assert result.updates["contract_ended"]["value"] == "예"
+    assert result.updates["deposit_returned"]["value"] == "아니요"
+    assert state == before
+
+
+def test_unended_contract_does_not_negate_a_separate_returned_deposit_clause():
+    evidence = "계약은 끝나지 않았지만 보증금은 돌려받았어요"
+    result = parse(
+        decision_payload(action="clarify", search_query="", clarify_field="details", updates={
+            "contract_ended": {"value": "아니요", "evidence": evidence},
+            "deposit_returned": {"value": "예", "evidence": evidence},
+        }),
+        user=evidence,
+    )
+    assert result.updates["deposit_returned"]["value"] == "예"
+
+
+@pytest.mark.parametrize("field,value,evidence", [
+    ("contract_ended", "아니요", "계약이 끝났는데 보증금을 못 받았어요"),
+    ("deposit_returned", "예", "계약이 끝났는데 보증금을 못 받았어요"),
+    ("contract_ended", "예", "계약은 끝나지 않았지만 보증금은 돌려받았어요"),
+    ("deposit_returned", "아니요", "계약은 끝나지 않았지만 보증금은 돌려받았어요"),
+    ("living_in_property", "아니요", "보증금은 못 받았지만 지금 살고 있어요"),
+    ("living_in_property", "아니요", "아직 살고 있어요"),
+    ("living_in_property", "예", "보증금을 돌려받았지만 지금 살고 있지 않아요"),
+])
+def test_other_clause_cannot_hide_an_explicit_polarity_reversal(field, value, evidence):
+    with pytest.raises(DecisionError, match="polarity"):
+        parse(
+            decision_payload(action="clarify", search_query="", clarify_field="details", updates={field: {"value": value, "evidence": evidence}}),
+            user=evidence,
+        )
+
+
+@pytest.mark.parametrize("field,value,evidence", [
+    ("living_in_property", "예", "보증금은 못 받았지만 지금 살고 있어요"),
+    ("living_in_property", "아니요", "보증금을 돌려받았지만 지금 살고 있지 않아요"),
+    ("contract_ended", "예", "네."),
+    ("contract_ended", "아니요", "아니요."),
+    ("contract_ended", "모름", "잘 모르겠어요."),
+])
+def test_relevant_living_clause_and_short_pending_answers_remain_valid(field, value, evidence):
+    result = parse(
+        decision_payload(action="clarify", search_query="", clarify_field="details", updates={field: {"value": value, "evidence": evidence}}),
+        user=evidence,
+    )
+    assert result.updates[field]["value"] == value
+
+
+@pytest.mark.parametrize("value,evidence", [("아니요", "네."), ("아니요", "맞습니다."), ("예", "아니요."), ("예", "아뇨.")])
+def test_explicit_short_pending_answer_cannot_be_reversed(value, evidence):
+    with pytest.raises(DecisionError, match="polarity"):
+        parse(
+            decision_payload(action="clarify", search_query="", clarify_field="details", updates={"contract_ended": {"value": value, "evidence": evidence}}),
+            user=evidence,
+        )
+
+
 def test_model_input_contains_only_selected_public_context_and_is_a_copy():
     state = session()
     state["expect"] = {"answer": "GOLD_MUST_NOT_BE_SENT"}
@@ -365,3 +439,59 @@ def test_input_builder_rejects_foreign_document_before_model_call():
         build_decision_input(state, "이 계약서를 봐주세요.", document_id="foreign")
 
     assert state == before
+
+
+@pytest.mark.parametrize("field,value,evidence", [
+    ("property_type", "보일러", "보일러가 고장났어요"),
+    ("property_type", "주택", "집주인입니다"),
+    ("property_type", "아파트", "아파트가 아니라 빌라예요"),
+    ("role", "임차인", "세입자가 아니라 집주인입니다"),
+    ("property_type", "주택", "보일러가 고장났어요"),
+    ("role", "임차인", "월세 집 수리가 궁금해요"),
+    ("role", "임대인", "세입자예요"),
+    ("subject", "제", "보일러가 고장났어요"),
+])
+def test_optional_fields_require_their_own_meaning_and_source(field, value, evidence):
+    with pytest.raises(DecisionError):
+        parse(decision_payload(action="social", intent="correction", search_query="",
+              updates={field: {"value": value, "evidence": evidence}}), user=evidence)
+
+
+@pytest.mark.parametrize("field,value,evidence", [
+    ("property_type", "주택", "월세 집"),
+    ("property_type", "오피스텔", "오피스텔입니다"),
+    ("role", "임차인", "저는 세입자예요"),
+    ("role", "임대인", "집주인입니다"),
+    ("subject", "친구", "친구의 상황이에요"),
+])
+def test_explicit_optional_fields_and_documented_synonyms_are_accepted(field, value, evidence):
+    result = parse(decision_payload(action="social", intent="correction", search_query="",
+                   updates={field: {"value": value, "evidence": evidence}}), user=evidence)
+    assert result.updates[field]["value"] == value
+
+
+
+def test_pending_answer_requires_a_binding_instead_of_an_invented_query_condition():
+    state = session()
+    dialogue = ensure_dialogue(state)
+    dialogue["pending"] = {"field": "contract_ended", "question": "계약이 끝났나요?", "attempts": 1}
+    with pytest.raises(DecisionError, match="pending_answer_missing"):
+        parse(decision_payload(intent="clarification_answer", updates={}, search_query="계약이 종료되지 않은 경우 보증금 반환"),
+              state=state, user="잘 모르겠어요.")
+    accepted = parse(decision_payload(intent="clarification_answer", updates={"contract_ended": {"value": "모름", "evidence": "잘 모르겠어요"}},
+                     search_query="계약 종료 여부를 모르는 경우 보증금 반환의 일반 원칙"), state=state, user="잘 모르겠어요.")
+    assert accepted.updates["contract_ended"]["value"] == "모름"
+
+
+
+@pytest.mark.parametrize("query", ["계약이 종료되지 않았고 보증금을 못 받은 경우 반환 절차", "계약이 종료되었고 보증금을 못 받은 경우 반환 절차"])
+def test_unknown_fact_cannot_become_a_positive_or_negative_search_condition(query):
+    with pytest.raises(DecisionError, match="unknown_query_condition"):
+        parse(decision_payload(intent="clarification_answer", search_query=query,
+              updates={"contract_ended": {"value": "모름", "evidence": "모르겠어요"}}), user="계약 종료는 모르겠어요.")
+
+
+def test_question_about_how_to_check_an_unknown_fact_is_not_an_assertion():
+    result = parse(decision_payload(intent="clarification_answer", search_query="계약이 끝났는지 확인하는 방법",
+                   updates={"contract_ended": {"value": "모름", "evidence": "모르겠어요"}}), user="계약 종료는 모르겠어요.")
+    assert result.action == "rag"

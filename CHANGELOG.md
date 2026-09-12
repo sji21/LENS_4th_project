@@ -5,6 +5,12 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-13
+
+### Added
+
+- PATCH-031 Adds bounded single-call Qwen conversation planning, source-checked structured decisions, and development captures that distinguish raw model errors from source-preserving normalization. (commit: pending)
+
 ## 2026-09-12
 
 ### Added

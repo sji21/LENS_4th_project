@@ -17,6 +17,9 @@ FACT_FIELDS = BOOL_FIELDS | {"contract_type", "subject", "role", "property_type"
 CLARIFY_FIELDS = FACT_FIELDS | {"details", "document"}
 STYLES = {"standard", "simple", "brief"}
 KEYS = {"intent", "action", "topic", "topic_changed", "updates", "clarify_field", "question", "search_query", "document_id", "style"}
+ROLE_ALIASES = {"임대인": ("임대인", "집주인"), "임차인": ("임차인", "세입자"), "중개사": ("중개사", "중개인"), "대리인": ("대리인",)}
+PROPERTY_ALIASES = {name: (name,) for name in ("아파트", "빌라", "단독주택", "다가구주택", "다세대주택", "연립주택", "오피스텔", "상가", "기숙사", "고시원")}
+PROPERTY_ALIASES["주택"] = ("주택", "집")
 
 
 class DecisionError(ValueError):
@@ -95,23 +98,65 @@ def build_decision_input(state, user, document_id=None):
     }
 
 
+def _polarity_scope(field, evidence):
+    """Keep explicit polarity checks within the relevant predicate's clause.
+
+    This recognizes a few common clause boundaries, not arbitrary Korean syntax.
+    In particular, an unpaid-deposit clause must not negate a completed contract
+    mentioned in the same quote. Short answers without a predicate stay intact.
+    """
+    predicates = {
+        "contract_ended": r"끝|종료|만료|해지",
+        "deposit_returned": r"받|반환",
+        "living_in_property": r"살|거주",
+        "moved_out": r"이사|퇴거|나가|나갔",
+        "landlord_notified": r"알리|알렸|알린|통지|통보|연락",
+    }
+    # Split only past-tense 고 conjunctions; 살고/받고 있어요 stay intact.
+    clauses = re.split(r"[,.;!?。\n]|는데|지만|으나|그리고|(?<=[았었했됐났렸])고(?=\s)", evidence)
+    relevant = [clause for clause in clauses if re.search(predicates[field], clause)]
+    return " ".join(relevant) if relevant else evidence
+
+
 def _check_meaning(field, value, evidence):
     if not _numbers(value).issubset(_numbers(evidence)) or not _quantities(value).issubset(_quantities(evidence)):
         raise DecisionError("invented_number")
     if field in {"deposit", "monthly_rent", "end_date", "start_date", "notice_date"}:
         if re.sub(r"[\s,]", "", value) not in re.sub(r"[\s,]", "", evidence):
             raise DecisionError("changed_literal_value")
+    if field in {"role", "property_type"}:
+        aliases = ROLE_ALIASES if field == "role" else PROPERTY_ALIASES
+        if value == "모름":
+            matched = re.search(r"모르|모름|알\s*수\s*없", evidence)
+        else:
+            labels = aliases.get(value, ())
+            matched = any(re.search(r"집(?!주인)", evidence) if alias == "집" else alias in evidence for alias in labels)
+            if any(re.search(re.escape(alias) + r"(?:가|이|는|은)?\s*(?:아니|말고)", evidence) for alias in labels):
+                matched = False
+        if not matched:
+            raise DecisionError("unsupported_or_unstated_fact")
+    if field == "subject" and value not in evidence:
+        raise DecisionError("unstated_subject")
     if field in BOOL_FIELDS:
         _enum(value, {"예", "아니요", "모름"}, "boolean_fact")
+        scope = _polarity_scope(field, evidence)
+        short_positive = re.fullmatch(r"\s*(?:네|예|응|맞아|맞아요|맞습니다|그렇습니다)[.!?\s]*", evidence)
+        short_negative = re.fullmatch(r"\s*(?:아니|아니요|아니오|아뇨|아닙니다)[.!?\s]*", evidence)
+        if value == "예" and short_negative or value == "아니요" and short_positive:
+            raise DecisionError("polarity")
         # Detect clear contradictions without claiming a complete Korean parser.
-        # Precise quotes allow a mixed correction sentence to cite its new clause.
-        if value == "예" and re.search(r"아니|않|못|모르|모름|미종료|미반환|안\s*(?:끝|받|살|나가|알렸)", evidence):
+        # Negation of another fact in the same sentence does not negate this one.
+        if value == "예" and re.search(r"아니|않|못|모르|모름|미종료|미반환|안\s*(?:끝|받|살|나가|알렸)", scope):
             raise DecisionError("polarity")
         positive = {"contract_ended": r"끝났|종료됐|종료되었", "deposit_returned": r"돌려받았|반환받았", "living_in_property": r"살고\s*있|거주\s*중", "moved_out": r"이사했|퇴거했"}.get(field)
-        if value == "아니요" and positive and re.search(positive, evidence) and not re.search(r"아니|않|못|안\s|줄\s*알|모르", evidence):
+        if value == "아니요" and positive and re.search(positive, scope) and not re.search(r"아니|않|못|안\s|줄\s*알|모르", scope):
             raise DecisionError("polarity")
     if field == "contract_type":
         _enum(value, {"전세", "월세", "반전세", "모름"}, "contract_type")
+        if value != "모름" and value not in evidence:
+            raise DecisionError("unstated_contract_type")
+        if value == "모름" and not re.search(r"모르|모름|알\s*수\s*없", evidence):
+            raise DecisionError("unstated_contract_type")
         if re.search(re.escape(value) + r"(?:가|이|는|은)?\s*(?:아니|말고)", evidence):
             raise DecisionError("negated_fact")
 
@@ -124,6 +169,11 @@ def _check_query_polarity(query, facts):
     }
     for field, (positive, negative) in expressions.items():
         value = facts.get(field, {}).get("value")
+        if value == "모름":
+            for expression in (positive, negative):
+                match = re.search(expression, query)
+                if match and not re.match(r"(?:았|었)?(?:는지|는가|는지는|는지를)", query[match.end():]):
+                    raise DecisionError("unknown_query_condition")
         if value == "예" and re.search(negative, query):
             raise DecisionError("query_polarity")
         match = re.search(positive, query)
@@ -131,7 +181,7 @@ def _check_query_polarity(query, facts):
             raise DecisionError("query_polarity")
 
 
-def parse_decision(raw, *, state, user):
+def parse_decision(raw, *, state, user, updates_as_list=False, preserved_user=False):
     if not isinstance(raw, str) or len(raw) > 16000:
         raise DecisionError("json")
     try:
@@ -158,8 +208,24 @@ def parse_decision(raw, *, state, user):
     if not isinstance(query, str) or len(query) > 2000 or (payload["action"] == "rag" and not query.strip()):
         raise DecisionError("query")
     updates = payload["updates"]
+    if updates_as_list:
+        if not isinstance(updates, list) or len(updates) > len(FACT_FIELDS):
+            raise DecisionError("updates")
+        normalized = {}
+        for update in updates:
+            if not isinstance(update, dict) or set(update) != {"field", "value", "evidence"}:
+                raise DecisionError("updates")
+            field = update["field"]
+            if not isinstance(field, str) or field not in FACT_FIELDS or field in normalized:
+                raise DecisionError("updates")
+            normalized[field] = {"value": update["value"], "evidence": update["evidence"]}
+        updates = payload["updates"] = normalized
     if not isinstance(updates, dict) or not set(updates).issubset(FACT_FIELDS):
         raise DecisionError("updates")
+    pending = ensure_dialogue(deepcopy(state))["pending"]
+    pending_field = pending.get("field") if pending else None
+    if payload["intent"] == "clarification_answer" and pending_field in FACT_FIELDS and pending_field not in updates:
+        raise DecisionError("pending_answer_missing")
     trial = deepcopy(state)
     try:
         dialogue = apply_user_update(trial, user=user, updates=updates, topic=payload["topic"], topic_changed=payload["topic_changed"], document_id=payload["document_id"])
@@ -170,5 +236,12 @@ def parse_decision(raw, *, state, user):
     factual_text = user + " " + " ".join(f["value"] + " " + f["evidence"] for f in dialogue["facts"].values())
     if not _numbers(query).issubset(_numbers(factual_text)) or not _quantities(query).issubset(_quantities(factual_text)):
         raise DecisionError("invented_query_number")
-    _check_query_polarity(query, dialogue["facts"])
+    checked_query = query
+    if preserved_user and payload["action"] == "rag":
+        if not isinstance(user, str) or not user or not query.endswith(user):
+            raise DecisionError("preserved_user_suffix")
+        # A verbatim question may contain hypotheses or corrections. It is not
+        # a model assertion; only generated context is checked for new polarity.
+        checked_query = query[:-len(user)]
+    _check_query_polarity(checked_query, dialogue["facts"])
     return Decision(**deepcopy(payload))

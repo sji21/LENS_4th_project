@@ -327,10 +327,15 @@ def _build_native_ollama(**overrides):
     기존 ChatOpenAI 기반 코드가 참조하던 ``temperature``, ``extra_body``,
     ``openai_api_base`` 속성은 호환성을 위해 Runnable 객체에 그대로 노출한다.
     실제 요청은 Ollama native `/api/chat`으로 보낸다.
+    ``extra_body.format``은 최상위 응답 형식이며, ``allow_route_fallback=False``는
+    선택된 서버의 생성 요청 실패 후 다른 서버로 다시 생성하는 것을 막는다.
     """
     timeout = float(overrides.pop("timeout", LLM_TIMEOUT))
     temperature = float(overrides.pop("temperature", LLM_TEMPERATURE))
     model = overrides.pop("model", LLM_MODEL)
+    allow_route_fallback = overrides.pop("allow_route_fallback", True)
+    if type(allow_route_fallback) is not bool:
+        raise TypeError("allow_route_fallback must be a boolean")
 
     # 기존 호출부가 넘기던 값. native API에서는 재시도를 하지 않으므로 소비만 한다.
     overrides.pop("max_retries", None)
@@ -344,6 +349,21 @@ def _build_native_ollama(**overrides):
     # 기존 동작과 동일하게 extra_body는 통째로 교체하지 않고 merge한다.
     if "extra_body" in overrides:
         body.update(overrides.pop("extra_body") or {})
+
+    if "format" in body:
+        output_format = body["format"]
+        if isinstance(output_format, str):
+            if output_format != "json":
+                raise ValueError("Ollama format must be 'json' or a JSON schema object")
+        elif isinstance(output_format, dict):
+            # Keep a JSON-only copy: caller mutations must not alter the schema
+            # after the client is built. Ollama performs schema interpretation.
+            try:
+                body["format"] = json.loads(json.dumps(output_format, allow_nan=False))
+            except (TypeError, ValueError, RecursionError):
+                raise ValueError("Ollama format schema must contain valid JSON values") from None
+        else:
+            raise TypeError("Ollama format must be 'json' or a JSON schema object")
 
     if overrides:
         raise TypeError(
@@ -381,6 +401,8 @@ def _build_native_ollama(**overrides):
             "keep_alive": LLM_KEEP_ALIVE,
             "options": options,
         }
+        if "format" in body:
+            payload["format"] = body["format"]
 
         # 핵심 수정: Qwen3 thinking을 native API top-level 필드로 직접 제어한다.
         if "think" in body:
@@ -396,7 +418,7 @@ def _build_native_ollama(**overrides):
         candidates = _candidate_base_urls()
         attempt_bases = [selected_base]
         local_base = _normalize_native_base_url(LOCAL_OLLAMA_BASE_URL)
-        if selected_base != local_base and local_base in candidates:
+        if allow_route_fallback and selected_base != local_base and local_base in candidates:
             attempt_bases.append(local_base)
 
         failures: list[str] = []
@@ -489,6 +511,7 @@ def _build_native_ollama(**overrides):
     runnable.openai_api_base = _native_base_url()
     runnable.model_name = model
     runnable.timeout = timeout
+    runnable.allow_route_fallback = allow_route_fallback
 
     return runnable
 
