@@ -17,7 +17,7 @@ from src.retrieval.retriever import BM25Retriever, load_chunks
 from src.retrieval.index import clean_metadata
 from src.retrieval.service import (
     CASE, CASE_CHUNKS, DEFAULT_INDEX, DEFAULT_MODEL, GUIDE, GUIDE_CHUNKS,
-    LAW, LAW_CHUNKS, LAW_TYPES, DEFAULT_CIVIL_INDEX, RetrievalService,
+    LAW, LAW_CHUNKS, LAW_TYPES, DEFAULT_CIVIL_INDEX, RetrievalService, CIVIL_TAIL_DENSE_MULTIPLIER,
 )
 
 SEARCH_K = {"k_law": 5, "k_case": 5, "k_guide": 2, "k_civil": 3}
@@ -162,7 +162,9 @@ def settings(service) -> dict:
                   for f in fields(corpus) for value in [getattr(corpus, f.name)]}
         config["retriever"] = retriever_settings(service._retrievers.get(corpus.name))
         corpora[key] = config
-    return {"search_k": SEARCH_K, "corpora": corpora}
+    return {"search_k": SEARCH_K, "corpora": corpora,
+            "civil_selection": {"preserve_top": 2, "tail_dense_multiplier": CIVIL_TAIL_DENSE_MULTIPLIER,
+                                "applies_at_limit": 3}}
 
 
 def main(argv: list[str] | None = None) -> int:

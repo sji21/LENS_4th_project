@@ -54,7 +54,7 @@ Python 3.11.9, CPU PyTorch 2.14.0+cpu, KURE-v1 로컬 스냅샷 `4ed4540949c70b7
 
 ## 재현
 
-저장소 루트에서, 기존 준비 절차에 따라 동일한 청크·DB·두 인덱스와 로컬 모델을 준비한다. 가상환경 의존성은 프로젝트 requirements를 따른다. 운영 파일은 직접 검색하지 않고 새 출력 폴더 아래 복사본에서 사용한다.
+이 수집기는 PATCH-015 당시의 `_search_one()` 후보 추적 계약만 기록한다. 따라서 새 검색 경로가 추가된 최신 코드에서는 실행을 거부한다. 수집을 다시 실행하려면 `2841e0444060b92cb54ece1d459b75b3b1f57e5b`의 별도 체크아웃에서, 기존 준비 절차에 따라 동일한 청크·DB·두 인덱스와 로컬 모델을 준비한다. 가상환경 의존성은 프로젝트 requirements를 따른다. 운영 파일은 직접 검색하지 않고 새 출력 폴더 아래 복사본에서 사용한다.
 
 ```powershell
 .venv/Scripts/python scripts/patch015_baseline.py --out tmp/patch015-new-run

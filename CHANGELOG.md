@@ -5,7 +5,19 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-12
+
+### Fixed (Bug Fixes)
+
+- PATCH-025 rejects PATCH-015 baseline captures outside the historical checkout whose candidate trace contract they reproduce, avoiding false candidate-stage diagnostics on newer retrieval paths. (commit: 69610f5)
+
+- PATCH-025 keeps Civil Act member rankings request-local while re-ranking the third candidate, preventing concurrent searches from mixing candidate ranks. (commit: 9fd078f)
+
 ## 2026-09-11
+
+### Changed
+
+- PATCH-025 preserves civil TOP2 and uses double dense weight only for the third candidate. Nine policies were compared on235 inputs; DEV context full targets29→30, Hit1 preserved and zero prior required-evidence losses. All235 live results match. Third candidates change on72 inputs; legal relevance and LLM quality are not established. No data/model changes. (commit: 23ad5bb, 0ee906e, aa2411e)
 
 ### Added
 

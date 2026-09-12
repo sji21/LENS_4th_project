@@ -129,6 +129,7 @@ CASE = Corpus("판례", CASE_TYPES)
 # 이미 민법을 포함해 계산되어 민법이 결과에 보이지 않아도 기존 순위가 흔들린다.
 # 민법은 별도 채널에서 최대 3개를 반환한다.
 CIVIL_TITLE = "민법"
+CIVIL_TAIL_DENSE_MULTIPLIER = 2.0
 CIVIL_ARTICLE_IDS = (
     "민법-제623조",
     "민법-제626조",
@@ -662,6 +663,20 @@ class RetrievalService:
             if chunk_id in self._chunks
         ]
 
+    def _search_one_with_member_hits(
+        self, corpus: Corpus, question: str, k: int,
+    ) -> tuple[list[Evidence], dict[str, list[str]]]:
+        """검색 결과와 동일 요청의 Hybrid 구성원별 순위를 함께 가져온다."""
+        retriever = self._retrievers.get(corpus.name)
+        if retriever is None or k <= 0:
+            return [], {}
+        hits, member_hits = retriever.search_with_member_hits(question, k, corpus.where())
+        return [
+            _to_evidence(rank, self._chunks[chunk_id], score)
+            for rank, (chunk_id, score) in enumerate(hits, start=1)
+            if chunk_id in self._chunks
+        ], member_hits
+
     def search(
         self,
         question: str,
@@ -716,19 +731,38 @@ class RetrievalService:
     def _search_civil_candidates(
         self, question: str, topics: tuple[CivilTopic, ...], limit: int,
     ) -> list[Evidence]:
-        """기존 최대2개 선택을 우선 보존하고 중복 없이 후보를 보충한다."""
+        """기존 TOP2를 보존하고 세 번째 후보는 의미 검색 비중을 높여 보충한다."""
         if limit <= 0:
             return []
         picked = self._search_civil(question, topics, min(2, limit))
         seen = {e.chunk_id for e in picked}
         if len(picked) < limit:
-            candidates = self._search_one(self.civil, question, len(self.civil.include_ids))
+            candidates, ranks = self._search_one_with_member_hits(
+                self.civil, question, len(self.civil.include_ids),
+            )
             for evidence in candidates:
                 if evidence.chunk_id not in seen:
                     picked.append(evidence)
                     seen.add(evidence.chunk_id)
                 if len(picked) >= limit:
                     break
+            if limit == 3 and len(picked) == 3:
+                # Reuse this query's full candidate ranks; no extra embedding/search.
+                # Preserve the first two results, including existing topic picks.
+                retriever = self._retrievers[self.civil.name]
+                scores: dict[str, float] = {}
+                for member in retriever.members:
+                    weight = member.weight * (CIVIL_TAIL_DENSE_MULTIPLIER
+                                               if member.name.endswith("-dense") else 1.0)
+                    if not weight:
+                        continue
+                    for rank, cid in enumerate(ranks.get(member.name, ()), 1):
+                        scores[cid] = scores.get(cid, 0.0) + weight / (retriever.rrf_k + rank)
+                preserved = {e.chunk_id for e in picked[:2]}
+                tail = [e for e in candidates if e.chunk_id not in preserved and e.chunk_id in scores]
+                if tail:
+                    best = min(tail, key=lambda e: (-scores[e.chunk_id], e.chunk_id))
+                    picked[2] = replace(best, score=scores[best.chunk_id])
         return [replace(e, rank=i) for i, e in enumerate(picked, 1)]
 
     def _search_civil(
