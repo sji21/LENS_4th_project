@@ -9,15 +9,17 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-026 adds 61 verified article records to a 204-article candidate and evaluates 235 identical inputs with all 26 Civil Act articles searchable. Existing version members, article bodies, source/structure data and vectors are preserved. DEV fixed-target data gaps drop from 32 to 0; complete retrieval rises 28→32 / 30→34, but 16 inputs lose prior required evidence. General TOP3 loss affects 13 inputs; civil TOP3 loses 3. Full-corpus ranks and source checks are reproducible offline. Operating adoption is deferred pending ranking improvements; historical/guide/appendix coverage and LLM answers are not claimed complete. (commit: be56037, 598ced4; analysis: 1758a7f)
+- Renumber the local law-expansion work from PATCH-026 to PATCH-027 because team PR #24 has published PATCH-026. Resume the same local PATCH-027 work previously folded into local 26; do not reuse it for an unrelated task. Preserve capture paths/hashes and historical commits; rename only the active branch and current records. Ranking improvements remain in progress. (commit: pending)
 
-- PATCH-026 prioritizes completing the reviewed DEV100 law corpus before further five-article tuning. The inventory identifies 27 missing fixed-required articles plus 17 other reviewed references, with six law-tagged sources requiring document/article/version identification. These are collection candidates, not newly ingested or legally reverified records. Gold and operating data remain unchanged. (commit: f3c0728)
+- PATCH-027 adds 61 verified article records to a 204-article candidate and evaluates 235 identical inputs with all 26 Civil Act articles searchable. Existing version members, article bodies, source/structure data and vectors are preserved. DEV fixed-target data gaps drop from 32 to 0; complete retrieval rises 28→32 / 30→34, but 16 inputs lose prior required evidence. General TOP3 loss affects 13 inputs; civil TOP3 loses 3. Full-corpus ranks and source checks are reproducible offline. Operating adoption is deferred pending ranking improvements; historical/guide/appendix coverage and LLM answers are not claimed complete. (commit: be56037, 598ced4; analysis: 1758a7f)
+
+- PATCH-027 prioritizes completing the reviewed DEV100 law corpus before further five-article tuning. The inventory identifies 27 missing fixed-required articles plus 17 other reviewed references, with six law-tagged sources requiring document/article/version identification. These are collection candidates, not newly ingested or legally reverified records. Gold and operating data remain unchanged. (commit: f3c0728)
 
 ## 2026-09-12
 
 ### Changed
 
-- PATCH-026 combines selection, candidate ingestion, retrieval improvements and evaluation for the same five residence/tax procedure articles. The former PATCH-027 is consolidated without rewriting commits; its identifier is retired and trace paths are preserved. Initial full/tax/residence ingestion loses prior TOP5 evidence on 6/4/1 inputs. The partitioned lexical candidate reproduces all 235 product outputs, raises DEV full targets 28→29/30→31 and preserves prior TOP5 evidence, but loses one TOP3 anchor. This patch remains in progress and operating data adoption is deferred. (commit: 8ed2733, b40834f, 54013ac, 0a57247, 6085564, 34ea1f0, 473dccc; consolidation: 36ca04a)
+- PATCH-027 combines selection, candidate ingestion, retrieval improvements and evaluation for the same five residence/tax procedure articles. The two local experiments are consolidated without rewriting commits and their trace paths are preserved. Initial full/tax/residence ingestion loses prior TOP5 evidence on 6/4/1 inputs. The partitioned lexical candidate reproduces all 235 product outputs, raises DEV full targets 28→29/30→31 and preserves prior TOP5 evidence, but loses one TOP3 anchor. This patch remains in progress and operating data adoption is deferred. (commit: 8ed2733, b40834f, 54013ac, 0a57247, 6085564, 34ea1f0, 473dccc; consolidation: 36ca04a)
 
 ### Fixed (Bug Fixes)
 
