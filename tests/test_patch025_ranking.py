@@ -10,11 +10,13 @@ def service(dense=True):
     svc.civil=CIVIL
     evidence=lambda cid:Evidence(1,cid,'law','민법','본문',1.0,'')
     svc._search_civil=lambda q,t,k:[evidence('a'),evidence('b')][:k]
-    svc._search_one=lambda c,q,k:[evidence('c'),evidence('d')][:k]
+    svc._search_one_with_member_hits=lambda c,q,k:([evidence('c'),evidence('d')][:k], {
+        '민법-bm25':['c','d'], '민법-dense':['d','c'],
+    })
     members=[SimpleNamespace(name='민법-bm25',weight=1)]
     if dense: members.append(SimpleNamespace(name='민법-dense',weight=1))
     svc._retrievers={CIVIL.name:SimpleNamespace(members=members,rrf_k=5,
-        last_member_hits=lambda:{'민법-bm25':['c','d'],'민법-dense':['d','c']})}
+        last_member_hits=lambda:(_ for _ in ()).throw(AssertionError('stale ranks read')))}
     return svc
 
 

@@ -663,6 +663,20 @@ class RetrievalService:
             if chunk_id in self._chunks
         ]
 
+    def _search_one_with_member_hits(
+        self, corpus: Corpus, question: str, k: int,
+    ) -> tuple[list[Evidence], dict[str, list[str]]]:
+        """검색 결과와 동일 요청의 Hybrid 구성원별 순위를 함께 가져온다."""
+        retriever = self._retrievers.get(corpus.name)
+        if retriever is None or k <= 0:
+            return [], {}
+        hits, member_hits = retriever.search_with_member_hits(question, k, corpus.where())
+        return [
+            _to_evidence(rank, self._chunks[chunk_id], score)
+            for rank, (chunk_id, score) in enumerate(hits, start=1)
+            if chunk_id in self._chunks
+        ], member_hits
+
     def search(
         self,
         question: str,
@@ -723,7 +737,9 @@ class RetrievalService:
         picked = self._search_civil(question, topics, min(2, limit))
         seen = {e.chunk_id for e in picked}
         if len(picked) < limit:
-            candidates = self._search_one(self.civil, question, len(self.civil.include_ids))
+            candidates, ranks = self._search_one_with_member_hits(
+                self.civil, question, len(self.civil.include_ids),
+            )
             for evidence in candidates:
                 if evidence.chunk_id not in seen:
                     picked.append(evidence)
@@ -734,7 +750,6 @@ class RetrievalService:
                 # Reuse this query's full candidate ranks; no extra embedding/search.
                 # Preserve the first two results, including existing topic picks.
                 retriever = self._retrievers[self.civil.name]
-                ranks = retriever.last_member_hits()
                 scores: dict[str, float] = {}
                 for member in retriever.members:
                     weight = member.weight * (CIVIL_TAIL_DENSE_MULTIPLIER

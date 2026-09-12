@@ -152,6 +152,15 @@ class DelegationTests(unittest.TestCase):
         h.search("q", 5)
         self.assertEqual(h.last_member_hits(), {"bm25": ["a1"], "kure": ["b1"]})
 
+    def test_search_with_member_hits_returns_a_request_local_snapshot(self):
+        a = FakeRetriever([("a1", 1.0)])
+        b = FakeRetriever([("b1", 1.0)])
+        h = HybridRetriever([Member(a, "bm25"), Member(b, "kure")])
+        ranked, member_hits = h.search_with_member_hits("q", 5)
+        self.assertEqual([chunk_id for chunk_id, _ in ranked], ["a1", "b1"])
+        self.assertEqual(member_hits, {"bm25": ["a1"], "kure": ["b1"]})
+        self.assertEqual(h.last_member_hits(), {})
+
     def test_empty_member_results_do_not_break_fusion(self):
         empty = FakeRetriever([])
         other = FakeRetriever([("x", 1.0)])
