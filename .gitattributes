@@ -1,3 +1,5 @@
 # Preserve frozen official source bytes and machine-readable evaluation hashes.
 /data/eval/patch026-full/** -text
 /data/eval/patch026-full/sources/*.html -diff
+# Captured machine outputs remain readable files; review the replay code and analysis.
+/data/eval/patch026-full/capture/*.json -diff

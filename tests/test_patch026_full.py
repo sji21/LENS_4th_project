@@ -67,3 +67,35 @@ def test_partial_version_addition_preserves_existing_article_and_source(tmp_path
         assert oldsources[0] in [tuple(r) for r in db.execute('SELECT * FROM law_article_sources')]
         with pytest.raises(ValueError,match='replace an existing'):
             retain_affected_records(db,records[:1])
+
+
+def test_full_capture_replay_separates_coverage_from_retrieval():
+    from scripts.patch026_full_report import analyze
+    r=analyze()
+    assert r['groups']['question_only']['union_all_required']=={'hits':32,'n':75}
+    assert r['groups']['context_diagnostic']['union_all_required']=={'hits':34,'n':75}
+    assert len(r['lost_prior_required'])==16
+    assert not r['adoption_gate_passed'] and not r['operating_data_adopted']
+    assert r['failure_stage_counts_target_instances']['question_only']['civil']['final_selection']==1
+
+
+@pytest.mark.parametrize('mutation',['remove_source','remove_input','wrong_law','civil_allowlist','chunk_body'])
+def test_corrupt_full_bundle_rejected_even_with_rewritten_manifest(tmp_path,mutation):
+    import shutil
+    from scripts.patch026_full_sources import write
+    from scripts.patch015_baseline import sha
+    from scripts.patch026_full_report import analyze
+    target=tmp_path/'bundle';shutil.copytree(OUT,target)
+    manifest=read(target/'manifest.json')
+    if mutation=='remove_source':
+        rel='sources/C111.html';(target/rel).unlink();del manifest[rel]
+    else:
+        rel={'remove_input':'capture/after.json','wrong_law':'specs.json','civil_allowlist':'capture/audit.json','chunk_body':'capture/new-chunks.json'}[mutation]
+        data=read(target/rel)
+        if mutation=='remove_input':data.pop()
+        elif mutation=='wrong_law':next(s for s in data if s['source_id']=='C111')['law_name']='형법'
+        elif mutation=='chunk_body':data[0]['text']+=' 잘못된 추가 본문'
+        else:data['candidate_settings']['corpora']['civil']['include_ids'].pop()
+        write(target/rel,data);manifest[rel]=sha(target/rel)
+    write(target/'manifest.json',manifest)
+    with pytest.raises(ValueError):analyze(target)

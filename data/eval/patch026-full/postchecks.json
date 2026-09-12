@@ -1,0 +1,68 @@
+{
+  "observed_after_capture": "2026-09-13",
+  "capture_commit": "598ced4ef99b1531cf0321fc8c7982d4ca7900e1",
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "packages": {
+    "torch": "2.14.0",
+    "transformers": "5.16.1",
+    "sentence-transformers": "6.0.1",
+    "chromadb": "1.5.9",
+    "numpy": "2.4.6",
+    "pytest": "9.1.1"
+  },
+  "sqlite_preservation": {
+    "law_articles": {
+      "before": 143,
+      "candidate": 204,
+      "old_rows_missing_or_changed": 0
+    },
+    "law_article_sources": {
+      "before": 10,
+      "candidate": 71,
+      "old_rows_missing_or_changed": 0
+    },
+    "law_article_units": {
+      "before": 798,
+      "candidate": 1220,
+      "old_rows_missing_or_changed": 0
+    }
+  },
+  "existing_chunk_only_timestamp_changes": {
+    "law-민법-20260317#제623조#0": [
+      "created_at"
+    ],
+    "law-민법-20260317#제626조#0": [
+      "created_at"
+    ],
+    "law-민법-20260317#제627조#0": [
+      "created_at"
+    ],
+    "law-민법-20260317#제629조#0": [
+      "created_at"
+    ],
+    "law-민법-20260317#제632조#0": [
+      "created_at"
+    ],
+    "law-민법-20260317#제634조#0": [
+      "created_at"
+    ],
+    "law-민법-20260317#제640조#0": [
+      "created_at"
+    ],
+    "law-민법-20260317#제105조#0": [
+      "created_at"
+    ],
+    "law-민법-20260317#제114조#0": [
+      "created_at"
+    ],
+    "law-민법-20260317#제357조#0": [
+      "created_at"
+    ]
+  },
+  "operating_database_and_chunk_hashes_unchanged": true,
+  "unit_tests_at_capture": "893 passed, 3 skipped, 124 subtests",
+  "final_related_tests": "39 passed",
+  "private_law_side_and_full_bodies_equal": 6,
+  "note": "Post-capture read-only checks, not a second retrieval run"
+}
