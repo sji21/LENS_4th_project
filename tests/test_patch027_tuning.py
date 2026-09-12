@@ -9,6 +9,7 @@ from scripts.patch027_tuning import concepts,dense_query,GENERAL,CIVILS,general_
 @pytest.mark.parametrize('query,phrase',[
     ('형제 둘이 지분을 나눠 갖는 집의 임대는 누구와 의논하나요?','공유물의 관리'),
     ('반송된 서류는 다시 어떻게 보내나요?','공시송달'),
+    ('등기우편을 부쳤는데 수취인이 없다며 돌아왔습니다.','공시송달'),
     ('이삿짐을 빼기 전에 보증금을 받을 수 있나요?','동시이행'),
     ('전세집 도배 비용이 다툼이 됐습니다.','원상회복의무'),
 ])
@@ -19,7 +20,7 @@ def test_concepts_generalize_without_article_ids(query,phrase):
     assert dense_query(query,'civil').startswith(query+'\n')
 
 
-@pytest.mark.parametrize('query',['앱 공유 버튼을 못 찾겠어요.','우리 동네 우편번호가 궁금해요.','좋은 아침입니다.'])
+@pytest.mark.parametrize('query',['앱 공유 버튼을 못 찾겠어요.','우리 동네 우편번호가 궁금해요.','좋은 아침입니다.','휴가를 마치고 집으로 돌아왔어요.'])
 def test_no_matching_concept_keeps_dense_query_unchanged(query):
     assert concepts(query,'civil')==[]
     assert dense_query(query,'civil')==query
