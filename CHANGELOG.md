@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-026 combines selection, candidate ingestion, retrieval improvements and evaluation for the same five residence/tax procedure articles. The former PATCH-027 is consolidated without rewriting commits; its identifier is retired and trace paths are preserved. Initial full/tax/residence ingestion loses prior TOP5 evidence on 6/4/1 inputs. The partitioned lexical candidate reproduces all 235 product outputs, raises DEV full targets 28→29/30→31 and preserves prior TOP5 evidence, but loses one TOP3 anchor. This patch remains in progress and operating data adoption is deferred. (commit: 8ed2733, b40834f, 54013ac, 0a57247, 6085564, 34ea1f0, 473dccc; consolidation: pending)
+- PATCH-026 combines selection, candidate ingestion, retrieval improvements and evaluation for the same five residence/tax procedure articles. The former PATCH-027 is consolidated without rewriting commits; its identifier is retired and trace paths are preserved. Initial full/tax/residence ingestion loses prior TOP5 evidence on 6/4/1 inputs. The partitioned lexical candidate reproduces all 235 product outputs, raises DEV full targets 28→29/30→31 and preserves prior TOP5 evidence, but loses one TOP3 anchor. This patch remains in progress and operating data adoption is deferred. (commit: 8ed2733, b40834f, 54013ac, 0a57247, 6085564, 34ea1f0, 473dccc; consolidation: 36ca04a)
 
 ### Fixed (Bug Fixes)
 
