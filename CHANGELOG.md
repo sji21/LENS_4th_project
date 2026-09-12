@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
+- PATCH-028 Adds a synthetic conversation capture runner, explicit non-observable checks, source fingerprints, latency and model-call measurements with predeclared acceptance gates. Records 23 real-model baseline turns and synchronizes local data with the already reviewed 10-article Civil Act corpus. (commit: `3b6986a`)
+
 - PATCH-027 Adds separate development and acceptance conversation scenarios with per-turn action, fact and query expectations; infrastructure checks remain distinct from legal-answer accuracy. (commit: `411d3ec`)
 
 - PATCH-026 defines the conversational chatbot roadmap on `chatting-upgrade`: twelve sequential patches with planned child branches, acceptance criteria, test scenarios, a baseline and per-feature review before integration. Product behavior is unchanged. See `LIST.md`. (commit: `6c091a8`)
