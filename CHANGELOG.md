@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-026 prioritizes completing the reviewed DEV100 law corpus before further five-article tuning. The inventory identifies 27 missing fixed-required articles plus 17 other reviewed references, with six law-tagged sources requiring document/article/version identification. These are collection candidates, not newly ingested or legally reverified records. Gold and operating data remain unchanged. (commit: pending)
+- PATCH-026 prioritizes completing the reviewed DEV100 law corpus before further five-article tuning. The inventory identifies 27 missing fixed-required articles plus 17 other reviewed references, with six law-tagged sources requiring document/article/version identification. These are collection candidates, not newly ingested or legally reverified records. Gold and operating data remain unchanged. (commit: f3c0728)
 
 ## 2026-09-12
 
