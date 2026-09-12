@@ -55,6 +55,7 @@ def capture(out):
     core_chunks=[c for c in laws if anchors[c['chunk_id']] not in proc_ids]
     proc_chunks=[c for c in laws if anchors[c['chunk_id']] in proc_ids]
     assert len(core_chunks)==133 and len(proc_chunks)==5
+    raw_proc_ids=[c['metadata']['article_id'] for c in proc_chunks]
     core=svc._build(replace(LAW,name='core'),core_chunks)
     procedure=svc._build(replace(LAW,name='procedure'),proc_chunks)
     mixed=svc._retrievers[LAW.name]
@@ -63,8 +64,8 @@ def capture(out):
     rows=[]
     for q in read(ROOT/'data/eval/patch015-baseline/capture/results.json'):
         where=route_law_corpus(q['query']).where()
-        core_where={'$and':[where,{'article_id':{'$nin':list(proc_ids)}}]}
-        proc_where={'$and':[where,{'article_id':{'$in':list(proc_ids)}}]}
+        core_where={'$and':[where,{'article_id':{'$nin':raw_proc_ids}}]}
+        proc_where={'$and':[where,{'article_id':{'$in':raw_proc_ids}}]}
         ranks={}
         for name,retriever,filtered in (('core',core,core_where),('procedure',procedure,proc_where),
                                         ('statistics_only',mixed,core_where),('mixed',mixed,where)):
@@ -73,7 +74,7 @@ def capture(out):
                                     ('procedure_bm25',procedure.members[0],proc_where),
                                     ('global_dense',mixed.members[1],where)):
             ranks[name]=HybridRetriever._ask(member,q['query'],20,filtered)
-        assert [anchors[cid] for cid,_ in ranks['core'][:5]]==previous[q['qid'],q['mode']]['laws'], 'Core baseline drift'
+        assert [anchors[cid] for cid,_ in ranks['core'][:5]]==previous[q['qid'],q['mode']]['laws'], ('Core baseline drift',q['qid'],q['mode'])
         assert [anchors[cid] for cid,_ in ranks['mixed'][:5]]==old_mixed[q['qid'],q['mode']]['laws'], 'Mixed baseline drift'
         rows.append({'qid':q['qid'],'mode':q['mode'],'query_sha256':q['query_sha256'],**ranks})
         if len(rows)%25==0: print(f'{len(rows)}/235 partition traces',flush=True)
