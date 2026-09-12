@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
-- PATCH-030 Defines a bounded planner input/output contract with source quotes, owned documents, numeric and explicit-negation checks; invalid decisions preserve the original session state. (commit: pending)
+- PATCH-030 Defines a bounded planner input/output contract with source quotes, owned documents, numeric and explicit-negation checks; invalid decisions preserve the original session state. (commit: `9f79809`)
 
 - PATCH-029 Adds session-scoped user statements with quoted provenance, corrections, topic boundaries and private answer memory; document deletion and expiry clear derived context. (commit: `02a030f`)
 
