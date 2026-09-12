@@ -44,7 +44,7 @@ def verify(run, out):
         if len(rows) % 25 == 0:
             print(f'{len(rows)}/235 product matches', flush=True)
     measured = score(rows, read(ROOT/'data/eval/patch026-expansion/full/audit.json')['available_after'], old)
-    close(measured, expected)
+    assert close(measured, expected), 'Product metrics differ from comparison'
     assert not measured['losses']
     assert indexes == [index_digest(r) for r in (svc.dense, svc.civil_dense)]
     assert all(sha(ROOT/p) == digest for p, digest in source_hashes.items())

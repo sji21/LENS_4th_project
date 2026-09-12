@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-027 isolates residence/tax procedure BM25 statistics, pools lexical candidates with equal score weight, then retains the existing dense/RRF law TOP5 contract. The old database keeps its original retriever. Seven policies were compared on 235 public development inputs; product verification is in progress. No model or generation-channel changes. (commit: pending)
+- PATCH-027 implements a candidate that isolates procedure BM25 statistics and pools lexical scores before existing dense/RRF fusion. Seven policies and two controls were compared; all 235 product outputs match the selected candidate. DEV full-target counts rise 28→29/30→31 with zero prior TOP5 evidence losses, but DEV-044 loses a required TOP3 anchor. Operating data adoption remains deferred. Existing databases and other channels are preserved; replayable traces and the TOP3 limitation are shared. (commit: pending)
 
 ### Added
 

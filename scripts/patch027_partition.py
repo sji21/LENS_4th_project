@@ -106,12 +106,20 @@ def report(run):
     queries={(r['qid'],r['mode']):r['query_sha256'] for r in read(ROOT/'data/eval/patch015-baseline/capture/results.json')}
     if len(traces)!=235 or {(r['qid'],r['mode']) for r in traces}!=set(old): raise ValueError('Incomplete traces')
     anchors=audit['candidate_anchors']; available=read(ROOT/'data/eval/patch026-expansion/full/audit.json')['available_after']
+    if len(anchors)!=len(set(anchors.values())) or set(anchors.values())!=set(available):
+        raise ValueError('Candidate inventory differs')
+    procedures={name.replace(' ','')+'-'+article for _,name,article,*_ in SPECS}
+    if set(audit['procedures'])!=procedures: raise ValueError('Procedure selection changed')
     mixed={(r['qid'],r['mode']):r for r in read(ROOT/'data/eval/patch026-expansion/full/after.json')}
     for r in traces:
         for name in ('core','procedure','statistics_only','mixed','core_bm25','procedure_bm25','global_dense'):
             hits=r[name]
             if len(hits)>20 or len({cid for cid,_ in hits})!=len(hits): raise ValueError('Invalid rank trace')
             if any(cid not in anchors or not math.isfinite(s) for cid,s in hits): raise ValueError('Invalid trace value')
+            if name in ('core','core_bm25','statistics_only') and any(anchors[cid] in procedures for cid,_ in hits):
+                raise ValueError('Procedure leaked into core candidates')
+            if name in ('procedure','procedure_bm25') and any(anchors[cid] not in procedures for cid,_ in hits):
+                raise ValueError('Core leaked into procedure candidates')
         key=r['qid'],r['mode']
         if [anchors[c] for c,_ in r['core'][:5]]!=old[key]['laws']: raise ValueError('Core baseline changed')
         if [anchors[c] for c,_ in r['mixed'][:5]]!=mixed[key]['laws']: raise ValueError('Mixed baseline changed')
