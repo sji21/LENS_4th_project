@@ -1,0 +1,42 @@
+[
+  {
+    "source_id": "RR16",
+    "url": "https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1012776409",
+    "sha256": "5e57ead5eddeb402125a2ddd3e542b158ae7c8eba803db12de7aecae46c812ea",
+    "version": "268555",
+    "article": "주민등록법-제16조",
+    "scope": "single article; no full-law/addenda claim"
+  },
+  {
+    "source_id": "TAX109",
+    "url": "https://www.law.go.kr/lsLinkCommonInfo.do?lsJoLnkSeq=1031715859",
+    "sha256": "4c91d289102608518faf628450617da8d8341ced22e04720dc003770e0d59e23",
+    "version": "286427",
+    "article": "국세징수법-제109조",
+    "scope": "single article; no full-law/addenda claim"
+  },
+  {
+    "source_id": "TAX97",
+    "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0097&lsiSeq=283487&urlMode=lsScJoRltInfoR",
+    "sha256": "d302326fcbee028307a31339033af649196cb493feda0d87f98aff0315ae91fa",
+    "version": "283487",
+    "article": "국세징수법 시행령-제97조",
+    "scope": "single article; no full-law/addenda claim"
+  },
+  {
+    "source_id": "LT6",
+    "url": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lsJoLnkSeq=1032085419",
+    "sha256": "12644bcdeeca8bddddb397f35744b7d76ab8f34d39751b21f98b948b51c7157a",
+    "version": "283259",
+    "article": "지방세징수법-제6조",
+    "scope": "single article; no full-law/addenda claim"
+  },
+  {
+    "source_id": "LT8",
+    "url": "https://law.go.kr/lsLinkCommonInfo.do?lspttninfSeq=180045",
+    "sha256": "8179c468bbeab3ad405f7e27cfa3e4f9f47707afe18f83c3ed5213509ab1aa96",
+    "version": "283265",
+    "article": "지방세징수법 시행령-제8조",
+    "scope": "single article; no full-law/addenda claim"
+  }
+]
