@@ -1,7 +1,7 @@
 """Protect denominators, article identity and failure-stage reporting."""
 import pytest
 
-from scripts.patch015_baseline import score
+from scripts.patch015_baseline import PATCH015_CAPTURE_COMMIT, require_patch015_capture_checkout, score
 from scripts.patch015_report import check_shared_bundle, summarize
 
 
@@ -15,6 +15,12 @@ def test_empty_targets_are_not_successes():
     assert all(v is None for v in r['metrics'].values())
     with pytest.raises(ValueError): summarize([r])
     assert summarize([])['AllRequired@3']['rate'] is None
+
+
+def test_capture_refuses_retrieval_code_outside_the_historical_checkout():
+    require_patch015_capture_checkout(PATCH015_CAPTURE_COMMIT)
+    with pytest.raises(ValueError, match='historical checkout'):
+        require_patch015_capture_checkout('5b7fc78')
 
 
 def test_missing_data_and_candidate_stages_can_coexist():

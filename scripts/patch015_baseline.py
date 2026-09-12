@@ -20,6 +20,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+PATCH015_CAPTURE_COMMIT = '2841e0444060b92cb54ece1d459b75b3b1f57e5b'
 
 
 def sha(path):
@@ -56,7 +57,21 @@ def score(targets, ranked, available, candidates):
     }
 
 
+def require_patch015_capture_checkout(commit: str) -> None:
+    """Reject capture when current retrieval code is outside PATCH-015's trace contract."""
+    if commit != PATCH015_CAPTURE_COMMIT:
+        raise ValueError(
+            'PATCH-015 capture only supports the historical checkout '
+            f'{PATCH015_CAPTURE_COMMIT}; current checkout is {commit}. '
+            'Use that checkout for PATCH-015 replay or a version-specific evaluator for newer retrieval code.'
+        )
+
+
 def capture(out):
+    current_commit = subprocess.check_output(
+        ['git', 'rev-parse', 'HEAD'], cwd=ROOT, encoding='utf-8',
+    ).strip()
+    require_patch015_capture_checkout(current_commit)
     from scripts.dev100_v2.report import load_dataset
     devplan, old = load_dataset(ROOT / 'data/eval/dev100-v2')
     civilbase = ROOT / 'data/eval/civil-review2'
