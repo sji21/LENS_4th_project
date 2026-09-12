@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
-- PATCH-028 Adds a synthetic conversation capture runner, explicit non-observable checks, source fingerprints, latency and model-call measurements with predeclared acceptance gates. Records 23 real-model baseline turns and synchronizes local data with the already reviewed 10-article Civil Act corpus. (commit: pending)
+- PATCH-028 Adds a synthetic conversation capture runner, explicit non-observable checks, source fingerprints, latency and model-call measurements with predeclared acceptance gates. Records 23 real-model baseline turns and synchronizes local data with the already reviewed 10-article Civil Act corpus. (commit: `3b6986a`)
 
 - PATCH-027 Adds separate development and acceptance conversation scenarios with per-turn action, fact and query expectations; infrastructure checks remain distinct from legal-answer accuracy. (commit: `411d3ec`)
 
