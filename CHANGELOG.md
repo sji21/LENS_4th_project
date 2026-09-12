@@ -9,11 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-027 implements a candidate that isolates procedure BM25 statistics and pools lexical scores before existing dense/RRF fusion. Seven policies and two controls were compared; all 235 product outputs match the selected candidate. DEV full-target counts rise 28→29/30→31 with zero prior TOP5 evidence losses, but DEV-044 loses a required TOP3 anchor. Operating data adoption remains deferred. Existing databases and other channels are preserved; replayable traces and the TOP3 limitation are shared. (commit: 0a57247, 6085564, 34ea1f0, 473dccc)
-
-### Added
-
-- PATCH-026 shares five version-checked residence/tax procedure articles, candidate ingestion, and three235-input comparisons. Full/tax/residence bundles lose prior required evidence on6/4/1 inputs, so all remain unadopted. Full-bundle DEV complete targets rise28→34/30→35 and data gaps fall32→23 in the candidate only. Production data and ranking settings are unchanged. (commit: 8ed2733, b40834f, 54013ac)
+- PATCH-026 combines selection, candidate ingestion, retrieval improvements and evaluation for the same five residence/tax procedure articles. The former PATCH-027 is consolidated without rewriting commits; its identifier is retired and trace paths are preserved. Initial full/tax/residence ingestion loses prior TOP5 evidence on 6/4/1 inputs. The partitioned lexical candidate reproduces all 235 product outputs, raises DEV full targets 28→29/30→31 and preserves prior TOP5 evidence, but loses one TOP3 anchor. This patch remains in progress and operating data adoption is deferred. (commit: 8ed2733, b40834f, 54013ac, 0a57247, 6085564, 34ea1f0, 473dccc; consolidation: pending)
 
 ### Fixed (Bug Fixes)
 
