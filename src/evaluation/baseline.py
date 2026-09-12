@@ -16,8 +16,8 @@ from src.evaluation.metrics import hit_at_k, recall_at_k, reciprocal_rank
 from src.retrieval.retriever import BM25Retriever, load_chunks
 from src.retrieval.index import clean_metadata
 from src.retrieval.service import (
-    CASE, CASE_CHUNKS, DEFAULT_INDEX, DEFAULT_MODEL, GUIDE, GUIDE_CHUNKS,
-    LAW, LAW_CHUNKS, LAW_TYPES, DEFAULT_CIVIL_INDEX, RetrievalService, CIVIL_TAIL_DENSE_MULTIPLIER,
+    CASE_CHUNKS, DEFAULT_INDEX, DEFAULT_MODEL, GUIDE_CHUNKS,
+    LAW_CHUNKS, LAW_TYPES, DEFAULT_CIVIL_INDEX, RetrievalService, CIVIL_TAIL_DENSE_MULTIPLIER,
 )
 
 SEARCH_K = {"k_law": 5, "k_case": 5, "k_guide": 2, "k_civil": 3}

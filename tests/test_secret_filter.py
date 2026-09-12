@@ -28,9 +28,24 @@ class SecretFilterTests(unittest.TestCase):
             "OPENAI_API_KEY",
         )
 
+    def test_redacts_law_open_api_oc_assignment(self):
+        cases = (
+            "LAW_OPEN_API_OC=team-secret-value",
+            'LAW_OPEN_API_OC="team-secret-value"',
+            "law_open_api_oc: team-secret-value",
+        )
+
+        for text in cases:
+            with self.subTest(text=text):
+                result = redact_secrets(text)
+                self.assertTrue(result.contains_secret)
+                self.assertNotIn("team-secret-value", result.text)
+                self.assertEqual(result.findings[0].kind, "named_secret")
+
     def test_does_not_flag_empty_env_template(self):
         text = (
             "OPENAI_API_KEY=\n"
+            "LAW_OPEN_API_OC=\n"
             "LAW_GO_KR_API_KEY=\n"
             "TESSERACT_CMD="
         )

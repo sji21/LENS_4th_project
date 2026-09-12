@@ -504,7 +504,7 @@ def answer_question(
             safe_question,
             semantic_judge=_injection_judge(get_aux_llm()),
         )
-        if injection.blocked:
+        if injection.blocked or injection.needs_semantic_review:
             return _refused_answer(safe_question, "prompt_injection")
 
     # 2) scope hard guard. 개별 계약 안전성/시세는 Qwen 전에 즉시 REFUSE한다.

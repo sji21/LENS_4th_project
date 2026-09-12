@@ -1,7 +1,6 @@
 """Web contracts: session isolation, CSRF, failures, and unchanged RAG boundaries."""
 import json
 import uuid
-from dataclasses import asdict
 from datetime import timedelta
 from types import SimpleNamespace
 from unittest.mock import Mock
@@ -14,7 +13,6 @@ from django.utils import timezone
 from chat import services
 from chat.models import Conversation
 from src.document_check.extraction_models import ExtractionResult, PageExtraction
-from src.document_check.session_retrieval import build_session_document_context
 from src.generation.models import Answer
 
 pytestmark = pytest.mark.django_db
@@ -137,6 +135,35 @@ def test_expired_lease_can_be_recovered(browser, model_calls):
     assert post(browser, "/api/chat/", {"message": "질문"}).status_code == 200
 
 
+def test_expired_worker_cannot_save_answer(browser, model_calls):
+    answer = model_calls[0].return_value
+
+    def expire(*args, **kwargs):
+        Conversation.objects.update(busy_until=timezone.now() - timedelta(seconds=1))
+        return answer
+
+    model_calls[0].side_effect = expire
+    result = post(browser, "/api/chat/", {"message": "질문"})
+    assert result.status_code == 409
+    assert Conversation.objects.get().state["messages"] == []
+
+
+def test_lost_owner_does_not_unlock_successor(browser, model_calls):
+    successor = uuid.uuid4()
+    answer = model_calls[0].return_value
+
+    def replace(*args, **kwargs):
+        Conversation.objects.update(lease_token=successor)
+        return answer
+
+    model_calls[0].side_effect = replace
+    assert post(browser, "/api/chat/", {"message": "질문"}).status_code == 409
+    row = Conversation.objects.get()
+    assert row.lease_token == successor
+    assert row.busy_until > timezone.now()
+    assert row.state["messages"] == []
+
+
 def test_session_cannot_access_another_conversation(browser, model_calls):
     other = Client(enforce_csrf_checks=True)
     other.get("/")
@@ -243,3 +270,99 @@ def test_purge_command_removes_only_expired(browser):
     call_command("purge_chats")
     assert not Conversation.objects.filter(pk=expired.pk).exists()
     assert Conversation.objects.count() == 1
+
+
+def test_answer_carries_display_extras_without_new_retrieval(browser, model_calls):
+    """용어·인용·후속질문은 이미 확정된 answer에서만 나온다. 검색은 한 번뿐이다."""
+
+    law = SimpleNamespace(rank=1, chunk_id="law-3", doc_type="law",
+                          citation="주택임대차보호법 제3조", score=1.0,
+                          source_url="https://law.go.kr/x",
+                          text="① 임차인은 주택의 인도와 주민등록을 마친 때에는 그 다음 날부터 효력이 생긴다.")
+    other = SimpleNamespace(rank=2, chunk_id="law-4", doc_type="law",
+                            citation="주택임대차보호법 제3조의2(보증금의 회수)", score=0.8,
+                            source_url="https://law.go.kr/y", text="우선변제권 본문")
+    answer = Answer(question="q", status="answered",
+                    text="주택임대차보호법 제3조에 따라 대항력이 생깁니다.",
+                    raw_text="주택임대차보호법 제3조에 따라 대항력이 생깁니다.",
+                    laws=(law, other))
+    model_calls[0].return_value = answer
+
+    message = post(browser, "/api/chat/", {"message": "대항력"}).json()["messages"][-1]
+    assert [span["term"] for span in message["glossary"]] == ["대항력"]
+    assert [span["chunk_id"] for span in message["citations"]] == ["law-3"]
+    assert "다음 날" in message["citations"][0]["excerpt"]
+    assert message["followups"] == ["주택임대차보호법 제3조의2"]
+    assert message["simplified"] == ""
+    model_calls[0].assert_called_once()
+
+
+@pytest.mark.parametrize("status", ["abstained", "refused"])
+def test_display_extras_stay_empty_when_answer_is_not_answered(browser, model_calls, status):
+    model_calls[0].return_value = Answer(question="q", status=status, text="주택임대차보호법 제3조 안내", raw_text="")
+    message = post(browser, "/api/chat/", {"message": "질문"}).json()["messages"][-1]
+    assert message["citations"] == [] and message["followups"] == []
+
+
+def test_uploaded_document_text_never_reaches_citations(browser, model_calls, extracted_document):
+    """업로드 OCR 근거는 인용 발췌 대상이 아니다. 원문이 화면으로 나가면 안 된다."""
+
+    attach(browser)
+    model_calls[1].return_value = Answer(
+        question="q", status="answered", text="첨부 문서를 확인했습니다.", raw_text="첨부 문서를 확인했습니다.",
+        document_evidences=(SimpleNamespace(
+            chunk_id="s1", document_id="d1", filename="contract.pdf", document_kind="임대차계약서",
+            page_number=1, text="임대인 홍길동 주민등록번호 820101-1234567"),),
+    )
+    body = post(browser, "/api/chat/", {"message": "첨부한 계약서 확인해줘"}).content.decode()
+    assert "820101" not in body and "홍길동" not in body
+
+
+def test_simplify_failure_preserves_answer_and_allows_retry(browser, model_calls, monkeypatch):
+    from src.generation.simplify import SimplificationError
+    post(browser, "/api/chat/", {"message": "대항력"})
+    before = current(browser)["messages"][-1]
+    monkeypatch.setattr(services, "simplify_answer", Mock(side_effect=SimplificationError("number_mismatch")))
+    response = post(browser, "/api/simplify/", {"message_id": before["id"]})
+    assert response.status_code == 422
+    assert "기존 답변" in response.json()["error"]
+    assert current(browser)["messages"][-1] == before
+    monkeypatch.setattr(services, "simplify_answer", Mock(return_value="쉬운 설명"))
+    assert post(browser, "/api/simplify/", {"message_id": before["id"]}).status_code == 200
+
+
+def test_simplify_rewrites_once_and_is_idempotent(browser, model_calls, monkeypatch):
+    calls = Mock(return_value="쉬운 말 본문")
+    monkeypatch.setattr(services, "simplify_answer", calls)
+    post(browser, "/api/chat/", {"message": "대항력"})
+    message_id = current(browser)["messages"][-1]["id"]
+
+    first = post(browser, "/api/simplify/", {"message_id": message_id})
+    assert first.status_code == 200
+    assert first.json()["messages"][-1]["simplified"] == "쉬운 말 본문"
+
+    post(browser, "/api/simplify/", {"message_id": message_id})
+    calls.assert_called_once()
+
+
+def test_simplify_uses_generated_body_not_the_disclaimer_text(browser, model_calls, monkeypatch):
+    seen = {}
+    monkeypatch.setattr(services, "simplify_answer", lambda text: seen.setdefault("text", text) or "쉬운 말")
+    model_calls[0].return_value = Answer(question="q", status="answered",
+                                         text="본문입니다.\n\n본 답변은 법률 자문이 아닙니다.",
+                                         raw_text="본문입니다.")
+    post(browser, "/api/chat/", {"message": "질문"})
+    post(browser, "/api/simplify/", {"message_id": current(browser)["messages"][-1]["id"]})
+    assert seen["text"] == "본문입니다."
+    assert "법률 자문이 아닙니다" not in seen["text"]
+
+
+def test_simplify_rejects_unknown_message_and_other_sessions(browser, model_calls):
+    post(browser, "/api/chat/", {"message": "질문"})
+    assert post(browser, "/api/simplify/", {"message_id": "does-not-exist"}).status_code == 404
+    assert post(browser, "/api/simplify/", {"message_id": ""}).status_code == 400
+
+    intruder = Client(enforce_csrf_checks=True)
+    intruder.get("/")
+    message_id = current(browser)["messages"][-1]["id"]
+    assert post(intruder, "/api/simplify/", {"message_id": message_id}).status_code == 404

@@ -18,8 +18,8 @@
       → semantic validation
       → answered / abstained / refused
 
-기존 ``chain.answer_question()``은 삭제하거나 수정하지 않는다. 기존 테스트·호환
-경로로 그대로 남기고, Streamlit은 이미 이 모듈의 ``answer_question()``을 사용한다.
+``chain.answer_question()``은 테스트·호환 경로로 유지한다.
+Django와 기존 Streamlit UI는 이 모듈의 생성 진입점을 사용한다.
 """
 
 from __future__ import annotations
@@ -175,7 +175,7 @@ def build_generation_graph(
             semantic_judge=chain_module._injection_judge(get_aux_llm()),
         )
 
-        if injection.blocked:
+        if injection.blocked or injection.needs_semantic_review:
             return {
                 "injection": injection,
                 "refusal_reason": "prompt_injection",

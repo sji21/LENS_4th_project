@@ -15,7 +15,6 @@ import json
 import time
 from pathlib import Path
 
-from src.evaluation.metrics import hit_at_k, reciprocal_rank
 from src.evaluation.run_eval import load_questions
 from src.retrieval.retriever import BM25Retriever, chunk_to_article, load_chunks
 
