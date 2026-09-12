@@ -204,6 +204,7 @@ def run(split, mode, output, selected=None):
                     "case_id": case["id"], "turn": index + 1, "input": turn["user"],
                     "before_state": before_state, "after_state": deepcopy(state.get("dialogue")),
                     "observation": observation,
+                    "routing": deepcopy(state.get("dialogue_runtime", {})),
                     "message": {k: v for k, v in message.items() if k != "context_content"},
                     "elapsed_seconds": round(time.perf_counter() - start, 3),
                     "model_calls": calls["model_calls"], "failed_model_calls": calls["failed_model_calls"],

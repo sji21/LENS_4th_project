@@ -76,3 +76,6 @@ CHAT_MAX_DOCUMENTS = 5
 CHAT_MAX_MESSAGES = 100
 CHAT_LEASE_SECONDS = 900
 CHAT_TTL_SECONDS = 3600
+
+# Opt in only after the conversation acceptance checks; false restores legacy routing.
+CHAT_CONVERSATION_ENABLED = os.getenv("CHAT_CONVERSATION_ENABLED", "false").lower() == "true"

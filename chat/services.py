@@ -94,7 +94,7 @@ def find_evidences(question, documents, selected_id=None):
     return tuple(sorted(found, key=lambda e: (-e.score, e.chunk_id))[:4])
 
 
-def respond(state, question, document_id=None):
+def _respond_legacy(state, question, document_id=None):
     started = time.perf_counter()
     documents = state["documents"]
     kinds = tuple(dict.fromkeys(d["kind"] for d in documents))
@@ -112,7 +112,13 @@ def respond(state, question, document_id=None):
         resolved = resolve_question(question, state["messages"])
         answer = graph.answer_question(resolved.standalone, service=retrieval_loader().result())
         used_history = resolved.used_history
-    message = {
+    message = answer_message(answer, started, used_history)
+    append_exchange(state, question, message)
+    return message
+
+
+def answer_message(answer, started, used_history=False):
+    return {
         "id": uuid.uuid4().hex, "role": "assistant", "status": answer.status,
         # raw_text is never a fallback for an empty or rejected answer.
         "content": safe_text((answer.text or "").strip()) or "답변 본문을 표시하지 못했습니다. 다시 질문해 주세요.",
@@ -120,7 +126,17 @@ def respond(state, question, document_id=None):
         "context_content": safe_text(answer.raw_text) if answer.status == "answered" else "",
         "used_history": used_history, "elapsed_seconds": round(time.perf_counter() - started, 1),
     }
+
+
+def append_exchange(state, question, message):
     state["messages"].extend([
         {"id": uuid.uuid4().hex, "role": "user", "content": question}, message,
     ])
-    return message
+
+
+def respond(state, question, document_id=None):
+    from django.conf import settings
+    if not getattr(settings, "CHAT_CONVERSATION_ENABLED", False):
+        return _respond_legacy(state, question, document_id)
+    from .dialogue_router import respond_conversational
+    return respond_conversational(state, question, document_id, legacy=_respond_legacy)
