@@ -5,6 +5,12 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-12
+
+### Fixed (Bug Fixes)
+
+- PATCH-025 keeps Civil Act member rankings request-local while re-ranking the third candidate, preventing concurrent searches from mixing candidate ranks. (commit: 9fd078f)
+
 ## 2026-09-11
 
 ### Changed
