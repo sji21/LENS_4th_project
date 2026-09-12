@@ -1,0 +1,18 @@
+{
+  "before.json": "45d2fb994b85c968c19c0f1af3692dab6387aaf2dff8f85001ff2b251e18a9f2",
+  "dependencies.json": "3ad01f385bb218f50cef51b641bd6f5fbc304742fb008177a78a205afdbb96df",
+  "records.jsonl": "134fe6ab8392d6632ee6c876bfdeb9b8a4099a0ffa50af1b4a6d5a0f753d348d",
+  "source-manifest.json": "fc59e63b9d7403e90df07e367116d5b3608e84945cecc41218a12c52d731c784",
+  "summary.json": "6fab1c55ec679de1d9ff11de90c36fdf6fcfe0ad2aa331ac9e3ae35de4bdfbc1",
+  "full/after.json": "b92de0e1e1c99b534b3aa105dca805689479943b278e60d693dd4408dd981ff5",
+  "full/audit.json": "8ac1d8fd21ff4772a16e179ef7da638acd71531773931dd8dd8e86405f1cbed1",
+  "residence/after.json": "a24844e65f897e4104936e5e3990f3be7ec259ba3abd31852948852abdc4fd56",
+  "residence/audit.json": "1a0d666202b73ce29e87d43b1e5486db4afbf3b667e61a3a114269a1e6f3b38d",
+  "sources/LT6.html": "12644bcdeeca8bddddb397f35744b7d76ab8f34d39751b21f98b948b51c7157a",
+  "sources/LT8.html": "8179c468bbeab3ad405f7e27cfa3e4f9f47707afe18f83c3ed5213509ab1aa96",
+  "sources/RR16.html": "5e57ead5eddeb402125a2ddd3e542b158ae7c8eba803db12de7aecae46c812ea",
+  "sources/TAX109.html": "4c91d289102608518faf628450617da8d8341ced22e04720dc003770e0d59e23",
+  "sources/TAX97.html": "d302326fcbee028307a31339033af649196cb493feda0d87f98aff0315ae91fa",
+  "tax/after.json": "dcff6b8453fd3226dae5b03090cb3bfd4f7c22920df61122d3afc2087a148e07",
+  "tax/audit.json": "069b57d9155e70222c2759300e7c0f5030166f7edece5a08cabee74008e79bbb"
+}

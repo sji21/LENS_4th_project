@@ -1,1 +1,3 @@
 * -text
+sources/*.html -diff
+*.jsonl whitespace=cr-at-eol
