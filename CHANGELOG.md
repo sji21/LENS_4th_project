@@ -7,6 +7,10 @@ This file records the 4th project from its first change onward.
 
 ## 2026-09-12
 
+### Added
+
+- PATCH-026 defines the conversational chatbot roadmap on `chatting-upgrade`: twelve sequential patches with planned child branches, acceptance criteria, test scenarios, a baseline and per-feature review before integration. Product behavior is unchanged. See `LIST.md`. (commit: pending)
+
 ### Fixed (Bug Fixes)
 
 - PATCH-025 rejects PATCH-015 baseline captures outside the historical checkout whose candidate trace contract they reproduce, avoiding false candidate-stage diagnostics on newer retrieval paths. (commit: 69610f5)
