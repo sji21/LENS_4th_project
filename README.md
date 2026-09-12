@@ -409,8 +409,24 @@ python -m src.ingestion.load_guides \
 반드시 법령 → 판례 → 안내 순서로 실행합니다.
 
 ```bash
+# 민법(民法) 조문은 PATCH-006 절차로 별도 인덱스에만 색인합니다. chunks.jsonl
+# 에는 BM25·누락 감지를 위해 민법 청크가 함께 들어 있을 수 있으므로, 기본
+# 인덱스를 만들기 전에 민법을 제외한 사본을 먼저 만듭니다. (아래 두 단계는
+# scripts/reload_base_index_civil_safe.py 로도 실행할 수 있습니다.)
+python - <<'PY'
+import json
+
+with open("data/chunks/chunks.jsonl", encoding="utf-8") as src, \
+     open("data/chunks/chunks.base-only.jsonl", "w", encoding="utf-8") as dst:
+    for line in src:
+        chunk = json.loads(line)
+        if chunk.get("metadata", {}).get("title") == "민법":
+            continue
+        dst.write(line)
+PY
+
 python -m src.retrieval.index \
-  --chunks data/chunks/chunks.jsonl \
+  --chunks data/chunks/chunks.base-only.jsonl \
   --path data/index/chroma_kurev1_1024
 
 python -m src.retrieval.index \

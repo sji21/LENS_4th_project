@@ -17,6 +17,7 @@ from django.views.decorators.debug import sensitive_post_parameters
 from django.views.decorators.http import require_GET, require_POST
 
 from src.document_check.extraction import DocumentValidationError, OcrUnavailableError
+from src.generation.simplify import SimplificationError
 from .models import Conversation
 from .leases import heartbeat
 from . import services
@@ -39,6 +40,8 @@ def api(view):
             return JsonResponse({"error": error.message}, status=error.status)
         except (RequestDataTooBig, TooManyFilesSent):
             return JsonResponse({"error": "파일은 한 번에 하나씩, 20MB 이하로 첨부해 주세요."}, status=413)
+        except SimplificationError as error:
+            return JsonResponse({"error": str(error)}, status=422)
         except (DocumentValidationError, ValueError):
             return JsonResponse({"error": "입력 또는 문서를 처리할 수 없습니다. 형식과 내용을 확인해 주세요."}, status=400)
         except OcrUnavailableError:

@@ -107,6 +107,21 @@ class EvidenceHighlightTests(unittest.TestCase):
 
 
 class SimplifyTests(unittest.TestCase):
+    def test_repeated_article_still_requires_semantic_pass(self):
+        source = "제3조에 따라 효력이 생깁니다."
+        candidate = "제3조에 따라 효력이 생깁니다. 제3조의 설명입니다."
+        self.assertEqual(simplify_answer(source, llm=get_llm(fake_responses=[candidate, "PASS"])), candidate)
+        with self.assertRaises(ValueError):
+            simplify_answer(source, llm=get_llm(fake_responses=[candidate, "FAIL"]))
+
+    def test_missing_number_is_rejected(self):
+        with self.assertRaises(ValueError):
+            simplify_answer("제3조에 따라 2개월입니다.", llm=get_llm(fake_responses=["제3조에 따릅니다."]))
+
+    def test_uncertain_judge_is_rejected(self):
+        with self.assertRaises(ValueError):
+            simplify_answer("원문", llm=get_llm(fake_responses=["쉬운 설명", "아마 PASS"]))
+
     def test_blank_input_never_calls_the_model(self):
         self.assertEqual(simplify_answer("   "), "")
         self.assertEqual(simplify_answer(None), "")

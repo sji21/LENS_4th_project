@@ -1,7 +1,6 @@
 """Web contracts: session isolation, CSRF, failures, and unchanged RAG boundaries."""
 import json
 import uuid
-from dataclasses import asdict
 from datetime import timedelta
 from types import SimpleNamespace
 from unittest.mock import Mock
@@ -14,7 +13,6 @@ from django.utils import timezone
 from chat import services
 from chat.models import Conversation
 from src.document_check.extraction_models import ExtractionResult, PageExtraction
-from src.document_check.session_retrieval import build_session_document_context
 from src.generation.models import Answer
 
 pytestmark = pytest.mark.django_db
@@ -318,6 +316,19 @@ def test_uploaded_document_text_never_reaches_citations(browser, model_calls, ex
     )
     body = post(browser, "/api/chat/", {"message": "첨부한 계약서 확인해줘"}).content.decode()
     assert "820101" not in body and "홍길동" not in body
+
+
+def test_simplify_failure_preserves_answer_and_allows_retry(browser, model_calls, monkeypatch):
+    from src.generation.simplify import SimplificationError
+    post(browser, "/api/chat/", {"message": "대항력"})
+    before = current(browser)["messages"][-1]
+    monkeypatch.setattr(services, "simplify_answer", Mock(side_effect=SimplificationError("number_mismatch")))
+    response = post(browser, "/api/simplify/", {"message_id": before["id"]})
+    assert response.status_code == 422
+    assert "기존 답변" in response.json()["error"]
+    assert current(browser)["messages"][-1] == before
+    monkeypatch.setattr(services, "simplify_answer", Mock(return_value="쉬운 설명"))
+    assert post(browser, "/api/simplify/", {"message_id": before["id"]}).status_code == 200
 
 
 def test_simplify_rewrites_once_and_is_idempotent(browser, model_calls, monkeypatch):
