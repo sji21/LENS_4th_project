@@ -1,0 +1,8 @@
+{
+  "schema": "patch023-baseline-v1",
+  "files": {
+    "capture/audit.json": "2c9bcc933fee27e2353f4f0e6027ab3f69e6f6570974f4b29f7020473e9233a6",
+    "capture/results.json": "039d7b4982fdce6cd5b8d26fced66e30a6fc4af5829a0f77b30fb8ad09ff9e35",
+    "report.json": "75c3f44cd2af78009c07296c3b09ecdf9b7054a868a05bde8939865901a98476"
+  }
+}

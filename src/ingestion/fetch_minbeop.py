@@ -1,7 +1,7 @@
 """검색에 사용하도록 검토한 민법 임대차 조문만 수집한다.
 
 민법 전체를 법령 검색에 섞지 않는다. 검색 회귀 평가를 통과하고 조건부 라우팅에서
-사용하는 7개 조문만 국가법령정보센터 원문에서 가져와 ``LawArticleRecord`` JSONL로
+사용하는 10개 조문만 국가법령정보센터 원문에서 가져와 ``LawArticleRecord`` JSONL로
 저장한다. 이후 기존 ``load_laws`` 명령으로 같은 SQLite와 법령 청크에 합친다.
 
 실행:
@@ -26,7 +26,8 @@ from src.ingestion.load_laws import LawArticleRecord, write_records
 
 MINBEOP_SEQ = "284415"
 MINBEOP_EFFECTIVE_DATE = "20260317"
-MINBEOP_ARTICLES = ("제623조", "제626조", "제627조", "제629조", "제632조", "제634조", "제640조")
+MINBEOP_ARTICLES = ("제623조", "제626조", "제627조", "제629조", "제632조", "제634조", "제640조",
+                    "제105조", "제114조", "제357조")
 
 
 def collect_records(raw_html: str) -> list[LawArticleRecord]:
@@ -66,7 +67,7 @@ def collect_records(raw_html: str) -> list[LawArticleRecord]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="조건부 검색용 민법 7개 조문 수집")
+    parser = argparse.ArgumentParser(description="별도 검색용 민법 10개 조문 수집")
     parser.add_argument(
         "--records",
         type=Path,

@@ -1,0 +1,3789 @@
+{
+  "selected": "keep_top2_dense2",
+  "exploratory_followups": [
+    "keep_top2_dense2",
+    "keep_top2_dense"
+  ],
+  "policies": {
+    "baseline": {
+      "groups": {
+        "question_only": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 15,
+            "all_required_returned": 28,
+            "data_missing_some": 11,
+            "no_fixed_target": 23,
+            "data_missing_all": 21,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.3925531914893617,
+                "hit@1": 0.3191489361702128,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.46808510638297873,
+                "hit@5": 0.5106382978723404,
+                "recall@1": 0.23900709219858157,
+                "recall@2": 0.29929078014184396,
+                "recall@3": 0.3524822695035461,
+                "recall@5": 0.3950354609929078
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5920289855072464,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6956521739130435,
+                "hit@5": 0.782608695652174,
+                "recall@1": 0.43478260869565216,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131,
+                "recall@5": 0.6956521739130435
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.4166666666666667,
+                "hit@1": 0.375,
+                "hit@2": 0.4375,
+                "hit@3": 0.46875,
+                "recall@1": 0.359375,
+                "recall@2": 0.4375,
+                "recall@3": 0.46875
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5797101449275363,
+                "hit@1": 0.5217391304347826,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6521739130434783,
+                "recall@1": 0.5,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6521739130434783
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 75
+          }
+        },
+        "context_diagnostic": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 14,
+            "all_required_returned": 29,
+            "data_missing_some": 11,
+            "no_fixed_target": 23,
+            "data_missing_all": 21,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.38794326241134747,
+                "hit@1": 0.2765957446808511,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.48936170212765956,
+                "hit@5": 0.574468085106383,
+                "recall@1": 0.2,
+                "recall@2": 0.3170212765957447,
+                "recall@3": 0.3879432624113475,
+                "recall@5": 0.4695035460992908
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.6405797101449275,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6956521739130435,
+                "hit@3": 0.7391304347826086,
+                "hit@5": 0.9130434782608695,
+                "recall@1": 0.391304347826087,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6956521739130435,
+                "recall@5": 0.8478260869565217
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.3697916666666667,
+                "hit@1": 0.34375,
+                "hit@2": 0.375,
+                "hit@3": 0.40625,
+                "recall@1": 0.328125,
+                "recall@2": 0.375,
+                "recall@3": 0.40625
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5144927536231885,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.5217391304347826,
+                "hit@3": 0.5652173913043478,
+                "recall@1": 0.45652173913043476,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.5652173913043478
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 29,
+            "n": 75
+          }
+        },
+        "required_law": {
+          "n": 29,
+          "categories": {
+            "all_required_returned": 28,
+            "retrieval_miss": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 29
+          }
+        },
+        "scope_provisional": {
+          "n": 1,
+          "categories": {
+            "all_required_returned": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 1,
+            "n": 1
+          }
+        },
+        "diagnostic_only": {
+          "n": 5,
+          "categories": {
+            "no_fixed_target": 5
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 0,
+            "n": 0
+          }
+        }
+      },
+      "lost_required": []
+    },
+    "retain_dense2": {
+      "groups": {
+        "question_only": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 15,
+            "all_required_returned": 28,
+            "data_missing_some": 11,
+            "no_fixed_target": 23,
+            "data_missing_all": 21,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.3925531914893617,
+                "hit@1": 0.3191489361702128,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.46808510638297873,
+                "hit@5": 0.5106382978723404,
+                "recall@1": 0.23900709219858157,
+                "recall@2": 0.29929078014184396,
+                "recall@3": 0.3524822695035461,
+                "recall@5": 0.3950354609929078
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5920289855072464,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6956521739130435,
+                "hit@5": 0.782608695652174,
+                "recall@1": 0.43478260869565216,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131,
+                "recall@5": 0.6956521739130435
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.4166666666666667,
+                "hit@1": 0.375,
+                "hit@2": 0.4375,
+                "hit@3": 0.46875,
+                "recall@1": 0.359375,
+                "recall@2": 0.4375,
+                "recall@3": 0.46875
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5797101449275363,
+                "hit@1": 0.5217391304347826,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6521739130434783,
+                "recall@1": 0.5,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6521739130434783
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 75
+          }
+        },
+        "context_diagnostic": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 13,
+            "all_required_returned": 30,
+            "data_missing_some": 11,
+            "no_fixed_target": 23,
+            "data_missing_all": 21,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.38794326241134747,
+                "hit@1": 0.2765957446808511,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.48936170212765956,
+                "hit@5": 0.574468085106383,
+                "recall@1": 0.2,
+                "recall@2": 0.3170212765957447,
+                "recall@3": 0.3879432624113475,
+                "recall@5": 0.4695035460992908
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.6405797101449275,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6956521739130435,
+                "hit@3": 0.7391304347826086,
+                "hit@5": 0.9130434782608695,
+                "recall@1": 0.391304347826087,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6956521739130435,
+                "recall@5": 0.8478260869565217
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.39583333333333337,
+                "hit@1": 0.375,
+                "hit@2": 0.375,
+                "hit@3": 0.4375,
+                "recall@1": 0.359375,
+                "recall@2": 0.375,
+                "recall@3": 0.4375
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5507246376811594,
+                "hit@1": 0.5217391304347826,
+                "hit@2": 0.5217391304347826,
+                "hit@3": 0.6086956521739131,
+                "recall@1": 0.5,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 30,
+            "n": 75
+          }
+        },
+        "required_law": {
+          "n": 29,
+          "categories": {
+            "all_required_returned": 28,
+            "retrieval_miss": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 29,
+                "mrr": 0.8563218390804598,
+                "hit@1": 0.7241379310344828,
+                "hit@2": 0.9655172413793104,
+                "hit@3": 1.0,
+                "recall@1": 0.7068965517241379,
+                "recall@2": 0.9655172413793104,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 29,
+                "mrr": 0.8563218390804598,
+                "hit@1": 0.7241379310344828,
+                "hit@2": 0.9655172413793104,
+                "hit@3": 1.0,
+                "recall@1": 0.7068965517241379,
+                "recall@2": 0.9655172413793104,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 29
+          }
+        },
+        "scope_provisional": {
+          "n": 1,
+          "categories": {
+            "all_required_returned": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 1,
+            "n": 1
+          }
+        },
+        "diagnostic_only": {
+          "n": 5,
+          "categories": {
+            "no_fixed_target": 5
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 0,
+            "n": 0
+          }
+        }
+      },
+      "lost_required": []
+    },
+    "retain_bm252": {
+      "groups": {
+        "question_only": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 14,
+            "all_required_returned": 29,
+            "data_missing_some": 11,
+            "no_fixed_target": 23,
+            "data_missing_all": 21,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.3925531914893617,
+                "hit@1": 0.3191489361702128,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.46808510638297873,
+                "hit@5": 0.5106382978723404,
+                "recall@1": 0.23900709219858157,
+                "recall@2": 0.29929078014184396,
+                "recall@3": 0.3524822695035461,
+                "recall@5": 0.3950354609929078
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5920289855072464,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6956521739130435,
+                "hit@5": 0.782608695652174,
+                "recall@1": 0.43478260869565216,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131,
+                "recall@5": 0.6956521739130435
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.4114583333333333,
+                "hit@1": 0.34375,
+                "hit@2": 0.4375,
+                "hit@3": 0.5,
+                "recall@1": 0.328125,
+                "recall@2": 0.4375,
+                "recall@3": 0.5
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.572463768115942,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6956521739130435,
+                "recall@1": 0.45652173913043476,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6956521739130435
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 29,
+            "n": 75
+          }
+        },
+        "context_diagnostic": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 16,
+            "all_required_returned": 27,
+            "data_missing_some": 11,
+            "no_fixed_target": 23,
+            "data_missing_all": 21,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.38794326241134747,
+                "hit@1": 0.2765957446808511,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.48936170212765956,
+                "hit@5": 0.574468085106383,
+                "recall@1": 0.2,
+                "recall@2": 0.3170212765957447,
+                "recall@3": 0.3879432624113475,
+                "recall@5": 0.4695035460992908
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.6405797101449275,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6956521739130435,
+                "hit@3": 0.7391304347826086,
+                "hit@5": 0.9130434782608695,
+                "recall@1": 0.391304347826087,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6956521739130435,
+                "recall@5": 0.8478260869565217
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.34375,
+                "hit@1": 0.34375,
+                "hit@2": 0.34375,
+                "hit@3": 0.34375,
+                "recall@1": 0.328125,
+                "recall@2": 0.34375,
+                "recall@3": 0.34375
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.4782608695652174,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.4782608695652174,
+                "hit@3": 0.4782608695652174,
+                "recall@1": 0.45652173913043476,
+                "recall@2": 0.4782608695652174,
+                "recall@3": 0.4782608695652174
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 27,
+            "n": 75
+          }
+        },
+        "required_law": {
+          "n": 29,
+          "categories": {
+            "all_required_returned": 28,
+            "retrieval_miss": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 29,
+                "mrr": 0.8735632183908045,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 0.9655172413793104,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 0.9482758620689655,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 29,
+                "mrr": 0.8735632183908045,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 0.9655172413793104,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 0.9482758620689655,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 29
+          }
+        },
+        "scope_provisional": {
+          "n": 1,
+          "categories": {
+            "all_required_returned": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 1,
+            "n": 1
+          }
+        },
+        "diagnostic_only": {
+          "n": 5,
+          "categories": {
+            "no_fixed_target": 5
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 0,
+            "n": 0
+          }
+        }
+      },
+      "lost_required": [
+        {
+          "qid": "DEV-012",
+          "mode": "question_only",
+          "lost": [
+            "민법-제114조"
+          ]
+        },
+        {
+          "qid": "DEV-057",
+          "mode": "context_diagnostic",
+          "lost": [
+            "민법-제626조"
+          ]
+        },
+        {
+          "qid": "DEV-058",
+          "mode": "context_diagnostic",
+          "lost": [
+            "민법-제627조"
+          ]
+        }
+      ]
+    },
+    "retain_dense": {
+      "groups": {
+        "question_only": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 15,
+            "all_required_returned": 28,
+            "data_missing_some": 11,
+            "no_fixed_target": 23,
+            "data_missing_all": 21,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.3925531914893617,
+                "hit@1": 0.3191489361702128,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.46808510638297873,
+                "hit@5": 0.5106382978723404,
+                "recall@1": 0.23900709219858157,
+                "recall@2": 0.29929078014184396,
+                "recall@3": 0.3524822695035461,
+                "recall@5": 0.3950354609929078
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5920289855072464,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6956521739130435,
+                "hit@5": 0.782608695652174,
+                "recall@1": 0.43478260869565216,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131,
+                "recall@5": 0.6956521739130435
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.4010416666666667,
+                "hit@1": 0.34375,
+                "hit@2": 0.4375,
+                "hit@3": 0.46875,
+                "recall@1": 0.328125,
+                "recall@2": 0.4375,
+                "recall@3": 0.46875
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5579710144927537,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6521739130434783,
+                "recall@1": 0.45652173913043476,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6521739130434783
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 75
+          }
+        },
+        "context_diagnostic": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 13,
+            "all_required_returned": 30,
+            "data_missing_some": 11,
+            "no_fixed_target": 23,
+            "data_missing_all": 21,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.38794326241134747,
+                "hit@1": 0.2765957446808511,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.48936170212765956,
+                "hit@5": 0.574468085106383,
+                "recall@1": 0.2,
+                "recall@2": 0.3170212765957447,
+                "recall@3": 0.3879432624113475,
+                "recall@5": 0.4695035460992908
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.6405797101449275,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6956521739130435,
+                "hit@3": 0.7391304347826086,
+                "hit@5": 0.9130434782608695,
+                "recall@1": 0.391304347826087,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6956521739130435,
+                "recall@5": 0.8478260869565217
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.3854166666666667,
+                "hit@1": 0.34375,
+                "hit@2": 0.40625,
+                "hit@3": 0.4375,
+                "recall@1": 0.328125,
+                "recall@2": 0.40625,
+                "recall@3": 0.4375
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5362318840579711,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.5652173913043478,
+                "hit@3": 0.6086956521739131,
+                "recall@1": 0.45652173913043476,
+                "recall@2": 0.5652173913043478,
+                "recall@3": 0.6086956521739131
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 30,
+            "n": 75
+          }
+        },
+        "required_law": {
+          "n": 29,
+          "categories": {
+            "all_required_returned": 28,
+            "retrieval_miss": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 29,
+                "mrr": 0.8563218390804598,
+                "hit@1": 0.7241379310344828,
+                "hit@2": 0.9655172413793104,
+                "hit@3": 1.0,
+                "recall@1": 0.7068965517241379,
+                "recall@2": 0.9655172413793104,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 29,
+                "mrr": 0.8563218390804598,
+                "hit@1": 0.7241379310344828,
+                "hit@2": 0.9655172413793104,
+                "hit@3": 1.0,
+                "recall@1": 0.7068965517241379,
+                "recall@2": 0.9655172413793104,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 29
+          }
+        },
+        "scope_provisional": {
+          "n": 1,
+          "categories": {
+            "all_required_returned": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 1,
+            "n": 1
+          }
+        },
+        "diagnostic_only": {
+          "n": 5,
+          "categories": {
+            "no_fixed_target": 5
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 0,
+            "n": 0
+          }
+        }
+      },
+      "lost_required": []
+    },
+    "retain_bm25": {
+      "groups": {
+        "question_only": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 14,
+            "all_required_returned": 29,
+            "data_missing_some": 11,
+            "no_fixed_target": 23,
+            "data_missing_all": 21,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.3925531914893617,
+                "hit@1": 0.3191489361702128,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.46808510638297873,
+                "hit@5": 0.5106382978723404,
+                "recall@1": 0.23900709219858157,
+                "recall@2": 0.29929078014184396,
+                "recall@3": 0.3524822695035461,
+                "recall@5": 0.3950354609929078
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5920289855072464,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6956521739130435,
+                "hit@5": 0.782608695652174,
+                "recall@1": 0.43478260869565216,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131,
+                "recall@5": 0.6956521739130435
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.40625,
+                "hit@1": 0.34375,
+                "hit@2": 0.40625,
+                "hit@3": 0.5,
+                "recall@1": 0.328125,
+                "recall@2": 0.40625,
+                "recall@3": 0.5
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5652173913043478,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.5652173913043478,
+                "hit@3": 0.6956521739130435,
+                "recall@1": 0.45652173913043476,
+                "recall@2": 0.5652173913043478,
+                "recall@3": 0.6956521739130435
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 29,
+            "n": 75
+          }
+        },
+        "context_diagnostic": {
+          "n": 100,
+          "categories": {
+            "all_required_returned": 29,
+            "data_missing_some": 11,
+            "no_fixed_target": 23,
+            "data_missing_all": 21,
+            "retrieval_miss": 14,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.38794326241134747,
+                "hit@1": 0.2765957446808511,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.48936170212765956,
+                "hit@5": 0.574468085106383,
+                "recall@1": 0.2,
+                "recall@2": 0.3170212765957447,
+                "recall@3": 0.3879432624113475,
+                "recall@5": 0.4695035460992908
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.6405797101449275,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6956521739130435,
+                "hit@3": 0.7391304347826086,
+                "hit@5": 0.9130434782608695,
+                "recall@1": 0.391304347826087,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6956521739130435,
+                "recall@5": 0.8478260869565217
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.36979166666666663,
+                "hit@1": 0.34375,
+                "hit@2": 0.375,
+                "hit@3": 0.40625,
+                "recall@1": 0.328125,
+                "recall@2": 0.375,
+                "recall@3": 0.40625
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5144927536231884,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.5217391304347826,
+                "hit@3": 0.5652173913043478,
+                "recall@1": 0.45652173913043476,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.5652173913043478
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 29,
+            "n": 75
+          }
+        },
+        "required_law": {
+          "n": 29,
+          "categories": {
+            "all_required_returned": 27,
+            "retrieval_miss": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 29,
+                "mrr": 0.8563218390804599,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 0.9310344827586207,
+                "hit@3": 0.9655172413793104,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 0.9137931034482759,
+                "recall@3": 0.9655172413793104
+              },
+              "all_targets_held": {
+                "n": 29,
+                "mrr": 0.8563218390804599,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 0.9310344827586207,
+                "hit@3": 0.9655172413793104,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 0.9137931034482759,
+                "recall@3": 0.9655172413793104
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 27,
+            "n": 29
+          }
+        },
+        "scope_provisional": {
+          "n": 1,
+          "categories": {
+            "all_required_returned": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 1,
+            "n": 1
+          }
+        },
+        "diagnostic_only": {
+          "n": 5,
+          "categories": {
+            "no_fixed_target": 5
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 0,
+            "n": 0
+          }
+        }
+      },
+      "lost_required": [
+        {
+          "qid": "DEV-012",
+          "mode": "question_only",
+          "lost": [
+            "민법-제114조"
+          ]
+        },
+        {
+          "qid": "DEV-057",
+          "mode": "context_diagnostic",
+          "lost": [
+            "민법-제626조"
+          ]
+        },
+        {
+          "qid": "DEV-058",
+          "mode": "context_diagnostic",
+          "lost": [
+            "민법-제627조"
+          ]
+        },
+        {
+          "qid": "CIV-DRAFT-008",
+          "mode": "question_context",
+          "lost": [
+            "민법-제626조"
+          ]
+        }
+      ]
+    },
+    "rrf_only": {
+      "groups": {
+        "question_only": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 19,
+            "all_required_returned": 24,
+            "data_missing_some": 11,
+            "no_fixed_target": 23,
+            "data_missing_all": 21,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.3925531914893617,
+                "hit@1": 0.3191489361702128,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.46808510638297873,
+                "hit@5": 0.5106382978723404,
+                "recall@1": 0.23900709219858157,
+                "recall@2": 0.29929078014184396,
+                "recall@3": 0.3524822695035461,
+                "recall@5": 0.3950354609929078
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5920289855072464,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6956521739130435,
+                "hit@5": 0.782608695652174,
+                "recall@1": 0.43478260869565216,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131,
+                "recall@5": 0.6956521739130435
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.2916666666666667,
+                "hit@1": 0.25,
+                "hit@2": 0.3125,
+                "hit@3": 0.34375,
+                "recall@1": 0.25,
+                "recall@2": 0.3125,
+                "recall@3": 0.34375
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.4057971014492754,
+                "hit@1": 0.34782608695652173,
+                "hit@2": 0.43478260869565216,
+                "hit@3": 0.4782608695652174,
+                "recall@1": 0.34782608695652173,
+                "recall@2": 0.43478260869565216,
+                "recall@3": 0.4782608695652174
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 24,
+            "n": 75
+          }
+        },
+        "context_diagnostic": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 16,
+            "all_required_returned": 27,
+            "data_missing_some": 11,
+            "no_fixed_target": 23,
+            "data_missing_all": 21,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.38794326241134747,
+                "hit@1": 0.2765957446808511,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.48936170212765956,
+                "hit@5": 0.574468085106383,
+                "recall@1": 0.2,
+                "recall@2": 0.3170212765957447,
+                "recall@3": 0.3879432624113475,
+                "recall@5": 0.4695035460992908
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.6405797101449275,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6956521739130435,
+                "hit@3": 0.7391304347826086,
+                "hit@5": 0.9130434782608695,
+                "recall@1": 0.391304347826087,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6956521739130435,
+                "recall@5": 0.8478260869565217
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.22916666666666663,
+                "hit@1": 0.15625,
+                "hit@2": 0.21875,
+                "hit@3": 0.34375,
+                "recall@1": 0.15625,
+                "recall@2": 0.21875,
+                "recall@3": 0.34375
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.3188405797101449,
+                "hit@1": 0.21739130434782608,
+                "hit@2": 0.30434782608695654,
+                "hit@3": 0.4782608695652174,
+                "recall@1": 0.21739130434782608,
+                "recall@2": 0.30434782608695654,
+                "recall@3": 0.4782608695652174
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 27,
+            "n": 75
+          }
+        },
+        "required_law": {
+          "n": 29,
+          "categories": {
+            "all_required_returned": 28,
+            "retrieval_miss": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 29,
+                "mrr": 0.8908045977011495,
+                "hit@1": 0.7931034482758621,
+                "hit@2": 0.9655172413793104,
+                "hit@3": 1.0,
+                "recall@1": 0.7758620689655172,
+                "recall@2": 0.9655172413793104,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 29,
+                "mrr": 0.8908045977011495,
+                "hit@1": 0.7931034482758621,
+                "hit@2": 0.9655172413793104,
+                "hit@3": 1.0,
+                "recall@1": 0.7758620689655172,
+                "recall@2": 0.9655172413793104,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 29
+          }
+        },
+        "scope_provisional": {
+          "n": 1,
+          "categories": {
+            "all_required_returned": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 1.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 1.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 1,
+            "n": 1
+          }
+        },
+        "diagnostic_only": {
+          "n": 5,
+          "categories": {
+            "no_fixed_target": 5
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 0,
+            "n": 0
+          }
+        }
+      },
+      "lost_required": [
+        {
+          "qid": "DEV-004",
+          "mode": "question_only",
+          "lost": [
+            "민법-제623조"
+          ]
+        },
+        {
+          "qid": "DEV-006",
+          "mode": "context_diagnostic",
+          "lost": [
+            "민법-제626조"
+          ]
+        },
+        {
+          "qid": "DEV-055",
+          "mode": "question_only",
+          "lost": [
+            "민법-제623조"
+          ]
+        },
+        {
+          "qid": "DEV-056",
+          "mode": "question_only",
+          "lost": [
+            "민법-제623조"
+          ]
+        },
+        {
+          "qid": "DEV-056",
+          "mode": "context_diagnostic",
+          "lost": [
+            "민법-제623조"
+          ]
+        },
+        {
+          "qid": "DEV-061",
+          "mode": "question_only",
+          "lost": [
+            "민법-제629조",
+            "민법-제632조"
+          ]
+        },
+        {
+          "qid": "DEV-061",
+          "mode": "context_diagnostic",
+          "lost": [
+            "민법-제629조",
+            "민법-제632조"
+          ]
+        }
+      ]
+    },
+    "dense2_only": {
+      "groups": {
+        "question_only": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 19,
+            "all_required_returned": 24,
+            "data_missing_some": 11,
+            "no_fixed_target": 23,
+            "data_missing_all": 21,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.3925531914893617,
+                "hit@1": 0.3191489361702128,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.46808510638297873,
+                "hit@5": 0.5106382978723404,
+                "recall@1": 0.23900709219858157,
+                "recall@2": 0.29929078014184396,
+                "recall@3": 0.3524822695035461,
+                "recall@5": 0.3950354609929078
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5920289855072464,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6956521739130435,
+                "hit@5": 0.782608695652174,
+                "recall@1": 0.43478260869565216,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131,
+                "recall@5": 0.6956521739130435
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.29166666666666663,
+                "hit@1": 0.25,
+                "hit@2": 0.3125,
+                "hit@3": 0.34375,
+                "recall@1": 0.25,
+                "recall@2": 0.3125,
+                "recall@3": 0.34375
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.40579710144927533,
+                "hit@1": 0.34782608695652173,
+                "hit@2": 0.43478260869565216,
+                "hit@3": 0.4782608695652174,
+                "recall@1": 0.34782608695652173,
+                "recall@2": 0.43478260869565216,
+                "recall@3": 0.4782608695652174
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 24,
+            "n": 75
+          }
+        },
+        "context_diagnostic": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 18,
+            "all_required_returned": 25,
+            "data_missing_some": 11,
+            "no_fixed_target": 23,
+            "data_missing_all": 21,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.38794326241134747,
+                "hit@1": 0.2765957446808511,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.48936170212765956,
+                "hit@5": 0.574468085106383,
+                "recall@1": 0.2,
+                "recall@2": 0.3170212765957447,
+                "recall@3": 0.3879432624113475,
+                "recall@5": 0.4695035460992908
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.6405797101449275,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6956521739130435,
+                "hit@3": 0.7391304347826086,
+                "hit@5": 0.9130434782608695,
+                "recall@1": 0.391304347826087,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6956521739130435,
+                "recall@5": 0.8478260869565217
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.22395833333333331,
+                "hit@1": 0.1875,
+                "hit@2": 0.21875,
+                "hit@3": 0.28125,
+                "recall@1": 0.1875,
+                "recall@2": 0.21875,
+                "recall@3": 0.28125
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.3115942028985507,
+                "hit@1": 0.2608695652173913,
+                "hit@2": 0.30434782608695654,
+                "hit@3": 0.391304347826087,
+                "recall@1": 0.2608695652173913,
+                "recall@2": 0.30434782608695654,
+                "recall@3": 0.391304347826087
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 25,
+            "n": 75
+          }
+        },
+        "required_law": {
+          "n": 29,
+          "categories": {
+            "all_required_returned": 27,
+            "retrieval_miss": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 29,
+                "mrr": 0.8448275862068966,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 0.8620689655172413,
+                "hit@3": 0.9655172413793104,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 0.8620689655172413,
+                "recall@3": 0.9655172413793104
+              },
+              "all_targets_held": {
+                "n": 29,
+                "mrr": 0.8448275862068966,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 0.8620689655172413,
+                "hit@3": 0.9655172413793104,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 0.8620689655172413,
+                "recall@3": 0.9655172413793104
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 27,
+            "n": 29
+          }
+        },
+        "scope_provisional": {
+          "n": 1,
+          "categories": {
+            "all_required_returned": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 1.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 1.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 1,
+            "n": 1
+          }
+        },
+        "diagnostic_only": {
+          "n": 5,
+          "categories": {
+            "no_fixed_target": 5
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 0,
+            "n": 0
+          }
+        }
+      },
+      "lost_required": [
+        {
+          "qid": "DEV-004",
+          "mode": "question_only",
+          "lost": [
+            "민법-제623조"
+          ]
+        },
+        {
+          "qid": "DEV-004",
+          "mode": "context_diagnostic",
+          "lost": [
+            "민법-제623조"
+          ]
+        },
+        {
+          "qid": "DEV-006",
+          "mode": "context_diagnostic",
+          "lost": [
+            "민법-제626조"
+          ]
+        },
+        {
+          "qid": "DEV-055",
+          "mode": "question_only",
+          "lost": [
+            "민법-제623조"
+          ]
+        },
+        {
+          "qid": "DEV-055",
+          "mode": "context_diagnostic",
+          "lost": [
+            "민법-제623조"
+          ]
+        },
+        {
+          "qid": "DEV-056",
+          "mode": "question_only",
+          "lost": [
+            "민법-제623조"
+          ]
+        },
+        {
+          "qid": "DEV-056",
+          "mode": "context_diagnostic",
+          "lost": [
+            "민법-제623조"
+          ]
+        },
+        {
+          "qid": "DEV-061",
+          "mode": "question_only",
+          "lost": [
+            "민법-제629조",
+            "민법-제632조"
+          ]
+        },
+        {
+          "qid": "DEV-061",
+          "mode": "context_diagnostic",
+          "lost": [
+            "민법-제629조",
+            "민법-제632조"
+          ]
+        },
+        {
+          "qid": "CIV-DRAFT-004",
+          "mode": "question_context",
+          "lost": [
+            "민법-제623조"
+          ]
+        }
+      ]
+    },
+    "keep_top2_dense2": {
+      "groups": {
+        "question_only": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 15,
+            "all_required_returned": 28,
+            "data_missing_some": 11,
+            "no_fixed_target": 23,
+            "data_missing_all": 21,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.3925531914893617,
+                "hit@1": 0.3191489361702128,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.46808510638297873,
+                "hit@5": 0.5106382978723404,
+                "recall@1": 0.23900709219858157,
+                "recall@2": 0.29929078014184396,
+                "recall@3": 0.3524822695035461,
+                "recall@5": 0.3950354609929078
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5920289855072464,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6956521739130435,
+                "hit@5": 0.782608695652174,
+                "recall@1": 0.43478260869565216,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131,
+                "recall@5": 0.6956521739130435
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.4166666666666667,
+                "hit@1": 0.375,
+                "hit@2": 0.4375,
+                "hit@3": 0.46875,
+                "recall@1": 0.359375,
+                "recall@2": 0.4375,
+                "recall@3": 0.46875
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5797101449275363,
+                "hit@1": 0.5217391304347826,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6521739130434783,
+                "recall@1": 0.5,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6521739130434783
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 75
+          }
+        },
+        "context_diagnostic": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 13,
+            "all_required_returned": 30,
+            "data_missing_some": 11,
+            "no_fixed_target": 23,
+            "data_missing_all": 21,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.38794326241134747,
+                "hit@1": 0.2765957446808511,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.48936170212765956,
+                "hit@5": 0.574468085106383,
+                "recall@1": 0.2,
+                "recall@2": 0.3170212765957447,
+                "recall@3": 0.3879432624113475,
+                "recall@5": 0.4695035460992908
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.6405797101449275,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6956521739130435,
+                "hit@3": 0.7391304347826086,
+                "hit@5": 0.9130434782608695,
+                "recall@1": 0.391304347826087,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6956521739130435,
+                "recall@5": 0.8478260869565217
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.38020833333333337,
+                "hit@1": 0.34375,
+                "hit@2": 0.375,
+                "hit@3": 0.4375,
+                "recall@1": 0.328125,
+                "recall@2": 0.375,
+                "recall@3": 0.4375
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5289855072463768,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.5217391304347826,
+                "hit@3": 0.6086956521739131,
+                "recall@1": 0.45652173913043476,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 30,
+            "n": 75
+          }
+        },
+        "required_law": {
+          "n": 29,
+          "categories": {
+            "all_required_returned": 28,
+            "retrieval_miss": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 29
+          }
+        },
+        "scope_provisional": {
+          "n": 1,
+          "categories": {
+            "all_required_returned": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 1,
+            "n": 1
+          }
+        },
+        "diagnostic_only": {
+          "n": 5,
+          "categories": {
+            "no_fixed_target": 5
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 0,
+            "n": 0
+          }
+        }
+      },
+      "lost_required": []
+    },
+    "keep_top2_dense": {
+      "groups": {
+        "question_only": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 15,
+            "all_required_returned": 28,
+            "data_missing_some": 11,
+            "no_fixed_target": 23,
+            "data_missing_all": 21,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.3925531914893617,
+                "hit@1": 0.3191489361702128,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.46808510638297873,
+                "hit@5": 0.5106382978723404,
+                "recall@1": 0.23900709219858157,
+                "recall@2": 0.29929078014184396,
+                "recall@3": 0.3524822695035461,
+                "recall@5": 0.3950354609929078
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5920289855072464,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6956521739130435,
+                "hit@5": 0.782608695652174,
+                "recall@1": 0.43478260869565216,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131,
+                "recall@5": 0.6956521739130435
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.4166666666666667,
+                "hit@1": 0.375,
+                "hit@2": 0.4375,
+                "hit@3": 0.46875,
+                "recall@1": 0.359375,
+                "recall@2": 0.4375,
+                "recall@3": 0.46875
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5797101449275363,
+                "hit@1": 0.5217391304347826,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6521739130434783,
+                "recall@1": 0.5,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6521739130434783
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 75
+          }
+        },
+        "context_diagnostic": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 13,
+            "all_required_returned": 30,
+            "data_missing_some": 11,
+            "no_fixed_target": 23,
+            "data_missing_all": 21,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.38794326241134747,
+                "hit@1": 0.2765957446808511,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.48936170212765956,
+                "hit@5": 0.574468085106383,
+                "recall@1": 0.2,
+                "recall@2": 0.3170212765957447,
+                "recall@3": 0.3879432624113475,
+                "recall@5": 0.4695035460992908
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.6405797101449275,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.6956521739130435,
+                "hit@3": 0.7391304347826086,
+                "hit@5": 0.9130434782608695,
+                "recall@1": 0.391304347826087,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6956521739130435,
+                "recall@5": 0.8478260869565217
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.38020833333333337,
+                "hit@1": 0.34375,
+                "hit@2": 0.375,
+                "hit@3": 0.4375,
+                "recall@1": 0.328125,
+                "recall@2": 0.375,
+                "recall@3": 0.4375
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5289855072463768,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.5217391304347826,
+                "hit@3": 0.6086956521739131,
+                "recall@1": 0.45652173913043476,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 30,
+            "n": 75
+          }
+        },
+        "required_law": {
+          "n": 29,
+          "categories": {
+            "all_required_returned": 28,
+            "retrieval_miss": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 29
+          }
+        },
+        "scope_provisional": {
+          "n": 1,
+          "categories": {
+            "all_required_returned": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 1,
+            "n": 1
+          }
+        },
+        "diagnostic_only": {
+          "n": 5,
+          "categories": {
+            "no_fixed_target": 5
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 0,
+            "n": 0
+          }
+        }
+      },
+      "lost_required": []
+    }
+  },
+  "miss_causes": [
+    {
+      "qid": "DEV-001",
+      "mode": "question_only",
+      "target": "민법-제114조",
+      "bm25": 8,
+      "dense": 8,
+      "rrf": 8,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-001",
+      "mode": "context_diagnostic",
+      "target": "민법-제114조",
+      "bm25": 3,
+      "dense": 8,
+      "rrf": 4,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-012",
+      "mode": "context_diagnostic",
+      "target": "민법-제114조",
+      "bm25": 6,
+      "dense": 2,
+      "rrf": 4,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-013",
+      "mode": "context_diagnostic",
+      "target": "민법-제114조",
+      "bm25": 2,
+      "dense": 9,
+      "rrf": 5,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-014",
+      "mode": "question_only",
+      "target": "민법-제114조",
+      "bm25": 6,
+      "dense": 5,
+      "rrf": 6,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-014",
+      "mode": "context_diagnostic",
+      "target": "민법-제114조",
+      "bm25": 4,
+      "dense": 7,
+      "rrf": 5,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-015",
+      "mode": "question_only",
+      "target": "민법-제105조",
+      "bm25": 7,
+      "dense": 10,
+      "rrf": 8,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-015",
+      "mode": "context_diagnostic",
+      "target": "민법-제105조",
+      "bm25": 9,
+      "dense": 10,
+      "rrf": 9,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-016",
+      "mode": "question_only",
+      "target": "민법-제114조",
+      "bm25": 3,
+      "dense": 8,
+      "rrf": 5,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-034",
+      "mode": "question_only",
+      "target": "민법-제105조",
+      "bm25": 6,
+      "dense": 9,
+      "rrf": 7,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-034",
+      "mode": "context_diagnostic",
+      "target": "민법-제105조",
+      "bm25": 9,
+      "dense": 9,
+      "rrf": 9,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-059",
+      "mode": "context_diagnostic",
+      "target": "민법-제626조",
+      "bm25": 3,
+      "dense": 4,
+      "rrf": 3,
+      "cause": "selection_displacement"
+    },
+    {
+      "qid": "DEV-064",
+      "mode": "question_only",
+      "target": "민법-제105조",
+      "bm25": 2,
+      "dense": 9,
+      "rrf": 5,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-064",
+      "mode": "context_diagnostic",
+      "target": "민법-제105조",
+      "bm25": 6,
+      "dense": 8,
+      "rrf": 7,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-065",
+      "mode": "question_only",
+      "target": "민법-제105조",
+      "bm25": null,
+      "dense": 9,
+      "rrf": 10,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-065",
+      "mode": "context_diagnostic",
+      "target": "민법-제105조",
+      "bm25": 10,
+      "dense": 9,
+      "rrf": 10,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-066",
+      "mode": "question_only",
+      "target": "민법-제105조",
+      "bm25": 9,
+      "dense": 9,
+      "rrf": 10,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-066",
+      "mode": "context_diagnostic",
+      "target": "민법-제105조",
+      "bm25": 10,
+      "dense": 8,
+      "rrf": 9,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-072",
+      "mode": "question_only",
+      "target": "민법-제105조",
+      "bm25": null,
+      "dense": 10,
+      "rrf": 10,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-072",
+      "mode": "context_diagnostic",
+      "target": "민법-제105조",
+      "bm25": 9,
+      "dense": 9,
+      "rrf": 9,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-087",
+      "mode": "question_only",
+      "target": "민법-제357조",
+      "bm25": 6,
+      "dense": 7,
+      "rrf": 7,
+      "cause": "fusion_rank"
+    },
+    {
+      "qid": "DEV-087",
+      "mode": "context_diagnostic",
+      "target": "민법-제357조",
+      "bm25": 9,
+      "dense": 7,
+      "rrf": 8,
+      "cause": "fusion_rank"
+    }
+  ],
+  "changed_inputs": [
+    {
+      "qid": "DEV-001",
+      "mode": "question_only",
+      "before": [
+        "민법-제629조",
+        "민법-제623조",
+        "민법-제640조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제623조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "DEV-002",
+      "mode": "question_only",
+      "before": [
+        "민법-제357조",
+        "민법-제640조",
+        "민법-제626조"
+      ],
+      "after": [
+        "민법-제357조",
+        "민법-제640조",
+        "민법-제629조"
+      ]
+    },
+    {
+      "qid": "DEV-005",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제623조",
+        "민법-제634조",
+        "민법-제626조"
+      ],
+      "after": [
+        "민법-제623조",
+        "민법-제634조",
+        "민법-제629조"
+      ]
+    },
+    {
+      "qid": "DEV-006",
+      "mode": "question_only",
+      "before": [
+        "민법-제626조",
+        "민법-제623조",
+        "민법-제634조"
+      ],
+      "after": [
+        "민법-제626조",
+        "민법-제623조",
+        "민법-제640조"
+      ]
+    },
+    {
+      "qid": "DEV-006",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제626조",
+        "민법-제623조",
+        "민법-제627조"
+      ],
+      "after": [
+        "민법-제626조",
+        "민법-제623조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "DEV-008",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제629조",
+        "민법-제626조",
+        "민법-제627조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제626조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "DEV-009",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제627조",
+        "민법-제632조",
+        "민법-제640조"
+      ],
+      "after": [
+        "민법-제627조",
+        "민법-제632조",
+        "민법-제629조"
+      ]
+    },
+    {
+      "qid": "DEV-012",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제634조",
+        "민법-제629조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제634조",
+        "민법-제629조",
+        "민법-제114조"
+      ]
+    },
+    {
+      "qid": "DEV-017",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제629조",
+        "민법-제634조",
+        "민법-제632조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제634조",
+        "민법-제640조"
+      ]
+    },
+    {
+      "qid": "DEV-018",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제626조",
+        "민법-제632조",
+        "민법-제627조"
+      ],
+      "after": [
+        "민법-제626조",
+        "민법-제632조",
+        "민법-제640조"
+      ]
+    },
+    {
+      "qid": "DEV-021",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제357조",
+        "민법-제629조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제357조",
+        "민법-제629조",
+        "민법-제626조"
+      ]
+    },
+    {
+      "qid": "DEV-024",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제629조",
+        "민법-제634조",
+        "민법-제627조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제634조",
+        "민법-제632조"
+      ]
+    },
+    {
+      "qid": "DEV-025",
+      "mode": "question_only",
+      "before": [
+        "민법-제640조",
+        "민법-제629조",
+        "민법-제627조"
+      ],
+      "after": [
+        "민법-제640조",
+        "민법-제629조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "DEV-026",
+      "mode": "question_only",
+      "before": [
+        "민법-제634조",
+        "민법-제623조",
+        "민법-제629조"
+      ],
+      "after": [
+        "민법-제634조",
+        "민법-제623조",
+        "민법-제640조"
+      ]
+    },
+    {
+      "qid": "DEV-027",
+      "mode": "question_only",
+      "before": [
+        "민법-제626조",
+        "민법-제640조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제626조",
+        "민법-제640조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "DEV-028",
+      "mode": "question_only",
+      "before": [
+        "민법-제640조",
+        "민법-제634조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제640조",
+        "민법-제634조",
+        "민법-제629조"
+      ]
+    },
+    {
+      "qid": "DEV-028",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제640조",
+        "민법-제634조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제640조",
+        "민법-제634조",
+        "민법-제626조"
+      ]
+    },
+    {
+      "qid": "DEV-032",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제627조",
+        "민법-제632조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제627조",
+        "민법-제632조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "DEV-033",
+      "mode": "question_only",
+      "before": [
+        "민법-제629조",
+        "민법-제357조",
+        "민법-제634조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제357조",
+        "민법-제640조"
+      ]
+    },
+    {
+      "qid": "DEV-033",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제629조",
+        "민법-제634조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제634조",
+        "민법-제626조"
+      ]
+    },
+    {
+      "qid": "DEV-034",
+      "mode": "question_only",
+      "before": [
+        "민법-제629조",
+        "민법-제357조",
+        "민법-제634조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제357조",
+        "민법-제627조"
+      ]
+    },
+    {
+      "qid": "DEV-034",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제629조",
+        "민법-제627조",
+        "민법-제634조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제627조",
+        "민법-제626조"
+      ]
+    },
+    {
+      "qid": "DEV-036",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제629조",
+        "민법-제634조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제634조",
+        "민법-제627조"
+      ]
+    },
+    {
+      "qid": "DEV-038",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제634조",
+        "민법-제640조",
+        "민법-제626조"
+      ],
+      "after": [
+        "민법-제634조",
+        "민법-제640조",
+        "민법-제629조"
+      ]
+    },
+    {
+      "qid": "DEV-039",
+      "mode": "question_only",
+      "before": [
+        "민법-제357조",
+        "민법-제640조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제357조",
+        "민법-제640조",
+        "민법-제629조"
+      ]
+    },
+    {
+      "qid": "DEV-040",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제623조",
+        "민법-제632조",
+        "민법-제357조"
+      ],
+      "after": [
+        "민법-제623조",
+        "민법-제632조",
+        "민법-제626조"
+      ]
+    },
+    {
+      "qid": "DEV-041",
+      "mode": "question_only",
+      "before": [
+        "민법-제634조",
+        "민법-제629조",
+        "민법-제640조"
+      ],
+      "after": [
+        "민법-제634조",
+        "민법-제629조",
+        "민법-제632조"
+      ]
+    },
+    {
+      "qid": "DEV-041",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제629조",
+        "민법-제634조",
+        "민법-제640조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제634조",
+        "민법-제627조"
+      ]
+    },
+    {
+      "qid": "DEV-044",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제634조",
+        "민법-제629조",
+        "민법-제627조"
+      ],
+      "after": [
+        "민법-제634조",
+        "민법-제629조",
+        "민법-제640조"
+      ]
+    },
+    {
+      "qid": "DEV-045",
+      "mode": "question_only",
+      "before": [
+        "민법-제640조",
+        "민법-제357조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제640조",
+        "민법-제357조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "DEV-046",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제629조",
+        "민법-제640조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제640조",
+        "민법-제632조"
+      ]
+    },
+    {
+      "qid": "DEV-047",
+      "mode": "question_only",
+      "before": [
+        "민법-제640조",
+        "민법-제634조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제640조",
+        "민법-제634조",
+        "민법-제629조"
+      ]
+    },
+    {
+      "qid": "DEV-048",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제634조",
+        "민법-제629조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제634조",
+        "민법-제629조",
+        "민법-제626조"
+      ]
+    },
+    {
+      "qid": "DEV-050",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제640조",
+        "민법-제626조",
+        "민법-제629조"
+      ],
+      "after": [
+        "민법-제640조",
+        "민법-제626조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "DEV-052",
+      "mode": "question_only",
+      "before": [
+        "민법-제634조",
+        "민법-제629조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제634조",
+        "민법-제629조",
+        "민법-제640조"
+      ]
+    },
+    {
+      "qid": "DEV-053",
+      "mode": "question_only",
+      "before": [
+        "민법-제634조",
+        "민법-제629조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제634조",
+        "민법-제629조",
+        "민법-제632조"
+      ]
+    },
+    {
+      "qid": "DEV-054",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제629조",
+        "민법-제626조",
+        "민법-제640조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제626조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "DEV-055",
+      "mode": "question_only",
+      "before": [
+        "민법-제623조",
+        "민법-제634조",
+        "민법-제626조"
+      ],
+      "after": [
+        "민법-제623조",
+        "민법-제634조",
+        "민법-제629조"
+      ]
+    },
+    {
+      "qid": "DEV-057",
+      "mode": "question_only",
+      "before": [
+        "민법-제623조",
+        "민법-제626조",
+        "민법-제627조"
+      ],
+      "after": [
+        "민법-제623조",
+        "민법-제626조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "DEV-063",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제640조",
+        "민법-제629조",
+        "민법-제626조"
+      ],
+      "after": [
+        "민법-제640조",
+        "민법-제629조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "DEV-065",
+      "mode": "question_only",
+      "before": [
+        "민법-제623조",
+        "민법-제629조",
+        "민법-제626조"
+      ],
+      "after": [
+        "민법-제623조",
+        "민법-제629조",
+        "민법-제640조"
+      ]
+    },
+    {
+      "qid": "DEV-066",
+      "mode": "question_only",
+      "before": [
+        "민법-제629조",
+        "민법-제640조",
+        "민법-제634조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제640조",
+        "민법-제632조"
+      ]
+    },
+    {
+      "qid": "DEV-067",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제626조",
+        "민법-제623조",
+        "민법-제629조"
+      ],
+      "after": [
+        "민법-제626조",
+        "민법-제623조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "DEV-068",
+      "mode": "question_only",
+      "before": [
+        "민법-제634조",
+        "민법-제623조",
+        "민법-제629조"
+      ],
+      "after": [
+        "민법-제634조",
+        "민법-제623조",
+        "민법-제640조"
+      ]
+    },
+    {
+      "qid": "DEV-069",
+      "mode": "question_only",
+      "before": [
+        "민법-제629조",
+        "민법-제634조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제634조",
+        "민법-제357조"
+      ]
+    },
+    {
+      "qid": "DEV-070",
+      "mode": "question_only",
+      "before": [
+        "민법-제634조",
+        "민법-제629조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제634조",
+        "민법-제629조",
+        "민법-제627조"
+      ]
+    },
+    {
+      "qid": "DEV-071",
+      "mode": "question_only",
+      "before": [
+        "민법-제634조",
+        "민법-제626조",
+        "민법-제629조"
+      ],
+      "after": [
+        "민법-제634조",
+        "민법-제626조",
+        "민법-제640조"
+      ]
+    },
+    {
+      "qid": "DEV-071",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제634조",
+        "민법-제626조",
+        "민법-제629조"
+      ],
+      "after": [
+        "민법-제634조",
+        "민법-제626조",
+        "민법-제627조"
+      ]
+    },
+    {
+      "qid": "DEV-074",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제626조",
+        "민법-제634조",
+        "민법-제632조"
+      ],
+      "after": [
+        "민법-제626조",
+        "민법-제634조",
+        "민법-제627조"
+      ]
+    },
+    {
+      "qid": "DEV-077",
+      "mode": "question_only",
+      "before": [
+        "민법-제627조",
+        "민법-제640조",
+        "민법-제626조"
+      ],
+      "after": [
+        "민법-제627조",
+        "민법-제640조",
+        "민법-제357조"
+      ]
+    },
+    {
+      "qid": "DEV-078",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제634조",
+        "민법-제626조",
+        "민법-제632조"
+      ],
+      "after": [
+        "민법-제634조",
+        "민법-제626조",
+        "민법-제627조"
+      ]
+    },
+    {
+      "qid": "DEV-081",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제632조",
+        "민법-제626조",
+        "민법-제629조"
+      ],
+      "after": [
+        "민법-제632조",
+        "민법-제626조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "DEV-086",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제626조",
+        "민법-제623조",
+        "민법-제627조"
+      ],
+      "after": [
+        "민법-제626조",
+        "민법-제623조",
+        "민법-제357조"
+      ]
+    },
+    {
+      "qid": "DEV-088",
+      "mode": "question_only",
+      "before": [
+        "민법-제634조",
+        "민법-제626조",
+        "민법-제114조"
+      ],
+      "after": [
+        "민법-제634조",
+        "민법-제626조",
+        "민법-제640조"
+      ]
+    },
+    {
+      "qid": "DEV-089",
+      "mode": "question_only",
+      "before": [
+        "민법-제640조",
+        "민법-제627조",
+        "민법-제629조"
+      ],
+      "after": [
+        "민법-제640조",
+        "민법-제627조",
+        "민법-제626조"
+      ]
+    },
+    {
+      "qid": "DEV-090",
+      "mode": "question_only",
+      "before": [
+        "민법-제632조",
+        "민법-제634조",
+        "민법-제640조"
+      ],
+      "after": [
+        "민법-제632조",
+        "민법-제634조",
+        "민법-제629조"
+      ]
+    },
+    {
+      "qid": "DEV-091",
+      "mode": "question_only",
+      "before": [
+        "민법-제629조",
+        "민법-제640조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제640조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "DEV-092",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제623조",
+        "민법-제629조",
+        "민법-제634조"
+      ],
+      "after": [
+        "민법-제623조",
+        "민법-제629조",
+        "민법-제627조"
+      ]
+    },
+    {
+      "qid": "DEV-096",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제629조",
+        "민법-제640조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제640조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "DEV-098",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제640조",
+        "민법-제629조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제640조",
+        "민법-제629조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "DEV-099",
+      "mode": "question_only",
+      "before": [
+        "민법-제357조",
+        "민법-제634조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제357조",
+        "민법-제634조",
+        "민법-제629조"
+      ]
+    },
+    {
+      "qid": "DEV-099",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제634조",
+        "민법-제357조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제634조",
+        "민법-제357조",
+        "민법-제626조"
+      ]
+    },
+    {
+      "qid": "DEV-100",
+      "mode": "context_diagnostic",
+      "before": [
+        "민법-제626조",
+        "민법-제634조",
+        "민법-제623조"
+      ],
+      "after": [
+        "민법-제626조",
+        "민법-제634조",
+        "민법-제627조"
+      ]
+    },
+    {
+      "qid": "CIV-DRAFT-003",
+      "mode": "question_context",
+      "before": [
+        "민법-제623조",
+        "민법-제629조",
+        "민법-제632조"
+      ],
+      "after": [
+        "민법-제623조",
+        "민법-제629조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "CIV-DRAFT-011",
+      "mode": "question_context",
+      "before": [
+        "민법-제629조",
+        "민법-제640조",
+        "민법-제627조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제640조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "CIV-DRAFT-016",
+      "mode": "question_context",
+      "before": [
+        "민법-제629조",
+        "민법-제632조",
+        "민법-제640조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제632조",
+        "민법-제627조"
+      ]
+    },
+    {
+      "qid": "CIV-DRAFT-018",
+      "mode": "question_context",
+      "before": [
+        "민법-제629조",
+        "민법-제632조",
+        "민법-제640조"
+      ],
+      "after": [
+        "민법-제629조",
+        "민법-제632조",
+        "민법-제627조"
+      ]
+    },
+    {
+      "qid": "CIV-DRAFT-021",
+      "mode": "question_context",
+      "before": [
+        "민법-제634조",
+        "민법-제627조",
+        "민법-제640조"
+      ],
+      "after": [
+        "민법-제634조",
+        "민법-제627조",
+        "민법-제629조"
+      ]
+    },
+    {
+      "qid": "CIV-DRAFT-022",
+      "mode": "question_context",
+      "before": [
+        "민법-제634조",
+        "민법-제629조",
+        "민법-제626조"
+      ],
+      "after": [
+        "민법-제634조",
+        "민법-제629조",
+        "민법-제632조"
+      ]
+    },
+    {
+      "qid": "CIV-DRAFT-023",
+      "mode": "question_context",
+      "before": [
+        "민법-제634조",
+        "민법-제627조",
+        "민법-제640조"
+      ],
+      "after": [
+        "민법-제634조",
+        "민법-제627조",
+        "민법-제629조"
+      ]
+    },
+    {
+      "qid": "CIV-DRAFT-026",
+      "mode": "question_context",
+      "before": [
+        "민법-제640조",
+        "민법-제629조",
+        "민법-제634조"
+      ],
+      "after": [
+        "민법-제640조",
+        "민법-제629조",
+        "민법-제627조"
+      ]
+    },
+    {
+      "qid": "CIV-DRAFT-032",
+      "mode": "question_context",
+      "before": [
+        "민법-제623조",
+        "민법-제626조",
+        "민법-제627조"
+      ],
+      "after": [
+        "민법-제623조",
+        "민법-제626조",
+        "민법-제634조"
+      ]
+    }
+  ]
+}

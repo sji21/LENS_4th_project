@@ -12,6 +12,11 @@ from src.retrieval.retriever import load_chunks
 from src.retrieval.service import CASE_CHUNKS, GUIDE_CHUNKS, DEFAULT_MODEL, RetrievalService
 
 
+def evaluate_published_regression(service, selected, chunks):
+    # The published set contains both general-law and civil-law gold.
+    return evaluate(service, selected, chunks, "law", law_scope="combined")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--before-chunks", required=True, type=Path)
@@ -67,7 +72,7 @@ def main():
         changes = []
         for row in rows:
             a, b = [services[name].search(row["question"]) for name in ("before", "after")]
-            for kind, limit in (("laws", 3), ("cases", 5), ("guides", 2)):
+            for kind, limit in (("laws", 3), ("civil_laws", 3), ("cases", 5), ("guides", 2)):
                 old = [e.chunk_id for e in getattr(a, kind)[:limit]]
                 new = [e.chunk_id for e in getattr(b, kind)[:limit]]
                 if old != new:
@@ -75,12 +80,15 @@ def main():
         results[split]["ranking_changes"] = changes
     path = civil_path
     selected, excluded = prepare_questions(civil_rows, corpora["after"], "law")
-    results["civil_published_regression"] = evaluate(services["after"], selected, corpora["after"], "law")
+    results["civil_published_regression"] = evaluate_published_regression(
+        services["after"], selected, corpora["after"])
     results["civil_published_regression"].update(input=fingerprint(path), exclusions=excluded)
     results["civil_published_regression"]["label_adapter"] = "abstain -> unanswerable in memory only"
     results["civil_published_regression"]["excluded_civil_exposure"] = [
-        {"qid": row["qid"], "civil_topics": list(services["after"].search(row["question"]).civil_topics)}
-        for row in civil_rows if not row["gold_articles"]]
+        {"qid": row["qid"], "civil_topics": list(result.civil_topics),
+         "civil_chunk_ids": [e.chunk_id for e in result.civil_laws]}
+        for row in civil_rows if not row["gold_articles"]
+        for result in [services["after"].search(row["question"])]]
     payload = {"purpose": "published regression, not independent evaluation",
                "code_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
                "worktree_dirty": bool(subprocess.check_output(["git", "status", "--porcelain"], text=True).strip()),

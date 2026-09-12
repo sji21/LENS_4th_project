@@ -1,0 +1,7 @@
+{
+  "schema": "patch021-verification-v1",
+  "files": {
+    "audit.json": "0c9234bdc537b0d711ed7cfee72d360b418e5acc6df95cb7c34164727db2c547",
+    "results.json": "039d7b4982fdce6cd5b8d26fced66e30a6fc4af5829a0f77b30fb8ad09ff9e35"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "patch020-run-v1",
+  "commit": "6acf4a245f6ae3886c397f72593638ee074826bd",
+  "status": "M LIST.md\n M scripts/.gitattributes\n?? data/eval/patch020-budget/\n?? scripts/patch020_budget.py\n?? tests/test_patch020_budget.py",
+  "hash_format": "SHA256 of bytes with CRLF replaced by LF; no other normalization",
+  "source_hashes": {
+    "data/eval/patch020-budget/plan.json": "fcc6c240e8a6677f67f21c808dfdc4a42692141be74d06624b5d214ae3510fa0",
+    "scripts/patch020_budget.py": "23d614d380b365cd0a59eb2b4e8b58c1dafae86a7cdca22b1408b32b45739052",
+    "data/eval/patch018-separate/bundle-manifest.json": "0ded5cf7a3f1616ca66360f0ace3648b126374bd08d575671a4f45de2312f32e",
+    "data/eval/patch016-candidates/bundle-manifest.json": "5f3454208a6aac8fa62379d49e4a6b3ede4fb37dcdeeb41ee391a3518a260734"
+  },
+  "new_search": false,
+  "generation": false,
+  "operating_changes": false
+}

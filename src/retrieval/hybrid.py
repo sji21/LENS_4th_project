@@ -73,14 +73,30 @@ class HybridRetriever:
         각 Member 가 자기 값을 들고 있다. 하나로 강제하면 BM25 와 임베딩 중
         한쪽에 맞지 않는 설정이 된다.
         """
+        ranked, member_hits = self.search_with_member_hits(query, k, where, expand_weight)
+        self._last = member_hits
+        return ranked
+
+    def search_with_member_hits(
+        self,
+        query: str,
+        k: int,
+        where: dict | None = None,
+        expand_weight: float = 0.0,
+    ) -> tuple[list[tuple[str, float]], dict[str, list[str]]]:
+        """검색 결과와 그 검색에서만 유효한 구성원별 순위를 함께 돌려준다.
+
+        ``_last``는 이전 호출과의 호환을 위한 관측값이다. 요청별 후속 순위 계산은
+        이 반환값을 사용해야 동시에 검색하는 다른 요청에 섞이지 않는다.
+        """
         # 최종 k 보다 깊게 뽑아야 한쪽에서만 상위인 문서가 합류할 기회를 얻는다.
         depth = max(self.depth, k)
         fused: dict[str, float] = {}
-        self._last = {}
+        member_hits: dict[str, list[str]] = {}
 
         for member in self.members:
             hits = self._ask(member, query, depth, where)
-            self._last[member.name or str(id(member))] = [cid for cid, _ in hits]
+            member_hits[member.name or str(id(member))] = [cid for cid, _ in hits]
             for rank, (chunk_id, _score) in enumerate(hits, start=1):
                 fused[chunk_id] = fused.get(chunk_id, 0.0) + member.weight / (
                     self.rrf_k + rank
@@ -88,7 +104,7 @@ class HybridRetriever:
 
         # 구성원과 같은 규칙으로 동점을 깨어 재실행 결과가 흔들리지 않게 한다.
         ranked = sorted(fused.items(), key=lambda x: (-x[1], x[0]))
-        return ranked[:k]
+        return ranked[:k], member_hits
 
     @staticmethod
     def _ask(

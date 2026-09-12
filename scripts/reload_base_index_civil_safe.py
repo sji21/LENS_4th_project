@@ -2,7 +2,7 @@
 
 배경
 ----
-`data/chunks/chunks.jsonl` 에는 PATCH-006 이후 민법 조문 7건이 함께
+`data/chunks/chunks.jsonl` 에는 설정된 민법 조문이 함께
 export 되어 있다. BM25 코퍼스와 `_warn_if_civil_missing` 누락 감지에는 이
 파일이 그대로(민법 포함) 필요하지만, 기본 Chroma 인덱스
 (`data/index/chroma_kurev1_1024`)에 민법이 섞여 들어가면
@@ -87,9 +87,13 @@ def verify(
     chunks: Path,
     cases: Path,
     guides: Path,
-    expected_civil_count: int = 7,
+    expected_civil_count: int | None = None,
 ) -> bool:
     import chromadb
+    from src.retrieval.service import CIVIL_ARTICLE_IDS
+
+    if expected_civil_count is None:
+        expected_civil_count = len(CIVIL_ARTICLE_IDS)
 
     ok = True
 

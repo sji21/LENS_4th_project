@@ -1,0 +1,20 @@
+{
+  "schema": "patch020-plan-v1",
+  "date": "2026-09-11",
+  "base": "6acf4a2",
+  "inputs": 235,
+  "budgets": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "selection": "Retain original civil picks, fill unused slots by civil RRF rank without duplicates. Compare pure RRF at identical budgets. No gold or query ID in selection.",
+  "general": "Keep validated general TOP5 from PATCH-018",
+  "metrics": "Held required civil coverage and full required-law coverage separately; source completeness remains in full denominator. Law output up to 5+budget, not Hit@5.",
+  "decision": "Smallest observed budget covering all held civil targets in CIV29 and nonhistorical DEV, with no lost prior required evidence. Descriptive public-development result only, not deployment approval.",
+  "negative_labels": "Required-gold absence does not prove irrelevance. Zero-return policy not solved; unconditional fill provides candidates to every input.",
+  "stop": "Fixed budgets only, no rule/model/gold tuning. No LLM calls, new vector search or product change."
+}

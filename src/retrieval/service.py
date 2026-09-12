@@ -127,8 +127,9 @@ CASE = Corpus("판례", CASE_TYPES)
 
 # 민법은 기존 법령과 같은 BM25 묶음에 넣지 않는다. 검색 때 필터로만 빼면 IDF는
 # 이미 민법을 포함해 계산되어 민법이 결과에 보이지 않아도 기존 순위가 흔들린다.
-# 생성 모델에 넘기는 법령 3칸 중 질문 의도가 확인될 때만 0~2칸을 사용한다.
+# 민법은 별도 채널에서 최대 3개를 반환한다.
 CIVIL_TITLE = "민법"
+CIVIL_TAIL_DENSE_MULTIPLIER = 2.0
 CIVIL_ARTICLE_IDS = (
     "민법-제623조",
     "민법-제626조",
@@ -137,6 +138,9 @@ CIVIL_ARTICLE_IDS = (
     "민법-제632조",
     "민법-제634조",
     "민법-제640조",
+    "민법-제105조",
+    "민법-제114조",
+    "민법-제357조",
 )
 CIVIL = Corpus(
     "민법",
@@ -437,6 +441,7 @@ class RetrievalResult:
     cases: list[Evidence] = field(default_factory=list)
     guides: list[Evidence] = field(default_factory=list)
     civil_topics: tuple[str, ...] = ()
+    civil_laws: list[Evidence] = field(default_factory=list)
 
     def as_prompt_context(self) -> str:
         """법령과 판례를 구분해 붙인 근거 묶음.
@@ -454,6 +459,10 @@ class RetrievalResult:
             parts.append(
                 "## 관련 판례\n" + "\n\n".join(e.as_prompt_block() for e in self.cases)
             )
+        if self.civil_laws:
+            parts.append(
+                "## 관련 민법 후보\n" + "\n\n".join(e.as_prompt_block() for e in self.civil_laws)
+            )
         if self.guides:
             # 안내는 맨 뒤에 두고 법적 근거가 아님을 제목에 박는다. 조문과 같은
             # 무게로 읽으면 모델이 "법에 따르면 보증 한도는…" 같은 문장을 쓴다.
@@ -464,7 +473,11 @@ class RetrievalResult:
         return "\n\n".join(parts)
 
     def is_empty(self) -> bool:
-        return not self.laws and not self.cases and not self.guides
+        return not self.laws and not self.cases and not self.guides and not self.civil_laws
+
+    @property
+    def evidences(self) -> list[Evidence]:
+        return self.laws + self.cases + self.civil_laws + self.guides
 
 
 def citation_of(metadata: dict) -> str:
@@ -650,18 +663,39 @@ class RetrievalService:
             if chunk_id in self._chunks
         ]
 
+    def _search_one_with_member_hits(
+        self, corpus: Corpus, question: str, k: int,
+    ) -> tuple[list[Evidence], dict[str, list[str]]]:
+        """검색 결과와 동일 요청의 Hybrid 구성원별 순위를 함께 가져온다."""
+        retriever = self._retrievers.get(corpus.name)
+        if retriever is None or k <= 0:
+            return [], {}
+        hits, member_hits = retriever.search_with_member_hits(question, k, corpus.where())
+        return [
+            _to_evidence(rank, self._chunks[chunk_id], score)
+            for rank, (chunk_id, score) in enumerate(hits, start=1)
+            if chunk_id in self._chunks
+        ], member_hits
+
     def search(
         self,
         question: str,
         k_law: int = 5,
         k_case: int = 5,
         k_guide: int = 2,
+        *,
+        k_civil: int | None = None,
     ) -> RetrievalResult:
         """법령 k_law 건, 판례 k_case 건, 공식 안내 k_guide 건을 각각 뽑는다.
 
         k_guide 는 **상한**이다. 실제 건수는 질문 주제에 따라 0~k_guide 로 달라진다
         (`_search_guides` 참고). 안내가 법적 근거가 아니라 실무 절차를 보태는
         자리이므로 상한을 낮게 둔다. 0 으로 주면 안내를 끄는 것이다.
+
+        민법은 civil_laws에 별도 최대3건 반환한다. 기존 규칙 선택을 보존하고
+        검색 후보로 보충하며, 법령 k_law 자리를 차감하지 않는다. k_civil=0은
+        민법만 끈다. 생략 시 k_law>0이면3, 아니면0으로 기존 검색 비활성 계약을
+        유지한다. 이 개수는 적용 확정이 아닌 후보 수다.
 
         질문이 비어 있으면 빈 결과를 준다. BM25 는 토큰이 없어 스스로 아무것도
         내지 않지만, 임베딩은 공백도 벡터로 바꿔 아무 문서나 가장 가까운 것으로
@@ -672,22 +706,19 @@ class RetrievalService:
             return RetrievalResult(question=question)
 
         law, case, guide = self.corpora
-        topics = detect_civil_topics(question) if k_law > 0 else ()
-        civil_laws = self._search_civil(question, topics, min(2, k_law))
+        # Preserve the historical all-law disable switch unless civil is explicit.
+        civil_limit = min(3, max(0, k_civil if k_civil is not None else (3 if k_law > 0 else 0)))
+        topics = detect_civil_topics(question) if civil_limit > 0 else ()
+        civil_laws = self._search_civil_candidates(question, topics, civil_limit)
         standard_laws = self._search_one(
             route_law_corpus(question, law),
             question,
-            max(0, k_law - len(civil_laws)),
+            max(0, k_law),
         )
-        # 민법은 질문 의도를 직접 설명하는 조문이라 앞에 둔다. Evidence.rank는
-        # 각 검색기의 내부 순위가 아니라 LLM이 보는 최종 순위로 다시 매긴다.
-        laws = [
-            replace(evidence, rank=rank)
-            for rank, evidence in enumerate(civil_laws + standard_laws, start=1)
-        ]
         return RetrievalResult(
             question=question,
-            laws=laws,
+            laws=standard_laws,
+            civil_laws=civil_laws,
             cases=self._search_one(case, question, k_case),
             guides=self._search_guides(guide, question, k_guide),
             civil_topics=tuple(topic.name for topic in topics if any(
@@ -696,6 +727,43 @@ class RetrievalService:
                 for evidence in civil_laws
             )),
         )
+
+    def _search_civil_candidates(
+        self, question: str, topics: tuple[CivilTopic, ...], limit: int,
+    ) -> list[Evidence]:
+        """기존 TOP2를 보존하고 세 번째 후보는 의미 검색 비중을 높여 보충한다."""
+        if limit <= 0:
+            return []
+        picked = self._search_civil(question, topics, min(2, limit))
+        seen = {e.chunk_id for e in picked}
+        if len(picked) < limit:
+            candidates, ranks = self._search_one_with_member_hits(
+                self.civil, question, len(self.civil.include_ids),
+            )
+            for evidence in candidates:
+                if evidence.chunk_id not in seen:
+                    picked.append(evidence)
+                    seen.add(evidence.chunk_id)
+                if len(picked) >= limit:
+                    break
+            if limit == 3 and len(picked) == 3:
+                # Reuse this query's full candidate ranks; no extra embedding/search.
+                # Preserve the first two results, including existing topic picks.
+                retriever = self._retrievers[self.civil.name]
+                scores: dict[str, float] = {}
+                for member in retriever.members:
+                    weight = member.weight * (CIVIL_TAIL_DENSE_MULTIPLIER
+                                               if member.name.endswith("-dense") else 1.0)
+                    if not weight:
+                        continue
+                    for rank, cid in enumerate(ranks.get(member.name, ()), 1):
+                        scores[cid] = scores.get(cid, 0.0) + weight / (retriever.rrf_k + rank)
+                preserved = {e.chunk_id for e in picked[:2]}
+                tail = [e for e in candidates if e.chunk_id not in preserved and e.chunk_id in scores]
+                if tail:
+                    best = min(tail, key=lambda e: (-scores[e.chunk_id], e.chunk_id))
+                    picked[2] = replace(best, score=scores[best.chunk_id])
+        return [replace(e, rank=i) for i, e in enumerate(picked, 1)]
 
     def _search_civil(
         self,

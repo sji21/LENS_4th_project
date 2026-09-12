@@ -5,15 +5,51 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-12
+
+### Fixed (Bug Fixes)
+
+- PATCH-025 rejects PATCH-015 baseline captures outside the historical checkout whose candidate trace contract they reproduce, avoiding false candidate-stage diagnostics on newer retrieval paths. (commit: 69610f5)
+
+- PATCH-025 keeps Civil Act member rankings request-local while re-ranking the third candidate, preventing concurrent searches from mixing candidate ranks. (commit: 9fd078f)
+
 ## 2026-09-11
 
+### Changed
+
+- PATCH-025 preserves civil TOP2 and uses double dense weight only for the third candidate. Nine policies were compared on235 inputs; DEV context full targets29→30, Hit1 preserved and zero prior required-evidence losses. All235 live results match. Third candidates change on72 inputs; legal relevance and LLM quality are not established. No data/model changes. (commit: 23ad5bb, 0ee906e, aa2411e)
+
 ### Added
+
+- PATCH-024 adds Civil Act articles 105/114/357 (7→10 candidates, unchanged TOP3) after 235-input comparison with zero prior required-evidence losses and unchanged general/case/guide rankings. DEV question/context complete targets rise 23→28/25→29; data gaps fall 45→32. Backed-up local adoption matches all235 candidate results. Publishes evidence and offline replay; search tuning remains separate. (commit: e640d3a, 0056ae6, 486e57f)
+
+- PATCH-023 records a fresh main-based 235-input separated retrieval baseline: DEV question/context complete fixed targets 23/25 of100, data gaps45, held-target misses7/5, unscored25. Civil required track covers civil29/29 and all law28/29. No production changes. (commit: ee6c55a)
+
+- PATCH-021 separates civil_laws (up to3 retained-and-filled candidates) from general law slots and carries civil evidence through staged retrieval, prompt, answer and citation/source validation. Existing generation general-law3/case2 limits stay unchanged. All235 live inputs match PATCH-020 and case/guide rankings are preserved. TOP3 DEV-059 context miss remains known; automatic irrelevant-civil exclusion is not implemented. (commit: 35be974)
+
+- PATCH-020 compares retaining existing civil picks and filling RRF candidates at budgets 2 through 7. On the public development inputs, budget4 covers all held required civil targets without losing prior evidence, versus budget7 for RRF alone. General TOP5 stays fixed. The provisional handoff budget is TOP3 based on the user-reported LLM constraint; DEV-059 context remains a known miss for later tuning. Operating integration and applicability judgment remain unvalidated. (commit: e83976f)
 
 - PATCH-018 tests separate general TOP5 and civil channels on the same 235 inputs. General evidence is preserved, but civil TOP2 substitution loses prior civil evidence in 10 DEV inputs; unrestricted delivery raises exposure. Shares fixed comparisons and replay artifacts; production adoption is deferred. (commit: de628b3)
 
 - PATCH-017 compares three predeclared rank-fusion weights using the saved 235 inputs. All three fail the adoption gate: the conservative weight adds no benefit, while stronger weights improve new civil items but displace required evidence in existing inputs. Shares per-input rankings and loss diagnostics; production behavior is unchanged. (commit: a55d9c0)
 
 ### Fixed (Bug Fixes)
+
+- PATCH-023 removes blank lines inside the LIST.md patch table so PATCH-020 onward renders as table rows. (commit: 88bf3c3)
+
+- PATCH-022 also accepts dated standalone former-article relocation notes; held decree articles 7 and 8 retain valid paragraph recognition. (commit: dcb71c0)
+
+- PATCH-022 validates all paragraphs in article-linked lists/ranges and preserves explicit paragraph structure across recognized dated history notes, while still rejecting mixed article headings. (commit: e226c2e)
+
+- PATCH-022 fixes F-06 paragraph validation: require the exact named law/article and explicit paragraph structure in that evidence. Cross-references, quoted numbering, ambiguous excerpts and unnumbered text cannot establish paragraph existence. Includes civil evidence and chain/graph regression coverage. (commit: 47d492d)
+
+- PATCH-021 migrates the remaining public regression diagnostic to explicit scopes. Legacy mixed-TOP5 scores are not treated as expected split-channel scores; required-evidence gains/losses remain visible and mismatched questions/gold are rejected. (commit: 496e896)
+
+- PATCH-021 uses the same explicit civil budget (k_civil=3) for evaluation calls and captured settings; verification checks legacy settings separately from the added civil budget. (commit: 5384961)
+
+- PATCH-021 verification requires a clean committed tree, compares runner/service Git bytes with LF-normalized working bytes, and checks provenance again after retrieval. (commit: 373c465)
+
+- PATCH-021 scores general and civil result channels explicitly; mixed published regression uses general5+civil3 union coverage without a fictitious merged rank. Reports actual civil exposure and rejects mismatched gold scopes. (commit: 4878ea4)
 
 - PATCH-018 preserves captured source bytes and validates current dependencies after newline normalization, allowing clean Git checkouts to replay mixed-newline captures while rejecting content changes. The historical runner and original results remain preserved. (commit: 52b2d5f)
 

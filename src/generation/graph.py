@@ -398,6 +398,7 @@ def build_generation_graph(
                     f"{chain_module.prompt_module.DISCLAIMER}"
                 ),
                 laws=tuple(result.laws),
+                civil_laws=tuple(result.civil_laws),
                 cases=tuple(result.cases),
                 guides=tuple(result.guides),
                 document_evidences=document_evidences,
@@ -411,7 +412,7 @@ def build_generation_graph(
         result = state["retrieval_result"]
         raw_text = state["raw_text"]
 
-        evidences = tuple(result.laws + result.cases + result.guides)
+        evidences = tuple(result.evidences)
         grounded_text = chain_module.ground_answer_conditions(
             raw_text,
             evidences,
@@ -431,6 +432,7 @@ def build_generation_graph(
             ),
             raw_text=grounded_text,
             laws=tuple(result.laws),
+            civil_laws=tuple(result.civil_laws),
             cases=tuple(result.cases),
             guides=tuple(result.guides),
             document_evidences=document_evidences,
