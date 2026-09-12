@@ -28,7 +28,7 @@ def fingerprints():
     return {str(p.relative_to(ROOT)): sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
 
 
-def seed_state(case):
+def seed_state(case, *, dialogue_enabled=False):
     from chat.services import initial_state
     from src.document_check.extraction_models import ExtractionResult, PageExtraction
     from src.document_check.session_retrieval import build_session_document_context
@@ -44,6 +44,14 @@ def seed_state(case):
             {"id": "seed-assistant", "role": "assistant", "content": seed.get("pending_question") or "앞선 답변은 보류되었습니다.", "status": seed.get("last_answer_status", "clarifying"), "context_content": ""},
         ]
         state["evaluation_seed"] = seed
+        if dialogue_enabled:
+            from chat.dialogue_state import apply_user_update
+            dialogue = apply_user_update(state, user=content, topic=seed.get("topic"), updates={
+                k: {"value": v, "evidence": v} for k, v in seed.get("facts", {}).items()
+            })
+            if seed.get("pending_question"):
+                dialogue["pending"] = {"field": seed["pending_field"], "question": seed["pending_question"], "attempts": 1}
+            dialogue["last_status"] = seed.get("last_answer_status")
     for doc in case.get("documents", []):
         text = doc["text"]
         extraction = ExtractionResult((PageExtraction(1, text, "embedded_text", len(text)),), 0)
@@ -114,8 +122,8 @@ def capture_calls():
         yield stats
 
 
-def observed_state(state, message, query):
-    dialogue = state.get("dialogue")
+def observed_state(state, message, query, *, dialogue_enabled=True):
+    dialogue = state.get("dialogue") if dialogue_enabled else None
     facts = None
     if dialogue is not None:
         facts = {k: (v.get("value") if isinstance(v, dict) else v) for k, v in dialogue.get("facts", {}).items()}
@@ -177,7 +185,7 @@ def run(split, mode, output, selected=None):
         raise RuntimeError("Hybrid retrieval preflight failed; see recorded readiness issues")
     with override_settings(CHAT_CONVERSATION_ENABLED=mode == "upgrade"), tracing_context(enabled=False):
         for case in cases:
-            state = seed_state(case)
+            state = seed_state(case, dialogue_enabled=mode == "upgrade")
             for index, turn in enumerate(case["turns"]):
                 start = time.perf_counter()
                 error = None
@@ -191,7 +199,7 @@ def run(split, mode, output, selected=None):
                 from src.generation.prompt import GENERATION_FAILED_TEXT
                 if message.get("content", "").startswith(GENERATION_FAILED_TEXT):
                     error = error or "GenerationFailed"
-                observation = observed_state(state, message, calls["query"])
+                observation = observed_state(state, message, calls["query"], dialogue_enabled=mode == "upgrade")
                 row = {
                     "case_id": case["id"], "turn": index + 1, "input": turn["user"],
                     "before_state": before_state, "after_state": deepcopy(state.get("dialogue")),

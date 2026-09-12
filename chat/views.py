@@ -19,6 +19,7 @@ from django.views.decorators.http import require_GET, require_POST
 from src.document_check.extraction import DocumentValidationError, OcrUnavailableError
 from .models import Conversation
 from . import services
+from .dialogue_state import invalidate_document
 
 logger = logging.getLogger(__name__)
 
@@ -216,6 +217,7 @@ def delete_document(request, document_id):
             conversation.state["documents"] = [d for d in documents if d["document_id"] != document_id]
             # Drop history too: deleted document facts must not survive in follow-up prompts.
             conversation.state["messages"] = []
+            invalidate_document(conversation.state, document_id)
     return JsonResponse(services.public_state(conversation))
 
 
