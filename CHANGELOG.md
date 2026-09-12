@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
+- PATCH-026 pins 56 further reviewed current-law articles (including 16 Civil Act articles) with official source/version checks, plus the five initial procedure articles for a 204-article candidate. The collector rejects future or mismatched versions, and the evaluation runner connects all 26 civil articles to the candidate channel, checks unchanged old vectors and compares the same 235 inputs. Historical/guidance references remain separate; capture results are pending. (commit: pending)
+
 - PATCH-026 prioritizes completing the reviewed DEV100 law corpus before further five-article tuning. The inventory identifies 27 missing fixed-required articles plus 17 other reviewed references, with six law-tagged sources requiring document/article/version identification. These are collection candidates, not newly ingested or legally reverified records. Gold and operating data remain unchanged. (commit: f3c0728)
 
 ## 2026-09-12

@@ -1,0 +1,3 @@
+# Preserve frozen official source bytes and machine-readable evaluation hashes.
+/data/eval/patch026-full/** -text
+/data/eval/patch026-full/sources/*.html -diff

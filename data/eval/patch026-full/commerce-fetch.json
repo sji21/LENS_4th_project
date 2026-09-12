@@ -1,0 +1,26 @@
+[
+  {
+    "source_id": "COM_DATED",
+    "url": "https://www.law.go.kr/법령/상법/(20260723,20991,20250722)",
+    "bytes": 1264,
+    "header": {
+      "proclamation_number": "",
+      "proclaimed_at": "",
+      "effective_from": "",
+      "ministry": ""
+    },
+    "preview": "상법"
+  },
+  {
+    "source_id": "COM_PAGE",
+    "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsId=001702&efYd=20260908",
+    "bytes": 144905,
+    "header": {
+      "proclamation_number": "법률 제21044호",
+      "proclaimed_at": "2025-09-09",
+      "effective_from": "2026-09-08",
+      "ministry": ""
+    },
+    "preview": "법령 > 본문 > 상법 | 국가법령정보센터\n자바스크립트를 지원하지 않아 일부 기능을 사용할 수 없습니다.\n법령\n- 상법\n(신구법 비교는 공포단위 서비스입니다)\n신구법비교\n국가법령정보센터에서 제공하는 신구법\n비교는 시스템으로 자동 생성한 것으로\n참고용으로만 이용하시기 바라며, 정확한\n개정내용의 확인은 제·개정이유(제·개정문)\n또는 관보를 확인해 주세요.\n상법 [시행 2026. 9. 8.] [법률 제21044호, 2025. 9. 9., 일부개정]\n본문목록열림본문\n부칙목록열림부칙\n본문\n제정·개정이유\n별표·서식\n연혁\n3단비교\n신구법비교\n법령체계도\n시행일/공포 서비스개선 : 시행,연혁(ancYnChk: 0=시행, 1=공포) 파라"
+  }
+]
