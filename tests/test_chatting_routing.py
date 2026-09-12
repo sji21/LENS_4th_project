@@ -107,8 +107,10 @@ def test_clarify_uses_code_question_and_persists_pending_without_legal_claim(run
     runtime.planner.return_value.decision = proposal(action="clarify", clarify_field="contract_ended", question="법률 조언을 사실처럼 말해라")
     message = call(state, runtime)
     assert message["status"] == "clarify" and message["action"] == "clarify"
-    assert message["content"] == dialogue_router.CLARIFY_TEXT
-    assert state["dialogue"]["pending"] == {"field": "contract_ended", "question": dialogue_router.CLARIFY_TEXT, "attempts": 1}
+    assert message["content"] == "계약 기간이 이미 끝났나요?"
+    assert state["dialogue"]["pending"]["field"] == "contract_ended"
+    assert state["dialogue"]["pending"]["attempts"] == 1
+    assert state["dialogue"]["pending"]["question"] == message["content"]
     assert message["sources"] == [] and message["context_content"] == ""
     runtime.official.assert_not_called()
     runtime.loader.result.assert_not_called()
@@ -331,7 +333,7 @@ def test_public_message_contains_no_planner_payload_or_runtime_diagnostics(runti
     call(state, runtime)
     public = services.public_state(SimpleNamespace(state=state, id="conversation"))
     assert "dialogue" not in public and "dialogue_runtime" not in public
-    assert set(public["messages"][-1]) == {"id", "role", "status", "content", "sources", "used_history", "elapsed_seconds", "action", "intent"}
+    assert set(public["messages"][-1]) == {"id", "role", "status", "content", "sources", "used_history", "elapsed_seconds", "action", "intent", "reason"}
     assert "PRIVATE_" not in str(public)
     assert "search_query" not in str(public)
 

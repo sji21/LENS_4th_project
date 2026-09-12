@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
+- PATCH-033 Adds bounded field-specific clarification, persisted follow-up choices, unknown-value preservation, and explicit answer failure categories. (commit: pending)
+
 - PATCH-032 Adds opt-in conversation dispatch with original-input protection, fixed nonlegal replies, atomic state updates, and legacy recovery for rejected planner output. (commit: `f791706`)
 
 - PATCH-031 Adds bounded single-call Qwen conversation planning, source-checked structured decisions, and development captures that distinguish raw model errors from source-preserving normalization. (commit: `5a70d95`)

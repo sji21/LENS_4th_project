@@ -385,3 +385,31 @@ def test_next_http_request_reads_saved_facts_without_reattributing_them(browser,
     assert second.json()["messages"][-1]["used_history"] is True
     assert calls.planner.call_count == calls.official.call_count == 2
     calls.legacy.assert_not_called()
+
+
+def test_pending_question_resumes_after_reload_without_reclassifying_offered_answer(browser, calls, settings):
+    settings.CHAT_CONVERSATION_ENABLED = True
+    plan(calls, action="clarify", clarify_field="contract_ended", search_query="")
+    first = post(browser, "보증금 반환을 문의해요.")
+    assert first.json()["messages"][-1]["reason"] == "needs_information"
+    assert browser.get("/").status_code == 200
+    calls.planner.side_effect = AssertionError("Offered answer must not need another planner")
+    second = post(browser, "모르겠어요")
+    assert second.status_code == 200
+    saved = Conversation.objects.get().state
+    assert saved["dialogue"]["facts"]["contract_ended"]["value"] == "모름"
+    assert saved["dialogue"]["pending"] is None
+    assert len(saved["messages"]) == 4
+    calls.planner.assert_called_once()
+    calls.official.assert_called_once()
+
+
+def test_unrelated_reply_cannot_repeat_the_same_confirmation_forever(browser, calls, settings):
+    settings.CHAT_CONVERSATION_ENABLED = True
+    plan(calls, action="clarify", clarify_field="contract_ended", search_query="")
+    for text in ["보증금 상담할게요", "질문을 이해하지 못했어요"]:
+        assert post(browser, text).json()["messages"][-1]["status"] == "clarify"
+    third = post(browser, "아직 답하기 어려워요")
+    assert third.json()["messages"][-1]["action"] == "rag"
+    assert Conversation.objects.get().state["dialogue"]["pending"] is None
+    assert "contract_ended" not in Conversation.objects.get().state["dialogue"]["facts"]

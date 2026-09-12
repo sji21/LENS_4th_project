@@ -24,6 +24,7 @@ def empty_dialogue():
         "version": VERSION, "turn": 0, "epoch": 0, "topic": None,
         "facts": {}, "history": [], "changes": [], "pending": None,
         "active_document_id": None, "last_answer": None, "last_status": None,
+        "clarification_counts": {},
     }
 
 
@@ -53,6 +54,12 @@ def _read(state):
     ids = {doc.get("document_id") for doc in state.get("documents", [])}
     if fresh["active_document_id"] and fresh["active_document_id"] not in ids:
         return empty_dialogue()
+    counts = fresh["clarification_counts"]
+    fresh["clarification_counts"] = {
+        key: min(value, 2) for key, value in counts.items()
+        if isinstance(key, str) and re.fullmatch(r"[a-z_]{1,40}", key)
+        and type(value) is int and value >= 0
+    } if isinstance(counts, dict) and len(counts) <= 32 else {}
     fresh["history"] = fresh["history"][-HISTORY_LIMIT:]
     fresh["changes"] = fresh["changes"][-CHANGE_LIMIT:]
     return fresh

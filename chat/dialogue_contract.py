@@ -121,8 +121,13 @@ def _polarity_scope(field, evidence):
 def _check_meaning(field, value, evidence):
     if not _numbers(value).issubset(_numbers(evidence)) or not _quantities(value).issubset(_quantities(evidence)):
         raise DecisionError("invented_number")
+    if value == "모름":
+        if not re.search(r"모르|모름|알\s*수\s*없|말하(?:고\s*싶지|기\s*어려)|답(?:변)?하(?:기\s*어려|고\s*싶지)|알려주기\s*싫", evidence):
+            raise DecisionError("unknown_without_statement")
+        return
     if field in {"deposit", "monthly_rent", "end_date", "start_date", "notice_date"}:
-        if re.sub(r"[\s,]", "", value) not in re.sub(r"[\s,]", "", evidence):
+        unknown = value == "모름" and re.search(r"모르|모름|알\s*수\s*없|말하고\s*싶지|답하기\s*어려", evidence)
+        if not unknown and re.sub(r"[\s,]", "", value) not in re.sub(r"[\s,]", "", evidence):
             raise DecisionError("changed_literal_value")
     if field in {"role", "property_type"}:
         aliases = ROLE_ALIASES if field == "role" else PROPERTY_ALIASES

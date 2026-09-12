@@ -7,12 +7,12 @@ from langsmith import tracing_context
 from src.generation import chain
 from . import dialogue_planner
 from .dialogue_contract import Decision
+from .dialogue_clarification import short_answer_decision, prepare_clarification, answer_reason
 from .dialogue_state import apply_user_update, ensure_dialogue, record_answer
 
 
 SOCIAL_TEXT = "안녕하세요. 주택 임대차와 관련해 궁금한 점을 편하게 말씀해 주세요."
 CORRECTION_TEXT = "말씀하신 내용으로 수정했어요. 이어서 궁금한 점을 말씀해 주세요."
-CLARIFY_TEXT = "답변을 이어가려면 상황을 조금 더 알려주시겠어요?"
 
 
 def _original_input_refusal(question):
@@ -74,7 +74,9 @@ def respond_conversational(state, question, document_id=None, *, legacy):
             return message
 
         try:
-            planned = dialogue_planner.plan_turn(draft, question, document_id)
+            decision = short_answer_decision(draft, question)
+            if decision is None:
+                decision = dialogue_planner.plan_turn(draft, question, document_id).decision
         except dialogue_planner.PlanningError as error:
             # No partially proposed facts survive a rejected plan. The legacy
             # adapter owns message appending; do not append the exchange twice.
@@ -86,9 +88,9 @@ def respond_conversational(state, question, document_id=None, *, legacy):
             _commit(state, draft)
             return message
 
-        decision = planned.decision
         if not isinstance(decision, Decision):
             raise RuntimeError("Invalid conversation decision")
+        decision, pending = prepare_clarification(draft, question, decision)
         if decision.action == "refuse":
             answer = chain._refused_answer(chain._safe_question(question), "prompt_injection")
             message = services.answer_message(answer, started)
@@ -106,8 +108,10 @@ def respond_conversational(state, question, document_id=None, *, legacy):
                 text = CORRECTION_TEXT if decision.intent == "correction" else SOCIAL_TEXT
                 message = _static_message(services, text, "social", started)
             elif decision.action == "clarify":
-                message = _static_message(services, CLARIFY_TEXT, "clarify", started)
-                dialogue["pending"] = {"field": decision.clarify_field, "question": CLARIFY_TEXT, "attempts": 1}
+                message = _static_message(services, pending["question"], "clarify", started)
+                message.update(choices=pending["choices"], reason="needs_information")
+                dialogue["pending"] = pending
+                dialogue["clarification_counts"][pending["field"]] = pending["attempts"]
             elif decision.action == "rag":
                 query = decision.search_query
                 active_id = dialogue["active_document_id"]
@@ -123,6 +127,7 @@ def respond_conversational(state, question, document_id=None, *, legacy):
                     answer = services.graph.answer_question(query, service=services.retrieval_loader().result())
                 used_history = not decision.topic_changed and bool(previous["history"] or previous["facts"] or previous["active_document_id"])
                 message = services.answer_message(answer, started, used_history)
+                message["reason"] = answer_reason(answer)
                 dialogue["pending"] = None
                 if message["status"] == "refused":
                     draft = deepcopy(state)

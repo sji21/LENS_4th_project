@@ -1,0 +1,962 @@
+{
+  "schema_version": 1,
+  "complete": true,
+  "mode": "upgrade",
+  "split": "dev",
+  "started_at": "2026-09-12T16:40:29.270144+00:00",
+  "commit": "ed93fe9b134662346cf7434787a69bff7feab0cf",
+  "files": {
+    "chat/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "chat/dialogue_clarification.py": "250fb4ccd39fdd66701fb72f2761500a7c7baab34f5de4d2e78db2dc1d24bf0b",
+    "chat/dialogue_contract.py": "ebd16bcc4145e06ddbbd3e43254eac4a99358dbd147c25187e0cff9b2e04ceca",
+    "chat/dialogue_normalization.py": "4d7919ae5169c9405495a1bf00810f125938f5affa3854c0c0fb8fc767f2a250",
+    "chat/dialogue_planner.py": "0690bb3666bf92912cbc909a8f716851c5fa4ff9cdd82397552cf1d85ed5ac72",
+    "chat/dialogue_query.py": "f9ecde091bcce344cf8e3f82247a3bc0f885c5ed767cf1fa77a1d446cd3c2abd",
+    "chat/dialogue_router.py": "5d516eaf8476aced13ec3f9ef71f2aef2f65fa57b0f0f8b083d7502d43bc9bee",
+    "chat/dialogue_state.py": "2e89d3a8c696e8e80ce5f24de5a60faf51945d949a156fdab6acd5423204e228",
+    "chat/models.py": "413609bf0ebf1a9450d621122f3f4a82cbdac75161c18f5aeae4c4da0ec420b1",
+    "chat/services.py": "4ebe5d431a8d22fc4780d635a89fb6648b7d274a5ff80145d8128e8c29e4feb0",
+    "chat/uploads.py": "0ae80dc0708af8321171f412577c18b3e5a087216e866a7b4b22a1e21784c295",
+    "chat/urls.py": "19346b62a4ce16cb2e2154396c40008f3fade0221266e458050304ee18cab9c7",
+    "chat/views.py": "647bd139861c8ef6904951dc231f6af3e7b23fc16c430278b16fb129d46f1856",
+    "data/chunks/base_sample.jsonl": "0a569cd52b5360cb7dad72c9ac497866031b1d9a116af7fd738885f25abdd35b",
+    "data/chunks/cases.jsonl": "f6190b01d00b0a6f4630ef8c8a2ceebe19ca5a443a9874d06ca2655a5e5efce9",
+    "data/chunks/chunks.jsonl": "c61cba0ef9969cc271ab665b4e237bbd468025dec6199f7ecff2b040fec1958a",
+    "data/chunks/civil.jsonl": "635a4b2f4c3a4cb4f54d0c081bb91a84d5f1f8dc8d0b26a7987e30130df5a10a",
+    "data/chunks/guides.jsonl": "5b67bf5cf59ded40e0dc0289716cb6843ce473bed3d518b17b98fa9a2e54ba93",
+    "data/eval/chatting/acceptance.json": "26eb3122cd56cbcd11f5e3e70d01751b761103e4f6058bc461826456a670bfaa",
+    "data/eval/chatting/dev.json": "bcd030f67235bf5c6437dfce4e8af59c851d0af826c5991016c48d7179463c42",
+    "src/evaluation/chatting_plan_run.py": "40642dac4c6cd448c45adb209fe543aa7f64057dc39f9454be7abab541b63159",
+    "src/evaluation/chatting_provenance.py": "547278915c1ba10433cacda21a590d05f3fb92e88c170ad86a556addd980555b",
+    "src/evaluation/chatting_run.py": "1ef0eba49048f4c4166c8aab3bab4ad12673d5c898334a289a9fde7f701ec2f0",
+    "src/evaluation/chatting_scenarios.py": "2dd1f5cde62396d33999c461c007f45b16e0946e1f4ecca42539bcd4e8974f51",
+    "src/evaluation/chatting_scoring.py": "85f9d66fe26d7f9aa5e90dc9ddde8d19337229bcb03f1b703c4c64789f955cd0",
+    "src/generation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/generation/abstention.py": "7e4501dc9e7564d7df39d115a412e1f1746ddbe17065261e90884d8facd14476",
+    "src/generation/chain.py": "df0e26914ef32b7edbecffd8c37b08f4f6dd58f364f97a22a64f3a5c2e927bbd",
+    "src/generation/citation.py": "496a4592606a9f28a53a5c6615b5dc88dbd7c5a471b4ca431ae566bcc5726f19",
+    "src/generation/conversation.py": "a35889cb47085b64248c50e0975f889e37302474f6470b77b4b3f20cf077ebb0",
+    "src/generation/evidence_routing.py": "9e425bb90c5f943866ee635604573340b199de23371bf8e83c22c62697f72100",
+    "src/generation/graph.py": "8375f3dc84f1fc1759587fc40bbde382a8d2b0ea76ac38d8f5eee9db48300699",
+    "src/generation/llm.py": "b2c286e2513b688af109eb57964429057ce2d8d7e237d3bf09ab6a0a2dcb020b",
+    "src/generation/models.py": "f1e5d0a63c8d94d7e373495f28a4988719a1b10c50d13bfd86de715bb078420c",
+    "src/generation/paragraph.py": "e095954a08d5191abe797c1bb5df820f90b4bac4999db67c7718e72fe18c8f83",
+    "src/generation/prompt.py": "40ac22ec44e071c8dfdf14e0a438bc3fabc7442bef97ccfe7abdd469b6131960",
+    "src/generation/validation.py": "ae3416e2cadeeae80474e7a58079093e54420c73c8de9286b865480cff835f57",
+    "src/retrieval/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/retrieval/dense.py": "4182dc226f1e5d46d4b94fcd887d796ac09ea685d596f3a217c2537ebc5e96a3",
+    "src/retrieval/hybrid.py": "c82d7be47e95b3419a617a5aaeaf5f6d0a271fcd144a85b38fd53d00d0cb5812",
+    "src/retrieval/index.py": "227f3d11eb4bf8a7913b0d658af543331364f0cd997a9b825264914c02ed031a",
+    "src/retrieval/readiness.py": "86b55af4ce81135ff487001a6ba4b8985dff275805da47981927e29c2f4f8c86",
+    "src/retrieval/refs.py": "5c770deff1141f65509955c3d62c9da6f47c3591da84e7f7f567b669a7342639",
+    "src/retrieval/retriever.py": "6e01e43aeceaf93fc6795c1e3f920662daed035caa87587ae4e1b84d9dc57ebe",
+    "src/retrieval/service.py": "e5aeac45740cf806d9abc8292db5c9e6ace6fa5f4f2cc8e106950e8d5c297b59",
+    "src/retrieval/terms.py": "34354c085495148a535c15c409f2a5761808e2fbc106b25141874117f5836a6e"
+  },
+  "model": "qwen3:8b-q4_K_M",
+  "model_identity": {
+    "available": true,
+    "model": "qwen3:8b-q4_K_M",
+    "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "size_bytes": 5225388164,
+    "family": "qwen3",
+    "quantization": "Q4_K_M",
+    "ollama_version": "0.33.0"
+  },
+  "settings": {
+    "temperature": 0.0,
+    "max_tokens": 256,
+    "context": 4096,
+    "timeout": 180.0,
+    "think_off": true
+  },
+  "versions": {
+    "Django": "5.2.17",
+    "langchain-core": "1.6.2",
+    "langgraph": "1.2.11",
+    "chromadb": "1.5.9",
+    "sentence-transformers": "6.0.1"
+  },
+  "limits": "Synthetic conversations; automated dialogue checks are not legal accuracy. Document text is injected after extraction; OCR is not measured.",
+  "rows": [
+    {
+      "case_id": "DEV-009",
+      "turn": 1,
+      "input": "그건 잘 모르겠어요.",
+      "before_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "deposit_returned": {
+            "value": "아니요",
+            "evidence": "아니요",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "상담 주제: 보증금반환. 보증금 반환: 아니요"
+          }
+        ],
+        "changes": [],
+        "pending": {
+          "field": "contract_ended",
+          "question": "계약은 이미 끝났나요?",
+          "attempts": 1
+        },
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": null,
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "deposit_returned": {
+            "value": "아니요",
+            "evidence": "아니요",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "모름",
+            "evidence": "잘 모르겠어요",
+            "source_turn": 2,
+            "source": "user_statement",
+            "certainty": "unknown"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "상담 주제: 보증금반환. 보증금 반환: 아니요"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "그건 잘 모르겠어요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "주택임대차보호법 제4조에 따르면, 임대차기간이 2년 미만으로 정해진 경우는 2년으로 간주되며, 임차인은 2년 미만의 기간이 유효하다고 주장할 수 있습니다. 또한, 임대차기간이 끝난 후에도 보증금이 반환받기 전까지는 임대차관계가 존속합니다. 따라서 보증금이 아직 반환되지 않았다면 계약은 종료되지 않은 것으로 보입니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "주택임대차보호법 제4조(임대차기간 등)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제4조",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제4조#0"
+            },
+            {
+              "label": "주택임대차보호법 제13조(「소액사건심판법」의 준용)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제13조",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제13조#0"
+            },
+            {
+              "label": "주택임대차보호법 제10조의2(초과 차임 등의 반환청구)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제10조의2",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제10조의2#0"
+            },
+            {
+              "label": "민법 제626조(임차인의 상환청구권)",
+              "url": "https://www.law.go.kr/법령/민법/제626조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제626조#0"
+            },
+            {
+              "label": "민법 제632조(임차건물의 소부분을 타인에게 사용케 하는 경우)",
+              "url": "https://www.law.go.kr/법령/민법/제632조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제632조#0"
+            },
+            {
+              "label": "민법 제357조(근저당)",
+              "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0357&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제357조#0"
+            }
+          ],
+          "turn": 2,
+          "validation": "existing_pipeline_passed"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "clarification_answer",
+        "facts": {
+          "deposit_returned": "아니요",
+          "contract_ended": "모름",
+          "topic": "보증금반환"
+        },
+        "query": "대화 주제: 보증금반환\n계약 종료 여부: 모름\n보증금 반환 여부: 아니요\n사용자 입력: 그건 잘 모르겠어요."
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "message": {
+        "id": "7c9a667b72a5415eb47401bbfa54cc64",
+        "role": "assistant",
+        "status": "answered",
+        "content": "주택임대차보호법 제4조에 따르면, 임대차기간이 2년 미만으로 정해진 경우는 2년으로 간주되며, 임차인은 2년 미만의 기간이 유효하다고 주장할 수 있습니다. 또한, 임대차기간이 끝난 후에도 보증금이 반환받기 전까지는 임대차관계가 존속합니다. 따라서 보증금이 아직 반환되지 않았다면 계약은 종료되지 않은 것으로 보입니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [
+          {
+            "label": "주택임대차보호법 제4조(임대차기간 등)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제4조",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제4조#0"
+          },
+          {
+            "label": "주택임대차보호법 제13조(「소액사건심판법」의 준용)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제13조",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제13조#0"
+          },
+          {
+            "label": "주택임대차보호법 제10조의2(초과 차임 등의 반환청구)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제10조의2",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제10조의2#0"
+          },
+          {
+            "label": "민법 제626조(임차인의 상환청구권)",
+            "url": "https://www.law.go.kr/법령/민법/제626조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제626조#0"
+          },
+          {
+            "label": "민법 제632조(임차건물의 소부분을 타인에게 사용케 하는 경우)",
+            "url": "https://www.law.go.kr/법령/민법/제632조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제632조#0"
+          },
+          {
+            "label": "민법 제357조(근저당)",
+            "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0357&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제357조#0"
+          }
+        ],
+        "used_history": true,
+        "elapsed_seconds": 32.4,
+        "reason": "answered",
+        "action": "rag",
+        "intent": "clarification_answer"
+      },
+      "elapsed_seconds": 32.37,
+      "model_calls": 3,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "execution_error": null,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "clarify",
+            "rag"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": true,
+          "expected": "clarification_answer",
+          "actual": "clarification_answer"
+        },
+        "facts": {
+          "passed": true,
+          "expected": {
+            "deposit_returned": "아니요"
+          },
+          "actual": {
+            "deposit_returned": "아니요",
+            "contract_ended": "모름",
+            "topic": "보증금반환"
+          }
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_ended": "예"
+          },
+          "actual": {
+            "deposit_returned": "아니요",
+            "contract_ended": "모름",
+            "topic": "보증금반환"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "보증금"
+          ],
+          "actual": "대화 주제: 보증금반환\n계약 종료 여부: 모름\n보증금 반환 여부: 아니요\n사용자 입력: 그건 잘 모르겠어요."
+        },
+        "query_excludes": {
+          "passed": true,
+          "expected": [
+            "계약이 종료된"
+          ],
+          "actual": "대화 주제: 보증금반환\n계약 종료 여부: 모름\n보증금 반환 여부: 아니요\n사용자 입력: 그건 잘 모르겠어요."
+        }
+      }
+    },
+    {
+      "case_id": "DEV-009",
+      "turn": 2,
+      "input": "종료 여부를 모르는 상태에서 먼저 확인할 내용을 알려주세요.",
+      "before_state": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "deposit_returned": {
+            "value": "아니요",
+            "evidence": "아니요",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "모름",
+            "evidence": "잘 모르겠어요",
+            "source_turn": 2,
+            "source": "user_statement",
+            "certainty": "unknown"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "상담 주제: 보증금반환. 보증금 반환: 아니요"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "그건 잘 모르겠어요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "주택임대차보호법 제4조에 따르면, 임대차기간이 2년 미만으로 정해진 경우는 2년으로 간주되며, 임차인은 2년 미만의 기간이 유효하다고 주장할 수 있습니다. 또한, 임대차기간이 끝난 후에도 보증금이 반환받기 전까지는 임대차관계가 존속합니다. 따라서 보증금이 아직 반환되지 않았다면 계약은 종료되지 않은 것으로 보입니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "주택임대차보호법 제4조(임대차기간 등)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제4조",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제4조#0"
+            },
+            {
+              "label": "주택임대차보호법 제13조(「소액사건심판법」의 준용)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제13조",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제13조#0"
+            },
+            {
+              "label": "주택임대차보호법 제10조의2(초과 차임 등의 반환청구)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제10조의2",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제10조의2#0"
+            },
+            {
+              "label": "민법 제626조(임차인의 상환청구권)",
+              "url": "https://www.law.go.kr/법령/민법/제626조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제626조#0"
+            },
+            {
+              "label": "민법 제632조(임차건물의 소부분을 타인에게 사용케 하는 경우)",
+              "url": "https://www.law.go.kr/법령/민법/제632조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제632조#0"
+            },
+            {
+              "label": "민법 제357조(근저당)",
+              "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0357&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제357조#0"
+            }
+          ],
+          "turn": 2,
+          "validation": "existing_pipeline_passed"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 3,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "deposit_returned": {
+            "value": "아니요",
+            "evidence": "아니요",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "모름",
+            "evidence": "종료 여부를 모르는 상태에서",
+            "source_turn": 3,
+            "source": "user_statement",
+            "certainty": "unknown"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "상담 주제: 보증금반환. 보증금 반환: 아니요"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "그건 잘 모르겠어요."
+          },
+          {
+            "role": "user",
+            "turn": 3,
+            "content": "종료 여부를 모르는 상태에서 먼저 확인할 내용을 알려주세요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "주택임대차보호법 제3조의2에 따르면, 임차인이 보증금반환청구소송의 확정판결이나 이에 준하는 집행권원에 따라 경매를 신청하는 경우, 집행개시요건에 관한 「민사집행법」 제41조에도 불구하고 반대의무의 이행이나 이행의 제공을 집행개시의 요건으로 하지 아니합니다. 따라서, 보증금 반환 여부가 아니고 계약 종료 여부를 확인해야 하는 경우, 임대차계약의 종료 여부를 확인하는 것이 우선입니다. 임대차계약이 종료된 경우에만 보증금 반환 절차가 시작될 수 있습니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조",
+              "doc_type": "decree",
+              "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0"
+            },
+            {
+              "label": "주택임대차보호법 제3조의2(보증금의 회수)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제3조의2",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제3조의2#0"
+            },
+            {
+              "label": "주택임대차보호법 제10조의2(초과 차임 등의 반환청구)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제10조의2",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제10조의2#0"
+            },
+            {
+              "label": "민법 제634조(임차인의 통지의무)",
+              "url": "https://www.law.go.kr/법령/민법/제634조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제634조#0"
+            },
+            {
+              "label": "민법 제626조(임차인의 상환청구권)",
+              "url": "https://www.law.go.kr/법령/민법/제626조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제626조#0"
+            },
+            {
+              "label": "민법 제623조(임대인의 의무)",
+              "url": "https://www.law.go.kr/법령/민법/제623조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제623조#0"
+            }
+          ],
+          "turn": 3,
+          "validation": "existing_pipeline_passed"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "followup",
+        "facts": {
+          "deposit_returned": "아니요",
+          "contract_ended": "모름",
+          "topic": "보증금반환"
+        },
+        "query": "대화 주제: 보증금반환\n계약 종료 여부: 모름\n보증금 반환 여부: 아니요\n사용자 입력: 종료 여부를 모르는 상태에서 먼저 확인할 내용을 알려주세요."
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "message": {
+        "id": "df19b73b57684c8299f1f1f1f140ff2e",
+        "role": "assistant",
+        "status": "answered",
+        "content": "주택임대차보호법 제3조의2에 따르면, 임차인이 보증금반환청구소송의 확정판결이나 이에 준하는 집행권원에 따라 경매를 신청하는 경우, 집행개시요건에 관한 「민사집행법」 제41조에도 불구하고 반대의무의 이행이나 이행의 제공을 집행개시의 요건으로 하지 아니합니다. 따라서, 보증금 반환 여부가 아니고 계약 종료 여부를 확인해야 하는 경우, 임대차계약의 종료 여부를 확인하는 것이 우선입니다. 임대차계약이 종료된 경우에만 보증금 반환 절차가 시작될 수 있습니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [
+          {
+            "label": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조",
+            "doc_type": "decree",
+            "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0"
+          },
+          {
+            "label": "주택임대차보호법 제3조의2(보증금의 회수)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제3조의2",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제3조의2#0"
+          },
+          {
+            "label": "주택임대차보호법 제10조의2(초과 차임 등의 반환청구)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제10조의2",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제10조의2#0"
+          },
+          {
+            "label": "민법 제634조(임차인의 통지의무)",
+            "url": "https://www.law.go.kr/법령/민법/제634조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제634조#0"
+          },
+          {
+            "label": "민법 제626조(임차인의 상환청구권)",
+            "url": "https://www.law.go.kr/법령/민법/제626조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제626조#0"
+          },
+          {
+            "label": "민법 제623조(임대인의 의무)",
+            "url": "https://www.law.go.kr/법령/민법/제623조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제623조#0"
+          }
+        ],
+        "used_history": true,
+        "elapsed_seconds": 35.2,
+        "reason": "answered",
+        "action": "rag",
+        "intent": "followup"
+      },
+      "elapsed_seconds": 35.205,
+      "model_calls": 3,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "execution_error": null,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": true,
+          "expected": "followup",
+          "actual": "followup"
+        },
+        "facts": {
+          "passed": true,
+          "expected": {
+            "deposit_returned": "아니요"
+          },
+          "actual": {
+            "deposit_returned": "아니요",
+            "contract_ended": "모름",
+            "topic": "보증금반환"
+          }
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_ended": "예"
+          },
+          "actual": {
+            "deposit_returned": "아니요",
+            "contract_ended": "모름",
+            "topic": "보증금반환"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "계약"
+          ],
+          "actual": "대화 주제: 보증금반환\n계약 종료 여부: 모름\n보증금 반환 여부: 아니요\n사용자 입력: 종료 여부를 모르는 상태에서 먼저 확인할 내용을 알려주세요."
+        },
+        "query_excludes": {
+          "passed": true,
+          "expected": [
+            "계약이 종료된"
+          ],
+          "actual": "대화 주제: 보증금반환\n계약 종료 여부: 모름\n보증금 반환 여부: 아니요\n사용자 입력: 종료 여부를 모르는 상태에서 먼저 확인할 내용을 알려주세요."
+        }
+      }
+    }
+  ],
+  "retrieval_initialization_seconds": 6.269,
+  "retrieval": {
+    "ready": true,
+    "issues": [],
+    "mode": "hybrid",
+    "chunks": {
+      "count": 175,
+      "sha256": "7edeefbdde2b686d781cbd8f3f3d418c3772874bf6b0aa9372807707ec4f83fb",
+      "source_matched_count": 175
+    },
+    "source_attribution": "Exact content matches; the loader does not retain original source filenames.",
+    "sources": {
+      "data/chunks/chunks.jsonl": {
+        "exists": true,
+        "sha256": "c61cba0ef9969cc271ab665b4e237bbd468025dec6199f7ecff2b040fec1958a",
+        "size_bytes": 209779,
+        "chunk_count": 143,
+        "matching_loaded_chunk_count": 143
+      },
+      "data/chunks/cases.jsonl": {
+        "exists": true,
+        "sha256": "f6190b01d00b0a6f4630ef8c8a2ceebe19ca5a443a9874d06ca2655a5e5efce9",
+        "size_bytes": 24116,
+        "chunk_count": 26,
+        "matching_loaded_chunk_count": 26
+      },
+      "data/chunks/guides.jsonl": {
+        "exists": true,
+        "sha256": "5b67bf5cf59ded40e0dc0289716cb6843ce473bed3d518b17b98fa9a2e54ba93",
+        "size_bytes": 13237,
+        "chunk_count": 6,
+        "matching_loaded_chunk_count": 6
+      },
+      "data/sample/chunks_expanded.jsonl": {
+        "exists": true,
+        "sha256": "8e614bbbc32ac69968f9441c323a7f93acc6973cdb39b2f2d1e4dd1165f97752",
+        "size_bytes": 200476,
+        "chunk_count": 135,
+        "matching_loaded_chunk_count": 0
+      }
+    },
+    "indexes": {
+      "base": {
+        "available": true,
+        "embedding": {
+          "model": "nlpai-lab/KURE-v1",
+          "revision": "4ed4540949c70b7da2c74004a915e1f2d5e46e4f",
+          "dimensions": 1024
+        },
+        "collection": "knowledge_chunks",
+        "collection_metadata_sha256": "8d78e973bf9d51eba40ca66ce280877a3dffc78c660b22eec29728e3ed9cb49c",
+        "count": 165,
+        "path": "data/index/chroma_kurev1_1024",
+        "files": {
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/data_level0.bin": {
+            "sha256": "babb66952c1694e3092e62d4ebeaab9f9575c78baa37e2860ff52d94f2147f89",
+            "size_bytes": 423600
+          },
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/header.bin": {
+            "sha256": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+            "size_bytes": 100
+          },
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/length.bin": {
+            "sha256": "7a12e561363385e9dfeeab326368731c030ed4b374e7f5897ac819159d2884c5",
+            "size_bytes": 400
+          },
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/link_lists.bin": {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size_bytes": 0
+          },
+          "chroma.sqlite3": {
+            "sha256": "0c51b119b680e5f3ae18e3443fddc4b00645467127db80a74d9bd2c0d7a9f2c6",
+            "size_bytes": 2351104
+          }
+        },
+        "content": {
+          "available": true,
+          "entry_count": 165,
+          "unique_id_count": 165,
+          "sha256": "4d5adecc127f56f10050377d465ffad5f80cae8b7ab41e4072032828205aa6f1",
+          "vectors_sha256": "0c0b23cf7c12fad55673bea7b4dc15c836d9f6c1b59ca3e5ba247b11e4e65db8",
+          "vector_dimensions": [
+            1024
+          ],
+          "text_mismatch_count": 0,
+          "metadata_mismatch_count": 0,
+          "unknown_chunk_count": 0
+        }
+      },
+      "civil": {
+        "available": true,
+        "embedding": {
+          "model": "nlpai-lab/KURE-v1",
+          "revision": "4ed4540949c70b7da2c74004a915e1f2d5e46e4f",
+          "dimensions": 1024
+        },
+        "collection": "knowledge_chunks",
+        "collection_metadata_sha256": "8d78e973bf9d51eba40ca66ce280877a3dffc78c660b22eec29728e3ed9cb49c",
+        "count": 10,
+        "path": "data/index/chroma_civil_kurev1_1024",
+        "files": {
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/data_level0.bin": {
+            "sha256": "ea65f37f3f07bfcbc1225e638d42de4b0105d70d3c4abd1ebef52efdefab5465",
+            "size_bytes": 423600
+          },
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/header.bin": {
+            "sha256": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+            "size_bytes": 100
+          },
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/length.bin": {
+            "sha256": "7a12e561363385e9dfeeab326368731c030ed4b374e7f5897ac819159d2884c5",
+            "size_bytes": 400
+          },
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/link_lists.bin": {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size_bytes": 0
+          },
+          "chroma.sqlite3": {
+            "sha256": "8f1260d7993b37b24221cf11fb03d1f412c2b1b595037505c9aed5f5c1a9bfff",
+            "size_bytes": 274432
+          }
+        },
+        "content": {
+          "available": true,
+          "entry_count": 10,
+          "unique_id_count": 10,
+          "sha256": "fefd8c928d817cb01d5bf83b786443a3f09ecba7249629256cdaaa4624e1bcbb",
+          "vectors_sha256": "dd1e0966d7de4a7cf853757228133981ff43d60cac612a36562926c83a982252",
+          "vector_dimensions": [
+            1024
+          ],
+          "text_mismatch_count": 0,
+          "metadata_mismatch_count": 0,
+          "unknown_chunk_count": 0
+        }
+      }
+    },
+    "coverage": {
+      "indexed_unique_chunk_count": 175,
+      "cross_index_duplicate_count": 0,
+      "loaded_chunk_ids_missing_from_indexes": 0,
+      "index_chunk_ids_absent_from_memory": 0,
+      "required_civil_article_count": 10,
+      "missing_loaded_civil_articles": [],
+      "missing_indexed_civil_articles": []
+    }
+  },
+  "source_unchanged": true,
+  "retrieval_after": {
+    "ready": true,
+    "issues": [],
+    "mode": "hybrid",
+    "chunks": {
+      "count": 175,
+      "sha256": "7edeefbdde2b686d781cbd8f3f3d418c3772874bf6b0aa9372807707ec4f83fb",
+      "source_matched_count": 175
+    },
+    "source_attribution": "Exact content matches; the loader does not retain original source filenames.",
+    "sources": {
+      "data/chunks/chunks.jsonl": {
+        "exists": true,
+        "sha256": "c61cba0ef9969cc271ab665b4e237bbd468025dec6199f7ecff2b040fec1958a",
+        "size_bytes": 209779,
+        "chunk_count": 143,
+        "matching_loaded_chunk_count": 143
+      },
+      "data/chunks/cases.jsonl": {
+        "exists": true,
+        "sha256": "f6190b01d00b0a6f4630ef8c8a2ceebe19ca5a443a9874d06ca2655a5e5efce9",
+        "size_bytes": 24116,
+        "chunk_count": 26,
+        "matching_loaded_chunk_count": 26
+      },
+      "data/chunks/guides.jsonl": {
+        "exists": true,
+        "sha256": "5b67bf5cf59ded40e0dc0289716cb6843ce473bed3d518b17b98fa9a2e54ba93",
+        "size_bytes": 13237,
+        "chunk_count": 6,
+        "matching_loaded_chunk_count": 6
+      },
+      "data/sample/chunks_expanded.jsonl": {
+        "exists": true,
+        "sha256": "8e614bbbc32ac69968f9441c323a7f93acc6973cdb39b2f2d1e4dd1165f97752",
+        "size_bytes": 200476,
+        "chunk_count": 135,
+        "matching_loaded_chunk_count": 0
+      }
+    },
+    "indexes": {
+      "base": {
+        "available": true,
+        "embedding": {
+          "model": "nlpai-lab/KURE-v1",
+          "revision": "4ed4540949c70b7da2c74004a915e1f2d5e46e4f",
+          "dimensions": 1024
+        },
+        "collection": "knowledge_chunks",
+        "collection_metadata_sha256": "8d78e973bf9d51eba40ca66ce280877a3dffc78c660b22eec29728e3ed9cb49c",
+        "count": 165,
+        "path": "data/index/chroma_kurev1_1024",
+        "files": {
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/data_level0.bin": {
+            "sha256": "babb66952c1694e3092e62d4ebeaab9f9575c78baa37e2860ff52d94f2147f89",
+            "size_bytes": 423600
+          },
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/header.bin": {
+            "sha256": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+            "size_bytes": 100
+          },
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/length.bin": {
+            "sha256": "7a12e561363385e9dfeeab326368731c030ed4b374e7f5897ac819159d2884c5",
+            "size_bytes": 400
+          },
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/link_lists.bin": {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size_bytes": 0
+          },
+          "chroma.sqlite3": {
+            "sha256": "0c51b119b680e5f3ae18e3443fddc4b00645467127db80a74d9bd2c0d7a9f2c6",
+            "size_bytes": 2351104
+          }
+        },
+        "content": {
+          "available": true,
+          "entry_count": 165,
+          "unique_id_count": 165,
+          "sha256": "4d5adecc127f56f10050377d465ffad5f80cae8b7ab41e4072032828205aa6f1",
+          "vectors_sha256": "0c0b23cf7c12fad55673bea7b4dc15c836d9f6c1b59ca3e5ba247b11e4e65db8",
+          "vector_dimensions": [
+            1024
+          ],
+          "text_mismatch_count": 0,
+          "metadata_mismatch_count": 0,
+          "unknown_chunk_count": 0
+        }
+      },
+      "civil": {
+        "available": true,
+        "embedding": {
+          "model": "nlpai-lab/KURE-v1",
+          "revision": "4ed4540949c70b7da2c74004a915e1f2d5e46e4f",
+          "dimensions": 1024
+        },
+        "collection": "knowledge_chunks",
+        "collection_metadata_sha256": "8d78e973bf9d51eba40ca66ce280877a3dffc78c660b22eec29728e3ed9cb49c",
+        "count": 10,
+        "path": "data/index/chroma_civil_kurev1_1024",
+        "files": {
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/data_level0.bin": {
+            "sha256": "ea65f37f3f07bfcbc1225e638d42de4b0105d70d3c4abd1ebef52efdefab5465",
+            "size_bytes": 423600
+          },
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/header.bin": {
+            "sha256": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+            "size_bytes": 100
+          },
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/length.bin": {
+            "sha256": "7a12e561363385e9dfeeab326368731c030ed4b374e7f5897ac819159d2884c5",
+            "size_bytes": 400
+          },
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/link_lists.bin": {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size_bytes": 0
+          },
+          "chroma.sqlite3": {
+            "sha256": "8f1260d7993b37b24221cf11fb03d1f412c2b1b595037505c9aed5f5c1a9bfff",
+            "size_bytes": 274432
+          }
+        },
+        "content": {
+          "available": true,
+          "entry_count": 10,
+          "unique_id_count": 10,
+          "sha256": "fefd8c928d817cb01d5bf83b786443a3f09ecba7249629256cdaaa4624e1bcbb",
+          "vectors_sha256": "dd1e0966d7de4a7cf853757228133981ff43d60cac612a36562926c83a982252",
+          "vector_dimensions": [
+            1024
+          ],
+          "text_mismatch_count": 0,
+          "metadata_mismatch_count": 0,
+          "unknown_chunk_count": 0
+        }
+      }
+    },
+    "coverage": {
+      "indexed_unique_chunk_count": 175,
+      "cross_index_duplicate_count": 0,
+      "loaded_chunk_ids_missing_from_indexes": 0,
+      "index_chunk_ids_absent_from_memory": 0,
+      "required_civil_article_count": 10,
+      "missing_loaded_civil_articles": [],
+      "missing_indexed_civil_articles": []
+    }
+  },
+  "retrieval_unchanged": true,
+  "retrieval_artifacts_unchanged": true,
+  "model_identity_after": {
+    "available": true,
+    "model": "qwen3:8b-q4_K_M",
+    "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "size_bytes": 5225388164,
+    "family": "qwen3",
+    "quantization": "Q4_K_M",
+    "ollama_version": "0.33.0"
+  },
+  "model_unchanged": true,
+  "summary": {
+    "scope": "Conversation behavior checks only; not legal correctness or safety validation.",
+    "turn_count": 2,
+    "checks": {
+      "action": {
+        "passed": 2,
+        "failed": 0,
+        "not_observable": 0
+      },
+      "intent": {
+        "passed": 2,
+        "failed": 0,
+        "not_observable": 0
+      },
+      "facts": {
+        "passed": 2,
+        "failed": 0,
+        "not_observable": 0
+      },
+      "forbidden_facts": {
+        "passed": 2,
+        "failed": 0,
+        "not_observable": 0
+      },
+      "query_contains": {
+        "passed": 2,
+        "failed": 0,
+        "not_observable": 0
+      },
+      "query_excludes": {
+        "passed": 2,
+        "failed": 0,
+        "not_observable": 0
+      }
+    },
+    "latency_seconds": {
+      "sample_count": 2,
+      "p50": 33.787499999999994,
+      "p95": 35.06325,
+      "max": 35.205
+    },
+    "total_model_calls": 6,
+    "model_call_observation_count": 2,
+    "execution_error_count": 0
+  }
+}
