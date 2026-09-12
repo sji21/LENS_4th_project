@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
+- PATCH-027 Adds separate development and acceptance conversation scenarios with per-turn action, fact and query expectations; infrastructure checks remain distinct from legal-answer accuracy. (commit: pending)
+
 - PATCH-026 defines the conversational chatbot roadmap on `chatting-upgrade`: twelve sequential patches with planned child branches, acceptance criteria, test scenarios, a baseline and per-feature review before integration. Product behavior is unchanged. See `LIST.md`. (commit: `6c091a8`)
 
 ### Fixed (Bug Fixes)
