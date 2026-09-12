@@ -23,6 +23,21 @@ CIVIL_POLICIES=('current','plain_rrf','dense2_rrf','seed_plain','seed_dense2')
 DEPENDENCIES=('data/eval/patch026-full/manifest.json','data/eval/patch026-full/capture/after.json',
               'data/eval/patch026-full/capture/before.json','data/eval/patch026-full/capture/audit.json',
               'data/eval/patch024-expansion/report.json','data/eval/patch015-baseline/capture/results.json')
+BUNDLE=ROOT/'data/eval/patch027-full-ranking'
+
+
+def adoption_check(result):
+    groups=result['groups']; required=groups['required_law']
+    civil=required['channel_metrics']['civil']['all_target_items']
+    checks={
+        'prior_returned_targets_preserved':not result['losses'],
+        'prior_general_top3_preserved':result['top3_general_loss_inputs']==0,
+        'question_complete_not_lower':groups['question_only']['union_all_required']['hits']>=32,
+        'context_complete_not_lower':groups['context_diagnostic']['union_all_required']['hits']>=34,
+        'civil35_complete_preserved':required['union_all_required']['n']==29 and required['union_all_required']['hits']>=28,
+        'civil35_hit3_preserved':civil['n']==29 and civil['hit@3']==1,
+    }
+    return {'checks':checks,'passed':all(checks.values())}
 
 
 def fuse(bm25,dense,dense_weight=1):
@@ -143,7 +158,13 @@ def report(run):
     if [r['query_sha256'] for r in rows]!=[q['query_sha256'] for q in queries]:raise ValueError('Input text changed')
     prior=read(ROOT/'data/eval/patch026-full/capture/before.json')
     current=read(ROOT/'data/eval/patch026-full/capture/after.json')
-    available=read(ROOT/'data/eval/patch026-full/capture/audit.json')['available_after']
+    previous_audit=read(ROOT/'data/eval/patch026-full/capture/audit.json')
+    if (audit['patch']!='PATCH-027' or audit['clean'] is not True or
+        audit['candidate_unchanged'] is not True or audit['cases_guides_preserved'] is not True or
+        audit['full_and_core_matches']!=235 or audit['settings']!=previous_audit['candidate_settings'] or
+        audit['index_hashes']!=previous_audit['candidate_index_hashes']):raise ValueError('Capture contract changed')
+    if any(a[ch]!=b[ch] for a,b in zip(prior,current) for ch in ('cases','guides')):raise ValueError('Other channel changed')
+    available=previous_audit['available_after']
     anchors=audit['anchors'];core=set(audit['core_ids']);extra=set(audit['extra_ids']);civil=set(audit['civil_ids'])
     if (len(core),len(extra),len(civil))!=(133,45,26) or core&extra or core&civil or extra&civil or core|extra|civil!=set(anchors):raise ValueError('Invalid inventory')
     if len(set(anchors.values()))!=204 or set(anchors.values())!=set(available):raise ValueError('Anchor coverage mismatch')
@@ -159,11 +180,24 @@ def report(run):
         actual=[{**current[i],'laws':[anchors[c] for c in general_select(row,general)],
                  'civil_laws':[anchors[c] for c in civil_select(row,civil_policy)]} for i,row in enumerate(rows)]
         result=score(actual,available,prior);changes=rank_changes(prior,actual,result['details'])
-        return {'groups':result['groups'],'losses':result['losses'],'rank_changes':changes,
+        summary={'groups':result['groups'],'losses':result['losses'],'rank_changes':changes,
                 'top3_general_loss_inputs':sum(bool(r['lost']) for r in changes['laws']['3']),
                 'new_loss_vs_full':score(actual,available,current)['losses']}
+        summary['adoption']=adoption_check(summary)
+        return summary
     return {'general':{p:assess(p,'current') for p in GENERAL},
             'civil':{p:assess('full_current',p) for p in CIVIL_POLICIES}}
+
+
+def check_bundle(bundle=BUNDLE):
+    from scripts.patch025_ranking import close
+    manifest=read(bundle/'manifest.json')
+    if set(manifest)!={'audit.json','traces.json','comparison.json'}:raise ValueError('Incomplete ranking bundle')
+    for rel,digest in manifest.items():
+        if sha(bundle/rel)!=digest:raise ValueError('Ranking bundle changed')
+    result=report(bundle)
+    if not close(result,read(bundle/'comparison.json')):raise ValueError('Comparison does not replay')
+    return result
 
 
 if __name__=='__main__':
@@ -177,3 +211,5 @@ if __name__=='__main__':
         for channel,policies in result.items():
             for name,r in policies.items():print(channel,name,'loss',len(r['losses']),'top3lawloss',r['top3_general_loss_inputs'],
                 {m:r['groups'][m]['union_all_required']['hits'] for m in ('question_only','context_diagnostic')})
+    if not args.capture and not args.report:
+        check_bundle();print('Frozen PATCH-027 ranking bundle: PASS')

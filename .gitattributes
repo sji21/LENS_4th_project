@@ -3,3 +3,6 @@
 /data/eval/patch026-full/sources/*.html -diff
 # Captured machine outputs remain readable files; review the replay code and analysis.
 /data/eval/patch026-full/capture/*.json -diff
+/data/eval/patch027-full-ranking/** -text
+/data/eval/patch027-full-ranking/traces.json -diff
+/data/eval/patch027-full-ranking/comparison.json -diff
