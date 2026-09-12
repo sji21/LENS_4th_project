@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-027 implements a candidate that isolates procedure BM25 statistics and pools lexical scores before existing dense/RRF fusion. Seven policies and two controls were compared; all 235 product outputs match the selected candidate. DEV full-target counts rise 28→29/30→31 with zero prior TOP5 evidence losses, but DEV-044 loses a required TOP3 anchor. Operating data adoption remains deferred. Existing databases and other channels are preserved; replayable traces and the TOP3 limitation are shared. (commit: pending)
+- PATCH-027 implements a candidate that isolates procedure BM25 statistics and pools lexical scores before existing dense/RRF fusion. Seven policies and two controls were compared; all 235 product outputs match the selected candidate. DEV full-target counts rise 28→29/30→31 with zero prior TOP5 evidence losses, but DEV-044 loses a required TOP3 anchor. Operating data adoption remains deferred. Existing databases and other channels are preserved; replayable traces and the TOP3 limitation are shared. (commit: 0a57247, 6085564, 34ea1f0, 473dccc)
 
 ### Added
 

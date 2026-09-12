@@ -98,6 +98,7 @@ TOP5 손실은 0개다. 평균 Hit@3 상승과 개별 문항 TOP3 회귀는 동�
 [235입력 추적](../data/eval/patch027-partition/traces.json),
 [실제 검색 결과](../data/eval/patch027-partition/live.json).
 원문·정답·기준선 출처는 PATCH-026 자료와 해시로 연결된다. DB·인덱스 바이너리는 공유하지 않는다.
+긴 원시 추적과 실제 검색 JSON은 Git diff 표시를 생략하며 파일 자체와 해시·재집계 검증은 유지한다.
 
 ```powershell
 # 해당 프로젝트 가상환경을 준비한 새 클론: DB/모델 없이 저장 결과 재검증

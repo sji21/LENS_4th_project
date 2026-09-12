@@ -1,1 +1,3 @@
 *.json -text
+traces.json -diff
+live.json -diff
