@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
-- PATCH-026 shares five version-checked residence/tax procedure articles, candidate ingestion, and three235-input comparisons. Full/tax/residence bundles lose prior required evidence on6/4/1 inputs, so all remain unadopted. Full-bundle DEV complete targets rise28→34/30→35 and data gaps fall32→23 in the candidate only. Production data and ranking settings are unchanged. (commit: 8ed2733, b40834f)
+- PATCH-026 shares five version-checked residence/tax procedure articles, candidate ingestion, and three235-input comparisons. Full/tax/residence bundles lose prior required evidence on6/4/1 inputs, so all remain unadopted. Full-bundle DEV complete targets rise28→34/30→35 and data gaps fall32→23 in the candidate only. Production data and ranking settings are unchanged. (commit: 8ed2733, b40834f, 54013ac)
 
 ### Fixed (Bug Fixes)
 
