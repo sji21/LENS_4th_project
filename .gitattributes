@@ -6,3 +6,6 @@
 /data/eval/patch027-full-ranking/** -text
 /data/eval/patch027-full-ranking/traces.json -diff
 /data/eval/patch027-full-ranking/comparison.json -diff
+/data/eval/patch027-concept-tuning/** -text
+/data/eval/patch027-concept-tuning/traces.json -diff
+/data/eval/patch027-concept-tuning/comparison.json -diff

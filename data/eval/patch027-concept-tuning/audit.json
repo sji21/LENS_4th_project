@@ -1,0 +1,193 @@
+{
+  "patch": "PATCH-027",
+  "commit": "082d3d741f19818a001c9a5336b627b945c5435d",
+  "clean": true,
+  "baseline_matches": 235,
+  "candidate_unchanged": true,
+  "cases_guides_preserved": true,
+  "index_hashes": [
+    "a498ed7643be5195119e1ff60c14d2465ce9c80a3cb68da74edf88ace5a53c09",
+    "5352318c89adc4beded9c9d3acbf7f12ccc80c622b267f670d2a7f672ac61fe3"
+  ],
+  "settings": {
+    "search_k": {
+      "k_law": 5,
+      "k_case": 5,
+      "k_guide": 2,
+      "k_civil": 3
+    },
+    "corpora": {
+      "law": {
+        "name": "법령",
+        "doc_types": [
+          "law",
+          "decree",
+          "rule"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 5,
+        "query_expander": "src.retrieval.terms.expand_law",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [],
+        "retriever": {
+          "rrf_k": 5,
+          "depth": 20,
+          "bm25": {
+            "kind": "partitioned_raw_score_pool",
+            "score_weight": 1.0,
+            "procedure_titles": [
+              "주민등록법",
+              "국세징수법",
+              "국세징수법 시행령",
+              "지방세징수법",
+              "지방세징수법 시행령"
+            ],
+            "partitions": {
+              "core": {
+                "k1": 1.5,
+                "b": 0.75,
+                "char_ngram": 2
+              },
+              "procedure": {
+                "k1": 1.5,
+                "b": 0.75,
+                "char_ngram": 2
+              }
+            }
+          }
+        }
+      },
+      "case": {
+        "name": "판례",
+        "doc_types": [
+          "case"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 60,
+        "query_expander": "src.retrieval.terms.expand",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [],
+        "retriever": {
+          "rrf_k": 60,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      },
+      "guide": {
+        "name": "안내",
+        "doc_types": [
+          "guide"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 60,
+        "query_expander": "src.retrieval.terms.expand",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [],
+        "retriever": {
+          "rrf_k": 60,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      },
+      "civil": {
+        "name": "민법",
+        "doc_types": [
+          "law",
+          "decree",
+          "rule"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 5,
+        "query_expander": "src.retrieval.terms.expand_civil",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [
+          "민법-제105조",
+          "민법-제111조",
+          "민법-제113조",
+          "민법-제114조",
+          "민법-제118조",
+          "민법-제147조",
+          "민법-제186조",
+          "민법-제187조",
+          "민법-제265조",
+          "민법-제357조",
+          "민법-제390조",
+          "민법-제393조",
+          "민법-제470조",
+          "민법-제536조",
+          "민법-제543조",
+          "민법-제548조",
+          "민법-제615조",
+          "민법-제623조",
+          "민법-제626조",
+          "민법-제627조",
+          "민법-제629조",
+          "민법-제632조",
+          "민법-제634조",
+          "민법-제636조",
+          "민법-제640조",
+          "민법-제654조"
+        ],
+        "retriever": {
+          "rrf_k": 5,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      }
+    },
+    "civil_selection": {
+      "preserve_top": 2,
+      "tail_dense_multiplier": 2.0,
+      "applies_at_limit": 3
+    }
+  },
+  "general_policies": [
+    "current",
+    "lexical",
+    "both",
+    "blend",
+    "core3_blend"
+  ],
+  "civil_policies": [
+    "current",
+    "lexical",
+    "both",
+    "plain_both",
+    "seed1_both"
+  ],
+  "joint_policy": [
+    "core3_blend",
+    "seed1_both"
+  ],
+  "traces_sha256": "242ebd69b39103e566f0a9bc72a7b73987de09bdef7a431d897a32fbab717af5",
+  "previous_manifest_sha256": "6929d75b35606107b24c030eae75dccd321a3023107484f684bf710e4ceadcfe",
+  "script_sha256": "011f0e6f89de359336cd1e35adc88847b4518f5e1c01e2d2c7668835e7833d49"
+}

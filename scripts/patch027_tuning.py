@@ -174,12 +174,17 @@ def capture(out,candidate):
 
 def report(run):
     audit=read(run/'audit.json');rows=read(run/'traces.json')
+    if not re.fullmatch(r'[0-9a-f]{40}',audit['commit']):raise ValueError('Invalid capture commit')
+    source=subprocess.check_output(['git','show',audit['commit']+':scripts/patch027_tuning.py'],cwd=ROOT)
+    if audit['script_sha256'] not in {hashlib.sha256(source).hexdigest(),hashlib.sha256(source.replace(b'\n',b'\r\n')).hexdigest()}:
+        raise ValueError('Capture source mismatch')
     if sha(run/'traces.json')!=audit['traces_sha256'] or sha(PREVIOUS/'manifest.json')!=audit['previous_manifest_sha256']:raise ValueError('Capture/dependency changed')
     if (audit['general_policies']!=list(GENERAL) or audit['civil_policies']!=list(CIVILS) or
         audit['joint_policy']!=['core3_blend','seed1_both']):raise ValueError('Policies changed')
     old_audit=read(PREVIOUS/'audit.json');old_rows=read(PREVIOUS/'traces.json')
     if not (audit['clean'] and audit['baseline_matches']==235 and audit['candidate_unchanged'] and audit['cases_guides_preserved']):raise ValueError('Capture contract changed')
     if audit['settings']!=old_audit['settings'] or audit['index_hashes']!=old_audit['index_hashes']:raise ValueError('Settings/index drift')
+    if audit['patch']!='PATCH-027':raise ValueError('Wrong patch identity')
     queries=read(ROOT/'data/eval/patch015-baseline/capture/results.json')
     keys=lambda rs:[(r['qid'],r['mode']) for r in rs]
     if len(rows)!=235 or keys(rows)!=keys(queries) or len(set(keys(rows)))!=235:raise ValueError('Input identity changed')
@@ -194,6 +199,8 @@ def report(run):
                 if len(hits)>(20 if channel=='general' else 26) or len(set(hits))!=len(hits) or not set(hits)<=allowed[channel]:raise ValueError('Invalid member trace')
         if fuse(row['general']['bm25_original'],row['general']['dense_original'])[:5]!=row['current_laws']:raise ValueError('General baseline drift')
         if row['civil']['bm25_original']!=old['civil_bm25'] or row['civil']['dense_original']!=old['civil_dense']:raise ValueError('Civil baseline drift')
+        if civil_select({**row,'civil':{**row['civil'],'bm25_expanded':row['civil']['bm25_original']}},'lexical')!=row['current_civil']:
+            raise ValueError('Civil selection control drift')
     prior=read(ROOT/'data/eval/patch026-full/capture/before.json');current=read(ROOT/'data/eval/patch026-full/capture/after.json')
     anchors=old_audit['anchors'];available=set(anchors.values())
     def assess(g,c):

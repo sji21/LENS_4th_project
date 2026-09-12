@@ -63,3 +63,63 @@ def test_expansion_does_not_mutate_baseline_or_other_channels():
     for name in ('판례','안내'):assert tuned._retrievers[name].members[0].retriever.query_expander is expand
     for member in tuned._retrievers['법령'].members[0].retriever.partitions.values():
         assert '미납국세 미납지방세 열람 납세증명' in member.query_expander('체납 확인')
+
+
+def test_frozen_results_replay_with_improvement_and_remaining_regressions():
+    from scripts.patch027_tuning import check
+    r=check()
+    assert r['civil']['both']['groups']['question_only']['channel_metrics']['civil']['all_target_items']['hit@3']==23/32
+    assert len({a for x in r['civil']['both']['new_required_civil_hits'] for a in x['anchors']})==8
+    assert r['general']['core3_blend']['top3_general_loss_inputs']==0
+    assert not any(x['adoption']['passed'] for ps in r.values() for x in ps.values())
+
+
+def test_no_expansion_keeps_both_members_and_default_selection_unchanged():
+    from scripts.patch027_tuning import BUNDLE
+    from scripts.patch015_baseline import read
+    for r in read(BUNDLE/'traces.json'):
+        for channel,selector,key in (('general',general_select,'current_laws'),('civil',civil_select,'current_civil')):
+            if not r['expansion'][channel]:
+                assert r[channel]['bm25_expanded']==r[channel]['bm25_original']
+                assert r[channel]['dense_expanded']==r[channel]['dense_original']
+                assert selector(r,'both')==r[key]
+
+
+@pytest.fixture
+def bundle(tmp_path):
+    from shutil import copytree
+    from scripts.patch027_tuning import BUNDLE
+    copytree(BUNDLE,tmp_path/'bundle')
+    return tmp_path/'bundle'
+
+
+def refresh(bundle,trace=False):
+    from scripts.patch015_baseline import read,write,sha
+    if trace:
+        a=read(bundle/'audit.json');a['traces_sha256']=sha(bundle/'traces.json');write(bundle/'audit.json',a)
+    m=read(bundle/'manifest.json');write(bundle/'manifest.json',{p:sha(bundle/p) for p in m})
+
+
+def test_missing_capture_and_manifest_entry_rejected(bundle):
+    from scripts.patch015_baseline import read,write
+    from scripts.patch027_tuning import check
+    (bundle/'traces.json').unlink();m=read(bundle/'manifest.json');del m['traces.json'];write(bundle/'manifest.json',m)
+    with pytest.raises(ValueError,match='Incomplete'):check(bundle)
+
+
+@pytest.mark.parametrize('mutation',['missing_input','expansion','wrong_channel','source','score'])
+def test_semantic_corruption_rejected_after_refreshing_hashes(bundle,mutation):
+    from scripts.patch015_baseline import read,write
+    from scripts.patch027_tuning import check,PREVIOUS
+    if mutation in ('missing_input','expansion','wrong_channel'):
+        rows=read(bundle/'traces.json')
+        if mutation=='missing_input':rows.pop()
+        if mutation=='expansion':rows[0]['expansion']['civil']=['제999조']
+        if mutation=='wrong_channel':rows[0]['civil']['bm25_expanded']=[read(PREVIOUS/'audit.json')['core_ids'][0]]
+        write(bundle/'traces.json',rows);refresh(bundle,trace=True)
+    elif mutation=='source':
+        a=read(bundle/'audit.json');a['script_sha256']='0'*64;write(bundle/'audit.json',a);refresh(bundle)
+    else:
+        r=read(bundle/'comparison.json');r['civil']['both']['adoption']['passed']=True
+        write(bundle/'comparison.json',r);refresh(bundle)
+    with pytest.raises(ValueError):check(bundle)
