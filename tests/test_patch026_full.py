@@ -49,3 +49,21 @@ def test_top3_loss_not_hidden_by_unchanged_top5():
     result=rank_changes([old],[new],details)
     assert result['laws']['3'][0]['lost']==['gold']
     assert result['laws']['5']==[]
+
+
+def test_partial_version_addition_preserves_existing_article_and_source(tmp_path):
+    from src.database.relational import initialize_relational_database,connect_database
+    from src.ingestion.load_laws import load_records
+    from scripts.patch026_full_eval import retain_affected_records
+    records=[r for r in compile_records() if r.law_name=='민법'][:2]
+    path=tmp_path/'law.sqlite3';initialize_relational_database(path)
+    with connect_database(path) as db:
+        load_records(records[:1],db)
+        old=[tuple(r) for r in db.execute('SELECT * FROM law_articles')]
+        oldsources=[tuple(r) for r in db.execute('SELECT * FROM law_article_sources')]
+        load_records(retain_affected_records(db,records[1:]),db)
+        assert len(db.execute('SELECT * FROM law_articles').fetchall())==2
+        assert old[0] in [tuple(r) for r in db.execute('SELECT * FROM law_articles')]
+        assert oldsources[0] in [tuple(r) for r in db.execute('SELECT * FROM law_article_sources')]
+        with pytest.raises(ValueError,match='replace an existing'):
+            retain_affected_records(db,records[:1])

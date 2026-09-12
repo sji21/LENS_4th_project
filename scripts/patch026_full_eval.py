@@ -14,7 +14,7 @@ from scripts.patch015_baseline import ROOT, read, sha, norm
 from scripts.patch026_full_sources import OUT, write, compile_records
 from scripts.patch026_expand import score
 from scripts.patch025_ranking import index_digest
-from src.ingestion.load_laws import read_records, load_records, export_chunks
+from src.ingestion.load_laws import read_records, load_records, export_chunks, LawArticleRecord, law_version_id_of, article_row_id_of
 from src.retrieval.retriever import load_chunks
 
 
@@ -40,6 +40,37 @@ def rank_changes(before, after, details):
 def vector_map(data):
     return {cid:(data['documents'][i],data['metadatas'][i],data['embeddings'][i].tolist())
             for i,cid in enumerate(data['ids'])}
+
+
+def retain_affected_records(connection, additions):
+    """The loader replaces a whole version: carry forward its existing articles."""
+    versions=sorted({law_version_id_of(r) for r in additions})
+    placeholders=','.join('?' for _ in versions)
+    rows=connection.execute(f'''SELECT a.*, l.law_name,l.law_type,l.ministry,l.law_code,
+        v.proclamation_number,v.proclaimed_at,v.effective_from,v.effective_to,v.status,
+        d.collected_at,d.file_path,COALESCE(s.source_url,d.source_url) AS source_url,
+        snap.source_text,snap.source_url AS source_document_url,snap.source_version_id
+        FROM law_articles a JOIN law_versions v USING(law_version_id)
+        JOIN laws l USING(law_id) JOIN documents d ON d.document_id=v.document_id
+        LEFT JOIN law_article_sources s USING(article_id)
+        LEFT JOIN law_source_snapshots snap USING(snapshot_id)
+        WHERE a.law_version_id IN ({placeholders}) ORDER BY a.article_id''',versions).fetchall()
+    new_ids={article_row_id_of(r) for r in additions}
+    retained=[]
+    for row in rows:
+        if row['article_id'] in new_ids:
+            raise ValueError('Addition would replace an existing article')
+        same_version=next(r for r in additions if law_version_id_of(r)==row['law_version_id'])
+        if (same_version.effective_from,same_version.proclamation_number)!=(row['effective_from'],row['proclamation_number']):
+            raise ValueError('Existing version metadata mismatch')
+        retained.append(LawArticleRecord(**{k:row[k] for k in (
+            'law_name','law_type','ministry','law_code','proclamation_number','proclaimed_at',
+            'effective_from','effective_to','status','content','article_number','article_title',
+            'paragraph_number','item_number','collected_at')},
+            source_url=row['source_url'] or '', file_path=row['file_path'] or '',
+            source_text=row['source_text'] or '',source_document_url=row['source_document_url'] or '',
+            source_version_id=row['source_version_id'] or '',document_type=same_version.document_type))
+    return retained+additions
 
 
 def source_hashes():
@@ -85,7 +116,7 @@ def run(out):
     db.execute('PRAGMA foreign_keys=ON')
     oldcontent={r['article_id']:r['content'] for r in db.execute('SELECT article_id,content FROM law_articles')}
     assert len(oldcontent)==143
-    loaded=load_records(records,db)
+    loaded=load_records(retain_affected_records(db,records),db)
     assert not loaded.skipped,loaded.skipped
     newcontent={r['article_id']:r['content'] for r in db.execute('SELECT article_id,content FROM law_articles')}
     assert len(newcontent)==204 and all(newcontent[k]==v for k,v in oldcontent.items())
@@ -96,6 +127,7 @@ def run(out):
         unit=dict(row)
         if unit['article_id'] not in oldcontent:
             # Offsets are relative to original article content, never search-header text.
+            assert newcontent[unit['article_id']][unit['start_offset']:unit['end_offset']]==unit['content']
             units.append(unit)
     export_chunks(db,out/'export.jsonl'); db.close()
     newids={norm(r.law_name+'-'+r.article_number) for r in records}
@@ -104,6 +136,10 @@ def run(out):
     assert len(new)==61 and len({c['chunk_id'] for c in new})==61
     with (snapshot/'chunks/chunks.jsonl').open('ab') as stream:
         for chunk in new: stream.write((json.dumps(chunk,ensure_ascii=False)+'\n').encode('utf-8'))
+    with (snapshot/'chunks/civil.jsonl').open('ab') as stream:
+        for chunk in new:
+            if chunk['metadata']['title']=='민법':
+                stream.write((json.dumps(chunk,ensure_ascii=False)+'\n').encode('utf-8'))
     baseline=RetrievalService.from_index(); backend=baseline.dense.backend
     model_manifest=read(ROOT/'data/eval/patch015-baseline/capture/manifest.json')['model_files']
     modelroot=Path.home()/'.cache/huggingface/hub/models--nlpai-lab--KURE-v1'
