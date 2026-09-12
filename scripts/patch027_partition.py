@@ -3,6 +3,7 @@ import argparse
 from dataclasses import replace
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import subprocess
@@ -12,10 +13,14 @@ from scripts.patch026_sources import SPECS
 from scripts.patch025_ranking import index_digest, close
 from src.retrieval.service import RetrievalService, LAW, route_law_corpus, CIVIL_TITLE
 from src.retrieval.hybrid import HybridRetriever
+from src.retrieval.retriever import BM25Retriever
 from src.evaluation.baseline import settings
 
 POLICIES=('split_half','split_three_quarters','split_equal','keep2_split_equal',
           'pool_half','pool_equal','pool_double')
+DEPENDENCIES=('data/eval/patch026-expansion/before.json','data/eval/patch026-expansion/full/after.json',
+              'data/eval/patch026-expansion/full/audit.json','data/eval/patch024-expansion/report.json',
+              'data/eval/patch015-baseline/capture/results.json')
 
 
 def fuse(bm25,dense):
@@ -40,8 +45,10 @@ def select(row, policy):
 
 def capture(out):
     if subprocess.check_output(['git','status','--porcelain'],text=True).strip(): raise ValueError('Commit source first')
-    out.mkdir(parents=True,exist_ok=False)
     svc=RetrievalService.from_index(); backend=svc.dense.backend
+    if not isinstance(svc._retrievers[LAW.name].members[0].retriever, BM25Retriever):
+        raise ValueError('Historical capture requires the pre-partition service (6085564); use --report to replay')
+    out.mkdir(parents=True,exist_ok=False)
     original=backend.embed; cache={}
     def cached(texts):
         key=tuple(texts)
@@ -81,25 +88,33 @@ def capture(out):
     assert semantic==[index_digest(r) for r in (svc.dense,svc.civil_dense)]
     assert not subprocess.check_output(['git','status','--porcelain'],text=True).strip()
     write(out/'traces.json',rows)
-    dependencies=('data/eval/patch026-expansion/before.json','data/eval/patch026-expansion/full/after.json',
-                  'data/eval/patch026-expansion/full/audit.json','data/eval/patch024-expansion/report.json',
-                  'data/eval/patch015-baseline/capture/results.json')
     write(out/'audit.json',{'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'clean':True,
         'settings':settings(svc),'candidate_anchors':anchors,'procedures':sorted(proc_ids),'policies':POLICIES,
         'index_semantic_hashes':semantic,'traces_sha256':sha(out/'traces.json'),
-        'dependencies':{p:hashlib.sha256((ROOT/p).read_bytes().replace(b'\r\n',b'\n')).hexdigest() for p in dependencies},
+        'dependencies':{p:hashlib.sha256((ROOT/p).read_bytes().replace(b'\r\n',b'\n')).hexdigest() for p in DEPENDENCIES},
         'baseline_matches':len(rows),'mixed_matches':len(rows),'production_changed':False})
 
 
 def report(run):
     audit=read(run/'audit.json'); traces=read(run/'traces.json')
     if sha(run/'traces.json')!=audit['traces_sha256']: raise ValueError('Trace hash mismatch')
+    if set(audit['dependencies'])!=set(DEPENDENCIES): raise ValueError('Incomplete dependencies')
+    if tuple(audit['policies'])!=POLICIES: raise ValueError('Policy list changed')
     for p,v in audit['dependencies'].items():
         if hashlib.sha256((ROOT/p).read_bytes().replace(b'\r\n',b'\n')).hexdigest()!=v: raise ValueError('Dependency changed')
     before=read(ROOT/'data/eval/patch026-expansion/before.json'); old={(r['qid'],r['mode']):r for r in before}
     queries={(r['qid'],r['mode']):r['query_sha256'] for r in read(ROOT/'data/eval/patch015-baseline/capture/results.json')}
     if len(traces)!=235 or {(r['qid'],r['mode']) for r in traces}!=set(old): raise ValueError('Incomplete traces')
     anchors=audit['candidate_anchors']; available=read(ROOT/'data/eval/patch026-expansion/full/audit.json')['available_after']
+    mixed={(r['qid'],r['mode']):r for r in read(ROOT/'data/eval/patch026-expansion/full/after.json')}
+    for r in traces:
+        for name in ('core','procedure','statistics_only','mixed','core_bm25','procedure_bm25','global_dense'):
+            hits=r[name]
+            if len(hits)>20 or len({cid for cid,_ in hits})!=len(hits): raise ValueError('Invalid rank trace')
+            if any(cid not in anchors or not math.isfinite(s) for cid,s in hits): raise ValueError('Invalid trace value')
+        key=r['qid'],r['mode']
+        if [anchors[c] for c,_ in r['core'][:5]]!=old[key]['laws']: raise ValueError('Core baseline changed')
+        if [anchors[c] for c,_ in r['mixed'][:5]]!=mixed[key]['laws']: raise ValueError('Mixed baseline changed')
     results={}
     for policy in ('statistics_only','mixed',*POLICIES):
         rows=[]

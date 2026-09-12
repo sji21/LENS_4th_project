@@ -14,6 +14,7 @@ from time import perf_counter
 
 from src.evaluation.metrics import hit_at_k, recall_at_k, reciprocal_rank
 from src.retrieval.retriever import BM25Retriever, load_chunks
+from src.retrieval.partitioned import PartitionedBM25Retriever
 from src.retrieval.index import clean_metadata
 from src.retrieval.service import (
     CASE, CASE_CHUNKS, DEFAULT_INDEX, DEFAULT_MODEL, GUIDE, GUIDE_CHUNKS,
@@ -149,10 +150,17 @@ def retriever_settings(retriever) -> dict | None:
     if retriever is None:
         return None
     bm25 = next((m.retriever for m in retriever.members
-                 if isinstance(m.retriever, BM25Retriever)), None)
+                 if isinstance(m.retriever, (BM25Retriever, PartitionedBM25Retriever))), None)
+    def lexical_config(r):
+        return {"k1": r.k1, "b": r.b, "char_ngram": r.char_ngram}
+    if isinstance(bm25, PartitionedBM25Retriever):
+        config = {"kind": "partitioned_raw_score_pool", "score_weight": 1.0,
+                  "procedure_titles": bm25.procedure_titles,
+                  "partitions": {name: lexical_config(r) for name, r in bm25.partitions.items()}}
+    else:
+        config = None if bm25 is None else lexical_config(bm25)
     return {"rrf_k": retriever.rrf_k, "depth": retriever.depth,
-            "bm25": None if bm25 is None
-                    else {"k1": bm25.k1, "b": bm25.b, "char_ngram": bm25.char_ngram}}
+            "bm25": config}
 
 
 def settings(service) -> dict:

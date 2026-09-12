@@ -34,6 +34,7 @@ from src.retrieval.dense import (
     SentenceTransformerEmbedding,
 )
 from src.retrieval.hybrid import DEFAULT_RRF_K, HybridRetriever, Member
+from src.retrieval.partitioned import PartitionedBM25Retriever
 from src.retrieval.retriever import (
     _WORD_RE,
     BM25Retriever,
@@ -124,6 +125,13 @@ LAW_RRF_K = 5
 # 판례는 공식 원문 평가 전이므로 이 값을 공유하지 않는다.
 LAW = Corpus("법령", LAW_TYPES, rrf_k=LAW_RRF_K, query_expander=expand_law)
 CASE = Corpus("판례", CASE_TYPES)
+
+# 추가 절차 법령의 IDF가 기존 임대차 법령 순위를 흔들지 않도록 어휘 통계만
+# 분리한다. 반환은 기존 laws TOP-k이며 별도 생성 채널을 만들지 않는다.
+PROCEDURE_TITLES = (
+    "주민등록법", "국세징수법", "국세징수법 시행령",
+    "지방세징수법", "지방세징수법 시행령",
+)
 
 # 민법은 기존 법령과 같은 BM25 묶음에 넣지 않는다. 검색 때 필터로만 빼면 IDF는
 # 이미 민법을 포함해 계산되어 민법이 결과에 보이지 않아도 기존 순위가 흔들린다.
@@ -559,7 +567,10 @@ class RetrievalService:
                     chunk for chunk in corpus_chunks
                     if chunk["metadata"].get("title") != CIVIL_TITLE
                 ]
-            self._retrievers[corpus.name] = self._build(corpus, corpus_chunks)
+            self._retrievers[corpus.name] = self._build(
+                corpus, corpus_chunks,
+                partition_titles=PROCEDURE_TITLES if corpus.name == law.name else (),
+            )
 
         civil_chunks = [
             chunk for chunk in split_by_type(chunks, civil.doc_types)
@@ -592,17 +603,26 @@ class RetrievalService:
             len(missing), len(civil.include_ids), ", ".join(missing),
         )
 
-    def _build(self, corpus: Corpus, chunks: list[dict]) -> HybridRetriever | None:
+    def _build(self, corpus: Corpus, chunks: list[dict], *,
+               partition_titles: tuple[str, ...] = ()) -> HybridRetriever | None:
         """묶음 하나에 대한 검색기. 청크가 없으면 만들지 않는다."""
         if not chunks:
             return None
+        def lexical(part):
+            return BM25Retriever(part, b=corpus.bm25_b, query_expander=corpus.query_expander)
+
+        procedure = [c for c in chunks if c["metadata"].get("title") in partition_titles]
+        if procedure:
+            core = [c for c in chunks if c["metadata"].get("title") not in partition_titles]
+            bm25 = PartitionedBM25Retriever(
+                {"core": lexical(core), "procedure": lexical(procedure)}, partition_titles,
+            )
+        else:
+            # 기존 DB에서는 검색기와 평가 설정 형식까지 그대로 유지한다.
+            bm25 = lexical(chunks)
         members = [
             Member(
-                BM25Retriever(
-                    chunks,
-                    b=corpus.bm25_b,
-                    query_expander=corpus.query_expander,
-                ),
+                bm25,
                 f"{corpus.name}-bm25",
                 corpus.bm25_weight,
                 corpus.expand_weight,
