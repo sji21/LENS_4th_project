@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
+- PATCH-027 prepares a development comparison of concept expansion in BM25 alone versus BM25+KURE, preserving the 204-article corpus and 235 inputs. General-law blending/core TOP3 preservation and civil topic-slot alternatives are predeclared; no operating policy changes. (commit: pending)
+
 - Renumber the local law-expansion work from PATCH-026 to PATCH-027 because team PR #24 has published PATCH-026. Resume the same local PATCH-027 work previously folded into local 26; do not reuse it for an unrelated task. Preserve capture paths/hashes and historical commits; rename only the active branch and current records. (commit: 052af96)
 
 - PATCH-027 compares six general-law alternatives and four civil-selection alternatives against the fixed 204-article/235-input capture. Question complete retrieval reaches 37/75, but every general alternative loses at least eight prior TOP3 targets by input; no policy passes the predeclared adoption gate. Removing civil topic selection worsens DEV retrieval, and none retrieves the nine newly required civil articles at TOP3 in their target inputs. Preserve traces, fixed denominators, regressions and replay validation; operating data and ranking policy remain unchanged. PATCH-027 stays in progress. (commit: f079a0f)
