@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
-- PATCH-031 Adds bounded single-call Qwen conversation planning, source-checked structured decisions, and development captures that distinguish raw model errors from source-preserving normalization. (commit: pending)
+- PATCH-031 Adds bounded single-call Qwen conversation planning, source-checked structured decisions, and development captures that distinguish raw model errors from source-preserving normalization. (commit: `5a70d95`)
 
 ## 2026-09-12
 
