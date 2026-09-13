@@ -19,9 +19,10 @@ from src.retrieval.profile import CHUNKS, FILES, INDEXES, PROFILE
 
 
 @contextmanager
-def installation_lock(root=None):
-    """OS-owned lock: concurrent commands fail; a crashed process releases it."""
-    path = (root or ROOT) / "tmp/retrieval-data.lock"
+def installation_lock(root=None, *, data_root=None):
+    """Lock the resolved data target across checkouts; never unlink this file."""
+    target = Path(data_root) if data_root is not None else Path(root or ROOT) / "data"
+    path = target.resolve() / ".retrieval-data.lock"
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a+b") as stream:
         if path.stat().st_size == 0:

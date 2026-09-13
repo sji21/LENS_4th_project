@@ -29,6 +29,51 @@ def test_lock_releases_when_operation_raises(tmp_path):
         pass
 
 
+def test_shared_target_is_locked_across_checkout_processes(tmp_path):
+    target = tmp_path / "shared" / "data"
+    alias = target.parent / "unused" / ".." / "data"
+    checkout_b = tmp_path / "checkout-b"
+    script = '''
+import sys
+from pathlib import Path
+from scripts import manage_retrieval_data as manager
+manager.ROOT = Path(sys.argv[1])
+try:
+    with manager.installation_lock(data_root=Path(sys.argv[2])):
+        pass
+except ValueError:
+    sys.exit(23)
+'''
+    command = [manager.sys.executable, "-X", "utf8", "-c", script, str(checkout_b), str(alias)]
+    with manager.installation_lock(tmp_path / "checkout-a", data_root=target):
+        result = subprocess.run(command, cwd=Path(__file__).resolve().parents[1], capture_output=True, timeout=30)
+        assert result.returncode == 23, result.stderr.decode(errors="replace")
+    result = subprocess.run(command, cwd=Path(__file__).resolve().parents[1], capture_output=True, timeout=30)
+    assert result.returncode == 0, result.stderr.decode(errors="replace")
+
+
+def test_default_and_explicit_data_root_share_lock(tmp_path, monkeypatch):
+    monkeypatch.setattr(manager, "ROOT", tmp_path)
+    with manager.installation_lock():
+        with pytest.raises(ValueError, match="실행 중"):
+            with manager.installation_lock(data_root=tmp_path / "data"):
+                pytest.fail("Explicit target bypassed bundle lock")
+        # Independent data targets do not block one another.
+        with manager.installation_lock(data_root=tmp_path / "other-data"):
+            pass
+    assert (tmp_path / "data/.retrieval-data.lock").is_file()
+
+
+def test_shared_target_lock_prevents_builder_from_other_checkout(tmp_path, monkeypatch):
+    from src.ingestion import server_build as build
+    target = tmp_path / "shared-data"
+    monkeypatch.setattr(build, "ROOT", tmp_path / "checkout-b")
+    monkeypatch.setattr(build, "source_records", lambda: pytest.fail("must stop before building"))
+    with manager.installation_lock(tmp_path / "checkout-a", data_root=target):
+        with pytest.raises(ValueError, match="실행 중"):
+            build.prepare(data_root=target)
+
+
 @pytest.fixture
 def flow(tmp_path, monkeypatch):
     monkeypatch.setattr(manager, "ROOT", tmp_path)

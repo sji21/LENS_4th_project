@@ -267,7 +267,7 @@ def prepare(data_root=None, rebuild=False):
     if target == ROOT or ROOT.is_relative_to(target):
         raise ValueError("저장소 루트나 상위 폴더를 데이터 대상으로 사용할 수 없습니다.")
     # Same lock as validation-bundle operations; Django web DB is never in SCOPES.
-    with installation_lock(ROOT):
+    with installation_lock(data_root=target):
         print("[1/3] DB 체크 — 원천 자료·현재 구축 상태 확인", flush=True)
         from setup_data import prepare_model
         prepare_model(check=True)
