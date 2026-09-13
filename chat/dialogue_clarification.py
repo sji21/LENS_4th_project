@@ -90,6 +90,9 @@ def prepare_clarification(state, user, decision):
     question = QUESTIONS[field]
     pending = {"field": field, "question": question, "attempts": count + 1,
                "choices": choices_for(field, trial.get("documents", []))}
+    if field == "document":
+        for choice in pending["choices"]:
+            choice["message"] = user
     return replace(decision, question=question), pending
 
 

@@ -100,6 +100,8 @@ def apply_user_update(state, *, user, updates=None, topic=None, topic_changed=Fa
             draft["last_answer"] = None
         draft["topic"] = _safe(topic)
     if document_id is not None:
+        if draft["active_document_id"] != (document_id or None):
+            draft["last_answer"] = None
         draft["active_document_id"] = document_id or None
     for field, update in updates.items():
         if not isinstance(field, str) or not re.fullmatch(r"[a-z][a-z0-9_]{0,39}", field):
@@ -129,7 +131,7 @@ def apply_user_update(state, *, user, updates=None, topic=None, topic_changed=Fa
     return draft
 
 
-def record_answer(state, message):
+def record_answer(state, message, *, query=None):
     """Cache only a public answer that passed the existing answer pipeline."""
     draft = _read(state)
     draft["last_status"] = message.get("status")
@@ -139,6 +141,8 @@ def record_answer(state, message):
             "content": _safe(message["content"]), "sources": deepcopy(message.get("sources", [])),
             "turn": draft["turn"], "validation": "existing_pipeline_passed",
         }
+        if isinstance(query, str) and query.strip() and len(query) <= 2000:
+            draft["last_answer"]["query"] = _safe(query)
     state["dialogue"] = draft
     return draft
 

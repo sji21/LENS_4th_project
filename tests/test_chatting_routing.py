@@ -264,52 +264,34 @@ def test_topic_change_drops_old_facts_and_active_document(runtime):
     assert not message["used_history"]
 
 
-@pytest.mark.parametrize("status,action", [("answered", "rag"), ("abstained", "rag"), ("refused", "refuse")])
-def test_planning_failure_calls_legacy_once_with_original_arguments(runtime, status, action):
+def test_planning_failure_preserves_facts_and_asks_before_using_context(runtime):
     state = services.initial_state()
     state["documents"] = [{"document_id": "owned", "kind": "contract"}]
     apply_user_update(state, user="월세", updates={"contract_type": {"value": "월세", "evidence": "월세"}})
     before = deepcopy(state["dialogue"])
     runtime.planner.side_effect = dialogue_planner.PlanningError("invalid_decision:updates")
-
-    def legacy(draft, question, document_id):
-        assert draft is not state
-        assert question == "원래 계약 질문" and document_id == "owned"
-        message = services.answer_message(Answer(question=question, status=status, text="기존 경로 답변"), 0)
-        services.append_exchange(draft, question, message)
-        return message
-
-    runtime.legacy.side_effect = legacy
     message = call(state, runtime, "원래 계약 질문", "owned")
-    assert message["action"] == action and message["intent"] is None
-    assert message["status"] == status
-    assert state["dialogue_runtime"] == {"path": "legacy_fallback", "reason": "invalid_decision:updates"}
+    assert (message["action"], message["intent"]) == ("clarify", None)
     assert state["dialogue"]["facts"] == before["facts"]
     assert state["dialogue"]["history"] == before["history"]
+    assert all(c["document_id"] == "owned" for c in message["choices"])
     assert len(state["messages"]) == 2
-    runtime.legacy.assert_called_once()
+    runtime.legacy.assert_not_called()
+    runtime.official.assert_not_called()
 
 
-def test_planner_failure_discards_even_unexpected_mutation_before_fallback(runtime):
+def test_planner_failure_discards_even_unexpected_mutation_before_recovery(runtime):
     state = services.initial_state()
-
     def broken_planner(draft, *args):
         draft["dialogue"]["topic"] = "POISONED"
-        raise dialogue_planner.PlanningError("model_unavailable")
-
-    def legacy(draft, question, document_id):
-        assert draft["dialogue"]["topic"] is None
-        message = services.answer_message(Answer(question=question, status="abstained", text="보류"), 0)
-        services.append_exchange(draft, question, message)
-        return message
-
+        raise dialogue_planner.PlanningError("invalid_decision:updates")
     runtime.planner.side_effect = broken_planner
-    runtime.legacy.side_effect = legacy
     call(state, runtime)
     assert "POISONED" not in str(state)
+    runtime.legacy.assert_not_called()
 
 
-@pytest.mark.parametrize("failure", ["graph", "loader", "legacy", "unexpected_planner"])
+@pytest.mark.parametrize("failure", ["graph", "loader", "unavailable_planner", "unexpected_planner"])
 def test_execution_failure_keeps_original_state_and_never_retries_rag(runtime, failure):
     state = services.initial_state()
     before = deepcopy(state)
@@ -319,7 +301,7 @@ def test_execution_failure_keeps_original_state_and_never_retries_rag(runtime, f
         runtime.official.side_effect = error
     elif failure == "loader":
         runtime.loader.result.side_effect = error
-    elif failure == "legacy":
+    elif failure == "unavailable_planner":
         runtime.planner.side_effect = dialogue_planner.PlanningError("model_unavailable")
         runtime.legacy.side_effect = error
     else:
@@ -328,7 +310,7 @@ def test_execution_failure_keeps_original_state_and_never_retries_rag(runtime, f
         call(state, runtime, "월세 문의")
     assert state == before
     assert runtime.official.call_count <= 1
-    assert runtime.legacy.call_count == (1 if failure == "legacy" else 0)
+    runtime.legacy.assert_not_called()
 
 
 def test_public_message_contains_no_planner_payload_or_runtime_diagnostics(runtime):

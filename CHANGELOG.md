@@ -5,6 +5,16 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-14
+
+### Fixed (Bug Fixes)
+
+- PATCH-037 isolates unsupported descriptive facts and identical statement repetitions. Rejected plans preserve consultation memory and ask for case confirmation; model connection failures leave state unchanged for retry. Follow-up questions retain their target, with clearer correction and unknown-answer instructions. Legal application and verification remain with their existing owner. (commit: pending)
+
+### Added
+
+- PATCH-037 Add full dialogue acceptance reports, isolated browser fixtures, and regressions for document choices and explanation query reuse. The initial full-RAG quality failures are retained; the subsequent user-scoped dialogue recovery and regression results are documented separately in docs/chatting-recovery.md. (commit: pending)
+
 ## 2026-09-13
 
 ### Added

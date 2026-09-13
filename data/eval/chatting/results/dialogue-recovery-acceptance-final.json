@@ -1,0 +1,1940 @@
+{
+  "schema_version": 1,
+  "mode": "dialogue_only",
+  "split": "acceptance",
+  "complete": true,
+  "started_at": "2026-09-13T16:27:30.745069+00:00",
+  "files": {
+    "chat/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "chat/dialogue_clarification.py": "7d1ccc6d60dcb14f07e1d6925b2d699f6bcb9e062d3cf458db2d7581d2565da4",
+    "chat/dialogue_contract.py": "3bf2fe70665175a7bb8490804023a1a3ad1010930ba7da64677fe49ca3c358aa",
+    "chat/dialogue_documents.py": "f9b844cfebb884b8d64f9afe5270ecd33a6a1a174b0585912216c2d36315d20a",
+    "chat/dialogue_normalization.py": "e9363d67a3da23f76681603a25695e4dd3cacc2d07a8bce16d5881a7ef6b6739",
+    "chat/dialogue_planner.py": "834cee09e61a6e966786500b35f966d2556b8c9d6504d2abaf3efdf7d6dfb829",
+    "chat/dialogue_query.py": "9a8d61bf87d3fe6fc4e3818779cb9f1d350288bbc915df79a1d9979ab23eb7f6",
+    "chat/dialogue_recovery.py": "75e49cd993b11f4afe57b08fadb554bd00204771678e842c0c738d6c96f0498c",
+    "chat/dialogue_router.py": "0c034c5cd65800320e27a8c15c15d38b97013051dcd11f04c3f317510ab959e4",
+    "chat/dialogue_state.py": "763bdc8c04867f177a5718c9bf6febd91cb89f40f4a065cb4ab586b325b30f21",
+    "chat/models.py": "413609bf0ebf1a9450d621122f3f4a82cbdac75161c18f5aeae4c4da0ec420b1",
+    "chat/services.py": "837dd8c71eb52747ef89531c34b9654f7b9ee2ac58e4a729978bd63d9ee9f8e0",
+    "chat/uploads.py": "0ae80dc0708af8321171f412577c18b3e5a087216e866a7b4b22a1e21784c295",
+    "chat/urls.py": "19346b62a4ce16cb2e2154396c40008f3fade0221266e458050304ee18cab9c7",
+    "chat/views.py": "326bf6038c196b30c5e61ad5fd4fa96458f0fc6dd387a2b235336780878bc94a",
+    "data/chunks/base_sample.jsonl": "0a569cd52b5360cb7dad72c9ac497866031b1d9a116af7fd738885f25abdd35b",
+    "data/chunks/cases.jsonl": "f6190b01d00b0a6f4630ef8c8a2ceebe19ca5a443a9874d06ca2655a5e5efce9",
+    "data/chunks/chunks.jsonl": "c61cba0ef9969cc271ab665b4e237bbd468025dec6199f7ecff2b040fec1958a",
+    "data/chunks/civil.jsonl": "635a4b2f4c3a4cb4f54d0c081bb91a84d5f1f8dc8d0b26a7987e30130df5a10a",
+    "data/chunks/guides.jsonl": "5b67bf5cf59ded40e0dc0289716cb6843ce473bed3d518b17b98fa9a2e54ba93",
+    "data/eval/chatting/acceptance.json": "26eb3122cd56cbcd11f5e3e70d01751b761103e4f6058bc461826456a670bfaa",
+    "data/eval/chatting/dev.json": "bcd030f67235bf5c6437dfce4e8af59c851d0af826c5991016c48d7179463c42",
+    "src/evaluation/chatting_dialogue_run.py": "8c8bd0446ad41974dac52c1988d05d30e1705ec0bc614f48556db5b0002352e2",
+    "src/evaluation/chatting_plan_run.py": "40642dac4c6cd448c45adb209fe543aa7f64057dc39f9454be7abab541b63159",
+    "src/evaluation/chatting_provenance.py": "547278915c1ba10433cacda21a590d05f3fb92e88c170ad86a556addd980555b",
+    "src/evaluation/chatting_run.py": "1ef0eba49048f4c4166c8aab3bab4ad12673d5c898334a289a9fde7f701ec2f0",
+    "src/evaluation/chatting_scenarios.py": "2dd1f5cde62396d33999c461c007f45b16e0946e1f4ecca42539bcd4e8974f51",
+    "src/evaluation/chatting_scoring.py": "85f9d66fe26d7f9aa5e90dc9ddde8d19337229bcb03f1b703c4c64789f955cd0",
+    "src/generation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/generation/abstention.py": "7e4501dc9e7564d7df39d115a412e1f1746ddbe17065261e90884d8facd14476",
+    "src/generation/call_budget.py": "acb78ce0086f6501670eefa1db5d928500a29887ed4a9140d16015949bfa07c0",
+    "src/generation/chain.py": "212f37d4e032a4c3a355c5eaec85d6e4599963ed07a8d082605a3ae06c14adec",
+    "src/generation/citation.py": "496a4592606a9f28a53a5c6615b5dc88dbd7c5a471b4ca431ae566bcc5726f19",
+    "src/generation/conversation.py": "a35889cb47085b64248c50e0975f889e37302474f6470b77b4b3f20cf077ebb0",
+    "src/generation/evidence_routing.py": "9e425bb90c5f943866ee635604573340b199de23371bf8e83c22c62697f72100",
+    "src/generation/graph.py": "76e69c3cfac2deac15ef0c6e2a8ea16eaf087d96893a4b089ff065389bdb57a5",
+    "src/generation/llm.py": "d9a47d2be8154a33291cda72d9ce0a7676372e0adc6d459d055d6d4092166cf7",
+    "src/generation/models.py": "f1e5d0a63c8d94d7e373495f28a4988719a1b10c50d13bfd86de715bb078420c",
+    "src/generation/paragraph.py": "e095954a08d5191abe797c1bb5df820f90b4bac4999db67c7718e72fe18c8f83",
+    "src/generation/prompt.py": "ba71eb974c9fcec948c04924c19058d19608c7d0c026a945989c53c61fb0725c",
+    "src/generation/validation.py": "ae3416e2cadeeae80474e7a58079093e54420c73c8de9286b865480cff835f57",
+    "src/retrieval/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/retrieval/dense.py": "4182dc226f1e5d46d4b94fcd887d796ac09ea685d596f3a217c2537ebc5e96a3",
+    "src/retrieval/hybrid.py": "c82d7be47e95b3419a617a5aaeaf5f6d0a271fcd144a85b38fd53d00d0cb5812",
+    "src/retrieval/index.py": "227f3d11eb4bf8a7913b0d658af543331364f0cd997a9b825264914c02ed031a",
+    "src/retrieval/readiness.py": "86b55af4ce81135ff487001a6ba4b8985dff275805da47981927e29c2f4f8c86",
+    "src/retrieval/refs.py": "5c770deff1141f65509955c3d62c9da6f47c3591da84e7f7f567b669a7342639",
+    "src/retrieval/retriever.py": "6e01e43aeceaf93fc6795c1e3f920662daed035caa87587ae4e1b84d9dc57ebe",
+    "src/retrieval/service.py": "e5aeac45740cf806d9abc8292db5c9e6ace6fa5f4f2cc8e106950e8d5c297b59",
+    "src/retrieval/terms.py": "34354c085495148a535c15c409f2a5761808e2fbc106b25141874117f5836a6e"
+  },
+  "model_identity": {
+    "available": true,
+    "model": "qwen3:8b-q4_K_M",
+    "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "size_bytes": 5225388164,
+    "family": "qwen3",
+    "quantization": "Q4_K_M",
+    "ollama_version": "0.33.0"
+  },
+  "limits": "Real planner, guards, state, routing and document selection; fixed non-legal RAG responses. No retrieval ranking, legal generation, legal verification or OCR quality is measured. Both existing splits are exposed regression data, not unseen acceptance.",
+  "legal_backend": "fixed_test_double",
+  "rows": [
+    {
+      "case_id": "ACC-001",
+      "turn": 1,
+      "input": "반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?",
+      "before_state": {
+        "version": 1,
+        "turn": 0,
+        "epoch": 0,
+        "topic": null,
+        "facts": {},
+        "history": [],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": null,
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "계약준비",
+        "facts": {
+          "contract_type": {
+            "value": "월세",
+            "evidence": "월세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?"
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "대화 계층 평가용 고정 응답입니다.",
+          "sources": [],
+          "turn": 1,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 계약준비\n계약 유형: 월세\n사용자 입력: 반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "question",
+        "facts": {
+          "contract_type": "월세",
+          "topic": "계약준비"
+        },
+        "query": "대화 주제: 계약준비\n계약 유형: 월세\n사용자 입력: 반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?"
+      },
+      "boundary": {
+        "query": "대화 주제: 계약준비\n계약 유형: 월세\n사용자 입력: 반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?",
+        "document_ids": []
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "raw_proposal": "{\"intent\": \"question\", \"topic\": \"계약준비\", \"action\": \"rag\", \"statements\": [{\"evidence\": \"월세\", \"field\": \"contract_type\", \"value\": \"월세\"}], \"clarify_field\": null, \"document_id\": null, \"style\": \"standard\"}",
+      "execution_error": null,
+      "model_calls": 1,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "elapsed_seconds": 3.865,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": true,
+          "expected": "question",
+          "actual": "question"
+        },
+        "facts": {
+          "passed": true,
+          "expected": {
+            "contract_type": "월세"
+          },
+          "actual": {
+            "contract_type": "월세",
+            "topic": "계약준비"
+          }
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_ended": "예"
+          },
+          "actual": {
+            "contract_type": "월세",
+            "topic": "계약준비"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "월세"
+          ],
+          "actual": "대화 주제: 계약준비\n계약 유형: 월세\n사용자 입력: 반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?"
+        },
+        "query_excludes": {
+          "passed": null,
+          "expected": [],
+          "actual": "대화 주제: 계약준비\n계약 유형: 월세\n사용자 입력: 반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?"
+        }
+      }
+    },
+    {
+      "case_id": "ACC-001",
+      "turn": 2,
+      "input": "그 내용을 처음 계약하는 사람도 알아듣게 요약해 주세요.",
+      "before_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "계약준비",
+        "facts": {
+          "contract_type": {
+            "value": "월세",
+            "evidence": "월세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?"
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "대화 계층 평가용 고정 응답입니다.",
+          "sources": [],
+          "turn": 1,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 계약준비\n계약 유형: 월세\n사용자 입력: 반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 0,
+        "topic": "계약준비",
+        "facts": {
+          "contract_type": {
+            "value": "월세",
+            "evidence": "월세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "그 내용을 처음 계약하는 사람도 알아듣게 요약해 주세요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "대화 계층 평가용 고정 응답입니다.",
+          "sources": [],
+          "turn": 2,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 계약준비\n계약 유형: 월세\n사용자 입력: 반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "explain",
+        "facts": {
+          "contract_type": "월세",
+          "topic": "계약준비"
+        },
+        "query": "대화 주제: 계약준비\n계약 유형: 월세\n직전 답변 질문: 대화 주제: 계약준비\n계약 유형: 월세\n사용자 입력: 반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?\n사용자 입력: 그 내용을 처음 계약하는 사람도 알아듣게 요약해 주세요."
+      },
+      "boundary": {
+        "query": "대화 주제: 계약준비\n계약 유형: 월세\n직전 답변 질문: 대화 주제: 계약준비\n계약 유형: 월세\n사용자 입력: 반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?\n사용자 입력: 그 내용을 처음 계약하는 사람도 알아듣게 요약해 주세요.",
+        "document_ids": []
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "raw_proposal": "{\"intent\": \"explain\", \"topic\": \"계약준비\", \"action\": \"rag\", \"statements\": [], \"clarify_field\": null, \"document_id\": null, \"style\": \"simple\"}",
+      "execution_error": null,
+      "model_calls": 1,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "elapsed_seconds": 2.888,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": true,
+          "expected": "explain",
+          "actual": "explain"
+        },
+        "facts": {
+          "passed": true,
+          "expected": {
+            "contract_type": "월세"
+          },
+          "actual": {
+            "contract_type": "월세",
+            "topic": "계약준비"
+          }
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_ended": "예"
+          },
+          "actual": {
+            "contract_type": "월세",
+            "topic": "계약준비"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "월세"
+          ],
+          "actual": "대화 주제: 계약준비\n계약 유형: 월세\n직전 답변 질문: 대화 주제: 계약준비\n계약 유형: 월세\n사용자 입력: 반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?\n사용자 입력: 그 내용을 처음 계약하는 사람도 알아듣게 요약해 주세요."
+        },
+        "query_excludes": {
+          "passed": null,
+          "expected": [],
+          "actual": "대화 주제: 계약준비\n계약 유형: 월세\n직전 답변 질문: 대화 주제: 계약준비\n계약 유형: 월세\n사용자 입력: 반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?\n사용자 입력: 그 내용을 처음 계약하는 사람도 알아듣게 요약해 주세요."
+        }
+      }
+    },
+    {
+      "case_id": "ACC-002",
+      "turn": 1,
+      "input": "응, 맞아요.",
+      "before_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "deposit_returned": {
+            "value": "아니요",
+            "evidence": "아니요",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "예",
+            "evidence": "예",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "상담 주제: 보증금반환. 보증금 반환: 아니요; 계약 종료: 예"
+          }
+        ],
+        "changes": [],
+        "pending": {
+          "field": "living_in_property",
+          "question": "현재도 계약한 집에서 생활하고 계신가요?",
+          "attempts": 1
+        },
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": null,
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "deposit_returned": {
+            "value": "아니요",
+            "evidence": "아니요",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "예",
+            "evidence": "예",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "living_in_property": {
+            "value": "예",
+            "evidence": "응, 맞아요",
+            "source_turn": 2,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "상담 주제: 보증금반환. 보증금 반환: 아니요; 계약 종료: 예"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "응, 맞아요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "대화 계층 평가용 고정 응답입니다.",
+          "sources": [],
+          "turn": 2,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 응, 맞아요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "clarification_answer",
+        "facts": {
+          "deposit_returned": "아니요",
+          "contract_ended": "예",
+          "living_in_property": "예",
+          "topic": "보증금반환"
+        },
+        "query": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 응, 맞아요."
+      },
+      "boundary": {
+        "query": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 응, 맞아요.",
+        "document_ids": []
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "raw_proposal": "{\"intent\": \"clarification_answer\", \"topic\": \"보증금반환\", \"action\": \"rag\", \"statements\": [{\"evidence\": \"응, 맞아요\", \"field\": \"living_in_property\", \"value\": \"예\"}], \"clarify_field\": null, \"document_id\": null, \"style\": \"standard\"}",
+      "execution_error": null,
+      "model_calls": 1,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "elapsed_seconds": 4.482,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag",
+            "clarify"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": true,
+          "expected": "clarification_answer",
+          "actual": "clarification_answer"
+        },
+        "facts": {
+          "passed": true,
+          "expected": {
+            "living_in_property": "예",
+            "contract_ended": "예",
+            "deposit_returned": "아니요"
+          },
+          "actual": {
+            "deposit_returned": "아니요",
+            "contract_ended": "예",
+            "living_in_property": "예",
+            "topic": "보증금반환"
+          }
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "living_in_property": "아니요"
+          },
+          "actual": {
+            "deposit_returned": "아니요",
+            "contract_ended": "예",
+            "living_in_property": "예",
+            "topic": "보증금반환"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "보증금"
+          ],
+          "actual": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 응, 맞아요."
+        },
+        "query_excludes": {
+          "passed": true,
+          "expected": [
+            "퇴거한 상태"
+          ],
+          "actual": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 응, 맞아요."
+        }
+      }
+    },
+    {
+      "case_id": "ACC-002",
+      "turn": 2,
+      "input": "그 조건에서 도움받을 수 있는 기관을 안내해 주세요.",
+      "before_state": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "deposit_returned": {
+            "value": "아니요",
+            "evidence": "아니요",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "예",
+            "evidence": "예",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "living_in_property": {
+            "value": "예",
+            "evidence": "응, 맞아요",
+            "source_turn": 2,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "상담 주제: 보증금반환. 보증금 반환: 아니요; 계약 종료: 예"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "응, 맞아요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "대화 계층 평가용 고정 응답입니다.",
+          "sources": [],
+          "turn": 2,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 응, 맞아요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 3,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "deposit_returned": {
+            "value": "아니요",
+            "evidence": "아니요",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "예",
+            "evidence": "예",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "living_in_property": {
+            "value": "예",
+            "evidence": "응, 맞아요",
+            "source_turn": 2,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "상담 주제: 보증금반환. 보증금 반환: 아니요; 계약 종료: 예"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "응, 맞아요."
+          },
+          {
+            "role": "user",
+            "turn": 3,
+            "content": "그 조건에서 도움받을 수 있는 기관을 안내해 주세요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "대화 계층 평가용 고정 응답입니다.",
+          "sources": [],
+          "turn": 3,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 응, 맞아요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "followup",
+        "facts": {
+          "deposit_returned": "아니요",
+          "contract_ended": "예",
+          "living_in_property": "예",
+          "topic": "보증금반환"
+        },
+        "query": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n직전 답변 질문: 대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 응, 맞아요.\n사용자 입력: 그 조건에서 도움받을 수 있는 기관을 안내해 주세요."
+      },
+      "boundary": {
+        "query": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n직전 답변 질문: 대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 응, 맞아요.\n사용자 입력: 그 조건에서 도움받을 수 있는 기관을 안내해 주세요.",
+        "document_ids": []
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "raw_proposal": "{\"intent\": \"followup\", \"topic\": \"보증금반환\", \"action\": \"rag\", \"statements\": [], \"clarify_field\": null, \"document_id\": null, \"style\": \"standard\"}",
+      "execution_error": null,
+      "model_calls": 1,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "elapsed_seconds": 3.254,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": true,
+          "expected": "followup",
+          "actual": "followup"
+        },
+        "facts": {
+          "passed": true,
+          "expected": {
+            "living_in_property": "예",
+            "deposit_returned": "아니요"
+          },
+          "actual": {
+            "deposit_returned": "아니요",
+            "contract_ended": "예",
+            "living_in_property": "예",
+            "topic": "보증금반환"
+          }
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "living_in_property": "아니요"
+          },
+          "actual": {
+            "deposit_returned": "아니요",
+            "contract_ended": "예",
+            "living_in_property": "예",
+            "topic": "보증금반환"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "보증금",
+            "기관"
+          ],
+          "actual": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n직전 답변 질문: 대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 응, 맞아요.\n사용자 입력: 그 조건에서 도움받을 수 있는 기관을 안내해 주세요."
+        },
+        "query_excludes": {
+          "passed": true,
+          "expected": [
+            "퇴거한 상태"
+          ],
+          "actual": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n직전 답변 질문: 대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 응, 맞아요.\n사용자 입력: 그 조건에서 도움받을 수 있는 기관을 안내해 주세요."
+        }
+      }
+    },
+    {
+      "case_id": "ACC-003",
+      "turn": 1,
+      "input": "전세 만기가 지나 보증금 반환을 기다리는 중입니다. 제가 챙길 내용을 알고 싶어요.",
+      "before_state": {
+        "version": 1,
+        "turn": 0,
+        "epoch": 0,
+        "topic": null,
+        "facts": {},
+        "history": [],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": null,
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "contract_type": {
+            "value": "전세",
+            "evidence": "전세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "예",
+            "evidence": "만기가 지나",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "deposit_returned": {
+            "value": "아니요",
+            "evidence": "보증금 반환을 기다리는 중입니다",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "전세 만기가 지나 보증금 반환을 기다리는 중입니다. 제가 챙길 내용을 알고 싶어요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "대화 계층 평가용 고정 응답입니다.",
+          "sources": [],
+          "turn": 1,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n사용자 입력: 전세 만기가 지나 보증금 반환을 기다리는 중입니다. 제가 챙길 내용을 알고 싶어요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "question",
+        "facts": {
+          "contract_type": "전세",
+          "contract_ended": "예",
+          "deposit_returned": "아니요",
+          "topic": "보증금반환"
+        },
+        "query": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n사용자 입력: 전세 만기가 지나 보증금 반환을 기다리는 중입니다. 제가 챙길 내용을 알고 싶어요."
+      },
+      "boundary": {
+        "query": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n사용자 입력: 전세 만기가 지나 보증금 반환을 기다리는 중입니다. 제가 챙길 내용을 알고 싶어요.",
+        "document_ids": []
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "raw_proposal": "{\"intent\": \"question\", \"topic\": \"보증금반환\", \"action\": \"rag\", \"statements\": [{\"evidence\": \"전세\", \"field\": \"contract_type\", \"value\": \"전세\"}, {\"evidence\": \"만기가 지나\", \"field\": \"contract_ended\", \"value\": \"예\"}, {\"evidence\": \"보증금 반환을 기다리는 중입니다\", \"field\": \"deposit_returned\", \"value\": \"아니요\"}], \"clarify_field\": null, \"document_id\": null, \"style\": \"standard\"}",
+      "execution_error": null,
+      "model_calls": 1,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "elapsed_seconds": 7.056,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag",
+            "clarify"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": true,
+          "expected": "question",
+          "actual": "question"
+        },
+        "facts": {
+          "passed": true,
+          "expected": {
+            "contract_type": "전세",
+            "contract_ended": "예",
+            "deposit_returned": "아니요",
+            "topic": "보증금반환"
+          },
+          "actual": {
+            "contract_type": "전세",
+            "contract_ended": "예",
+            "deposit_returned": "아니요",
+            "topic": "보증금반환"
+          }
+        },
+        "forbidden_facts": {
+          "passed": null,
+          "expected": {},
+          "actual": {
+            "contract_type": "전세",
+            "contract_ended": "예",
+            "deposit_returned": "아니요",
+            "topic": "보증금반환"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "보증금"
+          ],
+          "actual": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n사용자 입력: 전세 만기가 지나 보증금 반환을 기다리는 중입니다. 제가 챙길 내용을 알고 싶어요."
+        },
+        "query_excludes": {
+          "passed": null,
+          "expected": [],
+          "actual": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n사용자 입력: 전세 만기가 지나 보증금 반환을 기다리는 중입니다. 제가 챙길 내용을 알고 싶어요."
+        }
+      }
+    },
+    {
+      "case_id": "ACC-003",
+      "turn": 2,
+      "input": "제가 잘못 적었네요. 만기가 지난 게 아니라 아직 두 달 남았습니다. 나머지 설명은 그대로예요.",
+      "before_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "contract_type": {
+            "value": "전세",
+            "evidence": "전세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "예",
+            "evidence": "만기가 지나",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "deposit_returned": {
+            "value": "아니요",
+            "evidence": "보증금 반환을 기다리는 중입니다",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "전세 만기가 지나 보증금 반환을 기다리는 중입니다. 제가 챙길 내용을 알고 싶어요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "대화 계층 평가용 고정 응답입니다.",
+          "sources": [],
+          "turn": 1,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n사용자 입력: 전세 만기가 지나 보증금 반환을 기다리는 중입니다. 제가 챙길 내용을 알고 싶어요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "contract_type": {
+            "value": "전세",
+            "evidence": "전세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "아니요",
+            "evidence": "만기가 지난 게 아니라",
+            "source_turn": 2,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "deposit_returned": {
+            "value": "아니요",
+            "evidence": "보증금 반환을 기다리는 중입니다",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "전세 만기가 지나 보증금 반환을 기다리는 중입니다. 제가 챙길 내용을 알고 싶어요."
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "제가 잘못 적었네요. 만기가 지난 게 아니라 아직 두 달 남았습니다. 나머지 설명은 그대로예요."
+          }
+        ],
+        "changes": [
+          {
+            "field": "contract_ended",
+            "previous": {
+              "value": "예",
+              "evidence": "만기가 지나",
+              "source_turn": 1,
+              "source": "user_statement",
+              "certainty": "reported"
+            },
+            "replacement": {
+              "value": "아니요",
+              "evidence": "만기가 지난 게 아니라",
+              "source_turn": 2,
+              "source": "user_statement",
+              "certainty": "reported"
+            }
+          }
+        ],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "대화 계층 평가용 고정 응답입니다.",
+          "sources": [],
+          "turn": 2,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 아니요\n보증금 반환 여부: 아니요\n사용자 입력: 제가 잘못 적었네요. 만기가 지난 게 아니라 아직 두 달 남았습니다. 나머지 설명은 그대로예요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "correction",
+        "facts": {
+          "contract_type": "전세",
+          "contract_ended": "아니요",
+          "deposit_returned": "아니요",
+          "topic": "보증금반환"
+        },
+        "query": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 아니요\n보증금 반환 여부: 아니요\n사용자 입력: 제가 잘못 적었네요. 만기가 지난 게 아니라 아직 두 달 남았습니다. 나머지 설명은 그대로예요."
+      },
+      "boundary": {
+        "query": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 아니요\n보증금 반환 여부: 아니요\n사용자 입력: 제가 잘못 적었네요. 만기가 지난 게 아니라 아직 두 달 남았습니다. 나머지 설명은 그대로예요.",
+        "document_ids": []
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "raw_proposal": "{\"intent\": \"correction\", \"topic\": \"보증금반환\", \"action\": \"rag\", \"statements\": [{\"evidence\": \"만기가 지난 게 아니라\", \"field\": \"contract_ended\", \"value\": \"아니요\"}], \"clarify_field\": null, \"document_id\": null, \"style\": \"standard\"}",
+      "execution_error": null,
+      "model_calls": 1,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "elapsed_seconds": 4.65,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag",
+            "clarify",
+            "social"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": true,
+          "expected": "correction",
+          "actual": "correction"
+        },
+        "facts": {
+          "passed": true,
+          "expected": {
+            "contract_type": "전세",
+            "contract_ended": "아니요",
+            "deposit_returned": "아니요"
+          },
+          "actual": {
+            "contract_type": "전세",
+            "contract_ended": "아니요",
+            "deposit_returned": "아니요",
+            "topic": "보증금반환"
+          }
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_ended": "예"
+          },
+          "actual": {
+            "contract_type": "전세",
+            "contract_ended": "아니요",
+            "deposit_returned": "아니요",
+            "topic": "보증금반환"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "보증금"
+          ],
+          "actual": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 아니요\n보증금 반환 여부: 아니요\n사용자 입력: 제가 잘못 적었네요. 만기가 지난 게 아니라 아직 두 달 남았습니다. 나머지 설명은 그대로예요."
+        },
+        "query_excludes": {
+          "passed": false,
+          "expected": [
+            "계약이 종료된",
+            "만기가 지난"
+          ],
+          "actual": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 아니요\n보증금 반환 여부: 아니요\n사용자 입력: 제가 잘못 적었네요. 만기가 지난 게 아니라 아직 두 달 남았습니다. 나머지 설명은 그대로예요."
+        }
+      }
+    },
+    {
+      "case_id": "ACC-004",
+      "turn": 1,
+      "input": "동생의 월세 집에서 누수가 생겼대요. 수리는 누구와 이야기해야 하나요?",
+      "before_state": {
+        "version": 1,
+        "turn": 0,
+        "epoch": 0,
+        "topic": null,
+        "facts": {},
+        "history": [],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": null,
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "시설수리",
+        "facts": {
+          "contract_type": {
+            "value": "월세",
+            "evidence": "동생의 월세 집",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "동생의 월세 집에서 누수가 생겼대요. 수리는 누구와 이야기해야 하나요?"
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "대화 계층 평가용 고정 응답입니다.",
+          "sources": [],
+          "turn": 1,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 시설수리\n계약 유형: 월세\n사용자 입력: 동생의 월세 집에서 누수가 생겼대요. 수리는 누구와 이야기해야 하나요?"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "question",
+        "facts": {
+          "contract_type": "월세",
+          "topic": "시설수리"
+        },
+        "query": "대화 주제: 시설수리\n계약 유형: 월세\n사용자 입력: 동생의 월세 집에서 누수가 생겼대요. 수리는 누구와 이야기해야 하나요?"
+      },
+      "boundary": {
+        "query": "대화 주제: 시설수리\n계약 유형: 월세\n사용자 입력: 동생의 월세 집에서 누수가 생겼대요. 수리는 누구와 이야기해야 하나요?",
+        "document_ids": []
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "raw_proposal": "{\"intent\": \"question\", \"topic\": \"시설수리\", \"action\": \"rag\", \"statements\": [{\"evidence\": \"동생의 월세 집\", \"field\": \"contract_type\", \"value\": \"월세\"}, {\"evidence\": \"누수가 생겼대요\", \"field\": \"subject\", \"value\": \"동생\"}], \"clarify_field\": null, \"document_id\": null, \"style\": \"standard\"}",
+      "execution_error": null,
+      "model_calls": 1,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "elapsed_seconds": 5.541,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag",
+            "clarify"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": true,
+          "expected": "question",
+          "actual": "question"
+        },
+        "facts": {
+          "passed": true,
+          "expected": {
+            "contract_type": "월세",
+            "topic": "시설수리"
+          },
+          "actual": {
+            "contract_type": "월세",
+            "topic": "시설수리"
+          }
+        },
+        "forbidden_facts": {
+          "passed": null,
+          "expected": {},
+          "actual": {
+            "contract_type": "월세",
+            "topic": "시설수리"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "누수",
+            "수리"
+          ],
+          "actual": "대화 주제: 시설수리\n계약 유형: 월세\n사용자 입력: 동생의 월세 집에서 누수가 생겼대요. 수리는 누구와 이야기해야 하나요?"
+        },
+        "query_excludes": {
+          "passed": null,
+          "expected": [],
+          "actual": "대화 주제: 시설수리\n계약 유형: 월세\n사용자 입력: 동생의 월세 집에서 누수가 생겼대요. 수리는 누구와 이야기해야 하나요?"
+        }
+      }
+    },
+    {
+      "case_id": "ACC-004",
+      "turn": 2,
+      "input": "동생 건은 여기까지 할게요. 저는 전세 계약 갱신을 원하는데 언제 의사를 전달해야 하나요?",
+      "before_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "시설수리",
+        "facts": {
+          "contract_type": {
+            "value": "월세",
+            "evidence": "동생의 월세 집",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "동생의 월세 집에서 누수가 생겼대요. 수리는 누구와 이야기해야 하나요?"
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "대화 계층 평가용 고정 응답입니다.",
+          "sources": [],
+          "turn": 1,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 시설수리\n계약 유형: 월세\n사용자 입력: 동생의 월세 집에서 누수가 생겼대요. 수리는 누구와 이야기해야 하나요?"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 1,
+        "topic": "계약갱신",
+        "facts": {
+          "contract_type": {
+            "value": "전세",
+            "evidence": "전세",
+            "source_turn": 2,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "동생 건은 여기까지 할게요. 저는 전세 계약 갱신을 원하는데 언제 의사를 전달해야 하나요?"
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "대화 계층 평가용 고정 응답입니다.",
+          "sources": [],
+          "turn": 2,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 계약갱신\n계약 유형: 전세\n사용자 입력: 동생 건은 여기까지 할게요. 저는 전세 계약 갱신을 원하는데 언제 의사를 전달해야 하나요?"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "topic_change",
+        "facts": {
+          "contract_type": "전세",
+          "topic": "계약갱신"
+        },
+        "query": "대화 주제: 계약갱신\n계약 유형: 전세\n사용자 입력: 동생 건은 여기까지 할게요. 저는 전세 계약 갱신을 원하는데 언제 의사를 전달해야 하나요?"
+      },
+      "boundary": {
+        "query": "대화 주제: 계약갱신\n계약 유형: 전세\n사용자 입력: 동생 건은 여기까지 할게요. 저는 전세 계약 갱신을 원하는데 언제 의사를 전달해야 하나요?",
+        "document_ids": []
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "raw_proposal": "{\"intent\": \"topic_change\", \"topic\": \"계약갱신\", \"action\": \"rag\", \"statements\": [{\"evidence\": \"전세\", \"field\": \"contract_type\", \"value\": \"전세\"}], \"clarify_field\": null, \"document_id\": null, \"style\": \"standard\"}",
+      "execution_error": null,
+      "model_calls": 1,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "elapsed_seconds": 4.307,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": true,
+          "expected": "topic_change",
+          "actual": "topic_change"
+        },
+        "facts": {
+          "passed": true,
+          "expected": {
+            "contract_type": "전세",
+            "topic": "계약갱신"
+          },
+          "actual": {
+            "contract_type": "전세",
+            "topic": "계약갱신"
+          }
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_type": "월세",
+            "topic": "시설수리"
+          },
+          "actual": {
+            "contract_type": "전세",
+            "topic": "계약갱신"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "갱신"
+          ],
+          "actual": "대화 주제: 계약갱신\n계약 유형: 전세\n사용자 입력: 동생 건은 여기까지 할게요. 저는 전세 계약 갱신을 원하는데 언제 의사를 전달해야 하나요?"
+        },
+        "query_excludes": {
+          "passed": true,
+          "expected": [
+            "누수",
+            "수리"
+          ],
+          "actual": "대화 주제: 계약갱신\n계약 유형: 전세\n사용자 입력: 동생 건은 여기까지 할게요. 저는 전세 계약 갱신을 원하는데 언제 의사를 전달해야 하나요?"
+        }
+      }
+    },
+    {
+      "case_id": "ACC-005",
+      "turn": 1,
+      "input": "첨부한 임대차계약서에 매달 내는 돈은 얼마로 기재돼 있죠?",
+      "before_state": {
+        "version": 1,
+        "turn": 0,
+        "epoch": 0,
+        "topic": null,
+        "facts": {},
+        "history": [],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": null,
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "계약준비",
+        "facts": {},
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "첨부한 임대차계약서에 매달 내는 돈은 얼마로 기재돼 있죠?"
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": "doc-a",
+        "last_answer": {
+          "content": "대화 계층 평가용 고정 응답입니다.",
+          "sources": [],
+          "turn": 1,
+          "validation": "existing_pipeline_passed",
+          "query": "선택 문서: 임대차계약서\n대화 주제: 계약준비\n사용자 입력: 첨부한 임대차계약서에 매달 내는 돈은 얼마로 기재돼 있죠?"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "document_question",
+        "facts": {
+          "topic": "계약준비"
+        },
+        "query": "선택 문서: 임대차계약서\n대화 주제: 계약준비\n사용자 입력: 첨부한 임대차계약서에 매달 내는 돈은 얼마로 기재돼 있죠?"
+      },
+      "boundary": {
+        "query": "선택 문서: 임대차계약서\n대화 주제: 계약준비\n사용자 입력: 첨부한 임대차계약서에 매달 내는 돈은 얼마로 기재돼 있죠?",
+        "document_ids": [
+          "doc-a"
+        ]
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "raw_proposal": "{\"intent\": \"document_question\", \"topic\": \"계약준비\", \"action\": \"rag\", \"statements\": [{\"evidence\": \"매달 내는 돈\", \"field\": \"monthly_rent\", \"value\": \"모름\"}], \"clarify_field\": \"document\", \"document_id\": \"doc-a\", \"style\": \"standard\"}",
+      "execution_error": null,
+      "model_calls": 1,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "elapsed_seconds": 4.471,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": true,
+          "expected": "document_question",
+          "actual": "document_question"
+        },
+        "facts": {
+          "passed": null,
+          "expected": {},
+          "actual": {
+            "topic": "계약준비"
+          }
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_ended": "예"
+          },
+          "actual": {
+            "topic": "계약준비"
+          }
+        },
+        "query_contains": {
+          "passed": null,
+          "expected": [],
+          "actual": "선택 문서: 임대차계약서\n대화 주제: 계약준비\n사용자 입력: 첨부한 임대차계약서에 매달 내는 돈은 얼마로 기재돼 있죠?"
+        },
+        "query_excludes": {
+          "passed": null,
+          "expected": [],
+          "actual": "선택 문서: 임대차계약서\n대화 주제: 계약준비\n사용자 입력: 첨부한 임대차계약서에 매달 내는 돈은 얼마로 기재돼 있죠?"
+        }
+      }
+    },
+    {
+      "case_id": "ACC-005",
+      "turn": 2,
+      "input": "거기에 시설물 이상에 관해서 적힌 문구도 풀어주세요.",
+      "before_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "계약준비",
+        "facts": {},
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "첨부한 임대차계약서에 매달 내는 돈은 얼마로 기재돼 있죠?"
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": "doc-a",
+        "last_answer": {
+          "content": "대화 계층 평가용 고정 응답입니다.",
+          "sources": [],
+          "turn": 1,
+          "validation": "existing_pipeline_passed",
+          "query": "선택 문서: 임대차계약서\n대화 주제: 계약준비\n사용자 입력: 첨부한 임대차계약서에 매달 내는 돈은 얼마로 기재돼 있죠?"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 0,
+        "topic": "계약준비",
+        "facts": {},
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "첨부한 임대차계약서에 매달 내는 돈은 얼마로 기재돼 있죠?"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "거기에 시설물 이상에 관해서 적힌 문구도 풀어주세요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": "doc-a",
+        "last_answer": {
+          "content": "대화 계층 평가용 고정 응답입니다.",
+          "sources": [],
+          "turn": 2,
+          "validation": "existing_pipeline_passed",
+          "query": "선택 문서: 임대차계약서\n대화 주제: 계약준비\n사용자 입력: 거기에 시설물 이상에 관해서 적힌 문구도 풀어주세요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "document_question",
+        "facts": {
+          "topic": "계약준비"
+        },
+        "query": "선택 문서: 임대차계약서\n대화 주제: 계약준비\n사용자 입력: 거기에 시설물 이상에 관해서 적힌 문구도 풀어주세요."
+      },
+      "boundary": {
+        "query": "선택 문서: 임대차계약서\n대화 주제: 계약준비\n사용자 입력: 거기에 시설물 이상에 관해서 적힌 문구도 풀어주세요.",
+        "document_ids": [
+          "doc-a"
+        ]
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "raw_proposal": "{\"intent\": \"document_question\", \"topic\": \"계약준비\", \"action\": \"rag\", \"statements\": [{\"evidence\": \"시설물 이상\", \"field\": \"property_type\", \"value\": \"주택\"}, {\"evidence\": \"시설물 이상\", \"field\": \"contract_type\", \"value\": \"월세\"}], \"clarify_field\": null, \"document_id\": \"doc-a\", \"style\": \"standard\"}",
+      "execution_error": null,
+      "model_calls": 1,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "elapsed_seconds": 5.753,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": true,
+          "expected": "document_question",
+          "actual": "document_question"
+        },
+        "facts": {
+          "passed": null,
+          "expected": {},
+          "actual": {
+            "topic": "계약준비"
+          }
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_ended": "예"
+          },
+          "actual": {
+            "topic": "계약준비"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "시설"
+          ],
+          "actual": "선택 문서: 임대차계약서\n대화 주제: 계약준비\n사용자 입력: 거기에 시설물 이상에 관해서 적힌 문구도 풀어주세요."
+        },
+        "query_excludes": {
+          "passed": null,
+          "expected": [],
+          "actual": "선택 문서: 임대차계약서\n대화 주제: 계약준비\n사용자 입력: 거기에 시설물 이상에 관해서 적힌 문구도 풀어주세요."
+        }
+      }
+    },
+    {
+      "case_id": "ACC-006",
+      "turn": 1,
+      "input": "문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요.",
+      "before_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "계약갱신",
+        "facts": {
+          "contract_type": {
+            "value": "전세",
+            "evidence": "전세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "상담 주제: 계약갱신. 계약 형태: 전세"
+          }
+        ],
+        "changes": [],
+        "pending": {
+          "field": "contract_ended",
+          "question": "계약이 이미 종료됐는지 알려주실 수 있나요?",
+          "attempts": 1
+        },
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": null,
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 0,
+        "topic": "계약갱신",
+        "facts": {
+          "contract_type": {
+            "value": "전세",
+            "evidence": "전세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "모름",
+            "evidence": "확답하기 어렵네요",
+            "source_turn": 2,
+            "source": "user_statement",
+            "certainty": "unknown"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "상담 주제: 계약갱신. 계약 형태: 전세"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "대화 계층 평가용 고정 응답입니다.",
+          "sources": [],
+          "turn": 2,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 계약갱신\n계약 유형: 전세\n계약 종료 여부: 모름\n사용자 입력: 문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "clarification_answer",
+        "facts": {
+          "contract_type": "전세",
+          "contract_ended": "모름",
+          "topic": "계약갱신"
+        },
+        "query": "대화 주제: 계약갱신\n계약 유형: 전세\n계약 종료 여부: 모름\n사용자 입력: 문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요."
+      },
+      "boundary": {
+        "query": "대화 주제: 계약갱신\n계약 유형: 전세\n계약 종료 여부: 모름\n사용자 입력: 문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요.",
+        "document_ids": []
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "raw_proposal": "{\"intent\": \"clarification_answer\", \"topic\": \"계약갱신\", \"action\": \"rag\", \"statements\": [{\"evidence\": \"확답하기 어렵네요\", \"field\": \"contract_ended\", \"value\": \"모름\"}], \"clarify_field\": null, \"document_id\": null, \"style\": \"standard\"}",
+      "execution_error": null,
+      "model_calls": 1,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "elapsed_seconds": 4.575,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag",
+            "clarify"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": true,
+          "expected": "clarification_answer",
+          "actual": "clarification_answer"
+        },
+        "facts": {
+          "passed": true,
+          "expected": {
+            "contract_type": "전세"
+          },
+          "actual": {
+            "contract_type": "전세",
+            "contract_ended": "모름",
+            "topic": "계약갱신"
+          }
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_ended": "예"
+          },
+          "actual": {
+            "contract_type": "전세",
+            "contract_ended": "모름",
+            "topic": "계약갱신"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "갱신"
+          ],
+          "actual": "대화 주제: 계약갱신\n계약 유형: 전세\n계약 종료 여부: 모름\n사용자 입력: 문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요."
+        },
+        "query_excludes": {
+          "passed": true,
+          "expected": [
+            "계약이 종료된"
+          ],
+          "actual": "대화 주제: 계약갱신\n계약 유형: 전세\n계약 종료 여부: 모름\n사용자 입력: 문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요."
+        }
+      }
+    },
+    {
+      "case_id": "ACC-006",
+      "turn": 2,
+      "input": "그건 나중에 확인할게요. 우선 계약갱신의 일반적인 조건을 설명해 주세요.",
+      "before_state": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 0,
+        "topic": "계약갱신",
+        "facts": {
+          "contract_type": {
+            "value": "전세",
+            "evidence": "전세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "모름",
+            "evidence": "확답하기 어렵네요",
+            "source_turn": 2,
+            "source": "user_statement",
+            "certainty": "unknown"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "상담 주제: 계약갱신. 계약 형태: 전세"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "대화 계층 평가용 고정 응답입니다.",
+          "sources": [],
+          "turn": 2,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 계약갱신\n계약 유형: 전세\n계약 종료 여부: 모름\n사용자 입력: 문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 3,
+        "epoch": 0,
+        "topic": "계약갱신",
+        "facts": {
+          "contract_type": {
+            "value": "전세",
+            "evidence": "전세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "모름",
+            "evidence": "확답하기 어렵네요",
+            "source_turn": 2,
+            "source": "user_statement",
+            "certainty": "unknown"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "상담 주제: 계약갱신. 계약 형태: 전세"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요."
+          },
+          {
+            "role": "user",
+            "turn": 3,
+            "content": "그건 나중에 확인할게요. 우선 계약갱신의 일반적인 조건을 설명해 주세요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "대화 계층 평가용 고정 응답입니다.",
+          "sources": [],
+          "turn": 3,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 계약갱신\n계약 유형: 전세\n계약 종료 여부: 모름\n사용자 입력: 문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "explain",
+        "facts": {
+          "contract_type": "전세",
+          "contract_ended": "모름",
+          "topic": "계약갱신"
+        },
+        "query": "대화 주제: 계약갱신\n계약 유형: 전세\n계약 종료 여부: 모름\n직전 답변 질문: 대화 주제: 계약갱신\n계약 유형: 전세\n계약 종료 여부: 모름\n사용자 입력: 문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요.\n사용자 입력: 그건 나중에 확인할게요. 우선 계약갱신의 일반적인 조건을 설명해 주세요."
+      },
+      "boundary": {
+        "query": "대화 주제: 계약갱신\n계약 유형: 전세\n계약 종료 여부: 모름\n직전 답변 질문: 대화 주제: 계약갱신\n계약 유형: 전세\n계약 종료 여부: 모름\n사용자 입력: 문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요.\n사용자 입력: 그건 나중에 확인할게요. 우선 계약갱신의 일반적인 조건을 설명해 주세요.",
+        "document_ids": []
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "raw_proposal": "{\"intent\": \"explain\", \"topic\": \"계약갱신\", \"action\": \"rag\", \"statements\": [{\"evidence\": \"계약갱신\", \"field\": \"subject\", \"value\": \"계약갱신\"}, {\"evidence\": \"전세\", \"field\": \"contract_type\", \"value\": \"전세\"}], \"clarify_field\": null, \"document_id\": null, \"style\": \"standard\"}",
+      "execution_error": null,
+      "model_calls": 1,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "elapsed_seconds": 5.599,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": false,
+          "expected": "followup",
+          "actual": "explain"
+        },
+        "facts": {
+          "passed": true,
+          "expected": {
+            "contract_type": "전세",
+            "topic": "계약갱신"
+          },
+          "actual": {
+            "contract_type": "전세",
+            "contract_ended": "모름",
+            "topic": "계약갱신"
+          }
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_ended": "예"
+          },
+          "actual": {
+            "contract_type": "전세",
+            "contract_ended": "모름",
+            "topic": "계약갱신"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "갱신"
+          ],
+          "actual": "대화 주제: 계약갱신\n계약 유형: 전세\n계약 종료 여부: 모름\n직전 답변 질문: 대화 주제: 계약갱신\n계약 유형: 전세\n계약 종료 여부: 모름\n사용자 입력: 문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요.\n사용자 입력: 그건 나중에 확인할게요. 우선 계약갱신의 일반적인 조건을 설명해 주세요."
+        },
+        "query_excludes": {
+          "passed": true,
+          "expected": [
+            "계약이 종료된"
+          ],
+          "actual": "대화 주제: 계약갱신\n계약 유형: 전세\n계약 종료 여부: 모름\n직전 답변 질문: 대화 주제: 계약갱신\n계약 유형: 전세\n계약 종료 여부: 모름\n사용자 입력: 문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요.\n사용자 입력: 그건 나중에 확인할게요. 우선 계약갱신의 일반적인 조건을 설명해 주세요."
+        }
+      }
+    }
+  ],
+  "source_unchanged": true,
+  "model_unchanged": true,
+  "summary": {
+    "scope": "Conversation behavior checks only; not legal correctness or safety validation.",
+    "turn_count": 12,
+    "checks": {
+      "action": {
+        "passed": 12,
+        "failed": 0,
+        "not_observable": 0
+      },
+      "intent": {
+        "passed": 11,
+        "failed": 1,
+        "not_observable": 0
+      },
+      "facts": {
+        "passed": 10,
+        "failed": 0,
+        "not_observable": 2
+      },
+      "forbidden_facts": {
+        "passed": 10,
+        "failed": 0,
+        "not_observable": 2
+      },
+      "query_contains": {
+        "passed": 11,
+        "failed": 0,
+        "not_observable": 1
+      },
+      "query_excludes": {
+        "passed": 5,
+        "failed": 1,
+        "not_observable": 6
+      }
+    },
+    "latency_seconds": {
+      "sample_count": 12,
+      "p50": 4.5285,
+      "p95": 6.33935,
+      "max": 7.056
+    },
+    "total_model_calls": 12,
+    "model_call_observation_count": 12,
+    "execution_error_count": 0
+  }
+}

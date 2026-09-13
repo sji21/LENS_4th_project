@@ -1,4 +1,4 @@
-"""Discard a narrowly defined repetition of an existing user statement.
+"""Normalize unsupported proposals without inventing or reattributing facts.
 
 This model-output adapter does not relax the strict decision parser or replace
 source quotes. A discarded update leaves the stored fact's original source and
@@ -8,8 +8,80 @@ evaluating model compliance; normalized output is not an originally valid reply.
 from copy import deepcopy
 import json
 
-from .dialogue_contract import DecisionError, _check_meaning, parse_decision
-from .dialogue_state import ensure_dialogue
+from .dialogue_contract import FACT_FIELDS, DecisionError, _check_meaning, _unique_object, parse_decision
+from .dialogue_state import apply_user_update, ensure_dialogue
+
+
+def normalize_optional_statements(raw, *, state, user):
+    """Drop unsupported descriptive fields, never repair a core condition.
+
+    This is only a proposal adapter. The complete routing/document/query contract
+    still runs afterwards. Identical repetitions and unstated defaults for unset
+    fields may be removed; conflicting values and invalid amounts, dates or
+    yes/no conditions remain errors.
+    """
+    payload = json.loads(raw, object_pairs_hook=_unique_object)
+    updates = payload.get("updates")
+    if not isinstance(updates, list) or len(updates) > len(FACT_FIELDS):
+        return raw, ()
+    seen = {}
+    for update in updates:
+        if not isinstance(update, dict) or set(update) != {"field", "value", "evidence"} or not isinstance(update["field"], str):
+            return raw, ()
+        field = update["field"]
+        if field in seen and seen[field] != update:
+            return raw, ()
+        seen[field] = update
+    dialogue = ensure_dialogue(deepcopy(state))
+    kept, diagnostics = [], []
+    for update in updates:
+        if not isinstance(update, dict) or set(update) != {"field", "value", "evidence"}:
+            return raw, ()
+        if update in kept:
+            diagnostics.append({"field": update["field"], "reason": "identical_statement_removed"})
+            continue
+        field = update["field"]
+        if isinstance(field, str) and field in {"subject", "role", "property_type"}:
+            try:
+                apply_user_update(deepcopy(state), user=user,
+                                  updates={field: {k: update[k] for k in ("value", "evidence")}})
+                _check_meaning(field, update["value"], update["evidence"])
+            except (DecisionError, ValueError):
+                # Dropping a bad person/building proposal must not conceal a
+                # potentially missed case transition. Ask before using old facts.
+                if dialogue["facts"] and payload.get("topic") not in (None, dialogue["topic"]) and not payload.get("topic_changed"):
+                    return raw, ()
+                diagnostics.append({"field": field, "reason": "unsupported_optional_statement_removed"})
+                continue
+        if (isinstance(field, str) and field in FACT_FIELDS and update["value"] == "모름"
+                and field not in dialogue["facts"]
+                and field != (dialogue["pending"] or {}).get("field")):
+            try:
+                apply_user_update(deepcopy(state), user=user,
+                                  updates={field: {k: update[k] for k in ("value", "evidence")}})
+                _check_meaning(field, update["value"], update["evidence"])
+            except DecisionError as error:
+                if error.code == "unknown_without_statement":
+                    diagnostics.append({"field": field, "reason": "unstated_unknown_removed"})
+                    continue
+            except ValueError:
+                pass
+        if (field == "contract_type" and field not in dialogue["facts"]
+                and field != (dialogue["pending"] or {}).get("field")
+                and isinstance(update["value"], str) and update["value"] not in user):
+            try:
+                apply_user_update(deepcopy(state), user=user,
+                                  updates={field: {k: update[k] for k in ("value", "evidence")}})
+                _check_meaning(field, update["value"], update["evidence"])
+            except DecisionError as error:
+                if error.code == "unstated_contract_type":
+                    diagnostics.append({"field": field, "reason": "unstated_contract_type_removed"})
+                    continue
+            except ValueError:
+                pass
+        kept.append(update)
+    payload["updates"] = kept
+    return json.dumps(payload, ensure_ascii=False), tuple(diagnostics)
 
 
 def _existing_restatement(update, dialogue, user):
@@ -24,7 +96,13 @@ def _existing_restatement(update, dialogue, user):
     if not isinstance(evidence, str) or not evidence.strip() or len(evidence) > 2000 or evidence in user:
         return False
     old_quote = old.get("evidence")
-    if not isinstance(old_quote, str) or not old_quote.strip() or len(old_quote) > 2000 or evidence not in old_quote:
+    if not isinstance(old_quote, str) or not old_quote.strip() or len(old_quote) > 2000:
+        return False
+    original_turn_quote = old_quote in evidence and any(
+        item.get("turn") == old["source_turn"] and evidence in item.get("content", "")
+        for item in dialogue["history"]
+    )
+    if evidence not in old_quote and not original_turn_quote:
         return False
     if old.get("certainty") != ("unknown" if value == "모름" else "reported"):
         return False

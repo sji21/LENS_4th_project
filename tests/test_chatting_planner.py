@@ -459,7 +459,7 @@ def test_array_wire_schema_bounds_record_count_and_rejects_extensions():
 
 
 @pytest.mark.parametrize("second_value", ["월세", "전세"])
-def test_duplicate_wire_fields_are_rejected_even_when_values_agree(second_value):
+def test_duplicate_wire_fields_are_deduplicated_only_when_the_entire_record_agrees(second_value):
     state = session()
     before = deepcopy(state)
     updates = [
@@ -468,10 +468,14 @@ def test_duplicate_wire_fields_are_rejected_even_when_values_agree(second_value)
     ]
     model = fake_model(payload(statements=updates))
 
-    with pytest.raises(PlanningError) as exc:
-        plan_turn(state, "월세 보증금 반환을 문의해요.", llm=model)
-
-    assert exc.value.code.startswith("invalid_decision:")
+    if second_value == "월세":
+        result = plan_turn(state, "월세 보증금 반환을 문의해요.", llm=model)
+        assert result.decision.updates == {"contract_type": {"value": "월세", "evidence": "월세"}}
+        assert result.normalizations[0]["reason"] == "identical_statement_removed"
+    else:
+        with pytest.raises(PlanningError) as exc:
+            plan_turn(state, "월세 보증금 반환을 문의해요.", llm=model)
+        assert exc.value.code.startswith("invalid_decision:")
     assert state == before
     model.invoke.assert_called_once()
 
@@ -645,6 +649,8 @@ def test_answer_to_a_real_pending_question_keeps_clarification_label():
 @pytest.mark.parametrize("intent", ["correction", "topic_change", "explain", "greeting", "followup", "document_question"])
 def test_explicit_supported_intents_are_not_rewritten_from_surrounding_context(intent):
     state = ongoing_case()
+    if intent == "document_question":
+        state["documents"] = [{"document_id": "owned", "kind": "contract"}]
     decision, context = validated_proposal(
         state, intent=intent, topic_changed=intent == "topic_change",
         action="social" if intent == "greeting" else "rag",

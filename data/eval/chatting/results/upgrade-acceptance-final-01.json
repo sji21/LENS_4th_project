@@ -1,0 +1,2943 @@
+{
+  "schema_version": 1,
+  "complete": true,
+  "mode": "upgrade",
+  "split": "acceptance",
+  "started_at": "2026-09-13T15:24:57.413162+00:00",
+  "commit": "95e9cd9427405884e0e16d990f0518824ad3e864",
+  "files": {
+    "chat/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "chat/dialogue_clarification.py": "7d1ccc6d60dcb14f07e1d6925b2d699f6bcb9e062d3cf458db2d7581d2565da4",
+    "chat/dialogue_contract.py": "ae7c5282cdd48fbb29f38ed4f59529b114bbc7664e01e00c29e577acd6d6de62",
+    "chat/dialogue_documents.py": "f9b844cfebb884b8d64f9afe5270ecd33a6a1a174b0585912216c2d36315d20a",
+    "chat/dialogue_normalization.py": "4d7919ae5169c9405495a1bf00810f125938f5affa3854c0c0fb8fc767f2a250",
+    "chat/dialogue_planner.py": "bb76798f584519362c4a3997ca0b80615ebe5dabf042b1e8989e691a69901448",
+    "chat/dialogue_query.py": "9a8d61bf87d3fe6fc4e3818779cb9f1d350288bbc915df79a1d9979ab23eb7f6",
+    "chat/dialogue_router.py": "6d24ee1fbfaba6bd511ebc669f6b23dbbded99cc34d673e9b4d543054eeefddf",
+    "chat/dialogue_state.py": "763bdc8c04867f177a5718c9bf6febd91cb89f40f4a065cb4ab586b325b30f21",
+    "chat/models.py": "413609bf0ebf1a9450d621122f3f4a82cbdac75161c18f5aeae4c4da0ec420b1",
+    "chat/services.py": "837dd8c71eb52747ef89531c34b9654f7b9ee2ac58e4a729978bd63d9ee9f8e0",
+    "chat/uploads.py": "0ae80dc0708af8321171f412577c18b3e5a087216e866a7b4b22a1e21784c295",
+    "chat/urls.py": "19346b62a4ce16cb2e2154396c40008f3fade0221266e458050304ee18cab9c7",
+    "chat/views.py": "326bf6038c196b30c5e61ad5fd4fa96458f0fc6dd387a2b235336780878bc94a",
+    "data/chunks/base_sample.jsonl": "0a569cd52b5360cb7dad72c9ac497866031b1d9a116af7fd738885f25abdd35b",
+    "data/chunks/cases.jsonl": "f6190b01d00b0a6f4630ef8c8a2ceebe19ca5a443a9874d06ca2655a5e5efce9",
+    "data/chunks/chunks.jsonl": "c61cba0ef9969cc271ab665b4e237bbd468025dec6199f7ecff2b040fec1958a",
+    "data/chunks/civil.jsonl": "635a4b2f4c3a4cb4f54d0c081bb91a84d5f1f8dc8d0b26a7987e30130df5a10a",
+    "data/chunks/guides.jsonl": "5b67bf5cf59ded40e0dc0289716cb6843ce473bed3d518b17b98fa9a2e54ba93",
+    "data/eval/chatting/acceptance.json": "26eb3122cd56cbcd11f5e3e70d01751b761103e4f6058bc461826456a670bfaa",
+    "data/eval/chatting/dev.json": "bcd030f67235bf5c6437dfce4e8af59c851d0af826c5991016c48d7179463c42",
+    "src/evaluation/chatting_plan_run.py": "40642dac4c6cd448c45adb209fe543aa7f64057dc39f9454be7abab541b63159",
+    "src/evaluation/chatting_provenance.py": "547278915c1ba10433cacda21a590d05f3fb92e88c170ad86a556addd980555b",
+    "src/evaluation/chatting_run.py": "1ef0eba49048f4c4166c8aab3bab4ad12673d5c898334a289a9fde7f701ec2f0",
+    "src/evaluation/chatting_scenarios.py": "2dd1f5cde62396d33999c461c007f45b16e0946e1f4ecca42539bcd4e8974f51",
+    "src/evaluation/chatting_scoring.py": "85f9d66fe26d7f9aa5e90dc9ddde8d19337229bcb03f1b703c4c64789f955cd0",
+    "src/generation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/generation/abstention.py": "7e4501dc9e7564d7df39d115a412e1f1746ddbe17065261e90884d8facd14476",
+    "src/generation/call_budget.py": "acb78ce0086f6501670eefa1db5d928500a29887ed4a9140d16015949bfa07c0",
+    "src/generation/chain.py": "212f37d4e032a4c3a355c5eaec85d6e4599963ed07a8d082605a3ae06c14adec",
+    "src/generation/citation.py": "496a4592606a9f28a53a5c6615b5dc88dbd7c5a471b4ca431ae566bcc5726f19",
+    "src/generation/conversation.py": "a35889cb47085b64248c50e0975f889e37302474f6470b77b4b3f20cf077ebb0",
+    "src/generation/evidence_routing.py": "9e425bb90c5f943866ee635604573340b199de23371bf8e83c22c62697f72100",
+    "src/generation/graph.py": "76e69c3cfac2deac15ef0c6e2a8ea16eaf087d96893a4b089ff065389bdb57a5",
+    "src/generation/llm.py": "d9a47d2be8154a33291cda72d9ce0a7676372e0adc6d459d055d6d4092166cf7",
+    "src/generation/models.py": "f1e5d0a63c8d94d7e373495f28a4988719a1b10c50d13bfd86de715bb078420c",
+    "src/generation/paragraph.py": "e095954a08d5191abe797c1bb5df820f90b4bac4999db67c7718e72fe18c8f83",
+    "src/generation/prompt.py": "ba71eb974c9fcec948c04924c19058d19608c7d0c026a945989c53c61fb0725c",
+    "src/generation/validation.py": "ae3416e2cadeeae80474e7a58079093e54420c73c8de9286b865480cff835f57",
+    "src/retrieval/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/retrieval/dense.py": "4182dc226f1e5d46d4b94fcd887d796ac09ea685d596f3a217c2537ebc5e96a3",
+    "src/retrieval/hybrid.py": "c82d7be47e95b3419a617a5aaeaf5f6d0a271fcd144a85b38fd53d00d0cb5812",
+    "src/retrieval/index.py": "227f3d11eb4bf8a7913b0d658af543331364f0cd997a9b825264914c02ed031a",
+    "src/retrieval/readiness.py": "86b55af4ce81135ff487001a6ba4b8985dff275805da47981927e29c2f4f8c86",
+    "src/retrieval/refs.py": "5c770deff1141f65509955c3d62c9da6f47c3591da84e7f7f567b669a7342639",
+    "src/retrieval/retriever.py": "6e01e43aeceaf93fc6795c1e3f920662daed035caa87587ae4e1b84d9dc57ebe",
+    "src/retrieval/service.py": "e5aeac45740cf806d9abc8292db5c9e6ace6fa5f4f2cc8e106950e8d5c297b59",
+    "src/retrieval/terms.py": "34354c085495148a535c15c409f2a5761808e2fbc106b25141874117f5836a6e"
+  },
+  "model": "qwen3:8b-q4_K_M",
+  "model_identity": {
+    "available": true,
+    "model": "qwen3:8b-q4_K_M",
+    "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "size_bytes": 5225388164,
+    "family": "qwen3",
+    "quantization": "Q4_K_M",
+    "ollama_version": "0.33.0"
+  },
+  "settings": {
+    "temperature": 0.0,
+    "max_tokens": 256,
+    "context": 4096,
+    "timeout": 180.0,
+    "think_off": true
+  },
+  "versions": {
+    "Django": "5.2.17",
+    "langchain-core": "1.6.2",
+    "langgraph": "1.2.11",
+    "chromadb": "1.5.9",
+    "sentence-transformers": "6.0.1"
+  },
+  "limits": "Synthetic conversations; automated dialogue checks are not legal accuracy. Document text is injected after extraction; OCR is not measured.",
+  "rows": [
+    {
+      "case_id": "ACC-001",
+      "turn": 1,
+      "input": "반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?",
+      "before_state": {
+        "version": 1,
+        "turn": 0,
+        "epoch": 0,
+        "topic": null,
+        "facts": {},
+        "history": [],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": null,
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "계약준비",
+        "facts": {
+          "contract_type": {
+            "value": "월세",
+            "evidence": "월세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?"
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "주택임대차보호법 제30조에 따르면, 월세 계약을 체결할 때에는 주택임대차표준계약서를 우선적으로 사용해야 합니다. 이 계약서에는 임대차의 권리와 의무, 보증금, 차임 등 중요한 내용이 포함되어 있으므로, 서명 전에 반드시 확인해야 합니다. 또한, 임대인은 주택임대차보호법 제3조의7에 따라 납세증명서 등을 제시해야 하므로, 해당 내용도 확인하는 것이 중요합니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "주택임대차보호법 제6조의3(계약갱신 요구 등)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의3",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제6조의3#0"
+            },
+            {
+              "label": "주택임대차보호법 제3조의7(임대인의 정보 제시 의무)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제3조의7",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제3조의7#0"
+            },
+            {
+              "label": "주택임대차보호법 제30조(주택임대차표준계약서 사용)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제30조",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제30조#0"
+            },
+            {
+              "label": "민법 제623조(임대인의 의무)",
+              "url": "https://www.law.go.kr/법령/민법/제623조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제623조#0"
+            },
+            {
+              "label": "민법 제629조(임차권의 양도, 전대의 제한)",
+              "url": "https://www.law.go.kr/법령/민법/제629조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제629조#0"
+            },
+            {
+              "label": "민법 제640조(차임연체와 해지)",
+              "url": "https://www.law.go.kr/법령/민법/제640조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제640조#0"
+            }
+          ],
+          "turn": 1,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 계약준비\n계약 유형: 월세\n사용자 입력: 반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "question",
+        "facts": {
+          "contract_type": "월세",
+          "topic": "계약준비"
+        },
+        "query": "대화 주제: 계약준비\n계약 유형: 월세\n사용자 입력: 반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?"
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "message": {
+        "id": "75acbc49e8b14fb7ab169b06bd05999c",
+        "role": "assistant",
+        "status": "answered",
+        "content": "주택임대차보호법 제30조에 따르면, 월세 계약을 체결할 때에는 주택임대차표준계약서를 우선적으로 사용해야 합니다. 이 계약서에는 임대차의 권리와 의무, 보증금, 차임 등 중요한 내용이 포함되어 있으므로, 서명 전에 반드시 확인해야 합니다. 또한, 임대인은 주택임대차보호법 제3조의7에 따라 납세증명서 등을 제시해야 하므로, 해당 내용도 확인하는 것이 중요합니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [
+          {
+            "label": "주택임대차보호법 제6조의3(계약갱신 요구 등)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의3",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제6조의3#0"
+          },
+          {
+            "label": "주택임대차보호법 제3조의7(임대인의 정보 제시 의무)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제3조의7",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제3조의7#0"
+          },
+          {
+            "label": "주택임대차보호법 제30조(주택임대차표준계약서 사용)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제30조",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제30조#0"
+          },
+          {
+            "label": "민법 제623조(임대인의 의무)",
+            "url": "https://www.law.go.kr/법령/민법/제623조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제623조#0"
+          },
+          {
+            "label": "민법 제629조(임차권의 양도, 전대의 제한)",
+            "url": "https://www.law.go.kr/법령/민법/제629조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제629조#0"
+          },
+          {
+            "label": "민법 제640조(차임연체와 해지)",
+            "url": "https://www.law.go.kr/법령/민법/제640조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제640조#0"
+          }
+        ],
+        "used_history": false,
+        "elapsed_seconds": 41.5,
+        "reason": "answered",
+        "action": "rag",
+        "intent": "question"
+      },
+      "elapsed_seconds": 41.516,
+      "model_calls": 3,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "execution_error": null,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": true,
+          "expected": "question",
+          "actual": "question"
+        },
+        "facts": {
+          "passed": true,
+          "expected": {
+            "contract_type": "월세"
+          },
+          "actual": {
+            "contract_type": "월세",
+            "topic": "계약준비"
+          }
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_ended": "예"
+          },
+          "actual": {
+            "contract_type": "월세",
+            "topic": "계약준비"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "월세"
+          ],
+          "actual": "대화 주제: 계약준비\n계약 유형: 월세\n사용자 입력: 반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?"
+        },
+        "query_excludes": {
+          "passed": null,
+          "expected": [],
+          "actual": "대화 주제: 계약준비\n계약 유형: 월세\n사용자 입력: 반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?"
+        }
+      }
+    },
+    {
+      "case_id": "ACC-001",
+      "turn": 2,
+      "input": "그 내용을 처음 계약하는 사람도 알아듣게 요약해 주세요.",
+      "before_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "계약준비",
+        "facts": {
+          "contract_type": {
+            "value": "월세",
+            "evidence": "월세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?"
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "주택임대차보호법 제30조에 따르면, 월세 계약을 체결할 때에는 주택임대차표준계약서를 우선적으로 사용해야 합니다. 이 계약서에는 임대차의 권리와 의무, 보증금, 차임 등 중요한 내용이 포함되어 있으므로, 서명 전에 반드시 확인해야 합니다. 또한, 임대인은 주택임대차보호법 제3조의7에 따라 납세증명서 등을 제시해야 하므로, 해당 내용도 확인하는 것이 중요합니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "주택임대차보호법 제6조의3(계약갱신 요구 등)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의3",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제6조의3#0"
+            },
+            {
+              "label": "주택임대차보호법 제3조의7(임대인의 정보 제시 의무)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제3조의7",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제3조의7#0"
+            },
+            {
+              "label": "주택임대차보호법 제30조(주택임대차표준계약서 사용)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제30조",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제30조#0"
+            },
+            {
+              "label": "민법 제623조(임대인의 의무)",
+              "url": "https://www.law.go.kr/법령/민법/제623조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제623조#0"
+            },
+            {
+              "label": "민법 제629조(임차권의 양도, 전대의 제한)",
+              "url": "https://www.law.go.kr/법령/민법/제629조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제629조#0"
+            },
+            {
+              "label": "민법 제640조(차임연체와 해지)",
+              "url": "https://www.law.go.kr/법령/민법/제640조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제640조#0"
+            }
+          ],
+          "turn": 1,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 계약준비\n계약 유형: 월세\n사용자 입력: 반갑습니다. 월세로 입주할 예정인데 서명 전에 무엇을 살펴야 할까요?"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 1,
+        "topic": null,
+        "facts": {},
+        "history": [
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "그 내용을 처음 계약하는 사람도 알아듣게 요약해 주세요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "주택임대차보호법 제6조의2에 따르면, 임대차계약이 묵시적으로 갱신된 경우 임차인은 언제든지 계약을 해지할 수 있으며, 해지 통지를 받은 날부터 3개월이 지나면 그 효력이 발생합니다.  \n\n임차인은 임대인의 동의 없이 임차권을 양도하거나 임차물을 전대할 수 없으며, 이를 위반하면 임대인은 계약을 해지할 수 있습니다. 또한, 차임을 2기 이상 연체할 경우 임대인은 계약을 해지할 수 있습니다.  \n\n임대차계약의 내용을 확인하려면 임대인에게 서면으로 요청할 수 있으며, 임대인은 해당 정보를 제공해야 합니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조",
+              "doc_type": "decree",
+              "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0"
+            },
+            {
+              "label": "주택임대차보호법 제6조의2(묵시적 갱신의 경우 계약의 해지)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의2",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제6조의2#0"
+            },
+            {
+              "label": "주택임대차보호법 제26조(조정의 성립)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제26조",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제26조#0"
+            },
+            {
+              "label": "민법 제632조(임차건물의 소부분을 타인에게 사용케 하는 경우)",
+              "url": "https://www.law.go.kr/법령/민법/제632조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제632조#0"
+            },
+            {
+              "label": "민법 제629조(임차권의 양도, 전대의 제한)",
+              "url": "https://www.law.go.kr/법령/민법/제629조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제629조#0"
+            },
+            {
+              "label": "민법 제640조(차임연체와 해지)",
+              "url": "https://www.law.go.kr/법령/민법/제640조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제640조#0"
+            }
+          ],
+          "turn": 2,
+          "validation": "existing_pipeline_passed",
+          "query": "그 내용을 처음 계약하는 사람도 알아듣게 요약해 주세요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": null,
+        "facts": {},
+        "query": "그 내용을 처음 계약하는 사람도 알아듣게 요약해 주세요."
+      },
+      "routing": {
+        "path": "legacy_fallback",
+        "reason": "invalid_decision:unstated_subject"
+      },
+      "message": {
+        "id": "1c8fe87f59894c10930364361074f24c",
+        "role": "assistant",
+        "status": "answered",
+        "content": "주택임대차보호법 제6조의2에 따르면, 임대차계약이 묵시적으로 갱신된 경우 임차인은 언제든지 계약을 해지할 수 있으며, 해지 통지를 받은 날부터 3개월이 지나면 그 효력이 발생합니다.  \n\n임차인은 임대인의 동의 없이 임차권을 양도하거나 임차물을 전대할 수 없으며, 이를 위반하면 임대인은 계약을 해지할 수 있습니다. 또한, 차임을 2기 이상 연체할 경우 임대인은 계약을 해지할 수 있습니다.  \n\n임대차계약의 내용을 확인하려면 임대인에게 서면으로 요청할 수 있으며, 임대인은 해당 정보를 제공해야 합니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [
+          {
+            "label": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조",
+            "doc_type": "decree",
+            "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0"
+          },
+          {
+            "label": "주택임대차보호법 제6조의2(묵시적 갱신의 경우 계약의 해지)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의2",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제6조의2#0"
+          },
+          {
+            "label": "주택임대차보호법 제26조(조정의 성립)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제26조",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제26조#0"
+          },
+          {
+            "label": "민법 제632조(임차건물의 소부분을 타인에게 사용케 하는 경우)",
+            "url": "https://www.law.go.kr/법령/민법/제632조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제632조#0"
+          },
+          {
+            "label": "민법 제629조(임차권의 양도, 전대의 제한)",
+            "url": "https://www.law.go.kr/법령/민법/제629조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제629조#0"
+          },
+          {
+            "label": "민법 제640조(차임연체와 해지)",
+            "url": "https://www.law.go.kr/법령/민법/제640조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제640조#0"
+          }
+        ],
+        "used_history": false,
+        "elapsed_seconds": 36.7,
+        "action": "rag",
+        "intent": null
+      },
+      "elapsed_seconds": 48.737,
+      "model_calls": 4,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "execution_error": null,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": null,
+          "expected": "explain",
+          "actual": null
+        },
+        "facts": {
+          "passed": false,
+          "expected": {
+            "contract_type": "월세"
+          },
+          "actual": {}
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_ended": "예"
+          },
+          "actual": {}
+        },
+        "query_contains": {
+          "passed": false,
+          "expected": [
+            "월세"
+          ],
+          "actual": "그 내용을 처음 계약하는 사람도 알아듣게 요약해 주세요."
+        },
+        "query_excludes": {
+          "passed": null,
+          "expected": [],
+          "actual": "그 내용을 처음 계약하는 사람도 알아듣게 요약해 주세요."
+        }
+      }
+    },
+    {
+      "case_id": "ACC-002",
+      "turn": 1,
+      "input": "응, 맞아요.",
+      "before_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "deposit_returned": {
+            "value": "아니요",
+            "evidence": "아니요",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "예",
+            "evidence": "예",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "상담 주제: 보증금반환. 보증금 반환: 아니요; 계약 종료: 예"
+          }
+        ],
+        "changes": [],
+        "pending": {
+          "field": "living_in_property",
+          "question": "현재도 계약한 집에서 생활하고 계신가요?",
+          "attempts": 1
+        },
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": null,
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "deposit_returned": {
+            "value": "아니요",
+            "evidence": "아니요",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "예",
+            "evidence": "예",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "living_in_property": {
+            "value": "예",
+            "evidence": "응, 맞아요",
+            "source_turn": 2,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "상담 주제: 보증금반환. 보증금 반환: 아니요; 계약 종료: 예"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "응, 맞아요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "주택임대차보호법 제3조의2에 따르면, 임차인이 보증금을 반환받기 위해서는 임차주택에 경매나 공매가 진행될 때, 임차인의 우선변제권을 행사할 수 있습니다. 다만, 임차인은 임차주택을 양수인에게 인도하지 않으면 보증금을 받을 수 없습니다. 또한, 우선변제권을 승계한 금융기관 등은 임차인의 대항요건을 상실하거나 임차권등기나 임대차등기가 말소된 경우, 우선변제권을 행사할 수 없습니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "주택임대차보호법 제13조(「소액사건심판법」의 준용)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제13조",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제13조#0"
+            },
+            {
+              "label": "주택임대차보호법 제10조의2(초과 차임 등의 반환청구)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제10조의2",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제10조의2#0"
+            },
+            {
+              "label": "주택임대차보호법 제3조의2(보증금의 회수)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제3조의2",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제3조의2#0"
+            },
+            {
+              "label": "민법 제623조(임대인의 의무)",
+              "url": "https://www.law.go.kr/법령/민법/제623조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제623조#0"
+            },
+            {
+              "label": "민법 제626조(임차인의 상환청구권)",
+              "url": "https://www.law.go.kr/법령/민법/제626조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제626조#0"
+            },
+            {
+              "label": "민법 제634조(임차인의 통지의무)",
+              "url": "https://www.law.go.kr/법령/민법/제634조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제634조#0"
+            }
+          ],
+          "turn": 2,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 응, 맞아요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "clarification_answer",
+        "facts": {
+          "deposit_returned": "아니요",
+          "contract_ended": "예",
+          "living_in_property": "예",
+          "topic": "보증금반환"
+        },
+        "query": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 응, 맞아요."
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "message": {
+        "id": "33e1c24ecd5a460fad5463d70dcac001",
+        "role": "assistant",
+        "status": "answered",
+        "content": "주택임대차보호법 제3조의2에 따르면, 임차인이 보증금을 반환받기 위해서는 임차주택에 경매나 공매가 진행될 때, 임차인의 우선변제권을 행사할 수 있습니다. 다만, 임차인은 임차주택을 양수인에게 인도하지 않으면 보증금을 받을 수 없습니다. 또한, 우선변제권을 승계한 금융기관 등은 임차인의 대항요건을 상실하거나 임차권등기나 임대차등기가 말소된 경우, 우선변제권을 행사할 수 없습니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [
+          {
+            "label": "주택임대차보호법 제13조(「소액사건심판법」의 준용)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제13조",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제13조#0"
+          },
+          {
+            "label": "주택임대차보호법 제10조의2(초과 차임 등의 반환청구)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제10조의2",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제10조의2#0"
+          },
+          {
+            "label": "주택임대차보호법 제3조의2(보증금의 회수)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제3조의2",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제3조의2#0"
+          },
+          {
+            "label": "민법 제623조(임대인의 의무)",
+            "url": "https://www.law.go.kr/법령/민법/제623조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제623조#0"
+          },
+          {
+            "label": "민법 제626조(임차인의 상환청구권)",
+            "url": "https://www.law.go.kr/법령/민법/제626조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제626조#0"
+          },
+          {
+            "label": "민법 제634조(임차인의 통지의무)",
+            "url": "https://www.law.go.kr/법령/민법/제634조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제634조#0"
+          }
+        ],
+        "used_history": true,
+        "elapsed_seconds": 49.4,
+        "reason": "answered",
+        "action": "rag",
+        "intent": "clarification_answer"
+      },
+      "elapsed_seconds": 49.419,
+      "model_calls": 3,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "execution_error": null,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag",
+            "clarify"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": true,
+          "expected": "clarification_answer",
+          "actual": "clarification_answer"
+        },
+        "facts": {
+          "passed": true,
+          "expected": {
+            "living_in_property": "예",
+            "contract_ended": "예",
+            "deposit_returned": "아니요"
+          },
+          "actual": {
+            "deposit_returned": "아니요",
+            "contract_ended": "예",
+            "living_in_property": "예",
+            "topic": "보증금반환"
+          }
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "living_in_property": "아니요"
+          },
+          "actual": {
+            "deposit_returned": "아니요",
+            "contract_ended": "예",
+            "living_in_property": "예",
+            "topic": "보증금반환"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "보증금"
+          ],
+          "actual": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 응, 맞아요."
+        },
+        "query_excludes": {
+          "passed": true,
+          "expected": [
+            "퇴거한 상태"
+          ],
+          "actual": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 응, 맞아요."
+        }
+      }
+    },
+    {
+      "case_id": "ACC-002",
+      "turn": 2,
+      "input": "그 조건에서 도움받을 수 있는 기관을 안내해 주세요.",
+      "before_state": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "deposit_returned": {
+            "value": "아니요",
+            "evidence": "아니요",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "예",
+            "evidence": "예",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "living_in_property": {
+            "value": "예",
+            "evidence": "응, 맞아요",
+            "source_turn": 2,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "상담 주제: 보증금반환. 보증금 반환: 아니요; 계약 종료: 예"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "응, 맞아요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "주택임대차보호법 제3조의2에 따르면, 임차인이 보증금을 반환받기 위해서는 임차주택에 경매나 공매가 진행될 때, 임차인의 우선변제권을 행사할 수 있습니다. 다만, 임차인은 임차주택을 양수인에게 인도하지 않으면 보증금을 받을 수 없습니다. 또한, 우선변제권을 승계한 금융기관 등은 임차인의 대항요건을 상실하거나 임차권등기나 임대차등기가 말소된 경우, 우선변제권을 행사할 수 없습니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "주택임대차보호법 제13조(「소액사건심판법」의 준용)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제13조",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제13조#0"
+            },
+            {
+              "label": "주택임대차보호법 제10조의2(초과 차임 등의 반환청구)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제10조의2",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제10조의2#0"
+            },
+            {
+              "label": "주택임대차보호법 제3조의2(보증금의 회수)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제3조의2",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제3조의2#0"
+            },
+            {
+              "label": "민법 제623조(임대인의 의무)",
+              "url": "https://www.law.go.kr/법령/민법/제623조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제623조#0"
+            },
+            {
+              "label": "민법 제626조(임차인의 상환청구권)",
+              "url": "https://www.law.go.kr/법령/민법/제626조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제626조#0"
+            },
+            {
+              "label": "민법 제634조(임차인의 통지의무)",
+              "url": "https://www.law.go.kr/법령/민법/제634조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제634조#0"
+            }
+          ],
+          "turn": 2,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 응, 맞아요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 3,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "deposit_returned": {
+            "value": "아니요",
+            "evidence": "아니요",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "예",
+            "evidence": "예",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "living_in_property": {
+            "value": "예",
+            "evidence": "응, 맞아요",
+            "source_turn": 2,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "상담 주제: 보증금반환. 보증금 반환: 아니요; 계약 종료: 예"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "응, 맞아요."
+          },
+          {
+            "role": "user",
+            "turn": 3,
+            "content": "그 조건에서 도움받을 수 있는 기관을 안내해 주세요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": "abstained",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "followup",
+        "facts": {
+          "deposit_returned": "아니요",
+          "contract_ended": "예",
+          "living_in_property": "예",
+          "topic": "보증금반환"
+        },
+        "query": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 그 조건에서 도움받을 수 있는 기관을 안내해 주세요."
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "message": {
+        "id": "7e9317e2d5e84c33944ab67d264f2bba",
+        "role": "assistant",
+        "status": "abstained",
+        "content": "생성된 답변이 검색 근거와 일치하는지 충분히 확인하지 못해 답변을 보류했습니다. 질문을 조금 더 구체적으로 바꿔 다시 물어봐 주세요.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [
+          {
+            "label": "주택임대차보호법 제3조의2(보증금의 회수)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제3조의2",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제3조의2#0"
+          },
+          {
+            "label": "주택임대차보호법 제10조의2(초과 차임 등의 반환청구)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제10조의2",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제10조의2#0"
+          },
+          {
+            "label": "주택임대차보호법 제13조(「소액사건심판법」의 준용)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제13조",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제13조#0"
+          },
+          {
+            "label": "민법 제634조(임차인의 통지의무)",
+            "url": "https://www.law.go.kr/법령/민법/제634조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제634조#0"
+          },
+          {
+            "label": "민법 제626조(임차인의 상환청구권)",
+            "url": "https://www.law.go.kr/법령/민법/제626조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제626조#0"
+          },
+          {
+            "label": "민법 제632조(임차건물의 소부분을 타인에게 사용케 하는 경우)",
+            "url": "https://www.law.go.kr/법령/민법/제632조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제632조#0"
+          }
+        ],
+        "used_history": true,
+        "elapsed_seconds": 39.4,
+        "reason": "validation_failed",
+        "action": "rag",
+        "intent": "followup"
+      },
+      "elapsed_seconds": 39.417,
+      "model_calls": 2,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "execution_error": null,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": true,
+          "expected": "followup",
+          "actual": "followup"
+        },
+        "facts": {
+          "passed": true,
+          "expected": {
+            "living_in_property": "예",
+            "deposit_returned": "아니요"
+          },
+          "actual": {
+            "deposit_returned": "아니요",
+            "contract_ended": "예",
+            "living_in_property": "예",
+            "topic": "보증금반환"
+          }
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "living_in_property": "아니요"
+          },
+          "actual": {
+            "deposit_returned": "아니요",
+            "contract_ended": "예",
+            "living_in_property": "예",
+            "topic": "보증금반환"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "보증금",
+            "기관"
+          ],
+          "actual": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 그 조건에서 도움받을 수 있는 기관을 안내해 주세요."
+        },
+        "query_excludes": {
+          "passed": true,
+          "expected": [
+            "퇴거한 상태"
+          ],
+          "actual": "대화 주제: 보증금반환\n계약 종료 여부: 예\n보증금 반환 여부: 아니요\n현재 거주 여부: 예\n사용자 입력: 그 조건에서 도움받을 수 있는 기관을 안내해 주세요."
+        }
+      }
+    },
+    {
+      "case_id": "ACC-003",
+      "turn": 1,
+      "input": "전세 만기가 지나 보증금 반환을 기다리는 중입니다. 제가 챙길 내용을 알고 싶어요.",
+      "before_state": {
+        "version": 1,
+        "turn": 0,
+        "epoch": 0,
+        "topic": null,
+        "facts": {},
+        "history": [],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": null,
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "contract_type": {
+            "value": "전세",
+            "evidence": "전세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "예",
+            "evidence": "만기가 지나",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "전세 만기가 지나 보증금 반환을 기다리는 중입니다. 제가 챙길 내용을 알고 싶어요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "주택임대차보호법 제12조에 따르면, 전세계약이 등기가 되지 않았더라도 보증금 반환에 관한 법적 근거는 준용됩니다. 전세금은 보증금으로 간주되므로, 계약 종료 시 보증금을 반환받을 권리가 있습니다.  \n\n계약 종료 후에는 임대인에게 보증금 반환을 요청해야 하며, 임대인은 법정 기한 내에 반환해야 합니다. 다만, 임대인이 보증금을 반환하지 않는 경우, 임차인은 주택임대차보호법 시행령 제6조에 따라 확정일자부여기관에 임대차계약 관련 정보를 요청할 수 있습니다.  \n\n또한, 민법 제626조에 따라 임차인이 보증금을 반환받기 위해 필요한 절차나 조건이 있는 경우, 임대인과 협의하여 해결해야 합니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "주택임대차보호법 제12조(미등기 전세에의 준용)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제12조",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제12조#0"
+            },
+            {
+              "label": "주택임대차보호법 제10조의2(초과 차임 등의 반환청구)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제10조의2",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제10조의2#0"
+            },
+            {
+              "label": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조",
+              "doc_type": "decree",
+              "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0"
+            },
+            {
+              "label": "민법 제623조(임대인의 의무)",
+              "url": "https://www.law.go.kr/법령/민법/제623조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제623조#0"
+            },
+            {
+              "label": "민법 제626조(임차인의 상환청구권)",
+              "url": "https://www.law.go.kr/법령/민법/제626조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제626조#0"
+            },
+            {
+              "label": "민법 제629조(임차권의 양도, 전대의 제한)",
+              "url": "https://www.law.go.kr/법령/민법/제629조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제629조#0"
+            }
+          ],
+          "turn": 1,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 예\n사용자 입력: 전세 만기가 지나 보증금 반환을 기다리는 중입니다. 제가 챙길 내용을 알고 싶어요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "question",
+        "facts": {
+          "contract_type": "전세",
+          "contract_ended": "예",
+          "topic": "보증금반환"
+        },
+        "query": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 예\n사용자 입력: 전세 만기가 지나 보증금 반환을 기다리는 중입니다. 제가 챙길 내용을 알고 싶어요."
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "message": {
+        "id": "30f07ffb1784437383042159504df191",
+        "role": "assistant",
+        "status": "answered",
+        "content": "주택임대차보호법 제12조에 따르면, 전세계약이 등기가 되지 않았더라도 보증금 반환에 관한 법적 근거는 준용됩니다. 전세금은 보증금으로 간주되므로, 계약 종료 시 보증금을 반환받을 권리가 있습니다.  \n\n계약 종료 후에는 임대인에게 보증금 반환을 요청해야 하며, 임대인은 법정 기한 내에 반환해야 합니다. 다만, 임대인이 보증금을 반환하지 않는 경우, 임차인은 주택임대차보호법 시행령 제6조에 따라 확정일자부여기관에 임대차계약 관련 정보를 요청할 수 있습니다.  \n\n또한, 민법 제626조에 따라 임차인이 보증금을 반환받기 위해 필요한 절차나 조건이 있는 경우, 임대인과 협의하여 해결해야 합니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [
+          {
+            "label": "주택임대차보호법 제12조(미등기 전세에의 준용)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제12조",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제12조#0"
+          },
+          {
+            "label": "주택임대차보호법 제10조의2(초과 차임 등의 반환청구)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제10조의2",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제10조의2#0"
+          },
+          {
+            "label": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조",
+            "doc_type": "decree",
+            "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0"
+          },
+          {
+            "label": "민법 제623조(임대인의 의무)",
+            "url": "https://www.law.go.kr/법령/민법/제623조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제623조#0"
+          },
+          {
+            "label": "민법 제626조(임차인의 상환청구권)",
+            "url": "https://www.law.go.kr/법령/민법/제626조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제626조#0"
+          },
+          {
+            "label": "민법 제629조(임차권의 양도, 전대의 제한)",
+            "url": "https://www.law.go.kr/법령/민법/제629조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제629조#0"
+          }
+        ],
+        "used_history": false,
+        "elapsed_seconds": 50.4,
+        "reason": "answered",
+        "action": "rag",
+        "intent": "question"
+      },
+      "elapsed_seconds": 50.444,
+      "model_calls": 3,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "execution_error": null,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag",
+            "clarify"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": true,
+          "expected": "question",
+          "actual": "question"
+        },
+        "facts": {
+          "passed": false,
+          "expected": {
+            "contract_type": "전세",
+            "contract_ended": "예",
+            "deposit_returned": "아니요",
+            "topic": "보증금반환"
+          },
+          "actual": {
+            "contract_type": "전세",
+            "contract_ended": "예",
+            "topic": "보증금반환"
+          }
+        },
+        "forbidden_facts": {
+          "passed": null,
+          "expected": {},
+          "actual": {
+            "contract_type": "전세",
+            "contract_ended": "예",
+            "topic": "보증금반환"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "보증금"
+          ],
+          "actual": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 예\n사용자 입력: 전세 만기가 지나 보증금 반환을 기다리는 중입니다. 제가 챙길 내용을 알고 싶어요."
+        },
+        "query_excludes": {
+          "passed": null,
+          "expected": [],
+          "actual": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 예\n사용자 입력: 전세 만기가 지나 보증금 반환을 기다리는 중입니다. 제가 챙길 내용을 알고 싶어요."
+        }
+      }
+    },
+    {
+      "case_id": "ACC-003",
+      "turn": 2,
+      "input": "제가 잘못 적었네요. 만기가 지난 게 아니라 아직 두 달 남았습니다. 나머지 설명은 그대로예요.",
+      "before_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "contract_type": {
+            "value": "전세",
+            "evidence": "전세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "예",
+            "evidence": "만기가 지나",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "전세 만기가 지나 보증금 반환을 기다리는 중입니다. 제가 챙길 내용을 알고 싶어요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "주택임대차보호법 제12조에 따르면, 전세계약이 등기가 되지 않았더라도 보증금 반환에 관한 법적 근거는 준용됩니다. 전세금은 보증금으로 간주되므로, 계약 종료 시 보증금을 반환받을 권리가 있습니다.  \n\n계약 종료 후에는 임대인에게 보증금 반환을 요청해야 하며, 임대인은 법정 기한 내에 반환해야 합니다. 다만, 임대인이 보증금을 반환하지 않는 경우, 임차인은 주택임대차보호법 시행령 제6조에 따라 확정일자부여기관에 임대차계약 관련 정보를 요청할 수 있습니다.  \n\n또한, 민법 제626조에 따라 임차인이 보증금을 반환받기 위해 필요한 절차나 조건이 있는 경우, 임대인과 협의하여 해결해야 합니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "주택임대차보호법 제12조(미등기 전세에의 준용)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제12조",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제12조#0"
+            },
+            {
+              "label": "주택임대차보호법 제10조의2(초과 차임 등의 반환청구)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제10조의2",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제10조의2#0"
+            },
+            {
+              "label": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조",
+              "doc_type": "decree",
+              "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0"
+            },
+            {
+              "label": "민법 제623조(임대인의 의무)",
+              "url": "https://www.law.go.kr/법령/민법/제623조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제623조#0"
+            },
+            {
+              "label": "민법 제626조(임차인의 상환청구권)",
+              "url": "https://www.law.go.kr/법령/민법/제626조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제626조#0"
+            },
+            {
+              "label": "민법 제629조(임차권의 양도, 전대의 제한)",
+              "url": "https://www.law.go.kr/법령/민법/제629조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제629조#0"
+            }
+          ],
+          "turn": 1,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 예\n사용자 입력: 전세 만기가 지나 보증금 반환을 기다리는 중입니다. 제가 챙길 내용을 알고 싶어요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 1,
+        "topic": null,
+        "facts": {},
+        "history": [
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "제가 잘못 적었네요. 만기가 지난 게 아니라 아직 두 달 남았습니다. 나머지 설명은 그대로예요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "주택임대차보호법 제3조의2 제2항에 따르면, 임차인은 임차주택의 환가대금에서 후순위권리자나 채권자보다 우선하여 보증금을 변제받을 권리가 있습니다. 이는 임차인의 보증금반환청구소송 확정판결이나 이에 준하는 집행권원에 따라 경매나 공매가 진행될 때 적용됩니다.  \n\n또한, 임차권등기명령의 신청 및 등기와 관련한 비용은 임대인에게 청구할 수 있으며, 금융기관 등은 임차인을 대위하여 임차권등기명령을 신청할 수 있습니다. 이 경우, 제3항, 제4항, 제8항의 \"임차인\"은 \"금융기관등\"으로 간주됩니다.  \n\n금융기관등이 임차인의 보증금반환채권을 계약으로 양수한 경우, 양수한 금액의 범위에서 우선변제권을 승계할 수 있습니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "주택임대차보호법 제6조(계약의 갱신)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제6조#0"
+            },
+            {
+              "label": "주택임대차보호법 제3조의3(임차권등기명령)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제3조의3",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제3조의3#0"
+            },
+            {
+              "label": "주택임대차보호법 제3조의2(보증금의 회수)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제3조의2",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제3조의2#0"
+            },
+            {
+              "label": "민법 제357조(근저당)",
+              "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0357&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제357조#0"
+            },
+            {
+              "label": "민법 제632조(임차건물의 소부분을 타인에게 사용케 하는 경우)",
+              "url": "https://www.law.go.kr/법령/민법/제632조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제632조#0"
+            },
+            {
+              "label": "민법 제626조(임차인의 상환청구권)",
+              "url": "https://www.law.go.kr/법령/민법/제626조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제626조#0"
+            }
+          ],
+          "turn": 2,
+          "validation": "existing_pipeline_passed",
+          "query": "제가 잘못 적었네요. 만기가 지난 게 아니라 아직 두 달 남았습니다. 나머지 설명은 그대로예요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": null,
+        "facts": {},
+        "query": "제가 잘못 적었네요. 만기가 지난 게 아니라 아직 두 달 남았습니다. 나머지 설명은 그대로예요."
+      },
+      "routing": {
+        "path": "legacy_fallback",
+        "reason": "invalid_decision:updates"
+      },
+      "message": {
+        "id": "9a20cccede37420e8f6c07d4a57b63fc",
+        "role": "assistant",
+        "status": "answered",
+        "content": "주택임대차보호법 제3조의2 제2항에 따르면, 임차인은 임차주택의 환가대금에서 후순위권리자나 채권자보다 우선하여 보증금을 변제받을 권리가 있습니다. 이는 임차인의 보증금반환청구소송 확정판결이나 이에 준하는 집행권원에 따라 경매나 공매가 진행될 때 적용됩니다.  \n\n또한, 임차권등기명령의 신청 및 등기와 관련한 비용은 임대인에게 청구할 수 있으며, 금융기관 등은 임차인을 대위하여 임차권등기명령을 신청할 수 있습니다. 이 경우, 제3항, 제4항, 제8항의 \"임차인\"은 \"금융기관등\"으로 간주됩니다.  \n\n금융기관등이 임차인의 보증금반환채권을 계약으로 양수한 경우, 양수한 금액의 범위에서 우선변제권을 승계할 수 있습니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [
+          {
+            "label": "주택임대차보호법 제6조(계약의 갱신)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제6조#0"
+          },
+          {
+            "label": "주택임대차보호법 제3조의3(임차권등기명령)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제3조의3",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제3조의3#0"
+          },
+          {
+            "label": "주택임대차보호법 제3조의2(보증금의 회수)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제3조의2",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제3조의2#0"
+          },
+          {
+            "label": "민법 제357조(근저당)",
+            "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0357&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제357조#0"
+          },
+          {
+            "label": "민법 제632조(임차건물의 소부분을 타인에게 사용케 하는 경우)",
+            "url": "https://www.law.go.kr/법령/민법/제632조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제632조#0"
+          },
+          {
+            "label": "민법 제626조(임차인의 상환청구권)",
+            "url": "https://www.law.go.kr/법령/민법/제626조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제626조#0"
+          }
+        ],
+        "used_history": false,
+        "elapsed_seconds": 32.5,
+        "action": "rag",
+        "intent": null
+      },
+      "elapsed_seconds": 49.567,
+      "model_calls": 3,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "execution_error": null,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag",
+            "clarify",
+            "social"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": null,
+          "expected": "correction",
+          "actual": null
+        },
+        "facts": {
+          "passed": false,
+          "expected": {
+            "contract_type": "전세",
+            "contract_ended": "아니요",
+            "deposit_returned": "아니요"
+          },
+          "actual": {}
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_ended": "예"
+          },
+          "actual": {}
+        },
+        "query_contains": {
+          "passed": false,
+          "expected": [
+            "보증금"
+          ],
+          "actual": "제가 잘못 적었네요. 만기가 지난 게 아니라 아직 두 달 남았습니다. 나머지 설명은 그대로예요."
+        },
+        "query_excludes": {
+          "passed": false,
+          "expected": [
+            "계약이 종료된",
+            "만기가 지난"
+          ],
+          "actual": "제가 잘못 적었네요. 만기가 지난 게 아니라 아직 두 달 남았습니다. 나머지 설명은 그대로예요."
+        }
+      }
+    },
+    {
+      "case_id": "ACC-004",
+      "turn": 1,
+      "input": "동생의 월세 집에서 누수가 생겼대요. 수리는 누구와 이야기해야 하나요?",
+      "before_state": {
+        "version": 1,
+        "turn": 0,
+        "epoch": 0,
+        "topic": null,
+        "facts": {},
+        "history": [],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": null,
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 1,
+        "topic": null,
+        "facts": {},
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "동생의 월세 집에서 누수가 생겼대요. 수리는 누구와 이야기해야 하나요?"
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": "abstained",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": null,
+        "facts": {},
+        "query": "동생의 월세 집에서 누수가 생겼대요. 수리는 누구와 이야기해야 하나요?"
+      },
+      "routing": {
+        "path": "legacy_fallback",
+        "reason": "invalid_decision:updates"
+      },
+      "message": {
+        "id": "5e6eb6e6c58c448ca9250b18d1b97215",
+        "role": "assistant",
+        "status": "abstained",
+        "content": "생성된 답변이 검색 근거와 일치하는지 충분히 확인하지 못해 답변을 보류했습니다. 질문을 조금 더 구체적으로 바꿔 다시 물어봐 주세요.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [
+          {
+            "label": "주택임대차보호법 제10조의2(초과 차임 등의 반환청구)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제10조의2",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제10조의2#0"
+          },
+          {
+            "label": "주택임대차보호법 제24조(조사 등)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제24조",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제24조#0"
+          },
+          {
+            "label": "주택임대차보호법 제9조(주택 임차권의 승계)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제9조",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제9조#0"
+          },
+          {
+            "label": "민법 제623조(임대인의 의무)",
+            "url": "https://www.law.go.kr/법령/민법/제623조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제623조#0"
+          },
+          {
+            "label": "민법 제627조(일부멸실 등과 감액청구, 해지권)",
+            "url": "https://www.law.go.kr/법령/민법/제627조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제627조#0"
+          },
+          {
+            "label": "민법 제640조(차임연체와 해지)",
+            "url": "https://www.law.go.kr/법령/민법/제640조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제640조#0"
+          }
+        ],
+        "used_history": false,
+        "elapsed_seconds": 30.6,
+        "action": "rag",
+        "intent": null
+      },
+      "elapsed_seconds": 48.572,
+      "model_calls": 2,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "execution_error": null,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag",
+            "clarify"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": null,
+          "expected": "question",
+          "actual": null
+        },
+        "facts": {
+          "passed": false,
+          "expected": {
+            "contract_type": "월세",
+            "topic": "시설수리"
+          },
+          "actual": {}
+        },
+        "forbidden_facts": {
+          "passed": null,
+          "expected": {},
+          "actual": {}
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "누수",
+            "수리"
+          ],
+          "actual": "동생의 월세 집에서 누수가 생겼대요. 수리는 누구와 이야기해야 하나요?"
+        },
+        "query_excludes": {
+          "passed": null,
+          "expected": [],
+          "actual": "동생의 월세 집에서 누수가 생겼대요. 수리는 누구와 이야기해야 하나요?"
+        }
+      }
+    },
+    {
+      "case_id": "ACC-004",
+      "turn": 2,
+      "input": "동생 건은 여기까지 할게요. 저는 전세 계약 갱신을 원하는데 언제 의사를 전달해야 하나요?",
+      "before_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 1,
+        "topic": null,
+        "facts": {},
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "동생의 월세 집에서 누수가 생겼대요. 수리는 누구와 이야기해야 하나요?"
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": "abstained",
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 2,
+        "topic": "계약갱신",
+        "facts": {
+          "contract_type": {
+            "value": "전세",
+            "evidence": "전세",
+            "source_turn": 2,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "동생 건은 여기까지 할게요. 저는 전세 계약 갱신을 원하는데 언제 의사를 전달해야 하나요?"
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "주택임대차보호법 제6조의2에 따르면, 임차인은 임대인에게 계약해지 통지를 언제든지 할 수 있습니다. 다만, 해지 통지가 임대인에게 도달한 날부터 3개월이 지나야만 해지의 효력이 발생합니다. 따라서 전세 계약 갱신을 원하는 경우, 임대인에게 계약갱신 의사를 전달할 시점은 임대인의 답변을 기다리는 기간을 고려하여 조기에 의사 표현하는 것이 좋습니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "주택임대차보호법 제6조의3(계약갱신 요구 등)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의3",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제6조의3#0"
+            },
+            {
+              "label": "주택임대차보호법 제6조의2(묵시적 갱신의 경우 계약의 해지)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의2",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제6조의2#0"
+            },
+            {
+              "label": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조",
+              "doc_type": "decree",
+              "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0"
+            },
+            {
+              "label": "민법 제105조(임의규정)",
+              "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0105&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제105조#0"
+            },
+            {
+              "label": "민법 제623조(임대인의 의무)",
+              "url": "https://www.law.go.kr/법령/민법/제623조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제623조#0"
+            },
+            {
+              "label": "민법 제634조(임차인의 통지의무)",
+              "url": "https://www.law.go.kr/법령/민법/제634조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제634조#0"
+            }
+          ],
+          "turn": 2,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 계약갱신\n계약 유형: 전세\n사용자 입력: 동생 건은 여기까지 할게요. 저는 전세 계약 갱신을 원하는데 언제 의사를 전달해야 하나요?"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "topic_change",
+        "facts": {
+          "contract_type": "전세",
+          "topic": "계약갱신"
+        },
+        "query": "대화 주제: 계약갱신\n계약 유형: 전세\n사용자 입력: 동생 건은 여기까지 할게요. 저는 전세 계약 갱신을 원하는데 언제 의사를 전달해야 하나요?"
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "message": {
+        "id": "db7720cb9b9e4dc9b7bfeedc6fae692d",
+        "role": "assistant",
+        "status": "answered",
+        "content": "주택임대차보호법 제6조의2에 따르면, 임차인은 임대인에게 계약해지 통지를 언제든지 할 수 있습니다. 다만, 해지 통지가 임대인에게 도달한 날부터 3개월이 지나야만 해지의 효력이 발생합니다. 따라서 전세 계약 갱신을 원하는 경우, 임대인에게 계약갱신 의사를 전달할 시점은 임대인의 답변을 기다리는 기간을 고려하여 조기에 의사 표현하는 것이 좋습니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [
+          {
+            "label": "주택임대차보호법 제6조의3(계약갱신 요구 등)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의3",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제6조의3#0"
+          },
+          {
+            "label": "주택임대차보호법 제6조의2(묵시적 갱신의 경우 계약의 해지)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의2",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제6조의2#0"
+          },
+          {
+            "label": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조",
+            "doc_type": "decree",
+            "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0"
+          },
+          {
+            "label": "민법 제105조(임의규정)",
+            "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0105&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제105조#0"
+          },
+          {
+            "label": "민법 제623조(임대인의 의무)",
+            "url": "https://www.law.go.kr/법령/민법/제623조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제623조#0"
+          },
+          {
+            "label": "민법 제634조(임차인의 통지의무)",
+            "url": "https://www.law.go.kr/법령/민법/제634조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제634조#0"
+          }
+        ],
+        "used_history": false,
+        "elapsed_seconds": 61.5,
+        "reason": "answered",
+        "action": "rag",
+        "intent": "topic_change"
+      },
+      "elapsed_seconds": 61.529,
+      "model_calls": 3,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "execution_error": null,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": true,
+          "expected": "topic_change",
+          "actual": "topic_change"
+        },
+        "facts": {
+          "passed": true,
+          "expected": {
+            "contract_type": "전세",
+            "topic": "계약갱신"
+          },
+          "actual": {
+            "contract_type": "전세",
+            "topic": "계약갱신"
+          }
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_type": "월세",
+            "topic": "시설수리"
+          },
+          "actual": {
+            "contract_type": "전세",
+            "topic": "계약갱신"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "갱신"
+          ],
+          "actual": "대화 주제: 계약갱신\n계약 유형: 전세\n사용자 입력: 동생 건은 여기까지 할게요. 저는 전세 계약 갱신을 원하는데 언제 의사를 전달해야 하나요?"
+        },
+        "query_excludes": {
+          "passed": true,
+          "expected": [
+            "누수",
+            "수리"
+          ],
+          "actual": "대화 주제: 계약갱신\n계약 유형: 전세\n사용자 입력: 동생 건은 여기까지 할게요. 저는 전세 계약 갱신을 원하는데 언제 의사를 전달해야 하나요?"
+        }
+      }
+    },
+    {
+      "case_id": "ACC-005",
+      "turn": 1,
+      "input": "첨부한 임대차계약서에 매달 내는 돈은 얼마로 기재돼 있죠?",
+      "before_state": {
+        "version": 1,
+        "turn": 0,
+        "epoch": 0,
+        "topic": null,
+        "facts": {},
+        "history": [],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": null,
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 1,
+        "topic": null,
+        "facts": {},
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "첨부한 임대차계약서에 매달 내는 돈은 얼마로 기재돼 있죠?"
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": "doc-a",
+        "last_answer": {
+          "content": "월차임: 700000원. (문서: doc-a.pdf 1쪽)\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "doc-a.pdf 1쪽",
+              "url": "",
+              "doc_type": "uploaded_document",
+              "chunk_id": "session:ACC-005:document:doc-a:page:1:0",
+              "document_id": "doc-a",
+              "document_kind": "임대차계약서",
+              "page_number": 1
+            }
+          ],
+          "turn": 1,
+          "validation": "existing_pipeline_passed",
+          "query": "첨부한 임대차계약서에 매달 내는 돈은 얼마로 기재돼 있죠?"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": null,
+        "facts": {},
+        "query": "첨부한 임대차계약서에 매달 내는 돈은 얼마로 기재돼 있죠?"
+      },
+      "routing": {
+        "path": "legacy_fallback",
+        "reason": "invalid_decision:unknown_without_statement"
+      },
+      "message": {
+        "id": "ab3115882f6648798d914bd388820b0c",
+        "role": "assistant",
+        "status": "answered",
+        "content": "월차임: 700000원. (문서: doc-a.pdf 1쪽)\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [
+          {
+            "label": "doc-a.pdf 1쪽",
+            "url": "",
+            "doc_type": "uploaded_document",
+            "chunk_id": "session:ACC-005:document:doc-a:page:1:0",
+            "document_id": "doc-a",
+            "document_kind": "임대차계약서",
+            "page_number": 1
+          }
+        ],
+        "used_history": false,
+        "elapsed_seconds": 7.0,
+        "action": "rag",
+        "intent": null
+      },
+      "elapsed_seconds": 21.034,
+      "model_calls": 3,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "execution_error": null,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": null,
+          "expected": "document_question",
+          "actual": null
+        },
+        "facts": {
+          "passed": null,
+          "expected": {},
+          "actual": {}
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_ended": "예"
+          },
+          "actual": {}
+        },
+        "query_contains": {
+          "passed": null,
+          "expected": [],
+          "actual": "첨부한 임대차계약서에 매달 내는 돈은 얼마로 기재돼 있죠?"
+        },
+        "query_excludes": {
+          "passed": null,
+          "expected": [],
+          "actual": "첨부한 임대차계약서에 매달 내는 돈은 얼마로 기재돼 있죠?"
+        }
+      }
+    },
+    {
+      "case_id": "ACC-005",
+      "turn": 2,
+      "input": "거기에 시설물 이상에 관해서 적힌 문구도 풀어주세요.",
+      "before_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 1,
+        "topic": null,
+        "facts": {},
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "첨부한 임대차계약서에 매달 내는 돈은 얼마로 기재돼 있죠?"
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": "doc-a",
+        "last_answer": {
+          "content": "월차임: 700000원. (문서: doc-a.pdf 1쪽)\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "doc-a.pdf 1쪽",
+              "url": "",
+              "doc_type": "uploaded_document",
+              "chunk_id": "session:ACC-005:document:doc-a:page:1:0",
+              "document_id": "doc-a",
+              "document_kind": "임대차계약서",
+              "page_number": 1
+            }
+          ],
+          "turn": 1,
+          "validation": "existing_pipeline_passed",
+          "query": "첨부한 임대차계약서에 매달 내는 돈은 얼마로 기재돼 있죠?"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 2,
+        "topic": null,
+        "facts": {},
+        "history": [],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": "refused",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "refuse",
+        "intent": null,
+        "facts": {},
+        "query": "거기에 시설물 이상에 관해서 적힌 문구도 풀어주세요."
+      },
+      "routing": {
+        "path": "legacy_fallback",
+        "reason": "invalid_decision:unsupported_or_unstated_fact"
+      },
+      "message": {
+        "id": "a1e9eea3267c47f3ba58de7bd6adc1be",
+        "role": "assistant",
+        "status": "refused",
+        "content": "주택임대차 관련 법령·판례·공식 기관 안내 범위에서 답할 수 없는 질문입니다. 임대차 권리·절차와 관련된 질문으로 다시 작성해 주세요.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [],
+        "used_history": false,
+        "elapsed_seconds": 3.9,
+        "action": "refuse",
+        "intent": null
+      },
+      "elapsed_seconds": 18.52,
+      "model_calls": 2,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "execution_error": null,
+      "checks": {
+        "action": {
+          "passed": false,
+          "expected": [
+            "rag"
+          ],
+          "actual": "refuse"
+        },
+        "intent": {
+          "passed": null,
+          "expected": "document_question",
+          "actual": null
+        },
+        "facts": {
+          "passed": null,
+          "expected": {},
+          "actual": {}
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_ended": "예"
+          },
+          "actual": {}
+        },
+        "query_contains": {
+          "passed": null,
+          "expected": [
+            "시설"
+          ],
+          "actual": "거기에 시설물 이상에 관해서 적힌 문구도 풀어주세요."
+        },
+        "query_excludes": {
+          "passed": null,
+          "expected": [],
+          "actual": "거기에 시설물 이상에 관해서 적힌 문구도 풀어주세요."
+        }
+      }
+    },
+    {
+      "case_id": "ACC-006",
+      "turn": 1,
+      "input": "문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요.",
+      "before_state": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "계약갱신",
+        "facts": {
+          "contract_type": {
+            "value": "전세",
+            "evidence": "전세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "상담 주제: 계약갱신. 계약 형태: 전세"
+          }
+        ],
+        "changes": [],
+        "pending": {
+          "field": "contract_ended",
+          "question": "계약이 이미 종료됐는지 알려주실 수 있나요?",
+          "attempts": 1
+        },
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": null,
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 1,
+        "topic": null,
+        "facts": {},
+        "history": [
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "주택임대차보호법 시행령 제30조에 따르면, 조정의 신청은 서면 또는 구두로 할 수 있으며, 구두로 신청할 경우 조정신청조서를 작성하고 서명 또는 기명날인을 해야 합니다. 조정신청서에는 당사자 정보와 분쟁 내용 등을 기재해야 하며, 증거서류는 첨부해야 합니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "주택임대차보호법 시행령 제30조(조정의 신청)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제30조",
+              "doc_type": "decree",
+              "chunk_id": "law-주택임대차보호법시행령-20260701#제30조#0"
+            },
+            {
+              "label": "주택임대차보호법 시행령 제32조(조정서류의 송달 등)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제32조",
+              "doc_type": "decree",
+              "chunk_id": "law-주택임대차보호법시행령-20260701#제32조#0"
+            },
+            {
+              "label": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조",
+              "doc_type": "decree",
+              "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0"
+            },
+            {
+              "label": "민법 제357조(근저당)",
+              "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0357&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제357조#0"
+            },
+            {
+              "label": "민법 제640조(차임연체와 해지)",
+              "url": "https://www.law.go.kr/법령/민법/제640조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제640조#0"
+            },
+            {
+              "label": "민법 제634조(임차인의 통지의무)",
+              "url": "https://www.law.go.kr/법령/민법/제634조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제634조#0"
+            }
+          ],
+          "turn": 2,
+          "validation": "existing_pipeline_passed",
+          "query": "문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": null,
+        "facts": {},
+        "query": "문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요."
+      },
+      "routing": {
+        "path": "legacy_fallback",
+        "reason": "invalid_decision:unknown_without_statement"
+      },
+      "message": {
+        "id": "aac085bd9ace4d50a5e3d6dff159c02e",
+        "role": "assistant",
+        "status": "answered",
+        "content": "주택임대차보호법 시행령 제30조에 따르면, 조정의 신청은 서면 또는 구두로 할 수 있으며, 구두로 신청할 경우 조정신청조서를 작성하고 서명 또는 기명날인을 해야 합니다. 조정신청서에는 당사자 정보와 분쟁 내용 등을 기재해야 하며, 증거서류는 첨부해야 합니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [
+          {
+            "label": "주택임대차보호법 시행령 제30조(조정의 신청)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제30조",
+            "doc_type": "decree",
+            "chunk_id": "law-주택임대차보호법시행령-20260701#제30조#0"
+          },
+          {
+            "label": "주택임대차보호법 시행령 제32조(조정서류의 송달 등)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제32조",
+            "doc_type": "decree",
+            "chunk_id": "law-주택임대차보호법시행령-20260701#제32조#0"
+          },
+          {
+            "label": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조",
+            "doc_type": "decree",
+            "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0"
+          },
+          {
+            "label": "민법 제357조(근저당)",
+            "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0357&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제357조#0"
+          },
+          {
+            "label": "민법 제640조(차임연체와 해지)",
+            "url": "https://www.law.go.kr/법령/민법/제640조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제640조#0"
+          },
+          {
+            "label": "민법 제634조(임차인의 통지의무)",
+            "url": "https://www.law.go.kr/법령/민법/제634조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제634조#0"
+          }
+        ],
+        "used_history": false,
+        "elapsed_seconds": 26.2,
+        "action": "rag",
+        "intent": null
+      },
+      "elapsed_seconds": 40.647,
+      "model_calls": 3,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "execution_error": null,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag",
+            "clarify"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": null,
+          "expected": "clarification_answer",
+          "actual": null
+        },
+        "facts": {
+          "passed": false,
+          "expected": {
+            "contract_type": "전세"
+          },
+          "actual": {}
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_ended": "예"
+          },
+          "actual": {}
+        },
+        "query_contains": {
+          "passed": false,
+          "expected": [
+            "갱신"
+          ],
+          "actual": "문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요."
+        },
+        "query_excludes": {
+          "passed": true,
+          "expected": [
+            "계약이 종료된"
+          ],
+          "actual": "문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요."
+        }
+      }
+    },
+    {
+      "case_id": "ACC-006",
+      "turn": 2,
+      "input": "그건 나중에 확인할게요. 우선 계약갱신의 일반적인 조건을 설명해 주세요.",
+      "before_state": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 1,
+        "topic": null,
+        "facts": {},
+        "history": [
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "주택임대차보호법 시행령 제30조에 따르면, 조정의 신청은 서면 또는 구두로 할 수 있으며, 구두로 신청할 경우 조정신청조서를 작성하고 서명 또는 기명날인을 해야 합니다. 조정신청서에는 당사자 정보와 분쟁 내용 등을 기재해야 하며, 증거서류는 첨부해야 합니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "주택임대차보호법 시행령 제30조(조정의 신청)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제30조",
+              "doc_type": "decree",
+              "chunk_id": "law-주택임대차보호법시행령-20260701#제30조#0"
+            },
+            {
+              "label": "주택임대차보호법 시행령 제32조(조정서류의 송달 등)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제32조",
+              "doc_type": "decree",
+              "chunk_id": "law-주택임대차보호법시행령-20260701#제32조#0"
+            },
+            {
+              "label": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조",
+              "doc_type": "decree",
+              "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0"
+            },
+            {
+              "label": "민법 제357조(근저당)",
+              "url": "https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo=00&joNo=0357&lsiSeq=284415&urlMode=lsScJoRltInfoR",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제357조#0"
+            },
+            {
+              "label": "민법 제640조(차임연체와 해지)",
+              "url": "https://www.law.go.kr/법령/민법/제640조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제640조#0"
+            },
+            {
+              "label": "민법 제634조(임차인의 통지의무)",
+              "url": "https://www.law.go.kr/법령/민법/제634조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제634조#0"
+            }
+          ],
+          "turn": 2,
+          "validation": "existing_pipeline_passed",
+          "query": "문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 3,
+        "epoch": 1,
+        "topic": "계약갱신",
+        "facts": {
+          "subject": {
+            "value": "계약갱신",
+            "evidence": "계약갱신",
+            "source_turn": 3,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "문서를 찾아봐야 알 것 같아요. 지금은 확답하기 어렵네요."
+          },
+          {
+            "role": "user",
+            "turn": 3,
+            "content": "그건 나중에 확인할게요. 우선 계약갱신의 일반적인 조건을 설명해 주세요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "주택임대차보호법 제6조의3에 따르면, 임차인은 임대차계약이 끝나기 전에 계약갱신을 요구할 수 있으며, 임대인은 정당한 사유 없이 거절할 수 없습니다. 다만, 차임을 2기 분 연체하거나, 전대를 하거나, 주택을 파손한 등 특별한 사유가 있는 경우에는 갱신 거절이 가능합니다. 계약갱신 시에는 원래의 조건을 유지하되, 차임과 보증금은 제7조의 범위에서 변경될 수 있습니다. 갱신된 계약은 2년간 유효하며, 임대인은 갱신 거절 시 임차인의 손해를 배상해야 합니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "주택임대차보호법 제6조의3(계약갱신 요구 등)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의3",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제6조의3#0"
+            },
+            {
+              "label": "주택임대차보호법 제6조의2(묵시적 갱신의 경우 계약의 해지)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의2",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제6조의2#0"
+            },
+            {
+              "label": "주택임대차보호법 제6조(계약의 갱신)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제6조#0"
+            },
+            {
+              "label": "민법 제623조(임대인의 의무)",
+              "url": "https://www.law.go.kr/법령/민법/제623조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제623조#0"
+            },
+            {
+              "label": "민법 제629조(임차권의 양도, 전대의 제한)",
+              "url": "https://www.law.go.kr/법령/민법/제629조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제629조#0"
+            },
+            {
+              "label": "민법 제640조(차임연체와 해지)",
+              "url": "https://www.law.go.kr/법령/민법/제640조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제640조#0"
+            }
+          ],
+          "turn": 3,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 계약갱신\n상담 대상: 계약갱신\n사용자 입력: 그건 나중에 확인할게요. 우선 계약갱신의 일반적인 조건을 설명해 주세요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": "explain",
+        "facts": {
+          "subject": "계약갱신",
+          "topic": "계약갱신"
+        },
+        "query": "대화 주제: 계약갱신\n상담 대상: 계약갱신\n사용자 입력: 그건 나중에 확인할게요. 우선 계약갱신의 일반적인 조건을 설명해 주세요."
+      },
+      "routing": {
+        "path": "conversation"
+      },
+      "message": {
+        "id": "977e48b48e0c45a7b3b6304bb9d79d40",
+        "role": "assistant",
+        "status": "answered",
+        "content": "주택임대차보호법 제6조의3에 따르면, 임차인은 임대차계약이 끝나기 전에 계약갱신을 요구할 수 있으며, 임대인은 정당한 사유 없이 거절할 수 없습니다. 다만, 차임을 2기 분 연체하거나, 전대를 하거나, 주택을 파손한 등 특별한 사유가 있는 경우에는 갱신 거절이 가능합니다. 계약갱신 시에는 원래의 조건을 유지하되, 차임과 보증금은 제7조의 범위에서 변경될 수 있습니다. 갱신된 계약은 2년간 유효하며, 임대인은 갱신 거절 시 임차인의 손해를 배상해야 합니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [
+          {
+            "label": "주택임대차보호법 제6조의3(계약갱신 요구 등)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의3",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제6조의3#0"
+          },
+          {
+            "label": "주택임대차보호법 제6조의2(묵시적 갱신의 경우 계약의 해지)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의2",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제6조의2#0"
+          },
+          {
+            "label": "주택임대차보호법 제6조(계약의 갱신)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제6조#0"
+          },
+          {
+            "label": "민법 제623조(임대인의 의무)",
+            "url": "https://www.law.go.kr/법령/민법/제623조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제623조#0"
+          },
+          {
+            "label": "민법 제629조(임차권의 양도, 전대의 제한)",
+            "url": "https://www.law.go.kr/법령/민법/제629조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제629조#0"
+          },
+          {
+            "label": "민법 제640조(차임연체와 해지)",
+            "url": "https://www.law.go.kr/법령/민법/제640조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제640조#0"
+          }
+        ],
+        "used_history": true,
+        "elapsed_seconds": 61.9,
+        "reason": "answered",
+        "action": "rag",
+        "intent": "explain"
+      },
+      "elapsed_seconds": 61.865,
+      "model_calls": 4,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "execution_error": null,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": false,
+          "expected": "followup",
+          "actual": "explain"
+        },
+        "facts": {
+          "passed": false,
+          "expected": {
+            "contract_type": "전세",
+            "topic": "계약갱신"
+          },
+          "actual": {
+            "subject": "계약갱신",
+            "topic": "계약갱신"
+          }
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_ended": "예"
+          },
+          "actual": {
+            "subject": "계약갱신",
+            "topic": "계약갱신"
+          }
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "갱신"
+          ],
+          "actual": "대화 주제: 계약갱신\n상담 대상: 계약갱신\n사용자 입력: 그건 나중에 확인할게요. 우선 계약갱신의 일반적인 조건을 설명해 주세요."
+        },
+        "query_excludes": {
+          "passed": true,
+          "expected": [
+            "계약이 종료된"
+          ],
+          "actual": "대화 주제: 계약갱신\n상담 대상: 계약갱신\n사용자 입력: 그건 나중에 확인할게요. 우선 계약갱신의 일반적인 조건을 설명해 주세요."
+        }
+      }
+    }
+  ],
+  "retrieval_initialization_seconds": 5.941,
+  "retrieval": {
+    "ready": true,
+    "issues": [],
+    "mode": "hybrid",
+    "chunks": {
+      "count": 175,
+      "sha256": "7edeefbdde2b686d781cbd8f3f3d418c3772874bf6b0aa9372807707ec4f83fb",
+      "source_matched_count": 175
+    },
+    "source_attribution": "Exact content matches; the loader does not retain original source filenames.",
+    "sources": {
+      "data/chunks/chunks.jsonl": {
+        "exists": true,
+        "sha256": "c61cba0ef9969cc271ab665b4e237bbd468025dec6199f7ecff2b040fec1958a",
+        "size_bytes": 209779,
+        "chunk_count": 143,
+        "matching_loaded_chunk_count": 143
+      },
+      "data/chunks/cases.jsonl": {
+        "exists": true,
+        "sha256": "f6190b01d00b0a6f4630ef8c8a2ceebe19ca5a443a9874d06ca2655a5e5efce9",
+        "size_bytes": 24116,
+        "chunk_count": 26,
+        "matching_loaded_chunk_count": 26
+      },
+      "data/chunks/guides.jsonl": {
+        "exists": true,
+        "sha256": "5b67bf5cf59ded40e0dc0289716cb6843ce473bed3d518b17b98fa9a2e54ba93",
+        "size_bytes": 13237,
+        "chunk_count": 6,
+        "matching_loaded_chunk_count": 6
+      },
+      "data/sample/chunks_expanded.jsonl": {
+        "exists": true,
+        "sha256": "8e614bbbc32ac69968f9441c323a7f93acc6973cdb39b2f2d1e4dd1165f97752",
+        "size_bytes": 200476,
+        "chunk_count": 135,
+        "matching_loaded_chunk_count": 0
+      }
+    },
+    "indexes": {
+      "base": {
+        "available": true,
+        "embedding": {
+          "model": "nlpai-lab/KURE-v1",
+          "revision": "4ed4540949c70b7da2c74004a915e1f2d5e46e4f",
+          "dimensions": 1024
+        },
+        "collection": "knowledge_chunks",
+        "collection_metadata_sha256": "8d78e973bf9d51eba40ca66ce280877a3dffc78c660b22eec29728e3ed9cb49c",
+        "count": 165,
+        "path": "data/index/chroma_kurev1_1024",
+        "files": {
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/data_level0.bin": {
+            "sha256": "2e3813a337b064eb1de4f8beac560c03c8310bb932b4c71fa6293bce947e3877",
+            "size_bytes": 423600
+          },
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/header.bin": {
+            "sha256": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+            "size_bytes": 100
+          },
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/length.bin": {
+            "sha256": "7a12e561363385e9dfeeab326368731c030ed4b374e7f5897ac819159d2884c5",
+            "size_bytes": 400
+          },
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/link_lists.bin": {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size_bytes": 0
+          },
+          "chroma.sqlite3": {
+            "sha256": "fe9e0352e85dae35d774cf7ea01735147d647f902bdcf7a4869489461601abe0",
+            "size_bytes": 2351104
+          }
+        },
+        "content": {
+          "available": true,
+          "entry_count": 165,
+          "unique_id_count": 165,
+          "sha256": "4d5adecc127f56f10050377d465ffad5f80cae8b7ab41e4072032828205aa6f1",
+          "vectors_sha256": "0c0b23cf7c12fad55673bea7b4dc15c836d9f6c1b59ca3e5ba247b11e4e65db8",
+          "vector_dimensions": [
+            1024
+          ],
+          "text_mismatch_count": 0,
+          "metadata_mismatch_count": 0,
+          "unknown_chunk_count": 0
+        }
+      },
+      "civil": {
+        "available": true,
+        "embedding": {
+          "model": "nlpai-lab/KURE-v1",
+          "revision": "4ed4540949c70b7da2c74004a915e1f2d5e46e4f",
+          "dimensions": 1024
+        },
+        "collection": "knowledge_chunks",
+        "collection_metadata_sha256": "8d78e973bf9d51eba40ca66ce280877a3dffc78c660b22eec29728e3ed9cb49c",
+        "count": 10,
+        "path": "data/index/chroma_civil_kurev1_1024",
+        "files": {
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/data_level0.bin": {
+            "sha256": "42e1ff6c411b3485390c0dfb11dbceda1222b171b325f1a1ad990eeffaa9a531",
+            "size_bytes": 423600
+          },
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/header.bin": {
+            "sha256": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+            "size_bytes": 100
+          },
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/length.bin": {
+            "sha256": "7a12e561363385e9dfeeab326368731c030ed4b374e7f5897ac819159d2884c5",
+            "size_bytes": 400
+          },
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/link_lists.bin": {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size_bytes": 0
+          },
+          "chroma.sqlite3": {
+            "sha256": "2bd1a50e3a6e3f08bb57285af3814520b4b7168a8d3040d32280e385627833a2",
+            "size_bytes": 274432
+          }
+        },
+        "content": {
+          "available": true,
+          "entry_count": 10,
+          "unique_id_count": 10,
+          "sha256": "fefd8c928d817cb01d5bf83b786443a3f09ecba7249629256cdaaa4624e1bcbb",
+          "vectors_sha256": "dd1e0966d7de4a7cf853757228133981ff43d60cac612a36562926c83a982252",
+          "vector_dimensions": [
+            1024
+          ],
+          "text_mismatch_count": 0,
+          "metadata_mismatch_count": 0,
+          "unknown_chunk_count": 0
+        }
+      }
+    },
+    "coverage": {
+      "indexed_unique_chunk_count": 175,
+      "cross_index_duplicate_count": 0,
+      "loaded_chunk_ids_missing_from_indexes": 0,
+      "index_chunk_ids_absent_from_memory": 0,
+      "required_civil_article_count": 10,
+      "missing_loaded_civil_articles": [],
+      "missing_indexed_civil_articles": []
+    }
+  },
+  "source_unchanged": true,
+  "retrieval_after": {
+    "ready": true,
+    "issues": [],
+    "mode": "hybrid",
+    "chunks": {
+      "count": 175,
+      "sha256": "7edeefbdde2b686d781cbd8f3f3d418c3772874bf6b0aa9372807707ec4f83fb",
+      "source_matched_count": 175
+    },
+    "source_attribution": "Exact content matches; the loader does not retain original source filenames.",
+    "sources": {
+      "data/chunks/chunks.jsonl": {
+        "exists": true,
+        "sha256": "c61cba0ef9969cc271ab665b4e237bbd468025dec6199f7ecff2b040fec1958a",
+        "size_bytes": 209779,
+        "chunk_count": 143,
+        "matching_loaded_chunk_count": 143
+      },
+      "data/chunks/cases.jsonl": {
+        "exists": true,
+        "sha256": "f6190b01d00b0a6f4630ef8c8a2ceebe19ca5a443a9874d06ca2655a5e5efce9",
+        "size_bytes": 24116,
+        "chunk_count": 26,
+        "matching_loaded_chunk_count": 26
+      },
+      "data/chunks/guides.jsonl": {
+        "exists": true,
+        "sha256": "5b67bf5cf59ded40e0dc0289716cb6843ce473bed3d518b17b98fa9a2e54ba93",
+        "size_bytes": 13237,
+        "chunk_count": 6,
+        "matching_loaded_chunk_count": 6
+      },
+      "data/sample/chunks_expanded.jsonl": {
+        "exists": true,
+        "sha256": "8e614bbbc32ac69968f9441c323a7f93acc6973cdb39b2f2d1e4dd1165f97752",
+        "size_bytes": 200476,
+        "chunk_count": 135,
+        "matching_loaded_chunk_count": 0
+      }
+    },
+    "indexes": {
+      "base": {
+        "available": true,
+        "embedding": {
+          "model": "nlpai-lab/KURE-v1",
+          "revision": "4ed4540949c70b7da2c74004a915e1f2d5e46e4f",
+          "dimensions": 1024
+        },
+        "collection": "knowledge_chunks",
+        "collection_metadata_sha256": "8d78e973bf9d51eba40ca66ce280877a3dffc78c660b22eec29728e3ed9cb49c",
+        "count": 165,
+        "path": "data/index/chroma_kurev1_1024",
+        "files": {
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/data_level0.bin": {
+            "sha256": "2e3813a337b064eb1de4f8beac560c03c8310bb932b4c71fa6293bce947e3877",
+            "size_bytes": 423600
+          },
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/header.bin": {
+            "sha256": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+            "size_bytes": 100
+          },
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/length.bin": {
+            "sha256": "7a12e561363385e9dfeeab326368731c030ed4b374e7f5897ac819159d2884c5",
+            "size_bytes": 400
+          },
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/link_lists.bin": {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size_bytes": 0
+          },
+          "chroma.sqlite3": {
+            "sha256": "fe9e0352e85dae35d774cf7ea01735147d647f902bdcf7a4869489461601abe0",
+            "size_bytes": 2351104
+          }
+        },
+        "content": {
+          "available": true,
+          "entry_count": 165,
+          "unique_id_count": 165,
+          "sha256": "4d5adecc127f56f10050377d465ffad5f80cae8b7ab41e4072032828205aa6f1",
+          "vectors_sha256": "0c0b23cf7c12fad55673bea7b4dc15c836d9f6c1b59ca3e5ba247b11e4e65db8",
+          "vector_dimensions": [
+            1024
+          ],
+          "text_mismatch_count": 0,
+          "metadata_mismatch_count": 0,
+          "unknown_chunk_count": 0
+        }
+      },
+      "civil": {
+        "available": true,
+        "embedding": {
+          "model": "nlpai-lab/KURE-v1",
+          "revision": "4ed4540949c70b7da2c74004a915e1f2d5e46e4f",
+          "dimensions": 1024
+        },
+        "collection": "knowledge_chunks",
+        "collection_metadata_sha256": "8d78e973bf9d51eba40ca66ce280877a3dffc78c660b22eec29728e3ed9cb49c",
+        "count": 10,
+        "path": "data/index/chroma_civil_kurev1_1024",
+        "files": {
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/data_level0.bin": {
+            "sha256": "42e1ff6c411b3485390c0dfb11dbceda1222b171b325f1a1ad990eeffaa9a531",
+            "size_bytes": 423600
+          },
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/header.bin": {
+            "sha256": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+            "size_bytes": 100
+          },
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/length.bin": {
+            "sha256": "7a12e561363385e9dfeeab326368731c030ed4b374e7f5897ac819159d2884c5",
+            "size_bytes": 400
+          },
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/link_lists.bin": {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size_bytes": 0
+          },
+          "chroma.sqlite3": {
+            "sha256": "2bd1a50e3a6e3f08bb57285af3814520b4b7168a8d3040d32280e385627833a2",
+            "size_bytes": 274432
+          }
+        },
+        "content": {
+          "available": true,
+          "entry_count": 10,
+          "unique_id_count": 10,
+          "sha256": "fefd8c928d817cb01d5bf83b786443a3f09ecba7249629256cdaaa4624e1bcbb",
+          "vectors_sha256": "dd1e0966d7de4a7cf853757228133981ff43d60cac612a36562926c83a982252",
+          "vector_dimensions": [
+            1024
+          ],
+          "text_mismatch_count": 0,
+          "metadata_mismatch_count": 0,
+          "unknown_chunk_count": 0
+        }
+      }
+    },
+    "coverage": {
+      "indexed_unique_chunk_count": 175,
+      "cross_index_duplicate_count": 0,
+      "loaded_chunk_ids_missing_from_indexes": 0,
+      "index_chunk_ids_absent_from_memory": 0,
+      "required_civil_article_count": 10,
+      "missing_loaded_civil_articles": [],
+      "missing_indexed_civil_articles": []
+    }
+  },
+  "retrieval_unchanged": true,
+  "retrieval_artifacts_unchanged": true,
+  "model_identity_after": {
+    "available": true,
+    "model": "qwen3:8b-q4_K_M",
+    "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "size_bytes": 5225388164,
+    "family": "qwen3",
+    "quantization": "Q4_K_M",
+    "ollama_version": "0.33.0"
+  },
+  "model_unchanged": true,
+  "summary": {
+    "scope": "Conversation behavior checks only; not legal correctness or safety validation.",
+    "turn_count": 12,
+    "checks": {
+      "action": {
+        "passed": 11,
+        "failed": 1,
+        "not_observable": 0
+      },
+      "intent": {
+        "passed": 5,
+        "failed": 1,
+        "not_observable": 6
+      },
+      "facts": {
+        "passed": 4,
+        "failed": 6,
+        "not_observable": 2
+      },
+      "forbidden_facts": {
+        "passed": 10,
+        "failed": 0,
+        "not_observable": 2
+      },
+      "query_contains": {
+        "passed": 7,
+        "failed": 3,
+        "not_observable": 2
+      },
+      "query_excludes": {
+        "passed": 5,
+        "failed": 1,
+        "not_observable": 6
+      }
+    },
+    "latency_seconds": {
+      "sample_count": 12,
+      "p50": 48.6545,
+      "p95": 61.6802,
+      "max": 61.865
+    },
+    "total_model_calls": 35,
+    "model_call_observation_count": 12,
+    "execution_error_count": 0
+  }
+}

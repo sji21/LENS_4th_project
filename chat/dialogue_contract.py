@@ -85,7 +85,7 @@ def build_decision_input(state, user, document_id=None):
     else:
         answer = None
     history = dialogue["history"][-4:]
-    if not history:
+    if not history and dialogue["turn"] == 0 and dialogue["epoch"] == 0:
         # Old sessions retain user messages, including statements before abstention.
         # Assistant generations are not inferred as user facts during migration.
         messages = state.get("messages", [])
@@ -104,6 +104,14 @@ def build_decision_input(state, user, document_id=None):
         "last_status": dialogue["last_status"], "documents": documents,
         "active_document_id": document_id or dialogue["active_document_id"],
     }
+
+
+def previous_answer_query(dialogue, intent):
+    answer = dialogue.get("last_answer") or {}
+    query = answer.get("query")
+    if intent in {"explain", "followup"} and answer.get("validation") == "existing_pipeline_passed" and isinstance(query, str) and len(query) <= 2000:
+        return query
+    return ""
 
 
 def _polarity_scope(field, evidence):
@@ -130,7 +138,7 @@ def _check_meaning(field, value, evidence):
     if not _numbers(value).issubset(_numbers(evidence)) or not _quantities(value).issubset(_quantities(evidence)):
         raise DecisionError("invented_number")
     if value == "모름":
-        if not re.search(r"모르|모름|알\s*수\s*없|말하(?:고\s*싶지|기\s*어려)|답(?:변)?하(?:기\s*어려|고\s*싶지)|알려주기\s*싫", evidence):
+        if not re.search(r"모르|모름|알\s*수\s*없|말하(?:고\s*싶지|기\s*어려)|답(?:변)?하(?:기\s*어려|고\s*싶지)|알려주기\s*싫|확답(?:하기|이)?\s*어렵|(?:찾아|확인해)\s*봐야\s*알", evidence):
             raise DecisionError("unknown_without_statement")
         return
     if field in {"deposit", "monthly_rent", "end_date", "start_date", "notice_date"}:
@@ -150,6 +158,11 @@ def _check_meaning(field, value, evidence):
             raise DecisionError("unsupported_or_unstated_fact")
     if field == "subject" and value not in evidence:
         raise DecisionError("unstated_subject")
+    if field == "subject" and (
+        value in {"계약갱신", "보증금반환", "시설수리", "계약준비", "대항력", "문서확인", "보증금", "계약서", "관련된", "그것", "그 내용", "그 요청"}
+        or re.search(r"(?:처음|초보|알아듣|이해하).*(?:사람|분)|초보자", value)
+    ):
+        raise DecisionError("unsupported_subject")
     if field in BOOL_FIELDS:
         _enum(value, {"예", "아니요", "모름"}, "boolean_fact")
         scope = _polarity_scope(field, evidence)
@@ -247,6 +260,11 @@ def parse_decision(raw, *, state, user, updates_as_list=False, preserved_user=Fa
     for field, update in updates.items():
         _check_meaning(field, update["value"], update["evidence"])
     factual_text = user + " " + " ".join(f["value"] + " " + f["evidence"] for f in dialogue["facts"].values())
+    prior_query = previous_answer_query(dialogue, payload["intent"])
+    # This is a previously validated question, never a new user fact. Changes
+    # to active facts or topic invalidate its answer cache in apply_user_update.
+    if preserved_user and prior_query:
+        factual_text += " " + prior_query
     if not _numbers(query).issubset(_numbers(factual_text)) or not _quantities(query).issubset(_quantities(factual_text)):
         raise DecisionError("invented_query_number")
     checked_query = query
@@ -256,5 +274,7 @@ def parse_decision(raw, *, state, user, updates_as_list=False, preserved_user=Fa
         # A verbatim question may contain hypotheses or corrections. It is not
         # a model assertion; only generated context is checked for new polarity.
         checked_query = query[:-len(user)]
+        if prior_query:
+            checked_query = checked_query.replace(f"직전 답변 질문: {prior_query}\n", "", 1)
     _check_query_polarity(checked_query, dialogue["facts"])
     return Decision(**deepcopy(payload))

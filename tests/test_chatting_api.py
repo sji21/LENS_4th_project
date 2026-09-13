@@ -237,46 +237,50 @@ def test_enabled_duplicate_request_has_one_planner_and_one_answer(browser, calls
     calls.legacy.assert_not_called()
 
 
-@pytest.mark.parametrize("code", ["invalid_decision:json", "model_unavailable", "truncated"])
-def test_planning_failure_uses_one_legacy_answer_and_exposes_no_internal_failure(browser, calls, settings, code):
+@pytest.mark.parametrize("code", ["invalid_decision:json", "truncated"])
+def test_planning_failure_returns_confirmation_without_rag_or_internal_details(browser, calls, settings, code):
     settings.CHAT_CONVERSATION_ENABLED = True
     calls.planner.side_effect = PlanningError(code)
-    before_dialogue = deepcopy(Conversation.objects.get().state["dialogue"])
-
+    before = deepcopy(Conversation.objects.get().state["dialogue"])
     response = post(browser, "보증금 반환 절차를 알려주세요.")
-
     assert response.status_code == 200
     message = response.json()["messages"][-1]
-    assert (message["status"], message["action"], message["intent"]) == ("answered", "rag", None)
-    assert message["content"] == "검증된 공개 답변"
+    assert (message["status"], message["action"], message["intent"]) == ("clarify", "clarify", None)
     assert code not in response.content.decode()
-    assert "PRIVATE_GRAPH_RAW" not in response.content.decode()
     saved = Conversation.objects.get().state
-    for field in ("facts", "turn", "history"):
-        assert saved["dialogue"][field] == before_dialogue[field]
-    assert saved["dialogue"]["last_answer"]["content"] == "검증된 공개 답변"
-    assert saved["dialogue"]["last_answer"]["validation"] == "existing_pipeline_passed"
+    assert saved["dialogue"]["facts"] == before["facts"]
+    assert saved["dialogue"]["history"] == before["history"]
+    assert saved["dialogue"]["last_answer"] == before["last_answer"]
     assert len(saved["messages"]) == 2
-    assert saved["dialogue_runtime"]["path"] == "legacy_fallback"
+    assert saved["dialogue_runtime"]["path"] == "clarification_recovery"
     assert "dialogue_runtime" not in response.json()
     calls.planner.assert_called_once()
-    calls.legacy.assert_called_once()
-    calls.official.assert_called_once()
+    calls.legacy.assert_not_called()
+    calls.official.assert_not_called()
 
 
-def test_duplicate_failed_plan_does_not_repeat_the_fallback(browser, calls, settings):
+def test_unavailable_planner_is_retryable_without_changing_conversation(browser, calls, settings):
+    settings.CHAT_CONVERSATION_ENABLED = True
+    calls.planner.side_effect = PlanningError("model_unavailable")
+    before = deepcopy(Conversation.objects.get().state)
+    response = post(browser, "보증금 반환 절차를 알려주세요.")
+    assert response.status_code == 503
+    assert Conversation.objects.get().state == before
+    calls.official.assert_not_called()
+    calls.legacy.assert_not_called()
+
+
+def test_duplicate_failed_plan_does_not_repeat_the_confirmation(browser, calls, settings):
     settings.CHAT_CONVERSATION_ENABLED = True
     calls.planner.side_effect = PlanningError("invalid_decision:keys")
     request_id = str(uuid.uuid4())
-
     first = post(browser, "보증금 반환 절차를 알려주세요.", request_id=request_id)
     second = post(browser, "보증금 반환 절차를 알려주세요.", request_id=request_id)
-
     assert first.status_code == second.status_code == 200
     assert first.json() == second.json()
     calls.planner.assert_called_once()
-    calls.legacy.assert_called_once()
-    calls.official.assert_called_once()
+    calls.legacy.assert_not_called()
+    calls.official.assert_not_called()
 
 
 def test_graph_failure_does_not_repeat_generation_or_commit_pending_facts(browser, calls, settings):
@@ -440,15 +444,16 @@ def test_ambiguous_document_asks_before_model_or_retrieval_and_choice_resumes(br
     calls.document.assert_called_once()
 
 
-def test_document_fallback_records_selected_owned_document_for_followup(browser, calls, settings):
+def test_document_recovery_offers_selected_owned_document_without_answering(browser, calls, settings):
     settings.CHAT_CONVERSATION_ENABLED = True
     selected = owned_document(browser)
     calls.planner.side_effect = PlanningError("invalid_decision:changed_literal_value")
     result = post(browser, "올린 계약서의 보증금이 얼마인가요?")
     assert result.status_code == 200
-    assert Conversation.objects.get().state["dialogue"]["active_document_id"] == selected
+    pending = Conversation.objects.get().state["dialogue"]["pending"]
+    assert all(c["document_id"] == selected for c in pending["choices"])
     assert not Conversation.objects.get().state["dialogue"]["facts"]
-    calls.document.assert_called_once()
+    calls.document.assert_not_called()
 
 
 def test_different_document_amounts_are_not_combined_as_one_fact(browser, calls, settings):

@@ -9,11 +9,12 @@ from langsmith import tracing_context
 from src.generation import chain
 from src.generation.call_budget import conversation_budget, check_deadline
 from . import dialogue_planner
-from .dialogue_contract import Decision, parse_decision
+from .dialogue_contract import Decision, parse_decision, previous_answer_query
 from .dialogue_query import grounded_query
 from .dialogue_documents import select_document, document_question, retain_followup_topic
 from .dialogue_clarification import short_answer_decision, prepare_clarification, answer_reason
 from .dialogue_state import apply_user_update, ensure_dialogue, record_answer
+from .dialogue_recovery import recovery_pending, resume_recovery
 
 
 SOCIAL_TEXT = "안녕하세요. 주택 임대차와 관련해 궁금한 점을 편하게 말씀해 주세요."
@@ -80,6 +81,8 @@ def respond_conversational(state, question, document_id=None, *, legacy):
             _commit(state, draft)
             return message
 
+        resume_recovery(draft, question)
+        recovery_base = deepcopy(draft)
         selected_input, ambiguous = select_document(draft, question, document_id)
         try:
             decision = document_question(draft) if ambiguous else None
@@ -88,15 +91,19 @@ def respond_conversational(state, question, document_id=None, *, legacy):
             if decision is None:
                 decision = dialogue_planner.plan_turn(draft, question, selected_input).decision
         except dialogue_planner.PlanningError as error:
-            # No partially proposed facts survive a rejected plan. The legacy
-            # adapter owns message appending; do not append the exchange twice.
-            draft = deepcopy(state)
-            message = legacy(draft, question, selected_input)
-            if selected_input:
-                ensure_dialogue(draft)["active_document_id"] = selected_input
-            message.update(action="refuse" if message.get("status") == "refused" else "rag", intent=None)
-            record_answer(draft, message)
-            draft["dialogue_runtime"] = {"path": "legacy_fallback", "reason": error.code}
+            # Service errors are retryable HTTP failures, not an invitation to
+            # answer with unclassified context. No state is committed on these.
+            if error.code == "model_unavailable" or error.code.startswith("invalid_input:"):
+                raise RuntimeError("Conversation planning unavailable") from None
+            draft = recovery_base
+            pending = recovery_pending(draft, question, selected_input)
+            message = _static_message(services, pending["question"], "clarify", started)
+            message.update(action="clarify", intent=None, choices=pending["choices"], reason="needs_information")
+            pending["message_id"] = message["id"]
+            draft["dialogue"]["pending"] = pending
+            draft["dialogue"]["last_status"] = "clarify"
+            draft["dialogue_runtime"] = {"path": "clarification_recovery", "reason": error.code}
+            services.append_exchange(draft, question, message)
             _commit(state, draft)
             return message
 
@@ -157,7 +164,10 @@ def respond_conversational(state, question, document_id=None, *, legacy):
 
         message.update(action="refuse" if message["status"] == "refused" else decision.action, intent=decision.intent)
         if message["status"] in {"answered", "abstained", "refused"}:
-            record_answer(draft, message)
+            query = None
+            if decision.action == "rag":
+                query = previous_answer_query(ensure_dialogue(draft), decision.intent) or decision.search_query
+            record_answer(draft, message, query=query)
         else:
             # An interleaved social reply is not a replacement legal answer.
             draft["dialogue"]["last_status"] = message["status"]
