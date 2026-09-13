@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-028 documents the macOS Python entry point alongside Windows commands, including environment setup and the lack of macOS runtime verification. Documentation only. (commit: pending)
+- PATCH-028 documents the macOS Python entry point alongside Windows commands, including environment setup and the lack of macOS runtime verification. Documentation only. (commit: c5249ad)
 
 - PATCH-028 defaults to a single no-argument command showing DB check → apply if needed → confirmation. Prompt for the source only when needed, skip identical data and keep subprocess diagnostics in per-step logs.24 focused tests pass; retrieval/data unchanged. (commit: 6b3e43d)
 
