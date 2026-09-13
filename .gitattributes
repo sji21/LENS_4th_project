@@ -14,3 +14,5 @@
 /data/eval/patch027-context-tuning/live-verification.json -diff
 /data/eval/patch027-context-tuning/comparison.json -diff
 /data/eval/patch027-loss-analysis/** -text
+/data/eval/patch027-final-test/** -text
+/data/eval/patch027-final-test/rows.json -diff
