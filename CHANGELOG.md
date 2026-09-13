@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-028 streams builder progress and warnings to the terminal while preserving per-worker logs and failure diagnostics. Stop workers before releasing control on interrupted output. Focused validation:68 passed; no DB or GPU dependency changes. (commit: pending)
+- PATCH-028 streams builder progress and warnings to the terminal while preserving per-worker logs and failure diagnostics. Stop workers before releasing control on interrupted output. Focused validation:68 passed; no DB or GPU dependency changes. (commit: 587f632)
 
 - PATCH-028 allows `--venv-dir` for a container-local RunPod environment while retaining persistent DB/model storage and default Windows/Mac `.venv` behavior. Preserve existing environments; use the selected interpreter throughout preparation/build. Document ephemeral-environment reinstallation and team-reported Mac success; RunPod speed is not yet measured. (commit: a6cc50b)
 
