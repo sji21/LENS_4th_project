@@ -1,6 +1,6 @@
 param(
     [ValidateSet('status', 'apply', 'restore')]
-    [string]$Action = 'status',
+    [string]$Action = 'apply',
     [string]$Source,
     [string]$Backup
 )

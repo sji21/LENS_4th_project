@@ -9,6 +9,8 @@ import pytest
 
 from scripts import manage_retrieval_data as manager
 
+REAL_RUN_STEP = manager.run_step
+
 
 def test_concurrent_installation_is_rejected_and_lock_released(tmp_path):
     with manager.installation_lock(tmp_path):
@@ -44,6 +46,42 @@ def test_repeat_install_is_noop_without_source_backup_or_verification(flow, monk
     assert manager.apply_data(None)["state"] == "installed"
     assert calls == []
     assert not (root / "tmp/retrieval-data").exists()
+
+
+def test_no_argument_entry_shows_three_steps_without_raw_json(flow, monkeypatch, capsys):
+    _, calls = flow
+    monkeypatch.setattr(manager, "data_status", lambda _: {"state": "installed", "counts": {
+        "laws": 178, "civil_laws": 26, "cases": 26, "guides": 6}})
+    assert manager.main([]) == 0
+    output = capsys.readouterr().out
+    assert output.index("[1/3]") < output.index("[2/3]") < output.index("[3/3]")
+    assert "추가 불필요" in output and "민법 26개" in output
+    assert '"state"' not in output
+    assert calls == []
+
+
+def test_source_is_requested_only_when_update_is_needed(flow, monkeypatch):
+    root, calls = flow
+    monkeypatch.setattr(manager, "request_source", lambda: root / "source")
+    assert manager.apply_data(None)["state"] == "installed"
+    assert calls[0][1]["data"] == root / "source"
+
+
+def test_noninteractive_missing_source_fails_without_waiting(monkeypatch):
+    monkeypatch.setattr(manager.sys.stdin, "isatty", lambda: False)
+    with pytest.raises(ValueError, match="데이터 폴더"):
+        manager.request_source()
+
+
+def test_failed_step_retains_diagnostics_in_log(flow, monkeypatch):
+    root, _ = flow
+    def fail(command, **kwargs):
+        kwargs["stdout"].write(b"specific diagnostic")
+        return SimpleNamespace(returncode=1)
+    monkeypatch.setattr(manager.subprocess, "run", fail)
+    with pytest.raises(ValueError, match="상세 기록"):
+        REAL_RUN_STEP("verify", data=root / "data", out=root / "preflight")
+    assert (root / "preflight-verify.log").read_bytes() == b"specific diagnostic"
 
 
 def test_broken_installed_data_is_not_treated_as_success(flow, monkeypatch):

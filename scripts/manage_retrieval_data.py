@@ -138,7 +138,11 @@ def run_step(action, **paths):
         command.extend(["--" + name, str(path)])
     env = {**os.environ, "HF_HUB_OFFLINE": "1", "TRANSFORMERS_OFFLINE": "1",
            "HF_HUB_DISABLE_TELEMETRY": "1", "ANONYMIZED_TELEMETRY": "False"}
-    subprocess.run(command, cwd=ROOT, env=env, check=True)
+    log = paths["out"].parent / (paths["out"].name + "-" + action + ".log")
+    with log.open("wb") as stream:
+        result = subprocess.run(command, cwd=ROOT, env=env, stdout=stream, stderr=subprocess.STDOUT)
+    if result.returncode:
+        raise ValueError(f"{action} 단계 실패. 상세 기록: {log}")
 
 
 def new_run():
@@ -159,29 +163,53 @@ def require_clean_code():
         raise ValueError("검증할 코드를 먼저 커밋하고 작업 트리를 정리하세요.")
 
 
+def show_counts(result):
+    counts = result.get("counts")
+    if counts:
+        print(f"일반 법령 {counts['laws']}개 · 민법 {counts['civil_laws']}개 · "
+              f"판례 {counts['cases']}개 · 안내 {counts['guides']}개", flush=True)
+
+
+def request_source():
+    if not sys.stdin.isatty():
+        raise ValueError("추가할 데이터 폴더가 필요합니다. -Source 또는 --source로 지정하세요.")
+    try:
+        value = input("추가할 검증된 데이터 폴더를 입력하세요: ").strip().strip('"')
+    except EOFError as error:
+        raise ValueError("데이터 폴더 입력이 종료되어 적용하지 않았습니다.") from error
+    if not value:
+        raise ValueError("데이터 폴더를 입력하지 않아 적용하지 않았습니다.")
+    return Path(value)
+
+
 def apply_data(source):
     with installation_lock():
+        print("[1/3] DB 체크 — 현재 데이터·중복·손상 확인 중...", flush=True)
         status = data_status(ROOT / "data")
+        print("[1/3] DB 체크 완료", flush=True)
+        show_counts(status)
         if status["state"] == "installed":
-            print("이미 적용된 동일 데이터입니다. 추가 적재 없이 종료합니다.")
+            print("[2/3] DB 적용 — 이미 같은 데이터가 있어 추가 불필요", flush=True)
+            print("[3/3] 확인 완료 — 중복 없음, 데이터 변경 없음", flush=True)
             return status
         if source is None:
-            raise ValueError("--source에 검증된 확대 데이터 폴더를 지정하세요.")
+            source = request_source()
         source = source.resolve()
         if source == (ROOT / "data").resolve():
             raise ValueError("적재 원본과 대상은 다른 폴더여야 합니다.")
         require_clean_code()
-        inspect_in_process(source, "expanded")
+        counts = inspect_in_process(source, "expanded")
         run = new_run()
-        print("진행 기록:", run, flush=True)
+        print("[2/3] DB 적용 — 사전 검사 후 백업·적용합니다. 잠시 기다려 주세요.", flush=True)
         run_step("stage", data=source, out=run / "stage")
         run_step("verify", data=run / "stage/data", out=run / "preflight")
         applied = False
         try:
             run_step("apply", data=run / "stage/data", verification=run / "preflight", out=run / "backup")
             applied = True
+            print("[3/3] 결과 확인 — 적용된 DB의 검색 결과 확인 중...", flush=True)
             run_step("verify", data=ROOT / "data", out=run / "postflight")
-            result = {"state": "installed", "backup": str(run / "backup"),
+            result = {"state": "installed", "counts": counts, "backup": str(run / "backup"),
                       "preflight": str(run / "preflight"), "postflight": str(run / "postflight")}
             save_result(run / "result.json", result)
         except Exception:
@@ -189,7 +217,9 @@ def apply_data(source):
                 run_step("restore", data=run / "backup", out=run / "rollback")
                 print("사후 확인 실패로 기존 데이터를 복구했습니다. 기록:", run, flush=True)
             raise
-        print("204조문 적용 및235입력 확인 완료. 백업:", run / "backup", flush=True)
+        print("[3/3] 확인 완료 — 235입력 일치, 중복 없음", flush=True)
+        show_counts(result)
+        print("기록·백업:", run, flush=True)
         return result
 
 
@@ -213,7 +243,7 @@ def restore_data(backup):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description="로컬 검색 DB 상태 확인·안전 적용·복구")
-    parser.add_argument("action", choices=("status", "apply", "restore", "_inspect"))
+    parser.add_argument("action", nargs="?", default="apply", choices=("status", "apply", "restore", "_inspect"))
     parser.add_argument("--source", type=Path, help="검증된204조문 데이터 폴더")
     parser.add_argument("--backup", type=Path, help="적용 완료 시 안내된 백업 폴더")
     parser.add_argument("--kind", choices=("baseline", "expanded"), help=argparse.SUPPRESS)
@@ -232,7 +262,11 @@ def main(argv=None):
             if args.backup is None:
                 parser.error("restore에는 --backup이 필요합니다.")
             result = restore_data(args.backup)
-        print(json.dumps(result, ensure_ascii=False))
+        if args.action == "_inspect":
+            print(json.dumps(result, ensure_ascii=False))
+        elif args.action != "apply":
+            print("DB 상태:", "확대 데이터 적용 완료" if result["state"] == "installed" else "기존 데이터")
+            show_counts(result)
         return 0
     except (ValueError, OSError, KeyError, sqlite3.Error, subprocess.CalledProcessError) as error:
         print(str(error), file=sys.stderr)

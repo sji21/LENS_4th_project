@@ -7,20 +7,14 @@
 프로젝트의 `.venv`와 KURE 모델을 준비하고 앱을 종료한 뒤 저장소 루트에서 실행합니다.
 
 ```powershell
-# 현재 상태·중복·파일/인덱스 일치 확인
-.\manage-data.ps1 status
-
-# 검증된 확대 데이터 폴더를 지정하면 준비→사전235입력 검증→백업→적용→사후235입력 검증
-.\manage-data.ps1 apply -Source 'C:\공유자료\expanded-data'
-
-# 같은 데이터가 이미 적용됐다면 원본 지정 없이 확인 후 종료
-.\manage-data.ps1 apply
-
-# 적용 완료 때 출력된 백업 경로를 지정
-.\manage-data.ps1 restore -Backup 'C:\프로젝트\tmp\retrieval-data\실행번호\backup'
+.\manage-data.ps1
 ```
 
-PowerShell 실행 파일 대신 `.venv/Scripts/python -X utf8 -m scripts.manage_retrieval_data status`를 사용할 수도 있습니다. `apply --source <폴더>`, `restore --backup <폴더>`도 같은 동작입니다. 실행 오류는 종료 코드1, 인자 오류는2로 반환합니다.
+화면에는 **[1/3] DB 체크 → [2/3] DB 적용 → [3/3] 결과 확인** 순서로 표시합니다. 같은 데이터가 있으면 추가 불필요·변경 없음으로 종료합니다. 적용이 필요한 경우에만 검증된 확대 데이터 폴더를 입력받습니다. 원본이 없는 상태에서 자동으로 임의의 법령을 수집하거나 선택하지 않습니다.
+
+자동 실행 환경에서는 `.\manage-data.ps1 -Source '<검증된 데이터 폴더>'`로 원본을 지정합니다. 입력을 받을 수 없는데 원본도 없으면 대기하지 않고 오류로 종료합니다. 단계별 상세 로그와 백업 경로는 실행 폴더에 남깁니다.
+
+상태만 보려면 `.\manage-data.ps1 status`, 복구하려면 `.\manage-data.ps1 restore -Backup '<안내된 백업 폴더>'`를 사용합니다. PowerShell 대신 `.venv/Scripts/python -X utf8 -m scripts.manage_retrieval_data`도 인자 없이 같은 흐름을 실행합니다. 실행 오류는 종료 코드1, 인자 오류는2입니다.
 
 ## 중복·손상 방지
 

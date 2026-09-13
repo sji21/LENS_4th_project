@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
+- PATCH-028 defaults to a single no-argument command showing DB check → apply if needed → confirmation. Prompt for the source only when needed, skip identical data and keep subprocess diagnostics in per-step logs.24 focused tests pass; retrieval/data unchanged. (commit: pending)
+
 - PATCH-028 completes the main-checkout rollout: general178/civil26 with235/235 matches before and after installation,375 model calls each. Repeated apply leaves all payload bytes unchanged and creates no additional backup. Preserve prior local PATCH-024 edits separately. Validation:1,135 full-suite passes,3 skips,172 subtests;20 focused passes after the copy-inspection correction. (commit: 0e80edd)
 
 - PATCH-028 inspection now opens disposable copies because Chroma may rewrite physical index files on read. Repeat apply preserves every installed payload byte and creates no new run or backup. (commit: e8e3a61)
