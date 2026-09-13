@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "files": {
+    "민법-20260317.txt": {
+      "sha256": "d7533cfcad78f583466b11a79bdb6684062c64fea907956a9c79af59c02da5d0",
+      "kind": "official-law-plaintext",
+      "origin": "Previously collected official law page; same local source used during project ingestion"
+    },
+    "상가건물임대차보호법-20260512.txt": {
+      "sha256": "9a6477dbe21066aca273225dba9af0a41a79d5c3b5f39a7a7df7a424c28fad63",
+      "kind": "official-law-plaintext",
+      "origin": "Previously collected official law page; same local source used during project ingestion"
+    },
+    "상가건물임대차보호법시행령-20260701.txt": {
+      "sha256": "e87caa093031086b5542dc88ca8433b88be54e11026106ca472f477d9dc76365",
+      "kind": "official-law-plaintext",
+      "origin": "Previously collected official law page; same local source used during project ingestion"
+    },
+    "주택임대차보호법-20260102.txt": {
+      "sha256": "23de9cc907a70622ea80cb415d098c504be30ea207da611504850cc00fad67f7",
+      "kind": "official-law-plaintext",
+      "origin": "Previously collected official law page; same local source used during project ingestion"
+    },
+    "주택임대차보호법시행령-20260701.txt": {
+      "sha256": "1db464f26c9afac114530c4731e0abfb5a820477f28ee248ceaafddaf0d45f20",
+      "kind": "official-law-plaintext",
+      "origin": "Previously collected official law page; same local source used during project ingestion"
+    },
+    "guide-records.jsonl": {
+      "sha256": "9487c84160e4099e01f4c75ac66ce1546a6cd7b9b70e50a94bf840fda9459941",
+      "kind": "collected-guide-records",
+      "origin": "Previously collected official HUG/NTS guide records; original URLs and dates in each record"
+    }
+  },
+  "purpose": "Approved source snapshots for rebuilding databases; no database or vector payloads"
+}

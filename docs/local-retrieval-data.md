@@ -1,4 +1,6 @@
-# 로컬 검색 데이터 적용
+# 검증 DB 묶음 재현·복원 (일반 설치 아님)
+
+**일반 서버 설치는 ZIP 없이 [원천 기반 구축](server-data-setup.md)을 사용합니다.** 아래는 이전 평가와 동일한 DB를 복원하는 별도 검증용 경로입니다.
 
 검증된 PATCH-027 데이터 묶음을 빈 환경에 최초 설치하거나 기본143조문(일반133·민법10)에서204조문(일반178·민법26)으로 전환합니다. SQLite·청크·기본/민법 Chroma 인덱스·검색 프로필을 함께 적용합니다.
 
@@ -24,14 +26,14 @@ data/                         ← 실행기가 물어볼 때 이 폴더를 선�
 
 예를 들어 맥에서 `Downloads/lens-data/data/chunks`가 보인다면 입력할 경로는 `/Users/사용자이름/Downloads/lens-data/data`입니다. 압축 파일 자체나 `chunks` 폴더를 선택하지 않습니다. 압축은 저장소 밖에 풀고, 원본 자료를 대상 저장소의 `data`에 수동으로 덮어쓰지 마세요. 전달된 자료도 실행기가 기존 평가 기록의 해시·내용·검색 결과와 대조합니다. 묶음 자체는 임베딩 모델을 포함하지 않습니다.
 
-## 권장: 환경 준비부터 한 번 실행
+## 검증 DB 복원 실행
 
 Python 3.11과 Git을 설치하고 저장소 루트에서 실행합니다.
 
 | 환경 | 명령 |
 | --- | --- |
-| Windows | `py -3.11 setup_data.py` |
-| macOS | `python3.11 setup_data.py` |
+| Windows | `py -3.11 setup_data.py --validation-bundle` |
+| macOS | `python3.11 setup_data.py --validation-bundle` |
 
 `.venv`를 만들고 `pip install -r requirements.txt`로 요구 모듈을 확인·설치한 뒤 `pip check`와 실제 DB 모듈 로딩을 검사합니다. KURE는 평가 기록에 고정된 버전을 다운로드하고 파일 해시를 확인합니다. 준비가 끝난 뒤 아래 DB 3단계가 진행됩니다. Python 자체는 자동 설치하지 않습니다.
 
@@ -39,7 +41,7 @@ Python 3.11과 Git을 설치하고 저장소 루트에서 실행합니다.
 - 다운로드·DB 적용 없는 환경 점검: `--check`.
 - 폴더를 미리 지정: `--source '/Users/사용자이름/Downloads/lens-data/data'`.
 - 모듈 설치나 모델 확인 실패 시 DB를 변경하지 않고 오류를 표시합니다. 패키지는 버전 고정 전체 잠금 파일이 아니므로 맥 결과 재현은 별도 확인이 필요합니다.
-- 현재 모델 검증 경로는 기본 `~/.cache/huggingface/hub`입니다. 사용자 지정 HF 캐시나 다른 KURE 버전이 감지되면 자동 교체하지 않고 중단합니다.
+- 이 고정 평가 재현 경로의 모델 검증 위치는 기본 `~/.cache/huggingface/hub`입니다. 일반 서버 구축과 달리 사용자 지정 HF 캐시로235입력 재현을 지원하지 않습니다. 다른 KURE 버전을 자동 교체하지 않습니다.
 
 ## 환경 준비가 끝난 뒤 DB만 실행
 

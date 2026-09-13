@@ -50,12 +50,9 @@ def prepare_model(check=False):
     if len(revisions) != 1:
         raise ValueError("검증된 모델 버전을 특정할 수 없습니다.")
     revision = revisions.pop()
-    hub = Path.home() / ".cache/huggingface/hub"
-    cache = hub / "models--nlpai-lab--KURE-v1"
-    # The retrieval verifier currently uses this exact cache location.
     from huggingface_hub.constants import HF_HUB_CACHE
-    if Path(HF_HUB_CACHE).resolve() != hub.resolve():
-        raise ValueError("현재 검증기는 기본 Hugging Face 캐시를 사용합니다. 사용자 지정 HF 캐시 설정을 해제하세요.")
+    hub = Path(HF_HUB_CACHE).expanduser().resolve()
+    cache = hub / "models--nlpai-lab--KURE-v1"
     ref = cache / "refs/main"
     if ref.exists() and ref.read_text().strip() != revision:
         raise ValueError("KURE 캐시의 main 버전이 검증 버전과 다릅니다. 기존 모델을 자동 교체하지 않습니다.")
@@ -86,9 +83,16 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description="모듈·모델 준비 후 DB 체크→적용→확인")
     parser.add_argument("--check", action="store_true", help="모듈·모델 확인만; 다운로드·DB 변경 없음")
     parser.add_argument("--prepare-only", action="store_true", help="모듈·모델만 준비하고 DB는 변경하지 않음")
-    parser.add_argument("--source", type=Path, help="검증된 확대 데이터 폴더")
+    parser.add_argument("--validation-bundle", action="store_true", help="별도 검증 DB 묶음 복원 모드")
+    parser.add_argument("--source", type=Path, help="검증 DB 복원 모드에서만 사용할 데이터 폴더")
+    parser.add_argument("--data-root", type=Path, help="일반 서버 구축 대상 폴더; 기본값 data")
+    parser.add_argument("--rebuild", action="store_true", help="일반 서버 DB를 백업 후 재구축")
     parser.add_argument("--model-worker", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args(argv)
+    if args.source and not args.validation_bundle:
+        parser.error("--source는 --validation-bundle 검증 DB 복원에서만 사용합니다. 일반 설치에는 ZIP이 필요 없습니다.")
+    if args.validation_bundle and (args.data_root or args.rebuild):
+        parser.error("검증 DB 복원과 일반 서버 구축 옵션을 함께 사용할 수 없습니다.")
     try:
         if args.model_worker:
             prepare_model(args.check)
@@ -99,9 +103,14 @@ def main(argv=None):
             command.append("--check")
         run(command)
         if not args.check and not args.prepare_only:
-            command = [python, "-X", "utf8", "-m", "scripts.manage_retrieval_data"]
-            if args.source:
+            module = "scripts.manage_retrieval_data" if args.validation_bundle else "src.ingestion.server_build"
+            command = [python, "-X", "utf8", "-m", module]
+            if args.validation_bundle and args.source:
                 command.extend(["--source", args.source.resolve()])
+            if args.data_root:
+                command.extend(["--data-root", args.data_root.resolve()])
+            if args.rebuild:
+                command.append("--rebuild")
             run(command)
         return 0
     except (ValueError, OSError, subprocess.CalledProcessError) as error:

@@ -54,11 +54,23 @@ def test_model_failure_stops_before_db(preparation, monkeypatch):
     assert len(calls) == 1 and calls[0][-1] == "--model-worker"
 
 
-def test_prepared_flow_passes_source_as_one_argument(preparation, tmp_path):
+def test_validation_flow_passes_source_as_one_argument(preparation, tmp_path):
     python, calls = preparation
     source = tmp_path / "자료 data"
-    assert setup.main(["--source", str(source)]) == 0
+    assert setup.main(["--validation-bundle", "--source", str(source)]) == 0
     assert calls[-1] == [str(python), "-X", "utf8", "-m", "scripts.manage_retrieval_data", "--source", str(source.resolve())]
+
+
+def test_default_setup_builds_from_sources_without_zip(preparation):
+    python, calls = preparation
+    assert setup.main([]) == 0
+    assert calls[-1] == [str(python), "-X", "utf8", "-m", "src.ingestion.server_build"]
+
+
+def test_source_requires_explicit_validation_mode(preparation):
+    with pytest.raises(SystemExit):
+        setup.main(["--source", "data"])
+    assert preparation[1] == []
 
 
 def test_missing_environment_check_is_read_only(preparation, monkeypatch, tmp_path):
