@@ -240,6 +240,28 @@ def test_failed_swap_restores_every_previously_replaced_path(tmp_path, monkeypat
     assert rollout.payload_hashes(old) == before
 
 
+@pytest.mark.parametrize("phase", ["before", "after"])
+def test_interrupted_bundle_rename_restores_all_bytes(tmp_path, monkeypatch, phase):
+    old, staged, backup = (tmp_path / p for p in ("old", "staged", "backup"))
+    small_payload(old, "before", profile=False)
+    small_payload(staged, "after")
+    before = rollout.payload_hashes(old)
+    rename = Path.rename
+    interrupted = False
+    def interrupt(path, dest):
+        nonlocal interrupted
+        if path == old / profiles.INDEXES[1] and not interrupted:
+            interrupted = True
+            if phase == "after":
+                rename(path, dest)
+            raise KeyboardInterrupt()
+        return rename(path, dest)
+    monkeypatch.setattr(Path, "rename", interrupt)
+    with pytest.raises(KeyboardInterrupt):
+        rollout.install_payload(staged, old, backup)
+    assert rollout.payload_hashes(old) == before
+
+
 @pytest.fixture
 def apply_fixture(tmp_path, monkeypatch):
     """Isolate apply's filesystem transaction from expensive preflight/model checks."""

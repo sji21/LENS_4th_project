@@ -205,9 +205,9 @@ def install_payload(staged, target, backup, *, receipt_metadata=None):
             dest, incoming, old = child(target, rel), child(backup / "incoming", rel), child(backup / "previous", rel)
             old.parent.mkdir(parents=True, exist_ok=True)
             existed = dest.exists()
+            touched.append((rel, existed))
             if existed:
                 dest.rename(old)
-            touched.append((rel, existed))
             dest.parent.mkdir(parents=True, exist_ok=True)
             if incoming.exists():
                 incoming.rename(dest)
@@ -220,9 +220,11 @@ def install_payload(staged, target, backup, *, receipt_metadata=None):
             write(backup / "receipt.json", receipt)
             if read(backup / "receipt.json") != receipt:
                 raise ValueError("Stored receipt differs from installation metadata")
-    except Exception:
+    except BaseException:
         for rel, existed in reversed(touched):
             dest, old = child(target, rel), child(backup / "previous", rel)
+            if existed and not old.exists():
+                continue
             if dest.exists():
                 failed = child(backup / "failed", rel)
                 failed.parent.mkdir(parents=True, exist_ok=True)

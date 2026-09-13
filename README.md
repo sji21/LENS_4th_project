@@ -297,7 +297,29 @@ SQLite·Chroma·생성 청크는 Git에 올리지 않으며 각 실행 환경에
 
 ## 6. 설치부터 실행까지
 
-처음 실행할 때는 아래 순서를 따릅니다.
+### 먼저: 서버 DB 간편 구축 (Windows / macOS / RunPod)
+
+**DB ZIP은 필요 없습니다.** 저장소의 승인 원천 자료를 파싱해 SQLite·일반 법령 인덱스·민법 전용 인덱스를 직접 구축합니다. 서버 관리자나 개발자가 실행하며, 웹 이용자는 사이트에서 질문만 입력합니다.
+
+Python 3.11을 설치하고 저장소 루트에서 실행하세요.
+
+| 환경 | 명령 |
+| --- | --- |
+| Windows | `py -3.11 setup_data.py` |
+| macOS / Linux 로컬 | `python3.11 setup_data.py` |
+| RunPod | `python3.11 setup_data.py --venv-dir /opt/lens-venv` |
+
+**가상환경·필요 모듈 설치·KURE 준비 → DB 체크 → 원천 파싱·저장·인덱스 구축 → 확인** 순서로 진행합니다. 같은 원천·코드·모델이면 재구축을 생략하고, 승인 입력이 바뀌면 새 청크·본문 변경분만 임베딩합니다. 기존 DB는 백업하고 Django 계정·대화 DB는 유지합니다.
+
+이미 준비된 환경에서는 `python manage.py prepare_retrieval`로 같은 작업을 실행합니다. 다른 방식으로 만든 기존 DB를 전환하려면 `--rebuild`가 필요합니다. 환경만 준비하려면 `setup_data.py --prepare-only`, 다운로드 없는 환경 점검은 `--check`를 사용합니다.
+
+[서버 설치·원천 자료·Django·RunPod 실행 안내](docs/server-data-setup.md)를 먼저 확인하세요. RunPod에서는 프로젝트·DB와 `HF_HOME=/workspace/huggingface` 모델 캐시를 영구 볼륨에 두고, 가상환경은 쓰기 가능한 내부 디스크(`/opt/lens-venv` 예시)에 설치합니다. 이후 `source /opt/lens-venv/bin/activate`를 사용하고, setup 재실행에도 같은 `--venv-dir`를 지정합니다. 컨테이너 교체로 내부 디스크가 사라지면 패키지는 재설치해야 합니다. 기본 Windows·Mac `.venv` 동작은 유지합니다. **Mac·RunPod 설치 확인을 완료했습니다. RunPod는 DB 구축·적용·기본 검색 확인까지 완료했으며, CUDA 호환성 문제와 전체 검색·LLM 평가는 별도입니다.**
+
+입력은 검토한 원천 스냅샷이며 최신 법령 자동 수집·채택 기능은 아닙니다. 설치 확인은 무결성·중복·기본 검색 검사이고 전체235문항 평가나 LLM 평가는 별도입니다. **기존 ZIP 방식은 [평가 DB 재현·복원 전용](docs/local-retrieval-data.md)으로 유지합니다.**
+
+DB 준비를 마쳤으면 환경변수·Ollama 설정 후 **6.6 서비스 실행**으로 이동합니다. 아래 **6.4~6.5는 이전 수동 재생성 경로**이므로 간편 구축 후 다시 실행하지 않습니다.
+
+수동 재생성과 앱 전체 실행 순서는 다음과 같습니다.
 
 ```text
 Python 환경 준비
@@ -323,16 +345,25 @@ Python 환경 준비
 
 ### 6.2 Python 패키지와 환경변수
 
+간편 실행기가 이미 패키지를 설치했다면 중복 설치할 필요가 없습니다. 수동으로 준비할 때만 아래를 실행합니다.
+
 ```bash
-pip install -r requirements.txt
-cp .env.example .env
+python3.11 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m pip check
+source .venv/bin/activate
 ```
 
 Windows PowerShell에서는 다음 명령을 사용합니다.
 
 ```powershell
-Copy-Item .env.example .env
+py -3.11 -m venv .venv
+.venv/Scripts/python -m pip install -r requirements.txt
+.venv/Scripts/python -m pip check
+.\.venv\Scripts\Activate.ps1
 ```
+
+간편 실행으로 준비한 경우에도 이후 `python` 명령 전에 해당 OS의 가상환경을 활성화합니다. `.env`가 아직 없을 때만 macOS에서 `cp .env.example .env`, Windows에서 `Copy-Item .env.example .env`로 만듭니다.
 
 기본값은 Local Ollama이므로 별도의 API 키 없이 챗봇을 실행할 수 있습니다. 국가법령정보
 공동활용 API를 이용한 판례 재수집에는 `.env`의 `LAW_OPEN_API_OC`가 필요하고,
@@ -373,10 +404,11 @@ JEONSEON_LLM_BASE_URL=https://YOUR_POD_ID-11434.proxy.runpod.net/v1
 JEONSEON_LLM_MODEL=qwen3:8b-q4_K_M
 ```
 
-### 6.4 초기 데이터 생성
+### 6.4 수동 초기 데이터 생성 (기존 기준선 재생성용)
 
-DB와 Chroma 인덱스는 Git에 포함되지 않으므로 저장소를 받은 뒤 각자 한 번 만들어야
-합니다. 현재 제출·시연·평가에 사용한 26건 판례를 기준으로 한 명령입니다.
+아래는 기존 3차 자료의 재생성 절차이며, 현재 확대 204조문 묶음을 완성하는 명령이 아닙니다.
+팀원 설치에는 위 원천 기반 간편 구축 경로를 사용하세요. 현재 DB가 있는 폴더에서
+아래 명령을 실행하면 데이터·인덱스가 바뀔 수 있으므로 별도 작업 폴더에서 재생성합니다.
 
 ```bash
 # 0. SQLite와 빈 Chroma 컬렉션 초기화
@@ -407,7 +439,7 @@ python -m src.ingestion.load_guides \
 실행 뒤 이 샘플 파일을 커밋하지 않습니다. 운영에 사용하는 `data/chunks/chunks.jsonl`은
 `load_laws`가 별도로 만듭니다.
 
-### 6.5 Chroma 인덱스 생성
+### 6.5 수동 Chroma 인덱스 생성
 
 반드시 법령 → 판례 → 안내 순서로 실행합니다.
 
@@ -444,6 +476,10 @@ python -m src.retrieval.index \
 각 명령은 입력에 포함된 자료 유형만 갱신합니다. 예를 들어 판례를 다시 색인해도 기존
 법령·기관 안내 벡터는 유지됩니다. 컬렉션 전체를 정리하는 `--prune-all`은 다른 자료까지
 삭제할 수 있으므로 전체 코퍼스를 교체할 때만 사용합니다.
+
+### 별도 용도: 검증 DB 묶음 복원
+
+기존 평가와 동일한 DB를 재현할 때만 `setup_data.py --validation-bundle` 또는 `.\manage-data.ps1`을 사용합니다. [검증 DB 복원 안내](docs/local-retrieval-data.md)를 참고하세요. 일반 설치는 위의 원천 기반 서버 구축을 사용합니다.
 
 ### 6.6 서비스 실행
 

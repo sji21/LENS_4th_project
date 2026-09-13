@@ -9,6 +9,30 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
+- PATCH-028 locks the resolved data target across checkouts and both source/frozen tools, while allowing independent targets to proceed. Preserve the lock file outside replaced payloads and ignore the default local lock in Git. Cross-process and focused checks:107 passed. (commit: e2872e5)
+
+- PATCH-028 rolls back source/frozen installations on Ctrl-C, including first installs and interrupted postflight checks. Wait for mutating children before rollback and track paths before renaming originals. Record ten resolved embedding/index dependency versions to invalidate incompatible reuse. Focused tests:138 passed. (commit: 23d3b8c)
+
+- PATCH-028 fixes schema-change detection, invalidates vector reuse on embedding/index pipeline changes, and recovers damaged owned data with explicit --rebuild. Explain unsupported source-to-frozen conversion without modifying data. Record completed Mac/RunPod installation checks, including RunPod DB/basic-search completion; CUDA compatibility remains unresolved. Focused tests:86 passed. (commit: 150e769, df08178)
+
+- PATCH-028 streams builder progress and warnings to the terminal while preserving per-worker logs and failure diagnostics. Stop workers before releasing control on interrupted output. Focused validation:68 passed; no DB or GPU dependency changes. (commit: 587f632)
+
+- PATCH-028 allows `--venv-dir` for a container-local RunPod environment while retaining persistent DB/model storage and default Windows/Mac `.venv` behavior. Preserve existing environments; use the selected interpreter throughout preparation/build. Document ephemeral-environment reinstallation and the completed Mac installation check; RunPod speed is not yet measured. (commit: a6cc50b)
+
+- PATCH-028 makes source-based server construction the default: parse approved sources, build SQLite and separate indexes, reuse unchanged vectors, and expose Django `prepare_retrieval`. Keep frozen DB bundles for evaluation reproduction only; support persistent Hugging Face caches for RunPod. (commit: 9e50649, c19b4b1, 2654264)
+
+- PATCH-028 adds an environment bootstrap (venv, required packages, verified KURE cache), explains the handoff data folder before manual setup, and supports verified first installation into an empty checkout with failure recovery. macOS runtime remains unverified. (commit: 9aadb63, e59f53f)
+
+- PATCH-028 documents the macOS Python entry point alongside Windows commands, including environment setup and the lack of macOS runtime verification. Documentation only. (commit: c5249ad)
+
+- PATCH-028 defaults to a single no-argument command showing DB check → apply if needed → confirmation. Prompt for the source only when needed, skip identical data and keep subprocess diagnostics in per-step logs.24 focused tests pass; retrieval/data unchanged. (commit: 6b3e43d)
+
+- PATCH-028 completes the main-checkout rollout: general178/civil26 with235/235 matches before and after installation,375 model calls each. Repeated apply leaves all payload bytes unchanged and creates no additional backup. Preserve prior local PATCH-024 edits separately. Validation:1,135 full-suite passes,3 skips,172 subtests;20 focused passes after the copy-inspection correction. (commit: 0e80edd)
+
+- PATCH-028 inspection now opens disposable copies because Chroma may rewrite physical index files on read. Repeat apply preserves every installed payload byte and creates no new run or backup. (commit: e8e3a61)
+
+- PATCH-028 adds a local retrieval-data status/apply/restore command and a virtual-environment PowerShell launcher. Verify complete bundle identity and duplicate article/chunk keys, skip identical installations, serialize writers, and automatically restore after postflight or receipt failures. Main-folder rollout verification is pending. (commit: b3669e1)
+
 - PATCH-027 unifies active source, test and data directory names under 027. Preserve all frozen source/capture bytes and hashes; translate only the three old data prefixes on read, leaving execution-code hashes tied to their original commits. Product retrieval and installed data are unchanged. (commit: 36e9791)
 
 - PATCH-027 integrates main `6e40d21` after team PR #24 merged during review. Preserve both patch records and distinguish the legacy civil10 setup from the expanded civil26 profile in README. Retrieval code is unchanged; the integrated checkout passes 1,111 tests with 3 skips and 172 subtests. (commit: 7be0613)
