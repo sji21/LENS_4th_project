@@ -3,10 +3,10 @@ import os
 from pathlib import Path
 
 from django.core.exceptions import ImproperlyConfigured
-from dotenv import load_dotenv
+from src.environment import load_project_environment
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(BASE_DIR / ".env")
+load_project_environment(BASE_DIR / ".env")
 
 DEBUG = os.getenv("DJANGO_DEBUG", "false").lower() == "true"
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "")
@@ -74,5 +74,6 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 10
 FILE_UPLOAD_HANDLERS = ["chat.uploads.BoundedMemoryUploadHandler"]
 CHAT_MAX_DOCUMENTS = 5
 CHAT_MAX_MESSAGES = 100
-CHAT_LEASE_SECONDS = 900
+# Renewed every 10 seconds; a terminated worker releases its lease within 30s.
+CHAT_LEASE_SECONDS = 30
 CHAT_TTL_SECONDS = 3600

@@ -31,12 +31,12 @@
         <div class="evidence-note"><span aria-hidden="true">✓</span> 공식 근거와 출처를 함께 안내합니다.</div>
       </section>
       <section id="messages" aria-label="대화 내용" aria-live="polite" aria-relevant="additions"></section>
-      <div id="pending" class="pending" hidden><span class="spinner"></span><span id="pending-text">답변을 준비하고 있어요</span><span id="elapsed"></span></div>
+      <div id="pending" class="pending" hidden><span class="spinner"></span><span id="pending-text">답변을 준비하고 있어요</span><span id="elapsed"></span><div id="estimate" hidden><progress id="answer-progress" max="100" value="0" aria-label="예상 답변 진행률"></progress><span id="estimate-text" aria-live="polite"></span></div></div>
     </div>
     <section class="composer-section" aria-label="질문 입력">
       <div id="notice" class="notice" role="alert" hidden></div>
       <div id="upload-progress" class="upload-progress" aria-live="polite"></div>
-      <form id="chat-form" class="composer" data-send-url="{% url 'chat:send' %}" data-state-url="{% url 'chat:state' %}" data-upload-url="{% url 'chat:upload' %}" data-reset-url="{% url 'chat:reset' %}" data-readiness-url="{% url 'chat:readiness' %}" data-retry-url="{% url 'chat:retry-readiness' %}">
+      <form id="chat-form" class="composer" data-send-url="{% url 'chat:send' %}" data-state-url="{% url 'chat:state' %}" data-upload-url="{% url 'chat:upload' %}" data-reset-url="{% url 'chat:reset' %}" data-simplify-url="{% url 'chat:simplify' %}" data-readiness-url="{% url 'chat:readiness' %}" data-retry-url="{% url 'chat:retry-readiness' %}">
         {% csrf_token %}
         <label class="sr-only" for="question">주택임대차 질문</label>
         <textarea id="question" name="message" maxlength="2000" rows="2" placeholder="궁금한 내용을 편하게 물어보세요." required></textarea>

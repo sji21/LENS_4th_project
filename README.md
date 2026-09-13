@@ -412,8 +412,24 @@ python -m src.ingestion.load_guides \
 반드시 법령 → 판례 → 안내 순서로 실행합니다.
 
 ```bash
+# 민법(民法) 조문은 PATCH-006 절차로 별도 인덱스에만 색인합니다. chunks.jsonl
+# 에는 BM25·누락 감지를 위해 민법 청크가 함께 들어 있을 수 있으므로, 기본
+# 인덱스를 만들기 전에 민법을 제외한 사본을 먼저 만듭니다. (아래 두 단계는
+# scripts/reload_base_index_civil_safe.py 로도 실행할 수 있습니다.)
+python - <<'PY'
+import json
+
+with open("data/chunks/chunks.jsonl", encoding="utf-8") as src, \
+     open("data/chunks/chunks.base-only.jsonl", "w", encoding="utf-8") as dst:
+    for line in src:
+        chunk = json.loads(line)
+        if chunk.get("metadata", {}).get("title") == "민법":
+            continue
+        dst.write(line)
+PY
+
 python -m src.retrieval.index \
-  --chunks data/chunks/chunks.jsonl \
+  --chunks data/chunks/chunks.base-only.jsonl \
   --path data/index/chroma_kurev1_1024
 
 python -m src.retrieval.index \
@@ -434,6 +450,7 @@ python -m src.retrieval.index \
 민법은 전용 인덱스를 사용하며 일반 법령과 별도의 `civil_laws` 필드로 최대3건을 반환합니다.
 [PATCH-006](docs/patch006-civil-routing.md)은 최초7조문 도입 기록이고,
 [PATCH-021](docs/patch021-civil-result-channel.md)은 반환 채널 분리 기록입니다.
+프로필 없는 PATCH-024 기준 데이터는 민법10조문을 사용합니다.
 **PATCH-027의 확대 검색은 일반 법령178·민법26조문과 검색 프로필을 함께 설치**해야 합니다.
 [백업·적재·검증·복구 절차](docs/patch027-product-rollout.md)를 따르세요. 프로필 없는 기존 데이터는
 기존 방식으로 동작하며 Git 병합만으로 로컬 DB·인덱스가 바뀌지는 않습니다.

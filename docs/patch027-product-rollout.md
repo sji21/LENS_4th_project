@@ -70,3 +70,5 @@ $env:ANONYMIZED_TELEMETRY='False'
 적재 후 전체 테스트는 **1,042 passed, 3 skipped, 124 subtests passed**다. 스킵은 선택 LangSmith2개·로컬 PDF 표본 미지정1개다. 소스·출처·프로필 변조, 필수 파일 누락, 이전 데이터 호환, 임베딩 불가 시 같은 프로필 선택, 요청별 캐시 분리, 설치 실패 복구와 명시적 복원 테스트를 포함한다.
 
 PR #25 정정 후 전체 테스트는 **1,046 passed, 3 skipped, 124 subtests passed**다. 기록 미저장·부분 저장·잘못된 저장에서 원본 복구와 정상 apply→restore 검사를 추가했다. 검색 정책·기존 실행 결과·현재 DB/인덱스는 변경하지 않았고 실제 벡터 검색은 재실행하지 않았다.
+
+이후 팀원 PR #24가 병합된 main `6e40d21`을 통합했다. LIST·README의 문서 충돌을 양쪽 내용 보존으로 해결했고 통합 후 전체 **1,111 passed, 3 skipped, 172 subtests passed**다. 리트리버 코드에는 통합 변경이 없다.
