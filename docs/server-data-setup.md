@@ -10,7 +10,8 @@ Python 3.11을 설치하고 저장소를 받은 뒤 저장소 루트에서 실�
 | --- | --- |
 | Windows PowerShell | `py -3.11 setup_data.py` |
 | macOS 터미널 | `python3.11 setup_data.py` |
-| Linux / RunPod 터미널 | `python3.11 setup_data.py` |
+| Linux 로컬 터미널 | `python3.11 setup_data.py` |
+| RunPod 터미널 | `python3.11 setup_data.py --venv-dir /opt/lens-venv` |
 
 실행 순서:
 
@@ -53,25 +54,35 @@ python manage.py runserver 127.0.0.1:8000
 
 ## RunPod에서 낭비 줄이기
 
-저장소를 영구 볼륨에 두고 그 아래의 `.venv`, `data`, `tmp/server-build`를 유지합니다. 모델 캐시도 영구 경로를 사용합니다. 아래 `/workspace`는 예시이므로 실제 Pod의 영구 볼륨 위치를 확인하세요.
+저장소의 `data`, `tmp/server-build`와 모델 캐시는 영구 볼륨에 유지하고, **가상환경은 컨테이너 내부 디스크에 둡니다.** 네트워크 볼륨의 `.venv`에 많은 Python/CUDA 패키지 파일을 설치하는 지연을 줄이기 위한 배치입니다. 속도 개선은 아직 실측하지 않았습니다. 아래 `/workspace`와 `/opt`는 예시이므로 실제 Pod의 마운트 위치·권한·여유 공간을 확인하세요.
+
+`--venv-dir`는 가상환경 생성·패키지 설치·모델 준비·DB 실행에 쓸 Python 위치만 선택합니다. DB·모델 저장 위치를 옮기거나 기존 `.venv`를 복사/삭제하지 않습니다. 옵션을 생략하면 Windows·Mac·Linux 모두 기존 프로젝트 `.venv`를 사용합니다. 상대 경로는 프로젝트 루트 기준이며, 새 경로나 기존 가상환경을 지정합니다. 일반 파일이 들어 있는 다른 디렉터리는 거부합니다.
 
 현재 데이터 교체는 같은 파일시스템의 이름 변경을 사용하므로 프로젝트의 `data`와 `tmp`를 같은 볼륨에 둡니다. 손상된 기존 구축 자료는 자동 수리하지 않고 검사를 중단합니다. 실패 로그는 `tmp/server-build/errors`에 보존합니다.
 
 ```bash
 cd /workspace/LENS_4th_project
 export HF_HOME=/workspace/huggingface
-python3.11 setup_data.py
-source .venv/bin/activate
-python manage.py prepare_retrieval
+python3.11 setup_data.py --venv-dir /opt/lens-venv
+source /opt/lens-venv/bin/activate
+# .env의 Django 키·LLM 주소를 준비한 뒤 실행
 python manage.py migrate
 python manage.py check
 ```
 
-`HF_HOME` 설정은 이후 Django 실행 프로세스에도 동일하게 적용합니다. 모델 파일·이미 만든 DB를 유지하면 Pod 재시작마다 다운로드·전체 임베딩이 반복되지 않습니다. 백업은 실패 복구용으로 남으므로 검증이 끝난 오래된 실행 폴더의 보관 여부는 관리자가 결정합니다.
+setup에서 이미 DB를 구축했으므로 바로 `prepare_retrieval`을 반복할 필요는 없습니다. 이후 데이터만 확인/갱신할 때는 같은 가상환경에서 `python manage.py prepare_retrieval`을 실행합니다.
+
+새 터미널에서는 `export HF_HOME=/workspace/huggingface`와 `source /opt/lens-venv/bin/activate`를 다시 적용합니다. setup을 다시 실행할 때도 **동일한 `--venv-dir /opt/lens-venv`를 반드시 지정**합니다. 활성화된 환경만으로 setup의 기본 `.venv` 위치가 바뀌지는 않습니다. 환경 확인만 하려면 `python3.11 setup_data.py --venv-dir /opt/lens-venv --check`입니다.
+
+컨테이너가 교체·초기화되면 내부 디스크의 가상환경·기본 pip 캐시는 사라질 수 있으므로 환경 설치를 다시 해야 합니다. 영구 볼륨의 DB와 `HF_HOME` 캐시는 별도로 유지하며, 네트워크 볼륨 자체의 보존 정책도 확인합니다. `/opt`의 쓰기 권한이 없으면 쓰기 가능한 내부 디스크 경로를 지정합니다. 가상환경을 외부 디스크로 지정해도 DB 교체용 `data`와 `tmp`는 같은 파일시스템에 둬야 합니다.
+
+이미 진행 중인 설치는 이 옵션으로 자동 전환되지 않습니다. 설치 도중 같은 저장소에서 setup을 추가 실행하지 마세요. 현재 설치를 종료/완료한 뒤 새 경로를 선택하면 패키지는 새 환경에 다시 설치되고, 사용 가능한 pip 다운로드 캐시는 재사용될 수 있습니다. 기존 `.venv`는 그대로 남습니다. 이 변경은 패키지 목록을 축소하거나 CUDA/GPU 호환성을 자동 보장하지 않습니다.
+
+`HF_HOME` 설정은 이후 Django 실행 프로세스에도 동일하게 적용합니다. 백업은 실패 복구용으로 남으므로 검증이 끝난 오래된 실행 폴더의 보관 여부는 관리자가 결정합니다.
 
 LLM(Ollama/RunPod 엔드포인트) 설정은 README6.3을 따릅니다. 서버 외부 접속에는 실제 호스트에 맞는 Django 호스트·CSRF·프록시 설정이 별도로 필요합니다. 위 명령만으로 외부 배포가 완료되지는 않습니다.
 
-Windows 외에 macOS/RunPod 실제 기동·GPU 결과는 아직 검증하지 않았습니다. 원천 자료와 검색 정책은 같아도 OS·패키지·장치 차이로 검색 순위가 달라질 수 있습니다.
+macOS는 사용자/팀원이 기존 기본 경로로 테스트 성공을 보고했습니다. 세부 단계·검색 수치와 새 `--venv-dir`의 Mac 실동작을 독립 검증한 결과는 아닙니다. RunPod에서는 네트워크 볼륨의 패키지 설치 지연이 보고됐으며, 내부 디스크 옵션의 속도·설치 완료·GPU 결과는 아직 실검증하지 않았습니다. 원천 자료와 검색 정책은 같아도 OS·패키지·장치 차이로 검색 순위가 달라질 수 있습니다.
 
 ## 검증된 DB를 그대로 복원할 때만
 

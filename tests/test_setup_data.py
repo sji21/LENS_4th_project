@@ -8,9 +8,13 @@ import setup_data as setup
 
 @pytest.fixture
 def preparation(tmp_path, monkeypatch):
-    python = tmp_path / "python"
+    monkeypatch.setattr(setup, "ROOT", tmp_path)
+    directory = tmp_path / ".venv"
+    directory.mkdir()
+    (directory / "pyvenv.cfg").touch()
+    python = setup.environment_python(venv_dir=directory)
+    python.parent.mkdir(exist_ok=True)
     python.touch()
-    monkeypatch.setattr(setup, "environment_python", lambda: python)
     monkeypatch.setattr(setup.sys, "version_info", (3, 11))
     calls = []
     monkeypatch.setattr(setup, "run", lambda command: calls.append([str(x) for x in command]))
@@ -45,7 +49,7 @@ def test_failed_dependencies_stop_before_model_and_db(preparation, monkeypatch):
 
 def test_model_failure_stops_before_db(preparation, monkeypatch):
     python, calls = preparation
-    monkeypatch.setattr(setup, "prepare_environment", lambda _: python)
+    monkeypatch.setattr(setup, "prepare_environment", lambda *_: python)
     def fail(command):
         calls.append(command)
         raise subprocess.CalledProcessError(1, command)
@@ -74,8 +78,7 @@ def test_source_requires_explicit_validation_mode(preparation):
 
 
 def test_missing_environment_check_is_read_only(preparation, monkeypatch, tmp_path):
-    monkeypatch.setattr(setup, "environment_python", lambda: tmp_path / "missing")
-    assert setup.main(["--check"]) == 1
+    assert setup.main(["--check", "--venv-dir", str(tmp_path / "missing")]) == 1
     assert preparation[1] == []
 
 
@@ -83,6 +86,61 @@ def test_wrong_python_version_is_rejected(preparation, monkeypatch):
     monkeypatch.setattr(setup.sys, "version_info", (3, 12))
     assert setup.main([]) == 1
     assert preparation[1] == []
+
+
+@pytest.mark.parametrize("mode", [[], ["--check"], ["--prepare-only"], ["--validation-bundle"]])
+def test_external_environment_is_used_for_every_child(preparation, tmp_path, mode):
+    default_python, calls = preparation
+    directory = tmp_path / "local disk" / "lens-env"
+    directory.mkdir(parents=True)
+    (directory / "pyvenv.cfg").touch()
+    python = setup.environment_python(venv_dir=directory)
+    python.parent.mkdir()
+    python.touch()
+    assert setup.main(["--venv-dir", str(directory), *mode]) == 0
+    assert all(cmd[0] == str(python) for cmd in calls)
+    assert default_python.is_file()
+    assert not any("venv" in cmd for cmd in calls)
+
+
+def test_new_external_environment_is_created_without_moving_default(preparation, tmp_path):
+    default_python, calls = preparation
+    directory = tmp_path / "external env"
+    assert setup.main(["--venv-dir", str(directory)]) == 0
+    assert calls[0] == [setup.sys.executable, "-m", "venv", str(directory)]
+    python = setup.environment_python(venv_dir=directory)
+    assert all(cmd[0] == str(python) for cmd in calls[1:])
+    assert default_python.is_file()
+    assert calls[-1][-1] == "src.ingestion.server_build"
+
+
+def test_relative_environment_path_is_project_relative(preparation, monkeypatch, tmp_path):
+    monkeypatch.chdir(tmp_path.parent)
+    assert setup.environment_directory("local env") == tmp_path / "local env"
+
+
+def test_external_environment_failure_stops_before_model_and_db(preparation, tmp_path, monkeypatch):
+    _, calls = preparation
+    def fail_install(command):
+        calls.append([str(x) for x in command])
+        if "install" in command:
+            raise subprocess.CalledProcessError(1, command)
+    monkeypatch.setattr(setup, "run", fail_install)
+    assert setup.main(["--venv-dir", str(tmp_path / "external")]) == 1
+    assert calls[-1][1:4] == ["-m", "pip", "install"]
+    assert not any("--model-worker" in cmd for cmd in calls)
+
+
+@pytest.mark.parametrize("check", [False, True])
+def test_unrelated_existing_directory_is_preserved(preparation, tmp_path, check):
+    _, calls = preparation
+    directory = tmp_path / "unrelated"
+    directory.mkdir()
+    (directory / "keep.txt").write_text("keep")
+    args = ["--venv-dir", str(directory)] + (["--check"] if check else [])
+    assert setup.main(args) == 1
+    assert calls == []
+    assert (directory / "keep.txt").read_text() == "keep"
 
 
 @pytest.fixture

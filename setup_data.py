@@ -13,8 +13,14 @@ ROOT = Path(__file__).resolve().parent
 MODEL = "nlpai-lab/KURE-v1"
 
 
-def environment_python(root=ROOT):
-    return root / ".venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
+def environment_directory(venv_dir=None):
+    path = Path(venv_dir).expanduser() if venv_dir is not None else ROOT / ".venv"
+    return (ROOT / path).resolve() if not path.is_absolute() else path.resolve()
+
+
+def environment_python(root=ROOT, venv_dir=None):
+    directory = Path(venv_dir) if venv_dir is not None else root / ".venv"
+    return directory / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
 
 
 def run(command):
@@ -22,15 +28,21 @@ def run(command):
                    env={**os.environ, "PYTHONUTF8": "1"})
 
 
-def prepare_environment(check=False):
+def prepare_environment(check=False, venv_dir=None):
     if sys.version_info[:2] != (3, 11):
         raise ValueError("Python 3.11로 실행하세요: Windows py -3.11 / macOS python3.11")
-    python = environment_python()
+    directory = environment_directory(venv_dir)
+    python = environment_python(venv_dir=directory)
+    print(f"[준비] 가상환경: {directory}", flush=True)
+    # Do not install into an unrelated directory or a system interpreter tree.
+    if directory.exists() and (not directory.is_dir() or
+            (any(directory.iterdir()) and not (directory / "pyvenv.cfg").is_file())):
+        raise ValueError(f"가상환경이 아닌 기존 경로는 사용할 수 없습니다: {directory}")
     if not python.is_file():
         if check:
-            raise ValueError(".venv가 없습니다. --check 없이 실행하면 생성합니다.")
-        print("[준비] 프로젝트 .venv 생성", flush=True)
-        run([sys.executable, "-m", "venv", ROOT / ".venv"])
+            raise ValueError(f"가상환경 Python이 없습니다: {python}. --check 없이 실행하면 생성합니다.")
+        print("[준비] 가상환경 생성", flush=True)
+        run([sys.executable, "-m", "venv", directory])
     # A copied Windows venv or an older interpreter must not be reused silently.
     run([python, "-c", "import sys; assert sys.version_info[:2] == (3, 11), 'Python 3.11 required'"])
     if not check:
@@ -83,6 +95,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description="모듈·모델 준비 후 DB 체크→적용→확인")
     parser.add_argument("--check", action="store_true", help="모듈·모델 확인만; 다운로드·DB 변경 없음")
     parser.add_argument("--prepare-only", action="store_true", help="모듈·모델만 준비하고 DB는 변경하지 않음")
+    parser.add_argument("--venv-dir", type=Path,
+                        help="가상환경 위치; 기본값 프로젝트 .venv, 상대 경로는 프로젝트 기준")
     parser.add_argument("--validation-bundle", action="store_true", help="별도 검증 DB 묶음 복원 모드")
     parser.add_argument("--source", type=Path, help="검증 DB 복원 모드에서만 사용할 데이터 폴더")
     parser.add_argument("--data-root", type=Path, help="일반 서버 구축 대상 폴더; 기본값 data")
@@ -97,7 +111,7 @@ def main(argv=None):
         if args.model_worker:
             prepare_model(args.check)
             return 0
-        python = prepare_environment(args.check)
+        python = prepare_environment(args.check, args.venv_dir)
         command = [python, "-X", "utf8", ROOT / "setup_data.py", "--model-worker"]
         if args.check:
             command.append("--check")
