@@ -9,7 +9,9 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-028 inspection now opens disposable copies because Chroma may rewrite physical index files on read. Repeat apply preserves every installed payload byte and creates no new run or backup. (commit: pending)
+- PATCH-028 completes the main-checkout rollout: general178/civil26 with235/235 matches before and after installation,375 model calls each. Repeated apply leaves all payload bytes unchanged and creates no additional backup. Preserve prior local PATCH-024 edits separately. Validation:1,135 full-suite passes,3 skips,172 subtests;20 focused passes after the copy-inspection correction. (commit: pending)
+
+- PATCH-028 inspection now opens disposable copies because Chroma may rewrite physical index files on read. Repeat apply preserves every installed payload byte and creates no new run or backup. (commit: e8e3a61)
 
 - PATCH-028 adds a local retrieval-data status/apply/restore command and a virtual-environment PowerShell launcher. Verify complete bundle identity and duplicate article/chunk keys, skip identical installations, serialize writers, and automatically restore after postflight or receipt failures. Main-folder rollout verification is pending. (commit: b3669e1)
 
