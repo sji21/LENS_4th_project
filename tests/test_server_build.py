@@ -1,4 +1,3 @@
-from copy import deepcopy
 from pathlib import Path
 from types import SimpleNamespace
 import json
@@ -132,3 +131,17 @@ def test_django_command_calls_builder_without_llm(monkeypatch):
     monkeypatch.setattr(command, "prepare", lambda *args: calls.append(args) or {"state": "unchanged"})
     call_command("prepare_retrieval", data_root="/server/data", rebuild=True)
     assert calls == [("/server/data", True)]
+
+
+def test_failed_inspection_log_survives_temporary_snapshot_cleanup(tmp_path, monkeypatch):
+    import tempfile
+    monkeypatch.setattr(build, "ROOT", tmp_path)
+    def failed(command, **kwargs):
+        kwargs["stdout"].write(b"index mismatch")
+        return SimpleNamespace(returncode=1)
+    monkeypatch.setattr(build.subprocess, "run", failed)
+    with tempfile.TemporaryDirectory(dir=tmp_path) as directory:
+        with pytest.raises(ValueError, match="실패"):
+            build.run_worker("inspect", tmp_path / "data", Path(directory))
+    saved = list((tmp_path / "tmp/server-build/errors").glob("*.log"))
+    assert len(saved) == 1 and saved[0].read_bytes() == b"index mismatch"

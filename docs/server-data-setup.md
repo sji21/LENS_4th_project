@@ -55,6 +55,8 @@ python manage.py runserver 127.0.0.1:8000
 
 저장소를 영구 볼륨에 두고 그 아래의 `.venv`, `data`, `tmp/server-build`를 유지합니다. 모델 캐시도 영구 경로를 사용합니다. 아래 `/workspace`는 예시이므로 실제 Pod의 영구 볼륨 위치를 확인하세요.
 
+현재 데이터 교체는 같은 파일시스템의 이름 변경을 사용하므로 프로젝트의 `data`와 `tmp`를 같은 볼륨에 둡니다. 손상된 기존 구축 자료는 자동 수리하지 않고 검사를 중단합니다. 실패 로그는 `tmp/server-build/errors`에 보존합니다.
+
 ```bash
 cd /workspace/LENS_4th_project
 export HF_HOME=/workspace/huggingface

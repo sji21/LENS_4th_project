@@ -193,7 +193,11 @@ def run_worker(action, data, run, previous=None):
     with (run / f"{action}.log").open("wb") as log:
         process = subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT)
     if process.returncode:
-        raise ValueError(f"{action} 실패: {run / (action + '.log')}")
+        # Inspection snapshots are temporary; keep diagnostics after cleanup.
+        failure = ROOT / "tmp/server-build/errors" / f"{action}-{uuid.uuid4().hex}.log"
+        failure.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(run / f"{action}.log", failure)
+        raise ValueError(f"{action} 실패: {failure}")
     return read(output)
 
 
