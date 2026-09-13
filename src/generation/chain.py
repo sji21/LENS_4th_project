@@ -586,7 +586,7 @@ def answer_question(
             }
         )
     except Exception as error:
-        logger.warning("LLM 호출이 실패했습니다: %s", error, exc_info=True)
+        logger.warning("LLM 호출이 실패했습니다: %s", type(error).__name__)
         return Answer(
             question=safe_question,
             status="abstained",

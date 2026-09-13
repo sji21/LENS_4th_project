@@ -22,6 +22,7 @@ import os
 import re
 import time
 import urllib.request
+from .call_budget import reserve_call, check_deadline
 
 from langchain_core.language_models.fake_chat_models import FakeListChatModel
 from langchain_core.messages import AIMessage
@@ -427,6 +428,7 @@ def _build_native_ollama(**overrides):
         started = time.perf_counter()
 
         for attempt_index, base_url in enumerate(attempt_bases):
+            attempt_timeout = reserve_call(timeout)
             request = urllib.request.Request(
                 _native_chat_url(base_url),
                 data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
@@ -441,16 +443,17 @@ def _build_native_ollama(**overrides):
 
             attempt_started = time.perf_counter()
             try:
-                with urllib.request.urlopen(request, timeout=timeout) as response:
+                with urllib.request.urlopen(request, timeout=attempt_timeout) as response:
                     result = json.loads(response.read().decode("utf-8"))
+                check_deadline()
             except (OSError, ValueError) as error:
-                failures.append(f"{base_url}: {error}")
+                failures.append(f"{base_url}: {type(error).__name__}")
                 _ROUTE_CACHE.pop((candidates[0], model), None)
                 logger.warning(
                     "Ollama 호출 실패: endpoint=%s elapsed=%.3fs error=%s",
                     base_url,
                     time.perf_counter() - attempt_started,
-                    error,
+                    type(error).__name__,
                 )
                 if attempt_index + 1 < len(attempt_bases):
                     logger.warning("로컬 Ollama로 호출을 재시도합니다: %s", local_base)

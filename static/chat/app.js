@@ -11,6 +11,7 @@
   let syncTimer = null;
   let lastRendered = "";
   let replyingTo = null;
+  const submission = new ChatRequestIdentity(() => crypto.randomUUID());
   const csrf = form.querySelector('[name="csrfmiddlewaretoken"]').value;
 
   function element(tag, text, className) {
@@ -48,9 +49,9 @@
     }
     return data;
   }
-  function post(url, body = {}) {
+  function post(url, body = {}, requestId = crypto.randomUUID()) {
     return request(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({
-      ...body, conversation_id: conversationId, request_id: crypto.randomUUID(),
+      ...body, conversation_id: conversationId, request_id: requestId,
     }) });
   }
   function safeLink(url, label) {
@@ -164,6 +165,7 @@
     $("active-document").textContent = active ? `최근 확인 문서: ${active.filename}` : "";
   }
   function render(data) {
+    if (conversationId !== data.conversation_id) submission.clear();
     conversationId = data.conversation_id;
     externalBusy = Boolean(data.busy);
     const signature = JSON.stringify([data.messages, data.documents]);
@@ -215,7 +217,10 @@
       $("welcome").hidden = true;
       $("messages").append(renderMessage({ role: "user", content: question })); scrollBottom();
       lastRendered = "";
-      const data = await post(form.dataset.sendUrl, { message: question, document_id: $("document-select").value || null, ...(replyingTo ? { reply_to: replyingTo } : {}) });
+      const payload = { message: question, document_id: $("document-select").value || null, ...(replyingTo ? { reply_to: replyingTo } : {}) };
+      const requestId = submission.get({ conversation_id: conversationId, ...payload });
+      const data = await post(form.dataset.sendUrl, payload, requestId);
+      submission.clear();
       // Preserve text the user typed while waiting.
       if (input.value.trim() === question) { input.value = ""; replyingTo = null; }
       render(data); input.focus();
@@ -248,13 +253,14 @@
   $("cancel-reset").addEventListener("click", () => $("reset-dialog").close());
   $("confirm-reset").addEventListener("click", () => {
     $("reset-dialog").close(); action("새 대화를 준비하고 있어요", async () => {
-      render(await post(form.dataset.resetUrl)); input.value = ""; $("upload-progress").replaceChildren(); input.focus();
+      render(await post(form.dataset.resetUrl)); submission.clear(); replyingTo = null; input.value = ""; $("upload-progress").replaceChildren(); input.focus();
     });
   });
   $("cancel-delete").addEventListener("click", () => $("delete-dialog").close());
   $("confirm-delete").addEventListener("click", () => {
     $("delete-dialog").close(); action("문서를 삭제하고 있어요", async () => {
       render(await post(`${form.dataset.uploadUrl}${encodeURIComponent(selectedDelete)}/delete/`));
+      submission.clear(); replyingTo = null;
     });
   });
   async function checkReadiness() {

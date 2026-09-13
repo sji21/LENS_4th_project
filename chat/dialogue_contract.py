@@ -88,7 +88,15 @@ def build_decision_input(state, user, document_id=None):
     if not history:
         # Old sessions retain user messages, including statements before abstention.
         # Assistant generations are not inferred as user facts during migration.
-        history = [{"role": "user", "content": _safe(m["content"])[:2000]} for m in state.get("messages", []) if m.get("role") == "user"][-4:]
+        messages = state.get("messages", [])
+        history = [
+            {"role": "user", "content": _safe(m["content"])[:2000]}
+            for index, m in enumerate(messages)
+            if m.get("role") == "user"
+            and not (index + 1 < len(messages)
+                     and messages[index + 1].get("role") == "assistant"
+                     and messages[index + 1].get("status") == "refused")
+        ][-4:]
     return {
         "user": _safe(user), "topic": dialogue["topic"], "epoch": dialogue["epoch"],
         "facts": deepcopy(dialogue["facts"]), "history": deepcopy(history),

@@ -7,6 +7,7 @@ import time
 from langsmith import tracing_context
 
 from src.generation import chain
+from src.generation.call_budget import conversation_budget, check_deadline
 from . import dialogue_planner
 from .dialogue_contract import Decision, parse_decision
 from .dialogue_query import grounded_query
@@ -55,6 +56,7 @@ def _static_message(services, text, status, started):
 
 
 def _commit(state, draft):
+    check_deadline()
     state.clear()
     state.update(draft)
 
@@ -64,9 +66,10 @@ def respond_conversational(state, question, document_id=None, *, legacy):
     # services delegates here lazily; importing it here avoids a module cycle.
     from . import services
 
+    question = services.safe_text(question)
     started = time.perf_counter()
     draft = deepcopy(state)
-    with tracing_context(enabled=False):
+    with conversation_budget(), tracing_context(enabled=False):
         refusal = _original_input_refusal(question)
         if refusal is not None:
             message = services.answer_message(refusal, started)
