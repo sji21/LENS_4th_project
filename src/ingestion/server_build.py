@@ -186,13 +186,28 @@ def worker(action, data, previous=None):
 
 def run_worker(action, data, run, previous=None):
     output = run / f"{action}-result.json"
-    command = [sys.executable, "-X", "utf8", "-m", "src.ingestion.server_build", "--worker", action,
+    command = [sys.executable, "-u", "-X", "utf8", "-m", "src.ingestion.server_build", "--worker", action,
                "--data-root", str(data), "--result", str(output)]
     if previous:
         command += ["--previous", str(previous)]
-    with (run / f"{action}.log").open("wb") as log:
-        process = subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT)
-    if process.returncode:
+    log_path = run / f"{action}.log"
+    print(f"[{action}] 상세 로그: {log_path}", flush=True)
+    with log_path.open("w", encoding="utf-8", newline="") as log:
+        with subprocess.Popen(command, cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                              text=True, encoding="utf-8", errors="replace", bufsize=1) as process:
+            try:
+                for line in process.stdout:
+                    log.write(line)
+                    log.flush()
+                    print(line, end="", flush=True)
+                returncode = process.wait()
+            except BaseException:
+                # Do not release the installation lock while a worker still writes.
+                if process.poll() is None:
+                    process.kill()
+                process.wait()
+                raise
+    if returncode:
         # Inspection snapshots are temporary; keep diagnostics after cleanup.
         failure = ROOT / "tmp/server-build/errors" / f"{action}-{uuid.uuid4().hex}.log"
         failure.parent.mkdir(parents=True, exist_ok=True)

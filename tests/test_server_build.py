@@ -149,12 +149,78 @@ def test_django_command_calls_builder_without_llm(monkeypatch):
 def test_failed_inspection_log_survives_temporary_snapshot_cleanup(tmp_path, monkeypatch):
     import tempfile
     monkeypatch.setattr(build, "ROOT", tmp_path)
+    popen = build.subprocess.Popen
     def failed(command, **kwargs):
-        kwargs["stdout"].write(b"index mismatch")
-        return SimpleNamespace(returncode=1)
-    monkeypatch.setattr(build.subprocess, "run", failed)
+        return popen([build.sys.executable, "-u", "-X", "utf8", "-c",
+                      "import sys; sys.stderr.write('index mismatch'); sys.exit(1)"], **kwargs)
+    monkeypatch.setattr(build.subprocess, "Popen", failed)
     with tempfile.TemporaryDirectory(dir=tmp_path) as directory:
         with pytest.raises(ValueError, match="실패"):
             build.run_worker("inspect", tmp_path / "data", Path(directory))
     saved = list((tmp_path / "tmp/server-build/errors").glob("*.log"))
     assert len(saved) == 1 and saved[0].read_bytes() == b"index mismatch"
+
+
+def test_worker_stdout_and_stderr_reach_console_and_log(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(build, "ROOT", tmp_path)
+    popen = build.subprocess.Popen
+    def success(command, **kwargs):
+        assert "-u" in command
+        script = ("import sys; from pathlib import Path; "
+                  "print('임베딩 16/210', flush=True); "
+                  "print('worker warning', file=sys.stderr, flush=True); "
+                  "Path('build-result.json').write_text('{\"ready\": true}')")
+        return popen([build.sys.executable, "-u", "-X", "utf8", "-c", script], **kwargs)
+    monkeypatch.setattr(build.subprocess, "Popen", success)
+    assert build.run_worker("build", tmp_path / "data", tmp_path) == {"ready": True}
+    output = capsys.readouterr().out
+    assert "임베딩 16/210" in output and "worker warning" in output
+    assert (tmp_path / "build.log").read_text(encoding="utf-8") == "임베딩 16/210\nworker warning\n"
+
+
+def test_worker_progress_is_flushed_before_worker_finishes(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(build, "ROOT", tmp_path)
+    def lines():
+        yield "임베딩 16/210\n"
+        assert "임베딩 16/210" in capsys.readouterr().out
+        assert (tmp_path / "build.log").read_text(encoding="utf-8") == "임베딩 16/210\n"
+        yield "임베딩 32/210\n"
+    class Process:
+        stdout = lines()
+        def __enter__(self):
+            return self
+        def __exit__(self, *args):
+            pass
+        def wait(self):
+            build.write(tmp_path / "build-result.json", {"ready": True})
+            return 0
+    monkeypatch.setattr(build.subprocess, "Popen", lambda *a, **k: Process())
+    assert build.run_worker("build", tmp_path / "data", tmp_path) == {"ready": True}
+
+
+@pytest.mark.parametrize("error", [KeyboardInterrupt, OSError])
+def test_interrupted_output_stops_worker_before_releasing_control(tmp_path, monkeypatch, error):
+    monkeypatch.setattr(build, "ROOT", tmp_path)
+    events = []
+    class Process:
+        stdout = iter(["progress\n"])
+        def __enter__(self):
+            return self
+        def __exit__(self, *args):
+            events.append("exit")
+        def poll(self):
+            return None
+        def kill(self):
+            events.append("kill")
+        def wait(self):
+            events.append("wait")
+            return -1
+    def interrupted(text, **kwargs):
+        if text == "progress\n":
+            raise error()
+    monkeypatch.setattr(build, "print", interrupted, raising=False)
+    monkeypatch.setattr(build.subprocess, "Popen", lambda *a, **k: Process())
+    with pytest.raises(error):
+        build.run_worker("build", tmp_path / "data", tmp_path)
+    assert events == ["kill", "wait", "exit"]
+    assert (tmp_path / "build.log").read_text() == "progress\n"
