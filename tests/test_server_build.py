@@ -6,6 +6,8 @@ import pytest
 
 from src.ingestion import server_build as build, server_sources as sources
 
+REAL_PIPELINE = build.embedding_pipeline
+
 
 def test_sources_produce_complete_unique_corpus_without_database():
     laws, cases, guides = sources.source_records()
@@ -100,7 +102,8 @@ def test_changed_text_embeds_only_changed_rows_and_removes_stale(index, tmp_path
 
 
 @pytest.mark.parametrize("failure", ["verify", "receipt"])
-def test_install_failure_restores_previous_data_and_preserves_web_db(tmp_path, monkeypatch, failure):
+@pytest.mark.parametrize("error", [ValueError, KeyboardInterrupt])
+def test_install_failure_restores_previous_data_and_preserves_web_db(tmp_path, monkeypatch, failure, error):
     monkeypatch.setattr(build, "SCOPES", ("chunks/laws", "index/base"))
     staged, target, run = tmp_path / "stage", tmp_path / "data", tmp_path / "run"
     for root, content in ((staged, "new"), (target, "old")):
@@ -112,14 +115,34 @@ def test_install_failure_restores_previous_data_and_preserves_web_db(tmp_path, m
     web.parent.mkdir()
     web.write_text("sessions")
     def fail(*args, **kwargs):
-        raise ValueError("injected failure")
+        raise error("injected failure")
     monkeypatch.setattr(build, "run_worker", fail if failure == "verify" else lambda *a: {})
     if failure == "receipt":
         monkeypatch.setattr(build, "write", fail)
-    with pytest.raises(ValueError, match="injected"):
+    with pytest.raises(error, match="injected"):
         build.promote(staged, target, run)
     assert all((target / rel).read_text() == "old" for rel in build.SCOPES)
     assert web.read_text() == "sessions"
+
+
+@pytest.mark.parametrize("phase", ["before", "after"])
+def test_interrupt_at_original_rename_restores_source_db(owned_build, monkeypatch, phase):
+    data, _, _ = owned_build
+    before = build.payload_hashes(data)
+    original = Path.rename
+    interrupted = False
+    def rename(path, destination):
+        nonlocal interrupted
+        if path == data / "chunks/laws" and not interrupted:
+            interrupted = True
+            if phase == "after":
+                original(path, destination)
+            raise KeyboardInterrupt()
+        return original(path, destination)
+    monkeypatch.setattr(Path, "rename", rename)
+    with pytest.raises(KeyboardInterrupt):
+        build.prepare(rebuild=True)
+    assert build.payload_hashes(data) == before
 
 
 def test_partial_existing_data_requires_explicit_rebuild(tmp_path, monkeypatch):
@@ -257,6 +280,34 @@ def test_schema_and_embedding_inputs_are_fingerprinted(tmp_path, monkeypatch):
         previous = build.embedding_pipeline()
         (tmp_path / name).write_text("new pipeline")
         assert build.embedding_pipeline() != previous
+
+
+@pytest.mark.parametrize("package", ["torch", "chromadb", "sentence-transformers", "transformers", "tokenizers"])
+def test_installed_version_change_forces_reembedding(owned_build, monkeypatch, package):
+    data, calls, _ = owned_build
+    for name in ("src/retrieval/dense.py", "src/retrieval/index.py",
+                 "src/ingestion/server_build.py", "requirements.txt"):
+        p = data.parent / name
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text("unchanged code")
+    monkeypatch.setattr(build, "embedding_pipeline", REAL_PIPELINE)
+    monkeypatch.setattr(build.metadata, "version", lambda name: "1.0")
+    prior = build.read(data / build.BUILD)
+    prior["embedding_pipeline"] = build.embedding_pipeline()
+    build.write(data / build.BUILD, prior)
+    assert build.prepare()["state"] == "unchanged"
+    monkeypatch.setattr(build.metadata, "version", lambda name: "2.0" if name == package else "1.0")
+    assert build.prepare()["state"] == "ready"
+    assert ("build", None) in calls
+    assert build.read(data / build.BUILD)["embedding_pipeline"]["packages"][package] == "2.0"
+
+
+def test_missing_dependency_version_is_not_recorded_as_compatible(monkeypatch):
+    def missing(name):
+        raise build.metadata.PackageNotFoundError(name)
+    monkeypatch.setattr(build.metadata, "version", missing)
+    with pytest.raises(ValueError, match="패키지 버전"):
+        build.embedding_pipeline()
 
 
 def test_django_command_calls_builder_without_llm(monkeypatch):

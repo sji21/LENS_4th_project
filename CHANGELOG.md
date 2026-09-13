@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
+- PATCH-028 rolls back source/frozen installations on Ctrl-C, including first installs and interrupted postflight checks. Wait for mutating children before rollback and track paths before renaming originals. Record ten resolved embedding/index dependency versions to invalidate incompatible reuse. Focused tests:138 passed. (commit: pending)
+
 - PATCH-028 fixes schema-change detection, invalidates vector reuse on embedding/index pipeline changes, and recovers damaged owned data with explicit --rebuild. Explain unsupported source-to-frozen conversion without modifying data. Record completed Mac/RunPod installation checks, including RunPod DB/basic-search completion; CUDA compatibility remains unresolved. Focused tests:86 passed. (commit: 150e769, df08178)
 
 - PATCH-028 streams builder progress and warnings to the terminal while preserving per-worker logs and failure diagnostics. Stop workers before releasing control on interrupted output. Focused validation:68 passed; no DB or GPU dependency changes. (commit: 587f632)

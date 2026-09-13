@@ -152,8 +152,26 @@ def run_step(action, **paths):
            "HF_HUB_DISABLE_TELEMETRY": "1", "ANONYMIZED_TELEMETRY": "False"}
     log = paths["out"].parent / (paths["out"].name + "-" + action + ".log")
     with log.open("wb") as stream:
-        result = subprocess.run(command, cwd=ROOT, env=env, stdout=stream, stderr=subprocess.STDOUT)
-    if result.returncode:
+        # Mutating children must finish their transaction before parent rollback.
+        options = ({"creationflags": subprocess.CREATE_NEW_PROCESS_GROUP} if os.name == "nt"
+                   else {"start_new_session": True})
+        with subprocess.Popen(command, cwd=ROOT, env=env, stdout=stream,
+                              stderr=subprocess.STDOUT, **options) as process:
+            try:
+                returncode = process.wait()
+            except KeyboardInterrupt:
+                if action in {"apply", "restore"}:
+                    print("중단 요청: 데이터 교체가 종료된 후 복구 처리합니다.", flush=True)
+                else:
+                    process.kill()
+                while True:
+                    try:
+                        process.wait()
+                        break
+                    except KeyboardInterrupt:
+                        continue
+                raise
+    if returncode:
         raise ValueError(f"{action} 단계 실패. 상세 기록: {log}")
 
 
@@ -227,8 +245,8 @@ def apply_data(source):
             result = {"state": "installed", "counts": counts, "backup": str(run / "backup"),
                       "preflight": str(run / "preflight"), "postflight": str(run / "postflight")}
             save_result(run / "result.json", result)
-        except Exception:
-            if applied:
+        except BaseException:
+            if applied or (run / "backup/receipt.json").is_file():
                 run_step("restore", data=run / "backup", out=run / "rollback")
                 print("사후 확인 실패로 기존 데이터를 복구했습니다. 기록:", run, flush=True)
             raise
@@ -256,19 +274,20 @@ def install_empty(run, counts):
             destination.parent.mkdir(parents=True, exist_ok=True)
             if destination.exists():
                 raise ValueError("최초 설치 대상이 변경됐습니다.")
-            child(incoming, rel).rename(destination)
             touched.append(rel)
+            child(incoming, rel).rename(destination)
         print("[3/3] 결과 확인 — 최초 설치 DB 검색 검증 중...", flush=True)
         run_step("verify", data=target, out=run / "postflight")
         result = {"state": "installed", "installation": "fresh", "counts": counts,
                   "preflight": str(run / "preflight"), "postflight": str(run / "postflight")}
         save_result(run / "result.json", result)
-    except Exception:
+    except BaseException:
         # Move only files installed by this invocation into its failure archive.
         for rel in reversed(touched):
             failed = child(run / "failed", rel)
             failed.parent.mkdir(parents=True, exist_ok=True)
-            child(target, rel).rename(failed)
+            if child(target, rel).exists():
+                child(target, rel).rename(failed)
         raise
     print("[3/3] 확인 완료 — 최초 설치·235입력 일치, 중복 없음", flush=True)
     show_counts(result)

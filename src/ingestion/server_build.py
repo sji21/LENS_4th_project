@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 from contextlib import closing
 from dataclasses import asdict
+from importlib import metadata
 import json
 from pathlib import Path
 import shutil
@@ -59,7 +60,13 @@ def embedding_pipeline():
     # Conservatively invalidate even logging-only edits in the index builder.
     names = ("src/retrieval/dense.py", "src/retrieval/index.py",
              "src/ingestion/server_build.py", "requirements.txt")
-    return {name: digest(ROOT / name) for name in names}
+    packages = ("torch", "sentence-transformers", "transformers", "tokenizers", "chromadb",
+                "numpy", "scipy", "scikit-learn", "safetensors", "huggingface-hub")
+    try:
+        versions = {name: metadata.version(name) for name in packages}
+    except metadata.PackageNotFoundError as error:
+        raise ValueError(f"임베딩/인덱스 패키지 버전을 확인할 수 없습니다: {error}") from error
+    return {"files": {name: digest(ROOT / name) for name in names}, "packages": versions}
 
 
 def load_databases(records, data):
@@ -232,21 +239,24 @@ def promote(staged, target, run):
             src, dst, backup = child(staged, rel), child(target, rel), child(run / "backup", rel)
             backup.parent.mkdir(parents=True, exist_ok=True)
             existed = dst.exists()
+            touched.append((rel, existed))
             if existed:
                 dst.rename(backup)
-            touched.append((rel, existed))
             dst.parent.mkdir(parents=True, exist_ok=True)
             src.rename(dst)
         result = run_worker("verify", target, run)
         write(run / "result.json", {"state": "ready", "counts": result, "backup": str(run / "backup")})
-    except Exception:
+    except BaseException:
         for rel, existed in reversed(touched):
             dst, failed = child(target, rel), child(run / "failed", rel)
+            backup = child(run / "backup", rel)
+            if existed and not backup.exists():
+                continue  # The original rename did not happen.
             failed.parent.mkdir(parents=True, exist_ok=True)
             if dst.exists():
                 dst.rename(failed)
             if existed:
-                child(run / "backup", rel).rename(dst)
+                backup.rename(dst)
         raise
 
 

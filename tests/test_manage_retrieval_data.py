@@ -75,13 +75,62 @@ def test_noninteractive_missing_source_fails_without_waiting(monkeypatch):
 
 def test_failed_step_retains_diagnostics_in_log(flow, monkeypatch):
     root, _ = flow
+    popen = manager.subprocess.Popen
     def fail(command, **kwargs):
-        kwargs["stdout"].write(b"specific diagnostic")
-        return SimpleNamespace(returncode=1)
-    monkeypatch.setattr(manager.subprocess, "run", fail)
+        return popen([manager.sys.executable, "-c",
+                      "import sys; sys.stderr.write('specific diagnostic'); sys.exit(1)"], **kwargs)
+    monkeypatch.setattr(manager.subprocess, "Popen", fail)
     with pytest.raises(ValueError, match="상세 기록"):
         REAL_RUN_STEP("verify", data=root / "data", out=root / "preflight")
     assert (root / "preflight-verify.log").read_bytes() == b"specific diagnostic"
+
+
+@pytest.mark.parametrize("action", ["apply", "restore", "verify"])
+def test_interrupted_step_finishes_or_stops_child_before_unwinding(flow, monkeypatch, action):
+    root, _ = flow
+    events = []
+    class Process:
+        def __enter__(self):
+            return self
+        def __exit__(self, *args):
+            events.append("exit")
+        def wait(self):
+            events.append("wait")
+            if events.count("wait") <= 2:
+                raise KeyboardInterrupt()
+            return 0
+        def kill(self):
+            events.append("kill")
+    def start(command, **kwargs):
+        assert kwargs.get("start_new_session") or kwargs.get("creationflags")
+        return Process()
+    monkeypatch.setattr(manager.subprocess, "Popen", start)
+    with pytest.raises(KeyboardInterrupt):
+        REAL_RUN_STEP(action, data=root / "data", out=root / "step")
+    assert events[-2:] == ["wait", "exit"]
+    assert ("kill" in events) == (action == "verify")
+
+
+@pytest.mark.parametrize("phase", ["apply-return", "postflight", "receipt"])
+def test_interrupted_bundle_install_restores_then_reraises(flow, monkeypatch, phase):
+    root, calls = flow
+    def step(action, **paths):
+        calls.append((action, paths))
+        if action == "apply" and phase == "apply-return":
+            paths["out"].mkdir(parents=True)
+            (paths["out"] / "receipt.json").write_text('{}')
+            raise KeyboardInterrupt()
+        if action == "verify" and paths["out"].name == "postflight" and phase == "postflight":
+            raise KeyboardInterrupt()
+    def interrupted(*args):
+        raise KeyboardInterrupt()
+    monkeypatch.setattr(manager, "run_step", step)
+    if phase == "receipt":
+        monkeypatch.setattr(manager, "save_result", interrupted)
+    with pytest.raises(KeyboardInterrupt):
+        manager.apply_data(root / "source")
+    assert calls[-1][0] == "restore"
+    assert not list((root / "tmp/retrieval-data").glob('*/result.json'))
 
 
 def test_broken_installed_data_is_not_treated_as_success(flow, monkeypatch):
@@ -298,12 +347,13 @@ def test_first_install_preserves_repository_data(fresh_install):
 
 
 @pytest.mark.parametrize("failure", ["verify", "save_result"])
-def test_first_install_failure_removes_only_installed_payload(fresh_install, monkeypatch, failure):
+@pytest.mark.parametrize("error", [OSError, KeyboardInterrupt])
+def test_first_install_failure_removes_only_installed_payload(fresh_install, monkeypatch, failure, error):
     root, run = fresh_install
     def fail(*args, **kwargs):
-        raise OSError("disk or verification failure")
+        raise error("disk or verification failure")
     monkeypatch.setattr(manager, "run_step" if failure == "verify" else "save_result", fail)
-    with pytest.raises(OSError):
+    with pytest.raises(error):
         manager.install_empty(run, {})
     assert not any((root / "data" / rel).exists() for rel in manager.SCOPES)
     assert manager.payload_hashes(run / "failed") == manager.payload_hashes(run / "stage/data")
