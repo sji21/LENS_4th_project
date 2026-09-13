@@ -2,6 +2,7 @@
 from dataclasses import asdict
 import hashlib
 import json
+import re
 from pathlib import Path
 
 from src.ingestion.fetch_law_mock import LAWS, ENDPOINT, parse_articles, parse_law_header
@@ -12,6 +13,15 @@ from src.retrieval.expanded import CIVIL_IDS
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCES = ROOT / "data/sources/server-v1"
+
+
+def article_url(sequence, article):
+    match = re.fullmatch(r"제(\d+)조(?:의(\d+))?", article)
+    if match is None:
+        raise ValueError(f"조문 번호 형식 오류: {article}")
+    number, branch = int(match[1]), int(match[2] or 0)
+    return (f"https://www.law.go.kr/LSW/lsSideInfoP.do?docCls=jo&joBrNo={branch:02d}"
+            f"&joNo={number:04d}&lsiSeq={sequence}&urlMode=lsScJoRltInfoR")
 
 
 def digest(path):
@@ -55,7 +65,7 @@ def source_records():
                 proclaimed_at=header["proclaimed_at"], effective_from=expected_date,
                 document_type="law" if kind == "법률" else "decree",
                 article_number=number, article_title=title, content=content,
-                source_url=f"https://www.law.go.kr/법령/{name.replace(' ', '')}/{number}",
+                source_url=article_url(seq, number),
                 collected_at="", file_path=path.relative_to(ROOT).as_posix(),
                 source_text=text if index == 0 else "",
                 source_document_url=ENDPOINT.format(seq=seq, eff=date), source_version_id=seq))

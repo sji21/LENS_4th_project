@@ -14,6 +14,19 @@ def test_sources_produce_complete_unique_corpus_without_database():
     assert len([r for r in laws if r.law_name == "민법"]) == 26
 
 
+def test_source_url_pins_version_article_and_branch():
+    from urllib.parse import urlparse, parse_qs
+    fields = parse_qs(urlparse(sources.article_url("276291", "제3조의3")).query)
+    assert fields["lsiSeq"] == ["276291"]
+    assert fields["joNo"] == ["0003"] and fields["joBrNo"] == ["03"]
+    assert "joBrNo=00" in sources.article_url("284415", "제114조")
+
+
+def test_source_url_rejects_mixed_article_reference():
+    with pytest.raises(ValueError, match="번호 형식"):
+        sources.article_url("276291", "제3조 제5항")
+
+
 def test_source_manifest_cannot_drop_required_files(tmp_path, monkeypatch):
     manifest = json.loads((sources.SOURCES / "manifest.json").read_text(encoding="utf-8"))
     manifest["files"].pop("guide-records.jsonl")
