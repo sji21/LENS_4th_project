@@ -10,7 +10,7 @@ import subprocess
 import sys
 import time
 
-from scripts.patch015_baseline import ROOT, read, sha, write
+from scripts.patch027_paths import ROOT, read, sha, write
 from scripts.patch027_context_live import _serialize, _committed_sources
 from scripts.patch027_final_test import check as check_final, BUNDLE as FINAL, SEARCH_K
 from scripts.patch027_loss_analysis import align
@@ -21,7 +21,7 @@ SCOPES = tuple(sorted(FILES)) + INDEXES + (PROFILE,)
 
 
 def expected_profile():
-    audit = read(ROOT / "data/eval/patch026-full/capture/audit.json")
+    audit = read(ROOT / "data/eval/patch027-full/capture/audit.json")
     return {"version": 1, "policy": POLICY, "model": "nlpai-lab/KURE-v1",
             "civil_ids": list(CIVIL_IDS), "files": audit["candidate_files"],
             "index_hashes": audit["candidate_index_hashes"]}
@@ -69,7 +69,7 @@ def copy_scope(source, target):
 def stage(candidate, out):
     check_final()
     out = fresh_tmp(out)
-    audit = read(ROOT / "data/eval/patch026-full/capture/audit.json")
+    audit = read(ROOT / "data/eval/patch027-full/capture/audit.json")
     if set(audit["candidate_files"]) != FILES or any(sha(candidate / p) != h for p, h in audit["candidate_files"].items()):
         raise ValueError("Candidate differs from final test corpus")
     out.mkdir(parents=True)
@@ -101,7 +101,7 @@ def verify(data, out):
     snapshot = code_snapshot()
     profile = read(data / PROFILE)
     before = {p: sha(child(data, p)) for p in FILES | {PROFILE}}
-    full = read(ROOT / "data/eval/patch026-full/capture/audit.json")
+    full = read(ROOT / "data/eval/patch027-full/capture/audit.json")
     model_root = Path.home() / ".cache/huggingface/hub/models--nlpai-lab--KURE-v1"
     if any(sha(model_root / p) != h for p, h in full["model_files"].items()):
         raise ValueError("Model files differ from final test")
@@ -240,7 +240,7 @@ def apply(staged, verification, backup):
     backup = fresh_tmp(backup)
     if not target.is_relative_to(ROOT):
         raise ValueError("Operating data leaves this checkout")
-    baseline = read(ROOT / "data/eval/patch026-full/capture/audit.json")
+    baseline = read(ROOT / "data/eval/patch027-full/capture/audit.json")
     if (target / PROFILE).exists():
         raise ValueError("Profile already active; do not overwrite an existing rollout")
     if any(sha(ROOT / p) != h for p, h in baseline["data_hashes"].items()):
@@ -265,7 +265,7 @@ def inspect_baseline(data):
     from src.retrieval.dense import ChromaRetriever
     from src.retrieval.profile import index_hash
 
-    audit = read(ROOT / "data/eval/patch026-full/capture/audit.json")
+    audit = read(ROOT / "data/eval/patch027-full/capture/audit.json")
     actual = [index_hash(ChromaRetriever(None, data / p)) for p in INDEXES]
     if actual != audit["operating_index_hashes"]:
         raise ValueError("Operating indexes changed since baseline")

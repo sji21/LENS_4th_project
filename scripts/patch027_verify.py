@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 import subprocess
 
-from scripts.patch026_expand import ROOT, read, write, sha, norm, score
+from scripts.patch027_expand import ROOT, read, write, sha, norm, score
 from scripts.patch025_ranking import index_digest, close
 from scripts.patch027_partition import report, select
 from src.retrieval.service import RetrievalService
@@ -19,7 +19,7 @@ def verify(run, out):
     expected = report(run)['pool_equal']
     audit = read(run/'audit.json')
     traces = {(r['qid'], r['mode']): r for r in read(run/'traces.json')}
-    old = read(ROOT/'data/eval/patch026-expansion/before.json')
+    old = read(ROOT/'data/eval/patch027-expansion/before.json')
     prior = {(r['qid'], r['mode']): r for r in old}
     svc = RetrievalService.from_index()
     indexes = [index_digest(r) for r in (svc.dense, svc.civil_dense)]
@@ -43,7 +43,7 @@ def verify(run, out):
         rows.append(row)
         if len(rows) % 25 == 0:
             print(f'{len(rows)}/235 product matches', flush=True)
-    measured = score(rows, read(ROOT/'data/eval/patch026-expansion/full/audit.json')['available_after'], old)
+    measured = score(rows, read(ROOT/'data/eval/patch027-expansion/full/audit.json')['available_after'], old)
     assert close(measured, expected), 'Product metrics differ from comparison'
     assert not measured['losses']
     assert indexes == [index_digest(r) for r in (svc.dense, svc.civil_dense)]

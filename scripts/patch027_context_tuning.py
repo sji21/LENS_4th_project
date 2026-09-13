@@ -14,9 +14,9 @@ from pathlib import Path
 import re
 import subprocess
 
-from scripts.patch015_baseline import ROOT, norm, read, sha, write
+from scripts.patch027_paths import ROOT, norm, read, sha, write
 from scripts.patch025_ranking import close
-from scripts.patch026_expand import score
+from scripts.patch027_expand import score
 from src.retrieval.partitioned import PartitionedBM25Retriever
 from src.retrieval.retriever import BM25Retriever, load_chunks
 from src.retrieval.service import CIVIL as CIVIL_CORPUS, LAW, PROCEDURE_TITLES, route_law_corpus
@@ -26,10 +26,10 @@ from src.retrieval.terms import expand_civil, expand_law
 BUNDLE = ROOT / "data/eval/patch027-context-tuning"
 DEPENDENCIES = (
     "data/eval/patch015-baseline/capture/results.json",
-    "data/eval/patch026-full/capture/audit.json",
-    "data/eval/patch026-full/capture/before.json",
-    "data/eval/patch026-full/capture/after.json",
-    "data/eval/patch026-full/capture/new-chunks.json",
+    "data/eval/patch027-full/capture/audit.json",
+    "data/eval/patch027-full/capture/before.json",
+    "data/eval/patch027-full/capture/after.json",
+    "data/eval/patch027-full/capture/new-chunks.json",
     "data/eval/patch027-concept-tuning/manifest.json",
     "data/eval/patch027-full-ranking/manifest.json",
 )
@@ -39,7 +39,7 @@ CIVIL_POLICIES = ("lexical_control", "context_lexical", "context_both", "context
 # it using the new scores. Other policies remain diagnostic controls.
 FINAL_POLICIES = ("context_both", "context_reference")
 CANDIDATE_CIVIL_IDS = tuple(read(
-    ROOT / "data/eval/patch026-full/capture/audit.json"
+    ROOT / "data/eval/patch027-full/capture/audit.json"
 )["candidate_settings"]["corpora"]["civil"]["include_ids"])
 CANDIDATE_CIVIL = replace(CIVIL_CORPUS, include_ids=CANDIDATE_CIVIL_IDS)
 
@@ -379,7 +379,7 @@ def capture(out: Path, candidate: Path, *, allow_dirty: bool = False) -> None:
     spec = execution_spec()
     out.mkdir(parents=True)
     write(out / "execution-spec.json", spec)
-    prior_audit = read(ROOT / "data/eval/patch026-full/capture/audit.json")
+    prior_audit = read(ROOT / "data/eval/patch027-full/capture/audit.json")
     if any(sha(candidate / rel) != digest for rel, digest in prior_audit["candidate_files"].items()):
         raise ValueError("Candidate data changed")
     chunks = [c for name in ("chunks", "cases", "guides")
@@ -475,10 +475,10 @@ def capture(out: Path, candidate: Path, *, allow_dirty: bool = False) -> None:
 
 
 def _assess(rows, anchors, graph, general_policy, civil_policy):
-    prior = read(ROOT / "data/eval/patch026-full/capture/before.json")
-    current = read(ROOT / "data/eval/patch026-full/capture/after.json")
-    available = read(ROOT / "data/eval/patch026-full/capture/audit.json")["available_after"]
-    available_before = set(read(ROOT / "data/eval/patch026-full/capture/audit.json")["available_before"])
+    prior = read(ROOT / "data/eval/patch027-full/capture/before.json")
+    current = read(ROOT / "data/eval/patch027-full/capture/after.json")
+    available = read(ROOT / "data/eval/patch027-full/capture/audit.json")["available_after"]
+    available_before = set(read(ROOT / "data/eval/patch027-full/capture/audit.json")["available_before"])
     new_available = set(available) - available_before
     actual = []
     linked = []
@@ -522,7 +522,7 @@ def _validated_reference_graph(audit: dict) -> dict[str, set[str]]:
         raise ValueError("Anchor identity changed")
     # All adoption-clause sources in this frozen candidate are newly collected
     # articles. Require exactly the graph derivable from that verified bundle.
-    graph, expected = _reference_graph(read(ROOT / "data/eval/patch026-full/capture/new-chunks.json"))
+    graph, expected = _reference_graph(read(ROOT / "data/eval/patch027-full/capture/new-chunks.json"))
     if audit["reference_evidence"] != expected:
         raise ValueError("Reference endpoints/edition differ from verified source")
     return graph
@@ -593,7 +593,7 @@ def report(run: Path, *, require_clean: bool = True) -> dict:
                     raise ValueError("Invalid channel/member trace")
                 if key.endswith(("original", "expanded")) and hits != old[channel][key]:
                     raise ValueError("Stored control changed")
-    prior_audit = read(ROOT / "data/eval/patch026-full/capture/audit.json")
+    prior_audit = read(ROOT / "data/eval/patch027-full/capture/audit.json")
     if (audit["candidate_unchanged"] is not True or audit["cases_guides_preserved"] is not True
             or audit["index_hashes"] != prior_audit["candidate_index_hashes"]
             or audit["model_files"] != prior_audit["model_files"]):

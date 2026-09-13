@@ -76,7 +76,7 @@ def test_frozen_results_replay_with_improvement_and_remaining_regressions():
 
 def test_no_expansion_keeps_both_members_and_default_selection_unchanged():
     from scripts.patch027_tuning import BUNDLE
-    from scripts.patch015_baseline import read
+    from scripts.patch027_paths import read
     for r in read(BUNDLE/'traces.json'):
         for channel,selector,key in (('general',general_select,'current_laws'),('civil',civil_select,'current_civil')):
             if not r['expansion'][channel]:
@@ -94,14 +94,14 @@ def bundle(tmp_path):
 
 
 def refresh(bundle,trace=False):
-    from scripts.patch015_baseline import read,write,sha
+    from scripts.patch027_paths import read,write,sha
     if trace:
         a=read(bundle/'audit.json');a['traces_sha256']=sha(bundle/'traces.json');write(bundle/'audit.json',a)
     m=read(bundle/'manifest.json');write(bundle/'manifest.json',{p:sha(bundle/p) for p in m})
 
 
 def test_missing_capture_and_manifest_entry_rejected(bundle):
-    from scripts.patch015_baseline import read,write
+    from scripts.patch027_paths import read,write
     from scripts.patch027_tuning import check
     (bundle/'traces.json').unlink();m=read(bundle/'manifest.json');del m['traces.json'];write(bundle/'manifest.json',m)
     with pytest.raises(ValueError,match='Incomplete'):check(bundle)
@@ -109,7 +109,7 @@ def test_missing_capture_and_manifest_entry_rejected(bundle):
 
 @pytest.mark.parametrize('mutation',['missing_input','expansion','wrong_channel','source','score'])
 def test_semantic_corruption_rejected_after_refreshing_hashes(bundle,mutation):
-    from scripts.patch015_baseline import read,write
+    from scripts.patch027_paths import read,write
     from scripts.patch027_tuning import check,PREVIOUS
     if mutation in ('missing_input','expansion','wrong_channel'):
         rows=read(bundle/'traces.json')

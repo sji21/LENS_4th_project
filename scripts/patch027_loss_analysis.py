@@ -8,8 +8,8 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from scripts.patch015_baseline import ROOT, read, write, sha
-from scripts.patch026_expand import score
+from scripts.patch027_paths import ROOT, read, write, sha
+from scripts.patch027_expand import score
 from scripts.patch027_context_tuning import (
     BUNDLE as BASE, check as check_base, civil_select, fuse, rank_changes,
     _validated_reference_graph,
@@ -18,11 +18,11 @@ from scripts.patch027_context_tuning import (
 BUNDLE = ROOT / "data/eval/patch027-loss-analysis"
 SOURCES = (
     "data/eval/patch027-context-tuning/manifest.json",
-    "data/eval/patch026-full/capture/before.json",
-    "data/eval/patch026-full/capture/after.json",
+    "data/eval/patch027-full/capture/before.json",
+    "data/eval/patch027-full/capture/after.json",
     "data/eval/patch015-baseline/capture/results.json",
     "data/eval/patch024-expansion/report.json",
-    "data/eval/patch026-full/capture/audit.json",
+    "data/eval/patch027-full/capture/audit.json",
 )
 
 

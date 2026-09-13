@@ -51,7 +51,7 @@ def bundle(tmp_path):
 
 
 def refresh(bundle,trace=False):
-    from scripts.patch015_baseline import read,write,sha
+    from scripts.patch027_paths import read,write,sha
     if trace:
         audit=read(bundle/'audit.json');audit['traces_sha256']=sha(bundle/'traces.json')
         write(bundle/'audit.json',audit)
@@ -60,7 +60,7 @@ def refresh(bundle,trace=False):
 
 
 def test_removed_file_and_manifest_entry_rejected(bundle):
-    from scripts.patch015_baseline import read,write
+    from scripts.patch027_paths import read,write
     from scripts.patch027_full_ranking import check_bundle
     (bundle/'traces.json').unlink()
     manifest=read(bundle/'manifest.json');del manifest['traces.json'];write(bundle/'manifest.json',manifest)
@@ -69,7 +69,7 @@ def test_removed_file_and_manifest_entry_rejected(bundle):
 
 @pytest.mark.parametrize('mutation',['missing_input','duplicate_input','wrong_partition','too_many_civil'])
 def test_trace_semantics_rejected_even_when_hashes_are_updated(bundle,mutation):
-    from scripts.patch015_baseline import read,write
+    from scripts.patch027_paths import read,write
     from scripts.patch027_full_ranking import check_bundle
     rows=read(bundle/'traces.json');audit=read(bundle/'audit.json')
     if mutation=='missing_input':rows.pop()
@@ -81,7 +81,7 @@ def test_trace_semantics_rejected_even_when_hashes_are_updated(bundle,mutation):
 
 
 def test_false_capture_contract_rejected(bundle):
-    from scripts.patch015_baseline import read,write
+    from scripts.patch027_paths import read,write
     from scripts.patch027_full_ranking import check_bundle
     audit=read(bundle/'audit.json');audit['candidate_unchanged']=False
     write(bundle/'audit.json',audit);refresh(bundle)
@@ -89,7 +89,7 @@ def test_false_capture_contract_rejected(bundle):
 
 
 def test_relabelled_success_result_cannot_pass_with_new_hash(bundle):
-    from scripts.patch015_baseline import read,write
+    from scripts.patch027_paths import read,write
     from scripts.patch027_full_ranking import check_bundle
     result=read(bundle/'comparison.json');result['general']['stats_pool']['adoption']['passed']=True
     write(bundle/'comparison.json',result);refresh(bundle)

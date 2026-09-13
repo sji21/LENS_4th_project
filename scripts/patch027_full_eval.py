@@ -10,11 +10,12 @@ from collections import Counter
 from dataclasses import replace
 from pathlib import Path
 
-from scripts.patch015_baseline import ROOT, read, sha, norm
-from scripts.patch026_full_sources import OUT, write, compile_records
-from scripts.patch026_expand import score
+from scripts.patch027_paths import ROOT, read, sha, norm
+from scripts.patch027_full_sources import OUT, write, compile_records
+from scripts.patch027_expand import score
 from scripts.patch025_ranking import index_digest
-from src.ingestion.load_laws import read_records, load_records, export_chunks, LawArticleRecord, law_version_id_of, article_row_id_of
+from src.ingestion.load_laws import load_records, export_chunks, LawArticleRecord, law_version_id_of, article_row_id_of
+from scripts.patch027_paths import read_records
 from src.retrieval.retriever import load_chunks
 
 
@@ -75,14 +76,14 @@ def retain_affected_records(connection, additions):
 
 def source_hashes():
     files=[p for tree in ('src','scripts') for p in (ROOT/tree).rglob('*.py')]
-    files += [ROOT/p for p in ('data/eval/patch026-scope/plan.json',
+    files += [ROOT/p for p in ('data/eval/patch027-scope/plan.json',
         'data/eval/dev100-v2/source-registry.json','data/eval/dev100-v2/requirements.json',
         'data/eval/dev100-v2/supplement-claims.json','data/eval/patch024-expansion/report.json',
-        'data/eval/patch015-baseline/capture/results.json','data/eval/patch026-expansion/before.json')]
+        'data/eval/patch015-baseline/capture/results.json','data/eval/patch027-expansion/before.json')]
     files += [OUT/'specs.json',OUT/'records.jsonl']
     files += list((OUT/'sources').glob('*.html'))
-    files += list((ROOT/'data/eval/patch026-expansion/sources').glob('*.html'))
-    files += [ROOT/'data/eval/patch026-expansion'/n for n in ('records.jsonl','source-manifest.json')]
+    files += list((ROOT/'data/eval/patch027-expansion/sources').glob('*.html'))
+    files += [ROOT/'data/eval/patch027-expansion'/n for n in ('records.jsonl','source-manifest.json')]
     return {p.relative_to(ROOT).as_posix():sha(p) for p in files}
 
 
@@ -91,17 +92,17 @@ def run(out):
     from src.retrieval.dense import ChromaRetriever
     from src.retrieval.index import clean_metadata
     from src.evaluation.baseline import SEARCH_K, settings
-    from scripts.patch026_sources import SPECS, parse_page
+    from scripts.patch027_sources import SPECS, parse_page
     if out.exists() or not out.resolve().is_relative_to(ROOT/'tmp'):
         raise ValueError('Use a new candidate directory under tmp')
     if subprocess.check_output(['git','status','--porcelain'],text=True).strip():
         raise ValueError('Commit source and provenance before capture')
     extra=compile_records()
-    initial=read_records(ROOT/'data/eval/patch026-expansion/records.jsonl')
-    initial_manifest=read(ROOT/'data/eval/patch026-expansion/source-manifest.json')
+    initial=read_records(ROOT/'data/eval/patch027-expansion/records.jsonl')
+    initial_manifest=read(ROOT/'data/eval/patch027-expansion/source-manifest.json')
     assert len(initial)==len(SPECS)==len(initial_manifest)==5
     for record,spec,entry in zip(initial,SPECS,initial_manifest):
-        path=ROOT/f'data/eval/patch026-expansion/sources/{spec[0]}.html'
+        path=ROOT/f'data/eval/patch027-expansion/sources/{spec[0]}.html'
         assert sha(path)==entry['sha256']
         assert record==parse_page(path.read_text(encoding='utf-8'),spec,entry['url'],path.relative_to(ROOT).as_posix())
     records=initial+extra
@@ -174,7 +175,7 @@ def run(out):
     assert len(indexed)==len(set(indexed)) and set(indexed)==set(candidate._chunks)
     available_before={norm(c['metadata']['article_id']) for c in baseline._chunks.values() if c['metadata']['doc_type'] in ('law','decree','rule')}
     available={norm(c['metadata']['article_id']) for c in chunks if c['metadata']['doc_type'] in ('law','decree','rule')}
-    expected=read(ROOT/'data/eval/patch026-expansion/before.json')
+    expected=read(ROOT/'data/eval/patch027-expansion/before.json')
     queries=read(ROOT/'data/eval/patch015-baseline/capture/results.json')
     assert len(queries)==len(expected)==235
     before=[];after=[];traces=[]

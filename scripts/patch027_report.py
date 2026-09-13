@@ -2,8 +2,8 @@
 import argparse
 from pathlib import Path
 
-from scripts.patch026_expand import ROOT, read, write, sha, score
-from scripts.patch026_report import summarize as previous_summary
+from scripts.patch027_expand import ROOT, read, write, sha, score
+from scripts.patch027_expansion_report import summarize as previous_summary
 from scripts.patch025_ranking import close
 from scripts.patch027_partition import report, select
 
@@ -23,7 +23,7 @@ def summarize(bundle=BUNDLE, verify=True):
     reports = report(bundle)
     audit = read(bundle/'audit.json')
     traces = read(bundle/'traces.json')
-    before = {(r['qid'], r['mode']): r for r in read(ROOT/'data/eval/patch026-expansion/before.json')}
+    before = {(r['qid'], r['mode']): r for r in read(ROOT/'data/eval/patch027-expansion/before.json')}
     live = read(bundle/'live.json')
     if len(live['rows']) != 235 or {(r['qid'], r['mode']) for r in live['rows']} != set(before):
         raise ValueError('Incomplete product verification')
@@ -57,7 +57,7 @@ def summarize(bundle=BUNDLE, verify=True):
         variants[policy] = {'groups': measured['groups'], 'losses': measured['losses'],
                             'prior_required_rank_losses': rank_losses, 'changed_inputs': changed,
                             'procedure_count_distribution': procedure_counts}
-    measured_live = score(live['rows'], read(ROOT/'data/eval/patch026-expansion/full/audit.json')['available_after'], list(before.values()))
+    measured_live = score(live['rows'], read(ROOT/'data/eval/patch027-expansion/full/audit.json')['available_after'], list(before.values()))
     if not close(measured_live, reports[SELECTED]) or not close(live['report'], measured_live):
         raise ValueError('Product metrics mismatch')
     selected = variants[SELECTED]

@@ -1,7 +1,7 @@
 # PATCH-027 전체 추가 법령 후보의 출처·판본
 
 > 번호 정정 전 PATCH-026으로 실행한 출처 기록이다. 현재 소속은 PATCH-027이며,
-> `patch026` 측정·스크립트 경로는 재현을 위해 보존한다. [파일명 대응과 보존 기준](patch027-renumbering.md)
+> 현재 자료·스크립트 경로는 PATCH-027로 통일하고, 측정 파일 내부의 옛 경로·해시는 보존한다. [파일명 대응과 보존 기준](patch027-renumbering.md)
 
 기준일: DEV 검토 기준 **2026-09-08**. 수집일: **2026-09-13**.
 
@@ -9,8 +9,8 @@
 
 기존 143조문에 초기 절차법 5개와 이번 56개를 더한 **204조문 후보**를 평가한다. 이번 56개는 조문 식별자가 있던 44개 + 미정리 자료에서 확인한 12개다. 민법 16개를 포함하며, 총 민법은 26개가 된다. 확정일자 규칙은 최초 목록의 제2·7·9조 외에 보완 검토 SUP-028/030에 명시된 제3·6·10·11·12조도 포함했다.
 
-- [고정 수집 명세](../data/eval/patch026-full/specs.json): 법령명·조문·시행일·공포번호·공포일·공식 판본 ID·URL·원문 해시.
-- [적재 레코드](../data/eval/patch026-full/records.jsonl): 공식 HTML의 개별 `lawcon` 블록에서 정확히 일치한 조문만 추출.
+- [고정 수집 명세](../data/eval/patch027-full/specs.json): 법령명·조문·시행일·공포번호·공포일·공식 판본 ID·URL·원문 해시.
+- [적재 레코드](../data/eval/patch027-full/records.jsonl): 공식 HTML의 개별 `lawcon` 블록에서 정확히 일치한 조문만 추출.
 - 원본 검토의 필수/조건부/보조 역할은 유지한다. 추가 확보를 이유로 채점 정답을 늘리거나 변경하지 않는다.
 - 검증은 원문·식별자·판본·추출 일치 확인이다. 각 조문의 법적 정답 적합성을 새로 독립 판정한 것이 아니다.
 
@@ -37,7 +37,7 @@
 원문 재다운로드 없이 고정 명세와 해시로 `compile_records()`를 재실행할 수 있다. 수집 원문을 바꿀 때에는 명세와 판본 검토부터 새로 수행해야 한다. 평가 실행기는 기존 143조문 산출물·KURE 모델이 준비된 이 브랜치에서 실행한다.
 
 ```powershell
-C:/team_project/4th_project/.venv/Scripts/python -X utf8 -m scripts.patch026_full_eval --out tmp/patch026-full-evaluation
+C:/team_project/4th_project/.venv/Scripts/python -X utf8 -m scripts.patch027_full_eval --out tmp/patch026-full-evaluation
 ```
 
 후보 DB·인덱스는 새로운 `tmp` 디렉터리에만 생성한다. 후보 민법 허용 목록은 26개로 확장해 실제 검색에 연결하며 검색 가중치·반환 수·질의 조건은 변경하지 않는다. 운영 기본 허용 목록과 운영 DB는 이 실험으로 자동 변경되지 않는다.

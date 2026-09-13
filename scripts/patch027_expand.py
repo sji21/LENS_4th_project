@@ -8,10 +8,11 @@ import sqlite3
 import subprocess
 from pathlib import Path
 
-from scripts.patch015_baseline import ROOT, read, write, sha, norm
+from scripts.patch027_paths import ROOT, read, write, sha, norm
 from scripts.patch023_report import diagnose, summarize
 from scripts.patch025_ranking import index_digest
-from src.ingestion.load_laws import read_records, load_records, export_chunks
+from src.ingestion.load_laws import load_records, export_chunks
+from scripts.patch027_paths import read_records
 from src.retrieval.retriever import load_chunks
 from src.retrieval.service import RetrievalService
 from src.retrieval.dense import ChromaRetriever
@@ -41,9 +42,9 @@ def score(rows, available, old_rows):
 
 def run(out):
     if subprocess.check_output(['git','status','--porcelain'],text=True).strip(): raise ValueError('Commit source first')
-    bundle=ROOT/'data/eval/patch026-expansion'
+    bundle=ROOT/'data/eval/patch027-expansion'
     records=read_records(bundle/'records.jsonl')
-    from scripts.patch026_sources import SPECS, parse_page
+    from scripts.patch027_sources import SPECS, parse_page
     manifest=read(bundle/'source-manifest.json')
     if len(records)!=5 or len(manifest)!=5: raise ValueError('Expected five sources')
     for record,spec,source in zip(records,SPECS,manifest):

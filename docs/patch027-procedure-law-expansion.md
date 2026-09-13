@@ -106,19 +106,19 @@ Hit은 근거 하나 이상의 존재, 완전 확보는 모든 필수 근거의 
 
 ## 재현과 산출물
 
-[공유 자료](../data/eval/patch026-expansion/summary.json): 공식 원문, 검증된 적재 레코드,
+[공유 자료](../data/eval/patch027-expansion/summary.json): 공식 원문, 검증된 적재 레코드,
 3개 안의 원시 순위, 사전/사후 목록, 파일 해시와 집계. 실제 DB·Chroma 파일은 Git에 포함하지 않는다.
 
 ```powershell
 # 프로젝트 가상환경 Python으로 실행: 모델·DB 없이 결과 재집계
-python -m scripts.patch026_report
+python -m scripts.patch027_expansion_report
 ```
 
 실제 재실행은 PATCH-025의 DB·청크·민법/일반 인덱스 및 KURE-v1 캐시가 필요하다.
-`scripts.patch026_expand --out tmp/새폴더`가 원문과 레코드를 대조하고 후보에만 적재한다.
+`scripts.patch027_expand --out tmp/새폴더`가 원문과 레코드를 대조하고 후보에만 적재한다.
 분리 재실행 도구는 이 실행의 `tmp/patch026-evaluation` 산출물을 사용한다.
 현재 분리 결과는 `tmp/patch026-subsets-v2`에 있으며 같은 경로를 덮어쓰지 않는다.
-원문 재수집은 `scripts.patch026_sources`이지만 공식 페이지가 다른 판본으로 바뀌면 중단한다.
+원문 재수집은 `scripts.patch027_sources`이지만 공식 페이지가 다른 판본으로 바뀌면 중단한다.
 
 이 초기 실험 뒤 같은 PATCH-026 안에서 원인 분해와 검색 후보 구성·반환 방식 비교를 진행했다.
 결과는 [검색 보완 실험](patch027-procedure-partition.md)에 있으며, 남은 TOP3 회귀도 같은 패치에서 다룬다.

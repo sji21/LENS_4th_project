@@ -7,14 +7,14 @@ from pathlib import Path
 from urllib.parse import quote, urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 
-from scripts.patch015_baseline import ROOT, read
+from scripts.patch027_paths import ROOT, read
 from scripts.patch015_baseline import norm, sha
 from lxml import html
 from src.ingestion.fetch_law_mock import html_to_text, parse_law_header
 from src.ingestion.fetch_law_mock import parse_articles
 from src.ingestion.load_laws import LawArticleRecord
 
-OUT = ROOT / 'data/eval/patch026-full'
+OUT = ROOT / 'data/eval/patch027-full'
 
 
 def write(path, value):
@@ -40,7 +40,7 @@ def download(item):
 
 
 def collect():
-    plan = read(ROOT/'data/eval/patch026-scope/plan.json')
+    plan = read(ROOT/'data/eval/patch027-scope/plan.json')
     items = {r['source_id']:r['review_record']['url'] for r in plan['missing_articles']}
     items.update({r['source_id']:r['review_record'].get('url') for r in plan['unresolved_law_tagged_sources']})
     items.update(PRIVATE_RULE18='https://law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lspttninfSeq=150799',
@@ -97,7 +97,7 @@ def parse_verified(raw, spec):
     return record
 
 
-def compile_records():
+def compile_records(*, output=None):
     specs = read(OUT/'specs.json')
     records = []
     anchors = set()
@@ -111,12 +111,12 @@ def compile_records():
             raise ValueError('Duplicate article')
         anchors.add(anchor)
         records.append(record)
-    plan=read(ROOT/'data/eval/patch026-scope/plan.json')
+    plan=read(ROOT/'data/eval/patch027-scope/plan.json')
     planned={r['article_anchor'] for r in plan['missing_articles']}
     if not planned <= anchors or len(records)!=56:
         raise ValueError('Full reviewed current-article scope not covered')
-    path=OUT/'records.jsonl'
-    path.write_bytes(''.join(json.dumps(asdict(r),ensure_ascii=False)+'\n' for r in records).encode('utf-8'))
+    if output is not None:
+        Path(output).write_bytes(''.join(json.dumps(asdict(r),ensure_ascii=False)+'\n' for r in records).encode('utf-8'))
     return records
 
 

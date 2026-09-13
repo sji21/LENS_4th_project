@@ -2,7 +2,7 @@ import shutil
 
 import pytest
 
-from scripts.patch026_expand import read, write, sha
+from scripts.patch027_expand import read, write, sha
 from scripts.patch027_partition import report
 from scripts.patch027_report import BUNDLE, summarize
 

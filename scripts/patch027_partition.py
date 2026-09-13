@@ -8,8 +8,8 @@ import os
 from pathlib import Path
 import subprocess
 
-from scripts.patch026_expand import ROOT, read, write, sha, norm, score
-from scripts.patch026_sources import SPECS
+from scripts.patch027_expand import ROOT, read, write, sha, norm, score
+from scripts.patch027_sources import SPECS
 from scripts.patch025_ranking import index_digest, close
 from src.retrieval.service import RetrievalService, LAW, route_law_corpus, CIVIL_TITLE
 from src.retrieval.hybrid import HybridRetriever
@@ -18,8 +18,8 @@ from src.evaluation.baseline import settings
 
 POLICIES=('split_half','split_three_quarters','split_equal','keep2_split_equal',
           'pool_half','pool_equal','pool_double')
-DEPENDENCIES=('data/eval/patch026-expansion/before.json','data/eval/patch026-expansion/full/after.json',
-              'data/eval/patch026-expansion/full/audit.json','data/eval/patch024-expansion/report.json',
+DEPENDENCIES=('data/eval/patch027-expansion/before.json','data/eval/patch027-expansion/full/after.json',
+              'data/eval/patch027-expansion/full/audit.json','data/eval/patch024-expansion/report.json',
               'data/eval/patch015-baseline/capture/results.json')
 
 
@@ -66,8 +66,8 @@ def capture(out):
     core=svc._build(replace(LAW,name='core'),core_chunks)
     procedure=svc._build(replace(LAW,name='procedure'),proc_chunks)
     mixed=svc._retrievers[LAW.name]
-    previous={(r['qid'],r['mode']):r for r in read(ROOT/'data/eval/patch026-expansion/before.json')}
-    old_mixed={(r['qid'],r['mode']):r for r in read(ROOT/'data/eval/patch026-expansion/full/after.json')}
+    previous={(r['qid'],r['mode']):r for r in read(ROOT/'data/eval/patch027-expansion/before.json')}
+    old_mixed={(r['qid'],r['mode']):r for r in read(ROOT/'data/eval/patch027-expansion/full/after.json')}
     rows=[]
     for q in read(ROOT/'data/eval/patch015-baseline/capture/results.json'):
         where=route_law_corpus(q['query']).where()
@@ -102,15 +102,15 @@ def report(run):
     if tuple(audit['policies'])!=POLICIES: raise ValueError('Policy list changed')
     for p,v in audit['dependencies'].items():
         if hashlib.sha256((ROOT/p).read_bytes().replace(b'\r\n',b'\n')).hexdigest()!=v: raise ValueError('Dependency changed')
-    before=read(ROOT/'data/eval/patch026-expansion/before.json'); old={(r['qid'],r['mode']):r for r in before}
+    before=read(ROOT/'data/eval/patch027-expansion/before.json'); old={(r['qid'],r['mode']):r for r in before}
     queries={(r['qid'],r['mode']):r['query_sha256'] for r in read(ROOT/'data/eval/patch015-baseline/capture/results.json')}
     if len(traces)!=235 or {(r['qid'],r['mode']) for r in traces}!=set(old): raise ValueError('Incomplete traces')
-    anchors=audit['candidate_anchors']; available=read(ROOT/'data/eval/patch026-expansion/full/audit.json')['available_after']
+    anchors=audit['candidate_anchors']; available=read(ROOT/'data/eval/patch027-expansion/full/audit.json')['available_after']
     if len(anchors)!=len(set(anchors.values())) or set(anchors.values())!=set(available):
         raise ValueError('Candidate inventory differs')
     procedures={name.replace(' ','')+'-'+article for _,name,article,*_ in SPECS}
     if set(audit['procedures'])!=procedures: raise ValueError('Procedure selection changed')
-    mixed={(r['qid'],r['mode']):r for r in read(ROOT/'data/eval/patch026-expansion/full/after.json')}
+    mixed={(r['qid'],r['mode']):r for r in read(ROOT/'data/eval/patch027-expansion/full/after.json')}
     for r in traces:
         for name in ('core','procedure','statistics_only','mixed','core_bm25','procedure_bm25','global_dense'):
             hits=r[name]

@@ -2,9 +2,9 @@ from copy import deepcopy
 
 import pytest
 
-from scripts.patch015_baseline import ROOT, read
-from scripts.patch026_full_sources import OUT, compile_records, parse_verified
-from scripts.patch026_full_eval import rank_changes
+from scripts.patch027_paths import ROOT, read
+from scripts.patch027_full_sources import OUT, compile_records, parse_verified
+from scripts.patch027_full_eval import rank_changes
 
 
 def test_all_reviewed_current_sources_compile_with_exact_versions():
@@ -54,7 +54,7 @@ def test_top3_loss_not_hidden_by_unchanged_top5():
 def test_partial_version_addition_preserves_existing_article_and_source(tmp_path):
     from src.database.relational import initialize_relational_database,connect_database
     from src.ingestion.load_laws import load_records
-    from scripts.patch026_full_eval import retain_affected_records
+    from scripts.patch027_full_eval import retain_affected_records
     records=[r for r in compile_records() if r.law_name=='민법'][:2]
     path=tmp_path/'law.sqlite3';initialize_relational_database(path)
     with connect_database(path) as db:
@@ -70,7 +70,7 @@ def test_partial_version_addition_preserves_existing_article_and_source(tmp_path
 
 
 def test_full_capture_replay_separates_coverage_from_retrieval():
-    from scripts.patch026_full_report import analyze
+    from scripts.patch027_full_report import analyze
     r=analyze()
     assert r['groups']['question_only']['union_all_required']=={'hits':32,'n':75}
     assert r['groups']['context_diagnostic']['union_all_required']=={'hits':34,'n':75}
@@ -82,9 +82,9 @@ def test_full_capture_replay_separates_coverage_from_retrieval():
 @pytest.mark.parametrize('mutation',['remove_source','remove_input','wrong_law','civil_allowlist','chunk_body'])
 def test_corrupt_full_bundle_rejected_even_with_rewritten_manifest(tmp_path,mutation):
     import shutil
-    from scripts.patch026_full_sources import write
+    from scripts.patch027_full_sources import write
     from scripts.patch015_baseline import sha
-    from scripts.patch026_full_report import analyze
+    from scripts.patch027_full_report import analyze
     target=tmp_path/'bundle';shutil.copytree(OUT,target)
     manifest=read(target/'manifest.json')
     if mutation=='remove_source':

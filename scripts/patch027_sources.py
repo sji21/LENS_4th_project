@@ -5,7 +5,7 @@ from pathlib import Path
 from urllib.request import Request, urlopen
 from lxml import html
 
-from scripts.patch015_baseline import ROOT, read, write, sha
+from scripts.patch027_paths import ROOT, read, write, sha
 from src.ingestion.fetch_law_mock import html_to_text, parse_law_header, parse_articles
 from src.ingestion.load_laws import LawArticleRecord, write_records
 
@@ -47,7 +47,7 @@ def parse_page(raw, spec, url, file_path):
 
 
 def collect():
-    out=ROOT/'data/eval/patch026-expansion'
+    out=ROOT/'data/eval/patch027-expansion'
     (out/'sources').mkdir(parents=True,exist_ok=True)
     registry={r['source_id']:r for r in read(ROOT/'data/eval/dev100-v2/source-registry.json')}
     records=[]; sources=[]

@@ -8,9 +8,9 @@ import statistics
 import subprocess
 import time
 
-from scripts.patch015_baseline import ROOT, read, sha, write
+from scripts.patch027_paths import ROOT, read, sha, write
 from scripts.patch025_ranking import close, index_digest
-from scripts.patch026_expand import score
+from scripts.patch027_expand import score
 from scripts.patch027_context_live import (
     CHANNELS, ContextRetrievalService, _serialize, evidence_identity,
     execution_spec, validate_execution_spec, validate_live_row,
@@ -24,8 +24,8 @@ PLAN = "docs/patch027-final-test-plan.md"
 LABELS = ("operating", "verified_context", "record_lookup")
 FILES = {"audit.json", "rows.json", "catalog.json", "report.json"}
 DEPENDENCIES = (
-    "data/eval/patch026-full/capture/audit.json",
-    "data/eval/patch026-full/capture/before.json",
+    "data/eval/patch027-full/capture/audit.json",
+    "data/eval/patch027-full/capture/before.json",
     "data/eval/patch015-baseline/capture/results.json",
     "data/eval/patch024-expansion/report.json",
     "data/eval/patch027-context-tuning/manifest.json",

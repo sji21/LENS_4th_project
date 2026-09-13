@@ -11,7 +11,7 @@
 - 활성 브랜치: `feat/patch-027-law-expansion`
 - 이전 활성 브랜치: `feat/patch-026-procedure-law-expansion`
 - 초기 실험 브랜치 `feat/patch-027-procedure-retrieval`와 모든 커밋은 보존한다.
-- 작업 폴더 `patch026-worktree`, `scripts/patch026_*`, `data/eval/patch026-*`, 원문 속 패치 표기는 과거 실행·해시의 식별자다. 측정 원본은 일괄 치환하거나 다시 생성하지 않는다.
+- 저장소의 실행기·자료 폴더는 PATCH-027로 통일했다. 작업 폴더 `patch026-worktree`와 측정 원본 내부의 옛 경로·해시는 보존한다. [경로 대응 안내](patch027-renumbering.md)를 따른다.
 - 현재 PR 초안: [patch027-pr.md](patch027-pr.md).
 
 ## 완료된 기반

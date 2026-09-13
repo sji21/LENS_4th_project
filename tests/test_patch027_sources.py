@@ -1,11 +1,11 @@
 import pytest
-from scripts.patch026_sources import ROOT, SPECS, parse_page
-from scripts.patch015_baseline import read
+from scripts.patch027_sources import ROOT, SPECS, parse_page
+from scripts.patch027_paths import read
 
 
 @pytest.mark.parametrize('spec',SPECS)
 def test_official_sources_are_single_versioned_articles(spec):
-    directory=ROOT/'data/eval/patch026-expansion'
+    directory=ROOT/'data/eval/patch027-expansion'
     source=next(s for s in read(directory/'source-manifest.json') if s['source_id']==spec[0])
     path=directory/'sources'/f'{spec[0]}.html'
     record=parse_page(path.read_text(encoding='utf-8'),spec,source['url'],path.relative_to(ROOT).as_posix())
@@ -16,7 +16,7 @@ def test_official_sources_are_single_versioned_articles(spec):
 
 
 def test_wrong_version_and_law_are_rejected():
-    spec=SPECS[0]; source=(ROOT/'data/eval/patch026-expansion/sources/RR16.html').read_text(encoding='utf-8')
+    spec=SPECS[0]; source=(ROOT/'data/eval/patch027-expansion/sources/RR16.html').read_text(encoding='utf-8')
     with pytest.raises(ValueError,match='version'):
         parse_page(source.replace('20677','99999'),spec,'https://www.law.go.kr','test')
     with pytest.raises(ValueError,match='title'):

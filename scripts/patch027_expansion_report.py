@@ -1,11 +1,11 @@
 """Replay the three ingestion candidates against frozen development targets."""
 import hashlib
 from pathlib import Path
-from scripts.patch026_expand import ROOT, read, sha, score
+from scripts.patch027_expand import ROOT, read, sha, score
 from scripts.patch025_ranking import close
-from scripts.patch026_sources import SPECS
+from scripts.patch027_sources import SPECS
 
-BUNDLE=ROOT/'data/eval/patch026-expansion'
+BUNDLE=ROOT/'data/eval/patch027-expansion'
 
 
 def summarize(bundle=BUNDLE, verify=True):

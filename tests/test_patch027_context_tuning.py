@@ -96,8 +96,8 @@ def test_public_generic_operator_does_not_imply_private_registration():
 
 
 def _reference_fixture():
-    from scripts.patch015_baseline import ROOT, read
-    return [deepcopy(c) for c in read(ROOT / "data/eval/patch026-full/capture/new-chunks.json")
+    from scripts.patch027_paths import ROOT, read
+    return [deepcopy(c) for c in read(ROOT / "data/eval/patch027-full/capture/new-chunks.json")
             if c["metadata"].get("article_id") in ("민법-제615조", "민법-제654조")]
 
 
@@ -141,8 +141,8 @@ def test_reference_rejects_target_edition_or_identity_mismatch(field, value):
 
 
 def test_report_rebuilds_reference_endpoints_even_if_body_hash_is_unchanged():
-    from scripts.patch015_baseline import ROOT, read
-    chunks = read(ROOT / "data/eval/patch026-full/capture/new-chunks.json")
+    from scripts.patch027_paths import ROOT, read
+    chunks = read(ROOT / "data/eval/patch027-full/capture/new-chunks.json")
     _, edges = _reference_graph(chunks)
     audit = {"anchors": read(ROOT / "data/eval/patch027-full-ranking/audit.json")["anchors"],
              "reference_evidence": edges}
@@ -179,7 +179,7 @@ def _bundle_copy(tmp_path):
 
 
 def _refresh_manifest(bundle):
-    from scripts.patch015_baseline import read, write, sha
+    from scripts.patch027_paths import read, write, sha
     manifest = read(bundle / "manifest.json")
     write(bundle / "manifest.json", {p: sha(bundle / p) for p in manifest})
 
@@ -196,7 +196,7 @@ def test_corrected_frozen_capture_replays_with_live_evidence():
 
 @pytest.mark.parametrize("filename", ["execution-spec.json", "live-verification.json", "evidence-catalog.json"])
 def test_incomplete_live_bundle_fails_even_when_manifest_entry_is_removed(tmp_path, filename):
-    from scripts.patch015_baseline import read, write
+    from scripts.patch027_paths import read, write
     from scripts.patch027_context_tuning import check
     bundle = _bundle_copy(tmp_path)
     (bundle / filename).unlink()
@@ -208,7 +208,7 @@ def test_incomplete_live_bundle_fails_even_when_manifest_entry_is_removed(tmp_pa
 
 
 def test_complete_replay_rejects_forged_edge_with_refreshed_manifest(tmp_path):
-    from scripts.patch015_baseline import read, write
+    from scripts.patch027_paths import read, write
     from scripts.patch027_context_tuning import check
     bundle = _bundle_copy(tmp_path)
     audit = read(bundle / "audit.json")
@@ -220,7 +220,7 @@ def test_complete_replay_rejects_forged_edge_with_refreshed_manifest(tmp_path):
 
 
 def test_complete_replay_rejects_wrong_live_body_with_refreshed_manifest(tmp_path):
-    from scripts.patch015_baseline import read, write
+    from scripts.patch027_paths import read, write
     from scripts.patch027_context_tuning import check
     bundle = _bundle_copy(tmp_path)
     live = read(bundle / "live-verification.json")
@@ -232,7 +232,7 @@ def test_complete_replay_rejects_wrong_live_body_with_refreshed_manifest(tmp_pat
 
 
 def test_finalist_cannot_be_changed_after_measurement(tmp_path):
-    from scripts.patch015_baseline import read, write
+    from scripts.patch027_paths import read, write
     from scripts.patch027_context_tuning import check
     bundle = _bundle_copy(tmp_path)
     audit = read(bundle / "audit.json")
@@ -244,7 +244,7 @@ def test_finalist_cannot_be_changed_after_measurement(tmp_path):
 
 
 def test_execution_source_is_checked_against_capture_commit_not_later_checkout(monkeypatch):
-    from scripts.patch015_baseline import read
+    from scripts.patch027_paths import read
     from scripts.patch027_context_tuning import BUNDLE, check
     import scripts.patch027_context_live as live
     monkeypatch.setattr(live, "execution_spec", lambda: {"unrelated_later_source": "changed"})

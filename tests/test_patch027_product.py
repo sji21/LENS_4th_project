@@ -250,7 +250,7 @@ def apply_fixture(tmp_path, monkeypatch):
     verification = tmp_path / "verification"
     verification.mkdir()
     rollout.write(verification / "manifest.json", {})
-    baseline = tmp_path / "data/eval/patch026-full/capture/audit.json"
+    baseline = tmp_path / "data/eval/patch027-full/capture/audit.json"
     baseline.parent.mkdir(parents=True)
     rollout.write(baseline, {"data_hashes": {"data/" + p: rollout.sha(target / p) for p in profiles.FILES}})
     audit = {"source_hashes": {}, "profile": rollout.read(staged / profiles.PROFILE),
@@ -318,7 +318,7 @@ def test_published_preflight_and_adopted_results_replay_with_backup_receipt():
         assert audit["model_calls"] == 375
         assert audit["runtime_settings"]["corpora"]["civil"]["include_ids"] == list(CIVIL_IDS)
     receipt = rollout.read(bundle / "receipt.json")
-    baseline = rollout.read(rollout.ROOT / "data/eval/patch026-full/capture/audit.json")
+    baseline = rollout.read(rollout.ROOT / "data/eval/patch027-full/capture/audit.json")
     assert receipt["target"] == "data"
     assert receipt["profile"] == rollout.expected_profile()
     assert receipt["verification_manifest_sha256"] == rollout.sha(bundle / "preflight/manifest.json")

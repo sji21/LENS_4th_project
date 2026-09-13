@@ -1,7 +1,7 @@
 import json
 import shutil
 import pytest
-from scripts.patch026_report import BUNDLE, summarize
+from scripts.patch027_expansion_report import BUNDLE, summarize
 
 
 def test_all_three_candidates_replay_without_operating_adoption():

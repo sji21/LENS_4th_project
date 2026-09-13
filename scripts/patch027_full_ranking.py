@@ -8,10 +8,10 @@ import os
 from pathlib import Path
 import subprocess
 
-from scripts.patch015_baseline import ROOT, read, sha, norm, write
+from scripts.patch027_paths import ROOT, read, sha, norm, write
 from scripts.patch025_ranking import index_digest
-from scripts.patch026_expand import score
-from scripts.patch026_full_eval import rank_changes
+from scripts.patch027_expand import score
+from scripts.patch027_full_eval import rank_changes
 from src.retrieval.service import RetrievalService, LAW, CIVIL, route_law_corpus, detect_civil_topics
 from src.retrieval.hybrid import HybridRetriever
 from src.retrieval.retriever import load_chunks
@@ -20,8 +20,8 @@ from src.evaluation.baseline import SEARCH_K, settings
 CORE_TITLES=('주택임대차보호법','주택임대차보호법 시행령','상가건물 임대차보호법','상가건물 임대차보호법 시행령')
 GENERAL=('full_current','stats_pool','split_rrf','guard1_pool','guard2_pool','guard1_split','guard2_split')
 CIVIL_POLICIES=('current','plain_rrf','dense2_rrf','seed_plain','seed_dense2')
-DEPENDENCIES=('data/eval/patch026-full/manifest.json','data/eval/patch026-full/capture/after.json',
-              'data/eval/patch026-full/capture/before.json','data/eval/patch026-full/capture/audit.json',
+DEPENDENCIES=('data/eval/patch027-full/manifest.json','data/eval/patch027-full/capture/after.json',
+              'data/eval/patch027-full/capture/before.json','data/eval/patch027-full/capture/audit.json',
               'data/eval/patch024-expansion/report.json','data/eval/patch015-baseline/capture/results.json')
 BUNDLE=ROOT/'data/eval/patch027-full-ranking'
 
@@ -67,15 +67,15 @@ def civil_select(row,policy):
 
 
 def capture(out,candidate_path):
-    from scripts.patch026_full_report import analyze
+    from scripts.patch027_full_report import analyze
     from src.retrieval.dense import SentenceTransformerEmbedding,ChromaRetriever
     from src.retrieval.index import clean_metadata
     if out.exists() or not out.resolve().is_relative_to(ROOT/'tmp'):raise ValueError('Use a fresh tmp output')
     if subprocess.check_output(['git','status','--porcelain'],text=True).strip():raise ValueError('Commit source first')
     analyze()
-    previous=read(ROOT/'data/eval/patch026-full/capture/after.json')
-    baseline=read(ROOT/'data/eval/patch026-full/capture/before.json')
-    prior=read(ROOT/'data/eval/patch026-full/capture/audit.json')
+    previous=read(ROOT/'data/eval/patch027-full/capture/after.json')
+    baseline=read(ROOT/'data/eval/patch027-full/capture/before.json')
+    prior=read(ROOT/'data/eval/patch027-full/capture/audit.json')
     for rel,digest in prior['candidate_files'].items():
         if sha(candidate_path/rel)!=digest:raise ValueError('Candidate data changed')
     chunks=[c for name in ('chunks','cases','guides') for c in load_chunks(candidate_path/f'chunks/{name}.jsonl')]
@@ -156,9 +156,9 @@ def report(run):
     keys=lambda rs:[(r['qid'],r['mode']) for r in rs]
     if len(rows)!=235 or keys(rows)!=keys(queries) or len(set(keys(rows)))!=235:raise ValueError('Input identity mismatch')
     if [r['query_sha256'] for r in rows]!=[q['query_sha256'] for q in queries]:raise ValueError('Input text changed')
-    prior=read(ROOT/'data/eval/patch026-full/capture/before.json')
-    current=read(ROOT/'data/eval/patch026-full/capture/after.json')
-    previous_audit=read(ROOT/'data/eval/patch026-full/capture/audit.json')
+    prior=read(ROOT/'data/eval/patch027-full/capture/before.json')
+    current=read(ROOT/'data/eval/patch027-full/capture/after.json')
+    previous_audit=read(ROOT/'data/eval/patch027-full/capture/audit.json')
     if (audit['patch']!='PATCH-027' or audit['clean'] is not True or
         audit['candidate_unchanged'] is not True or audit['cases_guides_preserved'] is not True or
         audit['full_and_core_matches']!=235 or audit['settings']!=previous_audit['candidate_settings'] or

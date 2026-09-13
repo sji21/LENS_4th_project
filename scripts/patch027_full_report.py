@@ -3,11 +3,11 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from scripts.patch015_baseline import ROOT, read, sha, norm
+from scripts.patch027_paths import ROOT, read, sha, norm, current_data_paths
 from scripts.patch025_ranking import close
-from scripts.patch026_expand import score
-from scripts.patch026_full_eval import rank_changes
-from scripts.patch026_full_sources import OUT, parse_verified
+from scripts.patch027_expand import score
+from scripts.patch027_full_eval import rank_changes
+from scripts.patch027_full_sources import OUT, parse_verified
 
 REQUIRED={'specs.json','records.jsonl',*(f'capture/{n}.json' for n in
           ('before','after','report','traces','audit','new-chunks','new-units'))}
@@ -29,10 +29,10 @@ def analyze(bundle=OUT):
             raise ValueError('Missing official source')
         records.append(parse_verified((bundle/rel).read_text(encoding='utf-8'),spec))
     from dataclasses import asdict
-    persisted=[json.loads(line) for line in (bundle/'records.jsonl').read_text(encoding='utf-8').splitlines()]
+    persisted=[current_data_paths(json.loads(line)) for line in (bundle/'records.jsonl').read_text(encoding='utf-8').splitlines()]
     if [asdict(r) for r in records]!=persisted:
         raise ValueError('Records differ from verified official source')
-    plan=read(ROOT/'data/eval/patch026-scope/plan.json')
+    plan=read(ROOT/'data/eval/patch027-scope/plan.json')
     anchors={norm(r.law_name+'-'+r.article_number) for r in records}
     if len(records)!=56 or len(anchors)!=56 or not {r['article_anchor'] for r in plan['missing_articles']} <= anchors:
         raise ValueError('Missing reviewed article scope')
@@ -46,10 +46,10 @@ def analyze(bundle=OUT):
             raise ValueError('Input identity mismatch')
     if [r['query_sha256'] for r in traces]!=[r['query_sha256'] for r in queryrows]:
         raise ValueError('Query content mismatch')
-    if before!=read(ROOT/'data/eval/patch026-expansion/before.json'):
+    if before!=read(ROOT/'data/eval/patch027-expansion/before.json'):
         raise ValueError('Baseline drift')
     for rel,digest in audit['source_hashes'].items():
-        if rel.startswith('data/eval/') and not rel.startswith('data/eval/patch026-full/'):
+        if rel.startswith('data/eval/') and not rel.startswith('data/eval/patch027-full/'):
             if sha(ROOT/rel)!=digest:
                 raise ValueError('Frozen evaluation dependency changed')
     if not (audit['clean'] and audit['baseline_matches']==235 and audit['candidate_only'] and
@@ -64,8 +64,9 @@ def analyze(bundle=OUT):
         raise ValueError('Ingestion coverage mismatch')
     if not anchors<=newanchors or sum(c['metadata']['title']=='민법' for c in chunks)!=16:
         raise ValueError('Civil/new article coverage mismatch')
-    from src.ingestion.load_laws import read_records,chunk_body,chunk_id_of,article_row_id_of
-    allrecords=read_records(ROOT/'data/eval/patch026-expansion/records.jsonl')+records
+    from src.ingestion.load_laws import chunk_body,chunk_id_of,article_row_id_of
+    from scripts.patch027_paths import read_records
+    allrecords=read_records(ROOT/'data/eval/patch027-expansion/records.jsonl')+records
     by_chunk={chunk_id_of(r,0):r for r in allrecords}
     if set(by_chunk)!={c['chunk_id'] for c in chunks}:
         raise ValueError('Chunk identifiers differ from source records')

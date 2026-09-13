@@ -6,8 +6,9 @@ import subprocess
 import json
 from pathlib import Path
 
-from scripts.patch026_expand import ROOT, read, write, sha, norm, score, settings, SEARCH_K
-from src.ingestion.load_laws import read_records, load_records
+from scripts.patch027_expand import ROOT, read, write, sha, norm, score, settings, SEARCH_K
+from src.ingestion.load_laws import load_records
+from scripts.patch027_paths import read_records
 from src.retrieval.retriever import load_chunks
 from src.retrieval.service import RetrievalService, DEFAULT_MODEL
 from src.retrieval.dense import SentenceTransformerEmbedding, ChromaRetriever
@@ -18,7 +19,7 @@ def run():
     if subprocess.check_output(['git','status','--porcelain'],text=True).strip(): raise ValueError('Commit first')
     source=ROOT/'tmp/patch026-evaluation'
     out=ROOT/'tmp/patch026-subsets-v2'; out.mkdir(exist_ok=False)
-    before=read(source/'before.json'); records=read_records(ROOT/'data/eval/patch026-expansion/records.jsonl')
+    before=read(source/'before.json'); records=read_records(ROOT/'data/eval/patch027-expansion/records.jsonl')
     allnew={norm(r.law_name+'-'+r.article_number) for r in records}
     newchunks=[c for c in load_chunks(source/'export.jsonl') if norm(c['metadata']['article_id']) in allnew]
     backend=SentenceTransformerEmbedding(DEFAULT_MODEL); original=backend.embed; cache={}

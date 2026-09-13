@@ -13,7 +13,7 @@ import subprocess
 import tarfile
 import time
 
-from scripts.patch015_baseline import ROOT, read, sha, write
+from scripts.patch027_paths import ROOT, read, sha, write
 from src.retrieval.hybrid import HybridRetriever, Member
 from src.retrieval.service import RetrievalService, _to_evidence
 
@@ -173,7 +173,7 @@ def verify_live(chunks, dense, civil_dense, traces, anchors, graph, out, origina
     catalog = {cid: evidence_identity(_to_evidence(1, c, 0)) for cid, c in chunk_map.items()}
     base = RetrievalService(chunks, dense, civil=CANDIDATE_CIVIL, civil_dense=civil_dense)
     tuned = ContextRetrievalService(chunks, dense, civil_dense)
-    previous = read(ROOT / "data/eval/patch026-full/capture/after.json")
+    previous = read(ROOT / "data/eval/patch027-full/capture/after.json")
     queries = read(ROOT / "data/eval/patch015-baseline/capture/results.json")
     inverse = {anchor: cid for cid, anchor in anchors.items()}
     rows = []
@@ -217,7 +217,7 @@ def check_live(run, traces, anchors, graph):
     from scripts.patch027_context_tuning import FINAL_POLICIES
     live = read(run / "live-verification.json")
     catalog = read(run / "evidence-catalog.json")
-    previous = read(ROOT / "data/eval/patch026-full/capture/after.json")
+    previous = read(ROOT / "data/eval/patch027-full/capture/after.json")
     inverse = {anchor: cid for cid, anchor in anchors.items()}
     if live["inputs"] != 235 or len(live["rows"]) != 235 or live["policies"] != list(FINAL_POLICIES):
         raise ValueError("Incomplete live run or changed finalist")

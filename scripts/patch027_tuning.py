@@ -8,10 +8,10 @@ from pathlib import Path
 import re
 import subprocess
 
-from scripts.patch015_baseline import ROOT, read, write, sha, norm
+from scripts.patch027_paths import ROOT, read, write, sha, norm
 from scripts.patch025_ranking import index_digest, close
-from scripts.patch026_expand import score
-from scripts.patch026_full_eval import rank_changes
+from scripts.patch027_expand import score
+from scripts.patch027_full_eval import rank_changes
 from scripts.patch027_full_ranking import BUNDLE as PREVIOUS, check_bundle, fuse, adoption_check
 from src.retrieval.service import RetrievalService, CIVIL, route_law_corpus
 from src.retrieval.terms import expand_law, expand_civil
@@ -111,8 +111,8 @@ def capture(out,candidate):
     if subprocess.check_output(['git','status','--porcelain'],text=True).strip():raise ValueError('Commit source first')
     check_bundle()
     old_audit=read(PREVIOUS/'audit.json');old_rows=read(PREVIOUS/'traces.json')
-    prior=read(ROOT/'data/eval/patch026-full/capture/audit.json')
-    expected=read(ROOT/'data/eval/patch026-full/capture/after.json')
+    prior=read(ROOT/'data/eval/patch027-full/capture/audit.json')
+    expected=read(ROOT/'data/eval/patch027-full/capture/after.json')
     assert all(sha(candidate/p)==v for p,v in prior['candidate_files'].items())
     chunks=[c for n in ('chunks','cases','guides') for c in load_chunks(candidate/f'chunks/{n}.jsonl')]
     backend=SentenceTransformerEmbedding('nlpai-lab/KURE-v1')
@@ -201,7 +201,7 @@ def report(run):
         if row['civil']['bm25_original']!=old['civil_bm25'] or row['civil']['dense_original']!=old['civil_dense']:raise ValueError('Civil baseline drift')
         if civil_select({**row,'civil':{**row['civil'],'bm25_expanded':row['civil']['bm25_original']}},'lexical')!=row['current_civil']:
             raise ValueError('Civil selection control drift')
-    prior=read(ROOT/'data/eval/patch026-full/capture/before.json');current=read(ROOT/'data/eval/patch026-full/capture/after.json')
+    prior=read(ROOT/'data/eval/patch027-full/capture/before.json');current=read(ROOT/'data/eval/patch027-full/capture/after.json')
     anchors=old_audit['anchors'];available=set(anchors.values())
     def assess(g,c):
         actual=[{**current[i],'laws':[anchors[x] for x in general_select(row,g)],
@@ -211,7 +211,7 @@ def report(run):
              'top3_general_loss_inputs':sum(bool(r['lost']) for r in changes['laws']['3']),
              'new_loss_vs_full':score(actual,available,current)['losses']}
         out['adoption']=adoption_check(out)
-        new_civil=available-set(read(ROOT/'data/eval/patch026-full/capture/audit.json')['available_before'])
+        new_civil=available-set(read(ROOT/'data/eval/patch027-full/capture/audit.json')['available_before'])
         out['new_required_civil_hits']=[{'qid':d['qid'],'mode':d['mode'],'anchors':sorted(set(a['civil_laws'])&set(d['targets'])&new_civil)}
             for a,d in zip(actual,result['details']) if set(a['civil_laws'])&set(d['targets'])&new_civil]
         return out
