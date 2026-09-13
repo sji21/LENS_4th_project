@@ -536,12 +536,18 @@ def report(run: Path, *, require_clean: bool = True) -> dict:
     check_concept_tuning()
     audit = read(run / "audit.json")
     rows = read(run / "traces.json")
-    from scripts.patch027_context_live import execution_spec, check_live
-    if (sha(run / "execution-spec.json") != audit["execution_spec_sha256"]
-            or read(run / "execution-spec.json") != execution_spec()):
+    from scripts.patch027_context_live import execution_spec, validate_execution_spec, check_live
+    spec = read(run / "execution-spec.json")
+    if sha(run / "execution-spec.json") != audit["execution_spec_sha256"]:
         raise ValueError("Execution source/config mismatch")
     if require_clean and not audit["clean"]:
         raise ValueError("Preview capture is not a final shared result")
+    if audit["clean"]:
+        validate_execution_spec(spec, audit["commit"])
+    elif spec != execution_spec():
+        raise ValueError("Preview source/config mismatch")
+    if spec["dependencies"] != audit["dependencies"]:
+        raise ValueError("Execution dependency mismatch")
     if audit["clean"]:
         source = subprocess.check_output(
             ["git", "show", audit["commit"] + ":scripts/patch027_context_tuning.py"], cwd=ROOT,

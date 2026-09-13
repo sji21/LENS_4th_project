@@ -9,3 +9,7 @@
 /data/eval/patch027-concept-tuning/** -text
 /data/eval/patch027-concept-tuning/traces.json -diff
 /data/eval/patch027-concept-tuning/comparison.json -diff
+/data/eval/patch027-context-tuning/** -text
+/data/eval/patch027-context-tuning/traces.json -diff
+/data/eval/patch027-context-tuning/live-verification.json -diff
+/data/eval/patch027-context-tuning/comparison.json -diff

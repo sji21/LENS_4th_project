@@ -241,3 +241,15 @@ def test_finalist_cannot_be_changed_after_measurement(tmp_path):
     _refresh_manifest(bundle)
     with pytest.raises(ValueError, match="Policies changed"):
         check(bundle)
+
+
+def test_execution_source_is_checked_against_capture_commit_not_later_checkout(monkeypatch):
+    from scripts.patch015_baseline import read
+    from scripts.patch027_context_tuning import BUNDLE, check
+    import scripts.patch027_context_live as live
+    monkeypatch.setattr(live, "execution_spec", lambda: {"unrelated_later_source": "changed"})
+    assert not check()["joint"]["context_both+context_reference"]["adoption"]["passed"]
+    spec = read(BUNDLE / "execution-spec.json")
+    spec["source_hashes"]["scripts/patch027_context_tuning.py"] = "0" * 64
+    with pytest.raises(ValueError, match="Execution source differs"):
+        live.validate_execution_spec(spec, read(BUNDLE / "audit.json")["commit"])

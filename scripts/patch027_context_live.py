@@ -6,7 +6,11 @@ service performs case/guide routing and builds the normal RetrievalResult.
 from __future__ import annotations
 
 import hashlib
+import io
+from functools import lru_cache
+import re
 import subprocess
+import tarfile
 import time
 
 from scripts.patch015_baseline import ROOT, read, sha, write
@@ -28,6 +32,36 @@ def execution_spec():
         "dependencies": {p: sha(ROOT / p) for p in DEPENDENCIES},
         "measurement": "fresh service calls; query cache resets per service/input",
     }
+
+
+@lru_cache(maxsize=8)
+def _committed_sources(commit):
+    if not re.fullmatch(r"[0-9a-f]{40}", commit):
+        raise ValueError("Invalid execution commit")
+    archive = subprocess.check_output([
+        "git", "archive", commit, "src", "scripts", "requirements.txt", "requirements-dev.txt",
+    ], cwd=ROOT)
+    with tarfile.open(fileobj=io.BytesIO(archive)) as tree:
+        return {member.name: tree.extractfile(member).read()
+                for member in tree.getmembers() if member.isfile()}
+
+
+def validate_execution_spec(spec, commit):
+    """Validate the recorded code, not unrelated edits in a later checkout."""
+    from scripts.patch027_context_tuning import FINAL_POLICIES
+    if (spec["policies"] != list(FINAL_POLICIES) or spec["inputs"] != 235
+            or spec["search_k"] != {"k_law": 5, "k_case": 5, "k_guide": 2, "k_civil": 3}):
+        raise ValueError("Execution config mismatch")
+    sources = _committed_sources(commit)
+    if set(spec["source_hashes"]) != set(sources):
+        raise ValueError("Incomplete execution source list")
+    for path, content in sources.items():
+        normalized = content.replace(b"\r\n", b"\n")
+        if spec["source_hashes"][path] not in {
+            hashlib.sha256(normalized).hexdigest(),
+            hashlib.sha256(normalized.replace(b"\n", b"\r\n")).hexdigest(),
+        }:
+            raise ValueError("Execution source differs from captured commit")
 
 
 class _ContextDense:
