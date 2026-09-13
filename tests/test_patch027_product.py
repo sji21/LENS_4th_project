@@ -3,6 +3,7 @@ from concurrent.futures import ThreadPoolExecutor
 from contextvars import ContextVar
 from copy import deepcopy
 import json
+import shutil
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -251,3 +252,46 @@ def test_execution_source_hash_handles_windows_mixed_line_endings_only():
     assert rollout.source_hash(b"first\r\nsecond\n") == expected
     assert rollout.source_hash(b"first\r\nsecond\r\n") == expected
     assert rollout.source_hash(b"first\nmodified\n") != expected
+
+
+def test_published_preflight_and_adopted_results_replay_with_backup_receipt():
+    bundle = rollout.ROOT / "data/eval/patch027-rollout"
+    manifest = rollout.read(bundle / "manifest.json")
+    assert set(manifest) == {"preflight/manifest.json", "adopted/manifest.json", "receipt.json"}
+    assert all(rollout.sha(bundle / p) == h for p, h in manifest.items())
+    for name, is_default in (("preflight", False), ("adopted", True)):
+        audit = rollout.check_verification(bundle / name)
+        assert audit["default_data_path"] is is_default
+        assert audit["model_calls"] == 375
+        assert audit["runtime_settings"]["corpora"]["civil"]["include_ids"] == list(CIVIL_IDS)
+    receipt = rollout.read(bundle / "receipt.json")
+    baseline = rollout.read(rollout.ROOT / "data/eval/patch026-full/capture/audit.json")
+    assert receipt["target"] == "data"
+    assert receipt["profile"] == rollout.expected_profile()
+    assert receipt["verification_manifest_sha256"] == rollout.sha(bundle / "preflight/manifest.json")
+    assert all(receipt["before"][p.removeprefix("data/")] == h for p, h in baseline["data_hashes"].items())
+    assert receipt["before"][profiles.PROFILE] is None
+
+
+@pytest.mark.parametrize("change", ["evidence", "profile", "source", "missing"])
+def test_rehashed_rollout_capture_tampering_is_rejected(tmp_path, change):
+    dest = tmp_path / "capture"
+    shutil.copytree(rollout.ROOT / "data/eval/patch027-rollout/adopted", dest)
+    manifest = rollout.read(dest / "manifest.json")
+    if change == "missing":
+        (dest / "rows.json").unlink()
+        manifest.pop("rows.json")
+    else:
+        filename = "rows.json" if change == "evidence" else "audit.json"
+        value = rollout.read(dest / filename)
+        if change == "evidence":
+            value[0]["result"]["laws"][0]["source_url"] = "https://example.invalid/other-law"
+        elif change == "profile":
+            value["profile"]["civil_ids"].pop()
+        else:
+            value["source_hashes"]["src/retrieval/expanded.py"] = "0" * 64
+        rollout.write(dest / filename, value)
+        manifest[filename] = rollout.sha(dest / filename)
+    rollout.write(dest / "manifest.json", manifest)
+    with pytest.raises(ValueError):
+        rollout.check_verification(dest)

@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
+- PATCH-027 completes product rollout in the patch worktree: back up the 143-article data and activate the verified 204-article/civil26 profile. Both preflight and post-install default-factory runs match all 235 final-test outputs across four channels, with 375 model calls each. Publish capture/backup records and setup/restore instructions; 1,042 tests pass, 3 skip and 124 subtests pass after activation. Main-checkout/server data remain unchanged until their separate post-merge rollout. (commit: pending)
+
 - PATCH-027 connects the selected expanded-law policy to the product factory and BM25 fallback through a corpus/index-verified local profile. Preserve the general5/civil3/case5/guide2 API, report active evaluator settings and share embeddings only within a request. Add staged 235-input product verification and byte-verified backup, transactional replacement and restore tools. Worktree rollout verification is pending. (commit: 15a3461, 4457916)
 
 - PATCH-027 completes 705 fresh service calls and selects the record-lookup candidate for the 61-article expansion under the new user-authorized net-benefit protocol. DEV complete retrieval is 28→43/75 questions and 30→43/75 contexts; general3+civil3 coverage is 27→40 and 28→38/75. The last refinement recovers one prior loss, leaving seven returned-target and seven general TOP3 loss inputs. Model calls rise 235→375 and mean latency 0.232→0.403s. Preserve the remaining regressions and verified sources; 1,014 tests pass, 3 skip, 124 subtests pass. Technical adoption is recommended; production policy wiring and operating-data rollout remain pending. (commit: d9ee777)

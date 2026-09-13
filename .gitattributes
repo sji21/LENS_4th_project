@@ -17,3 +17,5 @@
 /data/eval/patch027-final-test/** -text
 /data/eval/patch027-final-test/rows.json -diff
 /data/eval/patch027-final-test/report.json -diff
+/data/eval/patch027-rollout/** -text
+/data/eval/patch027-rollout/*/rows.json -diff

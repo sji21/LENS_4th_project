@@ -42,4 +42,27 @@ $env:ANONYMIZED_TELEMETRY='False'
 
 ## 실행 결과
 
-제품 연결 검증·작업 폴더 적재 및 사후 검증 진행 중. 완료 후 실행 커밋과 235입력 대조 결과를 기록한다.
+**제품 연결과 작업 폴더의 기본 데이터 경로 적재·검증을 완료했다.** 제품 구현은 `15a3461`, 실행 기록의 줄바꿈 처리 보완은 `4457916`이며 아래 두 실행은 모두 `d084527` clean에서 수행했다.
+
+| 검사 | 사전 검증 | 기본 경로 적재 후 |
+| --- | ---: | ---: |
+| 최종 시험과 네 채널 결과 일치 | 235/235 | 235/235 |
+| KURE 실제 호출 | 375 | 375 |
+| 검색 평균 시간 | 0.386초 | 0.378초 |
+| 청크·DB·인덱스 무결성 | 통과 | 통과 |
+
+별도 실험 서비스 대신 제품 팩터리를 사용했으며, 사후 실행은 매개변수 없는 `RetrievalService.from_index()`다. 임베딩 캐시도 측정 도구가 아닌 제품의 요청별 캐시다. 단일 로컬 실행으로 시작 시 모델 로딩과 웹·LLM·동시 부하 시간을 제외한 수치다.
+
+- 데이터: 일반 법령178·민법26 = **204조문**, 판례26·안내6. 기본 인덱스210개와 민법 인덱스26개를 분리 유지했다.
+- 백업: `tmp/patch027-operating-backup-20260913/snapshot`. 교체 전 원본은 `previous`에도 남아 있다. [백업 기록](../data/eval/patch027-rollout/receipt.json)을 공유한다.
+- [사전 실행 자료](../data/eval/patch027-rollout/preflight/audit.json), [기본 경로 실행 자료](../data/eval/patch027-rollout/adopted/audit.json), [입력별 결과](../data/eval/patch027-rollout/adopted/rows.json)를 보존했다.
+- 첫 사전 실행도235입력의 검색 결과는 일치했지만 Windows 혼합 줄바꿈으로 실행 소스 해시 검사가 실패했다. 해당 실행은 채택 근거에서 제외하고 줄바꿈 정규화 보완 후235입력을 새로 실행했다. 기존 코드는 amend하지 않았다.
+- 이전 최종 시험의 DEV 점수·손실·분모는 변경하지 않았다. 신규235개 질문을 만든 것이 아니라 같은235입력의 제품 경로 재현 확인이다.
+- `C:/team_project/4th_project/data/`와 원격 저장소에는 반영하지 않았다. 병합 후 그 폴더에서도 검증된 데이터·프로필을 함께 전환하고 앱을 재시작해야 한다.
+
+```powershell
+& $py -X utf8 -m scripts.patch027_rollout check --data data/eval/patch027-rollout/preflight
+& $py -X utf8 -m scripts.patch027_rollout check --data data/eval/patch027-rollout/adopted
+```
+
+적재 후 전체 테스트는 **1,042 passed, 3 skipped, 124 subtests passed**다. 스킵은 선택 LangSmith2개·로컬 PDF 표본 미지정1개다. 소스·출처·프로필 변조, 필수 파일 누락, 이전 데이터 호환, 임베딩 불가 시 같은 프로필 선택, 요청별 캐시 분리, 설치 실패 복구와 명시적 복원 테스트를 포함한다.
