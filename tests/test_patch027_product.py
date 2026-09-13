@@ -240,6 +240,59 @@ def test_failed_swap_restores_every_previously_replaced_path(tmp_path, monkeypat
     assert rollout.payload_hashes(old) == before
 
 
+@pytest.fixture
+def apply_fixture(tmp_path, monkeypatch):
+    """Isolate apply's filesystem transaction from expensive preflight/model checks."""
+    target, staged, backup = tmp_path / "data", tmp_path / "staged", tmp_path / "tmp/backup"
+    small_payload(target, "before", profile=False)
+    small_payload(staged, "after")
+    rollout.write(staged / profiles.PROFILE, {"policy": "synthetic"})
+    verification = tmp_path / "verification"
+    verification.mkdir()
+    rollout.write(verification / "manifest.json", {})
+    baseline = tmp_path / "data/eval/patch026-full/capture/audit.json"
+    baseline.parent.mkdir(parents=True)
+    rollout.write(baseline, {"data_hashes": {"data/" + p: rollout.sha(target / p) for p in profiles.FILES}})
+    audit = {"source_hashes": {}, "profile": rollout.read(staged / profiles.PROFILE),
+             "file_hashes": {p: rollout.sha(staged / p) for p in profiles.FILES | {profiles.PROFILE}}}
+    monkeypatch.setattr(rollout, "ROOT", tmp_path)
+    monkeypatch.setattr(rollout, "check_verification", lambda _: audit)
+    monkeypatch.setattr(rollout, "check_final", lambda: None)
+    monkeypatch.setattr(rollout, "code_snapshot", lambda: {})
+    monkeypatch.setattr(rollout.subprocess, "run", lambda *a, **kw: None)
+    return target, staged, backup, verification
+
+
+@pytest.mark.parametrize("failure", ["before_write", "partial_write", "invalid_write"])
+def test_apply_receipt_failure_restores_original_without_receipt(apply_fixture, monkeypatch, failure):
+    target, staged, backup, verification = apply_fixture
+    before = rollout.payload_hashes(target)
+    def fail_receipt(path, value):
+        assert path == backup / "receipt.json"
+        assert rollout.payload_hashes(target) == rollout.payload_hashes(staged)
+        if failure != "before_write":
+            path.write_text("{" if failure == "partial_write" else "{}", encoding="utf-8")
+        if failure != "invalid_write":
+            raise OSError("injected disk full")
+    monkeypatch.setattr(rollout, "write", fail_receipt)
+    with pytest.raises((OSError, ValueError)):
+        rollout.apply(staged, verification, backup)
+    assert rollout.payload_hashes(target) == before
+    assert rollout.payload_hashes(backup / "snapshot") == before
+    assert not (target / profiles.PROFILE).exists()
+    assert rollout.payload_hashes(backup / "failed") == rollout.payload_hashes(staged)
+
+
+def test_successful_apply_writes_receipt_accepted_by_restore(apply_fixture):
+    target, staged, backup, verification = apply_fixture
+    before = rollout.payload_hashes(target)
+    rollout.apply(staged, verification, backup)
+    assert rollout.payload_hashes(target) == rollout.payload_hashes(staged)
+    assert rollout.read(backup / "receipt.json")["before"] == before
+    rollout.restore(backup, backup.parent / "restore-preserved")
+    assert rollout.payload_hashes(target) == before
+
+
 def test_rollout_rejects_paths_outside_intended_directory(tmp_path):
     with pytest.raises(ValueError):
         rollout.child(tmp_path, "../outside")

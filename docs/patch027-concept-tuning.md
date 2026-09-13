@@ -77,6 +77,6 @@
 
 - [공유 자료](../data/eval/patch027-concept-tuning/)와 [비교 도구](../scripts/patch027_tuning.py).
 - 재집계: `.venv/Scripts/python -X utf8 -m scripts.patch027_tuning`. 보존된 capture 커밋의 소스 해시도 확인하므로 해당 Git 이력이 필요하다.
-- 새 실측: 같은 후보를 준비한 뒤 clean 상태에서 `--capture tmp/<새폴더> --candidate tmp/patch026-full-evaluation-v2/candidate/data`. 후보 준비는 [전체 적재 문서](patch026-full-sources.md)를 따른다. 새 폴더를 사용하고 기존 결과를 덮어쓰지 않는다.
+- 새 실측: 같은 후보를 준비한 뒤 clean 상태에서 `--capture tmp/<새폴더> --candidate tmp/patch026-full-evaluation-v2/candidate/data`. 후보 준비는 [전체 적재 문서](patch027-full-sources.md)를 따른다. 새 폴더를 사용하고 기존 결과를 덮어쓰지 않는다.
 - 전체 테스트: `bf8b6eb` 기준 **930 passed,3 skipped,124 subtests passed**. 추적 비활성2개·로컬 PDF 미지정1개 스킵.
 - 귀가/반송 구분 정정 후 규칙 테스트12개 통과. 최종 튜닝20개+직전 순위 비교21개 = **41 passed**. 원질문·기존 선택 재현, 확장 없는 입력의 동일 결과, 자료 누락·채널 오염·소스 해시 불일치·허위 성공 판정 차단을 포함한다.

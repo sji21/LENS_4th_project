@@ -18,7 +18,7 @@
 
 ## 재현·적재·복구
 
-저장소 루트에서 실행한다. Python은 해당 저장소의 가상환경을 사용하며, 이 작업 폴더에서는 `C:/team_project/4th_project/.venv/Scripts/python`을 사용했다. KURE 로컬 모델과 최종 시험의 후보 산출물이 있어야 한다. 새 클론에 바이너리 데이터가 포함되지는 않는다. 후보 생성은 [전체 적재 결과](patch026-full-evaluation.md)와 [출처·재현 절차](patch026-full-sources.md)를 확인한다.
+저장소 루트에서 실행한다. Python은 해당 저장소의 가상환경을 사용하며, 이 작업 폴더에서는 `C:/team_project/4th_project/.venv/Scripts/python`을 사용했다. KURE 로컬 모델과 최종 시험의 후보 산출물이 있어야 한다. 새 클론에 바이너리 데이터가 포함되지는 않는다. 후보 생성은 [전체 적재 결과](patch027-full-evaluation.md)와 [출처·재현 절차](patch027-full-sources.md)를 확인한다.
 
 ```powershell
 $py = 'C:/team_project/4th_project/.venv/Scripts/python'
@@ -32,7 +32,9 @@ $env:ANONYMIZED_TELEMETRY='False'
 & $py -X utf8 -m scripts.patch027_rollout verify --data data --out tmp/patch027-product-adopted
 ```
 
-출력 폴더는 새 경로여야 한다. 검증 전 소스는 커밋하고 작업 트리를 정리해야 한다. 적재 명령은 사전 검증과 현재 소스·기존 데이터가 일치하는지 검사한 뒤 전체 대상 파일·인덱스를 바이트 단위로 검증해 백업한다. 교체 실패 시 이미 교체한 경로를 복구한다. 프로필은 마지막에 설치한다. 기존 데이터 외의 파일은 건드리지 않는다.
+출력 폴더는 새 경로여야 한다. 검증 전 소스는 커밋하고 작업 트리를 정리해야 한다. 적재 명령은 사전 검증과 현재 소스·기존 데이터가 일치하는지 검사한 뒤 전체 대상 파일·인덱스를 바이트 단위로 검증해 백업한다. 교체 실패뿐 아니라 `receipt.json` 기록 저장·재확인 실패도 이미 교체한 경로를 복구한다. 실패한 기록에 의존하지 않고 원본 파일을 되돌리므로 이때 사용자가 별도 restore를 실행할 필요는 없다. 프로필은 데이터 교체의 마지막에 설치하고 기록 검증까지 끝나야 성공으로 처리한다.
+
+문서 파일명은 PATCH-027로 정리했다. 재현에 필요한 옛 실행기·측정 자료 경로에 `patch026`이 남는 이유는 [번호 정정 안내](patch027-renumbering.md)에 있다.
 
 기본 경로의 사후 검증은 앱과 같은 `RetrievalService.from_index()`를 통해 235입력의 네 채널 순위·본문 해시·출처를 최종 시험과 대조한다. 이 확인이 실패하면 앱을 시작하지 않고 아래 명령으로 되돌린다. 교체됐던 데이터도 별도 보관한다.
 
@@ -66,3 +68,5 @@ $env:ANONYMIZED_TELEMETRY='False'
 ```
 
 적재 후 전체 테스트는 **1,042 passed, 3 skipped, 124 subtests passed**다. 스킵은 선택 LangSmith2개·로컬 PDF 표본 미지정1개다. 소스·출처·프로필 변조, 필수 파일 누락, 이전 데이터 호환, 임베딩 불가 시 같은 프로필 선택, 요청별 캐시 분리, 설치 실패 복구와 명시적 복원 테스트를 포함한다.
+
+PR #25 정정 후 전체 테스트는 **1,046 passed, 3 skipped, 124 subtests passed**다. 기록 미저장·부분 저장·잘못된 저장에서 원본 복구와 정상 apply→restore 검사를 추가했다. 검색 정책·기존 실행 결과·현재 DB/인덱스는 변경하지 않았고 실제 벡터 검색은 재실행하지 않았다.

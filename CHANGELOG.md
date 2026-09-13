@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
+- PATCH-027 fixes PR #25 receipt-failure rollback: validate and store the installation receipt inside the protected transaction, so missing, partial or invalid writes restore the original payload without requiring receipt-based recovery. Rename explanatory documents to PATCH-027, update links and mark old experiments explicitly while preserving captured script/data paths and hashes. Retrieval policy and active data are unchanged. (commit: pending)
+
 - PATCH-027 completes product rollout in the patch worktree: back up the 143-article data and activate the verified 204-article/civil26 profile. Both preflight and post-install default-factory runs match all 235 final-test outputs across four channels, with 375 model calls each. Publish capture/backup records and setup/restore instructions; 1,042 tests pass, 3 skip and 124 subtests pass after activation. Main-checkout/server data remain unchanged until their separate post-merge rollout. (commit: 4ddf8cf)
 
 - PATCH-027 connects the selected expanded-law policy to the product factory and BM25 fallback through a corpus/index-verified local profile. Preserve the general5/civil3/case5/guide2 API, report active evaluator settings and share embeddings only within a request. Add staged 235-input product verification and byte-verified backup, transactional replacement and restore tools. Worktree rollout verification is pending. (commit: 15a3461, 4457916)

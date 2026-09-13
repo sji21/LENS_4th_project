@@ -187,8 +187,8 @@ def check_verification(out):
     return audit
 
 
-def install_payload(staged, target, backup):
-    """Preserve a byte-verified backup; roll every replaced path back on failure."""
+def install_payload(staged, target, backup, *, receipt_metadata=None):
+    """Roll back replaced paths if payload installation or receipt storage fails."""
     backup.mkdir(parents=True, exist_ok=False)
     copy_scope(target, backup / "snapshot")
     expected = payload_hashes(target)
@@ -196,6 +196,9 @@ def install_payload(staged, target, backup):
     if actual != expected:
         raise ValueError("Backup bytes differ")
     copy_scope(staged, backup / "incoming")
+    # Reserve rollback directories before installation, including for disk-full errors.
+    for rel in SCOPES:
+        child(backup / "failed", rel).parent.mkdir(parents=True, exist_ok=True)
     touched = []
     try:
         for rel in SCOPES:
@@ -212,6 +215,11 @@ def install_payload(staged, target, backup):
                 raise ValueError(f"Missing installation payload: {rel}")
         if payload_hashes(target) != payload_hashes(staged):
             raise ValueError("Installed payload differs from staged data")
+        if receipt_metadata is not None:
+            receipt = {**receipt_metadata, "before": expected}
+            write(backup / "receipt.json", receipt)
+            if read(backup / "receipt.json") != receipt:
+                raise ValueError("Stored receipt differs from installation metadata")
     except Exception:
         for rel, existed in reversed(touched):
             dest, old = child(target, rel), child(backup / "previous", rel)
@@ -244,12 +252,12 @@ def apply(staged, verification, backup):
                    cwd=ROOT, check=True)
     if read(staged / PROFILE) != audit["profile"] or any(sha(staged / p) != h for p, h in audit["file_hashes"].items()):
         raise ValueError("Staged data differs from product preflight")
-    expected = install_payload(staged, target, backup)
-    write(backup / "receipt.json", {
+    receipt_metadata = {
         "target": "data", "backup": backup.relative_to(ROOT).as_posix(),
-        "before": expected, "profile": read(target / PROFILE),
+        "profile": audit["profile"],
         "verification_manifest_sha256": sha(verification / "manifest.json"),
-    })
+    }
+    install_payload(staged, target, backup, receipt_metadata=receipt_metadata)
     print("Installed profile; backup:", backup)
 
 
