@@ -79,6 +79,8 @@ def test_notice_does_not_join_denied_quoted_or_unrelated_actions(question):
     "계약 해지를 문자로 통지했습니다.",
     "임대인이 계약 종료를 내용증명으로 알리려 합니다.",
     "보증금 반환을 요구하는 우편이 반송됐어요.",
+    "보증금 돌려달라고 보낸 우편이 집주인한테 전달되지 않고 돌아왔어요.",
+    "계약 해지를 통보하는 내용증명을 보냈으나 도달하지 않았습니다.",
 ])
 def test_positive_notice_context_is_preserved(question):
     assert _communication_concept(question)
@@ -167,3 +169,75 @@ def test_live_verification_rejects_rank_body_source_changes(field, value):
     row["civil_laws"][0][field] = value
     with pytest.raises(ValueError):
         validate_live_row(row, expected, catalog)
+
+
+def _bundle_copy(tmp_path):
+    import shutil
+    from scripts.patch027_context_tuning import BUNDLE
+    shutil.copytree(BUNDLE, tmp_path / "bundle")
+    return tmp_path / "bundle"
+
+
+def _refresh_manifest(bundle):
+    from scripts.patch015_baseline import read, write, sha
+    manifest = read(bundle / "manifest.json")
+    write(bundle / "manifest.json", {p: sha(bundle / p) for p in manifest})
+
+
+def test_corrected_frozen_capture_replays_with_live_evidence():
+    from scripts.patch027_context_tuning import check
+    result = check()
+    joint = result["joint"]["context_both+context_reference"]
+    assert joint["groups"]["question_only"]["union_all_required"] == {"hits": 43, "n": 75}
+    assert joint["groups"]["context_diagnostic"]["union_all_required"] == {"hits": 42, "n": 75}
+    assert len(joint["losses"]) == 8
+    assert not joint["adoption"]["passed"]
+
+
+@pytest.mark.parametrize("filename", ["execution-spec.json", "live-verification.json", "evidence-catalog.json"])
+def test_incomplete_live_bundle_fails_even_when_manifest_entry_is_removed(tmp_path, filename):
+    from scripts.patch015_baseline import read, write
+    from scripts.patch027_context_tuning import check
+    bundle = _bundle_copy(tmp_path)
+    (bundle / filename).unlink()
+    manifest = read(bundle / "manifest.json")
+    del manifest[filename]
+    write(bundle / "manifest.json", manifest)
+    with pytest.raises(ValueError, match="Incomplete bundle"):
+        check(bundle)
+
+
+def test_complete_replay_rejects_forged_edge_with_refreshed_manifest(tmp_path):
+    from scripts.patch015_baseline import read, write
+    from scripts.patch027_context_tuning import check
+    bundle = _bundle_copy(tmp_path)
+    audit = read(bundle / "audit.json")
+    audit["reference_evidence"][0]["target"] = "민법-제626조"
+    write(bundle / "audit.json", audit)
+    _refresh_manifest(bundle)
+    with pytest.raises(ValueError, match="Reference endpoints"):
+        check(bundle)
+
+
+def test_complete_replay_rejects_wrong_live_body_with_refreshed_manifest(tmp_path):
+    from scripts.patch015_baseline import read, write
+    from scripts.patch027_context_tuning import check
+    bundle = _bundle_copy(tmp_path)
+    live = read(bundle / "live-verification.json")
+    live["rows"][0]["candidate"]["laws"][0]["text_sha256"] = "0" * 64
+    write(bundle / "live-verification.json", live)
+    _refresh_manifest(bundle)
+    with pytest.raises(ValueError, match="Live body/source"):
+        check(bundle)
+
+
+def test_finalist_cannot_be_changed_after_measurement(tmp_path):
+    from scripts.patch015_baseline import read, write
+    from scripts.patch027_context_tuning import check
+    bundle = _bundle_copy(tmp_path)
+    audit = read(bundle / "audit.json")
+    audit["final_policies"][1] = "context_both"
+    write(bundle / "audit.json", audit)
+    _refresh_manifest(bundle)
+    with pytest.raises(ValueError, match="Policies changed"):
+        check(bundle)

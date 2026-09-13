@@ -80,7 +80,13 @@ def _communication_concept(query: str) -> bool:
     current = _current_request(query)
     current = re.sub(r'"[^"\n]*"|“[^”\n]*”|「[^」\n]*」|\'[^\'\n]*\'', " ", current)
     for clause in re.split(r"[.!?\n;]|(?:지만|는데|고서|반면|대신)\s*", current):
-        if re.search(r"아니|않|없|안\s*(?:했|하|보|알|통)|못\s*(?:했|하|보|알|통)", clause):
+        # Negated notice/purpose is different from a sent notice failing to
+        # arrive. Do not reject every occurrence of '않' (e.g. 전달되지 않고).
+        if re.search(
+            r"(?:해지|종료|갱신|반환\s*요구|통지|통보|발송)(?:를|을|는|은|가|이)?\s*"
+            r"(?:하지(?:는)?\s*(?:않|못)|(?:안|못)\s*(?:했|하)|아니)"
+            r"|(?:알리|보내)지(?:는)?\s*(?:않|못)", clause,
+        ):
             continue
         delivery = re.search(r"내용증명|등기\s*우편|우편|문자|통보|통지|연락", clause)
         purpose = re.search(
