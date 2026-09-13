@@ -1,4 +1,6 @@
 from copy import deepcopy
+import json
+import shutil
 
 import pytest
 
@@ -7,6 +9,7 @@ from scripts.patch027_final_policy import (
 )
 from scripts.patch027_context_tuning import law_concepts
 from scripts.patch027_final_test import quantitative_checks, transitions
+from scripts import patch027_final_test as trial
 
 
 @pytest.mark.parametrize("query", [
@@ -65,3 +68,42 @@ def test_transition_counts_keep_both_directions_and_ignore_unscored():
     before = [row("a", False), row("b", True), row("c", None)]
     after = [row("c", None), row("b", False), row("a", True)]
     assert transitions(before, after)["question_only"] == {"gained": ["a"], "lost": ["b"], "net": 0}
+
+
+@pytest.fixture(scope="module")
+def final_result():
+    return trial.check()
+
+
+def test_final_capture_replays_gains_losses_and_consumed_budget(final_result):
+    assert final_result["selected"] == "record_lookup"
+    candidate = final_result["results"]["record_lookup"]
+    assert all(candidate["checks"].values())
+    assert len(candidate["losses"]) == 7
+    assert candidate["groups"]["question_only"]["union_all_required"] == {"hits": 43, "n": 75}
+    assert candidate["groups"]["context_diagnostic"]["union_all_required"] == {"hits": 43, "n": 75}
+    assert candidate["consumed_groups"]["context_diagnostic"]["union_all_required"] == {"hits": 38, "n": 75}
+    assert {r["qid"] for r in final_result["record_lookup_changes"]} == {"DEV-099"}
+
+
+@pytest.mark.parametrize("changed_file", ["report.json", "rows.json"])
+def test_rehashed_report_or_evidence_tampering_is_rejected(tmp_path, changed_file, final_result):
+    dest = tmp_path / "final"
+    shutil.copytree(trial.BUNDLE, dest)
+    content = trial.read(dest / changed_file)
+    if changed_file == "report.json":
+        content["results"]["record_lookup"]["losses"] = []
+    else:
+        content[0]["record_lookup"]["laws"][0]["source_url"] = "https://example.invalid/wrong-source"
+    trial.write(dest / changed_file, content)
+    manifest = trial.read(dest / "manifest.json")
+    manifest[changed_file] = trial.sha(dest / changed_file)
+    trial.write(dest / "manifest.json", manifest)
+    with pytest.raises(ValueError):
+        trial.check(dest)
+
+
+def test_missing_file_and_manifest_entry_are_both_required(tmp_path):
+    (tmp_path / "manifest.json").write_text(json.dumps({}), encoding="utf-8")
+    with pytest.raises(ValueError, match="manifest"):
+        trial.check(tmp_path)

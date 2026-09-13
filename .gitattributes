@@ -16,3 +16,4 @@
 /data/eval/patch027-loss-analysis/** -text
 /data/eval/patch027-final-test/** -text
 /data/eval/patch027-final-test/rows.json -diff
+/data/eval/patch027-final-test/report.json -diff
