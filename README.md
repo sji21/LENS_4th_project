@@ -447,7 +447,22 @@ python -m src.retrieval.index \
 
 ### 검증된 확대 데이터 간편 적용
 
-기존 데이터 준비가 끝났다면 `.\manage-data.ps1` 한 번으로 **DB 체크 → 필요한 데이터 적용 → 결과 확인**을 실행합니다.
+기존 데이터와 해당 OS의 `.venv`·의존성·KURE 모델을 준비하고 앱을 종료한 뒤, 저장소 루트에서 아래 명령 한 번으로 **DB 체크 → 필요한 데이터 적용 → 결과 확인**을 실행합니다.
+
+Windows PowerShell:
+
+```powershell
+.\manage-data.ps1
+```
+
+macOS 터미널:
+
+```bash
+.venv/bin/python -X utf8 -m scripts.manage_retrieval_data
+```
+
+`.ps1` 실행 파일은 Windows용입니다. macOS 명령은 같은 Python 진입점을 사용하지만 **macOS에서 실제 실행·Chroma 호환성·검색 결과 재현은 아직 검증하지 않았습니다.** Windows의 `.venv`를 복사하지 말고 맥에서 별도로 구성하세요.
+
 추가가 필요한 경우에만 검증된 데이터 폴더를 입력받고 사전 확인·백업·적용·사후 검증을 이어서 진행합니다.
 같은 데이터는 중복 적재하지 않습니다. [사용 방법·중복 검사·복구](docs/local-retrieval-data.md)를 확인하세요.
 

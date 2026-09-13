@@ -6,9 +6,21 @@
 
 프로젝트의 `.venv`와 KURE 모델을 준비하고 앱을 종료한 뒤 저장소 루트에서 실행합니다.
 
+Windows PowerShell:
+
 ```powershell
 .\manage-data.ps1
 ```
+
+macOS 터미널:
+
+```bash
+.venv/bin/python -X utf8 -m scripts.manage_retrieval_data
+```
+
+`.ps1`은 Windows용입니다. macOS에서는 맥에서 만든 `.venv`에 의존성과 KURE 모델을 준비하세요. Windows의 가상환경을 그대로 복사해 사용하지 않습니다. 같은 Python 진입점을 호출하지만 **macOS에서 실제 실행·Chroma 호환성·검색 결과 재현은 아직 검증하지 않았습니다.**
+
+맥에서 원본을 미리 지정하려면 위 명령 뒤에 `--source '<검증된 데이터 폴더>'`를 붙입니다. 상태 확인은 `status`, 복구는 `restore --backup '<안내된 백업 폴더>'`를 붙입니다.
 
 화면에는 **[1/3] DB 체크 → [2/3] DB 적용 → [3/3] 결과 확인** 순서로 표시합니다. 같은 데이터가 있으면 추가 불필요·변경 없음으로 종료합니다. 적용이 필요한 경우에만 검증된 확대 데이터 폴더를 입력받습니다. 원본이 없는 상태에서 자동으로 임의의 법령을 수집하거나 선택하지 않습니다.
 
