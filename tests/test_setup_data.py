@@ -1,4 +1,6 @@
 import subprocess
+import hashlib
+import json
 import pytest
 
 import setup_data as setup
@@ -69,3 +71,60 @@ def test_wrong_python_version_is_rejected(preparation, monkeypatch):
     monkeypatch.setattr(setup.sys, "version_info", (3, 12))
     assert setup.main([]) == 1
     assert preparation[1] == []
+
+
+@pytest.fixture
+def model_cache(tmp_path, monkeypatch):
+    import huggingface_hub
+    import huggingface_hub.constants as constants
+    monkeypatch.setattr(setup, "ROOT", tmp_path)
+    monkeypatch.setattr(setup.Path, "home", classmethod(lambda cls: tmp_path))
+    hub = tmp_path / ".cache/huggingface/hub"
+    monkeypatch.setattr(constants, "HF_HUB_CACHE", str(hub))
+    cache = hub / "models--nlpai-lab--KURE-v1"
+    audit = tmp_path / "data/eval/patch027-full/capture/audit.json"
+    audit.parent.mkdir(parents=True)
+    relative = "snapshots/reviewed-version/config.json"
+    audit.write_text(json.dumps({"model_files": {relative: hashlib.sha256(b"reviewed").hexdigest()}}))
+    downloads = []
+    def download(repo, **kwargs):
+        downloads.append((repo, kwargs))
+        target = cache / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(b"reviewed")
+    monkeypatch.setattr(huggingface_hub, "snapshot_download", download)
+    return cache, downloads
+
+
+def test_model_download_uses_reviewed_revision_then_check_is_offline(model_cache):
+    cache, downloads = model_cache
+    setup.prepare_model()
+    assert downloads[0][1]["revision"] == "reviewed-version"
+    assert (cache / "refs/main").read_text() == "reviewed-version"
+    setup.prepare_model(check=True)
+    assert len(downloads) == 1
+
+
+def test_different_model_ref_is_preserved_and_no_download(model_cache):
+    cache, downloads = model_cache
+    ref = cache / "refs/main"
+    ref.parent.mkdir(parents=True)
+    ref.write_text("different")
+    with pytest.raises(ValueError, match="자동 교체하지"):
+        setup.prepare_model()
+    assert ref.read_text() == "different" and downloads == []
+
+
+def test_corrupt_model_fails_hash_check(model_cache):
+    cache, _ = model_cache
+    setup.prepare_model()
+    (cache / "snapshots/reviewed-version/config.json").write_bytes(b"corrupt")
+    with pytest.raises(ValueError, match="파일 검증 실패"):
+        setup.prepare_model(check=True)
+
+
+def test_missing_model_check_never_downloads(model_cache):
+    _, downloads = model_cache
+    with pytest.raises(ValueError, match="파일이 없습니다"):
+        setup.prepare_model(check=True)
+    assert downloads == []

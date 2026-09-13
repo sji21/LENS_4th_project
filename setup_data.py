@@ -59,10 +59,13 @@ def prepare_model(check=False):
     ref = cache / "refs/main"
     if ref.exists() and ref.read_text().strip() != revision:
         raise ValueError("KURE 캐시의 main 버전이 검증 버전과 다릅니다. 기존 모델을 자동 교체하지 않습니다.")
-    if not check:
+    missing = any(not (cache / name).is_file() for name in expected)
+    if not check and missing:
         print("[준비] 검증된 KURE 모델 확인·없는 파일 다운로드", flush=True)
         from huggingface_hub import snapshot_download
-        snapshot_download(MODEL, revision=revision, cache_dir=str(hub))
+        snapshot_download(MODEL, revision=revision, cache_dir=str(hub),
+                          allow_patterns=[Path(name).relative_to("snapshots", revision).as_posix()
+                                          for name in expected])
     for name, digest in expected.items():
         path = cache / name
         if not path.is_file():

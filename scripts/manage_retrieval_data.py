@@ -202,7 +202,8 @@ def apply_data(source):
         require_clean_code()
         counts = inspect_in_process(source, "expanded")
         run = new_run()
-        print("[2/3] DB 적용 — 사전 검사 후 백업·적용합니다. 잠시 기다려 주세요.", flush=True)
+        operation = "최초 설치" if status["state"] == "empty" else "백업·적용"
+        print(f"[2/3] DB 적용 — 사전 검사 후 {operation}합니다. 잠시 기다려 주세요.", flush=True)
         run_step("stage", data=source, out=run / "stage")
         run_step("verify", data=run / "stage/data", out=run / "preflight")
         if status["state"] == "empty":
