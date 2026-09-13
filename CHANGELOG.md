@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-028 locks the resolved data target across checkouts and both source/frozen tools, while allowing independent targets to proceed. Preserve the lock file outside replaced payloads and ignore the default local lock in Git. Cross-process and focused checks:107 passed. (commit: pending)
+- PATCH-028 locks the resolved data target across checkouts and both source/frozen tools, while allowing independent targets to proceed. Preserve the lock file outside replaced payloads and ignore the default local lock in Git. Cross-process and focused checks:107 passed. (commit: e2872e5)
 
 - PATCH-028 rolls back source/frozen installations on Ctrl-C, including first installs and interrupted postflight checks. Wait for mutating children before rollback and track paths before renaming originals. Record ten resolved embedding/index dependency versions to invalidate incompatible reuse. Focused tests:138 passed. (commit: 23d3b8c)
 
