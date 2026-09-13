@@ -297,7 +297,35 @@ SQLite·Chroma·생성 청크는 Git에 올리지 않으며 각 실행 환경에
 
 ## 6. 설치부터 실행까지
 
-처음 실행할 때는 아래 순서를 따릅니다.
+### 먼저: 간편 DB 준비·설치 (Windows / macOS)
+
+Python 3.11과 Git을 설치하고 저장소를 받은 뒤, 저장소 루트에서 시작합니다. DB 준비에는 Ollama가 필요하지 않습니다.
+
+**‘검증된 확대 데이터 폴더’란?** 리트리버 담당자가 실제 적재·평가한 **일반 법령 178개 + 민법 26개 + 판례 26개 + 안내 6개**의 SQLite·청크·Chroma 인덱스를 담은 `data` 폴더입니다. **Git에 포함되지 않으며 다운로드 링크를 뜻하지 않습니다.** 담당자가 전달한 데이터 묶음을 압축 해제하고, 그 안의 `chunks`, `database`, `index`가 바로 보이는 폴더를 선택합니다. 팀원이 폴더 이름을 임의로 만들거나 비어 있는 폴더를 선택하면 안 됩니다. [전달할 파일 구성과 설치 예시](docs/local-retrieval-data.md)를 먼저 확인하세요.
+
+앱을 종료한 상태에서 다음 중 자신의 OS 명령 **하나만** 실행합니다.
+
+Windows PowerShell:
+
+```powershell
+py -3.11 setup_data.py
+```
+
+macOS 터미널:
+
+```bash
+python3.11 setup_data.py
+```
+
+실행기는 프로젝트 `.venv` 생성 → `requirements.txt` 모듈 확인·필요한 패키지 다운로드 → 의존성·모듈 로딩 확인 → 검증 버전의 KURE 모델 다운로드·파일 확인 → **DB 체크 → 필요한 데이터 적용 → 결과 확인**을 이어서 수행합니다. 설치/다운로드 실패 시 DB 작업을 시작하지 않습니다. 이미 같은 DB는 중복 적재하지 않습니다. 기존 DB가 없으면 전달받은 묶음으로 최초 설치하며 `data/eval` 등 저장소 자료는 유지합니다.
+
+데이터 묶음을 아직 받지 않았다면 `python3.11 setup_data.py --prepare-only`(Windows: `py -3.11 setup_data.py --prepare-only`)로 모듈·모델만 먼저 준비할 수 있습니다. 다운로드 없는 환경 확인은 `--check`입니다. 패키지와 모델 준비에는 인터넷과 저장 공간이 필요합니다. 모델은 기존 평가 버전에 고정하며, 다른 버전의 기존 캐시를 자동 교체하지 않습니다.
+
+**macOS에서 실제 실행·Chroma 호환성·235입력 검색 재현은 아직 검증하지 않았습니다.** 맥의 가상환경은 맥에서 생성해야 합니다. 설치 후 검색 결과가 기존 검증값과 다르면 성공으로 처리하지 않고 이번 설치를 복구합니다.
+
+DB 준비를 마쳤으면 아래 환경변수·Ollama 설정을 진행한 후 **6.6 서비스 실행**으로 이동합니다. **6.4~6.5는 원천 자료를 직접 재생성할 때만 쓰는 수동 경로**이며 간편 설치 후 다시 실행하지 않습니다.
+
+수동 재생성과 앱 전체 실행 순서는 다음과 같습니다.
 
 ```text
 Python 환경 준비
@@ -323,16 +351,25 @@ Python 환경 준비
 
 ### 6.2 Python 패키지와 환경변수
 
+간편 실행기가 이미 패키지를 설치했다면 중복 설치할 필요가 없습니다. 수동으로 준비할 때만 아래를 실행합니다.
+
 ```bash
-pip install -r requirements.txt
-cp .env.example .env
+python3.11 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m pip check
+source .venv/bin/activate
 ```
 
 Windows PowerShell에서는 다음 명령을 사용합니다.
 
 ```powershell
-Copy-Item .env.example .env
+py -3.11 -m venv .venv
+.venv/Scripts/python -m pip install -r requirements.txt
+.venv/Scripts/python -m pip check
+.\.venv\Scripts\Activate.ps1
 ```
+
+간편 실행으로 준비한 경우에도 이후 `python` 명령 전에 해당 OS의 가상환경을 활성화합니다. `.env`가 아직 없을 때만 macOS에서 `cp .env.example .env`, Windows에서 `Copy-Item .env.example .env`로 만듭니다.
 
 기본값은 Local Ollama이므로 별도의 API 키 없이 챗봇을 실행할 수 있습니다. 국가법령정보
 공동활용 API를 이용한 판례 재수집에는 `.env`의 `LAW_OPEN_API_OC`가 필요하고,
@@ -373,10 +410,11 @@ JEONSEON_LLM_BASE_URL=https://YOUR_POD_ID-11434.proxy.runpod.net/v1
 JEONSEON_LLM_MODEL=qwen3:8b-q4_K_M
 ```
 
-### 6.4 초기 데이터 생성
+### 6.4 수동 초기 데이터 생성 (기존 기준선 재생성용)
 
-DB와 Chroma 인덱스는 Git에 포함되지 않으므로 저장소를 받은 뒤 각자 한 번 만들어야
-합니다. 현재 제출·시연·평가에 사용한 26건 판례를 기준으로 한 명령입니다.
+아래는 기존 3차 자료의 재생성 절차이며, 현재 확대 204조문 묶음을 완성하는 명령이 아닙니다.
+팀원 설치에는 위 간편 경로와 전달받은 데이터 묶음을 사용하세요. 현재 DB가 있는 폴더에서
+아래 명령을 실행하면 데이터·인덱스가 바뀔 수 있으므로 별도 작업 폴더에서 재생성합니다.
 
 ```bash
 # 0. SQLite와 빈 Chroma 컬렉션 초기화
@@ -407,7 +445,7 @@ python -m src.ingestion.load_guides \
 실행 뒤 이 샘플 파일을 커밋하지 않습니다. 운영에 사용하는 `data/chunks/chunks.jsonl`은
 `load_laws`가 별도로 만듭니다.
 
-### 6.5 Chroma 인덱스 생성
+### 6.5 수동 Chroma 인덱스 생성
 
 반드시 법령 → 판례 → 안내 순서로 실행합니다.
 

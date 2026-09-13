@@ -200,7 +200,16 @@ def test_duplicate_database_article_is_rejected(small_data):
         manager.check_duplicates(small_data)
 
 
-def test_missing_base_data_is_not_a_successful_install(tmp_path):
+def test_empty_data_is_reported_uninstalled_without_touching_eval(tmp_path):
+    (tmp_path / "eval").mkdir()
+    (tmp_path / "eval/proof.json").write_text("proof")
+    assert manager.data_status(tmp_path)["state"] == "empty"
+    assert (tmp_path / "eval/proof.json").read_text() == "proof"
+
+
+def test_partial_base_data_is_rejected(tmp_path):
+    (tmp_path / "chunks").mkdir()
+    (tmp_path / "chunks/chunks.jsonl").write_text("partial")
     with pytest.raises(ValueError, match="기본 데이터"):
         manager.data_status(tmp_path)
 
@@ -240,3 +249,59 @@ def test_index_inspection_changes_only_temporary_copy_and_cleans_it(small_data, 
     assert manager.inspect_in_process(small_data, "expanded") == {"laws": 1}
     assert (small_data / manager.INDEXES[0] / "chroma.sqlite3").read_bytes() == b"original index"
     assert not inspected[0].exists()
+
+
+@pytest.fixture
+def fresh_install(tmp_path, monkeypatch):
+    monkeypatch.setattr(manager, "ROOT", tmp_path)
+    run = tmp_path / "tmp/fresh-run"
+    for rel in manager.SCOPES:
+        path = run / "stage/data" / rel
+        if rel in manager.INDEXES:
+            path = path / "chroma.sqlite3"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("payload " + rel)
+    (tmp_path / "data/eval").mkdir(parents=True)
+    (tmp_path / "data/eval/proof.json").write_text("keep")
+    monkeypatch.setattr(manager, "run_step", lambda *args, **kwargs: None)
+    return tmp_path, run
+
+
+def test_first_install_preserves_repository_data(fresh_install):
+    root, run = fresh_install
+    result = manager.install_empty(run, {"laws": 178, "civil_laws": 26, "cases": 26, "guides": 6})
+    assert result["installation"] == "fresh"
+    assert manager.payload_hashes(root / "data") == manager.payload_hashes(run / "stage/data")
+    assert (root / "data/eval/proof.json").read_text() == "keep"
+
+
+@pytest.mark.parametrize("failure", ["verify", "save_result"])
+def test_first_install_failure_removes_only_installed_payload(fresh_install, monkeypatch, failure):
+    root, run = fresh_install
+    def fail(*args, **kwargs):
+        raise OSError("disk or verification failure")
+    monkeypatch.setattr(manager, "run_step" if failure == "verify" else "save_result", fail)
+    with pytest.raises(OSError):
+        manager.install_empty(run, {})
+    assert not any((root / "data" / rel).exists() for rel in manager.SCOPES)
+    assert manager.payload_hashes(run / "failed") == manager.payload_hashes(run / "stage/data")
+    assert (root / "data/eval/proof.json").read_text() == "keep"
+
+
+def test_first_install_rejects_existing_data(fresh_install):
+    root, run = fresh_install
+    existing = root / "data/chunks/chunks.jsonl"
+    existing.parent.mkdir()
+    existing.write_text("existing")
+    with pytest.raises(ValueError, match="덮어쓰지"):
+        manager.install_empty(run, {})
+    assert existing.read_text() == "existing"
+
+
+def test_empty_apply_is_preflight_verified_before_install(flow, monkeypatch):
+    root, calls = flow
+    monkeypatch.setattr(manager, "data_status", lambda _: {"state": "empty"})
+    monkeypatch.setattr(manager, "install_empty", lambda *args: calls.append("installed"))
+    manager.apply_data(root / "source")
+    assert [call[0] for call in calls[:-1]] == ["stage", "verify"]
+    assert calls[-1] == "installed"

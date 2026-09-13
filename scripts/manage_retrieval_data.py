@@ -14,7 +14,7 @@ import tempfile
 import uuid
 
 from scripts.patch027_paths import ROOT, read, sha
-from scripts.patch027_rollout import copy_scope, expected_profile
+from scripts.patch027_rollout import SCOPES, child, copy_scope, expected_profile, payload_hashes
 from src.retrieval.profile import CHUNKS, FILES, INDEXES, PROFILE
 
 
@@ -125,8 +125,10 @@ def inspect_in_process(data, kind):
 
 
 def data_status(data):
+    if not any(child(data, name).exists() for name in SCOPES):
+        return {"state": "empty", "counts": {"laws": 0, "civil_laws": 0, "cases": 0, "guides": 0}}
     if not all((data / name).is_file() for name in FILES):
-        raise ValueError("기본 데이터 파일이 없습니다. 이 명령은 검증된 기존143조문에서204조문으로 전환합니다.")
+        raise ValueError("기본 데이터 파일 일부가 없습니다. 부분 적재 상태는 덮어쓰지 않습니다.")
     kind = "expanded" if (data / PROFILE).exists() else "baseline"
     counts = inspect_in_process(data, kind)
     return {"state": "installed" if kind == "expanded" else "baseline", "counts": counts}
@@ -203,6 +205,8 @@ def apply_data(source):
         print("[2/3] DB 적용 — 사전 검사 후 백업·적용합니다. 잠시 기다려 주세요.", flush=True)
         run_step("stage", data=source, out=run / "stage")
         run_step("verify", data=run / "stage/data", out=run / "preflight")
+        if status["state"] == "empty":
+            return install_empty(run, counts)
         applied = False
         try:
             run_step("apply", data=run / "stage/data", verification=run / "preflight", out=run / "backup")
@@ -223,10 +227,50 @@ def apply_data(source):
         return result
 
 
+def install_empty(run, counts):
+    """Install only absent payload paths; preserve unrelated data/eval assets."""
+    target, staged = ROOT / "data", run / "stage/data"
+    if not target.resolve().is_relative_to(ROOT.resolve()):
+        raise ValueError("설치 대상이 저장소 밖으로 연결되어 있습니다.")
+    if any(child(target, rel).exists() for rel in SCOPES):
+        raise ValueError("최초 설치 중 대상 파일이 생겼습니다. 기존 자료를 덮어쓰지 않습니다.")
+    incoming = run / "incoming"
+    copy_scope(staged, incoming)
+    if payload_hashes(incoming) != payload_hashes(staged):
+        raise ValueError("최초 설치 사본이 원본과 다릅니다.")
+    touched = []
+    try:
+        for rel in SCOPES:
+            destination = child(target, rel)
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            if destination.exists():
+                raise ValueError("최초 설치 대상이 변경됐습니다.")
+            child(incoming, rel).rename(destination)
+            touched.append(rel)
+        print("[3/3] 결과 확인 — 최초 설치 DB 검색 검증 중...", flush=True)
+        run_step("verify", data=target, out=run / "postflight")
+        result = {"state": "installed", "installation": "fresh", "counts": counts,
+                  "preflight": str(run / "preflight"), "postflight": str(run / "postflight")}
+        save_result(run / "result.json", result)
+    except Exception:
+        # Move only files installed by this invocation into its failure archive.
+        for rel in reversed(touched):
+            failed = child(run / "failed", rel)
+            failed.parent.mkdir(parents=True, exist_ok=True)
+            child(target, rel).rename(failed)
+        raise
+    print("[3/3] 확인 완료 — 최초 설치·235입력 일치, 중복 없음", flush=True)
+    show_counts(result)
+    print("설치 기록:", run, flush=True)
+    return result
+
+
 def restore_data(backup):
     with installation_lock():
         require_clean_code()
         status = data_status(ROOT / "data")
+        if status["state"] == "empty":
+            raise ValueError("설치된 데이터가 없어 복구할 수 없습니다.")
         if status["state"] == "baseline":
             print("이미 기존 데이터입니다. 복구할 변경이 없습니다.")
             return status
@@ -265,7 +309,7 @@ def main(argv=None):
         if args.action == "_inspect":
             print(json.dumps(result, ensure_ascii=False))
         elif args.action != "apply":
-            print("DB 상태:", "확대 데이터 적용 완료" if result["state"] == "installed" else "기존 데이터")
+            print("DB 상태:", {"installed": "확대 데이터 적용 완료", "baseline": "기존 데이터", "empty": "미설치"}[result["state"]])
             show_counts(result)
         return 0
     except (ValueError, OSError, KeyError, sqlite3.Error, subprocess.CalledProcessError) as error:
