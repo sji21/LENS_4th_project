@@ -82,8 +82,16 @@ def check_duplicates(data):
             "cases": len(loaded["chunks/cases.jsonl"]), "guides": len(loaded["chunks/guides.jsonl"])}
 
 
+def reject_source_build(data):
+    if child(data, "index/server-build.json").exists():
+        raise ValueError("원천 구축 DB가 감지됐습니다. 고정 검증 묶음과 해시가 다르며 이 도구의 직접 전환/복원은 지원하지 않습니다. "
+                         "기존 data를 삭제하지 말고 별도 체크아웃의 빈 DB에 --validation-bundle --source로 설치하세요. "
+                         "원천 DB 확인·복구는 setup_data.py / --rebuild를 사용하세요. docs/local-retrieval-data.md 참고.")
+
+
 def inspect_data(data, kind):
     """Run in a subprocess so Chroma handles close before any directory swap."""
+    reject_source_build(data)
     from src.retrieval.dense import ChromaRetriever
     from src.retrieval.profile import index_hash
 
@@ -107,6 +115,7 @@ def inspect_data(data, kind):
 
 
 def inspect_in_process(data, kind):
+    reject_source_build(data)
     # Chroma can rewrite physical index files even on get(). Inspect a copy;
     # the child exits before TemporaryDirectory removes Windows-locked files.
     parent = ROOT / "tmp"
@@ -125,6 +134,7 @@ def inspect_in_process(data, kind):
 
 
 def data_status(data):
+    reject_source_build(data)
     if not any(child(data, name).exists() for name in SCOPES):
         return {"state": "empty", "counts": {"laws": 0, "civil_laws": 0, "cases": 0, "guides": 0}}
     if not all((data / name).is_file() for name in FILES):

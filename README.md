@@ -313,7 +313,7 @@ Python 3.11을 설치하고 저장소 루트에서 실행하세요.
 
 이미 준비된 환경에서는 `python manage.py prepare_retrieval`로 같은 작업을 실행합니다. 다른 방식으로 만든 기존 DB를 전환하려면 `--rebuild`가 필요합니다. 환경만 준비하려면 `setup_data.py --prepare-only`, 다운로드 없는 환경 점검은 `--check`를 사용합니다.
 
-[서버 설치·원천 자료·Django·RunPod 실행 안내](docs/server-data-setup.md)를 먼저 확인하세요. RunPod에서는 프로젝트·DB와 `HF_HOME=/workspace/huggingface` 모델 캐시를 영구 볼륨에 두고, 가상환경은 쓰기 가능한 내부 디스크(`/opt/lens-venv` 예시)에 설치합니다. 이후 `source /opt/lens-venv/bin/activate`를 사용하고, setup 재실행에도 같은 `--venv-dir`를 지정합니다. 컨테이너 교체로 내부 디스크가 사라지면 패키지는 재설치해야 합니다. 기본 Windows·Mac `.venv` 동작은 유지합니다. **Mac 기본 실행은 팀원 성공 보고이며, RunPod 내부 디스크 옵션의 속도·GPU 실검증은 아직입니다.**
+[서버 설치·원천 자료·Django·RunPod 실행 안내](docs/server-data-setup.md)를 먼저 확인하세요. RunPod에서는 프로젝트·DB와 `HF_HOME=/workspace/huggingface` 모델 캐시를 영구 볼륨에 두고, 가상환경은 쓰기 가능한 내부 디스크(`/opt/lens-venv` 예시)에 설치합니다. 이후 `source /opt/lens-venv/bin/activate`를 사용하고, setup 재실행에도 같은 `--venv-dir`를 지정합니다. 컨테이너 교체로 내부 디스크가 사라지면 패키지는 재설치해야 합니다. 기본 Windows·Mac `.venv` 동작은 유지합니다. **Mac·RunPod 설치는 사용자(송지섭)가 직접 확인했습니다. RunPod는 DB 구축·적용·기본 검색 확인까지 완료했으며, CUDA 호환성 문제와 전체 검색·LLM 평가는 별도입니다.**
 
 입력은 검토한 원천 스냅샷이며 최신 법령 자동 수집·채택 기능은 아닙니다. 설치 확인은 무결성·중복·기본 검색 검사이고 전체235문항 평가나 LLM 평가는 별도입니다. **기존 ZIP 방식은 [평가 DB 재현·복원 전용](docs/local-retrieval-data.md)으로 유지합니다.**
 

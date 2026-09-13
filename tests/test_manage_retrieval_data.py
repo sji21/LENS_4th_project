@@ -214,6 +214,28 @@ def test_partial_base_data_is_rejected(tmp_path):
         manager.data_status(tmp_path)
 
 
+@pytest.mark.parametrize("action", ["status", "apply", "restore"])
+def test_source_build_is_explained_without_overwriting(tmp_path, monkeypatch, capsys, action):
+    monkeypatch.setattr(manager, "ROOT", tmp_path)
+    monkeypatch.setattr(manager, "require_clean_code", lambda: None)
+    marker = tmp_path / "data/index/server-build.json"
+    marker.parent.mkdir(parents=True)
+    marker.write_text('{"version":1}')
+    monkeypatch.setattr(manager, "inspect_in_process", lambda *a: pytest.fail("must reject before inspection"))
+    monkeypatch.setattr(manager, "run_step", lambda *a, **k: pytest.fail("must not overwrite"))
+    assert manager.main([action, "--backup", str(tmp_path / "backup")]) == 1
+    assert "별도 체크아웃" in capsys.readouterr().err
+    assert marker.read_text() == '{"version":1}'
+
+
+def test_source_build_cannot_be_used_as_frozen_bundle_source(tmp_path):
+    marker = tmp_path / "index/server-build.json"
+    marker.parent.mkdir()
+    marker.write_text('{}')
+    with pytest.raises(ValueError, match="원천 구축 DB"):
+        manager.inspect_in_process(tmp_path, "expanded")
+
+
 def test_inconsistent_profile_is_not_a_successful_noop(small_data, monkeypatch):
     profile = {"files": {name: manager.sha(small_data / name) for name in manager.FILES}, "index_hashes": []}
     (small_data / "index").mkdir()

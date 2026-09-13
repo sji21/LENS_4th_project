@@ -129,12 +129,134 @@ def test_partial_existing_data_requires_explicit_rebuild(tmp_path, monkeypatch):
     monkeypatch.setattr(build, "source_records", lambda: ([], [], []))
     monkeypatch.setattr(build, "recipe", lambda: {})
     monkeypatch.setattr(build, "model_identity", lambda: {})
+    monkeypatch.setattr(build, "embedding_pipeline", lambda: {})
     target = tmp_path / "data/chunks/chunks.jsonl"
     target.parent.mkdir(parents=True)
     target.write_text("old")
     with pytest.raises(ValueError, match="--rebuild"):
         build.prepare()
     assert target.read_text() == "old"
+
+
+@pytest.fixture
+def owned_build(tmp_path, monkeypatch):
+    import setup_data
+    monkeypatch.setattr(build, "ROOT", tmp_path)
+    monkeypatch.setattr(build, "SCOPES", ("chunks/laws", "index/base", build.BUILD))
+    monkeypatch.setattr(setup_data, "prepare_model", lambda **k: None)
+    monkeypatch.setattr(build, "source_records", lambda: ([], [], []))
+    monkeypatch.setattr(build, "recipe", lambda: {"schema": "v1"})
+    monkeypatch.setattr(build, "model_identity", lambda: {"weights": "same"})
+    monkeypatch.setattr(build, "embedding_pipeline", lambda: {"pipeline": "v1"})
+    def manifest():
+        return {"version": 1, "source_fingerprint": build.fingerprint(([], [], [])),
+                "recipe": build.recipe(), "model": build.MODEL,
+                "model_identity": build.model_identity(), "embedding_pipeline": build.embedding_pipeline()}
+    def populate(data, content):
+        for rel in ("chunks/laws", "index/base/chroma.sqlite3"):
+            p = data / rel
+            p.parent.mkdir(parents=True, exist_ok=True)
+            p.write_text(content)
+        build.write(data / build.BUILD, manifest())
+    data = tmp_path / "data"
+    populate(data, "old")
+    calls = []
+    def worker(action, target, run, previous=None):
+        calls.append((action, previous))
+        if action == "build":
+            populate(target, "new")
+        return {"counts": {}}
+    monkeypatch.setattr(build, "run_worker", worker)
+    return data, calls, worker
+
+
+def test_owned_unchanged_build_is_skipped(owned_build):
+    data, calls, _ = owned_build
+    before = build.payload_hashes(data)
+    assert build.prepare()["state"] == "unchanged"
+    assert [action for action, _ in calls] == ["inspect"]
+    assert build.payload_hashes(data) == before
+
+
+@pytest.mark.parametrize("pipeline", ["same", "changed", "missing"])
+def test_rebuild_reuses_vectors_only_with_matching_pipeline(owned_build, monkeypatch, pipeline):
+    data, calls, _ = owned_build
+    if pipeline == "changed":
+        monkeypatch.setattr(build, "embedding_pipeline", lambda: {"pipeline": "v2"})
+    elif pipeline == "missing":
+        prior = build.read(data / build.BUILD)
+        prior.pop("embedding_pipeline")
+        build.write(data / build.BUILD, prior)
+    assert build.prepare(rebuild=pipeline == "same")["state"] == "ready"
+    previous = next(previous for action, previous in calls if action == "build")
+    assert (previous is not None) == (pipeline == "same")
+    assert build.read(data / build.BUILD)["embedding_pipeline"] == build.embedding_pipeline()
+
+
+def test_schema_only_change_triggers_rebuild_and_keeps_compatible_vectors(owned_build, monkeypatch):
+    _, calls, _ = owned_build
+    monkeypatch.setattr(build, "recipe", lambda: {"schema": "v2"})
+    assert build.prepare()["state"] == "ready"
+    assert next(previous for action, previous in calls if action == "build") is not None
+
+
+@pytest.mark.parametrize("damage", ["missing", "manifest", "inspect"])
+@pytest.mark.parametrize("rebuild", [False, True])
+def test_damaged_owned_data_requires_explicit_recovery(owned_build, monkeypatch, damage, rebuild):
+    data, calls, worker = owned_build
+    if damage == "missing":
+        (data / "chunks/laws").unlink()
+    elif damage == "manifest":
+        (data / build.BUILD).write_text("not json")
+    else:
+        def broken(action, *args, **kwargs):
+            if action == "inspect":
+                raise ValueError("broken index")
+            return worker(action, *args, **kwargs)
+        monkeypatch.setattr(build, "run_worker", broken)
+    before = build.payload_hashes(data)
+    if rebuild:
+        result = build.prepare(rebuild=True)
+        assert result["state"] == "ready"
+        assert ("build", None) in calls
+        assert build.payload_hashes(Path(result["run"]) / "backup") == before
+    else:
+        with pytest.raises(ValueError, match="--rebuild"):
+            build.prepare()
+        assert build.payload_hashes(data) == before
+        assert not any(action == "build" for action, _ in calls)
+
+
+@pytest.mark.parametrize("phase", ["build", "verify"])
+def test_failed_recovery_preserves_damaged_original(owned_build, monkeypatch, phase):
+    data, _, worker = owned_build
+    (data / "chunks/laws").unlink()
+    before = build.payload_hashes(data)
+    def failed(action, *args, **kwargs):
+        if action == phase:
+            raise ValueError("recovery failed")
+        return worker(action, *args, **kwargs)
+    monkeypatch.setattr(build, "run_worker", failed)
+    with pytest.raises(ValueError, match="recovery failed"):
+        build.prepare(rebuild=True)
+    assert build.payload_hashes(data) == before
+
+
+def test_schema_and_embedding_inputs_are_fingerprinted(tmp_path, monkeypatch):
+    names = list(build.recipe())
+    for name in names:
+        p = tmp_path / name
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text("initial")
+    monkeypatch.setattr(build, "ROOT", tmp_path)
+    initial = build.recipe()
+    (tmp_path / "src/database/schema.sql").write_text("changed schema")
+    assert build.recipe() != initial
+    for name in ("src/retrieval/dense.py", "src/retrieval/index.py",
+                 "src/ingestion/server_build.py", "requirements.txt"):
+        previous = build.embedding_pipeline()
+        (tmp_path / name).write_text("new pipeline")
+        assert build.embedding_pipeline() != previous
 
 
 def test_django_command_calls_builder_without_llm(monkeypatch):

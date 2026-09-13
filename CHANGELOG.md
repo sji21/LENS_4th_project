@@ -9,9 +9,11 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
+- PATCH-028 fixes schema-change detection, invalidates vector reuse on embedding/index pipeline changes, and recovers damaged owned data with explicit --rebuild. Explain unsupported source-to-frozen conversion without modifying data. Correct Mac/RunPod verification attribution to user Song Jiseop; RunPod DB/basic-search completion is confirmed from his log, with CUDA compatibility unresolved. Focused tests:86 passed. (commit: pending)
+
 - PATCH-028 streams builder progress and warnings to the terminal while preserving per-worker logs and failure diagnostics. Stop workers before releasing control on interrupted output. Focused validation:68 passed; no DB or GPU dependency changes. (commit: 587f632)
 
-- PATCH-028 allows `--venv-dir` for a container-local RunPod environment while retaining persistent DB/model storage and default Windows/Mac `.venv` behavior. Preserve existing environments; use the selected interpreter throughout preparation/build. Document ephemeral-environment reinstallation and team-reported Mac success; RunPod speed is not yet measured. (commit: a6cc50b)
+- PATCH-028 allows `--venv-dir` for a container-local RunPod environment while retaining persistent DB/model storage and default Windows/Mac `.venv` behavior. Preserve existing environments; use the selected interpreter throughout preparation/build. Document ephemeral-environment reinstallation and Mac success reported by the user who ran it; RunPod speed is not yet measured. (commit: a6cc50b)
 
 - PATCH-028 makes source-based server construction the default: parse approved sources, build SQLite and separate indexes, reuse unchanged vectors, and expose Django `prepare_retrieval`. Keep frozen DB bundles for evaluation reproduction only; support persistent Hugging Face caches for RunPod. (commit: 9e50649, c19b4b1, 2654264)
 

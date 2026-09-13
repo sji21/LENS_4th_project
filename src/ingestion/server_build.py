@@ -45,13 +45,21 @@ def recipe():
     # Parser/index/schema edits must invalidate a previous build's no-op decision.
     files = [p for directory in ("src/ingestion", "src/database", "src/retrieval")
              for p in sorted((ROOT / directory).glob("*.py"))]
-    files += [ROOT / name for name in ("setup_data.py", "scripts/load_case_only_demo_corpus.py",
+    files += [ROOT / name for name in ("src/database/schema.sql", "requirements.txt",
+              "setup_data.py", "scripts/load_case_only_demo_corpus.py",
               "scripts/patch027_sources.py", "scripts/patch027_full_sources.py", "scripts/patch027_paths.py")]
     return {p.relative_to(ROOT).as_posix(): digest(p) for p in files}
 
 
 def model_identity():
     return read(ROOT / "data/eval/patch027-full/capture/audit.json")["model_files"]
+
+
+def embedding_pipeline():
+    # Conservatively invalidate even logging-only edits in the index builder.
+    names = ("src/retrieval/dense.py", "src/retrieval/index.py",
+             "src/ingestion/server_build.py", "requirements.txt")
+    return {name: digest(ROOT / name) for name in names}
 
 
 def load_databases(records, data):
@@ -179,7 +187,8 @@ def worker(action, data, previous=None):
                "index_hashes": [index_hash(ChromaRetriever(None, data / rel)) for rel in INDEXES]}
     write(data / PROFILE, profile)
     write(data / BUILD, {"version": 1, "source_fingerprint": fingerprint(records), "recipe": recipe(),
-                        "model": MODEL, "model_identity": model_identity()})
+                        "model": MODEL, "model_identity": model_identity(),
+                        "embedding_pipeline": embedding_pipeline()})
     verify(data, smoke=True)
     return {"counts": counts, "indexing": indexing}
 
@@ -254,7 +263,8 @@ def prepare(data_root=None, rebuild=False):
         prepare_model(check=True)
         records = source_records()
         expected = {"version": 1, "source_fingerprint": fingerprint(records), "recipe": recipe(),
-                    "model": MODEL, "model_identity": model_identity()}
+                    "model": MODEL, "model_identity": model_identity(),
+                    "embedding_pipeline": embedding_pipeline()}
         existing = any(child(target, rel).exists() for rel in SCOPES)
         before = payload_hashes(target)
         owned = (target / BUILD).is_file()
@@ -267,20 +277,31 @@ def prepare(data_root=None, rebuild=False):
         with tempfile.TemporaryDirectory(dir=work, prefix="inspect-") as temporary:
             snapshot = Path(temporary) / "data"
             if owned:
-                for rel in SCOPES:
-                    src, dst = child(target, rel), child(snapshot, rel)
-                    dst.parent.mkdir(parents=True, exist_ok=True)
-                    if src.is_dir():
-                        shutil.copytree(src, dst)
-                    else:
-                        shutil.copy2(src, dst)
-                run_worker("inspect", snapshot, Path(temporary))
-                prior = read(snapshot / BUILD)
+                prior = None
+                try:
+                    for rel in SCOPES:
+                        src, dst = child(target, rel), child(snapshot, rel)
+                        dst.parent.mkdir(parents=True, exist_ok=True)
+                        if src.is_dir():
+                            shutil.copytree(src, dst)
+                        else:
+                            shutil.copy2(src, dst)
+                    run_worker("inspect", snapshot, Path(temporary))
+                    prior = read(snapshot / BUILD)
+                    if not isinstance(prior, dict):
+                        raise ValueError("구축 기록 형식 오류")
+                except (OSError, ValueError) as error:
+                    if not rebuild:
+                        raise ValueError(f"기존 구축 검사 실패: {error}. 복구하려면 --rebuild를 지정하세요.") from error
+                    prior = None
+                    print(f"[복구] 기존 자료 검사 실패: {error}. 벡터 재사용 없이 새로 구축합니다.", flush=True)
                 if not rebuild and prior == expected:
                     print("[2/3] 구축 생략 — 원천·코드·모델 동일, 재임베딩 0건", flush=True)
                     print("[3/3] 확인 완료 — 기존 DB·검색 인덱스 정상", flush=True)
                     return {"state": "unchanged", "embedded": 0}
-                if prior.get("model") == MODEL and prior.get("model_identity") == model_identity():
+                if (prior and prior.get("model") == MODEL
+                        and prior.get("model_identity") == expected["model_identity"]
+                        and prior.get("embedding_pipeline") == expected["embedding_pipeline"]):
                     previous = snapshot
             run = work / uuid.uuid4().hex
             run.mkdir()
