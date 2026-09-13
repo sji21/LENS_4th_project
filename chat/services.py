@@ -16,6 +16,11 @@ from src.document_check.session_retrieval import (
 from src.generation import graph
 from src.generation.chain import get_default_service
 from src.generation.conversation import resolve_question
+from src.generation.evidence_highlight import build_citation_spans
+from src.generation.followup import suggest_followups
+from src.generation.glossary import find_glossary_spans
+from src.generation.simplify import simplify_answer
+from src.generation.source_links import citation_url
 from src.retrieval.readiness import BackgroundServiceLoader
 
 LABELS = {"registry": "등기사항증명서", "contract": "임대차계약서", "unknown": "종류 확인 필요"}
@@ -93,6 +98,45 @@ def find_evidences(question, documents, selected_id=None):
     return tuple(sorted(found, key=lambda e: (-e.score, e.chunk_id))[:4])
 
 
+def display_extras(answer, content, law_sources):
+    """검색·검증을 다시 하지 않는 표시 전용 부가 정보.
+
+    모두 이미 확정된 ``answer``와 화면에 그릴 ``content``만 쓴다. 위치 값은
+    마스킹이 끝난 ``content`` 기준이라 화면과 어긋나지 않는다. 인용 구간은
+    공식 근거(``answer.evidences``)만 대상으로 하며, 업로드 문서 OCR 근거는
+    원문이 화면에 나가지 않도록 넘기지 않는다.
+    """
+
+    answered = answer.status == "answered"
+    citations = build_citation_spans(content, answer.evidences) if answered else ()
+    cited = frozenset(span["citation"] for span in citations)
+    return {
+        "glossary": list(find_glossary_spans(content)),
+        "citations": [dict(span, excerpt=safe_text(span["excerpt"])) for span in citations],
+        "followups": list(suggest_followups(law_sources, cited)) if answered else [],
+        "simplified": "",
+    }
+
+
+def simplify_message(state, message_id):
+    """확정된 답변 하나를 쉬운 말로 다시 쓴다. 새 검색·새 근거가 없다."""
+
+    message = next(
+        (m for m in state["messages"] if m.get("id") == message_id and m.get("role") == "assistant"),
+        None,
+    )
+    if message is None:
+        return None
+    if message.get("simplified"):
+        return message
+    # 화면용 최종 문구가 아니라 생성 본문을 넘긴다. 면책 문구는 모델에 주지 않는다.
+    source = message.get("context_content") or ""
+    if not source.strip():
+        raise ValueError("쉽게 다시 설명할 본문이 없습니다.")
+    message["simplified"] = safe_text(simplify_answer(source))
+    return message
+
+
 def respond(state, question, document_id=None):
     started = time.perf_counter()
     documents = state["documents"]
@@ -111,13 +155,18 @@ def respond(state, question, document_id=None):
         resolved = resolve_question(question, state["messages"])
         answer = graph.answer_question(resolved.standalone, service=retrieval_loader().result())
         used_history = resolved.used_history
+    # raw_text is never a fallback for an empty or rejected answer.
+    content = safe_text((answer.text or "").strip()) or "답변 본문을 표시하지 못했습니다. 다시 질문해 주세요."
+    law_sources = answer.sources()
+    for item in law_sources:
+        item["url"] = item.get("url") or citation_url(item["label"], item["doc_type"])
     message = {
         "id": uuid.uuid4().hex, "role": "assistant", "status": answer.status,
-        # raw_text is never a fallback for an empty or rejected answer.
-        "content": safe_text((answer.text or "").strip()) or "답변 본문을 표시하지 못했습니다. 다시 질문해 주세요.",
-        "sources": answer.document_sources() + answer.sources(),
+        "content": content,
+        "sources": answer.document_sources() + law_sources,
         "context_content": safe_text(answer.raw_text) if answer.status == "answered" else "",
         "used_history": used_history, "elapsed_seconds": round(time.perf_counter() - started, 1),
+        **display_extras(answer, content, law_sources),
     }
     state["messages"].extend([
         {"id": uuid.uuid4().hex, "role": "user", "content": question}, message,

@@ -16,7 +16,6 @@ from src.ingestion.build_verified_case_source import (
     publish_verified_source,
 )
 from src.ingestion.refetch_case_details import (
-    RefetchSummary,
     oc_from_environment,
     publish_refetched_records,
     refetch_records,
