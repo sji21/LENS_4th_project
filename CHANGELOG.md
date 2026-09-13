@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
-- PATCH-036 Bound conversation model calls and context, retain request identities after uncertain responses, and exclude rejected history and sensitive exception text. (commit: pending)
+- PATCH-036 Bound conversation model calls and context, retain request identities after uncertain responses, and exclude rejected history and sensitive exception text. (commit: `4b35221`)
 
 - PATCH-035 Adds pre-validation conversational answer styles and Django clarification choices, rephrasing controls, status reasons, and stale-choice protection. (commit: `6c4a7d7`)
 
