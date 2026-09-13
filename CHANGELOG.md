@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-027 integrates main `6e40d21` after team PR #24 merged during review. Preserve both patch records and distinguish the legacy civil10 setup from the expanded civil26 profile in README. Retrieval code is unchanged; the integrated checkout passes 1,111 tests with 3 skips and 172 subtests. (commit: pending)
+- PATCH-027 integrates main `6e40d21` after team PR #24 merged during review. Preserve both patch records and distinguish the legacy civil10 setup from the expanded civil26 profile in README. Retrieval code is unchanged; the integrated checkout passes 1,111 tests with 3 skips and 172 subtests. (commit: 7be0613)
 
 - PATCH-027 fixes PR #25 receipt-failure rollback: validate and store the installation receipt inside the protected transaction, so missing, partial or invalid writes restore the original payload without requiring receipt-based recovery. Rename explanatory documents to PATCH-027, update links and mark old experiments explicitly while preserving captured script/data paths and hashes. Retrieval policy and active data are unchanged. (commit: 562905d)
 
