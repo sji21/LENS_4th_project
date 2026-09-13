@@ -80,7 +80,12 @@ def stage(candidate, out):
 
 def code_snapshot():
     files = subprocess.check_output(["git", "ls-files", "src", "scripts", "requirements*.txt"], cwd=ROOT, text=True).splitlines()
-    return {p: sha(ROOT / p) for p in files}
+    # Git stores LF; Windows edits/checkouts may contain mixed LF/CRLF lines.
+    return {p: source_hash((ROOT / p).read_bytes()) for p in files}
+
+
+def source_hash(content):
+    return hashlib.sha256(content.replace(b"\r\n", b"\n")).hexdigest()
 
 
 def verify(data, out):

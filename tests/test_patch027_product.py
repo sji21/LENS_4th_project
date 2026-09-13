@@ -244,3 +244,10 @@ def test_rollout_rejects_paths_outside_intended_directory(tmp_path):
         rollout.child(tmp_path, "../outside")
     with pytest.raises(ValueError):
         rollout.child(tmp_path, ".")
+
+
+def test_execution_source_hash_handles_windows_mixed_line_endings_only():
+    expected = rollout.source_hash(b"first\nsecond\n")
+    assert rollout.source_hash(b"first\r\nsecond\n") == expected
+    assert rollout.source_hash(b"first\r\nsecond\r\n") == expected
+    assert rollout.source_hash(b"first\nmodified\n") != expected
