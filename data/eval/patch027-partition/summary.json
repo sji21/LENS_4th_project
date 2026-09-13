@@ -1,0 +1,3979 @@
+{
+  "baseline": {
+    "question_only": {
+      "n": 100,
+      "categories": {
+        "retrieval_miss": 15,
+        "all_required_returned": 28,
+        "data_missing_some": 11,
+        "no_fixed_target": 23,
+        "data_missing_all": 21,
+        "historical_review": 2
+      },
+      "channel_metrics": {
+        "general": {
+          "all_target_items": {
+            "n": 47,
+            "mrr": 0.3925531914893617,
+            "hit@1": 0.3191489361702128,
+            "hit@2": 0.40425531914893614,
+            "hit@3": 0.46808510638297873,
+            "hit@5": 0.5106382978723404,
+            "recall@1": 0.23900709219858157,
+            "recall@2": 0.29929078014184396,
+            "recall@3": 0.3524822695035461,
+            "recall@5": 0.3950354609929078
+          },
+          "all_targets_held": {
+            "n": 23,
+            "mrr": 0.5920289855072464,
+            "hit@1": 0.4782608695652174,
+            "hit@2": 0.6086956521739131,
+            "hit@3": 0.6956521739130435,
+            "hit@5": 0.782608695652174,
+            "recall@1": 0.43478260869565216,
+            "recall@2": 0.5217391304347826,
+            "recall@3": 0.6086956521739131,
+            "recall@5": 0.6956521739130435
+          }
+        },
+        "civil": {
+          "all_target_items": {
+            "n": 32,
+            "mrr": 0.4166666666666667,
+            "hit@1": 0.375,
+            "hit@2": 0.4375,
+            "hit@3": 0.46875,
+            "recall@1": 0.359375,
+            "recall@2": 0.4375,
+            "recall@3": 0.46875
+          },
+          "all_targets_held": {
+            "n": 23,
+            "mrr": 0.5797101449275363,
+            "hit@1": 0.5217391304347826,
+            "hit@2": 0.6086956521739131,
+            "hit@3": 0.6521739130434783,
+            "recall@1": 0.5,
+            "recall@2": 0.6086956521739131,
+            "recall@3": 0.6521739130434783
+          }
+        }
+      },
+      "union_all_required": {
+        "hits": 28,
+        "n": 75
+      }
+    },
+    "context_diagnostic": {
+      "n": 100,
+      "categories": {
+        "retrieval_miss": 13,
+        "all_required_returned": 30,
+        "data_missing_some": 11,
+        "no_fixed_target": 23,
+        "data_missing_all": 21,
+        "historical_review": 2
+      },
+      "channel_metrics": {
+        "general": {
+          "all_target_items": {
+            "n": 47,
+            "mrr": 0.38794326241134747,
+            "hit@1": 0.2765957446808511,
+            "hit@2": 0.40425531914893614,
+            "hit@3": 0.48936170212765956,
+            "hit@5": 0.574468085106383,
+            "recall@1": 0.2,
+            "recall@2": 0.3170212765957447,
+            "recall@3": 0.3879432624113475,
+            "recall@5": 0.4695035460992908
+          },
+          "all_targets_held": {
+            "n": 23,
+            "mrr": 0.6405797101449275,
+            "hit@1": 0.4782608695652174,
+            "hit@2": 0.6956521739130435,
+            "hit@3": 0.7391304347826086,
+            "hit@5": 0.9130434782608695,
+            "recall@1": 0.391304347826087,
+            "recall@2": 0.6086956521739131,
+            "recall@3": 0.6956521739130435,
+            "recall@5": 0.8478260869565217
+          }
+        },
+        "civil": {
+          "all_target_items": {
+            "n": 32,
+            "mrr": 0.38020833333333337,
+            "hit@1": 0.34375,
+            "hit@2": 0.375,
+            "hit@3": 0.4375,
+            "recall@1": 0.328125,
+            "recall@2": 0.375,
+            "recall@3": 0.4375
+          },
+          "all_targets_held": {
+            "n": 23,
+            "mrr": 0.5289855072463768,
+            "hit@1": 0.4782608695652174,
+            "hit@2": 0.5217391304347826,
+            "hit@3": 0.6086956521739131,
+            "recall@1": 0.45652173913043476,
+            "recall@2": 0.5217391304347826,
+            "recall@3": 0.6086956521739131
+          }
+        }
+      },
+      "union_all_required": {
+        "hits": 30,
+        "n": 75
+      }
+    },
+    "required_law": {
+      "n": 29,
+      "categories": {
+        "all_required_returned": 28,
+        "retrieval_miss": 1
+      },
+      "channel_metrics": {
+        "general": {
+          "all_target_items": {
+            "n": 1,
+            "mrr": 1.0,
+            "hit@1": 1.0,
+            "hit@2": 1.0,
+            "hit@3": 1.0,
+            "hit@5": 1.0,
+            "recall@1": 0.5,
+            "recall@2": 0.5,
+            "recall@3": 0.5,
+            "recall@5": 0.5
+          },
+          "all_targets_held": {
+            "n": 1,
+            "mrr": 1.0,
+            "hit@1": 1.0,
+            "hit@2": 1.0,
+            "hit@3": 1.0,
+            "hit@5": 1.0,
+            "recall@1": 0.5,
+            "recall@2": 0.5,
+            "recall@3": 0.5,
+            "recall@5": 0.5
+          }
+        },
+        "civil": {
+          "all_target_items": {
+            "n": 29,
+            "mrr": 0.8793103448275862,
+            "hit@1": 0.7586206896551724,
+            "hit@2": 1.0,
+            "hit@3": 1.0,
+            "recall@1": 0.7413793103448276,
+            "recall@2": 1.0,
+            "recall@3": 1.0
+          },
+          "all_targets_held": {
+            "n": 29,
+            "mrr": 0.8793103448275862,
+            "hit@1": 0.7586206896551724,
+            "hit@2": 1.0,
+            "hit@3": 1.0,
+            "recall@1": 0.7413793103448276,
+            "recall@2": 1.0,
+            "recall@3": 1.0
+          }
+        }
+      },
+      "union_all_required": {
+        "hits": 28,
+        "n": 29
+      }
+    },
+    "scope_provisional": {
+      "n": 1,
+      "categories": {
+        "all_required_returned": 1
+      },
+      "channel_metrics": {
+        "general": {
+          "all_target_items": {
+            "n": 0
+          },
+          "all_targets_held": {
+            "n": 0
+          }
+        },
+        "civil": {
+          "all_target_items": {
+            "n": 1,
+            "mrr": 0.5,
+            "hit@1": 0.0,
+            "hit@2": 1.0,
+            "hit@3": 1.0,
+            "recall@1": 0.0,
+            "recall@2": 1.0,
+            "recall@3": 1.0
+          },
+          "all_targets_held": {
+            "n": 1,
+            "mrr": 0.5,
+            "hit@1": 0.0,
+            "hit@2": 1.0,
+            "hit@3": 1.0,
+            "recall@1": 0.0,
+            "recall@2": 1.0,
+            "recall@3": 1.0
+          }
+        }
+      },
+      "union_all_required": {
+        "hits": 1,
+        "n": 1
+      }
+    },
+    "diagnostic_only": {
+      "n": 5,
+      "categories": {
+        "no_fixed_target": 5
+      },
+      "channel_metrics": {
+        "general": {
+          "all_target_items": {
+            "n": 0
+          },
+          "all_targets_held": {
+            "n": 0
+          }
+        },
+        "civil": {
+          "all_target_items": {
+            "n": 0
+          },
+          "all_targets_held": {
+            "n": 0
+          }
+        }
+      },
+      "union_all_required": {
+        "hits": 0,
+        "n": 0
+      }
+    }
+  },
+  "variants": {
+    "statistics_only": {
+      "groups": {
+        "question_only": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 24,
+            "all_required_returned": 28,
+            "no_fixed_target": 23,
+            "data_missing_all": 16,
+            "data_missing_some": 7,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.3882978723404255,
+                "hit@1": 0.3191489361702128,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.46808510638297873,
+                "hit@5": 0.48936170212765956,
+                "recall@1": 0.23900709219858157,
+                "recall@2": 0.2921985815602837,
+                "recall@3": 0.3524822695035461,
+                "recall@5": 0.37375886524822693
+              },
+              "all_targets_held": {
+                "n": 32,
+                "mrr": 0.5598958333333334,
+                "hit@1": 0.46875,
+                "hit@2": 0.59375,
+                "hit@3": 0.65625,
+                "hit@5": 0.6875,
+                "recall@1": 0.3510416666666667,
+                "recall@2": 0.4291666666666667,
+                "recall@3": 0.5020833333333333,
+                "recall@5": 0.5333333333333333
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.4166666666666667,
+                "hit@1": 0.375,
+                "hit@2": 0.4375,
+                "hit@3": 0.46875,
+                "recall@1": 0.359375,
+                "recall@2": 0.4375,
+                "recall@3": 0.46875
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5797101449275363,
+                "hit@1": 0.5217391304347826,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6521739130434783,
+                "recall@1": 0.5,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6521739130434783
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 75
+          }
+        },
+        "context_diagnostic": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 22,
+            "all_required_returned": 30,
+            "no_fixed_target": 23,
+            "data_missing_all": 16,
+            "data_missing_some": 7,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.3914893617021276,
+                "hit@1": 0.2765957446808511,
+                "hit@2": 0.425531914893617,
+                "hit@3": 0.48936170212765956,
+                "hit@5": 0.574468085106383,
+                "recall@1": 0.2,
+                "recall@2": 0.3382978723404255,
+                "recall@3": 0.3879432624113475,
+                "recall@5": 0.4695035460992908
+              },
+              "all_targets_held": {
+                "n": 32,
+                "mrr": 0.5645833333333333,
+                "hit@1": 0.40625,
+                "hit@2": 0.625,
+                "hit@3": 0.6875,
+                "hit@5": 0.8125,
+                "recall@1": 0.29375,
+                "recall@2": 0.496875,
+                "recall@3": 0.5541666666666667,
+                "recall@5": 0.6739583333333333
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.38020833333333337,
+                "hit@1": 0.34375,
+                "hit@2": 0.375,
+                "hit@3": 0.4375,
+                "recall@1": 0.328125,
+                "recall@2": 0.375,
+                "recall@3": 0.4375
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5289855072463768,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.5217391304347826,
+                "hit@3": 0.6086956521739131,
+                "recall@1": 0.45652173913043476,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 30,
+            "n": 75
+          }
+        },
+        "required_law": {
+          "n": 29,
+          "categories": {
+            "all_required_returned": 28,
+            "retrieval_miss": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 29
+          }
+        },
+        "scope_provisional": {
+          "n": 1,
+          "categories": {
+            "all_required_returned": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 1,
+            "n": 1
+          }
+        },
+        "diagnostic_only": {
+          "n": 5,
+          "categories": {
+            "no_fixed_target": 5
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 0,
+            "n": 0
+          }
+        }
+      },
+      "losses": [
+        {
+          "qid": "DEV-067",
+          "mode": "question_only",
+          "lost": [
+            "주택임대차보호법-제4조"
+          ]
+        }
+      ],
+      "prior_required_rank_losses": {
+        "1": [],
+        "3": [],
+        "5": [
+          {
+            "qid": "DEV-067",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제4조"
+            ]
+          }
+        ]
+      },
+      "changed_inputs": 68,
+      "procedure_count_distribution": {
+        "0": 235,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "mixed": {
+      "groups": {
+        "question_only": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 18,
+            "all_required_returned": 34,
+            "no_fixed_target": 23,
+            "data_missing_all": 16,
+            "data_missing_some": 7,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.4890070921985815,
+                "hit@1": 0.425531914893617,
+                "hit@2": 0.5106382978723404,
+                "hit@3": 0.5319148936170213,
+                "hit@5": 0.5957446808510638,
+                "recall@1": 0.2726950354609929,
+                "recall@2": 0.3521276595744681,
+                "recall@3": 0.4031914893617021,
+                "recall@5": 0.5017730496453902
+              },
+              "all_targets_held": {
+                "n": 32,
+                "mrr": 0.6401041666666666,
+                "hit@1": 0.5625,
+                "hit@2": 0.65625,
+                "hit@3": 0.6875,
+                "hit@5": 0.78125,
+                "recall@1": 0.3822916666666667,
+                "recall@2": 0.48333333333333334,
+                "recall@3": 0.5583333333333333,
+                "recall@5": 0.703125
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.4166666666666667,
+                "hit@1": 0.375,
+                "hit@2": 0.4375,
+                "hit@3": 0.46875,
+                "recall@1": 0.359375,
+                "recall@2": 0.4375,
+                "recall@3": 0.46875
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5797101449275363,
+                "hit@1": 0.5217391304347826,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6521739130434783,
+                "recall@1": 0.5,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6521739130434783
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 34,
+            "n": 75
+          }
+        },
+        "context_diagnostic": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 17,
+            "all_required_returned": 35,
+            "no_fixed_target": 23,
+            "data_missing_all": 16,
+            "data_missing_some": 7,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.4953900709219858,
+                "hit@1": 0.3829787234042553,
+                "hit@2": 0.5319148936170213,
+                "hit@3": 0.6170212765957447,
+                "hit@5": 0.6595744680851063,
+                "recall@1": 0.23546099290780143,
+                "recall@2": 0.34503546099290777,
+                "recall@3": 0.47588652482269506,
+                "recall@5": 0.5691489361702128
+              },
+              "all_targets_held": {
+                "n": 32,
+                "mrr": 0.6546875,
+                "hit@1": 0.5,
+                "hit@2": 0.71875,
+                "hit@3": 0.8125,
+                "hit@5": 0.875,
+                "recall@1": 0.3276041666666667,
+                "recall@2": 0.48854166666666665,
+                "recall@3": 0.6651041666666666,
+                "recall@5": 0.8020833333333333
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.38020833333333337,
+                "hit@1": 0.34375,
+                "hit@2": 0.375,
+                "hit@3": 0.4375,
+                "recall@1": 0.328125,
+                "recall@2": 0.375,
+                "recall@3": 0.4375
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5289855072463768,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.5217391304347826,
+                "hit@3": 0.6086956521739131,
+                "recall@1": 0.45652173913043476,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 35,
+            "n": 75
+          }
+        },
+        "required_law": {
+          "n": 29,
+          "categories": {
+            "all_required_returned": 28,
+            "retrieval_miss": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 29
+          }
+        },
+        "scope_provisional": {
+          "n": 1,
+          "categories": {
+            "all_required_returned": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 1,
+            "n": 1
+          }
+        },
+        "diagnostic_only": {
+          "n": 5,
+          "categories": {
+            "no_fixed_target": 5
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 0,
+            "n": 0
+          }
+        }
+      },
+      "losses": [
+        {
+          "qid": "DEV-005",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-009",
+          "mode": "question_only",
+          "lost": [
+            "상가건물임대차보호법-제2조"
+          ]
+        },
+        {
+          "qid": "DEV-015",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-042",
+          "mode": "question_only",
+          "lost": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-042",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-067",
+          "mode": "question_only",
+          "lost": [
+            "주택임대차보호법-제4조"
+          ]
+        }
+      ],
+      "prior_required_rank_losses": {
+        "1": [
+          {
+            "qid": "DEV-005",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조의6"
+            ]
+          },
+          {
+            "qid": "DEV-025",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조의7"
+            ]
+          },
+          {
+            "qid": "DEV-025",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조의7"
+            ]
+          },
+          {
+            "qid": "DEV-043",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-044",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "qid": "DEV-005",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-005",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조의6"
+            ]
+          },
+          {
+            "qid": "DEV-009",
+            "mode": "question_only",
+            "lost": [
+              "상가건물임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-010",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-040",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-044",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "qid": "DEV-005",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-009",
+            "mode": "question_only",
+            "lost": [
+              "상가건물임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-015",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-042",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-042",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-067",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제4조"
+            ]
+          }
+        ]
+      },
+      "changed_inputs": 147,
+      "procedure_count_distribution": {
+        "0": 162,
+        "1": 37,
+        "2": 19,
+        "3": 10,
+        "4": 7,
+        "5": 0
+      }
+    },
+    "split_half": {
+      "groups": {
+        "question_only": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 24,
+            "all_required_returned": 28,
+            "no_fixed_target": 23,
+            "data_missing_all": 16,
+            "data_missing_some": 7,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.3968085106382979,
+                "hit@1": 0.3191489361702128,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.46808510638297873,
+                "hit@5": 0.5319148936170213,
+                "recall@1": 0.23900709219858157,
+                "recall@2": 0.29929078014184396,
+                "recall@3": 0.3524822695035461,
+                "recall@5": 0.400354609929078
+              },
+              "all_targets_held": {
+                "n": 32,
+                "mrr": 0.5723958333333334,
+                "hit@1": 0.46875,
+                "hit@2": 0.59375,
+                "hit@3": 0.65625,
+                "hit@5": 0.75,
+                "recall@1": 0.3510416666666667,
+                "recall@2": 0.4395833333333333,
+                "recall@3": 0.5020833333333333,
+                "recall@5": 0.5723958333333333
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.4166666666666667,
+                "hit@1": 0.375,
+                "hit@2": 0.4375,
+                "hit@3": 0.46875,
+                "recall@1": 0.359375,
+                "recall@2": 0.4375,
+                "recall@3": 0.46875
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5797101449275363,
+                "hit@1": 0.5217391304347826,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6521739130434783,
+                "recall@1": 0.5,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6521739130434783
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 75
+          }
+        },
+        "context_diagnostic": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 22,
+            "all_required_returned": 30,
+            "no_fixed_target": 23,
+            "data_missing_all": 16,
+            "data_missing_some": 7,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.38794326241134747,
+                "hit@1": 0.2765957446808511,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.48936170212765956,
+                "hit@5": 0.574468085106383,
+                "recall@1": 0.2,
+                "recall@2": 0.3170212765957447,
+                "recall@3": 0.3879432624113475,
+                "recall@5": 0.4695035460992908
+              },
+              "all_targets_held": {
+                "n": 32,
+                "mrr": 0.559375,
+                "hit@1": 0.40625,
+                "hit@2": 0.59375,
+                "hit@3": 0.6875,
+                "hit@5": 0.8125,
+                "recall@1": 0.29375,
+                "recall@2": 0.465625,
+                "recall@3": 0.5541666666666667,
+                "recall@5": 0.6739583333333333
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.38020833333333337,
+                "hit@1": 0.34375,
+                "hit@2": 0.375,
+                "hit@3": 0.4375,
+                "recall@1": 0.328125,
+                "recall@2": 0.375,
+                "recall@3": 0.4375
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5289855072463768,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.5217391304347826,
+                "hit@3": 0.6086956521739131,
+                "recall@1": 0.45652173913043476,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 30,
+            "n": 75
+          }
+        },
+        "required_law": {
+          "n": 29,
+          "categories": {
+            "all_required_returned": 28,
+            "retrieval_miss": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 29
+          }
+        },
+        "scope_provisional": {
+          "n": 1,
+          "categories": {
+            "all_required_returned": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 1,
+            "n": 1
+          }
+        },
+        "diagnostic_only": {
+          "n": 5,
+          "categories": {
+            "no_fixed_target": 5
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 0,
+            "n": 0
+          }
+        }
+      },
+      "losses": [],
+      "prior_required_rank_losses": {
+        "1": [],
+        "3": [],
+        "5": []
+      },
+      "changed_inputs": 37,
+      "procedure_count_distribution": {
+        "0": 198,
+        "1": 34,
+        "2": 3,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "split_three_quarters": {
+      "groups": {
+        "question_only": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 20,
+            "all_required_returned": 32,
+            "no_fixed_target": 23,
+            "data_missing_all": 16,
+            "data_missing_some": 7,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.41099290780141845,
+                "hit@1": 0.2978723404255319,
+                "hit@2": 0.46808510638297873,
+                "hit@3": 0.5106382978723404,
+                "hit@5": 0.574468085106383,
+                "recall@1": 0.22836879432624116,
+                "recall@2": 0.33191489361702126,
+                "recall@3": 0.3723404255319149,
+                "recall@5": 0.46773049645390075
+              },
+              "all_targets_held": {
+                "n": 32,
+                "mrr": 0.5723958333333333,
+                "hit@1": 0.4375,
+                "hit@2": 0.625,
+                "hit@3": 0.6875,
+                "hit@5": 0.78125,
+                "recall@1": 0.3354166666666667,
+                "recall@2": 0.4692708333333333,
+                "recall@3": 0.5286458333333333,
+                "recall@5": 0.66875
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.4166666666666667,
+                "hit@1": 0.375,
+                "hit@2": 0.4375,
+                "hit@3": 0.46875,
+                "recall@1": 0.359375,
+                "recall@2": 0.4375,
+                "recall@3": 0.46875
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5797101449275363,
+                "hit@1": 0.5217391304347826,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6521739130434783,
+                "recall@1": 0.5,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6521739130434783
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 32,
+            "n": 75
+          }
+        },
+        "context_diagnostic": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 19,
+            "all_required_returned": 33,
+            "no_fixed_target": 23,
+            "data_missing_all": 16,
+            "data_missing_some": 7,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.3907801418439716,
+                "hit@1": 0.23404255319148937,
+                "hit@2": 0.44680851063829785,
+                "hit@3": 0.5531914893617021,
+                "hit@5": 0.6170212765957447,
+                "recall@1": 0.17872340425531916,
+                "recall@2": 0.32765957446808514,
+                "recall@3": 0.3975177304964539,
+                "recall@5": 0.5070921985815603
+              },
+              "all_targets_held": {
+                "n": 32,
+                "mrr": 0.5401041666666666,
+                "hit@1": 0.34375,
+                "hit@2": 0.625,
+                "hit@3": 0.75,
+                "hit@5": 0.8125,
+                "recall@1": 0.2625,
+                "recall@2": 0.4734375,
+                "recall@3": 0.5604166666666667,
+                "recall@5": 0.7109375
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.38020833333333337,
+                "hit@1": 0.34375,
+                "hit@2": 0.375,
+                "hit@3": 0.4375,
+                "recall@1": 0.328125,
+                "recall@2": 0.375,
+                "recall@3": 0.4375
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5289855072463768,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.5217391304347826,
+                "hit@3": 0.6086956521739131,
+                "recall@1": 0.45652173913043476,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 33,
+            "n": 75
+          }
+        },
+        "required_law": {
+          "n": 29,
+          "categories": {
+            "all_required_returned": 28,
+            "retrieval_miss": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 29
+          }
+        },
+        "scope_provisional": {
+          "n": 1,
+          "categories": {
+            "all_required_returned": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 1,
+            "n": 1
+          }
+        },
+        "diagnostic_only": {
+          "n": 5,
+          "categories": {
+            "no_fixed_target": 5
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 0,
+            "n": 0
+          }
+        }
+      },
+      "losses": [
+        {
+          "qid": "DEV-009",
+          "mode": "question_only",
+          "lost": [
+            "상가건물임대차보호법-제2조"
+          ]
+        },
+        {
+          "qid": "DEV-015",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-042",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-050",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조의6"
+          ]
+        },
+        {
+          "qid": "DEV-067",
+          "mode": "question_only",
+          "lost": [
+            "주택임대차보호법-제4조"
+          ]
+        },
+        {
+          "qid": "DEV-088",
+          "mode": "question_only",
+          "lost": [
+            "상가건물임대차보호법-제3조"
+          ]
+        }
+      ],
+      "prior_required_rank_losses": {
+        "1": [
+          {
+            "qid": "DEV-009",
+            "mode": "context_diagnostic",
+            "lost": [
+              "상가건물임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-044",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-050",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조의6"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "qid": "DEV-009",
+            "mode": "question_only",
+            "lost": [
+              "상가건물임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-009",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-010",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-040",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-044",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-047",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제6조의3"
+            ]
+          },
+          {
+            "qid": "DEV-088",
+            "mode": "question_only",
+            "lost": [
+              "상가건물임대차보호법-제3조"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "qid": "DEV-009",
+            "mode": "question_only",
+            "lost": [
+              "상가건물임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-015",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-042",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-050",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조의6"
+            ]
+          },
+          {
+            "qid": "DEV-067",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제4조"
+            ]
+          },
+          {
+            "qid": "DEV-088",
+            "mode": "question_only",
+            "lost": [
+              "상가건물임대차보호법-제3조"
+            ]
+          }
+        ]
+      },
+      "changed_inputs": 234,
+      "procedure_count_distribution": {
+        "0": 1,
+        "1": 57,
+        "2": 140,
+        "3": 33,
+        "4": 4,
+        "5": 0
+      }
+    },
+    "split_equal": {
+      "groups": {
+        "question_only": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 21,
+            "all_required_returned": 31,
+            "no_fixed_target": 23,
+            "data_missing_all": 16,
+            "data_missing_some": 7,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.3872340425531915,
+                "hit@1": 0.3191489361702128,
+                "hit@2": 0.3829787234042553,
+                "hit@3": 0.44680851063829785,
+                "hit@5": 0.5106382978723404,
+                "recall@1": 0.17695035460992908,
+                "recall@2": 0.24574468085106385,
+                "recall@3": 0.34645390070921983,
+                "recall@5": 0.42836879432624114
+              },
+              "all_targets_held": {
+                "n": 32,
+                "mrr": 0.5062500000000001,
+                "hit@1": 0.40625,
+                "hit@2": 0.5,
+                "hit@3": 0.59375,
+                "hit@5": 0.6875,
+                "recall@1": 0.24166666666666667,
+                "recall@2": 0.34270833333333334,
+                "recall@3": 0.490625,
+                "recall@5": 0.6109375
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.4166666666666667,
+                "hit@1": 0.375,
+                "hit@2": 0.4375,
+                "hit@3": 0.46875,
+                "recall@1": 0.359375,
+                "recall@2": 0.4375,
+                "recall@3": 0.46875
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5797101449275363,
+                "hit@1": 0.5217391304347826,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6521739130434783,
+                "recall@1": 0.5,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6521739130434783
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 31,
+            "n": 75
+          }
+        },
+        "context_diagnostic": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 23,
+            "all_required_returned": 29,
+            "no_fixed_target": 23,
+            "data_missing_all": 16,
+            "data_missing_some": 7,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.3890070921985816,
+                "hit@1": 0.2978723404255319,
+                "hit@2": 0.3617021276595745,
+                "hit@3": 0.44680851063829785,
+                "hit@5": 0.574468085106383,
+                "recall@1": 0.15921985815602838,
+                "recall@2": 0.20673758865248223,
+                "recall@3": 0.31099290780141847,
+                "recall@5": 0.4684397163120567
+              },
+              "all_targets_held": {
+                "n": 32,
+                "mrr": 0.5182291666666667,
+                "hit@1": 0.40625,
+                "hit@2": 0.46875,
+                "hit@3": 0.59375,
+                "hit@5": 0.75,
+                "recall@1": 0.22604166666666667,
+                "recall@2": 0.28541666666666665,
+                "recall@3": 0.43854166666666666,
+                "recall@5": 0.6541666666666667
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.38020833333333337,
+                "hit@1": 0.34375,
+                "hit@2": 0.375,
+                "hit@3": 0.4375,
+                "recall@1": 0.328125,
+                "recall@2": 0.375,
+                "recall@3": 0.4375
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5289855072463768,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.5217391304347826,
+                "hit@3": 0.6086956521739131,
+                "recall@1": 0.45652173913043476,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 29,
+            "n": 75
+          }
+        },
+        "required_law": {
+          "n": 29,
+          "categories": {
+            "all_required_returned": 28,
+            "retrieval_miss": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 0.3333333333333333,
+                "hit@1": 0.0,
+                "hit@2": 0.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 0.0,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 0.3333333333333333,
+                "hit@1": 0.0,
+                "hit@2": 0.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 0.0,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 29
+          }
+        },
+        "scope_provisional": {
+          "n": 1,
+          "categories": {
+            "all_required_returned": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 1,
+            "n": 1
+          }
+        },
+        "diagnostic_only": {
+          "n": 5,
+          "categories": {
+            "no_fixed_target": 5
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 0,
+            "n": 0
+          }
+        }
+      },
+      "losses": [
+        {
+          "qid": "DEV-005",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조",
+            "주택임대차보호법-제3조의6"
+          ]
+        },
+        {
+          "qid": "DEV-009",
+          "mode": "question_only",
+          "lost": [
+            "상가건물임대차보호법-제2조"
+          ]
+        },
+        {
+          "qid": "DEV-009",
+          "mode": "context_diagnostic",
+          "lost": [
+            "상가건물임대차보호법-제2조",
+            "주택임대차보호법-제2조"
+          ]
+        },
+        {
+          "qid": "DEV-010",
+          "mode": "question_only",
+          "lost": [
+            "주택임대차보호법-제3조의3"
+          ]
+        },
+        {
+          "qid": "DEV-010",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조의3"
+          ]
+        },
+        {
+          "qid": "DEV-015",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-040",
+          "mode": "question_only",
+          "lost": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-040",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-042",
+          "mode": "question_only",
+          "lost": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-042",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-044",
+          "mode": "question_only",
+          "lost": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-047",
+          "mode": "question_only",
+          "lost": [
+            "주택임대차보호법-제6조의3"
+          ]
+        },
+        {
+          "qid": "DEV-050",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조의6"
+          ]
+        },
+        {
+          "qid": "DEV-067",
+          "mode": "question_only",
+          "lost": [
+            "주택임대차보호법-제4조"
+          ]
+        },
+        {
+          "qid": "DEV-088",
+          "mode": "question_only",
+          "lost": [
+            "상가건물임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-099",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조의6"
+          ]
+        }
+      ],
+      "prior_required_rank_losses": {
+        "1": [
+          {
+            "qid": "DEV-005",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조의6"
+            ]
+          },
+          {
+            "qid": "DEV-007",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-009",
+            "mode": "context_diagnostic",
+            "lost": [
+              "상가건물임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-033",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-043",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-044",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-048",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제6조의3"
+            ]
+          },
+          {
+            "qid": "DEV-049",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제7조"
+            ]
+          },
+          {
+            "qid": "DEV-050",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조의6"
+            ]
+          },
+          {
+            "qid": "DEV-051",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제6조"
+            ]
+          },
+          {
+            "qid": "DEV-051",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제6조"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "mode": "context_diagnostic",
+            "lost": [
+              "상가건물임대차보호법-제10조"
+            ]
+          },
+          {
+            "qid": "DEV-099",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조의6"
+            ]
+          },
+          {
+            "qid": "CIV-DRAFT-028",
+            "mode": "question_context",
+            "lost": [
+              "상가건물임대차보호법-제10조의8"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "qid": "DEV-005",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조의6"
+            ]
+          },
+          {
+            "qid": "DEV-009",
+            "mode": "question_only",
+            "lost": [
+              "상가건물임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-009",
+            "mode": "context_diagnostic",
+            "lost": [
+              "상가건물임대차보호법-제2조",
+              "주택임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-010",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-010",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-033",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-040",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-040",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-043",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-043",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-044",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-047",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제6조의3"
+            ]
+          },
+          {
+            "qid": "DEV-047",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제6조",
+              "주택임대차보호법-제6조의3"
+            ]
+          },
+          {
+            "qid": "DEV-049",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제7조"
+            ]
+          },
+          {
+            "qid": "DEV-050",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조의6"
+            ]
+          },
+          {
+            "qid": "DEV-052",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제6조"
+            ]
+          },
+          {
+            "qid": "DEV-054",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제4조"
+            ]
+          },
+          {
+            "qid": "DEV-067",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제4조"
+            ]
+          },
+          {
+            "qid": "DEV-088",
+            "mode": "question_only",
+            "lost": [
+              "상가건물임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-088",
+            "mode": "context_diagnostic",
+            "lost": [
+              "상가건물임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-089",
+            "mode": "question_only",
+            "lost": [
+              "상가건물임대차보호법-제10조"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "qid": "DEV-005",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조",
+              "주택임대차보호법-제3조의6"
+            ]
+          },
+          {
+            "qid": "DEV-009",
+            "mode": "question_only",
+            "lost": [
+              "상가건물임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-009",
+            "mode": "context_diagnostic",
+            "lost": [
+              "상가건물임대차보호법-제2조",
+              "주택임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-010",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-010",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-015",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-040",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-040",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-042",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-042",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-044",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-047",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제6조의3"
+            ]
+          },
+          {
+            "qid": "DEV-050",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조의6"
+            ]
+          },
+          {
+            "qid": "DEV-067",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제4조"
+            ]
+          },
+          {
+            "qid": "DEV-088",
+            "mode": "question_only",
+            "lost": [
+              "상가건물임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-099",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조의6"
+            ]
+          }
+        ]
+      },
+      "changed_inputs": 235,
+      "procedure_count_distribution": {
+        "0": 0,
+        "1": 1,
+        "2": 20,
+        "3": 142,
+        "4": 67,
+        "5": 5
+      }
+    },
+    "keep2_split_equal": {
+      "groups": {
+        "question_only": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 22,
+            "all_required_returned": 30,
+            "no_fixed_target": 23,
+            "data_missing_all": 16,
+            "data_missing_some": 7,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.40248226950354604,
+                "hit@1": 0.3191489361702128,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.5106382978723404,
+                "hit@5": 0.5319148936170213,
+                "recall@1": 0.23900709219858157,
+                "recall@2": 0.29929078014184396,
+                "recall@3": 0.35921985815602836,
+                "recall@5": 0.4400709219858156
+              },
+              "all_targets_held": {
+                "n": 32,
+                "mrr": 0.5703125,
+                "hit@1": 0.46875,
+                "hit@2": 0.59375,
+                "hit@3": 0.6875,
+                "hit@5": 0.71875,
+                "recall@1": 0.3510416666666667,
+                "recall@2": 0.4395833333333333,
+                "recall@3": 0.509375,
+                "recall@5": 0.628125
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.4166666666666667,
+                "hit@1": 0.375,
+                "hit@2": 0.4375,
+                "hit@3": 0.46875,
+                "recall@1": 0.359375,
+                "recall@2": 0.4375,
+                "recall@3": 0.46875
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5797101449275363,
+                "hit@1": 0.5217391304347826,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6521739130434783,
+                "recall@1": 0.5,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6521739130434783
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 30,
+            "n": 75
+          }
+        },
+        "context_diagnostic": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 23,
+            "all_required_returned": 29,
+            "no_fixed_target": 23,
+            "data_missing_all": 16,
+            "data_missing_some": 7,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.39680851063829775,
+                "hit@1": 0.2765957446808511,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.5319148936170213,
+                "hit@5": 0.5957446808510638,
+                "recall@1": 0.2,
+                "recall@2": 0.3170212765957447,
+                "recall@3": 0.3804964539007092,
+                "recall@5": 0.47907801418439716
+              },
+              "all_targets_held": {
+                "n": 32,
+                "mrr": 0.5583333333333332,
+                "hit@1": 0.40625,
+                "hit@2": 0.59375,
+                "hit@3": 0.75,
+                "hit@5": 0.78125,
+                "recall@1": 0.29375,
+                "recall@2": 0.465625,
+                "recall@3": 0.5510416666666667,
+                "recall@5": 0.6697916666666667
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.38020833333333337,
+                "hit@1": 0.34375,
+                "hit@2": 0.375,
+                "hit@3": 0.4375,
+                "recall@1": 0.328125,
+                "recall@2": 0.375,
+                "recall@3": 0.4375
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5289855072463768,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.5217391304347826,
+                "hit@3": 0.6086956521739131,
+                "recall@1": 0.45652173913043476,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 29,
+            "n": 75
+          }
+        },
+        "required_law": {
+          "n": 29,
+          "categories": {
+            "all_required_returned": 28,
+            "retrieval_miss": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 29
+          }
+        },
+        "scope_provisional": {
+          "n": 1,
+          "categories": {
+            "all_required_returned": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 1,
+            "n": 1
+          }
+        },
+        "diagnostic_only": {
+          "n": 5,
+          "categories": {
+            "no_fixed_target": 5
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 0,
+            "n": 0
+          }
+        }
+      },
+      "losses": [
+        {
+          "qid": "DEV-005",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조",
+            "주택임대차보호법-제3조의6"
+          ]
+        },
+        {
+          "qid": "DEV-009",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제2조"
+          ]
+        },
+        {
+          "qid": "DEV-010",
+          "mode": "question_only",
+          "lost": [
+            "주택임대차보호법-제3조의3"
+          ]
+        },
+        {
+          "qid": "DEV-010",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조의3"
+          ]
+        },
+        {
+          "qid": "DEV-015",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-040",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-042",
+          "mode": "question_only",
+          "lost": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-042",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-044",
+          "mode": "question_only",
+          "lost": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-047",
+          "mode": "question_only",
+          "lost": [
+            "주택임대차보호법-제6조의3"
+          ]
+        },
+        {
+          "qid": "DEV-050",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조의6"
+          ]
+        },
+        {
+          "qid": "DEV-067",
+          "mode": "question_only",
+          "lost": [
+            "주택임대차보호법-제4조"
+          ]
+        },
+        {
+          "qid": "DEV-088",
+          "mode": "question_only",
+          "lost": [
+            "상가건물임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-099",
+          "mode": "context_diagnostic",
+          "lost": [
+            "주택임대차보호법-제3조의6"
+          ]
+        }
+      ],
+      "prior_required_rank_losses": {
+        "1": [],
+        "3": [
+          {
+            "qid": "DEV-005",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조의6"
+            ]
+          },
+          {
+            "qid": "DEV-009",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-010",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-010",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-040",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-044",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-047",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제6조의3"
+            ]
+          },
+          {
+            "qid": "DEV-047",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제6조의3"
+            ]
+          },
+          {
+            "qid": "DEV-088",
+            "mode": "question_only",
+            "lost": [
+              "상가건물임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-088",
+            "mode": "context_diagnostic",
+            "lost": [
+              "상가건물임대차보호법-제3조"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "qid": "DEV-005",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조",
+              "주택임대차보호법-제3조의6"
+            ]
+          },
+          {
+            "qid": "DEV-009",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-010",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-010",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-015",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-040",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-042",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-042",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-044",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-047",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제6조의3"
+            ]
+          },
+          {
+            "qid": "DEV-050",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조의6"
+            ]
+          },
+          {
+            "qid": "DEV-067",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제4조"
+            ]
+          },
+          {
+            "qid": "DEV-088",
+            "mode": "question_only",
+            "lost": [
+              "상가건물임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-099",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조의6"
+            ]
+          }
+        ]
+      },
+      "changed_inputs": 235,
+      "procedure_count_distribution": {
+        "0": 0,
+        "1": 1,
+        "2": 20,
+        "3": 214,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "pool_half": {
+      "groups": {
+        "question_only": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 23,
+            "all_required_returned": 29,
+            "no_fixed_target": 23,
+            "data_missing_all": 16,
+            "data_missing_some": 7,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.43333333333333335,
+                "hit@1": 0.3191489361702128,
+                "hit@2": 0.48936170212765956,
+                "hit@3": 0.5319148936170213,
+                "hit@5": 0.5957446808510638,
+                "recall@1": 0.23900709219858157,
+                "recall@2": 0.3372340425531915,
+                "recall@3": 0.37872340425531914,
+                "recall@5": 0.4475177304964539
+              },
+              "all_targets_held": {
+                "n": 32,
+                "mrr": 0.5895833333333333,
+                "hit@1": 0.46875,
+                "hit@2": 0.625,
+                "hit@3": 0.6875,
+                "hit@5": 0.78125,
+                "recall@1": 0.3510416666666667,
+                "recall@2": 0.4614583333333333,
+                "recall@3": 0.5223958333333334,
+                "recall@5": 0.6234375
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.4166666666666667,
+                "hit@1": 0.375,
+                "hit@2": 0.4375,
+                "hit@3": 0.46875,
+                "recall@1": 0.359375,
+                "recall@2": 0.4375,
+                "recall@3": 0.46875
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5797101449275363,
+                "hit@1": 0.5217391304347826,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6521739130434783,
+                "recall@1": 0.5,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6521739130434783
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 29,
+            "n": 75
+          }
+        },
+        "context_diagnostic": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 22,
+            "all_required_returned": 30,
+            "no_fixed_target": 23,
+            "data_missing_all": 16,
+            "data_missing_some": 7,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.38794326241134747,
+                "hit@1": 0.2765957446808511,
+                "hit@2": 0.40425531914893614,
+                "hit@3": 0.48936170212765956,
+                "hit@5": 0.574468085106383,
+                "recall@1": 0.2,
+                "recall@2": 0.32127659574468087,
+                "recall@3": 0.3921985815602837,
+                "recall@5": 0.48226950354609927
+              },
+              "all_targets_held": {
+                "n": 32,
+                "mrr": 0.559375,
+                "hit@1": 0.40625,
+                "hit@2": 0.59375,
+                "hit@3": 0.6875,
+                "hit@5": 0.8125,
+                "recall@1": 0.29375,
+                "recall@2": 0.471875,
+                "recall@3": 0.5604166666666667,
+                "recall@5": 0.6927083333333333
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.38020833333333337,
+                "hit@1": 0.34375,
+                "hit@2": 0.375,
+                "hit@3": 0.4375,
+                "recall@1": 0.328125,
+                "recall@2": 0.375,
+                "recall@3": 0.4375
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5289855072463768,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.5217391304347826,
+                "hit@3": 0.6086956521739131,
+                "recall@1": 0.45652173913043476,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 30,
+            "n": 75
+          }
+        },
+        "required_law": {
+          "n": 29,
+          "categories": {
+            "all_required_returned": 28,
+            "retrieval_miss": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 29
+          }
+        },
+        "scope_provisional": {
+          "n": 1,
+          "categories": {
+            "all_required_returned": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 1,
+            "n": 1
+          }
+        },
+        "diagnostic_only": {
+          "n": 5,
+          "categories": {
+            "no_fixed_target": 5
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 0,
+            "n": 0
+          }
+        }
+      },
+      "losses": [],
+      "prior_required_rank_losses": {
+        "1": [],
+        "3": [
+          {
+            "qid": "DEV-044",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          }
+        ],
+        "5": []
+      },
+      "changed_inputs": 54,
+      "procedure_count_distribution": {
+        "0": 221,
+        "1": 9,
+        "2": 4,
+        "3": 1,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "pool_equal": {
+      "groups": {
+        "question_only": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 23,
+            "all_required_returned": 29,
+            "no_fixed_target": 23,
+            "data_missing_all": 16,
+            "data_missing_some": 7,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.44751773049645394,
+                "hit@1": 0.3191489361702128,
+                "hit@2": 0.5319148936170213,
+                "hit@3": 0.5531914893617021,
+                "hit@5": 0.6170212765957447,
+                "recall@1": 0.23900709219858157,
+                "recall@2": 0.3521276595744681,
+                "recall@3": 0.3882978723404255,
+                "recall@5": 0.4624113475177305
+              },
+              "all_targets_held": {
+                "n": 32,
+                "mrr": 0.6104166666666667,
+                "hit@1": 0.46875,
+                "hit@2": 0.6875,
+                "hit@3": 0.71875,
+                "hit@5": 0.8125,
+                "recall@1": 0.3510416666666667,
+                "recall@2": 0.48333333333333334,
+                "recall@3": 0.5364583333333333,
+                "recall@5": 0.6453125
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.4166666666666667,
+                "hit@1": 0.375,
+                "hit@2": 0.4375,
+                "hit@3": 0.46875,
+                "recall@1": 0.359375,
+                "recall@2": 0.4375,
+                "recall@3": 0.46875
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5797101449275363,
+                "hit@1": 0.5217391304347826,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6521739130434783,
+                "recall@1": 0.5,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6521739130434783
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 29,
+            "n": 75
+          }
+        },
+        "context_diagnostic": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 21,
+            "all_required_returned": 31,
+            "no_fixed_target": 23,
+            "data_missing_all": 16,
+            "data_missing_some": 7,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.41773049645390065,
+                "hit@1": 0.2765957446808511,
+                "hit@2": 0.44680851063829785,
+                "hit@3": 0.5319148936170213,
+                "hit@5": 0.6595744680851063,
+                "recall@1": 0.2,
+                "recall@2": 0.3414893617021277,
+                "recall@3": 0.41666666666666663,
+                "recall@5": 0.5195035460992907
+              },
+              "all_targets_held": {
+                "n": 32,
+                "mrr": 0.5968749999999999,
+                "hit@1": 0.40625,
+                "hit@2": 0.65625,
+                "hit@3": 0.75,
+                "hit@5": 0.90625,
+                "recall@1": 0.29375,
+                "recall@2": 0.5015625,
+                "recall@3": 0.5963541666666666,
+                "recall@5": 0.7395833333333333
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.38020833333333337,
+                "hit@1": 0.34375,
+                "hit@2": 0.375,
+                "hit@3": 0.4375,
+                "recall@1": 0.328125,
+                "recall@2": 0.375,
+                "recall@3": 0.4375
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5289855072463768,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.5217391304347826,
+                "hit@3": 0.6086956521739131,
+                "recall@1": 0.45652173913043476,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 31,
+            "n": 75
+          }
+        },
+        "required_law": {
+          "n": 29,
+          "categories": {
+            "all_required_returned": 28,
+            "retrieval_miss": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 29
+          }
+        },
+        "scope_provisional": {
+          "n": 1,
+          "categories": {
+            "all_required_returned": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 1,
+            "n": 1
+          }
+        },
+        "diagnostic_only": {
+          "n": 5,
+          "categories": {
+            "no_fixed_target": 5
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 0,
+            "n": 0
+          }
+        }
+      },
+      "losses": [],
+      "prior_required_rank_losses": {
+        "1": [],
+        "3": [
+          {
+            "qid": "DEV-044",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          }
+        ],
+        "5": []
+      },
+      "changed_inputs": 60,
+      "procedure_count_distribution": {
+        "0": 209,
+        "1": 19,
+        "2": 4,
+        "3": 2,
+        "4": 1,
+        "5": 0
+      }
+    },
+    "pool_double": {
+      "groups": {
+        "question_only": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 18,
+            "all_required_returned": 34,
+            "no_fixed_target": 23,
+            "data_missing_all": 16,
+            "data_missing_some": 7,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.4861702127659574,
+                "hit@1": 0.40425531914893614,
+                "hit@2": 0.5319148936170213,
+                "hit@3": 0.5319148936170213,
+                "hit@5": 0.6170212765957447,
+                "recall@1": 0.2673758865248227,
+                "recall@2": 0.37340425531914895,
+                "recall@3": 0.4049645390070922,
+                "recall@5": 0.5177304964539008
+              },
+              "all_targets_held": {
+                "n": 32,
+                "mrr": 0.6359374999999999,
+                "hit@1": 0.53125,
+                "hit@2": 0.6875,
+                "hit@3": 0.6875,
+                "hit@5": 0.8125,
+                "recall@1": 0.3744791666666667,
+                "recall@2": 0.5145833333333334,
+                "recall@3": 0.5609375,
+                "recall@5": 0.7265625
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.4166666666666667,
+                "hit@1": 0.375,
+                "hit@2": 0.4375,
+                "hit@3": 0.46875,
+                "recall@1": 0.359375,
+                "recall@2": 0.4375,
+                "recall@3": 0.46875
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5797101449275363,
+                "hit@1": 0.5217391304347826,
+                "hit@2": 0.6086956521739131,
+                "hit@3": 0.6521739130434783,
+                "recall@1": 0.5,
+                "recall@2": 0.6086956521739131,
+                "recall@3": 0.6521739130434783
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 34,
+            "n": 75
+          }
+        },
+        "context_diagnostic": {
+          "n": 100,
+          "categories": {
+            "retrieval_miss": 18,
+            "all_required_returned": 34,
+            "no_fixed_target": 23,
+            "data_missing_all": 16,
+            "data_missing_some": 7,
+            "historical_review": 2
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 47,
+                "mrr": 0.46382978723404256,
+                "hit@1": 0.3191489361702128,
+                "hit@2": 0.5106382978723404,
+                "hit@3": 0.574468085106383,
+                "hit@5": 0.7021276595744681,
+                "recall@1": 0.22127659574468087,
+                "recall@2": 0.3521276595744681,
+                "recall@3": 0.4475177304964539,
+                "recall@5": 0.5890070921985816
+              },
+              "all_targets_held": {
+                "n": 32,
+                "mrr": 0.6473958333333334,
+                "hit@1": 0.46875,
+                "hit@2": 0.71875,
+                "hit@3": 0.78125,
+                "hit@5": 0.9375,
+                "recall@1": 0.325,
+                "recall@2": 0.509375,
+                "recall@3": 0.6338541666666666,
+                "recall@5": 0.83125
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 32,
+                "mrr": 0.38020833333333337,
+                "hit@1": 0.34375,
+                "hit@2": 0.375,
+                "hit@3": 0.4375,
+                "recall@1": 0.328125,
+                "recall@2": 0.375,
+                "recall@3": 0.4375
+              },
+              "all_targets_held": {
+                "n": 23,
+                "mrr": 0.5289855072463768,
+                "hit@1": 0.4782608695652174,
+                "hit@2": 0.5217391304347826,
+                "hit@3": 0.6086956521739131,
+                "recall@1": 0.45652173913043476,
+                "recall@2": 0.5217391304347826,
+                "recall@3": 0.6086956521739131
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 34,
+            "n": 75
+          }
+        },
+        "required_law": {
+          "n": 29,
+          "categories": {
+            "all_required_returned": 28,
+            "retrieval_miss": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 1.0,
+                "hit@1": 1.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "hit@5": 1.0,
+                "recall@1": 0.5,
+                "recall@2": 0.5,
+                "recall@3": 0.5,
+                "recall@5": 0.5
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 29,
+                "mrr": 0.8793103448275862,
+                "hit@1": 0.7586206896551724,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.7413793103448276,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 28,
+            "n": 29
+          }
+        },
+        "scope_provisional": {
+          "n": 1,
+          "categories": {
+            "all_required_returned": 1
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              },
+              "all_targets_held": {
+                "n": 1,
+                "mrr": 0.5,
+                "hit@1": 0.0,
+                "hit@2": 1.0,
+                "hit@3": 1.0,
+                "recall@1": 0.0,
+                "recall@2": 1.0,
+                "recall@3": 1.0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 1,
+            "n": 1
+          }
+        },
+        "diagnostic_only": {
+          "n": 5,
+          "categories": {
+            "no_fixed_target": 5
+          },
+          "channel_metrics": {
+            "general": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            },
+            "civil": {
+              "all_target_items": {
+                "n": 0
+              },
+              "all_targets_held": {
+                "n": 0
+              }
+            }
+          },
+          "union_all_required": {
+            "hits": 0,
+            "n": 0
+          }
+        }
+      },
+      "losses": [
+        {
+          "qid": "DEV-009",
+          "mode": "question_only",
+          "lost": [
+            "상가건물임대차보호법-제2조"
+          ]
+        }
+      ],
+      "prior_required_rank_losses": {
+        "1": [
+          {
+            "qid": "DEV-005",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조의6"
+            ]
+          },
+          {
+            "qid": "DEV-025",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조의7"
+            ]
+          },
+          {
+            "qid": "DEV-025",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조의7"
+            ]
+          },
+          {
+            "qid": "DEV-043",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          }
+        ],
+        "3": [
+          {
+            "qid": "DEV-009",
+            "mode": "question_only",
+            "lost": [
+              "상가건물임대차보호법-제2조"
+            ]
+          },
+          {
+            "qid": "DEV-010",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-010",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "DEV-040",
+            "mode": "context_diagnostic",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "DEV-044",
+            "mode": "question_only",
+            "lost": [
+              "주택임대차보호법-제3조"
+            ]
+          }
+        ],
+        "5": [
+          {
+            "qid": "DEV-009",
+            "mode": "question_only",
+            "lost": [
+              "상가건물임대차보호법-제2조"
+            ]
+          }
+        ]
+      },
+      "changed_inputs": 138,
+      "procedure_count_distribution": {
+        "0": 161,
+        "1": 40,
+        "2": 24,
+        "3": 7,
+        "4": 3,
+        "5": 0
+      }
+    }
+  },
+  "implemented_candidate": "pool_equal",
+  "top5_preservation_passed": true,
+  "top3_preservation_passed": false,
+  "operating_data_adopted": false,
+  "product_matches": 235,
+  "other_channels_preserved": true
+}

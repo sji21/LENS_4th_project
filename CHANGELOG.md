@@ -5,7 +5,43 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-13
+
+### Changed
+
+- PATCH-027 unifies active source, test and data directory names under 027. Preserve all frozen source/capture bytes and hashes; translate only the three old data prefixes on read, leaving execution-code hashes tied to their original commits. Product retrieval and installed data are unchanged. (commit: 36e9791)
+
+- PATCH-027 integrates main `6e40d21` after team PR #24 merged during review. Preserve both patch records and distinguish the legacy civil10 setup from the expanded civil26 profile in README. Retrieval code is unchanged; the integrated checkout passes 1,111 tests with 3 skips and 172 subtests. (commit: 7be0613)
+
+- PATCH-027 fixes PR #25 receipt-failure rollback: validate and store the installation receipt inside the protected transaction, so missing, partial or invalid writes restore the original payload without requiring receipt-based recovery. Rename explanatory documents to PATCH-027, update links and mark old experiments explicitly while preserving captured script/data paths and hashes. Retrieval policy and active data are unchanged. (commit: 562905d)
+
+- PATCH-027 completes product rollout in the patch worktree: back up the 143-article data and activate the verified 204-article/civil26 profile. Both preflight and post-install default-factory runs match all 235 final-test outputs across four channels, with 375 model calls each. Publish capture/backup records and setup/restore instructions; 1,042 tests pass, 3 skip and 124 subtests pass after activation. Main-checkout/server data remain unchanged until their separate post-merge rollout. (commit: 4ddf8cf)
+
+- PATCH-027 connects the selected expanded-law policy to the product factory and BM25 fallback through a corpus/index-verified local profile. Preserve the general5/civil3/case5/guide2 API, report active evaluator settings and share embeddings only within a request. Add staged 235-input product verification and byte-verified backup, transactional replacement and restore tools. Worktree rollout verification is pending. (commit: 15a3461, 4457916)
+
+- PATCH-027 completes 705 fresh service calls and selects the record-lookup candidate for the 61-article expansion under the new user-authorized net-benefit protocol. DEV complete retrieval is 28→43/75 questions and 30→43/75 contexts; general3+civil3 coverage is 27→40 and 28→38/75. The last refinement recovers one prior loss, leaving seven returned-target and seven general TOP3 loss inputs. Model calls rise 235→375 and mean latency 0.232→0.403s. Preserve the remaining regressions and verified sources; 1,014 tests pass, 3 skip, 124 subtests pass. Technical adoption is recommended; production policy wiring and operating-data rollout remain pending. (commit: d9ee777)
+
+- PATCH-027 prepares the user-authorized final test for adopting the 61-article expansion. Freeze net gains, consumed evidence coverage, CIV35 preservation and integrity checks instead of requiring zero historical losses. Compare the verified policy with one bounded fixed-date-record lookup refinement using 235 fresh operating/control/candidate searches. Earlier acceptance results remain unchanged. (commit: 7294492)
+
+- PATCH-027 explains the union of eight returned-target and seven general TOP3 loss inputs: eleven distinct inputs, five complete-to-incomplete regressions, with all missing targets still present among candidates. One offline seedless-RRF comparison across 235 inputs recovers DEV-059 and gains DEV-064 but loses DEV-058; question complete retrieval rises 43→44/75 and context stays 42/75. Preserve both gains and losses, paired-context diagnostics and replay checks. No operating change or retrospective acceptance-gate revision. (commit: 4da57fd)
+
+- PATCH-027 corrects same-edition Civil Act reference parsing/revalidation, notice negation versus failed delivery, and public/private rental context separation. Freeze `context_both + context_reference` and verify 235 fresh service outputs against recombined rankings, bodies, sources, cases and guides. DEV complete retrieval remains 43/75 questions and 42/75 contexts, with nine new required civil articles retrieved; civil question Hit3 is 23/32 rather than the earlier 24/32 preview. Eight prior-return and seven general TOP3 loss inputs remain, so adoption is withheld. Measured model calls increase 235→375; the zero-additional-call claim is withdrawn. Share the clean-commit capture and replay guards; 988 tests pass, 3 skip, 124 subtests pass. Operating data and retrieval remain unchanged. (implementation: 5ea42a8, f8597cd; verification: dd47e58)
+
+- PATCH-027 compares concept expansion on the same 204 articles and 235 inputs. Expanding both BM25 and KURE raises civil Hit3 from 13→23/32 (question) and 13→20/32 (context), retrieving eight of nine newly required civil articles, but introduces two new evidence-loss inputs against the untuned 204-article result. Lexical-only civil expansion retrieves seven new articles without new returned-target losses against that result. General-law both-channel expansion improves Hit3 28→32/47 and 28→33/47, but loses prior targets; hard TOP3 preservation blocks newly added TOP3 gains. No policy passes the fixed adoption gate. A return-mail concept false positive was narrowed before final recapture. Operating retrieval/data remain unchanged. (commit: bf8b6eb, 082d3d7; analysis: 0fd54bd)
+
+- Renumber the local law-expansion work from PATCH-026 to PATCH-027 because team PR #24 has published PATCH-026. Resume the same local PATCH-027 work previously folded into local 26; do not reuse it for an unrelated task. Preserve capture paths/hashes and historical commits; rename only the active branch and current records. (commit: 052af96)
+
+- PATCH-027 compares six general-law alternatives and four civil-selection alternatives against the fixed 204-article/235-input capture. Question complete retrieval reaches 37/75, but every general alternative loses at least eight prior TOP3 targets by input; no policy passes the predeclared adoption gate. Removing civil topic selection worsens DEV retrieval, and none retrieves the nine newly required civil articles at TOP3 in their target inputs. Preserve traces, fixed denominators, regressions and replay validation; operating data and ranking policy remain unchanged. PATCH-027 stays in progress. (commit: f079a0f)
+
+- PATCH-027 adds 61 verified article records to a 204-article candidate and evaluates 235 identical inputs with all 26 Civil Act articles searchable. Existing version members, article bodies, source/structure data and vectors are preserved. DEV fixed-target data gaps drop from 32 to 0; complete retrieval rises 28→32 / 30→34, but 16 inputs lose prior required evidence. General TOP3 loss affects 13 inputs; civil TOP3 loses 3. Full-corpus ranks and source checks are reproducible offline. Operating adoption is deferred pending ranking improvements; historical/guide/appendix coverage and LLM answers are not claimed complete. (commit: be56037, 598ced4; analysis: 1758a7f)
+
+- PATCH-027 prioritizes completing the reviewed DEV100 law corpus before further five-article tuning. The inventory identifies 27 missing fixed-required articles plus 17 other reviewed references, with six law-tagged sources requiring document/article/version identification. These are collection candidates, not newly ingested or legally reverified records. Gold and operating data remain unchanged. (commit: f3c0728)
+
 ## 2026-09-12
+
+### Changed
+
+- PATCH-027 combines selection, candidate ingestion, retrieval improvements and evaluation for the same five residence/tax procedure articles. The two local experiments are consolidated without rewriting commits and their trace paths are preserved. Initial full/tax/residence ingestion loses prior TOP5 evidence on 6/4/1 inputs. The partitioned lexical candidate reproduces all 235 product outputs, raises DEV full targets 28→29/30→31 and preserves prior TOP5 evidence, but loses one TOP3 anchor. This patch remains in progress and operating data adoption is deferred. (commit: 8ed2733, b40834f, 54013ac, 0a57247, 6085564, 34ea1f0, 473dccc; consolidation: 36ca04a)
 
 ### Fixed (Bug Fixes)
 

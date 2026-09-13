@@ -1,0 +1,73 @@
+{
+  "target": "data",
+  "backup": "tmp/patch027-operating-backup-20260913",
+  "before": {
+    "chunks/cases.jsonl": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
+    "chunks/chunks.jsonl": "c3912cb3cfd02776331128d61e864fa84003d646af1b87928d4514b1c74344cf",
+    "chunks/civil.jsonl": "109f8bb3acf6c89589b6871bc32c56b47de86f2961c518b22a7b5623a9c2dd49",
+    "chunks/guides.jsonl": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
+    "database/civil.sqlite3": "6e75d014f7b469ef922ae21b93ccf965185adbff60dcd008b9c413e14381f47b",
+    "database/knowledge.sqlite3": "96ed51fc0328051bee738529720ceda91d638213f846b43bc6b327f3b51d9d7c",
+    "index/chroma_kurev1_1024": {
+      "573bd9ae-81e2-4ec5-8f81-76890ebf4a15/data_level0.bin": "a039b18f0f1ad444351d51783a0005f7ac89cfe8d19eaf0eed1d526c33653f07",
+      "573bd9ae-81e2-4ec5-8f81-76890ebf4a15/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+      "573bd9ae-81e2-4ec5-8f81-76890ebf4a15/length.bin": "8083ffc4505de0fb036992baaa5af897e84f34074aab8a9038bad27b27d3b0b0",
+      "573bd9ae-81e2-4ec5-8f81-76890ebf4a15/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "chroma.sqlite3": "545adc2b7ad1c16cade15e79cfade9f31f5688c7a39247827675448cb73e2243"
+    },
+    "index/chroma_civil_kurev1_1024": {
+      "4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4/data_level0.bin": "050c4222d9936a525d9fa5692fe501f1b28da481854f5f248422dc4f73f75575",
+      "4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+      "4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4/length.bin": "f7f692f51d5808ac02f9bc22cc5e74906ee393b3c269ec960510e6d62e8e8290",
+      "4fd9d6c8-fe5e-47a3-8ced-bb8ea824c4d4/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "chroma.sqlite3": "7cdba5f93a0de158b8ce516fe527ffdf0d2762bedde386897acc01839eddc41a"
+    },
+    "index/retrieval-profile.json": null
+  },
+  "profile": {
+    "version": 1,
+    "policy": "expanded-laws-record-v1",
+    "model": "nlpai-lab/KURE-v1",
+    "civil_ids": [
+      "민법-제105조",
+      "민법-제111조",
+      "민법-제113조",
+      "민법-제114조",
+      "민법-제118조",
+      "민법-제147조",
+      "민법-제186조",
+      "민법-제187조",
+      "민법-제265조",
+      "민법-제357조",
+      "민법-제390조",
+      "민법-제393조",
+      "민법-제470조",
+      "민법-제536조",
+      "민법-제543조",
+      "민법-제548조",
+      "민법-제615조",
+      "민법-제623조",
+      "민법-제626조",
+      "민법-제627조",
+      "민법-제629조",
+      "민법-제632조",
+      "민법-제634조",
+      "민법-제636조",
+      "민법-제640조",
+      "민법-제654조"
+    ],
+    "files": {
+      "chunks/cases.jsonl": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
+      "chunks/chunks.jsonl": "4affcd2bb78022df481bf3026788e8d74791f1865781cc9c33d527560f7298d2",
+      "chunks/civil.jsonl": "60e8146bdfe48caa8e07a59ee438c68865e63153b171b4bbcc37dab22704c1f7",
+      "chunks/guides.jsonl": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
+      "database/civil.sqlite3": "6e75d014f7b469ef922ae21b93ccf965185adbff60dcd008b9c413e14381f47b",
+      "database/knowledge.sqlite3": "c3258bc41b02209353610b242ec196e5a4dd8411148b13d52424df24d05c7918"
+    },
+    "index_hashes": [
+      "a498ed7643be5195119e1ff60c14d2465ce9c80a3cb68da74edf88ace5a53c09",
+      "5352318c89adc4beded9c9d3acbf7f12ccc80c622b267f670d2a7f672ac61fe3"
+    ]
+  },
+  "verification_manifest_sha256": "a419c15ed4f799221ca68789ebb103ad3c9ae8a77b29a6adb4f8b115dd04034c"
+}

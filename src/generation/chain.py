@@ -164,7 +164,7 @@ def _build_service() -> RetrievalService:
 
     if not chunks:
         raise RuntimeError(_SETUP_HINT)
-    return RetrievalService(chunks, dense=None)
+    return RetrievalService.from_local_chunks(chunks, chunk_paths=fallback_chunk_paths())
 
 
 def reset_default_service() -> None:
