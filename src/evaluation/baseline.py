@@ -170,9 +170,28 @@ def settings(service) -> dict:
                   for f in fields(corpus) for value in [getattr(corpus, f.name)]}
         config["retriever"] = retriever_settings(service._retrievers.get(corpus.name))
         corpora[key] = config
-    return {"search_k": SEARCH_K, "corpora": corpora,
+    result = {"search_k": SEARCH_K, "corpora": corpora,
             "civil_selection": {"preserve_top": 2, "tail_dense_multiplier": CIVIL_TAIL_DENSE_MULTIPLIER,
                                 "applies_at_limit": 3}}
+    if getattr(service, "profile_name", None):
+        def function_name(function):
+            return f"{function.__module__}.{function.__name__}"
+        def context_config(retriever):
+            return {**retriever_settings(retriever), "members": [
+                {"name": m.name, "weight": m.weight, "expand_weight": m.expand_weight}
+                for m in retriever.members]}
+        result["profile"] = service.profile_name
+        corpora["law"]["retriever"] = context_config(service._context_law)
+        corpora["law"]["query_expander"] = function_name(
+            service._context_law.members[0].retriever.partitions["core"].query_expander)
+        corpora["civil"]["seed_retriever"] = corpora["civil"]["retriever"]
+        corpora["civil"]["retriever"] = context_config(service._context_civil)
+        corpora["civil"]["query_expander"] = function_name(service._context_civil.members[0].retriever.query_expander)
+        result["civil_selection"] = {
+            "policy": service.profile_name, "method": "same-edition reference pair or topic-seeded RRF with dense tail",
+            "request_embedding_cache": True,
+        }
+    return result
 
 
 def main(argv: list[str] | None = None) -> int:

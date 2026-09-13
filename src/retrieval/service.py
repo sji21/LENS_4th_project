@@ -656,7 +656,19 @@ class RetrievalService:
             if not (Path(civil_index_path) / "chroma.sqlite3").is_file():
                 raise ValueError("민법 청크가 있으나 별도 민법 인덱스가 없습니다. PATCH-006 적재 절차를 확인하세요.")
             civil_dense = ChromaRetriever(backend, civil_index_path)
+        if cls is RetrievalService:
+            from src.retrieval.profile import build_profiled_service
+
+            return build_profiled_service(chunks, chunk_paths, dense, civil_dense,
+                                          index_paths=(index_path, civil_index_path), model=model)
         return cls(chunks, dense, civil_dense=civil_dense)
+
+    @classmethod
+    def from_local_chunks(cls, chunks, chunk_paths=(LAW_CHUNKS, CASE_CHUNKS, GUIDE_CHUNKS)):
+        """Keep the activated corpus policy when embeddings are unavailable."""
+        from src.retrieval.profile import build_profiled_service
+
+        return build_profiled_service(chunks, chunk_paths)
 
     @classmethod
     def from_files(
