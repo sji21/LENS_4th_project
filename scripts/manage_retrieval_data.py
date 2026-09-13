@@ -10,10 +10,11 @@ from pathlib import Path
 import sqlite3
 import subprocess
 import sys
+import tempfile
 import uuid
 
 from scripts.patch027_paths import ROOT, read, sha
-from scripts.patch027_rollout import expected_profile
+from scripts.patch027_rollout import copy_scope, expected_profile
 from src.retrieval.profile import CHUNKS, FILES, INDEXES, PROFILE
 
 
@@ -106,12 +107,21 @@ def inspect_data(data, kind):
 
 
 def inspect_in_process(data, kind):
-    result = subprocess.run([sys.executable, "-X", "utf8", "-m", "scripts.manage_retrieval_data",
-                             "_inspect", "--source", str(data), "--kind", kind], cwd=ROOT,
-                            capture_output=True, text=True, encoding="utf-8")
-    if result.returncode:
-        raise ValueError(result.stderr.strip() or "데이터 검증에 실패했습니다.")
-    return json.loads(result.stdout.strip().splitlines()[-1])
+    # Chroma can rewrite physical index files even on get(). Inspect a copy;
+    # the child exits before TemporaryDirectory removes Windows-locked files.
+    parent = ROOT / "tmp"
+    parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix="retrieval-inspect-", dir=parent) as directory:
+        snapshot = Path(directory).resolve()
+        if not snapshot.is_relative_to(parent.resolve()):
+            raise ValueError("검사 임시 폴더가 작업 경로를 벗어났습니다.")
+        copy_scope(data, snapshot / "data")
+        result = subprocess.run([sys.executable, "-X", "utf8", "-m", "scripts.manage_retrieval_data",
+                                 "_inspect", "--source", str(snapshot / "data"), "--kind", kind], cwd=ROOT,
+                                capture_output=True, text=True, encoding="utf-8")
+        if result.returncode:
+            raise ValueError(result.stderr.strip() or "데이터 검증에 실패했습니다.")
+        return json.loads(result.stdout.strip().splitlines()[-1])
 
 
 def data_status(data):

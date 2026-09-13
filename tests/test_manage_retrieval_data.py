@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import sqlite3
 import subprocess
+from types import SimpleNamespace
 
 import pytest
 
@@ -181,3 +182,23 @@ def test_missing_index_is_rejected_without_creating_empty_index(small_data, monk
     with pytest.raises(ValueError, match="인덱스가 없습니다"):
         manager.inspect_data(small_data, "expanded")
     assert not (small_data / "index").exists()
+
+
+def test_index_inspection_changes_only_temporary_copy_and_cleans_it(small_data, monkeypatch):
+    root = small_data.parent
+    monkeypatch.setattr(manager, "ROOT", root)
+    for name in manager.INDEXES:
+        path = small_data / name / "chroma.sqlite3"
+        path.parent.mkdir(parents=True)
+        path.write_bytes(b"original index")
+    inspected = []
+    def inspect(command, **kwargs):
+        snapshot = Path(command[command.index("--source") + 1])
+        assert snapshot != small_data
+        inspected.append(snapshot)
+        (snapshot / manager.INDEXES[0] / "chroma.sqlite3").write_bytes(b"Chroma internal rewrite")
+        return SimpleNamespace(returncode=0, stdout='{"laws":1}', stderr="")
+    monkeypatch.setattr(manager.subprocess, "run", inspect)
+    assert manager.inspect_in_process(small_data, "expanded") == {"laws": 1}
+    assert (small_data / manager.INDEXES[0] / "chroma.sqlite3").read_bytes() == b"original index"
+    assert not inspected[0].exists()

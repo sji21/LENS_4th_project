@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
+- PATCH-028 inspection now opens disposable copies because Chroma may rewrite physical index files on read. Repeat apply preserves every installed payload byte and creates no new run or backup. (commit: pending)
+
 - PATCH-028 adds a local retrieval-data status/apply/restore command and a virtual-environment PowerShell launcher. Verify complete bundle identity and duplicate article/chunk keys, skip identical installations, serialize writers, and automatically restore after postflight or receipt failures. Main-folder rollout verification is pending. (commit: b3669e1)
 
 - PATCH-027 unifies active source, test and data directory names under 027. Preserve all frozen source/capture bytes and hashes; translate only the three old data prefixes on read, leaving execution-code hashes tied to their original commits. Product retrieval and installed data are unchanged. (commit: 36e9791)
