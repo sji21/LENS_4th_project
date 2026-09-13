@@ -185,7 +185,22 @@ def human_prompt() -> str:
     return HUMAN_QA_NO_THINK if llm_module.THINK_OFF else HUMAN_QA
 
 
-def build_qa_prompt() -> ChatPromptTemplate:
+STYLE_GUIDANCE = {
+    "standard": "현재 질문에 바로 답하고 짧은 문단과 자연스러운 존댓말을 사용하세요. 필요한 조건과 근거를 함께 설명하세요.",
+    "simple": "쉬운 말과 짧은 문장으로 설명하세요. 어려운 법률 용어는 필요한 경우에만 풀어 쓰고 조건과 예외를 생략하지 마세요.",
+    "brief": "핵심 답과 꼭 필요한 조건, 근거를 짧게 요약하세요. 단순화하려고 예외나 불확실성을 삭제하지 마세요.",
+}
+
+
+def style_guidance(style=None):
+    if style is None:
+        return ""
+    if style not in STYLE_GUIDANCE:
+        raise ValueError("Unsupported answer style")
+    return "\n\n앞의 근거·인용·안전 규칙을 그대로 지키면서 표현하세요. 사용자 진술은 확인된 법률 사실이 아닙니다. " + STYLE_GUIDANCE[style] + " 새 확인 질문을 임의로 덧붙이지 마세요."
+
+
+def build_qa_prompt(response_style=None) -> ChatPromptTemplate:
     """근거 기반 Q&A 프롬프트.
 
     입력 변수는 `context` 와 `question` 두 개다. context 는
@@ -193,19 +208,19 @@ def build_qa_prompt() -> ChatPromptTemplate:
     """
     return ChatPromptTemplate.from_messages(
         [
-            ("system", system_prompt()),
+            ("system", system_prompt() + style_guidance(response_style)),
             ("human", human_prompt()),
         ]
     )
 
 
-def build_document_qa_prompt() -> ChatPromptTemplate:
+def build_document_qa_prompt(response_style=None) -> ChatPromptTemplate:
     """공식 검색을 섞지 않는 업로드 문서 사실·요약 전용 프롬프트."""
 
     human = HUMAN_DOCUMENT_QA_NO_THINK if llm_module.THINK_OFF else HUMAN_DOCUMENT_QA
     return ChatPromptTemplate.from_messages(
         [
-            ("system", SYSTEM_DOCUMENT_QA),
+            ("system", SYSTEM_DOCUMENT_QA + style_guidance(response_style)),
             ("human", human),
         ]
     )

@@ -131,6 +131,7 @@ def respond_conversational(state, question, document_id=None, *, legacy):
             elif decision.action == "clarify":
                 message = _static_message(services, pending["question"], "clarify", started)
                 message.update(choices=pending["choices"], reason="needs_information")
+                pending["message_id"] = message["id"]
                 dialogue["pending"] = pending
                 dialogue["clarification_counts"][pending["field"]] = pending["attempts"]
             elif decision.action == "rag":
@@ -139,9 +140,9 @@ def respond_conversational(state, question, document_id=None, *, legacy):
                 documents = draft["documents"]
                 if use_document:
                     evidences = services.find_evidences(query, documents, active_id)
-                    answer = services.graph.answer_document_question(query, evidences, service=services.retrieval_loader().result())
+                    answer = services.graph.answer_document_question(query, evidences, service=services.retrieval_loader().result(), response_style=decision.style)
                 else:
-                    answer = services.graph.answer_question(query, service=services.retrieval_loader().result())
+                    answer = services.graph.answer_question(query, service=services.retrieval_loader().result(), response_style=decision.style)
                 used_history = not decision.topic_changed and bool(previous["history"] or previous["facts"] or previous["active_document_id"])
                 message = services.answer_message(answer, started, used_history)
                 message["reason"] = answer_reason(answer)

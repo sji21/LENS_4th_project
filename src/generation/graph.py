@@ -93,6 +93,7 @@ def build_generation_graph(
     auxiliary_llm=None,
     document_evidences: tuple[SessionDocumentEvidence, ...] = (),
     document_search_attempted: bool = False,
+    response_style: str | None = None,
 ):
     """기존 Generation 정책을 그대로 사용하는 실행 Graph를 만든다.
 
@@ -101,6 +102,7 @@ def build_generation_graph(
     함수와 상수를 그대로 호출하고 LangGraph는 실행 순서와 분기만 담당한다.
     """
 
+    chain_module.prompt_module.style_guidance(response_style)
     runtime_aux_llm = auxiliary_llm if auxiliary_llm is not None else llm
 
     def get_aux_llm():
@@ -343,9 +345,9 @@ def build_generation_graph(
             )
         )
         qa_chain = (
-            chain_module.build_document_qa_chain(main_llm)
+            chain_module.build_document_qa_chain(main_llm, **({"response_style": response_style} if response_style is not None else {}))
             if document_only
-            else chain_module.build_qa_chain(main_llm)
+            else chain_module.build_qa_chain(main_llm, **({"response_style": response_style} if response_style is not None else {}))
         )
 
         try:
@@ -635,6 +637,7 @@ def answer_question(
     auxiliary_llm=None,
     document_evidences: tuple[SessionDocumentEvidence, ...] = (),
     document_search_attempted: bool = False,
+    response_style: str | None = None,
 ) -> Answer:
     """LangGraph가 실행·상태·분기를 담당하는 Generation 진입점.
 
@@ -654,6 +657,7 @@ def answer_question(
         auxiliary_llm=auxiliary_llm,
         document_evidences=document_evidences,
         document_search_attempted=document_search_attempted,
+        **({"response_style": response_style} if response_style is not None else {}),
     )
 
     # 문서 OCR 원문은 Graph state에 넣지 않는다. LangSmith가 활성화돼 있어도

@@ -446,3 +446,27 @@ def test_graph_contains_real_workflow_nodes():
         "abstain_validation",
         "answer",
     }.issubset(node_names)
+
+
+def test_conversational_style_is_applied_before_the_same_final_validation(monkeypatch):
+    captured, audited = [], []
+    def generate(prompt):
+        captured.append(prompt.to_string())
+        return VALID_RAW_ANSWER
+    original = chain_module.audit_answer
+    def audit(candidate, **kwargs):
+        audited.append(candidate.raw_text)
+        return original(candidate, **kwargs)
+    monkeypatch.setattr(chain_module, "audit_answer", audit)
+    answer = graph_module.answer_question(QUESTION, service=StaticService(result_with_law()), llm=RunnableLambda(generate), auxiliary_llm=get_llm(fake_responses=["PASS"]), response_style="simple")
+    assert "쉬운 말과 짧은 문장" in captured[0]
+    assert "주택임대차" in captured[0]
+    assert audited and audited[0] == VALID_RAW_ANSWER
+    assert answer.status == "answered" and answer.raw_text == VALID_RAW_ANSWER
+
+
+def test_styled_unsupported_claim_is_still_withheld():
+    invalid = "민법 제9999조에 따라 보증금을 즉시 전액 받을 수 있습니다."
+    answer = graph_module.answer_question(QUESTION, service=StaticService(result_with_law()), llm=get_llm(fake_responses=[invalid]), response_style="brief")
+    assert answer.status == "abstained"
+    assert invalid not in answer.text

@@ -10,6 +10,7 @@
   let readinessTimer = null;
   let syncTimer = null;
   let lastRendered = "";
+  let replyingTo = null;
   const csrf = form.querySelector('[name="csrfmiddlewaretoken"]').value;
 
   function element(tag, text, className) {
@@ -31,7 +32,7 @@
     const locked = busy || externalBusy || !conversationId;
     $("send").disabled = locked || !input.value.trim();
     for (const id of ["attach", "new-chat", "upload-suggestion", "document-select"]) $(id).disabled = locked;
-    document.querySelectorAll("[data-question], .document-card button").forEach((b) => { b.disabled = locked; });
+    document.querySelectorAll("[data-question], .document-card button, .clarification-panel button").forEach((b) => { b.disabled = locked; });
     form.setAttribute("aria-busy", String(busy));
   }
   async function request(url, options = {}) {
@@ -79,8 +80,9 @@
     bubble.append(answerText(message.content));
     if (message.role === "assistant") {
       const meta = element("div", undefined, "message-meta");
-      const labels = { answered: "근거 확인 답변", abstained: "답변 보류", refused: "범위 안내" };
-      meta.append(element("span", labels[message.status] || "안내", `answer-status ${message.status || ""}`));
+      const labels = { answered: "근거 확인 답변", abstained: "답변 보류", refused: "요청 안내", social: "대화", clarify: "확인 질문" };
+      const reasons = { no_evidence: "관련 근거 부족", validation_failed: "검증 결과 답변 보류", generation_failed: "답변 생성 실패", needs_information: "추가 정보 확인" };
+      meta.append(element("span", reasons[message.reason] || labels[message.status] || "안내", `answer-status ${message.status || ""}`));
       if (typeof message.elapsed_seconds === "number") meta.append(element("span", `${message.elapsed_seconds}초`));
       if (message.used_history) meta.append(element("span", "이전 대화 반영"));
       bubble.append(meta);
@@ -138,6 +140,29 @@
     }
     if (documents.some((doc) => doc.document_id === previous)) select.value = previous;
   }
+  function renderConversation(data) {
+    const context = data.conversation || {};
+    const pending = context.enabled ? context.pending : null;
+    const box = $("clarification"); box.replaceChildren(); box.hidden = !pending;
+    if (pending) {
+      box.append(element("strong", pending.question), element("p", "선택하거나 아래에 편하게 답해 주세요."));
+      const choices = element("div", undefined, "clarification-choices");
+      for (const choice of pending.choices || []) {
+        const button = element("button", choice.label); button.type = "button";
+        button.addEventListener("click", () => {
+          input.value = choice.message;
+          if (choice.document_id) $("document-select").value = choice.document_id;
+          replyingTo = pending.message_id; controls(); form.requestSubmit();
+        });
+        choices.append(button);
+      }
+      box.append(choices);
+    }
+    $("answer-actions").hidden = !(context.enabled && context.can_rephrase);
+    const active = data.documents.find((doc) => doc.document_id === context.active_document_id);
+    $("active-document").hidden = !active;
+    $("active-document").textContent = active ? `최근 확인 문서: ${active.filename}` : "";
+  }
   function render(data) {
     conversationId = data.conversation_id;
     externalBusy = Boolean(data.busy);
@@ -149,7 +174,7 @@
       lastRendered = signature;
       scrollBottom();
     }
-    controls();
+    renderConversation(data); controls();
     if (externalBusy) {
       notice("이 대화의 다른 요청을 처리하고 있어요. 완료되면 화면을 갱신합니다.");
       clearTimeout(syncTimer); syncTimer = setTimeout(syncState, 2500);
@@ -177,7 +202,7 @@
       clearInterval(timer); busy = false; $("pending").hidden = true; controls();
     }
   }
-  input.addEventListener("input", controls);
+  input.addEventListener("input", () => { replyingTo = null; controls(); });
   input.addEventListener("keydown", (event) => {
     if (event.key === "Enter" && !event.shiftKey && !event.isComposing) {
       event.preventDefault(); if (!$("send").disabled) form.requestSubmit();
@@ -186,18 +211,18 @@
   form.addEventListener("submit", (event) => {
     event.preventDefault(); const question = input.value.trim();
     if (!question) return;
-    action("근거를 확인하고 답변을 준비하고 있어요", async () => {
+    action("질문을 이해하고 필요한 내용을 확인하고 있어요", async () => {
       $("welcome").hidden = true;
       $("messages").append(renderMessage({ role: "user", content: question })); scrollBottom();
       lastRendered = "";
-      const data = await post(form.dataset.sendUrl, { message: question, document_id: $("document-select").value || null });
+      const data = await post(form.dataset.sendUrl, { message: question, document_id: $("document-select").value || null, ...(replyingTo ? { reply_to: replyingTo } : {}) });
       // Preserve text the user typed while waiting.
-      if (input.value.trim() === question) input.value = "";
+      if (input.value.trim() === question) { input.value = ""; replyingTo = null; }
       render(data); input.focus();
     });
   });
   document.querySelectorAll("[data-question]").forEach((button) => button.addEventListener("click", () => {
-    input.value = button.dataset.question; controls(); input.focus();
+    input.value = button.dataset.question; replyingTo = null; controls(); input.focus();
   }));
   for (const id of ["attach", "upload-suggestion"]) $(id).addEventListener("click", () => $("file-input").click());
   $("file-input").addEventListener("change", () => {

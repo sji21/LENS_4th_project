@@ -37,7 +37,19 @@ def initial_state():
 
 def public_state(conversation):
     state = conversation.state
+    from django.conf import settings
+    from .dialogue_state import ensure_dialogue
+    from copy import deepcopy
+    dialogue = ensure_dialogue(deepcopy(state))
+    pending = dialogue["pending"]
+    conversation_view = {
+        "enabled": bool(getattr(settings, "CHAT_CONVERSATION_ENABLED", False)),
+        "active_document_id": dialogue["active_document_id"],
+        "can_rephrase": bool(dialogue["last_answer"]),
+        "pending": ({key: pending[key] for key in ("message_id", "question", "choices") if key in pending} if pending else None),
+    }
     return {
+        "conversation": conversation_view,
         "conversation_id": str(conversation.id),
         "messages": [{k: v for k, v in m.items() if k != "context_content"} for m in state.get("messages", [])],
         "documents": [{k: v for k, v in d.items() if k not in {"context", "checksum"}} for d in state.get("documents", [])],

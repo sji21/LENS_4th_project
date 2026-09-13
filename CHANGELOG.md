@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
+- PATCH-035 Adds pre-validation conversational answer styles and Django clarification choices, rephrasing controls, status reasons, and stale-choice protection. (commit: pending)
+
 - PATCH-034 Preserves current query conditions and resolves owned document continuity, ambiguity, and separate document evidence without changing legal validation. (commit: `678d55a`)
 
 - PATCH-033 Adds bounded field-specific clarification, persisted follow-up choices, unknown-value preservation, and explicit answer failure categories. (commit: `624971e`)

@@ -185,7 +185,7 @@ def test_enabled_rag_uses_validated_query_and_saves_user_facts_once(browser, cal
     actual_query = calls.official.call_args.args[0]
     assert actual_query.endswith("월세 보증금 반환을 문의해요.")
     assert "계약 유형: 월세" in actual_query and "보증금반환" in actual_query
-    assert calls.official.call_args.kwargs == {"service": calls.loader.result.return_value}
+    assert calls.official.call_args.kwargs == {"service": calls.loader.result.return_value, "response_style": "standard"}
     calls.document.assert_not_called()
     calls.legacy.assert_not_called()
     calls.resolver.assert_not_called()
@@ -482,3 +482,30 @@ def test_general_question_keeps_document_available_without_using_it(browser, cal
     calls.document.assert_not_called()
     assert "선택 문서:" not in calls.official.call_args.args[0]
     assert Conversation.objects.get().state["dialogue"]["active_document_id"] == selected
+
+
+@pytest.mark.parametrize("style", ["simple", "brief"])
+def test_style_reaches_generation_and_public_body_is_not_rewritten(browser, calls, settings, style):
+    settings.CHAT_CONVERSATION_ENABLED = True
+    plan(calls, intent="explain", style=style)
+    result = post(browser, "보증금 반환 설명을 더 쉽게 알려주세요")
+    assert result.status_code == 200
+    assert calls.official.call_args.kwargs["response_style"] == style
+    assert result.json()["messages"][-1]["content"] == "검증된 공개 답변"
+
+
+def test_pending_view_has_only_public_choices_and_stale_choice_is_rejected(browser, calls, settings):
+    settings.CHAT_CONVERSATION_ENABLED = True
+    plan(calls, action="clarify", clarify_field="contract_ended", search_query="")
+    first = post(browser, "보증금 반환을 문의해요")
+    pending = first.json()["conversation"]["pending"]
+    assert set(pending) == {"message_id", "question", "choices"}
+    assert pending["message_id"] == first.json()["messages"][-1]["id"]
+    second = post(browser, "예", reply_to=pending["message_id"])
+    assert second.status_code == 200
+    before = deepcopy(Conversation.objects.get().state)
+    stale = post(browser, "아니요", reply_to=pending["message_id"])
+    assert stale.status_code == 409
+    assert Conversation.objects.get().state == before
+    calls.planner.assert_called_once()
+    calls.official.assert_called_once()

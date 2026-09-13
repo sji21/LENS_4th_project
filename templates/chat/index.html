@@ -35,6 +35,9 @@
     </div>
     <section class="composer-section" aria-label="질문 입력">
       <div id="notice" class="notice" role="alert" hidden></div>
+      <div id="clarification" class="clarification-panel" aria-live="polite" hidden></div>
+      <div id="answer-actions" class="answer-actions" hidden><button type="button" data-question="방금 답변을 더 쉽게 설명해 주세요.">쉽게 설명</button><button type="button" data-question="방금 답변의 핵심만 짧게 요약해 주세요.">핵심만 요약</button></div>
+      <p id="active-document" class="active-document" hidden></p>
       <div id="upload-progress" class="upload-progress" aria-live="polite"></div>
       <form id="chat-form" class="composer" data-send-url="{% url 'chat:send' %}" data-state-url="{% url 'chat:state' %}" data-upload-url="{% url 'chat:upload' %}" data-reset-url="{% url 'chat:reset' %}" data-readiness-url="{% url 'chat:readiness' %}" data-retry-url="{% url 'chat:retry-readiness' %}">
         {% csrf_token %}

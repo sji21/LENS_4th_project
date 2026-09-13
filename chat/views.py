@@ -169,6 +169,11 @@ def send_message(request):
         if not duplicate:
             if len(conversation.state["messages"]) >= settings.CHAT_MAX_MESSAGES:
                 raise ApiError("대화가 길어졌습니다. 새 대화를 시작해 주세요.")
+            reply_to = payload.get("reply_to")
+            if reply_to is not None:
+                pending = conversation.state.get("dialogue", {}).get("pending") or {}
+                if not isinstance(reply_to, str) or reply_to != pending.get("message_id"):
+                    raise ApiError("확인 질문이 변경되었습니다. 현재 질문에 답해 주세요.", 409)
             doc_id = payload.get("document_id")
             if doc_id and not any(d["document_id"] == doc_id for d in conversation.state["documents"]):
                 raise ApiError("현재 대화의 문서를 선택해 주세요.", 404)
