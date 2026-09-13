@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
+- PATCH-034 Preserves current query conditions and resolves owned document continuity, ambiguity, and separate document evidence without changing legal validation. (commit: pending)
+
 - PATCH-033 Adds bounded field-specific clarification, persisted follow-up choices, unknown-value preservation, and explicit answer failure categories. (commit: `624971e`)
 
 - PATCH-032 Adds opt-in conversation dispatch with original-input protection, fixed nonlegal replies, atomic state updates, and legacy recovery for rejected planner output. (commit: `f791706`)

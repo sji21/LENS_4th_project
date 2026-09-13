@@ -1,0 +1,695 @@
+{
+  "schema_version": 1,
+  "complete": true,
+  "mode": "upgrade",
+  "split": "dev",
+  "started_at": "2026-09-13T01:34:59.576635+00:00",
+  "commit": "a4cb9f8f8e5e5d0b809a5aed7ec487fe7896871a",
+  "files": {
+    "chat/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "chat/dialogue_clarification.py": "250fb4ccd39fdd66701fb72f2761500a7c7baab34f5de4d2e78db2dc1d24bf0b",
+    "chat/dialogue_contract.py": "ebd16bcc4145e06ddbbd3e43254eac4a99358dbd147c25187e0cff9b2e04ceca",
+    "chat/dialogue_documents.py": "47494d80015dcf231badf119b0f5a74a7a289176ca7ed93280e72f21c1736735",
+    "chat/dialogue_normalization.py": "4d7919ae5169c9405495a1bf00810f125938f5affa3854c0c0fb8fc767f2a250",
+    "chat/dialogue_planner.py": "0690bb3666bf92912cbc909a8f716851c5fa4ff9cdd82397552cf1d85ed5ac72",
+    "chat/dialogue_query.py": "f21960abe72efbecd1e41a235aa88c834c3958b1f35c7e919f1ba8ff856e8189",
+    "chat/dialogue_router.py": "a6345b358f5c2251ed06563bc7602c90bd13d4c17516a454173032e3c45f2f09",
+    "chat/dialogue_state.py": "2e89d3a8c696e8e80ce5f24de5a60faf51945d949a156fdab6acd5423204e228",
+    "chat/models.py": "413609bf0ebf1a9450d621122f3f4a82cbdac75161c18f5aeae4c4da0ec420b1",
+    "chat/services.py": "4ebe5d431a8d22fc4780d635a89fb6648b7d274a5ff80145d8128e8c29e4feb0",
+    "chat/uploads.py": "0ae80dc0708af8321171f412577c18b3e5a087216e866a7b4b22a1e21784c295",
+    "chat/urls.py": "19346b62a4ce16cb2e2154396c40008f3fade0221266e458050304ee18cab9c7",
+    "chat/views.py": "647bd139861c8ef6904951dc231f6af3e7b23fc16c430278b16fb129d46f1856",
+    "data/chunks/base_sample.jsonl": "0a569cd52b5360cb7dad72c9ac497866031b1d9a116af7fd738885f25abdd35b",
+    "data/chunks/cases.jsonl": "f6190b01d00b0a6f4630ef8c8a2ceebe19ca5a443a9874d06ca2655a5e5efce9",
+    "data/chunks/chunks.jsonl": "c61cba0ef9969cc271ab665b4e237bbd468025dec6199f7ecff2b040fec1958a",
+    "data/chunks/civil.jsonl": "635a4b2f4c3a4cb4f54d0c081bb91a84d5f1f8dc8d0b26a7987e30130df5a10a",
+    "data/chunks/guides.jsonl": "5b67bf5cf59ded40e0dc0289716cb6843ce473bed3d518b17b98fa9a2e54ba93",
+    "data/eval/chatting/acceptance.json": "26eb3122cd56cbcd11f5e3e70d01751b761103e4f6058bc461826456a670bfaa",
+    "data/eval/chatting/dev.json": "bcd030f67235bf5c6437dfce4e8af59c851d0af826c5991016c48d7179463c42",
+    "src/evaluation/chatting_plan_run.py": "40642dac4c6cd448c45adb209fe543aa7f64057dc39f9454be7abab541b63159",
+    "src/evaluation/chatting_provenance.py": "547278915c1ba10433cacda21a590d05f3fb92e88c170ad86a556addd980555b",
+    "src/evaluation/chatting_run.py": "1ef0eba49048f4c4166c8aab3bab4ad12673d5c898334a289a9fde7f701ec2f0",
+    "src/evaluation/chatting_scenarios.py": "2dd1f5cde62396d33999c461c007f45b16e0946e1f4ecca42539bcd4e8974f51",
+    "src/evaluation/chatting_scoring.py": "85f9d66fe26d7f9aa5e90dc9ddde8d19337229bcb03f1b703c4c64789f955cd0",
+    "src/generation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/generation/abstention.py": "7e4501dc9e7564d7df39d115a412e1f1746ddbe17065261e90884d8facd14476",
+    "src/generation/chain.py": "df0e26914ef32b7edbecffd8c37b08f4f6dd58f364f97a22a64f3a5c2e927bbd",
+    "src/generation/citation.py": "496a4592606a9f28a53a5c6615b5dc88dbd7c5a471b4ca431ae566bcc5726f19",
+    "src/generation/conversation.py": "a35889cb47085b64248c50e0975f889e37302474f6470b77b4b3f20cf077ebb0",
+    "src/generation/evidence_routing.py": "9e425bb90c5f943866ee635604573340b199de23371bf8e83c22c62697f72100",
+    "src/generation/graph.py": "8375f3dc84f1fc1759587fc40bbde382a8d2b0ea76ac38d8f5eee9db48300699",
+    "src/generation/llm.py": "b2c286e2513b688af109eb57964429057ce2d8d7e237d3bf09ab6a0a2dcb020b",
+    "src/generation/models.py": "f1e5d0a63c8d94d7e373495f28a4988719a1b10c50d13bfd86de715bb078420c",
+    "src/generation/paragraph.py": "e095954a08d5191abe797c1bb5df820f90b4bac4999db67c7718e72fe18c8f83",
+    "src/generation/prompt.py": "40ac22ec44e071c8dfdf14e0a438bc3fabc7442bef97ccfe7abdd469b6131960",
+    "src/generation/validation.py": "ae3416e2cadeeae80474e7a58079093e54420c73c8de9286b865480cff835f57",
+    "src/retrieval/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/retrieval/dense.py": "4182dc226f1e5d46d4b94fcd887d796ac09ea685d596f3a217c2537ebc5e96a3",
+    "src/retrieval/hybrid.py": "c82d7be47e95b3419a617a5aaeaf5f6d0a271fcd144a85b38fd53d00d0cb5812",
+    "src/retrieval/index.py": "227f3d11eb4bf8a7913b0d658af543331364f0cd997a9b825264914c02ed031a",
+    "src/retrieval/readiness.py": "86b55af4ce81135ff487001a6ba4b8985dff275805da47981927e29c2f4f8c86",
+    "src/retrieval/refs.py": "5c770deff1141f65509955c3d62c9da6f47c3591da84e7f7f567b669a7342639",
+    "src/retrieval/retriever.py": "6e01e43aeceaf93fc6795c1e3f920662daed035caa87587ae4e1b84d9dc57ebe",
+    "src/retrieval/service.py": "e5aeac45740cf806d9abc8292db5c9e6ace6fa5f4f2cc8e106950e8d5c297b59",
+    "src/retrieval/terms.py": "34354c085495148a535c15c409f2a5761808e2fbc106b25141874117f5836a6e"
+  },
+  "model": "qwen3:8b-q4_K_M",
+  "model_identity": {
+    "available": true,
+    "model": "qwen3:8b-q4_K_M",
+    "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "size_bytes": 5225388164,
+    "family": "qwen3",
+    "quantization": "Q4_K_M",
+    "ollama_version": "0.33.0"
+  },
+  "settings": {
+    "temperature": 0.0,
+    "max_tokens": 256,
+    "context": 4096,
+    "timeout": 180.0,
+    "think_off": true
+  },
+  "versions": {
+    "Django": "5.2.17",
+    "langchain-core": "1.6.2",
+    "langgraph": "1.2.11",
+    "chromadb": "1.5.9",
+    "sentence-transformers": "6.0.1"
+  },
+  "limits": "Synthetic conversations; automated dialogue checks are not legal accuracy. Document text is injected after extraction; OCR is not measured.",
+  "rows": [
+    {
+      "case_id": "DEV-008",
+      "turn": 1,
+      "input": "올린 임대차계약서에서 보증금이 얼마로 적혀 있나요?",
+      "before_state": {
+        "version": 1,
+        "turn": 0,
+        "epoch": 0,
+        "topic": null,
+        "facts": {},
+        "history": [],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": null,
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 0,
+        "epoch": 0,
+        "topic": null,
+        "facts": {},
+        "history": [],
+        "changes": [],
+        "pending": null,
+        "active_document_id": "doc-a",
+        "last_answer": {
+          "content": "[업로드 문서 · 임대차계약서 · doc-a.pdf 1쪽]  \n보증금: 10000000원.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "doc-a.pdf 1쪽",
+              "url": "",
+              "doc_type": "uploaded_document",
+              "chunk_id": "session:DEV-008:document:doc-a:page:1:0",
+              "document_id": "doc-a",
+              "document_kind": "임대차계약서",
+              "page_number": 1
+            }
+          ],
+          "turn": 0,
+          "validation": "existing_pipeline_passed"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": null,
+        "facts": {},
+        "query": "올린 임대차계약서에서 보증금이 얼마로 적혀 있나요?"
+      },
+      "routing": {
+        "path": "legacy_fallback",
+        "reason": "invalid_decision:unknown_without_statement"
+      },
+      "message": {
+        "id": "0bd53e4d81864d06a74c6236843c40f9",
+        "role": "assistant",
+        "status": "answered",
+        "content": "[업로드 문서 · 임대차계약서 · doc-a.pdf 1쪽]  \n보증금: 10000000원.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [
+          {
+            "label": "doc-a.pdf 1쪽",
+            "url": "",
+            "doc_type": "uploaded_document",
+            "chunk_id": "session:DEV-008:document:doc-a:page:1:0",
+            "document_id": "doc-a",
+            "document_kind": "임대차계약서",
+            "page_number": 1
+          }
+        ],
+        "used_history": false,
+        "elapsed_seconds": 7.7,
+        "action": "rag",
+        "intent": null
+      },
+      "elapsed_seconds": 19.593,
+      "model_calls": 3,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "execution_error": null,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": null,
+          "expected": "document_question",
+          "actual": null
+        },
+        "facts": {
+          "passed": null,
+          "expected": {},
+          "actual": {}
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_ended": "예"
+          },
+          "actual": {}
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "보증금"
+          ],
+          "actual": "올린 임대차계약서에서 보증금이 얼마로 적혀 있나요?"
+        },
+        "query_excludes": {
+          "passed": null,
+          "expected": [],
+          "actual": "올린 임대차계약서에서 보증금이 얼마로 적혀 있나요?"
+        }
+      }
+    },
+    {
+      "case_id": "DEV-008",
+      "turn": 2,
+      "input": "그 계약서의 수리 관련 특약도 설명해 주세요.",
+      "before_state": {
+        "version": 1,
+        "turn": 0,
+        "epoch": 0,
+        "topic": null,
+        "facts": {},
+        "history": [],
+        "changes": [],
+        "pending": null,
+        "active_document_id": "doc-a",
+        "last_answer": {
+          "content": "[업로드 문서 · 임대차계약서 · doc-a.pdf 1쪽]  \n보증금: 10000000원.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "doc-a.pdf 1쪽",
+              "url": "",
+              "doc_type": "uploaded_document",
+              "chunk_id": "session:DEV-008:document:doc-a:page:1:0",
+              "document_id": "doc-a",
+              "document_kind": "임대차계약서",
+              "page_number": 1
+            }
+          ],
+          "turn": 0,
+          "validation": "existing_pipeline_passed"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "after_state": {
+        "version": 1,
+        "turn": 0,
+        "epoch": 0,
+        "topic": null,
+        "facts": {},
+        "history": [],
+        "changes": [],
+        "pending": null,
+        "active_document_id": "doc-a",
+        "last_answer": {
+          "content": "- 특약: 시설 수리 요청은 임대인에게 알린다.  \n- 문서: doc-a.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "doc-a.pdf 1쪽",
+              "url": "",
+              "doc_type": "uploaded_document",
+              "chunk_id": "session:DEV-008:document:doc-a:page:1:0",
+              "document_id": "doc-a",
+              "document_kind": "임대차계약서",
+              "page_number": 1
+            }
+          ],
+          "turn": 0,
+          "validation": "existing_pipeline_passed"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "observation": {
+        "action": "rag",
+        "intent": null,
+        "facts": {},
+        "query": "그 계약서의 수리 관련 특약도 설명해 주세요."
+      },
+      "routing": {
+        "path": "legacy_fallback",
+        "reason": "invalid_decision:provenance_or_document"
+      },
+      "message": {
+        "id": "f6f4d886cdaa44d88becd2af1fd00cc6",
+        "role": "assistant",
+        "status": "answered",
+        "content": "- 특약: 시설 수리 요청은 임대인에게 알린다.  \n- 문서: doc-a.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [
+          {
+            "label": "doc-a.pdf 1쪽",
+            "url": "",
+            "doc_type": "uploaded_document",
+            "chunk_id": "session:DEV-008:document:doc-a:page:1:0",
+            "document_id": "doc-a",
+            "document_kind": "임대차계약서",
+            "page_number": 1
+          }
+        ],
+        "used_history": false,
+        "elapsed_seconds": 4.2,
+        "action": "rag",
+        "intent": null
+      },
+      "elapsed_seconds": 14.258,
+      "model_calls": 2,
+      "failed_model_calls": 0,
+      "connection_failures": 0,
+      "execution_error": null,
+      "checks": {
+        "action": {
+          "passed": true,
+          "expected": [
+            "rag"
+          ],
+          "actual": "rag"
+        },
+        "intent": {
+          "passed": null,
+          "expected": "document_question",
+          "actual": null
+        },
+        "facts": {
+          "passed": null,
+          "expected": {},
+          "actual": {}
+        },
+        "forbidden_facts": {
+          "passed": true,
+          "expected": {
+            "contract_ended": "예"
+          },
+          "actual": {}
+        },
+        "query_contains": {
+          "passed": true,
+          "expected": [
+            "수리",
+            "특약"
+          ],
+          "actual": "그 계약서의 수리 관련 특약도 설명해 주세요."
+        },
+        "query_excludes": {
+          "passed": null,
+          "expected": [],
+          "actual": "그 계약서의 수리 관련 특약도 설명해 주세요."
+        }
+      }
+    }
+  ],
+  "retrieval_initialization_seconds": 6.045,
+  "retrieval": {
+    "ready": true,
+    "issues": [],
+    "mode": "hybrid",
+    "chunks": {
+      "count": 175,
+      "sha256": "7edeefbdde2b686d781cbd8f3f3d418c3772874bf6b0aa9372807707ec4f83fb",
+      "source_matched_count": 175
+    },
+    "source_attribution": "Exact content matches; the loader does not retain original source filenames.",
+    "sources": {
+      "data/chunks/chunks.jsonl": {
+        "exists": true,
+        "sha256": "c61cba0ef9969cc271ab665b4e237bbd468025dec6199f7ecff2b040fec1958a",
+        "size_bytes": 209779,
+        "chunk_count": 143,
+        "matching_loaded_chunk_count": 143
+      },
+      "data/chunks/cases.jsonl": {
+        "exists": true,
+        "sha256": "f6190b01d00b0a6f4630ef8c8a2ceebe19ca5a443a9874d06ca2655a5e5efce9",
+        "size_bytes": 24116,
+        "chunk_count": 26,
+        "matching_loaded_chunk_count": 26
+      },
+      "data/chunks/guides.jsonl": {
+        "exists": true,
+        "sha256": "5b67bf5cf59ded40e0dc0289716cb6843ce473bed3d518b17b98fa9a2e54ba93",
+        "size_bytes": 13237,
+        "chunk_count": 6,
+        "matching_loaded_chunk_count": 6
+      },
+      "data/sample/chunks_expanded.jsonl": {
+        "exists": true,
+        "sha256": "8e614bbbc32ac69968f9441c323a7f93acc6973cdb39b2f2d1e4dd1165f97752",
+        "size_bytes": 200476,
+        "chunk_count": 135,
+        "matching_loaded_chunk_count": 0
+      }
+    },
+    "indexes": {
+      "base": {
+        "available": true,
+        "embedding": {
+          "model": "nlpai-lab/KURE-v1",
+          "revision": "4ed4540949c70b7da2c74004a915e1f2d5e46e4f",
+          "dimensions": 1024
+        },
+        "collection": "knowledge_chunks",
+        "collection_metadata_sha256": "8d78e973bf9d51eba40ca66ce280877a3dffc78c660b22eec29728e3ed9cb49c",
+        "count": 165,
+        "path": "data/index/chroma_kurev1_1024",
+        "files": {
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/data_level0.bin": {
+            "sha256": "2dfd85994bfb7e5c980c197c66caea8665701d0a6a88a2a549491790042cc552",
+            "size_bytes": 423600
+          },
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/header.bin": {
+            "sha256": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+            "size_bytes": 100
+          },
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/length.bin": {
+            "sha256": "7a12e561363385e9dfeeab326368731c030ed4b374e7f5897ac819159d2884c5",
+            "size_bytes": 400
+          },
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/link_lists.bin": {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size_bytes": 0
+          },
+          "chroma.sqlite3": {
+            "sha256": "8495cff60e108649d583a49dfbdac78d83cf2fe14bdb91071db2fc2d247a3454",
+            "size_bytes": 2351104
+          }
+        },
+        "content": {
+          "available": true,
+          "entry_count": 165,
+          "unique_id_count": 165,
+          "sha256": "4d5adecc127f56f10050377d465ffad5f80cae8b7ab41e4072032828205aa6f1",
+          "vectors_sha256": "0c0b23cf7c12fad55673bea7b4dc15c836d9f6c1b59ca3e5ba247b11e4e65db8",
+          "vector_dimensions": [
+            1024
+          ],
+          "text_mismatch_count": 0,
+          "metadata_mismatch_count": 0,
+          "unknown_chunk_count": 0
+        }
+      },
+      "civil": {
+        "available": true,
+        "embedding": {
+          "model": "nlpai-lab/KURE-v1",
+          "revision": "4ed4540949c70b7da2c74004a915e1f2d5e46e4f",
+          "dimensions": 1024
+        },
+        "collection": "knowledge_chunks",
+        "collection_metadata_sha256": "8d78e973bf9d51eba40ca66ce280877a3dffc78c660b22eec29728e3ed9cb49c",
+        "count": 10,
+        "path": "data/index/chroma_civil_kurev1_1024",
+        "files": {
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/data_level0.bin": {
+            "sha256": "41b1d6558680207762d59e507f9dcba0cb9fbbd4c23c79e14025206d3742e17f",
+            "size_bytes": 423600
+          },
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/header.bin": {
+            "sha256": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+            "size_bytes": 100
+          },
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/length.bin": {
+            "sha256": "7a12e561363385e9dfeeab326368731c030ed4b374e7f5897ac819159d2884c5",
+            "size_bytes": 400
+          },
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/link_lists.bin": {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size_bytes": 0
+          },
+          "chroma.sqlite3": {
+            "sha256": "bfbcfb22485d5252e3b5ebf861b8255fdf7c3a449b3665f7da98c088f10b9c1c",
+            "size_bytes": 274432
+          }
+        },
+        "content": {
+          "available": true,
+          "entry_count": 10,
+          "unique_id_count": 10,
+          "sha256": "fefd8c928d817cb01d5bf83b786443a3f09ecba7249629256cdaaa4624e1bcbb",
+          "vectors_sha256": "dd1e0966d7de4a7cf853757228133981ff43d60cac612a36562926c83a982252",
+          "vector_dimensions": [
+            1024
+          ],
+          "text_mismatch_count": 0,
+          "metadata_mismatch_count": 0,
+          "unknown_chunk_count": 0
+        }
+      }
+    },
+    "coverage": {
+      "indexed_unique_chunk_count": 175,
+      "cross_index_duplicate_count": 0,
+      "loaded_chunk_ids_missing_from_indexes": 0,
+      "index_chunk_ids_absent_from_memory": 0,
+      "required_civil_article_count": 10,
+      "missing_loaded_civil_articles": [],
+      "missing_indexed_civil_articles": []
+    }
+  },
+  "source_unchanged": true,
+  "retrieval_after": {
+    "ready": true,
+    "issues": [],
+    "mode": "hybrid",
+    "chunks": {
+      "count": 175,
+      "sha256": "7edeefbdde2b686d781cbd8f3f3d418c3772874bf6b0aa9372807707ec4f83fb",
+      "source_matched_count": 175
+    },
+    "source_attribution": "Exact content matches; the loader does not retain original source filenames.",
+    "sources": {
+      "data/chunks/chunks.jsonl": {
+        "exists": true,
+        "sha256": "c61cba0ef9969cc271ab665b4e237bbd468025dec6199f7ecff2b040fec1958a",
+        "size_bytes": 209779,
+        "chunk_count": 143,
+        "matching_loaded_chunk_count": 143
+      },
+      "data/chunks/cases.jsonl": {
+        "exists": true,
+        "sha256": "f6190b01d00b0a6f4630ef8c8a2ceebe19ca5a443a9874d06ca2655a5e5efce9",
+        "size_bytes": 24116,
+        "chunk_count": 26,
+        "matching_loaded_chunk_count": 26
+      },
+      "data/chunks/guides.jsonl": {
+        "exists": true,
+        "sha256": "5b67bf5cf59ded40e0dc0289716cb6843ce473bed3d518b17b98fa9a2e54ba93",
+        "size_bytes": 13237,
+        "chunk_count": 6,
+        "matching_loaded_chunk_count": 6
+      },
+      "data/sample/chunks_expanded.jsonl": {
+        "exists": true,
+        "sha256": "8e614bbbc32ac69968f9441c323a7f93acc6973cdb39b2f2d1e4dd1165f97752",
+        "size_bytes": 200476,
+        "chunk_count": 135,
+        "matching_loaded_chunk_count": 0
+      }
+    },
+    "indexes": {
+      "base": {
+        "available": true,
+        "embedding": {
+          "model": "nlpai-lab/KURE-v1",
+          "revision": "4ed4540949c70b7da2c74004a915e1f2d5e46e4f",
+          "dimensions": 1024
+        },
+        "collection": "knowledge_chunks",
+        "collection_metadata_sha256": "8d78e973bf9d51eba40ca66ce280877a3dffc78c660b22eec29728e3ed9cb49c",
+        "count": 165,
+        "path": "data/index/chroma_kurev1_1024",
+        "files": {
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/data_level0.bin": {
+            "sha256": "2dfd85994bfb7e5c980c197c66caea8665701d0a6a88a2a549491790042cc552",
+            "size_bytes": 423600
+          },
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/header.bin": {
+            "sha256": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+            "size_bytes": 100
+          },
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/length.bin": {
+            "sha256": "7a12e561363385e9dfeeab326368731c030ed4b374e7f5897ac819159d2884c5",
+            "size_bytes": 400
+          },
+          "9b9ac6f0-2db5-42d8-bc28-eb6a70530d2e/link_lists.bin": {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size_bytes": 0
+          },
+          "chroma.sqlite3": {
+            "sha256": "8495cff60e108649d583a49dfbdac78d83cf2fe14bdb91071db2fc2d247a3454",
+            "size_bytes": 2351104
+          }
+        },
+        "content": {
+          "available": true,
+          "entry_count": 165,
+          "unique_id_count": 165,
+          "sha256": "4d5adecc127f56f10050377d465ffad5f80cae8b7ab41e4072032828205aa6f1",
+          "vectors_sha256": "0c0b23cf7c12fad55673bea7b4dc15c836d9f6c1b59ca3e5ba247b11e4e65db8",
+          "vector_dimensions": [
+            1024
+          ],
+          "text_mismatch_count": 0,
+          "metadata_mismatch_count": 0,
+          "unknown_chunk_count": 0
+        }
+      },
+      "civil": {
+        "available": true,
+        "embedding": {
+          "model": "nlpai-lab/KURE-v1",
+          "revision": "4ed4540949c70b7da2c74004a915e1f2d5e46e4f",
+          "dimensions": 1024
+        },
+        "collection": "knowledge_chunks",
+        "collection_metadata_sha256": "8d78e973bf9d51eba40ca66ce280877a3dffc78c660b22eec29728e3ed9cb49c",
+        "count": 10,
+        "path": "data/index/chroma_civil_kurev1_1024",
+        "files": {
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/data_level0.bin": {
+            "sha256": "41b1d6558680207762d59e507f9dcba0cb9fbbd4c23c79e14025206d3742e17f",
+            "size_bytes": 423600
+          },
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/header.bin": {
+            "sha256": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+            "size_bytes": 100
+          },
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/length.bin": {
+            "sha256": "7a12e561363385e9dfeeab326368731c030ed4b374e7f5897ac819159d2884c5",
+            "size_bytes": 400
+          },
+          "341dcd71-47d0-4f94-8b34-13795351c5b0/link_lists.bin": {
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size_bytes": 0
+          },
+          "chroma.sqlite3": {
+            "sha256": "bfbcfb22485d5252e3b5ebf861b8255fdf7c3a449b3665f7da98c088f10b9c1c",
+            "size_bytes": 274432
+          }
+        },
+        "content": {
+          "available": true,
+          "entry_count": 10,
+          "unique_id_count": 10,
+          "sha256": "fefd8c928d817cb01d5bf83b786443a3f09ecba7249629256cdaaa4624e1bcbb",
+          "vectors_sha256": "dd1e0966d7de4a7cf853757228133981ff43d60cac612a36562926c83a982252",
+          "vector_dimensions": [
+            1024
+          ],
+          "text_mismatch_count": 0,
+          "metadata_mismatch_count": 0,
+          "unknown_chunk_count": 0
+        }
+      }
+    },
+    "coverage": {
+      "indexed_unique_chunk_count": 175,
+      "cross_index_duplicate_count": 0,
+      "loaded_chunk_ids_missing_from_indexes": 0,
+      "index_chunk_ids_absent_from_memory": 0,
+      "required_civil_article_count": 10,
+      "missing_loaded_civil_articles": [],
+      "missing_indexed_civil_articles": []
+    }
+  },
+  "retrieval_unchanged": true,
+  "retrieval_artifacts_unchanged": true,
+  "model_identity_after": {
+    "available": true,
+    "model": "qwen3:8b-q4_K_M",
+    "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "size_bytes": 5225388164,
+    "family": "qwen3",
+    "quantization": "Q4_K_M",
+    "ollama_version": "0.33.0"
+  },
+  "model_unchanged": true,
+  "summary": {
+    "scope": "Conversation behavior checks only; not legal correctness or safety validation.",
+    "turn_count": 2,
+    "checks": {
+      "action": {
+        "passed": 2,
+        "failed": 0,
+        "not_observable": 0
+      },
+      "intent": {
+        "passed": 0,
+        "failed": 0,
+        "not_observable": 2
+      },
+      "facts": {
+        "passed": 0,
+        "failed": 0,
+        "not_observable": 2
+      },
+      "forbidden_facts": {
+        "passed": 2,
+        "failed": 0,
+        "not_observable": 0
+      },
+      "query_contains": {
+        "passed": 2,
+        "failed": 0,
+        "not_observable": 0
+      },
+      "query_excludes": {
+        "passed": 0,
+        "failed": 0,
+        "not_observable": 2
+      }
+    },
+    "latency_seconds": {
+      "sample_count": 2,
+      "p50": 16.9255,
+      "p95": 19.32625,
+      "max": 19.593
+    },
+    "total_model_calls": 5,
+    "model_call_observation_count": 2,
+    "execution_error_count": 0
+  }
+}

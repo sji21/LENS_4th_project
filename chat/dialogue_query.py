@@ -17,7 +17,7 @@ DOCUMENT_LABELS = {"contract": "임대차계약서", "registry": "등기부등�
 QUERY_LIMIT = 2000
 
 
-def grounded_query(state, user, decision):
+def grounded_query(state, user, decision, *, document_context=True):
     """Build a query from a validated Decision without changing its session.
 
     Literal values are user statements, not verified legal facts. This adapter
@@ -38,7 +38,7 @@ def grounded_query(state, user, decision):
     parts = []
     active_id = dialogue["active_document_id"]
     selected = next((doc for doc in trial.get("documents", []) if active_id and doc.get("document_id") == active_id), None)
-    if selected and isinstance(selected.get("kind"), str):
+    if document_context and selected and isinstance(selected.get("kind"), str):
         label = DOCUMENT_LABELS.get(selected["kind"])
         if label:
             parts.append(f"선택 문서: {label}")

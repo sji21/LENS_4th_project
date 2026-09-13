@@ -51,7 +51,9 @@ def test_rag_keeps_graph_answer_contract_and_records_exactly_one_exchange(runtim
     state = services.initial_state()
     message = call(state, runtime)
     runtime.planner.assert_called_once()
-    runtime.official.assert_called_once_with(runtime.planner.return_value.decision.search_query, service=runtime.loader.result.return_value)
+    runtime.official.assert_called_once()
+    assert runtime.official.call_args.args[0].endswith("주택 임대차 보증금 반환 절차를 알려주세요.")
+    assert runtime.official.call_args.kwargs == {"service": runtime.loader.result.return_value}
     runtime.document.assert_not_called()
     runtime.legacy.assert_not_called()
     assert message["content"] == "검증된 답변"
@@ -238,7 +240,9 @@ def test_document_rag_uses_owned_selection_and_grounded_query(runtime, selected)
     if selected == "planner":
         runtime.planner.return_value.decision = proposal(document_id="owned", intent="document_question")
     message = call(state, runtime, "이 문서를 설명해주세요.", explicit)
-    query = runtime.planner.return_value.decision.search_query
+    query = runtime.document.call_args.args[0]
+    assert query.endswith("이 문서를 설명해주세요.")
+    assert "선택 문서: 임대차계약서" in query
     runtime.evidences.assert_called_once_with(query, state["documents"], "owned")
     runtime.document.assert_called_once_with(query, ("OWNED_EVIDENCE",), service=runtime.loader.result.return_value)
     runtime.official.assert_not_called()

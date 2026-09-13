@@ -1,12 +1,16 @@
 """Dispatch validated conversation actions while retaining the legal pipeline."""
 from copy import deepcopy
+from dataclasses import asdict, replace
+import json
 import time
 
 from langsmith import tracing_context
 
 from src.generation import chain
 from . import dialogue_planner
-from .dialogue_contract import Decision
+from .dialogue_contract import Decision, parse_decision
+from .dialogue_query import grounded_query
+from .dialogue_documents import select_document, document_question, retain_followup_topic
 from .dialogue_clarification import short_answer_decision, prepare_clarification, answer_reason
 from .dialogue_state import apply_user_update, ensure_dialogue, record_answer
 
@@ -73,15 +77,20 @@ def respond_conversational(state, question, document_id=None, *, legacy):
             _commit(state, draft)
             return message
 
+        selected_input, ambiguous = select_document(draft, question, document_id)
         try:
-            decision = short_answer_decision(draft, question)
+            decision = document_question(draft) if ambiguous else None
+            if decision is None and not selected_input:
+                decision = short_answer_decision(draft, question)
             if decision is None:
-                decision = dialogue_planner.plan_turn(draft, question, document_id).decision
+                decision = dialogue_planner.plan_turn(draft, question, selected_input).decision
         except dialogue_planner.PlanningError as error:
             # No partially proposed facts survive a rejected plan. The legacy
             # adapter owns message appending; do not append the exchange twice.
             draft = deepcopy(state)
-            message = legacy(draft, question, document_id)
+            message = legacy(draft, question, selected_input)
+            if selected_input:
+                ensure_dialogue(draft)["active_document_id"] = selected_input
             message.update(action="refuse" if message.get("status") == "refused" else "rag", intent=None)
             record_answer(draft, message)
             draft["dialogue_runtime"] = {"path": "legacy_fallback", "reason": error.code}
@@ -90,7 +99,19 @@ def respond_conversational(state, question, document_id=None, *, legacy):
 
         if not isinstance(decision, Decision):
             raise RuntimeError("Invalid conversation decision")
+        decision = retain_followup_topic(draft, decision)
+        continuation = not decision.topic_changed and decision.intent in {"document_question", "followup", "explain", "clarification_answer", "correction"}
+        selected, unresolved = select_document(draft, question, selected_input, continue_document=continuation)
+        if unresolved:
+            decision = document_question(draft)
+        elif decision.action != "refuse":
+            decision = replace(decision, document_id=selected)
         decision, pending = prepare_clarification(draft, question, decision)
+        use_document = bool(selected) and not unresolved
+        if decision.action == "rag":
+            query = grounded_query(draft, question, decision, document_context=use_document)
+            decision = parse_decision(json.dumps(asdict(replace(decision, search_query=query)), ensure_ascii=False),
+                                      state=draft, user=question, preserved_user=True)
         if decision.action == "refuse":
             answer = chain._refused_answer(chain._safe_question(question), "prompt_injection")
             message = services.answer_message(answer, started)
@@ -116,10 +137,6 @@ def respond_conversational(state, question, document_id=None, *, legacy):
                 query = decision.search_query
                 active_id = dialogue["active_document_id"]
                 documents = draft["documents"]
-                kinds = tuple(dict.fromkeys(doc["kind"] for doc in documents))
-                use_document = bool(documents) and (
-                    bool(active_id) or services.question_references_uploaded_document(question, kinds)
-                )
                 if use_document:
                     evidences = services.find_evidences(query, documents, active_id)
                     answer = services.graph.answer_document_question(query, evidences, service=services.retrieval_loader().result())

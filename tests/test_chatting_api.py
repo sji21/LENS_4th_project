@@ -181,7 +181,11 @@ def test_enabled_rag_uses_validated_query_and_saves_user_facts_once(browser, cal
     assert saved["dialogue"]["last_answer"]["content"] == "검증된 공개 답변"
     assert "PRIVATE_GRAPH_RAW" not in json.dumps(saved["dialogue"], ensure_ascii=False)
     calls.planner.assert_called_once()
-    calls.official.assert_called_once_with(planned.decision.search_query, service=calls.loader.result.return_value)
+    calls.official.assert_called_once()
+    actual_query = calls.official.call_args.args[0]
+    assert actual_query.endswith("월세 보증금 반환을 문의해요.")
+    assert "계약 유형: 월세" in actual_query and "보증금반환" in actual_query
+    assert calls.official.call_args.kwargs == {"service": calls.loader.result.return_value}
     calls.document.assert_not_called()
     calls.legacy.assert_not_called()
     calls.resolver.assert_not_called()
@@ -413,3 +417,68 @@ def test_unrelated_reply_cannot_repeat_the_same_confirmation_forever(browser, ca
     assert third.json()["messages"][-1]["action"] == "rag"
     assert Conversation.objects.get().state["dialogue"]["pending"] is None
     assert "contract_ended" not in Conversation.objects.get().state["dialogue"]["facts"]
+
+
+def test_ambiguous_document_asks_before_model_or_retrieval_and_choice_resumes(browser, calls, settings):
+    settings.CHAT_CONVERSATION_ENABLED = True
+    original = owned_document(browser)
+    conversation = Conversation.objects.get()
+    second = deepcopy(conversation.state["documents"][0])
+    second.update(document_id="doc-second", filename="second.pdf")
+    conversation.state["documents"].append(second)
+    conversation.save(update_fields=["state"])
+    result = post(browser, "이 계약서의 보증금을 알려주세요")
+    assert result.status_code == 200
+    assert result.json()["messages"][-1]["status"] == "clarify"
+    assert {c["document_id"] for c in result.json()["messages"][-1]["choices"]} == {original, "doc-second"}
+    calls.planner.assert_not_called()
+    calls.document.assert_not_called()
+    plan(calls, intent="document_question", document_id=original)
+    result = post(browser, "선택한 문서를 설명해주세요", document_id=original)
+    assert result.status_code == 200
+    assert Conversation.objects.get().state["dialogue"]["active_document_id"] == original
+    calls.document.assert_called_once()
+
+
+def test_document_fallback_records_selected_owned_document_for_followup(browser, calls, settings):
+    settings.CHAT_CONVERSATION_ENABLED = True
+    selected = owned_document(browser)
+    calls.planner.side_effect = PlanningError("invalid_decision:changed_literal_value")
+    result = post(browser, "올린 계약서의 보증금이 얼마인가요?")
+    assert result.status_code == 200
+    assert Conversation.objects.get().state["dialogue"]["active_document_id"] == selected
+    assert not Conversation.objects.get().state["dialogue"]["facts"]
+    calls.document.assert_called_once()
+
+
+def test_different_document_amounts_are_not_combined_as_one_fact(browser, calls, settings):
+    settings.CHAT_CONVERSATION_ENABLED = True
+    owned_document(browser)
+    conversation = Conversation.objects.get()
+    extraction = ExtractionResult(pages=(PageExtraction(1, "임대차계약서 보증금 사백만원 특약", "embedded_text", 30),), elapsed_seconds=0.1)
+    context = build_session_document_context("second.pdf", extraction, str(conversation.pk), document_id="doc-b", document_kind="임대차계약서")
+    conversation.state["documents"].append({"document_id": "doc-b", "kind": "contract", "label": "임대차계약서", "filename": "second.pdf", "context": asdict(context), "checksum": "second"})
+    conversation.save(update_fields=["state"])
+    plan(calls, intent="document_question", document_id="doc-b")
+    result = post(browser, "2번 문서에 적힌 보증금은 얼마인가요?")
+    assert result.status_code == 200
+    evidence = calls.document.call_args.args[1]
+    assert evidence and all(item.document_id == "doc-b" for item in evidence)
+    assert "사백만원" in " ".join(item.text for item in evidence)
+    assert "삼천만원" not in " ".join(item.text for item in evidence)
+    assert "deposit" not in Conversation.objects.get().state["dialogue"]["facts"]
+
+
+def test_general_question_keeps_document_available_without_using_it(browser, calls, settings):
+    settings.CHAT_CONVERSATION_ENABLED = True
+    selected = owned_document(browser)
+    conversation = Conversation.objects.get()
+    conversation.state["dialogue"]["active_document_id"] = selected
+    conversation.save(update_fields=["state"])
+    plan(calls, intent="question", topic="대항력")
+    result = post(browser, "대항력의 의미를 알려주세요.")
+    assert result.status_code == 200
+    calls.official.assert_called_once()
+    calls.document.assert_not_called()
+    assert "선택 문서:" not in calls.official.call_args.args[0]
+    assert Conversation.objects.get().state["dialogue"]["active_document_id"] == selected
