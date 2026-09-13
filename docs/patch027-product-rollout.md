@@ -27,8 +27,8 @@ $env:TRANSFORMERS_OFFLINE='1'
 $env:HF_HUB_DISABLE_TELEMETRY='1'
 $env:ANONYMIZED_TELEMETRY='False'
 & $py -X utf8 -m scripts.patch027_rollout stage --data tmp/patch026-full-evaluation-v2/candidate/data --out tmp/patch027-rollout-stage
-& $py -X utf8 -m scripts.patch027_rollout verify --data tmp/patch027-rollout-stage/data --out tmp/patch027-product-preflight
-& $py -X utf8 -m scripts.patch027_rollout apply --data tmp/patch027-rollout-stage/data --verification tmp/patch027-product-preflight --out tmp/patch027-operating-backup-20260913
+& $py -X utf8 -m scripts.patch027_rollout verify --data tmp/patch027-rollout-stage/data --out tmp/patch027-product-preflight-v2
+& $py -X utf8 -m scripts.patch027_rollout apply --data tmp/patch027-rollout-stage/data --verification tmp/patch027-product-preflight-v2 --out tmp/patch027-operating-backup-20260913
 & $py -X utf8 -m scripts.patch027_rollout verify --data data --out tmp/patch027-product-adopted
 ```
 
