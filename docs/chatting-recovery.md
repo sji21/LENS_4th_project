@@ -45,6 +45,6 @@ python -m src.evaluation.chatting_dialogue_run --split acceptance --output data/
 
 평가기의 법률 고정 응답은 위 CLI 안에서만 사용한다. 운영 서버나 실제 서비스의 법률 검증을 끄는 설정은 추가하지 않았다. 실행할 때마다 새로운 출력 파일을 지정하며 기존 증거를 덮어쓰지 않는다.
 
-브랜치는 test/patch-037-chatting-acceptance다. 기본 CHAT_CONVERSATION_ENABLED=false와 기존 경로를 유지한다. 로컬에서 새 기능을 확인하려면 true로 설정하고 서버를 재시작한다. main 병합·푸시·배포는 별도 요청 대상이다.
+구현 커밋은 `02a6434`, 브랜치는 `test/patch-037-chatting-acceptance`다. 기본 CHAT_CONVERSATION_ENABLED=false와 기존 경로를 유지한다. 로컬에서 새 기능을 확인하려면 true로 설정하고 서버를 재시작한다. main 병합·푸시·배포는 별도 요청 대상이다.
 
 중간 실험인 planner-recovery-dev-01, dialogue-recovery-dev-01/02와 dialogue-recovery-acceptance-01도 보존한다. 표의 최종 두 결과만 현재 코드의 판정 근거로 사용한다.
