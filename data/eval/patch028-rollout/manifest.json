@@ -7,5 +7,6 @@
   "postflight/rows.json": "6c0530b61ccb28ed37b9327c14432d89d37cc21068f1c9ac9d01a3fa6e172141",
   "preflight/audit.json": "86f2bf9bb5afed840a7c227d6dac67806cfafe4b8ce15c3469f5903aab7e7065",
   "preflight/manifest.json": "09d6190536188277d2eff6b11530ca7b82ecf820cda35687effc1e703fe29fb7",
-  "preflight/rows.json": "40244d5dfc9ea7375faece4c251c570fa9ea799c8eb2a7cd10d968ebc41d6d1d"
+  "preflight/rows.json": "40244d5dfc9ea7375faece4c251c570fa9ea799c8eb2a7cd10d968ebc41d6d1d",
+  "fresh-install-summary.json": "e2fba49590e0c643ff88db37eaebd9be7fa85214c2661684c76cc3408b6f062c"
 }

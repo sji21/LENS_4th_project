@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-028 adds an environment bootstrap (venv, required packages, verified KURE cache), explains the handoff data folder before manual setup, and supports verified first installation into an empty checkout with failure recovery. macOS runtime remains unverified. (commit: pending)
+- PATCH-028 adds an environment bootstrap (venv, required packages, verified KURE cache), explains the handoff data folder before manual setup, and supports verified first installation into an empty checkout with failure recovery. macOS runtime remains unverified. (commit: 9aadb63, e59f53f)
 
 - PATCH-028 documents the macOS Python entry point alongside Windows commands, including environment setup and the lack of macOS runtime verification. Documentation only. (commit: c5249ad)
 
