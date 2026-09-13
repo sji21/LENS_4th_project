@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-027 prepares the user-authorized final test for adopting the 61-article expansion. Freeze net gains, consumed evidence coverage, CIV35 preservation and integrity checks instead of requiring zero historical losses. Compare the verified policy with one bounded fixed-date-record lookup refinement using 235 fresh operating/control/candidate searches. Earlier acceptance results remain unchanged. (commit: pending)
+- PATCH-027 prepares the user-authorized final test for adopting the 61-article expansion. Freeze net gains, consumed evidence coverage, CIV35 preservation and integrity checks instead of requiring zero historical losses. Compare the verified policy with one bounded fixed-date-record lookup refinement using 235 fresh operating/control/candidate searches. Earlier acceptance results remain unchanged. (commit: 7294492)
 
 - PATCH-027 explains the union of eight returned-target and seven general TOP3 loss inputs: eleven distinct inputs, five complete-to-incomplete regressions, with all missing targets still present among candidates. One offline seedless-RRF comparison across 235 inputs recovers DEV-059 and gains DEV-064 but loses DEV-058; question complete retrieval rises 43→44/75 and context stays 42/75. Preserve both gains and losses, paired-context diagnostics and replay checks. No operating change or retrospective acceptance-gate revision. (commit: 4da57fd)
 
