@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
-- PATCH-039 identifies retrieved laws from the citation head, excluding article references inside the parenthesized title. Share this identity with paragraph/header validation while rejecting ambiguous trailing sources. Related 387 passed; full UTF-8 suite 1,434 passed, 3 skipped, 172 subtests passed. (commit: pending)
+- PATCH-039 identifies retrieved laws from the citation head, excluding article references inside the parenthesized title. Share this identity with paragraph/header validation while rejecting ambiguous trailing sources. Related 387 passed; full UTF-8 suite 1,434 passed, 3 skipped, 172 subtests passed. (commit: 3d8355b)
 
 - PATCH-039 checks each adjacent law citation independently instead of absorbing an earlier article into the next law name. Preserve plain/emphasized citations, conjunctions, multiword law names, and paragraph offsets. PR #27 P1 regression fixed; related 366 passed, full UTF-8 suite 1,413 passed, 3 skipped, 172 subtests passed. (commit: ce37159)
 
