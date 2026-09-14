@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
-- PATCH-039 separates law-name context from retrieved article provenance: body cross-references no longer authorize unretrieved citations. Paired Markdown emphasis is masked for citation/paragraph parsing with original offsets and issue excerpts preserved. Related tests: 225 passed, 6 subtests passed. Full suite with Python UTF-8 mode: 1,272 passed, 3 skipped, 172 subtests passed. Default Windows cp949 mode fails an unchanged frontend test's file read; no live LLM evaluation was performed. (commit: pending)
+- PATCH-039 separates law-name context from retrieved article provenance: body cross-references no longer authorize unretrieved citations. Paired Markdown emphasis is masked for citation/paragraph parsing with original offsets and issue excerpts preserved. Related tests: 225 passed, 6 subtests passed. Full suite with Python UTF-8 mode: 1,272 passed, 3 skipped, 172 subtests passed. Default Windows cp949 mode fails an unchanged frontend test's file read; no live LLM evaluation was performed. (commit: 88e23db)
 
 ## 2026-09-13
 
