@@ -258,6 +258,53 @@ def _build_law_index(
     return index, known_laws
 
 
+def answer_citation_scan_text(text: str, evidences: tuple[Evidence, ...]) -> str:
+    """Shared offset-preserving view for answer validation and display.
+
+    A retrieved label's copied title is descriptive, not another claim. Only
+    an exact title (apart from presentation whitespace/emphasis) attached to
+    its own law/article is masked; other parenthetical claims remain visible.
+    """
+    scan = citation_scan_text(text)
+    titles: dict[LawKey, set[str]] = {}
+    for evidence in evidences:
+        if evidence.doc_type not in _LAW_DOC_TYPES:
+            continue
+        key = _retrieved_law_key(evidence)
+        label = evidence.citation.strip()
+        if not label:
+            header = re.match(r"\[([^\]\n]+)\]", evidence.text.lstrip())
+            label = header[1] if header else ""
+        if key is not None and "(" in label:
+            title = citation_scan_text(label[label.index("("):])
+            titles.setdefault(key, set()).add(re.sub(r"\s+", "", title))
+
+    chars = list(scan)
+    masked_until = 0
+    for match, law, article in _law_mentions(scan):
+        if match.start() < masked_until or (law, article) not in titles:
+            continue
+        start = match.end()
+        while start < len(scan) and scan[start].isspace():
+            start += 1
+        if start == len(scan) or scan[start] != "(":
+            continue
+        depth = 0
+        for end in range(start, len(scan)):
+            if scan[end] == "(":
+                depth += 1
+            elif scan[end] == ")":
+                depth -= 1
+                if depth == 0:
+                    title = re.sub(r"\s+", "", scan[start:end + 1])
+                    if title in titles[(law, article)]:
+                        # Keep parentheses as lexical boundaries.
+                        chars[start + 1:end] = " " * (end - start - 1)
+                        masked_until = end + 1
+                    break
+    return "".join(chars)
+
+
 def _build_case_index(
     evidences: tuple[Evidence, ...],
 ) -> tuple[dict[tuple[str, str], set[str]], dict[str, set[str]]]:
@@ -335,7 +382,7 @@ def extract_citation_mentions(
     found: list[tuple[int, CitationMention]] = []
     seen: set[tuple[str, object]] = set()
 
-    for match, law_name, article in _law_mentions(raw_text):
+    for match, law_name, article in _law_mentions(answer_citation_scan_text(raw_text, evidences)):
         canonical_law = _canonical_law_name(law_name, known_laws)
         key: LawKey = (canonical_law, article)
         seen_key = ("law", key)

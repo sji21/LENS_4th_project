@@ -13,7 +13,10 @@ from __future__ import annotations
 
 import re
 
-from src.generation.citation import _LAW_MENTION_RE
+from src.generation.citation import (
+    ArticleKey, _article_key, _build_law_index, _canonical_law_name,
+    _law_mentions, _LAW_DOC_TYPES, _retrieved_law_key, answer_citation_scan_text,
+)
 from src.retrieval.service import Evidence
 from src.generation.source_links import citation_url
 
@@ -27,26 +30,6 @@ _TOKEN_RE = re.compile(r"[가-힣A-Za-z0-9]{2,}")
 _ARTICLE_ONLY_RE = re.compile(r"제\s*\d+\s*조(?:\s*의\s*\d+)?")
 
 _MAX_EXCERPT = 160
-
-
-def _compact(text: str) -> str:
-    return re.sub(r"\s+", "", text or "")
-
-
-def _article_key(article: str) -> str:
-    return _compact(article)
-
-
-def _law_name_of(citation: str) -> str:
-    """근거 citation에서 법령명만 뽑는다. 없으면 빈 문자열."""
-
-    match = _LAW_MENTION_RE.search(citation or "")
-    return _compact(match.group("law")) if match else ""
-
-
-def _article_of(citation: str) -> str:
-    match = _ARTICLE_ONLY_RE.search(citation or "")
-    return _article_key(match.group(0)) if match else ""
 
 
 def _sentences(text: str) -> list[str]:
@@ -91,7 +74,7 @@ def _best_excerpt(evidence_text: str, answer_sentence: str) -> str:
 
 def _match_evidence(
     law: str,
-    article: str,
+    article: ArticleKey | None,
     evidences: tuple[Evidence, ...],
 ) -> Evidence | None:
     """법령명은 **완전 일치**로만 본다.
@@ -100,15 +83,15 @@ def _match_evidence(
     걸려, 답변이 인용하지 않은 법령으로 링크가 붙는다.
     """
 
-    if law:
-        for evidence in evidences:
-            if _law_name_of(evidence.citation) == law and _article_of(evidence.citation) == article:
-                return evidence
-        return None
-
-    # 법령명 없이 "제3조의2"만 적힌 경우: 그 조문을 가진 근거가 하나뿐일 때만 잇는다.
-    matches = [e for e in evidences if _article_of(e.citation) == article]
-    return matches[0] if len(matches) == 1 else None
+    matches = []
+    for evidence in evidences:
+        if evidence.doc_type not in _LAW_DOC_TYPES:
+            continue
+        key = _retrieved_law_key(evidence)
+        if key is not None and key[1] == article and (not law or key[0] == law):
+            matches.append(evidence)
+    # Explicit identities may have several chunks; bare articles must be unique.
+    return matches[0] if matches and (law or len(matches) == 1) else None
 
 
 def build_citation_spans(text: str, evidences: tuple[Evidence, ...]) -> tuple[dict, ...]:
@@ -124,7 +107,7 @@ def build_citation_spans(text: str, evidences: tuple[Evidence, ...]) -> tuple[di
     spans: list[dict] = []
     taken: list[tuple[int, int]] = []
 
-    def _add(start: int, end: int, law: str, article: str) -> None:
+    def _add(start: int, end: int, law: str, article: ArticleKey | None) -> None:
         if any(start < prior_end and prior_start < end for prior_start, prior_end in taken):
             return
         evidence = _match_evidence(law, article, evidences)
@@ -147,16 +130,23 @@ def build_citation_spans(text: str, evidences: tuple[Evidence, ...]) -> tuple[di
             }
         )
 
-    for match in _LAW_MENTION_RE.finditer(text):
+    scan = answer_citation_scan_text(text, evidences)
+    _, known_laws = _build_law_index(evidences)
+    explicit_spans = []
+    for match, law, article in _law_mentions(scan):
+        # An unsupported explicit law must not fall back to another law that
+        # happens to share its article number.
+        explicit_spans.append(match.span())
         _add(
             match.start(),
             match.end(),
-            _compact(match.group("law")),
-            _article_key(match.group("article")),
+            _canonical_law_name(law, known_laws),
+            article,
         )
 
-    for match in _ARTICLE_ONLY_RE.finditer(text):
-        _add(match.start(), match.end(), "", _article_key(match.group(0)))
+    for match in _ARTICLE_ONLY_RE.finditer(scan):
+        if not any(match.start() < end and start < match.end() for start, end in explicit_spans):
+            _add(match.start(), match.end(), "", _article_key(match.group(0)))
 
     for match in re.finditer(r"\d{2,4}[가-힣]{1,4}\d+", text):
         matches = [e for e in evidences if e.doc_type == "case" and match.group() in e.citation]

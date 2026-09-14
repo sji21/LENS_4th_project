@@ -14,7 +14,7 @@ import re
 import unicodedata
 from typing import Callable, Literal
 
-from src.generation.citation import audit_citations, citation_scan_text
+from src.generation.citation import audit_citations, answer_citation_scan_text
 from src.generation.models import Answer
 from src.generation.paragraph import claim_identity, evidence_paragraphs, paragraph_group
 from src.retrieval.service import Evidence
@@ -705,7 +705,7 @@ def _paragraph_issues(answer: Answer) -> list[ValidationIssue]:
     )
     issues = []
 
-    scan_text = citation_scan_text(answer.raw_text)
+    scan_text = answer_citation_scan_text(answer.raw_text, answer.evidences)
     for match in _PARAGRAPH_RE.finditer(scan_text):
         paragraphs, reference = paragraph_group(scan_text, match)
         identity = claim_identity(scan_text, match.span("article"))
