@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
-- PATCH-039 shares copied-title and emphasis parsing across article validation, paragraph validation and display spans. Only matching retrieved titles are excluded; independent claims remain checked. Preserve correct evidence links with split emphasis, reject wrong-law fallback, and support nested-title URLs. Related 482 passed, 16 subtests; full UTF-8 suite 1,467 passed, 3 skipped, 172 subtests. (commit: pending)
+- PATCH-039 shares copied-title and emphasis parsing across article validation, paragraph validation and display spans. Only matching retrieved titles are excluded; independent claims remain checked. Preserve correct evidence links with split emphasis, reject wrong-law fallback, and support nested-title URLs. Related 482 passed, 16 subtests; full UTF-8 suite 1,467 passed, 3 skipped, 172 subtests. (commit: 6e3064a)
 
 - PATCH-039 identifies retrieved laws from the citation head, excluding article references inside the parenthesized title. Share this identity with paragraph/header validation while rejecting ambiguous trailing sources. Related 387 passed; full UTF-8 suite 1,434 passed, 3 skipped, 172 subtests passed. (commit: 3d8355b)
 
