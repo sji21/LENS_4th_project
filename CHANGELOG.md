@@ -5,6 +5,20 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-14
+
+### Fixed (Bug Fixes)
+
+- PATCH-039 matches uploaded-document law citations by law/article/branch identity instead of display text containing conjunctions. Preserve original issue text, exact chunk attribution, and rejection of absent or similarly numbered citations. Related 546 passed, 16 subtests; full UTF-8 suite 1,536 passed, 3 skipped, 172 subtests. Explicit incorporation relationships and live 27-question outcome/cost evaluation remain separate follow-ups; current relation policy is unchanged. (commit: fbc3500)
+
+- PATCH-039 shares copied-title and emphasis parsing across article validation, paragraph validation and display spans. Only matching retrieved titles are excluded; independent claims remain checked. Preserve correct evidence links with split emphasis, reject wrong-law fallback, and support nested-title URLs. Related 482 passed, 16 subtests; full UTF-8 suite 1,467 passed, 3 skipped, 172 subtests. (commit: 6e3064a)
+
+- PATCH-039 identifies retrieved laws from the citation head, excluding article references inside the parenthesized title. Share this identity with paragraph/header validation while rejecting ambiguous trailing sources. Related 387 passed; full UTF-8 suite 1,434 passed, 3 skipped, 172 subtests passed. (commit: 3d8355b)
+
+- PATCH-039 checks each adjacent law citation independently instead of absorbing an earlier article into the next law name. Preserve plain/emphasized citations, conjunctions, multiword law names, and paragraph offsets. PR #27 P1 regression fixed; related 366 passed, full UTF-8 suite 1,413 passed, 3 skipped, 172 subtests passed. (commit: ce37159)
+
+- PATCH-039 separates law-name context from retrieved article provenance: body cross-references no longer authorize unretrieved citations. Paired Markdown emphasis is masked for citation/paragraph parsing with original offsets and issue excerpts preserved. Related tests: 225 passed, 6 subtests passed. Full suite with Python UTF-8 mode: 1,272 passed, 3 skipped, 172 subtests passed. Default Windows cp949 mode fails an unchanged frontend test's file read; no live LLM evaluation was performed. (commit: 88e23db)
+
 ## 2026-09-13
 
 ### Changed

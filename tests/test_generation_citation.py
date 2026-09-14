@@ -82,7 +82,7 @@ class CitationTests(unittest.TestCase):
 
         self.assertFalse(validate_citations(answer))
 
-    def test_accepts_same_law_bare_cross_reference(self):
+    def test_rejects_unretrieved_same_law_cross_reference(self):
         ev = make_evidence(
             chunk_id="law-3-3",
             doc_type="law",
@@ -100,7 +100,7 @@ class CitationTests(unittest.TestCase):
             laws=(ev,),
         )
 
-        self.assertTrue(validate_citations(answer))
+        self.assertFalse(validate_citations(answer))
 
     def test_does_not_mix_different_law_and_article(self):
         ev = make_evidence(
@@ -122,7 +122,7 @@ class CitationTests(unittest.TestCase):
 
         self.assertFalse(validate_citations(answer))
 
-    def test_supports_explicit_cross_referenced_law(self):
+    def test_rejects_unretrieved_explicit_cross_referenced_law(self):
         ev = make_evidence(
             chunk_id="law-main",
             doc_type="law",
@@ -140,7 +140,7 @@ class CitationTests(unittest.TestCase):
             laws=(ev,),
         )
 
-        self.assertTrue(validate_citations(answer))
+        self.assertFalse(validate_citations(answer))
 
     def test_supports_law_name_with_space(self):
         ev = make_evidence(
