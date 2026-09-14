@@ -81,6 +81,36 @@ FORMATS = [
 
 
 @pytest.mark.parametrize("format", FORMATS)
+@pytest.mark.parametrize("join", ["과 ", "와 ", " 및 ", " 또는 ", ", "])
+@pytest.mark.parametrize("supplied", [(3,), (4,), (3, 4)])
+def test_each_adjacent_citation_is_checked(format, join, supplied):
+    first = format.format(law="민법", article="제3조")
+    second = format.format(law="민법", article="제4조")
+    raw = first + join + second + "에 따릅니다."
+    sources = tuple(evidence(f"민법 제{n}조", chunk_id=str(n)) for n in supplied)
+    audit = audit_citations(answer(raw, *sources))
+    assert len(audit.mentions) == 2
+    assert [m.supported for m in audit.mentions] == [3 in supplied, 4 in supplied]
+    assert audit.is_valid == (len(supplied) == 2)
+    assert all(m.text in raw for m in audit.mentions)
+
+
+def test_different_laws_branches_and_paragraphs_keep_their_identities():
+    raw = "**주택임대차보호법 제3조의3 제1항** 및 **민법 제626조 제1항**에 따릅니다."
+    a = answer(raw, evidence("주택임대차보호법 제3조의3", chunk_id="housing"),
+               evidence("민법 제626조", chunk_id="civil"))
+    assert [m.evidence_chunk_ids for m in audit_citations(a).mentions] == [("housing",), ("civil",)]
+    assert not audit_answer(a).issues
+
+
+def test_internal_conjunction_in_multiword_law_name_is_preserved():
+    raw = "민법 제3조 및 기록 및 보존법 제4조에 따릅니다."
+    a = answer(raw, evidence("민법 제3조", chunk_id="first"),
+               evidence("기록 및 보존법 제4조", chunk_id="second"))
+    assert [m.evidence_chunk_ids for m in audit_citations(a).mentions] == [("first",), ("second",)]
+
+
+@pytest.mark.parametrize("format", FORMATS)
 @pytest.mark.parametrize("article,valid", [("제3조의2", True), ("제30조", False)])
 def test_emphasis_does_not_change_article_grounding(format, article, valid):
     raw = format.format(law="주택임대차보호법", article=article) + "에 따릅니다."
@@ -114,6 +144,8 @@ def test_formatted_paragraphs_still_check_every_member(reference, valid):
     ("**주택임대차보호법** **제8조**에 따라 비용을 청구할 수 있습니다.", "abstained"),
     ("**주택임대차보호법** **제3조의3**에 따라 비용을 청구할 수 있습니다.", "answered"),
     ("**주택임대차보호법** **제3조의3** **제5항**에 따릅니다.", "abstained"),
+    ("**주택임대차보호법 제8조**과 **주택임대차보호법 제3조의3**에 따릅니다.", "abstained"),
+    ("주택임대차보호법 제8조 및 주택임대차보호법 제3조의3에 따릅니다.", "abstained"),
 ])
 def test_runtime_blocks_before_semantic_and_accepts_formatted_source(monkeypatch, entrypoint, raw, status):
     from src.generation import chain, graph

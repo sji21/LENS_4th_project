@@ -144,10 +144,16 @@ def _clean_law_name(raw_name: str) -> str:
     # 예: "이 조문은 민법" -> "민법". 실제 다어절 법령명은 그대로 남는다.
     for index in range(len(tokens) - 2, -1, -1):
         token = tokens[index]
-        if any(token.endswith(suffix) for suffix in _GRAMMATICAL_TOKEN_SUFFIXES):
-            return " ".join(tokens[index + 1:])
+        if (any(token.endswith(suffix) for suffix in _GRAMMATICAL_TOKEN_SUFFIXES)
+                or re.fullmatch(r"제\d+[항호목]", token)):
+            tokens = tokens[index + 1:]
+            break
 
-    return raw_name
+    # Only leading conjunctions belong to the previous citation. Keep internal
+    # conjunctions in real multiword law names (e.g. "... 및 ...법").
+    while len(tokens) > 1 and tokens[0] in {"및", "또는", "그리고"}:
+        tokens = tokens[1:]
+    return " ".join(tokens)
 
 
 def _article_key(text: str) -> ArticleKey | None:
@@ -164,11 +170,18 @@ def _article_key(text: str) -> ArticleKey | None:
 
 def _law_mentions(text: str) -> list[tuple[re.Match[str], str, ArticleKey]]:
     mentions = []
-    for match in _LAW_MENTION_RE.finditer(citation_scan_text(text)):
-        article = _article_key(match.group("article"))
-        if article is None:
-            continue
-        mentions.append((match, _compact(_clean_law_name(match.group("law"))), article))
+    scan = citation_scan_text(text)
+    start = 0
+    for article_match in _ARTICLE_RE.finditer(scan):
+        # Limit each search to the next article, so the law-name regex cannot
+        # swallow an earlier citation while searching for a later law name.
+        # pos/endpos retain absolute source offsets for paragraph validation.
+        match = _LAW_MENTION_RE.search(scan, start, article_match.end())
+        start = article_match.end()
+        if match is not None and match.span("article") == article_match.span():
+            article = _article_key(match.group("article"))
+            if article is not None:
+                mentions.append((match, _compact(_clean_law_name(match.group("law"))), article))
     return mentions
 
 
