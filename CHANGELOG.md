@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
-- PATCH-039 matches uploaded-document law citations by law/article/branch identity instead of display text containing conjunctions. Preserve original issue text, exact chunk attribution, and rejection of absent or similarly numbered citations. Related 546 passed, 16 subtests; full UTF-8 suite 1,536 passed, 3 skipped, 172 subtests. Explicit incorporation relationships and live 27-question outcome/cost evaluation remain separate follow-ups; current relation policy is unchanged. (commit: pending)
+- PATCH-039 matches uploaded-document law citations by law/article/branch identity instead of display text containing conjunctions. Preserve original issue text, exact chunk attribution, and rejection of absent or similarly numbered citations. Related 546 passed, 16 subtests; full UTF-8 suite 1,536 passed, 3 skipped, 172 subtests. Explicit incorporation relationships and live 27-question outcome/cost evaluation remain separate follow-ups; current relation policy is unchanged. (commit: fbc3500)
 
 - PATCH-039 shares copied-title and emphasis parsing across article validation, paragraph validation and display spans. Only matching retrieved titles are excluded; independent claims remain checked. Preserve correct evidence links with split emphasis, reject wrong-law fallback, and support nested-title URLs. Related 482 passed, 16 subtests; full UTF-8 suite 1,467 passed, 3 skipped, 172 subtests. (commit: 6e3064a)
 
