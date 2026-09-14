@@ -62,6 +62,30 @@ def test_valid_current_user_quote_keeps_original_wire_exactly():
     assert normalize(raw, user="월세 계약에 대해 알려주세요.") == (raw, ())
 
 
+def test_same_source_turn_can_quote_another_span_without_reattributing_fact():
+    state = {"messages": [], "documents": []}
+    apply_user_update(state, user="지금 사는 월세집에서 계속살고 싶은데 계약 갱신은 어떻게 해?",
+                      topic="계약갱신", updates={
+                          "contract_type": {"value": "월세", "evidence": "지금 사는 월세집"},
+                          "living_in_property": {"value": "예", "evidence": "계속살고 싶은"},
+                      })
+    before = deepcopy(state)
+    raw = wire(topic="계약갱신", search_query="그럼 문자로 계약 갱신 할수 있어?", updates=[
+        update("living_in_property", "예", "지금 사는 월세집"), update(),
+    ])
+    normalized, diagnostics = normalize(raw, state=state, user="그럼 문자로 계약 갱신 할수 있어?")
+    assert json.loads(normalized)["updates"] == []
+    assert len(diagnostics) == 2
+    assert state == before
+
+
+def test_matching_quote_from_another_turn_does_not_repair_provenance():
+    state = session()
+    apply_user_update(state, user="친구는 월세 아파트에 살아요.", updates={})
+    raw = wire(updates=[update(evidence="월세 아파트")])
+    assert normalize(raw, state=state) == (raw, ())
+
+
 @pytest.mark.parametrize("topic", [None, "보증금반환"])
 def test_explicit_current_topic_or_implicit_keep_can_normalize(topic):
     assert normalize(wire(topic=topic))[1]

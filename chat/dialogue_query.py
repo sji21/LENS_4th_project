@@ -1,7 +1,7 @@
 """Serialize validated conversation state without another model or paraphrase."""
 from copy import deepcopy
 
-from .dialogue_contract import DecisionError, FACT_FIELDS, previous_answer_query
+from .dialogue_contract import DecisionError, FACT_FIELDS, previous_answer_query, pending_request
 from .dialogue_state import apply_user_update
 
 
@@ -35,6 +35,8 @@ def grounded_query(state, user, decision, *, document_context=True):
     except ValueError:
         raise DecisionError("provenance_or_document") from None
 
+    # Keep current input separate from the preceding request and case facts.
+    # Only one preceding request is included, never a recursively nested query.
     parts = []
     active_id = dialogue["active_document_id"]
     selected = next((doc for doc in trial.get("documents", []) if active_id and doc.get("document_id") == active_id), None)
@@ -51,6 +53,9 @@ def grounded_query(state, user, decision, *, document_context=True):
     prior_query = previous_answer_query(dialogue, decision.intent)
     if prior_query:
         parts.append(f"직전 답변 질문: {prior_query}")
+    request = pending_request(dialogue, decision.intent)
+    if request:
+        parts.append(f"이어서 상담할 사용자 질문: {request}")
     parts.append(f"사용자 입력: {user}")
     query = "\n".join(parts)
     if len(query) > QUERY_LIMIT:

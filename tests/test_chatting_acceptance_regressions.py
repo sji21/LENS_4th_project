@@ -52,6 +52,60 @@ def test_explain_retrieves_the_previous_answered_question_without_new_facts(runt
     assert state["dialogue"]["facts"] == {}
 
 
+def test_followup_focus_advances_and_summary_keeps_the_latest_target(runtime):
+    state = services.initial_state()
+    runtime.planner.return_value.decision = proposal(topic="계약갱신")
+    first = "월세 계약 갱신은 어떻게 해?"
+    second = "그럼 문자로 갱신 의사를 알려도 돼?"
+    third = "답장이 없으면 어떻게 해?"
+    call(state, runtime, first)
+    runtime.planner.return_value.decision = proposal(intent="followup", topic="계약갱신")
+    call(state, runtime, second)
+    assert state["dialogue"]["last_answer"]["request"] == second
+    call(state, runtime, third)
+    query = runtime.official.call_args.args[0]
+    assert second in query and query.endswith(third)
+    assert first not in query
+    assert query.count("직전 답변 질문:") == 1
+    latest_query = state["dialogue"]["last_answer"]["query"]
+    runtime.planner.return_value.decision = proposal(intent="explain", topic="계약갱신", style="brief")
+    call(state, runtime, "지금 할 일만 요약해 줘.")
+    assert third in runtime.official.call_args.args[0]
+    assert state["dialogue"]["last_answer"]["request"] == third
+    assert state["dialogue"]["last_answer"]["query"] == latest_query
+
+
+def test_new_case_does_not_inherit_the_previous_request(runtime):
+    state = services.initial_state()
+    call(state, runtime, "문자로 갱신 의사를 알려도 돼?")
+    runtime.planner.return_value.decision = proposal(intent="topic_change", topic="시설수리", topic_changed=True)
+    call(state, runtime, "동생 집은 누수가 있어.")
+    assert "갱신" not in runtime.official.call_args.args[0]
+    assert state["dialogue"]["last_answer"]["request"] == "동생 집은 누수가 있어."
+
+
+def test_long_followup_chain_does_not_nest_previous_search_queries(runtime):
+    state = services.initial_state()
+    call(state, runtime, "계약 갱신 방법을 설명해 줘.")
+    runtime.planner.return_value.decision = proposal(intent="followup")
+    for index in range(20):
+        text = f"확인할 항목 {index}에 관해 설명해 줘."
+        call(state, runtime, text)
+        query = runtime.official.call_args.args[0]
+        assert query.count("직전 답변 질문:") == 1
+        assert query.endswith(text)
+        assert len(query) < 300
+
+
+def test_focus_prompt_is_opt_in_and_does_not_change_legacy_generation():
+    from src.generation.prompt import build_qa_prompt, focus_guidance
+    legacy = build_qa_prompt().format_messages(context="자료", question="질문")
+    focused = build_qa_prompt("standard").format_messages(context="자료", question="질문")
+    assert focus_guidance(None) == ""
+    assert "후속 질문 답변 원칙" not in legacy[-1].content
+    assert "현재 질문의 구체적인 항목" in focused[-1].content
+
+
 def test_changed_facts_do_not_reuse_an_obsolete_answer_question(runtime):
     state = services.initial_state()
     runtime.planner.return_value.decision = proposal(updates={"contract_type": {"value": "전세", "evidence": "전세"}})

@@ -3,7 +3,7 @@ from copy import deepcopy
 from dataclasses import asdict, replace
 import json
 
-from .dialogue_contract import BOOL_FIELDS, Decision, parse_decision
+from .dialogue_contract import BOOL_FIELDS, FACT_FIELDS, Decision, parse_decision, pending_request
 from .dialogue_query import grounded_query
 from .dialogue_state import apply_user_update, ensure_dialogue
 
@@ -72,7 +72,8 @@ def short_answer_decision(state, user):
 
 def prepare_clarification(state, user, decision):
     """Return an executable decision and optional pending question, without writes."""
-    if decision.action != "clarify":
+    after_answer = decision.action == "rag" and decision.clarify_field in FACT_FIELDS and decision.intent not in {"explain", "greeting"}
+    if decision.action != "clarify" and not after_answer:
         return decision, None
     trial = deepcopy(state)
     dialogue = apply_user_update(trial, user=user, updates=decision.updates,
@@ -90,6 +91,11 @@ def prepare_clarification(state, user, decision):
     question = QUESTIONS[field]
     pending = {"field": field, "question": question, "attempts": count + 1,
                "choices": choices_for(field, trial.get("documents", []))}
+    pending.update(request=pending_request(dialogue, decision.intent) or user,
+                   epoch=dialogue["epoch"], topic=dialogue["topic"],
+                   document_id=dialogue["active_document_id"])
+    if after_answer:
+        pending["mode"] = "after_answer"
     if field == "document":
         for choice in pending["choices"]:
             choice["message"] = user

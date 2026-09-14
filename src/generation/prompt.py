@@ -186,6 +186,7 @@ def human_prompt() -> str:
 
 
 STYLE_GUIDANCE = {
+    "consult": "상담 상황을 사용자 진술에 맞게 한 문장으로 짚고, 근거로 뒷받침되는 현재 단계의 우선 대응을 2~3가지 순서로 안내하세요. 이미 확인된 사실을 다시 묻거나 아직 확인되지 않은 조건을 확정하지 마세요. 계약이 끝나가는 것과 이미 끝난 것을 구분하고, 나중에 조건이 충족되어야 가능한 절차는 현재 할 일과 구분하세요. 이른 결론이나 관련 없는 조문으로 빈칸을 채우지 마세요. 근거가 부족한 부분은 한계를 명확히 밝히세요. 안내 뒤 필요한 확인 질문은 서버가 별도로 표시합니다.",
     "standard": "현재 질문에 바로 답하고 짧은 문단과 자연스러운 존댓말을 사용하세요. 필요한 조건과 근거를 함께 설명하세요.",
     "simple": "쉬운 말과 짧은 문장으로 설명하세요. 어려운 법률 용어는 필요한 경우에만 풀어 쓰고 조건과 예외를 생략하지 마세요.",
     "brief": "핵심 답과 꼭 필요한 조건, 근거를 짧게 요약하세요. 단순화하려고 예외나 불확실성을 삭제하지 마세요.",
@@ -200,6 +201,22 @@ def style_guidance(style=None):
     return "\n\n앞의 근거·인용·안전 규칙을 그대로 지키면서 표현하세요. 사용자 진술은 확인된 법률 사실이 아닙니다. " + STYLE_GUIDANCE[style] + " 새 확인 질문을 임의로 덧붙이지 마세요."
 
 
+def focus_guidance(response_style):
+    if response_style is None:
+        return ""
+    return (
+        "\n\n[후속 질문 답변 원칙]\n"
+        "마지막 '사용자 입력'이 현재 답해야 할 질문입니다. "
+        "'직전 답변 질문'과 계약 사실은 생략된 대상을 이해하기 위한 배경이며 다시 답할 질문이 아닙니다. "
+        "첫 문장에서 현재 질문의 가능 여부·방법·시점 등 물어본 항목에 직접 답하세요. "
+        "현재 질문이 요약·쉬운 설명 요청이면 직전 질문에 대한 설명을 그 방식으로 정리하세요. "
+        "참고 자료가 현재 질문의 구체적인 항목을 뒷받침하지 않으면 첫 문장에서 "
+        "'현재 찾은 자료로는 [사용자가 물은 항목]까지 확인하기 어렵습니다'라고 한계를 명시하세요. "
+        "배경 주제의 일반론만 반복하거나, 그 일반론에서 구체적인 허용 여부를 추론하지 마세요. "
+        "답변을 마치기 전에 현재 질문에 직접 답했거나 해당 근거의 부족을 명시했는지 확인하세요."
+    )
+
+
 def build_qa_prompt(response_style=None) -> ChatPromptTemplate:
     """근거 기반 Q&A 프롬프트.
 
@@ -209,7 +226,15 @@ def build_qa_prompt(response_style=None) -> ChatPromptTemplate:
     return ChatPromptTemplate.from_messages(
         [
             ("system", system_prompt() + style_guidance(response_style)),
-            ("human", human_prompt()),
+            ("human", human_prompt() + focus_guidance(response_style) + (
+                "\n\n상담 응답 형식: 먼저 사용자 상황을 한 문장으로 짚으세요. "
+                "그다음 '지금 확인할 일' 아래에 현재 할 수 있는 확인·대응을 번호 목록으로 쓰세요. "
+                "각 항목에는 무엇을 확인할지와 참고 자료가 뒷받침하는 이유를 함께 쓰세요. "
+                "실행 조건이 확인되지 않은 절차는 조건부로만 설명하세요. "
+                "자료가 부족하면 그 한계를 적고, 관련 없는 조문이나 대응을 채우지 마세요. "
+                "후속 확인 질문은 화면에서 별도로 제공하므로 작성하지 마세요."
+                if response_style == "consult" else ""
+            )),
         ]
     )
 
@@ -221,7 +246,7 @@ def build_document_qa_prompt(response_style=None) -> ChatPromptTemplate:
     return ChatPromptTemplate.from_messages(
         [
             ("system", SYSTEM_DOCUMENT_QA + style_guidance(response_style)),
-            ("human", human),
+            ("human", human + focus_guidance(response_style)),
         ]
     )
 

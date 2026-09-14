@@ -79,6 +79,11 @@
     if (message.role !== "user") row.append(element("span", "L", "avatar"));
     const bubble = element("div", undefined, "bubble");
     bubble.append(answerText(message.content));
+    if (message.role === "assistant" && message.followup_question) {
+      const followup = element("div", undefined, "followup-question");
+      followup.append(element("strong", "상황을 조금 더 알려주세요"), element("p", message.followup_question));
+      bubble.append(followup);
+    }
     if (message.role === "assistant") {
       const meta = element("div", undefined, "message-meta");
       const labels = { answered: "근거 확인 답변", abstained: "답변 보류", refused: "요청 안내", social: "대화", clarify: "확인 질문" };
@@ -169,14 +174,15 @@
     conversationId = data.conversation_id;
     externalBusy = Boolean(data.busy);
     const signature = JSON.stringify([data.messages, data.documents]);
-    if (signature !== lastRendered) {
+    const changed = signature !== lastRendered;
+    if (changed) {
       $("messages").replaceChildren(...data.messages.map(renderMessage));
       $("welcome").hidden = data.messages.length > 0;
       renderDocuments(data.documents);
       lastRendered = signature;
-      scrollBottom();
     }
     renderConversation(data); controls();
+    if (changed) requestAnimationFrame(scrollBottom);
     if (externalBusy) {
       notice("이 대화의 다른 요청을 처리하고 있어요. 완료되면 화면을 갱신합니다.");
       clearTimeout(syncTimer); syncTimer = setTimeout(syncState, 2500);

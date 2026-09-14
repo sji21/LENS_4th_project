@@ -46,7 +46,7 @@ def public_state(conversation):
         "enabled": bool(getattr(settings, "CHAT_CONVERSATION_ENABLED", False)),
         "active_document_id": dialogue["active_document_id"],
         "can_rephrase": bool(dialogue["last_answer"]),
-        "pending": ({key: pending[key] for key in ("message_id", "question", "choices") if key in pending} if pending else None),
+        "pending": ({key: pending[key] for key in ("message_id", "question", "choices", "mode") if key in pending} if pending else None),
     }
     return {
         "conversation": conversation_view,

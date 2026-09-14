@@ -9,7 +9,7 @@ from langsmith import tracing_context
 from src.generation import chain
 from src.generation.call_budget import conversation_budget, check_deadline
 from . import dialogue_planner
-from .dialogue_contract import Decision, parse_decision, previous_answer_query
+from .dialogue_contract import Decision, parse_decision, previous_answer_query, pending_request
 from .dialogue_query import grounded_query
 from .dialogue_documents import select_document, document_question, retain_followup_topic
 from .dialogue_clarification import short_answer_decision, prepare_clarification, answer_reason
@@ -86,7 +86,8 @@ def respond_conversational(state, question, document_id=None, *, legacy):
         selected_input, ambiguous = select_document(draft, question, document_id)
         try:
             decision = document_question(draft) if ambiguous else None
-            if decision is None and not selected_input:
+            awaiting_guided_answer = (ensure_dialogue(draft)["pending"] or {}).get("mode") == "after_answer"
+            if decision is None and not selected_input and not awaiting_guided_answer:
                 decision = short_answer_decision(draft, question)
             if decision is None:
                 decision = dialogue_planner.plan_turn(draft, question, selected_input).decision
@@ -146,28 +147,39 @@ def respond_conversational(state, question, document_id=None, *, legacy):
                 dialogue["clarification_counts"][pending["field"]] = pending["attempts"]
             elif decision.action == "rag":
                 query = decision.search_query
+                response_style = "consult" if pending and decision.style == "standard" else decision.style
                 active_id = dialogue["active_document_id"]
                 documents = draft["documents"]
                 if use_document:
                     evidences = services.find_evidences(query, documents, active_id)
-                    answer = services.graph.answer_document_question(query, evidences, service=services.retrieval_loader().result(), response_style=decision.style)
+                    answer = services.graph.answer_document_question(query, evidences, service=services.retrieval_loader().result(), response_style=response_style)
                 else:
-                    answer = services.graph.answer_question(query, service=services.retrieval_loader().result(), response_style=decision.style)
+                    answer = services.graph.answer_question(query, service=services.retrieval_loader().result(), response_style=response_style)
                 used_history = not decision.topic_changed and bool(previous["history"] or previous["facts"] or previous["active_document_id"])
                 message = services.answer_message(answer, started, used_history)
                 message["reason"] = answer_reason(answer)
                 dialogue["pending"] = None
                 if message["status"] == "refused":
                     draft = deepcopy(state)
+                elif pending:
+                    message.update(followup_question=pending["question"], choices=pending["choices"])
+                    pending["message_id"] = message["id"]
+                    dialogue["pending"] = pending
+                    dialogue["clarification_counts"][pending["field"]] = pending["attempts"]
             else:
                 raise RuntimeError("Invalid conversation action")
 
         message.update(action="refuse" if message["status"] == "refused" else decision.action, intent=decision.intent)
         if message["status"] in {"answered", "abstained", "refused"}:
             query = None
+            request = None
             if decision.action == "rag":
-                query = previous_answer_query(ensure_dialogue(draft), decision.intent) or decision.search_query
-            record_answer(draft, message, query=query)
+                cached = ensure_dialogue(draft).get("last_answer") or {}
+                query = (previous_answer_query(ensure_dialogue(draft), "explain")
+                         if decision.intent == "explain" else None) or decision.search_query
+                request = ((cached.get("request") if decision.intent == "explain" else None)
+                           or pending_request(previous, decision.intent) or question)
+            record_answer(draft, message, query=query, request=request)
         else:
             # An interleaved social reply is not a replacement legal answer.
             draft["dialogue"]["last_status"] = message["status"]

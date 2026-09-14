@@ -81,7 +81,8 @@ def build_decision_input(state, user, document_id=None):
     dialogue = ensure_dialogue(deepcopy(state))
     answer = dialogue["last_answer"]
     if answer and answer.get("validation") == "existing_pipeline_passed":
-        answer = {"content": _safe(str(answer.get("content", "")))[:2000], "turn": answer.get("turn")}
+        answer = {"content": _safe(str(answer.get("content", "")))[:2000], "turn": answer.get("turn"),
+                  **({"request": _safe(answer["request"])} if isinstance(answer.get("request"), str) else {})}
     else:
         answer = None
     history = dialogue["history"][-4:]
@@ -108,9 +109,23 @@ def build_decision_input(state, user, document_id=None):
 
 def previous_answer_query(dialogue, intent):
     answer = dialogue.get("last_answer") or {}
-    query = answer.get("query")
+    query = answer.get("request") if intent == "followup" else None
+    if not isinstance(query, str) or not query.strip():
+        query = answer.get("query")
     if intent in {"explain", "followup"} and answer.get("validation") == "existing_pipeline_passed" and isinstance(query, str) and len(query) <= 2000:
         return query
+    return ""
+
+
+def pending_request(dialogue, intent):
+    """Only reuse the user request tied to the current case/document question."""
+    pending = dialogue.get("pending") or {}
+    request = pending.get("request")
+    if (intent == "clarification_answer" and isinstance(request, str) and len(request) <= 2000
+            and pending.get("epoch") == dialogue["epoch"]
+            and pending.get("topic") == dialogue["topic"]
+            and pending.get("document_id") == dialogue["active_document_id"]):
+        return request
     return ""
 
 
@@ -121,6 +136,12 @@ def _polarity_scope(field, evidence):
     In particular, an unpaid-deposit clause must not negate a completed contract
     mentioned in the same quote. Short answers without a predicate stay intact.
     """
+    if field == "landlord_notified":
+        # A negative intention can be positively communicated: "갱신하지
+        # 않겠다고 알렸어요". Check the notification, not its quoted content.
+        reported = re.search(r"(?:다고|라고)([^.!?\n]{0,20}(?:알리|알렸|알린|통지|통보|연락)[^.!?\n]*)", evidence)
+        if reported:
+            return reported.group(1)
     predicates = {
         "contract_ended": r"끝|종료|만료|해지",
         "deposit_returned": r"받|반환",
@@ -168,11 +189,16 @@ def _check_meaning(field, value, evidence):
         scope = _polarity_scope(field, evidence)
         short_positive = re.fullmatch(r"\s*(?:네|예|응|맞아|맞아요|맞습니다|그렇습니다)[.!?\s]*", evidence)
         short_negative = re.fullmatch(r"\s*(?:아니|아니요|아니오|아뇨|아닙니다)[.!?\s]*", evidence)
+        if (field == "landlord_notified" and not short_positive and not short_negative
+                and not re.search(r"알리|알렸|알린|통지|통보|연락|전달|보냈|보내|말했|말하|요구|요청", scope)):
+            raise DecisionError("unstated_notification")
         if value == "예" and short_negative or value == "아니요" and short_positive:
             raise DecisionError("polarity")
         # Detect clear contradictions without claiming a complete Korean parser.
         # Negation of another fact in the same sentence does not negate this one.
         if value == "예" and re.search(r"아니|않|못|모르|모름|미종료|미반환|안\s*(?:끝|받|살|나가|알렸)", scope):
+            raise DecisionError("polarity")
+        if field == "contract_ended" and value == "예" and re.search(r"끝나\s*가|(?:종료|만료|만기).{0,6}예정|아직.{0,12}남", scope):
             raise DecisionError("polarity")
         positive = {"contract_ended": r"끝났|종료됐|종료되었", "deposit_returned": r"돌려받았|반환받았", "living_in_property": r"살고\s*있|거주\s*중", "moved_out": r"이사했|퇴거했"}.get(field)
         if value == "아니요" and positive and re.search(positive, scope) and not re.search(r"아니|않|못|안\s|줄\s*알|모르", scope):
@@ -261,10 +287,13 @@ def parse_decision(raw, *, state, user, updates_as_list=False, preserved_user=Fa
         _check_meaning(field, update["value"], update["evidence"])
     factual_text = user + " " + " ".join(f["value"] + " " + f["evidence"] for f in dialogue["facts"].values())
     prior_query = previous_answer_query(dialogue, payload["intent"])
+    request = pending_request(dialogue, payload["intent"])
     # This is a previously validated question, never a new user fact. Changes
     # to active facts or topic invalidate its answer cache in apply_user_update.
     if preserved_user and prior_query:
         factual_text += " " + prior_query
+    if preserved_user and request:
+        factual_text += " " + request
     if not _numbers(query).issubset(_numbers(factual_text)) or not _quantities(query).issubset(_quantities(factual_text)):
         raise DecisionError("invented_query_number")
     checked_query = query
@@ -276,5 +305,7 @@ def parse_decision(raw, *, state, user, updates_as_list=False, preserved_user=Fa
         checked_query = query[:-len(user)]
         if prior_query:
             checked_query = checked_query.replace(f"직전 답변 질문: {prior_query}\n", "", 1)
+        if request:
+            checked_query = checked_query.replace(f"이어서 상담할 사용자 질문: {request}\n", "", 1)
     _check_query_polarity(checked_query, dialogue["facts"])
     return Decision(**deepcopy(payload))

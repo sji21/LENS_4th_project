@@ -131,7 +131,7 @@ def apply_user_update(state, *, user, updates=None, topic=None, topic_changed=Fa
     return draft
 
 
-def record_answer(state, message, *, query=None):
+def record_answer(state, message, *, query=None, request=None):
     """Cache only a public answer that passed the existing answer pipeline."""
     draft = _read(state)
     draft["last_status"] = message.get("status")
@@ -143,6 +143,8 @@ def record_answer(state, message, *, query=None):
         }
         if isinstance(query, str) and query.strip() and len(query) <= 2000:
             draft["last_answer"]["query"] = _safe(query)
+        if isinstance(request, str) and request.strip() and len(request) <= 2000:
+            draft["last_answer"]["request"] = _safe(request)
     state["dialogue"] = draft
     return draft
 

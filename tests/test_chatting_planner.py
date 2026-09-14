@@ -40,6 +40,59 @@ def fake_model(data=None, *, metadata=None):
     return Mock(invoke=Mock(return_value=message))
 
 
+@pytest.mark.parametrize("pending", [None, {"field": "end_date", "question": "계약 종료일은 언제인가요?"}])
+def test_renewal_method_question_reuses_facts_without_reporting_an_action(pending):
+    state = session()
+    apply_user_update(state, user="지금 사는 월세집에서 계약 갱신은 어떻게 해?", topic="계약갱신",
+                      updates={"contract_type": {"value": "월세", "evidence": "월세집"}})
+    state["dialogue"]["pending"] = pending
+    before = deepcopy(state)
+    result = plan_turn(state, "그럼 문자로 연장한다고 해도 괜찮아?", llm=fake_model(
+        payload(intent="followup", topic="계약갱신")))
+    assert result.decision.action == "rag"
+    assert result.decision.intent == "followup"
+    assert result.decision.updates == {}
+    assert "계약갱신" in result.decision.search_query
+    assert "계약 유형: 월세" in result.decision.search_query
+    assert "계약 종료 여부" not in result.decision.search_query
+    assert state == before
+
+
+def test_renewal_method_question_does_not_relax_fact_validation():
+    state = session()
+    apply_user_update(state, user="월세 계약 갱신", topic="계약갱신",
+                      updates={"contract_type": {"value": "월세", "evidence": "월세"}})
+    with pytest.raises(PlanningError, match="unstated_contract_type"):
+        plan_turn(state, "그럼 문자로 연장한다고 해도 괜찮아?", llm=fake_model(payload(
+            topic="계약갱신", statements=[
+                {"field": "contract_type", "value": "월세", "evidence": "문자로 연장한다고 해도"},
+                {"field": "contract_ended", "value": "아니요", "evidence": "문자로 연장한다고 해도"},
+            ])))
+
+
+@pytest.mark.parametrize("question", ["그럼 문자로?", "답장이 없으면 어떻게 해?"])
+def test_notification_not_inferred_from_channel_or_missing_reply(question):
+    state = session()
+    apply_user_update(state, user="월세 계약 갱신", topic="계약갱신",
+                      updates={"contract_type": {"value": "월세", "evidence": "월세"}})
+    result = plan_turn(state, question, llm=fake_model(payload(topic="계약갱신", statements=[
+        {"field": "landlord_notified", "value": "아니요", "evidence": question},
+    ])))
+    assert result.decision.intent == "followup"
+    assert result.decision.updates == {}
+    assert any(d["reason"] == "unsupported_notification_removed" for d in result.normalizations)
+
+
+def test_explicit_notification_cannot_be_discarded_to_hide_wrong_polarity():
+    state = session()
+    apply_user_update(state, user="월세 갱신", topic="계약갱신")
+    with pytest.raises(PlanningError):
+        plan_turn(state, "집주인에게 아직 알리지 않았어요.", llm=fake_model(payload(
+            topic="계약갱신", statements=[
+                {"field": "landlord_notified", "value": "예", "evidence": "알리지 않았어요"},
+            ])))
+
+
 WIRE_FACT_FIELDS = {
     "contract_type", "contract_ended", "deposit_returned", "living_in_property",
     "moved_out", "landlord_notified", "subject", "role", "property_type",
@@ -675,9 +728,10 @@ def test_only_inactive_clarification_fields_are_cleared(action):
 
     canonical, changes = canonicalize_decision(decision, context)
 
-    assert canonical.clarify_field is None
+    assert canonical.clarify_field == ("contract_ended" if action == "rag" else None)
     assert canonical.question is None
-    assert changes
+    if action != "rag":
+        assert changes
     for field, value in original.items():
         if field not in {"clarify_field", "question"}:
             assert getattr(canonical, field) == value

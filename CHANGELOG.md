@@ -9,9 +9,17 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
+- PATCH-038 Fix renewal-method follow-ups being mistaken for new contract facts and rejected despite preserved context. Keep fact validation strict; verify normal, recovery, and pending-question contexts with the local model. (commit: pending)
+
+- PATCH-038 Preserve follow-ups when the model repeats an unchanged fact using a different quote from its original user turn. Retain the saved fact and reject quotes from other turns. Full-RAG testing still shows insufficient focus on the requested notification method. (commit: pending)
+
 - PATCH-037 isolates unsupported descriptive facts and identical statement repetitions. Rejected plans preserve consultation memory and ask for case confirmation; model connection failures leave state unchanged for retry. Follow-up questions retain their target, with clearer correction and unknown-answer instructions. Legal application and verification remain with their existing owner. (commit: `02a6434`)
 
 ### Added
+
+- PATCH-038 Retain the latest substantive user request separately from answer context, advance follow-up focus, and keep summary targets stable. Conversational prompts prioritize the latest question and explicitly state missing evidence instead of repeating background. Add multi-turn, topic-transition, and bounded-query regressions. (commit: pending)
+
+- PATCH-038 Provides evidence-based guidance followed by one relevant question, remembers short answers within the same consultation, and supports summary requests during clarification. Adds guided conversation and Django API regressions; legal validation remains unchanged. See docs/chatting-guided-dialogue.md for live checks and remaining answer-quality limits. (commit: pending)
 
 - PATCH-037 Add full dialogue acceptance reports, isolated browser fixtures, and regressions for document choices and explanation query reuse. The initial full-RAG quality failures are retained; the subsequent user-scoped dialogue recovery and regression results are documented separately in docs/chatting-recovery.md. (commit: `02a6434`)
 

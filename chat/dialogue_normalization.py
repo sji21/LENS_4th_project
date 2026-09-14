@@ -41,6 +41,20 @@ def normalize_optional_statements(raw, *, state, user):
             diagnostics.append({"field": update["field"], "reason": "identical_statement_removed"})
             continue
         field = update["field"]
+        if (field == "landlord_notified" and payload.get("action") == "rag"
+                and payload.get("intent") not in {"correction", "topic_change"}
+                and not payload.get("topic_changed")
+                and payload.get("topic") in (None, dialogue["topic"])
+                and field != (dialogue["pending"] or {}).get("field")):
+            # A channel or a hypothetical lack of reply does not report that
+            # notification happened. Discard the unsupported proposal only when
+            # the entire current input lacks a notification statement as well.
+            try:
+                _check_meaning(field, update["value"], user)
+            except DecisionError as error:
+                if error.code == "unstated_notification":
+                    diagnostics.append({"field": field, "reason": "unsupported_notification_removed"})
+                    continue
         if isinstance(field, str) and field in {"subject", "role", "property_type"}:
             try:
                 apply_user_update(deepcopy(state), user=user,
@@ -98,8 +112,12 @@ def _existing_restatement(update, dialogue, user):
     old_quote = old.get("evidence")
     if not isinstance(old_quote, str) or not old_quote.strip() or len(old_quote) > 2000:
         return False
-    original_turn_quote = old_quote in evidence and any(
-        item.get("turn") == old["source_turn"] and evidence in item.get("content", "")
+    # The model may choose another span from the same attributed user turn.
+    # Dropping this redundant proposal must never replace the saved evidence.
+    original_turn_quote = any(
+        item.get("turn") == old["source_turn"]
+        and old_quote in item.get("content", "")
+        and evidence in item.get("content", "")
         for item in dialogue["history"]
     )
     if evidence not in old_quote and not original_turn_quote:
@@ -147,7 +165,8 @@ def normalize_existing_restatements(raw, *, state, user, preserved_user=False):
         return raw, ()
 
     # Active facts belong to the current epoch: topic transitions clear this
-    # map in dialogue_state. History, changes and old answers are never searched.
+    # map in dialogue_state. History only verifies quotes from that fact's own
+    # source turn; it is never used to recover inactive facts.
     kept, diagnostics = [], []
     for update in payload["updates"]:
         if _existing_restatement(update, dialogue, user):

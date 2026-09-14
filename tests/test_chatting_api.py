@@ -84,6 +84,25 @@ def plan(calls, **changes):
     return result
 
 
+def test_guidance_followup_round_trip(browser, calls, settings):
+    settings.CHAT_CONVERSATION_ENABLED = True
+    plan(calls, clarify_field="end_date")
+    response = post(browser, "보증금 반환 상담을 하고 싶어요.")
+    assert response.status_code == 200
+    state = current(browser)
+    pending = state["conversation"]["pending"]
+    assert pending["mode"] == "after_answer"
+    assert state["messages"][-1]["followup_question"] == pending["question"]
+    assert "request" not in pending
+    plan(calls, intent="clarification_answer", updates={
+        "end_date": {"value": "다음 달 말", "evidence": "다음 달 말"},
+    })
+    response = post(browser, "다음 달 말이에요.", reply_to=pending["message_id"])
+    assert response.status_code == 200
+    assert "계약 종료일: 다음 달 말" in calls.official.call_args.args[0]
+    assert current(browser)["conversation"]["pending"] is None
+
+
 def owned_document(client):
     conversation = Conversation.objects.get(pk=current(client)["conversation_id"])
     extraction = ExtractionResult(
