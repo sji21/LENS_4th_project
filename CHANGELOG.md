@@ -5,6 +5,12 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-14
+
+### Fixed (Bug Fixes)
+
+- PATCH-039 separates law-name context from retrieved article provenance: body cross-references no longer authorize unretrieved citations. Paired Markdown emphasis is masked for citation/paragraph parsing with original offsets and issue excerpts preserved. Related tests: 225 passed, 6 subtests passed. Full suite with Python UTF-8 mode: 1,272 passed, 3 skipped, 172 subtests passed. Default Windows cp949 mode fails an unchanged frontend test's file read; no live LLM evaluation was performed. (commit: pending)
+
 ## 2026-09-13
 
 ### Changed

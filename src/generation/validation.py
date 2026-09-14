@@ -14,7 +14,7 @@ import re
 import unicodedata
 from typing import Callable, Literal
 
-from src.generation.citation import audit_citations
+from src.generation.citation import audit_citations, citation_scan_text
 from src.generation.models import Answer
 from src.generation.paragraph import claim_identity, evidence_paragraphs, paragraph_group
 from src.retrieval.service import Evidence
@@ -705,9 +705,10 @@ def _paragraph_issues(answer: Answer) -> list[ValidationIssue]:
     )
     issues = []
 
-    for match in _PARAGRAPH_RE.finditer(answer.raw_text):
-        paragraphs, reference = paragraph_group(answer.raw_text, match)
-        identity = claim_identity(answer.raw_text, match.span("article"))
+    scan_text = citation_scan_text(answer.raw_text)
+    for match in _PARAGRAPH_RE.finditer(scan_text):
+        paragraphs, reference = paragraph_group(scan_text, match)
+        identity = claim_identity(scan_text, match.span("article"))
         available = [evidence_paragraphs(evidence, identity) for evidence in law_evidences]
         supported = all(any(paragraph in numbers for numbers in available)
                         for paragraph in paragraphs)
@@ -716,7 +717,7 @@ def _paragraph_issues(answer: Answer) -> list[ValidationIssue]:
             issues.append(
                 ValidationIssue(
                     kind="paragraph",
-                    text=reference,
+                    text=answer.raw_text[match.start():match.start() + len(reference)],
                     detail="해당 조문의 항 번호를 검색 근거에서 확인할 수 없습니다.",
                 )
             )

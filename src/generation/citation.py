@@ -88,6 +88,26 @@ _GUIDE_MENTION_RE = re.compile(
 
 _LAW_DOC_TYPES = frozenset({"law", "decree", "rule"})
 
+_EMPHASIS_RE = re.compile(
+    r"(?<![\\*_])(?P<marker>\*{1,3}|_{1,3})(?=\S)"
+    r"(?P<body>[^\n]+?)(?<=\S)(?P=marker)(?![*_])"
+)
+
+
+def citation_scan_text(text: str) -> str:
+    """Mask paired emphasis delimiters without changing source offsets.
+
+    This is a parsing view only. Answers and issue text retain the original
+    spelling/formatting; unpaired punctuation is not silently removed.
+    """
+    chars = list(text or "")
+    for match in _EMPHASIS_RE.finditer(text or ""):
+        for start, end in ((match.start(), match.start("body")),
+                           (match.end("body"), match.end())):
+            chars[start:end] = " " * (end - start)
+    # Korean law-name quotation marks are presentation, not part of the name.
+    return "".join(chars).translate(str.maketrans({c: " " for c in "「」『』"}))
+
 _GUIDE_ALIAS_GROUPS = {
     "주택도시보증공사": (
         "주택도시보증공사",
@@ -144,7 +164,7 @@ def _article_key(text: str) -> ArticleKey | None:
 
 def _law_mentions(text: str) -> list[tuple[re.Match[str], str, ArticleKey]]:
     mentions = []
-    for match in _LAW_MENTION_RE.finditer(text or ""):
+    for match in _LAW_MENTION_RE.finditer(citation_scan_text(text)):
         article = _article_key(match.group("article"))
         if article is None:
             continue
@@ -164,61 +184,22 @@ def _canonical_law_name(raw_name: str, known_names: set[str]) -> str:
     return name
 
 
-def _primary_law_name(evidence: Evidence) -> str:
-    citation_mentions = _law_mentions(evidence.citation)
-    if citation_mentions:
-        return citation_mentions[0][1]
+def _retrieved_law_key(evidence: Evidence) -> LawKey | None:
+    """Identify this chunk, never articles merely referenced in its prose.
 
-    text_mentions = _law_mentions(evidence.text)
-    if text_mentions:
-        return text_mentions[0][1]
-
-    return ""
-
-
-def _law_pairs_from_evidence(evidence: Evidence) -> set[LawKey]:
-    """Evidence 안의 법령명-조문 관계를 pair 단위로 보존한다.
-
-    본문에 다른 법률을 명시적으로 참조한 경우 그 조문을 현재 Evidence의 주법령과
-    섞지 않는다. 반대로 ``제3조``처럼 법령명이 없는 내부 교차참조는 해당 Evidence의
-    주법령으로 해석한다.
+    Legacy evidence without citation metadata may use its leading retrieval
+    header. Arbitrary body mentions are never a substitute for that identity.
     """
-
-    citation_mentions = _law_mentions(evidence.citation)
-    text_mentions = _law_mentions(evidence.text)
-    all_mentions = citation_mentions + text_mentions
-
-    primary_law = _primary_law_name(evidence)
-    known_names = {law_name for _, law_name, _ in all_mentions}
-    if primary_law:
-        known_names.add(primary_law)
-
-    pairs = {
-        (_canonical_law_name(law_name, known_names), article)
-        for _, law_name, article in all_mentions
-    }
-
-    if not primary_law:
-        return pairs
-
-    explicit_article_spans = [
-        match.span("article")
-        for match, _, _ in text_mentions
-    ]
-
-    for article_match in _ARTICLE_RE.finditer(evidence.text or ""):
-        start, end = article_match.span()
-        if any(
-            start >= explicit_start and end <= explicit_end
-            for explicit_start, explicit_end in explicit_article_spans
-        ):
-            continue
-
-        article = _article_key(article_match.group(0))
-        if article is not None:
-            pairs.add((primary_law, article))
-
-    return pairs
+    label = evidence.citation.strip()
+    if not label:
+        header = re.match(r"\[([^\]\n]+)\]", evidence.text.lstrip())
+        if header is None:
+            return None
+        label = header[1]
+    mentions = _law_mentions(label)
+    if len(mentions) != 1 or len(_ARTICLE_RE.findall(citation_scan_text(label))) != 1:
+        return None
+    return mentions[0][1:]
 
 
 def _build_law_index(
@@ -231,11 +212,10 @@ def _build_law_index(
         if evidence.doc_type not in _LAW_DOC_TYPES:
             continue
 
-        primary = _primary_law_name(evidence)
-        if primary:
-            known_laws.add(primary)
-
-        for law_key in _law_pairs_from_evidence(evidence):
+        # Body references help resolve names, but never grant provenance.
+        known_laws.update(law for _, law, _ in _law_mentions(evidence.text))
+        law_key = _retrieved_law_key(evidence)
+        if law_key is not None:
             known_laws.add(law_key[0])
             index.setdefault(law_key, set()).add(evidence.chunk_id)
 
@@ -333,7 +313,7 @@ def extract_citation_mentions(
                 match.start(),
                 CitationMention(
                     kind="law",
-                    text=match.group(0).strip(),
+                    text=raw_text[match.start():match.end()].strip(),
                     supported=bool(chunk_ids),
                     evidence_chunk_ids=chunk_ids,
                 ),
