@@ -27,6 +27,8 @@ class CitationMention:
     text: str
     supported: bool
     evidence_chunk_ids: tuple[str, ...] = ()
+    # Comparison identity is independent of the original display/issue text.
+    law_key: LawKey | None = None
 
 
 @dataclass(frozen=True)
@@ -399,6 +401,7 @@ def extract_citation_mentions(
                     text=raw_text[match.start():match.end()].strip(),
                     supported=bool(chunk_ids),
                     evidence_chunk_ids=chunk_ids,
+                    law_key=key,
                 ),
             )
         )
@@ -463,18 +466,29 @@ def audit_citations(answer: Answer) -> CitationAudit:
             (evidence.chunk_id, _compact(evidence.text))
             for evidence in answer.document_evidences
         )
+        document_laws: dict[LawKey, list[str]] = {}
+        for evidence in answer.document_evidences:
+            keys = {(law, article) for _, law, article in _law_mentions(evidence.text)}
+            for key in keys:
+                document_laws.setdefault(key, []).append(evidence.chunk_id)
         grounded_mentions = []
         for mention in mentions:
             if mention.supported:
                 grounded_mentions.append(mention)
                 continue
 
-            target = _compact(mention.text)
-            document_chunk_ids = tuple(
-                chunk_id
-                for chunk_id, text in document_texts
-                if target and target in text
-            )
+            if mention.kind == "law":
+                # Exact law/article/branch equality: display text may include
+                # a conjunction, and substrings confuse 제4조 with 제40조/제4조의2.
+                document_chunk_ids = tuple(document_laws.get(mention.law_key, ()))
+            else:
+                # Keep the existing case/agency document matching policy.
+                target = _compact(mention.text)
+                document_chunk_ids = tuple(
+                    chunk_id
+                    for chunk_id, text in document_texts
+                    if target and target in text
+                )
             grounded_mentions.append(
                 replace(
                     mention,
