@@ -197,6 +197,32 @@ def _canonical_law_name(raw_name: str, known_names: set[str]) -> str:
     return name
 
 
+def _law_key_from_label(label: str) -> LawKey | None:
+    """Parse the identity before citation_of()'s optional article title.
+
+    Only one balanced, terminal parenthesized title is removed. Do not hide
+    another citation following it, or accept an incomplete/mixed label.
+    """
+    head, opening, tail = label.strip().partition("(")
+    if opening:
+        depth = 1
+        for index, char in enumerate(tail):
+            if char == "(":
+                depth += 1
+            elif char == ")":
+                depth -= 1
+                if depth == 0:
+                    if tail[index + 1:].strip():
+                        return None
+                    break
+        if depth != 0:
+            return None
+    mentions = _law_mentions(head)
+    if len(mentions) != 1 or len(_ARTICLE_RE.findall(citation_scan_text(head))) != 1:
+        return None
+    return mentions[0][1:]
+
+
 def _retrieved_law_key(evidence: Evidence) -> LawKey | None:
     """Identify this chunk, never articles merely referenced in its prose.
 
@@ -209,10 +235,7 @@ def _retrieved_law_key(evidence: Evidence) -> LawKey | None:
         if header is None:
             return None
         label = header[1]
-    mentions = _law_mentions(label)
-    if len(mentions) != 1 or len(_ARTICLE_RE.findall(citation_scan_text(label))) != 1:
-        return None
-    return mentions[0][1:]
+    return _law_key_from_label(label)
 
 
 def _build_law_index(

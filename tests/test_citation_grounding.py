@@ -110,6 +110,55 @@ def test_internal_conjunction_in_multiword_law_name_is_preserved():
     assert [m.evidence_chunk_ids for m in audit_citations(a).mentions] == [("first",), ("second",)]
 
 
+@pytest.mark.parametrize("title", [
+    "「국가유산기본법」 제3조에 따른 국가유산의 국유",
+    "제3조 및 제4조에 따른 절차", "특례(다른법 제3조 관련)", "", "일반 제목",
+])
+@pytest.mark.parametrize("legacy_header", [False, True])
+def test_article_title_references_never_change_the_source_identity(title, legacy_header):
+    from src.retrieval.service import citation_of
+    label = citation_of(dict(doc_type="law", title="민법", article_no="제255조", article_title=title))
+    ev = evidence("" if legacy_header else label, f"[{label}]\n① 본문")
+    index, _ = _build_law_index((ev,))
+    assert set(index) == {("민법", (255, None))}
+    assert audit_citations(answer("민법 제255조에 따릅니다.", ev)).is_valid
+    assert not audit_citations(answer("민법 제3조에 따릅니다.", ev)).is_valid
+    assert not audit_citations(answer("국가유산기본법 제3조에 따릅니다.", ev)).is_valid
+    if not legacy_header:
+        assert not audit_answer(answer("민법 제255조 제1항에 따릅니다.", ev)).issues
+        assert audit_answer(answer("민법 제255조 제5항에 따릅니다.", ev)).by_kind("paragraph")
+
+
+@pytest.mark.parametrize("label", [
+    "민법 제255조 및 제3조(제목)",
+    "민법 제255조(제목) 및 민법 제3조",
+    "민법 제255조(제목) 및 민법 제3조(다른 제목)",
+    "민법 제255조(끝나지 않은 제목", "민법 제255조(제목))",
+])
+def test_title_handling_does_not_hide_ambiguous_source_labels(label):
+    assert not audit_citations(answer("민법 제255조", evidence(label))).is_valid
+
+
+@pytest.mark.parametrize("entrypoint", ["chain", "graph"])
+@pytest.mark.parametrize("claim,status", [("제255조", "answered"),
+    ("제255조 제1항", "answered"), ("제3조", "abstained")])
+def test_runtime_accepts_source_with_cross_reference_in_title(entrypoint, claim, status):
+    from src.generation import chain, graph
+    from src.generation.llm import get_llm
+    from src.retrieval.service import citation_of
+    label = citation_of(dict(doc_type="law", title="민법", article_no="제255조",
+        article_title="「국가유산기본법」 제3조에 따른 국가유산의 국유"))
+    ev = evidence(label, f"[{label}]\n① 본문")
+    class Service:
+        def search(self, question, **kwargs):
+            return RetrievalResult(question, civil_laws=[ev])
+    fn = chain.answer_question if entrypoint == "chain" else graph.answer_question
+    raw = f"민법 {claim}에 따릅니다."
+    result = fn("임차권등기 비용을 청구할 수 있나요?", service=Service(),
+                llm=get_llm(fake_responses=[raw, "PASS"]))
+    assert result.status == status
+
+
 @pytest.mark.parametrize("format", FORMATS)
 @pytest.mark.parametrize("article,valid", [("제3조의2", True), ("제30조", False)])
 def test_emphasis_does_not_change_article_grounding(format, article, valid):

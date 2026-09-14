@@ -6,7 +6,7 @@ unverifiable, not proof that a paragraph does not exist in the law.
 import re
 import unicodedata
 
-from src.generation.citation import _law_mentions
+from src.generation.citation import _law_key_from_label, _law_mentions
 
 _CONTINUATION = re.compile(
     r'\s*(?P<join>부터|내지|[~～–—-]|[·ㆍ,](?:\s*및)?|및|와|과|또는)'
@@ -65,8 +65,7 @@ def _without_quotes(text):
 
 
 def evidence_paragraphs(evidence, identity):
-    mentions = _law_mentions(evidence.citation)
-    if identity is None or len(mentions) != 1 or mentions[0][1:] != identity:
+    if identity is None or _law_key_from_label(evidence.citation) != identity:
         return set()
     text = evidence.text.strip()
     # A leading retrieval header may share its line with paragraph 1.
@@ -74,8 +73,7 @@ def evidence_paragraphs(evidence, identity):
         header = re.match(r'\[([^\]\n]+)\]', text)
         if header is None:
             return set()
-        header_mentions = _law_mentions(header[1])
-        if len(header_mentions) != 1 or header_mentions[0][1:] != identity:
+        if _law_key_from_label(header[1]) != identity:
             return set()
         text = text[header.end():].lstrip()
     text = _without_quotes(text)
