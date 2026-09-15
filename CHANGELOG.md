@@ -11,6 +11,10 @@ This file records the 4th project from its first change onward.
 
 - PATCH-041 verifies the latest product retriever against a fresh source-built database on local CPU: all four channels match the adopted baseline on 235 inputs, and 78 public regression questions match the existing database under the same code. Required evidence remains 43/75 in both DEV100 v2 modes and 28/29 in CIV35; previous misses remain, with no new rebuild losses. Adds reproducible capture, integrity checks and provenance. Full tests: 1,576 passed, 3 skipped, 172 subtests passed. No retrieval tuning, corpus additions, or LLM assessment. (commit: 8a57092)
 
+### Fixed (Bug Fixes)
+
+- PATCH-041 normalizes evaluation-criteria line endings for cross-checkout replay and compares case/guide rankings by stable chunk ID alongside law article IDs. Raw source-bundle, data and model integrity checks remain enforced. Adds 10 regression cases; a fresh 235-input run preserves all four channels and scores. (commit: pending)
+
 ### Changed
 
 - PATCH-040 documents successful CUDA operations and KURE automatic/explicit GPU embeddings after the README environment setup on a new RTX A4000 Pod (driver 595.91.07, Python 3.11.15, torch 2.14.0+cu130). No CUDA code change is needed for this tested environment. Keep the earlier warning unresolved, PATCH-029 unapplied and unverified on a Pod, and new-Pod DB/search/LLM evaluation unrun. Documentation only. (commit: 7773253)

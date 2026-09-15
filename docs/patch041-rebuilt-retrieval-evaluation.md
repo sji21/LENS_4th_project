@@ -82,7 +82,7 @@ TOP3에서만 추가로 손실됐던 DEV-005 질문·DEV-049 문맥·DEV-088 문
 
 - Python3.11.9, torch2.14.0+cpu, sentence-transformers6.0.1, transformers5.16.1, chromadb1.5.9, numpy2.4.6.
 - KURE revision `4ed4540949c70b7da2c74004a915e1f2d5e46e4f`의 검증된 파일 해시 유지. 최종235입력에서 실제 모델375회 호출, 일반 backend494회·민법298회 요청이다. 요청별 공유 캐시가 적용된다.
-- 제품 소스는 main `7cd5633`과 동일하다. 평가 실행기·문서·테스트는 미커밋 상태에서 실행했고, 평가 코드와 제품 코드의 실제 해시를 별도 기록했다. 실행 커밋만으로 새 평가기까지 포함됐다고 주장하지 않는다.
+- 제품 소스는 main `7cd5633`과 동일하다. 최초 평가는 평가 실행기·문서·테스트가 미커밋인 상태에서 실행했다. PR29 리뷰 보완 후에는 `5ac669e` 위의 미커밋 평가기 수정본으로235입력을 새로 실행했고, 평가 코드와 제품 코드의 실제 해시를 별도 기록했다. 실행 커밋만으로 새 평가기까지 포함됐다고 주장하지 않는다.
 - 평가기 무결성 보완 전 첫235입력도 같은 점수·조문 순위를 보였다. 보완 후 새로 실행한 결과를 최종 산출물로 사용한다. 두 실행을 별개 질문셋으로 합산하지 않는다.
 - 운영 데이터 비교:204조문의 추가·제거·본문 변경0, 내부 청크 ID 변경129, 출처 URL 변경140. 민법26개는 전체204개에 포함되며 이 중 URL 변경7개다. 판례26·안내6청크의 파일 내용은 기존과 동일하다.
 - [최종235입력](../data/eval/patch041-rebuilt/capture/rows.json), [채점·실패 상세](../data/eval/patch041-rebuilt/capture/report.json), [실행 감사](../data/eval/patch041-rebuilt/capture/audit.json), [공개 회귀](../data/eval/patch041-rebuilt/public-regression.json), [구축 근거](../data/eval/patch041-rebuilt/build-provenance.json), [코퍼스 비교](../data/eval/patch041-rebuilt/corpus-comparison.json).
@@ -101,8 +101,18 @@ python -X utf8 -m scripts.patch041_retrieval_eval check --run data/eval/patch041
 
 공개 회귀는 `python -m scripts.patch041_public_regression --help`의 파일 인자를 지정한다. 판례13/8과 과거 비교 원본은 별도로 보유한 파일을 사용하며 입력을 임의 생성하지 않는다. 해당 입력의 경로·해시와 비교 원본 해시는 공개 회귀 JSON에 기록했다. 민법 공개 회귀 파일의 바이트 차이는 과거 Git 원문과 JSON 전체가 같음을 검증했다. `abstain` 표지는 메모리에서만 채점용으로 변환한다.
 
+### PR29 리뷰 보완
+
+평가 기준 텍스트의 해시는 CRLF/CR을 LF로 정규화해 계산한다. Windows와 Linux 체크아웃의 줄바꿈 차이는 허용하며 실제 내용 변경은 거부한다. 원본 리뷰 번들의 manifest, 데이터·모델의 바이트 해시 검사는 유지한다.
+
+`comparison.all_channel_ranking_changes`는 일반 법령·민법을 조문 식별자로, 판례·안내를 청크 식별자로 비교한다. 판례·안내의 순서나 반환 항목을 바꾸고 파일 해시만 다시 계산해도 이전 보고서의 재검증은 실패한다. 기존 `article_ranking_changes`는 법령 두 채널의 비교 의미를 유지한다.
+
+수정 평가기로235입력을 다시 검색한 결과, 네 채널의 반환 근거와 채점 결과는 리뷰 전 실행과 동일했다. 최초 실행 원본은 구현 커밋 `8a57092`에 남고, 현재 `capture`는 새 실행의 원본·감사·보고서다. 공개 회귀78문항과 DB 구축 산출물은 기존 실행 기록을 유지하며 재실행으로 표현하지 않는다.
+
+LF·CRLF 체크아웃을 복제한 Windows 테스트로 재검증했으며, 별도 Linux 런타임 실행으로 표현하지 않는다. 재검색 일부 구간에 로컬 테스트가 함께 실행되어 지연 수치는 성능 비교에 사용하지 않는다.
+
 ## 검증 상태와 다음 판단
 
-평가기 독립 회귀40개와 최종 산출물의 독립 재검증을 통과했다. 전체 검사는 `python -X utf8 -m pytest -q`로 **1,576 passed, 3 skipped, 172 subtests passed**(245.68초)다. 생략은 LangSmith 비활성2건과 로컬 등기 PDF 미지정1건이다. [검증 기록](../data/eval/patch041-rebuilt/validation.json)과 [전체 산출물 해시](../data/eval/patch041-rebuilt/bundle-manifest.json)를 보존한다.
+평가기 독립 회귀50개와 최종 산출물의 독립 재검증을 통과했다. 전체 검사는 `python -X utf8 -m pytest -q`로 **1,586 passed, 3 skipped, 172 subtests passed**(275.80초)다. 생략은 LangSmith 비활성2건과 로컬 등기 PDF 미지정1건이다. [검증 기록](../data/eval/patch041-rebuilt/validation.json)과 [전체 산출물 해시](../data/eval/patch041-rebuilt/bundle-manifest.json)를 보존한다.
 
 이번 고정 채점 대상에서는 조문 미보유보다 반환 순위·복수 근거 동시 확보가 남은 문제다. 다음 변경은 누락 유형을 묶어 필요한 검색 조건을 검토하되, 기존 손실·공개 회귀와 새 봉인 평가를 함께 고려한다. 새 자료 수집이나 튜닝은 이 패치에서 수행하지 않았다. LLM 답변율·보류율·지연·비용·답변 품질 평가는 별도다.

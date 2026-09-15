@@ -1,15 +1,25 @@
 {
   "command": "python -X utf8 -m pytest -q",
-  "passed": 1576,
+  "passed": 1586,
   "skipped": 3,
   "subtests_passed": 172,
-  "seconds": 245.68,
+  "seconds": 275.8,
   "skip_reasons": {
     "LangSmith tracing disabled": 2,
     "local registry PDF not specified": 1
   },
-  "independent_evaluator_tests": 40,
+  "independent_evaluator_tests": 50,
   "product_code_changed": false,
   "llm_evaluated": false,
-  "commit_status": "uncommitted evaluation harness; product base 7cd5633"
+  "commit_status": "uncommitted PR29 review fixes on 5ac669e; product source base 7cd5633",
+  "initial_validation": {
+    "passed": 1576,
+    "skipped": 3,
+    "subtests_passed": 172,
+    "seconds": 245.68,
+    "independent_evaluator_tests": 40,
+    "commit_status": "uncommitted evaluation harness; product base 7cd5633"
+  },
+  "review_regression_cases_added": 10,
+  "checkout_replay_scope": "LF/CRLF checkout fixtures on Windows; no separate Linux runtime run"
 }

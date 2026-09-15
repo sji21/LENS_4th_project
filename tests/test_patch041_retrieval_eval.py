@@ -1,9 +1,11 @@
 """Independent checks for the rebuilt-corpus measurement contract."""
 from collections import Counter
 from copy import deepcopy
+from functools import partial
 import hashlib
 import json
 from pathlib import Path
+import shutil
 
 import pytest
 
@@ -145,6 +147,7 @@ def test_rebuilt_chunk_ids_do_not_create_article_ranking_or_required_losses(froz
     assert report["comparison"]["lost_required_inputs"] == []
     assert report["comparison"]["gained_required_inputs"] == []
     assert report["comparison"]["article_ranking_changes"] == []
+    assert report["comparison"]["all_channel_ranking_changes"] == []
     for mode in ("question_only", "context_diagnostic"):
         assert report["groups"][mode]["union_all_required"] == {"hits": 43, "n": 75}
 
@@ -242,6 +245,94 @@ def test_modified_report_is_rejected_even_when_manifest_is_rehashed(artifact, re
         rehash(artifact)
     with pytest.raises(ValueError):
         evaluation.check(artifact)
+
+
+@pytest.mark.parametrize("channel", ["cases", "guides"])
+@pytest.mark.parametrize("change", ["reorder", "replace"])
+def test_non_law_ranking_change_cannot_replay_a_stale_report(artifact, channel, change):
+    rows = evaluation.read(artifact / "rows.json")
+    old_report = evaluation.read(artifact / "report.json")
+    row = next(row for row in rows if len(row["result"][channel]) >= 2)
+    values = row["result"][channel]
+    before = [item["chunk_id"] for item in values]
+    if change == "reorder":
+        values[0], values[1] = values[1], values[0]
+    else:
+        replacement = next(item for candidate in rows for item in candidate["result"][channel]
+                           if item["chunk_id"] not in before)
+        values[0] = deepcopy(replacement)
+    for rank, item in enumerate(values, 1):
+        item["rank"] = rank
+    audit = evaluation.read(artifact / "audit.json")
+    report = evaluation.analyze(rows, available_articles=audit["available_articles"])
+    assert old_report["comparison"]["all_channel_ranking_changes"] == []
+    assert report["comparison"]["all_channel_ranking_changes"] == [{
+        "qid": row["qid"], "mode": row["mode"], "channel": channel,
+        "identity_field": "chunk_id", "before": before,
+        "after": [item["chunk_id"] for item in values],
+    }]
+    assert report["comparison"]["article_ranking_changes"] == []
+    assert report["groups"] == old_report["groups"]
+    evaluation.write(artifact / "rows.json", rows)
+    rehash(artifact)
+    with pytest.raises(ValueError, match="Saved report does not replay"):
+        evaluation.check(artifact)
+    evaluation.write(artifact / "report.json", report)
+    rehash(artifact)
+    assert evaluation.check(artifact)["inputs"] == 235
+
+
+@pytest.fixture
+def replay_checkout(artifact, monkeypatch, tmp_path):
+    """Copy tracked replay fixtures, preserving bytes pinned by their manifests."""
+    checkout = tmp_path / "checkout"
+    paths = (set(evaluation.criteria_hashes()) | set(evaluation.reference_hashes())
+             | set(evaluation.evaluator_source_hashes()))
+    for name in paths:
+        target = checkout / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / name, target)
+    for name in ("QUERY_SOURCE", "REFERENCE_ROWS", "REFERENCE_AUDIT"):
+        monkeypatch.setattr(evaluation, name, checkout / getattr(evaluation, name).relative_to(ROOT))
+    monkeypatch.setattr(evaluation, "ROOT", checkout)
+    monkeypatch.setattr(evaluation, "analyze", partial(evaluation.analyze, root=checkout))
+    return checkout
+
+
+@pytest.mark.parametrize("newline", [b"\n", b"\r\n"])
+def test_replay_accepts_linux_and_windows_criteria_checkouts(artifact, replay_checkout, newline):
+    for name in ("README.md", ".gitattributes"):
+        path = replay_checkout / "data/eval/dev100-v2" / name
+        lf_content = path.read_bytes().replace(b"\r\n", b"\n")
+        assert b"\n" in lf_content
+        path.write_bytes(lf_content.replace(b"\n", newline))
+    assert len(evaluation.build_jobs(replay_checkout)) == 235
+    checked = evaluation.check(artifact)
+    assert checked["inputs"] == 235
+    assert checked["comparison"]["all_channel_ranking_changes"] == []
+
+
+@pytest.mark.parametrize("filename", ["README.md", ".gitattributes"])
+def test_real_criteria_content_drift_is_rejected(artifact, replay_checkout, filename):
+    path = replay_checkout / "data/eval/dev100-v2" / filename
+    path.write_bytes(path.read_bytes() + b"\nchanged evaluation criteria\n")
+    with pytest.raises(ValueError, match="Reviewed evaluation inputs changed"):
+        evaluation.check(artifact)
+
+
+@pytest.mark.parametrize("dataset", ["dev100-v2", "civil-review2"])
+def test_raw_review_manifests_still_reject_line_ending_changes(replay_checkout, dataset):
+    root = replay_checkout / "data/eval" / dataset
+    manifest = evaluation.read(root / "manifest.json")
+    names = manifest["files"] if dataset == "dev100-v2" else [item["path"] for item in manifest["files"]]
+    name = next(name for name in names if name.endswith(".md"))
+    path = root / name
+    before = path.read_bytes()
+    lf_content = before.replace(b"\r\n", b"\n")
+    path.write_bytes(lf_content if before != lf_content else lf_content.replace(b"\n", b"\r\n"))
+    assert path.read_bytes() != before
+    with pytest.raises(ValueError, match="hash mismatch"):
+        evaluation.build_jobs(replay_checkout)
 
 
 @pytest.mark.parametrize("prefix", ["data_hashes", "product_source_hashes", "logical_index_hashes",

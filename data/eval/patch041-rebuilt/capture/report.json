@@ -277,6 +277,7 @@
       }
     },
     "article_ranking_changes": [],
+    "all_channel_ranking_changes": [],
     "chunk_id_is_not_article_identity": true
   },
   "evidence_identity_changes": [

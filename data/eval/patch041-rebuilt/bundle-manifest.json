@@ -3,14 +3,14 @@
   "build-provenance.json": "1a2dd67dd6c4894a133ac188f4226efb6625578b170cbc7261b24187368d2da9",
   "build-result.json": "85d47ba56e8bd252391f54a0bc420df22ae32381ee9538371b9a7284054e6d1f",
   "build-verification.json": "e31abdb2d8172934fc06575558e9339ee4eac4203e552f392492394b226aecca",
-  "capture/audit.json": "d8eb3bac08ff7f8c9a51ea227b76aa7e55f3f45e4be5ae5d44af6f7bef5b6c0c",
-  "capture/manifest.json": "701e9555520bd89cbb3d806b27c916bd9177babd724ca9f807ab8e21fe7a041d",
-  "capture/report.json": "708d3d55c5b71cf341e8e2bcc89526cb2b736fad3f41e680826f54b15edb0a58",
-  "capture/rows.json": "56df10b816b8b0f06d412fbbd2181b499387194aa574dc6948eb01ddc5a7d5f3",
+  "capture/audit.json": "6e1b3730fdbb5e641994dd3788c6bf864192430b4cf8d6d06149bd052af3b1e4",
+  "capture/manifest.json": "5556583dfbbbb2a6baac5ddc3658d48503cec28297fd71ebf9ff9703ec26f9ce",
+  "capture/report.json": "492092266e0d169f8353c5208b13c07638c47f34d93cdfe7d8f27ac4c81bf70c",
+  "capture/rows.json": "d01e4fb79762c5cab0865d32d76ac34762066f6835ca3ffe21b1fa2ca5e68914",
   "corpus-comparison.json": "6dfe66598d05c7dcf49cc3c4cceb27a3c72b3b316a529d9951a9f8f94325e659",
   "existing-snapshot.json": "fffcaf63731fd5c67d9b93a32568a0f9a7d2a250e6f0f3ef35a0279bf521d333",
   "public-existing-db.json": "af8a4d5927e32fbb9b00e7e6421dadd0bcedf42aadd39414eb28061f3a6574a3",
   "public-regression.json": "0d10ffcaa6a93efb90e52ee42f06a90c46dd4043362c1f83e0620c9678b19422",
-  "summary.json": "8abf6a27b164c746c862db1afc236864bcb29c81439e474bbbe4f5eca41cd078",
-  "validation.json": "22e379eb8a8ecb90fafa1c492b1011226c79cbccc256ee6012c5e57050b6251d"
+  "summary.json": "c63f604616b118d02688a428d066d541ceee2eda12e355a0577bdc47b615e9a5",
+  "validation.json": "da9c049dcd71e2a7dcbdcd03e0fccee784ef68043b8abd594b3262f047a1fa4a"
 }

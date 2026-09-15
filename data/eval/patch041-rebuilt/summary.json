@@ -275,7 +275,8 @@
       "civil_laws": 235,
       "cases": 235,
       "guides": 235
-    }
+    },
+    "all_235_four_channel_rankings_equal": true
   },
   "remaining_losses_vs_old143": [
     {
@@ -885,7 +886,20 @@
     "existing": 103,
     "rebuilt": 103
   },
-  "timing_scope": "single local CPU run; excludes initial loading, LLM, web and concurrency; not RunPod comparison",
-  "final_search_mean_seconds": 0.4434033668085133,
-  "final_search_median_seconds": 0.38001029999986713
+  "timing_scope": "diagnostic timings with concurrent local test workload; excludes initial loading, LLM and web; not a performance or RunPod comparison",
+  "final_search_mean_seconds": 0.4536889144682101,
+  "final_search_median_seconds": 0.3853386999999202,
+  "capture_commit": "5ac669e30307736517740c1ab3e9792ad6a3a92a",
+  "review_recapture": {
+    "previous_capture_commit": "8a57092",
+    "previous_capture_manifest_sha256": "701e9555520bd89cbb3d806b27c916bd9177babd724ca9f807ab8e21fe7a041d",
+    "all_235_returned_evidence_equal_to_previous_capture": true,
+    "criteria_hash_policy": "UTF-8 text with CRLF/CR normalized to LF; source bundle manifests remain byte-exact",
+    "ranking_identity": {
+      "laws": "article_id",
+      "civil_laws": "article_id",
+      "cases": "chunk_id",
+      "guides": "chunk_id"
+    }
+  }
 }

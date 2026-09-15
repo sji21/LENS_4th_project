@@ -4,7 +4,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "faddc4cdd21ce59fd3edf8728c00b8d7749e7b3d17182c2af78785d48a8c00f6",
-    "seconds": 0.40308820000018386,
+    "seconds": 0.76987999999983,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -125,7 +125,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "8cd092e0fee9f879df30e9aee0c849b1a210799990479bd0f7823efeb47ff9b0",
-    "seconds": 0.476929200000086,
+    "seconds": 0.7432752000004257,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -246,7 +246,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "81dd220d378d6cb3084af51aa86d51057b2ab003613e797977fb27aa5511efa3",
-    "seconds": 0.3798538999999437,
+    "seconds": 0.560696900000039,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -367,7 +367,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "08a098c0e4c8c47387fa7abee125ecdc1a873209d6aa874abd291f868ddb224a",
-    "seconds": 0.5557405999998082,
+    "seconds": 0.9390509000004386,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -488,7 +488,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "c67654b757bbeeb2cded695849ade878c67136bb69ef11b0a564293d7ea8ca32",
-    "seconds": 0.29040130000021236,
+    "seconds": 0.4192677000010008,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -609,7 +609,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "4b24d285d179700832b3ceaddcc835170345fc8fc44ba1b1567cffe93a109218",
-    "seconds": 0.39981070000021646,
+    "seconds": 0.6207888999997522,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -730,7 +730,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "b6d0c4b0696bcb3a78576eec54f54ca6c7c12f1f5c40c3b2498ec654fae5cc52",
-    "seconds": 0.334942399999818,
+    "seconds": 0.46527189999869734,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -851,7 +851,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "61a6a789c11ecad99e4229cebfb5647dd06eec98574d3439ec96bcbb3a3abd9c",
-    "seconds": 0.5767439999999624,
+    "seconds": 1.0593683000006422,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -972,7 +972,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "1b34b260f38dc43460519e4a0eb24b549869fab6d70d14c98cf2f65bf7dec485",
-    "seconds": 0.3740312999998423,
+    "seconds": 0.5788760999985243,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -1093,7 +1093,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "4201350f2782b8ee8c668f43261234fc9938dbc4645ab3d802007282e0578b2a",
-    "seconds": 0.8201751999999942,
+    "seconds": 0.7662932999992336,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -1214,7 +1214,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "5f5cd2b8cf34cf8b2c3a42e69ee70ca7de9be5ca90181f5d056577a98940c47d",
-    "seconds": 0.2550231000000167,
+    "seconds": 0.21792719999939436,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -1335,7 +1335,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "93ebdf3c55c1e7047a47f026849d6e5481d8d271b373f9666dc919588b892e92",
-    "seconds": 0.9591643999997359,
+    "seconds": 0.8506256000000576,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -1456,7 +1456,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "d9991eb8a3fd7f0fe78b04a5fe98b5fc4bc527b326ec12f363bc95f36333a8e2",
-    "seconds": 0.8623277000001508,
+    "seconds": 0.7702128000000812,
     "model_calls": 3,
     "result": {
       "laws": [
@@ -1577,7 +1577,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "6ace7c83bb1a517fe866d74f276351e3e6a9f918a2dbd7e7d60866f31e358db1",
-    "seconds": 1.6320718000001762,
+    "seconds": 1.7615857000000688,
     "model_calls": 3,
     "result": {
       "laws": [
@@ -1698,7 +1698,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "3913b07f30a756ef3f531e28b1e85f0cb7715f0c1debd3077c6b6910ea99dc05",
-    "seconds": 0.16916960000025938,
+    "seconds": 0.21791299999858893,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -1828,7 +1828,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "4bedf727533d0c7400c374787a2cebbdf1f1c40b2625046a0655a3725b97427a",
-    "seconds": 0.29493779999984326,
+    "seconds": 0.2681389000008494,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -1958,7 +1958,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "ee1a2c277fb8d54336c9d78e3e150d3a2595461c7158c347a76d412720ea8faa",
-    "seconds": 0.28527440000016213,
+    "seconds": 0.2742225000001781,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -2079,7 +2079,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "6eefd45098bd58b0c7bd481d799801a74a5167b8bebc37bf7afdcca2fdad569b",
-    "seconds": 0.3571637999998529,
+    "seconds": 0.39534939999975904,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -2200,7 +2200,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "37ee361006f934b966988496679b8b06ed8c1575c217c27717b99b6aba90671f",
-    "seconds": 0.2068106000001535,
+    "seconds": 0.1835906000014802,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -2321,7 +2321,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "0a3cc4eb2754aac126f3826e1fdf1998b6feb8d43504aec9344e964e863add31",
-    "seconds": 1.6340024999999514,
+    "seconds": 1.5718136000014056,
     "model_calls": 3,
     "result": {
       "laws": [
@@ -2442,7 +2442,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "f040432c19de907a0d4e9b09d032d0ba736b356bc9ddcf9bdd5fb2e0d06fffe9",
-    "seconds": 0.39532809999991514,
+    "seconds": 0.4258697999994183,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -2563,7 +2563,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "363e2f7a65751f4dcae1663ddbce1e056c777d236548c8c0fef27131c9c82ec0",
-    "seconds": 0.6808071000000382,
+    "seconds": 0.7071274000008998,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -2684,7 +2684,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "2072d403c529cf5f4917a51180cf116288bbaf5564f2bfaf2e547876b0a9d53a",
-    "seconds": 0.18907390000003943,
+    "seconds": 0.1938573000006727,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -2805,7 +2805,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "3881645caddded1b6cf4400e1616281056cfce52deac7f6c25d65fd78c5c69cc",
-    "seconds": 0.675995900000089,
+    "seconds": 0.6486540000005334,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -2926,7 +2926,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "1d5ceacf94a633d2587fe6a6d4a27f1f4bc87fbf93c8153146cda633c301ae30",
-    "seconds": 0.3410681000000295,
+    "seconds": 0.3658948000011151,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -3047,7 +3047,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "af7f6fb116fba5ef2461904ab51c6c79bb55263e4d1e7702bb4986c25e815ad9",
-    "seconds": 0.7190305000003718,
+    "seconds": 0.6730774000006932,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -3168,7 +3168,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "00f5918179bfbf25855979d6c2cf4ea4475e752b1b7dac7f47de24f30299a41e",
-    "seconds": 0.17660810000006677,
+    "seconds": 0.18241840000155207,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -3289,7 +3289,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "f1019afd1e8e816aa8f03fd1cf3e7aceb6abf97777d514f4d240c16f1fd5f095",
-    "seconds": 0.3052124000000731,
+    "seconds": 0.3034468999994715,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -3410,7 +3410,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "664648db0bf0a8c1a275d28a02ff85a4bc163c8549a91919c98a77d8103431b6",
-    "seconds": 0.32643549999966126,
+    "seconds": 0.2587791999994806,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -3531,7 +3531,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "c4e7e2c8b89a238236459e18326a45c50f07d93b0dd0b534f5342a0b7456ff01",
-    "seconds": 0.6536145000000033,
+    "seconds": 0.7279211999994004,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -3652,7 +3652,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "50f4e2e331bf5734fd03d93b9ddb59d80555876024a01aef1fb9502f76d2c908",
-    "seconds": 0.18215449999979683,
+    "seconds": 0.17764069999975618,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -3773,7 +3773,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "8fa3890d4ed7e5ed1fb00359511c092d9ebf2a8fdefdc8f9b649176c52cfa3ff",
-    "seconds": 0.818630100000064,
+    "seconds": 0.8788669999994454,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -3894,7 +3894,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "e80da21a6444d2613285b2e7c6346c154cc92acd01e8f36dbf3ebc575c7f7c7f",
-    "seconds": 0.35604560000001584,
+    "seconds": 0.3770927000005031,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -4015,7 +4015,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "f15e0ecf5f121275bd533056ee0a23e85a676e05aa5f4bcdfdf1f2c3c2078638",
-    "seconds": 0.47434900000007474,
+    "seconds": 0.5193947999996453,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -4136,7 +4136,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "ae793a0cabcebe1d6d7d0db76f2328277f2b4960037a04e06adfc95479b96476",
-    "seconds": 0.36680269999988013,
+    "seconds": 0.37645830000110436,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -4257,7 +4257,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "5495e929d2cdb286e5160d4db31ecb56b256d1e33331b6d4cbd5711eebfee199",
-    "seconds": 0.6851665999997749,
+    "seconds": 0.7740749999993568,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -4378,7 +4378,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "5b05ad3b2a84466dcf55841d19226f5cdff5cc20c509dc78994eff5de190db79",
-    "seconds": 0.4229827999997724,
+    "seconds": 0.47882340000069235,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -4499,7 +4499,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "89b9e8fa966952827d338f6198c91dab26b705f64b0694ac69179d2842e055d0",
-    "seconds": 0.7275271000003158,
+    "seconds": 0.7773610000003828,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -4620,7 +4620,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "cdfe4d09807aa79d63fe2182be868f6b07fe518f0e2591dc56237579c8ddb744",
-    "seconds": 0.19711839999990843,
+    "seconds": 0.1854708999999275,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -4741,7 +4741,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "76bee5b88576ef82b111fbc4caee64cf4ccdcfde830345f30e5d070546def786",
-    "seconds": 0.6381695000000036,
+    "seconds": 0.6008383000007598,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -4862,7 +4862,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "190d82c51e5130392613718983ba67297b8298e99f4072a5827ebf448aa7d247",
-    "seconds": 0.20061559999976453,
+    "seconds": 0.1965968000004068,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -4983,7 +4983,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "f0300ff52a324dcce40ec3558f33db15f533202ecb23520907c9eba11c3be365",
-    "seconds": 0.929932000000008,
+    "seconds": 0.9359628000001976,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -5104,7 +5104,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "f1b99bbbc2a975f952de4167187bae94487d22dc33563e7366c55a7a104a1a60",
-    "seconds": 0.4031361000002107,
+    "seconds": 0.4221350000007078,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -5225,7 +5225,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "a04051ca9ebfe0d9e388a1df9eb12d7c63d7eff03808c9757137e39f4aa94110",
-    "seconds": 0.6001052000001437,
+    "seconds": 0.7785604999990028,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -5346,7 +5346,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "35e1d72e0e70530ebbd81553b03afdf70f66abc287ecdc0f1c69bcf4724f1cb6",
-    "seconds": 0.3578449999999975,
+    "seconds": 0.4156657000003179,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -5467,7 +5467,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "51f715ef551c8cf09997636cc3ce60e987050571048ac0118b68617b72a63184",
-    "seconds": 0.669579800000065,
+    "seconds": 0.7334107999995467,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -5588,7 +5588,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "bde1d61cb5e4e434fdca89addc288b36b28d9fd3442170da8c0f987f9600ed61",
-    "seconds": 0.3668938999999227,
+    "seconds": 0.35614520000126504,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -5709,7 +5709,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "6391701fb689163fc7d9dc9b9f2892062343b980b3053b27c56643c554b1f2de",
-    "seconds": 0.44406100000014703,
+    "seconds": 0.4976525000001857,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -5830,7 +5830,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "0829ceb9fa2355f566188ce09c5f2e9045c12fafee1c29f94fc587edc7a300a6",
-    "seconds": 0.34783969999989495,
+    "seconds": 0.3430315999994491,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -5960,7 +5960,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "afa48a769356e4e8ca66d8d13d7162a3e78e6e1ad08c3d96784f6d9cd835d204",
-    "seconds": 0.46708680000028835,
+    "seconds": 0.4837631999998848,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -6090,7 +6090,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "3b6f21581541312180a6e6467af457b70f0913fc5560049c50862a43b29f383e",
-    "seconds": 0.4313115999998445,
+    "seconds": 0.42222969999966153,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -6211,7 +6211,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "10e87acc11320dae6438469ec91ef31ea787e7de43a253ffd384616bccb36357",
-    "seconds": 0.6492542000000867,
+    "seconds": 0.6289226999997481,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -6332,7 +6332,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "e94d645cf11419aed31288a11207e533053bce7bb10c9cdc77acd0fd6630b338",
-    "seconds": 0.37639739999985977,
+    "seconds": 0.3853386999999202,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -6453,7 +6453,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "324a765d74b955165cbabf41d440aa95c5fb73fdf5682c3b00b52e54c3b2d321",
-    "seconds": 0.8930403999997907,
+    "seconds": 0.8046785999995336,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -6574,7 +6574,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "b9fd9b009ca5acda58db7093d3bde54e73454bc7e57d4ba19eeb437ffa8dba55",
-    "seconds": 0.4394104000002699,
+    "seconds": 0.4014167000004818,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -6695,7 +6695,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "b1d9dab9310601a39dc35ef0d87ac8c54fbeb6b7e285e7c526acd83cc2fd3518",
-    "seconds": 0.532822600000145,
+    "seconds": 0.5128316999998788,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -6816,7 +6816,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "068183258073c3a9bc76d1e8c94f90c12a0a34cc7c35f0b80774a08ad8bdfd58",
-    "seconds": 0.4261249000001044,
+    "seconds": 0.36637659999905736,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -6946,7 +6946,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "aad38b0dd7a70912e304351c1fd49d82abf41f2cba04e5177b7311adcc860d9f",
-    "seconds": 0.5990484000003562,
+    "seconds": 0.5683330000010756,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -7076,7 +7076,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "3c2dd959e7b3fe483068a81b2bd66796defe997facb4ec65c99070880216ebd5",
-    "seconds": 0.21139949999997043,
+    "seconds": 0.19034309999915422,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -7197,7 +7197,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "8eb5dc83069a427580d232cc8bcbb8967b448768f14881b9cf61afd4a7bdcac7",
-    "seconds": 0.7634941000001163,
+    "seconds": 0.7258785000012722,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -7318,7 +7318,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "ba94aa20c5982077e73170f66c971cf11b1b6105ee0b6b1e9fd3ead4716c6ad8",
-    "seconds": 0.21367659999987154,
+    "seconds": 0.21391489999950863,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -7439,7 +7439,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "30074fda16199348c52bcccdbab0525fdf2b9a35df27879dfae815de306dad3f",
-    "seconds": 0.6005023000002438,
+    "seconds": 0.5694485999993049,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -7560,7 +7560,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "f69aff439d3b7b288b2acf370aed573065de288d2a2b72c3bb41413db6149112",
-    "seconds": 0.39254510000000664,
+    "seconds": 0.38894879999861587,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -7681,7 +7681,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "ca3521c9572d4e34020a624473cd7fdad807f39f44e8ca2fd34a74f71a260561",
-    "seconds": 0.7425086999996893,
+    "seconds": 0.7492041999994399,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -7802,7 +7802,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "4246d0a6d36b08886f9dee59e1fcaed928b2f8bed5fc42bf3fed16cc8fe5cddc",
-    "seconds": 0.6451597999998739,
+    "seconds": 0.733570200000031,
     "model_calls": 3,
     "result": {
       "laws": [
@@ -7923,7 +7923,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "3f8af56c8daf112ac2fdfb12f7e767900f7bbd2e572ed0560dfd0f6a765f652f",
-    "seconds": 1.1383025999998608,
+    "seconds": 1.3637564000000566,
     "model_calls": 3,
     "result": {
       "laws": [
@@ -8044,7 +8044,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "2c4eb03a13cadf202f91afde4690a8b81a7f22ae142cfd96a53251162a3beb86",
-    "seconds": 0.41804590000037933,
+    "seconds": 0.4689538000002358,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -8182,7 +8182,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "97586789bf1aa4b978336b43f0ec9ed6224a030333ad57937dd3212e774fc845",
-    "seconds": 0.5256592999999157,
+    "seconds": 0.6076441999994131,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -8320,7 +8320,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "fee220276cda89130db829a274da361f16cca2108f0289e8d4a509f347958eb1",
-    "seconds": 0.6390903999999864,
+    "seconds": 0.6796206999988499,
     "model_calls": 3,
     "result": {
       "laws": [
@@ -8441,7 +8441,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "3d8dee7ea24c3ea992e1dc08e190b580186071152a1346dc96607837669e7859",
-    "seconds": 0.7711744000002909,
+    "seconds": 0.8375764000011259,
     "model_calls": 3,
     "result": {
       "laws": [
@@ -8562,7 +8562,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "c26134f0ac8746c0893427be262e14787b30dd8e69d393dd6b046c111b57b733",
-    "seconds": 0.3738517000001593,
+    "seconds": 0.3777805999998236,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -8683,7 +8683,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "46af8dd5564304f57893ec59d54c162b72cfa4b6e1236a499ddcdf6d8326d2e0",
-    "seconds": 0.5132986000003257,
+    "seconds": 0.5501549999989948,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -8804,7 +8804,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "a0e50b5be01149a6f712bbb77b0c441d10f775e5f423c7bc20af7025f84f7858",
-    "seconds": 0.4457532000001265,
+    "seconds": 0.45415029999821854,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -8925,7 +8925,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "f62572dfe66eebaf37471323c43fe9da57510f0d17f5803da7e93b7866cb9a4e",
-    "seconds": 1.0030282000002444,
+    "seconds": 1.4231437999987975,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -9046,7 +9046,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "bfa0510782ef44dbbeb7f22bafb4fb921a3abf049804b451bf52671998982790",
-    "seconds": 0.3746095999999852,
+    "seconds": 0.4898647999998502,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -9167,7 +9167,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "a550b3e1309299c2baee2371d19018e8f9b7423fef551569776c2a99900d592e",
-    "seconds": 0.4590321999999105,
+    "seconds": 0.5430162000011478,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -9288,7 +9288,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "eb20ef67162a81cbf4010bb83e1b9b9bb3947503840e9aec3573129855460fc3",
-    "seconds": 0.34591020000016215,
+    "seconds": 0.39786760000060895,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -9409,7 +9409,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "621ea610398ff48d1271a5a1f80347a9dd35f2792ebb1ed2bcdaaf5cab677212",
-    "seconds": 0.46704040000031455,
+    "seconds": 0.6590319000006275,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -9530,7 +9530,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "664f2ebbd31767b29ec19c69e8e8654e1ebde7b7f7c0d5921102ef16c0111734",
-    "seconds": 0.3636085000002822,
+    "seconds": 0.49282119999952556,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -9651,7 +9651,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "0117fa800e66975aead2cc03cf733f8af40f06860d3fa902cfb3824eb8fab9b2",
-    "seconds": 0.835693099999844,
+    "seconds": 1.0417319999996835,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -9772,7 +9772,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "23eba8e9c8ebfa1941f86a78d5d093b5daf7c3a23b2447a2e6a2e09f5379d4e7",
-    "seconds": 0.4443105000000287,
+    "seconds": 0.48244640000120853,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -9893,7 +9893,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "a50061ba7e7552f126998a7cf9cfe82315fe31db5b081aebea4702da9ac4ec6c",
-    "seconds": 0.735057599999891,
+    "seconds": 0.9258926999991672,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -10014,7 +10014,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "2e38831aab0f1e8d5712c3f1a51c539802d18958068e74f518d200732e83caa6",
-    "seconds": 0.5062321999998858,
+    "seconds": 0.7042622999997548,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -10135,7 +10135,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "93bd96d125642a53fa79494e683fe1068f334c8bcb175003ffcd7003b39403f0",
-    "seconds": 0.6817670999998882,
+    "seconds": 0.9921582999995735,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -10256,7 +10256,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "22fffd72a11e2bc4ef34ef52b8868665e3549caa7939cf736f7c22b1d08d9bb3",
-    "seconds": 0.44164109999974244,
+    "seconds": 0.4654725000000326,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -10377,7 +10377,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "c3fb9be9774fe95f17d130a94271d46f652328bcb539c34c2597f661be02e58d",
-    "seconds": 0.6376721999999972,
+    "seconds": 0.6988660000006348,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -10498,7 +10498,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "bdd30eb4a7b32cd8b166642165769d1715b73ec67cdb7ab76b91bafff1b618f7",
-    "seconds": 0.49129080000011527,
+    "seconds": 0.4761577000008401,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -10619,7 +10619,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "bd93b5b6a1cf3cde38402227b915e6f98b78b3c332a31a5cefa4c97320b68fd4",
-    "seconds": 0.7653027000001202,
+    "seconds": 1.1004944000014802,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -10740,7 +10740,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "4482dcad4551c3f38109aa5c965639e8abd65fecbd30aa436ccc1c8524f3cceb",
-    "seconds": 0.4030477000001156,
+    "seconds": 0.6837378999989596,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -10861,7 +10861,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "1f650265aae49603a6395e1587ba9d63274a525e8626513193e29cc449dffb46",
-    "seconds": 0.6489458999999442,
+    "seconds": 0.8603156999997736,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -10982,7 +10982,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "f4edf59f872c76b76d9d8f7c5d0018dbdedf987c463563f959ea3a49163220ef",
-    "seconds": 0.4560446000000411,
+    "seconds": 0.4833695999986958,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -11103,7 +11103,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "6b9ef0b81ebe1525f8ff73b5c5844824fdc3b7ba0b2c1efe466de67b7138428f",
-    "seconds": 0.7103947999999036,
+    "seconds": 0.8126731000011205,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -11224,7 +11224,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "f6b0920eb2d28db896f75720643ee7811311fa128b038eca038509d50fe75cf8",
-    "seconds": 0.2000767999998061,
+    "seconds": 0.21956480000153533,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -11345,7 +11345,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "13a420bcb5c8b6479f2eaae669a2c4822baf15f2ce2617db0170dc780e5e77b6",
-    "seconds": 0.28996879999976954,
+    "seconds": 0.30589790000158246,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -11466,7 +11466,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "939927a43c19c8be6d5ef8b84ec1903d070be22a6b1746f625fcb1cc1f8e3b0a",
-    "seconds": 0.2048400999997284,
+    "seconds": 0.2383432000005996,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -11587,7 +11587,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "3a2d02dd474d55fb00bb2fd1ee145128391d25a90a3b33b17bf8fb3583392c43",
-    "seconds": 0.32791969999971116,
+    "seconds": 0.35852089999934833,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -11708,7 +11708,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "26e63f68ce332f9c9905662813d243e40e2e3b9454476c9c7b36a281aad1e157",
-    "seconds": 0.2116070000001855,
+    "seconds": 0.211844999999812,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -11829,7 +11829,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "c38535c068f2dd482a9966ce705636678c191aa1f25b2317983d60a37f8a1bdc",
-    "seconds": 0.6073143000003256,
+    "seconds": 0.5875946000014665,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -11950,7 +11950,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "a4819fe4ffd76363ce68870f9acba644ea1178c3925670b018b77637ca4d04e9",
-    "seconds": 0.5147755999996662,
+    "seconds": 0.41955760000018927,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -12071,7 +12071,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "7bc0d3113836814054f378bf776179e7485bd2ff622dcf0393b0c08aaf956d4b",
-    "seconds": 1.0713051000002451,
+    "seconds": 0.9917815000007977,
     "model_calls": 3,
     "result": {
       "laws": [
@@ -12192,7 +12192,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "98156862c4575e31343fef3ec9113fcfab90e49fdc467edd9a5fd7856152b956",
-    "seconds": 0.1899623999997857,
+    "seconds": 0.18653980000090087,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -12313,7 +12313,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "201e65e9d2ddc2ca11b57895489f9cd3d8b0473186898d18bbb2fe5468910b22",
-    "seconds": 0.30899060000001555,
+    "seconds": 0.29249629999867466,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -12434,7 +12434,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "403736eed0677b9a783c638173d1fc64d1f00e031721127ec378317c4bcd9707",
-    "seconds": 0.19926039999973,
+    "seconds": 0.19854839999970864,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -12555,7 +12555,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "f645b8ceb973c032d4aa49838c4c0128d34d60e84af1070383d24a3d1744e1c4",
-    "seconds": 0.2738289999997505,
+    "seconds": 0.267415100001017,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -12676,7 +12676,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "66f04920c586cee8135b17642717bc4099224528b2893969eff922ab91ad04b6",
-    "seconds": 0.16737099999954808,
+    "seconds": 0.20101710000017192,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -12797,7 +12797,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "cd6023861d2e027978b3d033c75ac7cd343000c3a0918521dda536229e07c084",
-    "seconds": 0.4979489000002104,
+    "seconds": 0.5346648000013374,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -12918,7 +12918,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "10e45aa95830c7013ffb7eb73d841301d39428f5077f2e1904d870a09d60534e",
-    "seconds": 0.21712129999968965,
+    "seconds": 0.19880369999918912,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -13039,7 +13039,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "c2f565d5c740d8024b1cee745f4ce0361f4f4f2516e34afa7d95244a9d128b82",
-    "seconds": 0.282309400000031,
+    "seconds": 0.3453650999999809,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -13160,7 +13160,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "11cdd3d880ae60a41767e11560733d12854666b0bc10273447aa3df5b899b18d",
-    "seconds": 0.21271249999972497,
+    "seconds": 0.21662540000033914,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -13281,7 +13281,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "b8a3b3b163c914f757861b41cd9a43b6d86cf01f4099bd3d7837456a96c419ec",
-    "seconds": 0.6188885000001392,
+    "seconds": 0.6356512999991537,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -13402,7 +13402,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "e955944f2fad656251c45fbde886a1017d1fde043456483a6056473324a77216",
-    "seconds": 0.1751776000000973,
+    "seconds": 0.19098060000033001,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -13523,7 +13523,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "2ee2597db4beee638c8094f59823d216087648b09a664122c119a0cf8ada53f7",
-    "seconds": 0.3161489999997684,
+    "seconds": 0.2875469999999041,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -13644,7 +13644,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "1bbc4ab4d776631d82dd43d99bfebb5a0cb86c3f44ec7c0d13719205bcdf034d",
-    "seconds": 0.20795910000015283,
+    "seconds": 0.19025060000058147,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -13765,7 +13765,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "dac4776da00d2cb40def7c3519f6f3697aa9e65ca4d2bd58a24dc551ea38d74f",
-    "seconds": 0.32054539999990084,
+    "seconds": 0.33735950000118464,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -13886,7 +13886,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "0d88bd358e5cac429657396ab33aa89c7c7ece914a4446a94d044be22a4bfd43",
-    "seconds": 0.1773548999999548,
+    "seconds": 0.18400169999949867,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -14007,7 +14007,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "cab1bfa227b31b5705addd7d7e4ab704e8599504423e3a5305714d1feb2b8019",
-    "seconds": 0.30812539999988076,
+    "seconds": 0.2915669000012713,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -14128,7 +14128,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "9784283639d26438f16c4c30932990a3fd54d60e020373b5a6d23189966bd173",
-    "seconds": 0.19554840000000695,
+    "seconds": 0.18511359999865817,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -14249,7 +14249,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "9293c32b131bec7142029b896b678419e4964928c47882f5e63704895d77b5ce",
-    "seconds": 0.3801928999996562,
+    "seconds": 0.39675979999992705,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -14370,7 +14370,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "ce62f771af85b87b24ad3fcc7214d4a9e55cd92ef0985bf3b8cc8676aa407af7",
-    "seconds": 0.4011703999999554,
+    "seconds": 0.4587248999996518,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -14491,7 +14491,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "e7788459c1f4902307219e6d34505a6118f89c27e3ba33999b7b6e3abd82dd5c",
-    "seconds": 0.6153494000000137,
+    "seconds": 0.6963164000007964,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -14612,7 +14612,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "fd5956eaab9f44053a50b0bf5698a4dd4a40ae5e91bd2ca9c8c003f60d3375b3",
-    "seconds": 0.19172300000036557,
+    "seconds": 0.1991675999997824,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -14733,7 +14733,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "310bc40dbd93f7a1cebeca2c1163bb18eebe3fbf6bb4e7aa0348f376ecbbbfec",
-    "seconds": 0.30331459999979415,
+    "seconds": 0.3069128000006458,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -14854,7 +14854,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "34360abff5267edbccd5462cea8515b05d9c4f4fbf28630c465f7fff87d7ab5f",
-    "seconds": 0.18172390000017913,
+    "seconds": 0.17094920000090497,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -14975,7 +14975,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "75ef420c30b5f827c05b8953668aaff89dda773d8e3aadb744923d84bfe218bf",
-    "seconds": 0.5429110000000037,
+    "seconds": 0.5219979000012245,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -15096,7 +15096,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "f0888a52be86a0540dade8c79bd9d9c7acef809a692a48dd4c45f023c9910bef",
-    "seconds": 0.20494529999996303,
+    "seconds": 0.18504070000017236,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -15217,7 +15217,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "e92449e47b0a29898b88f2c6fca2f73849a21a73fefec00cf3d31951d8bc6d9b",
-    "seconds": 0.30315639999980704,
+    "seconds": 0.2764599999991333,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -15338,7 +15338,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "7d0ae48d9cdb5ea1ac2a6d6ec031024519bff9f53c21355699feac1ecdc77780",
-    "seconds": 0.1805485999998382,
+    "seconds": 0.1776716000003944,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -15459,7 +15459,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "656c625c0d2ca8e63626bbaf1d8f6d3b3371f4182ab47e95dcb539362697b7ed",
-    "seconds": 0.6398145999996814,
+    "seconds": 0.5511189999997441,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -15580,7 +15580,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "42ef2e3068bea25af7244ee0156b286f0e963df16b485e21d6627062966f620c",
-    "seconds": 0.24562020000030316,
+    "seconds": 0.1821522999998706,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -15701,7 +15701,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "1bf8ff7fafe87c0ac59d3d52571991655a5702899e8d93e2bfe924f9ac18b003",
-    "seconds": 0.7435705000002599,
+    "seconds": 0.6687794999998005,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -15822,7 +15822,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "d6ec94e641401903b8fa863cad820f26401d205cc0459f7a101661e350a538e7",
-    "seconds": 0.20662799999990966,
+    "seconds": 0.1714843000008841,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -15943,7 +15943,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "717758ca729afd974ec116470d854f5a446ed69f1bba8a9b437223ad4b884b7c",
-    "seconds": 0.4965763000000152,
+    "seconds": 0.4673153999992792,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -16064,7 +16064,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "66fa49bee616d298e6991afc952d77faea31dada0f163e10b066ec96c7bf582e",
-    "seconds": 0.42944139999963227,
+    "seconds": 0.3619825000005221,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -16185,7 +16185,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "3f596a7a4bbd192f5852c63d0567968e15818b300f9229eee6e463c6e528f89f",
-    "seconds": 0.5191076999999495,
+    "seconds": 0.4973982999999862,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -16306,7 +16306,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "68442de9e55ebc4659c8fbb95584d699c5e3c2c2e1cb083fd0ca1d6ede0331cf",
-    "seconds": 0.4493379999998979,
+    "seconds": 0.3860882999997557,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -16427,7 +16427,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "6b69647f70a14bf328325250e05ae40c4229e387f7648e77f041f901f69e83ad",
-    "seconds": 0.6547408999999789,
+    "seconds": 0.5736782999993011,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -16548,7 +16548,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "46497c52a0f0570f93cb60497dabbba9005618eba75d27fbd5226c3f9968bd39",
-    "seconds": 0.6346369000002596,
+    "seconds": 0.5534648000011657,
     "model_calls": 3,
     "result": {
       "laws": [
@@ -16669,7 +16669,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "0ab3842ca54b70b95ce67d58843c1db8da38ff659fb4a3327ca49f4c6eb66323",
-    "seconds": 1.2379194999998617,
+    "seconds": 1.241029000000708,
     "model_calls": 3,
     "result": {
       "laws": [
@@ -16790,7 +16790,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "4d778f69fb2ce189dcebf0b0cbc218024e4a89c0899166801119cd1284b579c4",
-    "seconds": 0.7380517999999938,
+    "seconds": 0.6637399999999616,
     "model_calls": 3,
     "result": {
       "laws": [
@@ -16911,7 +16911,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "c7f942093921afab68f9af6d6188d1214570712e9ba30cee45f324bf661d42fa",
-    "seconds": 1.3180932000000212,
+    "seconds": 1.111576299999797,
     "model_calls": 3,
     "result": {
       "laws": [
@@ -17032,7 +17032,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "a5ea83fd2b500782ac21078b4b79b9a7efc81cb5feb80ef10ed77d38bf97106a",
-    "seconds": 0.5368045000000166,
+    "seconds": 0.4270057999983692,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -17153,7 +17153,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "7f200df806e429ef4a91c0037d39b1cd4596e402789a1500d5b4a4ee5902c468",
-    "seconds": 0.7315346000000318,
+    "seconds": 0.8165275999999722,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -17274,7 +17274,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "aae88f4573905af9439a02a40e5c4c4664d761d1ea039b2bd1e2bd94f4f4f21a",
-    "seconds": 0.45134879999977784,
+    "seconds": 0.4158848000006401,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -17395,7 +17395,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "17d5abebca4e141678aaba753b5a47f885ac999da7a3dc65b56574f9460c3de7",
-    "seconds": 0.7219399999999041,
+    "seconds": 0.7073498999998264,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -17516,7 +17516,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "6f6bb2513eb83a563542f7d8cea65098aece68fbcb83ae1b757d5b2db966578e",
-    "seconds": 0.17820510000001377,
+    "seconds": 0.16697629999907804,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -17637,7 +17637,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "d8a10bfd6502786becb2157789a21a6fe4b4e9af206248996bcd35e58b173b17",
-    "seconds": 0.25722600000017337,
+    "seconds": 0.2715518000004522,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -17775,7 +17775,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "9f2452f649b81faa3c5129186c57c9397c99f7271f4b6ca0f010d91973371b70",
-    "seconds": 0.18375749999995605,
+    "seconds": 0.1642214999992575,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -17896,7 +17896,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "97976b36d2f4b078b2b28c1eaada5e1316c330eb814b3f330d5103b4f2cf16c8",
-    "seconds": 0.2472182999999859,
+    "seconds": 0.23522389999925508,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -18017,7 +18017,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "d3437b644ae4ceb3b94df614cb771cff3ccf6a901ef7e0634273874cedf18a2c",
-    "seconds": 0.1865444000000025,
+    "seconds": 0.17799980000017968,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -18138,7 +18138,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "f5f5994324a39578b13d6fcf7cdc9c7fd8125d9b360b4be39543794651f1efb9",
-    "seconds": 0.5859387000000424,
+    "seconds": 0.5562986999993882,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -18268,7 +18268,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "d88e5dcc6d11dc2b35607b6958868789d01106dcb0ca1b562be44dc365e43a9d",
-    "seconds": 0.18912700000009863,
+    "seconds": 0.18728750000082073,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -18389,7 +18389,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "338b6a1eeffad1921502f98882192c2964b3548b2363697f3c75b22ad98b9cc1",
-    "seconds": 0.6556516999999076,
+    "seconds": 0.6374866000005568,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -18527,7 +18527,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "3ea902ea6c024c15dab71ed94134ba9535cf11961fced32130c82d4155dad497",
-    "seconds": 0.18972729999995863,
+    "seconds": 0.18298110000068846,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -18648,7 +18648,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "fa870d18b6f8975eb0fd950d4d7409100d80622e88be9b8e76cff62e1aefc38d",
-    "seconds": 0.28052900000011505,
+    "seconds": 0.26328429999921354,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -18769,7 +18769,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "417f6efd7a5939d630886bc581d1613d027914ab708ccc6d05bb098a211865e6",
-    "seconds": 0.3878082000001086,
+    "seconds": 0.40246570000090287,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -18890,7 +18890,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "1beae462a5794e0eb317af337beac01ede024f46f124e5b261c7f9bb1a934690",
-    "seconds": 0.9468292000001384,
+    "seconds": 1.0196057000011933,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -19011,7 +19011,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "d92cd99ee20e18c51fc505206b5d7714580bede0d601eeaa82330dbb497643e2",
-    "seconds": 0.1801884000001337,
+    "seconds": 0.18294439999954193,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -19132,7 +19132,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "97cb77b7ae28505250067816295a4776d1ebd57eef9c667a713d771fd1de9ae2",
-    "seconds": 0.31561280000005354,
+    "seconds": 0.3032576000005065,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -19253,7 +19253,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "1f6a120942d9454f54ab10571a056fe32e114c93bdee5e7276bfafe9c3c295a3",
-    "seconds": 0.178635100000065,
+    "seconds": 0.17542179999873042,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -19374,7 +19374,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "0bc2a526cab12405a9c544b5b0502e88f4b8a9c7f23f30eb66d90eb0d1cd48e7",
-    "seconds": 0.242098800000349,
+    "seconds": 0.2474672999996983,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -19495,7 +19495,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "1b958f0b384774e912607a610e158ae01563344995ea192bdac1f3f7e152a5ce",
-    "seconds": 0.14684919999990598,
+    "seconds": 0.16370559999995749,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -19625,7 +19625,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "376c2959af24c155f8c2cb2bccbebf435d9bce83b0541fb7f50a071150e08b2e",
-    "seconds": 0.19128309999996418,
+    "seconds": 0.22392690000015136,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -19763,7 +19763,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "fcae38ed69bf43f1b0cf173cf14fb6f69f39bdde769c6463c720273cba742879",
-    "seconds": 0.17602190000025075,
+    "seconds": 0.20559550000143645,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -19893,7 +19893,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "1f053dab32838895a11a4a252b8da9d57acc83a7e8e2286b95e1265f044269fa",
-    "seconds": 0.26681420000022626,
+    "seconds": 0.24261930000102438,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -20031,7 +20031,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "40f6c4dce555fa9b07d9ed5efbd3288cf3fc8f8a02d73aa2d5054f3a9641ae5a",
-    "seconds": 0.21262120000028517,
+    "seconds": 0.18612530000063998,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -20161,7 +20161,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "c3bba83b48548c65195b89bb5083c64065e352fc3369adf4d6ea90f46611b5c0",
-    "seconds": 0.2922172999997201,
+    "seconds": 0.26652439999998023,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -20299,7 +20299,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "9f8b703a6d228a0310b0a59f3812ce8bd007473db3f6d42affd8770418aa2f57",
-    "seconds": 0.4474562000000333,
+    "seconds": 0.380839699999342,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -20429,7 +20429,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "fdcf661a6273700bdbabba7c6120068558aa00c3f1b864e4edf36660e8d32b3c",
-    "seconds": 0.5540052000001197,
+    "seconds": 0.5668183999987377,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -20567,7 +20567,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "d24630b9d978acfb9c17dcf8c6e04c1f02e4d77198e1efe6fdd6f581cf13dc52",
-    "seconds": 0.18279919999986305,
+    "seconds": 0.17259790000025532,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -20688,7 +20688,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "27eb0d940628ce790cf1da1c1ef36067010ce6769967f1abee15f3cdbc18754f",
-    "seconds": 0.9627385999997387,
+    "seconds": 0.9113604999984091,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -20826,7 +20826,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "eb08678463669775af294b1bac8c3f21a01e00626ea9b7fa0130a3a7fc434cde",
-    "seconds": 0.2014899000000696,
+    "seconds": 0.18950539999968896,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -20956,7 +20956,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "92ec288db6243b6510bec6e0cc38182f2b1132e9ebd4036189ef953e13df9d80",
-    "seconds": 0.32331010000007154,
+    "seconds": 0.31096620000062103,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -21094,7 +21094,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "bb25ae985270eb9f7da40b553276d7ea57480be6cbc8dd9909f3c8f79728abf7",
-    "seconds": 0.39509229999976014,
+    "seconds": 0.3663825000003271,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -21215,7 +21215,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "dbc4a9466c473f5f1502a8101f9b27924664e36b9c4a34b296f28c07a1b71c48",
-    "seconds": 0.517337199999929,
+    "seconds": 0.5266695999998774,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -21336,7 +21336,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "17723a6696aa83401c8dfe9b227c19604764d50c6bdc80fd4c723f792eba7db5",
-    "seconds": 0.17161439999972572,
+    "seconds": 0.18388899999990826,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -21457,7 +21457,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "4f180b1fa3f31526b76c3099126eb56cf6b49b43b271626e44ebae38438e2db0",
-    "seconds": 0.24648990000014237,
+    "seconds": 0.28678450000006706,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -21578,7 +21578,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "e37448ae3b8c6fa8b95c668f34e5d2aac732b31683426606a4ccbb653446703d",
-    "seconds": 0.18988360000003013,
+    "seconds": 0.17521050000141258,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -21699,7 +21699,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "e5e24469e0c43b6b8074ca0872f89606a53c99b6ff0f6c02d04a557be9cf9c9b",
-    "seconds": 0.287898199999745,
+    "seconds": 0.26619899999968766,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -21820,7 +21820,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "0b15b7a4c3fe824ef31ad787ebd49f74a78b1e42bce4d612f5e913d24d66dcc1",
-    "seconds": 0.4124231000000691,
+    "seconds": 0.39678879999883065,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -21941,7 +21941,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "aaff219831f96ede104107ac716683a3d7af90904c0ee87ba91da559c35bd7fd",
-    "seconds": 0.6155454999998256,
+    "seconds": 0.6079478000010567,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -22062,7 +22062,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "21342261bca795165bd027ef55d1a8855f4589bc814756d32873156c23906a3f",
-    "seconds": 0.37186119999978473,
+    "seconds": 0.3762282999996387,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -22183,7 +22183,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "288b21a2c4cee2b970e3869ab19fed9010ef7f6d51c3b7ab28a8686cc3f30e6b",
-    "seconds": 0.5290583999999399,
+    "seconds": 0.48716049999893585,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -22304,7 +22304,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "74e42d65260505fc090e08b2c608f7b7e0989dca295991d348e4d29a376c9a09",
-    "seconds": 0.38001029999986713,
+    "seconds": 0.3951934999986406,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -22425,7 +22425,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "e5d7e8f1122179d342c9f9d46f8a11f097ba1b549ff8fd524b2b4153cf55b9eb",
-    "seconds": 0.5337647999999717,
+    "seconds": 0.5166107999993983,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -22546,7 +22546,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "56925169dfc6d4e817cbd3b619a6e1f9a6ff080b84db5e6f114fd12f6341016b",
-    "seconds": 0.5735905000001367,
+    "seconds": 0.5614814999989903,
     "model_calls": 3,
     "result": {
       "laws": [
@@ -22667,7 +22667,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "05615272e364c1fe141101186866ee6f7aeb237867972deea69ec1647e390952",
-    "seconds": 0.8312998999999763,
+    "seconds": 0.8003813999985141,
     "model_calls": 3,
     "result": {
       "laws": [
@@ -22788,7 +22788,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "954137755c67a709f5ce92eb9aac94769267b912539e9c7b87faaeaadf069b21",
-    "seconds": 0.15493560000004436,
+    "seconds": 0.187146300000677,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -22909,7 +22909,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "3d39110bb1e306feec778f0366810b81543af56f4408a186c4a8d05bc1c2ff21",
-    "seconds": 0.5570776999998088,
+    "seconds": 0.6038143999994645,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -23030,7 +23030,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "5011f3195aa4503e9e9f6102326e68969524a4b7ed991a78bfe36697157d12b9",
-    "seconds": 0.40292390000013256,
+    "seconds": 0.4162155000012717,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -23151,7 +23151,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "750376248085028aee2214ad1d04665992a1a12684118060c4215bae24937a56",
-    "seconds": 0.6235474999998587,
+    "seconds": 0.622237600000517,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -23272,7 +23272,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "5b5aa58e46bfa16712c641ef4773f42823748ac97bef7cf208fd50142d669550",
-    "seconds": 0.38272790000019086,
+    "seconds": 0.3990903999983857,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -23393,7 +23393,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "425c780329f9441e5d8174a793a294cf453db605881602321871e6bad9968e2c",
-    "seconds": 0.4986604000000625,
+    "seconds": 0.518171200001234,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -23514,7 +23514,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "85b59146c9db5f3094e34563fa81d35258f7af88c04b96b0ab0664eca35e27af",
-    "seconds": 0.17699179999999615,
+    "seconds": 0.1651956000005157,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -23635,7 +23635,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "19f0913de7dde38c9608ccf2dfc8e6ee9482708d63c2fedfbce7a3824f05fbd7",
-    "seconds": 0.2568138000001454,
+    "seconds": 0.28589629999987665,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -23756,7 +23756,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "4e9a30efea48ff434b180af53c824bfdb0464227a71fe091a28349d040906ea7",
-    "seconds": 0.3806147999998757,
+    "seconds": 0.3974668999999267,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -23877,7 +23877,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "dd07f3f3e8ceb9c2b7c00bf40f7b4161baea97059e3d121538e644c4726b05a1",
-    "seconds": 0.534138499999699,
+    "seconds": 0.5540299999993294,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -23998,7 +23998,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "de25912555ea8f5fed15b82a63795e4970f6315db32aa78676647b565ca2e906",
-    "seconds": 0.40802560000020094,
+    "seconds": 0.4087494000013976,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -24119,7 +24119,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "8c4a48eb102f8447b7682e0e08f3963b8f294fc9b5dda803c0c8e4f1eaa26ae3",
-    "seconds": 0.8494078999997328,
+    "seconds": 0.7333510999997088,
     "model_calls": 2,
     "result": {
       "laws": [
@@ -24240,7 +24240,7 @@
     "mode": "question_only",
     "group": "question_only",
     "query_sha256": "111974a54838f92b2bec9fffc8a6111ac74800bbc2a4573a210f59993c751770",
-    "seconds": 0.22988729999997304,
+    "seconds": 0.21601750000081665,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -24370,7 +24370,7 @@
     "mode": "context_diagnostic",
     "group": "context_diagnostic",
     "query_sha256": "ffe2369ad9655ed148fddda58f1182a61dce5356d9d682979c1d431818ea79e6",
-    "seconds": 1.108703500000047,
+    "seconds": 1.0714740000003076,
     "model_calls": 3,
     "result": {
       "laws": [
@@ -24500,7 +24500,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "9c1e2fc8f0a1391062bfe7f388c0b6d597fc6e04a49fe4a3761c187fc936cf40",
-    "seconds": 0.2692701999999372,
+    "seconds": 0.24784419999923557,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -24621,7 +24621,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "811a4544c25e25869bed25846b6b2ce676701115f037dda8d6cdb99adffd9f20",
-    "seconds": 0.2273747999997795,
+    "seconds": 0.24031429999922693,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -24742,7 +24742,7 @@
     "mode": "question_context",
     "group": "diagnostic_only",
     "query_sha256": "fada05a71cee1e6b085f4e84de841a2ea5ce17a8c28df3d0cf51e6311a003500",
-    "seconds": 0.23247149999997418,
+    "seconds": 0.23210020000078657,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -24863,7 +24863,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "4e9748240ae78291918e9b4f11e8be7f43f8469ce4f84cb522c2ae5ed29cedda",
-    "seconds": 0.24384550000013405,
+    "seconds": 0.22937330000058864,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -24984,7 +24984,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "117681687eeb0785ac23123379689a8bccd88553043ffa5f83afd3d33be84a1c",
-    "seconds": 0.2816117000002123,
+    "seconds": 0.23923550000108662,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -25105,7 +25105,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "b2c1838015d0b162d4c5edc5755ac9e642722a1f614a990334e0eba90e94df1e",
-    "seconds": 0.30009249999966414,
+    "seconds": 0.25009790000149223,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -25226,7 +25226,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "dcdb7a9be3ef8ba01056b71388a41aa4055dec9cb3d13e5c0f2caf2fb383ed40",
-    "seconds": 0.26814850000027945,
+    "seconds": 0.24858710000080464,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -25347,7 +25347,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "2a20cf32145639c2634fe4e110eeb5c37b6f22d211533bbab26c1ba560b5a63c",
-    "seconds": 0.3118270999998458,
+    "seconds": 0.23132470000018657,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -25468,7 +25468,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "fa8b4c350cfd3e1c58c5433481ff8c83a5516e693554bfd977919976ff36f569",
-    "seconds": 0.3090537999996741,
+    "seconds": 0.23902150000139954,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -25589,7 +25589,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "e7d05ef49103b8cf17a2fd388ec6b81ab8d80f9bc6c6a0cefe5d7010e799c67f",
-    "seconds": 0.4240834000001996,
+    "seconds": 0.22981150000123307,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -25710,7 +25710,7 @@
     "mode": "question_context",
     "group": "diagnostic_only",
     "query_sha256": "42b61f682d98c85249f3665d9b36b2cdafe036a25c9132d4103ad037297fb1a8",
-    "seconds": 0.33633510000026945,
+    "seconds": 0.22979490000034275,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -25831,7 +25831,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "680d5df1fc39e371c6f93b47106f616575c10eddf1d37f64825cd6915e2bd8ac",
-    "seconds": 0.2914389000002302,
+    "seconds": 0.23486830000001646,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -25952,7 +25952,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "8402b303948698e244491fae6c3d7549d69bdb74480e9ecdbf29623150692809",
-    "seconds": 0.35926510000035705,
+    "seconds": 0.23106390000066312,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -26073,7 +26073,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "f247f9b92b801b5a0febbc5b8958355e06d10f3052ac6e4624e880e794a1d038",
-    "seconds": 0.343142700000044,
+    "seconds": 0.32567329999983485,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -26194,7 +26194,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "e6793d5c551fb9e0b57e819b26a8a0a1dd40a17cf7f7c448841d03585b4b7af3",
-    "seconds": 0.31209179999996195,
+    "seconds": 0.271799900001497,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -26315,7 +26315,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "0b879dbc090c5aea1e6cbcbcc40aca2ba69cbf48d2bd8c40cfd515cdfb28e543",
-    "seconds": 0.3806251999999404,
+    "seconds": 0.2781754000006913,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -26436,7 +26436,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "877c99acc469f84d01187e9ad0a6fa47377e2312522c4cc89df4f9af09b5970a",
-    "seconds": 0.34308969999983674,
+    "seconds": 0.27440130000104546,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -26557,7 +26557,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "7d89ae0dbafa12642051f00bc5353f58aa0cc3f79d42977f67791a3335b1cd68",
-    "seconds": 0.27944709999974293,
+    "seconds": 0.23529660000167496,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -26678,7 +26678,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "1a2ea2a285f9fb3824631575a13a36e90630e7a3ff78d5c622395c66606a31a2",
-    "seconds": 0.329982100000052,
+    "seconds": 0.2565169000008609,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -26799,7 +26799,7 @@
     "mode": "question_context",
     "group": "scope_provisional",
     "query_sha256": "97dce529eaa4dda0dbdd5946c894afba8054cc8e59c40f0a51c3e3b86d46d72b",
-    "seconds": 0.2898512000001574,
+    "seconds": 0.2220623000011983,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -26920,7 +26920,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "5e6db4ebc3288ebcf4b7143157a3183b7735bc089051fe535cdda5e5b3097895",
-    "seconds": 0.3286149000000478,
+    "seconds": 0.25798110000141605,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -27041,7 +27041,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "317ce045fd46d8b9dc2da6063f14208d7a5f54ae5650465ee684b30130131eda",
-    "seconds": 0.34816619999992326,
+    "seconds": 0.2907305999997334,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -27162,7 +27162,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "a8f261013ce47315a28eaebb73cdfc61e6520650715ca7177273a81b408d1324",
-    "seconds": 0.3175430999999662,
+    "seconds": 0.2819913999992423,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -27283,7 +27283,7 @@
     "mode": "question_context",
     "group": "diagnostic_only",
     "query_sha256": "72b75ebdc142ad4b1feb2b9792d1a7755b3ef4fae7e5b2c96af9ec17520e5d8e",
-    "seconds": 0.33980979999978445,
+    "seconds": 0.2898103000006813,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -27404,7 +27404,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "c196159f8d1a530f1d3c569b66cbbedbb924452fc57cc9823d0f447f27cffdae",
-    "seconds": 0.38982250000026397,
+    "seconds": 0.2801132000004145,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -27525,7 +27525,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "e2030e9f867d824000915f394d5ce21db9ffef0e38269df94faa8734aeb5c32d",
-    "seconds": 0.3302637000001596,
+    "seconds": 0.29516460000013467,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -27646,7 +27646,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "a2c6d894a27336d6b67ade256a222d3aef7990e39b0836a34837c94298b9c791",
-    "seconds": 0.3547649000001911,
+    "seconds": 0.2839101000008668,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -27767,7 +27767,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "93ec8ea6bf51cf04c70c4dbb7eb33ab40f1dc20a0fa3c30cf53b6bbd619d4a13",
-    "seconds": 0.32746739999993224,
+    "seconds": 0.20046910000019125,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -27888,7 +27888,7 @@
     "mode": "question_context",
     "group": "diagnostic_only",
     "query_sha256": "bfcae457b5f03f777b126736a2691b93ed7bb24d4af7548cb8cc42f70b9d15b7",
-    "seconds": 0.384160200000224,
+    "seconds": 0.23898259999987204,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -28009,7 +28009,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "2f7d8b76b2a7c0cccb8bfd2303750476b95d09c7d4e38e2b58515d08a0e10e59",
-    "seconds": 0.3257941000001665,
+    "seconds": 0.23917579999942973,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -28130,7 +28130,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "bb4bccd16f3a1d79c2ae3558361ae1f5bb0a9827147f13151df541e4c8b198b4",
-    "seconds": 0.3790401999999631,
+    "seconds": 0.24965920000067854,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -28251,7 +28251,7 @@
     "mode": "question_context",
     "group": "diagnostic_only",
     "query_sha256": "f8ea28c7ac5d5cc692f83090c02a33cd83a471cfb29bed65fc1d005bb0f2bd9f",
-    "seconds": 0.3980034999999589,
+    "seconds": 0.2558918000013364,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -28372,7 +28372,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "67e067351d39bb9bea3e91843ff47564f73e0d5e4faf4577f86e9f2b5fb506cc",
-    "seconds": 0.32260580000001937,
+    "seconds": 0.28951300000153424,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -28493,7 +28493,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "cd295ae19af4a430515775727361b1b5f67dd8494f5a2f521df3c56d6233d4d1",
-    "seconds": 0.4349882000001344,
+    "seconds": 0.25516030000108003,
     "model_calls": 1,
     "result": {
       "laws": [
@@ -28614,7 +28614,7 @@
     "mode": "question_context",
     "group": "required_law",
     "query_sha256": "c6e5bf968e0a860556aab02fae41adf59abba2cb18d2b5ab4e6b769c361159e2",
-    "seconds": 0.24602660000027754,
+    "seconds": 0.21196779999991122,
     "model_calls": 1,
     "result": {
       "laws": [

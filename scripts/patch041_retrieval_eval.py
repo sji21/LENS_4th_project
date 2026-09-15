@@ -196,7 +196,8 @@ def analyze(rows: list[dict], *, available_articles, reference_rows=None,
     if len(reference_rows) != 235 or len(set(reference_keys)) != 235:
         raise ValueError("Missing or duplicate finalist comparison input")
     reference = {(r["qid"], r["mode"]): r for r in reference_rows}
-    lost, gained, top3_lost, ranking_changes, identity_changes = [], [], [], [], []
+    lost, gained, top3_lost, ranking_changes, all_channel_ranking_changes = [], [], [], [], []
+    identity_changes = []
     transitions = {mode: {"gained": [], "lost": [], "net": 0} for mode in DEV_MODES}
     for row, job in zip(rows, jobs):
         old = reference.get((job["qid"], job["mode"]))
@@ -215,12 +216,23 @@ def analyze(rows: list[dict], *, available_articles, reference_rows=None,
         missing_top3 = sorted((old_top3 & targets) - new_top3)
         if missing_top3:
             top3_lost.append({"qid": job["qid"], "mode": job["mode"], "lost": missing_top3})
-        for channel in ("laws", "civil_laws"):
-            new = _article_values(row, channel)
-            before = list(map(norm, old["result"][channel]))
-            if before != new:
+        for channel in CHANNEL_LIMITS:
+            if channel in ("laws", "civil_laws"):
+                before = list(map(norm, old["result"][channel]))
+                after = _article_values(row, channel)
+                identity_field = "article_id"
+            else:
+                before = list(old["result"][channel])
+                after = [item["chunk_id"] for item in row["result"][channel]]
+                identity_field = "chunk_id"
+            if before != after:
+                all_channel_ranking_changes.append({
+                    "qid": job["qid"], "mode": job["mode"], "channel": channel,
+                    "identity_field": identity_field, "before": before, "after": after,
+                })
+            if channel in ("laws", "civil_laws") and before != after:
                 ranking_changes.append({"qid": job["qid"], "mode": job["mode"],
-                                        "channel": channel, "before": before, "after": new})
+                                        "channel": channel, "before": before, "after": after})
         old_complete = bool(targets) and targets <= set(old_law)
         new_complete = bool(targets) and targets <= set(new_law) and targets <= available
         if job["track"] == "dev100" and not job["historical"]:
@@ -253,6 +265,7 @@ def analyze(rows: list[dict], *, available_articles, reference_rows=None,
                        "general_top3_loss_inputs": top3_lost,
                        "all_required_transitions": transitions,
                        "article_ranking_changes": ranking_changes,
+                       "all_channel_ranking_changes": all_channel_ranking_changes,
                        "chunk_id_is_not_article_identity": True},
         "evidence_identity_changes": list(unique_identity.values()),
         "details": details,
@@ -281,7 +294,7 @@ def criteria_hashes() -> dict[str, str]:
     roots = (ROOT / "data/eval/dev100-v2", ROOT / "data/eval/civil-review2")
     paths = [path for root in roots for path in root.rglob("*") if path.is_file()]
     paths.append(QUERY_SOURCE)
-    return {path.relative_to(ROOT).as_posix(): sha(path) for path in sorted(paths)}
+    return {path.relative_to(ROOT).as_posix(): source_sha(path) for path in sorted(paths)}
 
 
 def evaluator_source_hashes() -> dict[str, str]:
