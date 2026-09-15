@@ -6,6 +6,9 @@ import hashlib
 import json
 from pathlib import Path
 import shutil
+import subprocess
+import sys
+import textwrap
 
 import pytest
 
@@ -195,11 +198,13 @@ def artifact(tmp_path, frozen_capture):
     for index in evaluation.INDEXES:
         data_hashes[index + "/chroma.sqlite3"] = "b" * 64
     sources = {"src/retrieval/service.py": evaluation.sha(ROOT / "src/retrieval/service.py")}
+    recorded_settings = read("data/eval/patch041-rebuilt/capture/audit.json")["settings"]
     audit = {
         "schema": "patch041-retrieval-eval-v1", "inputs": 235,
         "generation_performed": False, "product_source_clean": True,
         "channel_limits": evaluation.CHANNEL_LIMITS, "profile": profile,
-        "settings": {"profile": evaluation.POLICY, "search_k": evaluation.SEARCH_K},
+        "settings": recorded_settings, "settings_before": deepcopy(recorded_settings),
+        "settings_after": deepcopy(recorded_settings),
         "data_hashes_before": data_hashes, "data_hashes_after": data_hashes,
         "payload_hashes_before": data_hashes, "payload_hashes_after": data_hashes,
         "product_source_hashes_before": sources, "product_source_hashes_after": sources,
@@ -233,6 +238,142 @@ def test_valid_offline_bundle_replays_without_model_loading(artifact):
     checked = evaluation.check(artifact)
     assert checked["inputs"] == 235
     assert checked["groups"]["question_only"]["union_all_required"] == {"hits": 43, "n": 75}
+
+
+def test_complete_recorded_settings_replay_with_runtime_dependencies_blocked(artifact):
+    """A fresh interpreter must replay without loading a model or opening an index."""
+    script = textwrap.dedent("""
+        import builtins
+        import sys
+        from pathlib import Path
+
+        original_import = builtins.__import__
+        forbidden = {"torch", "transformers", "sentence_transformers", "chromadb",
+                     "huggingface_hub"}
+
+        def offline_import(name, *args, **kwargs):
+            assert name.split(".")[0] not in forbidden, "Runtime dependency loaded: " + name
+            return original_import(name, *args, **kwargs)
+
+        builtins.__import__ = offline_import
+        from scripts import patch041_retrieval_eval as evaluation
+        from src.retrieval import dense, retriever, service
+
+        def forbidden_initialization(*args, **kwargs):
+            raise AssertionError("Offline replay initialized retrieval runtime")
+
+        evaluation.prepare_product_service = forbidden_initialization
+        dense.SentenceTransformerEmbedding.__init__ = forbidden_initialization
+        service.RetrievalService.__init__ = forbidden_initialization
+        service.RetrievalService.from_index = forbidden_initialization
+        retriever.load_chunks = forbidden_initialization
+        assert evaluation.check(Path(sys.argv[1]))["inputs"] == 235
+    """)
+    result = subprocess.run([sys.executable, "-X", "utf8", "-c", script, str(artifact)],
+                            cwd=ROOT, capture_output=True, text=True, timeout=30)
+    assert result.returncode == 0, result.stdout + result.stderr
+
+
+@pytest.mark.parametrize("corruption", ["missing", "null", "empty"])
+@pytest.mark.parametrize("snapshot", ["settings", "settings_before", "settings_after"])
+def test_incomplete_settings_are_rejected_after_rehash(artifact, corruption, snapshot):
+    audit = evaluation.read(artifact / "audit.json")
+    if corruption == "missing":
+        del audit[snapshot]
+    else:
+        audit[snapshot] = None if corruption == "null" else {}
+    evaluation.write(artifact / "audit.json", audit)
+    rehash(artifact)
+    with pytest.raises(ValueError, match="settings"):
+        evaluation.check(artifact)
+
+
+@pytest.mark.parametrize("path", [
+    ("profile",), ("search_k",), ("search_k", "k_civil"), ("corpora",),
+    ("corpora", "law"), ("corpora", "case"), ("corpora", "guide"), ("corpora", "civil"),
+    ("corpora", "law", "retriever", "bm25", "partitions", "procedure"),
+    ("corpora", "law", "retriever", "members", 1, "weight"),
+    ("corpora", "civil", "seed_retriever"),
+    ("corpora", "civil", "retriever", "bm25", "char_ngram"),
+    ("civil_selection",), ("civil_selection", "request_embedding_cache"),
+], ids=lambda path: ".".join(map(str, path)))
+@pytest.mark.parametrize("snapshot", ["settings", "settings_before", "settings_after"])
+def test_settings_section_or_nested_key_omission_is_rejected_after_rehash(artifact, path, snapshot):
+    audit = evaluation.read(artifact / "audit.json")
+    target = audit[snapshot]
+    for key in path[:-1]:
+        target = target[key]
+    del target[path[-1]]
+    evaluation.write(artifact / "audit.json", audit)
+    rehash(artifact)
+    with pytest.raises(ValueError, match="settings"):
+        evaluation.check(artifact)
+
+
+@pytest.mark.parametrize(("path", "replacement"), [
+    (("profile",), "unreviewed-profile"),
+    (("search_k", "k_law"), 4),
+    (("search_k", "k_case"), 4),
+    (("search_k", "k_guide"), 1),
+    (("search_k", "k_civil"), 2),
+    (("corpora", "law", "retriever", "rrf_k"), 60),
+    (("corpora", "law", "retriever", "depth"), 21),
+    (("corpora", "law", "retriever", "bm25", "kind"), "pooled"),
+    (("corpora", "law", "retriever", "bm25", "score_weight"), 0.5),
+    (("corpora", "law", "retriever", "bm25", "procedure_titles"), []),
+    (("corpora", "law", "retriever", "bm25", "partitions", "core", "k1"), 1.6),
+    (("corpora", "law", "retriever", "bm25", "partitions", "procedure", "b"), 0.5),
+    (("corpora", "law", "query_expander"), "src.retrieval.terms.expand_law"),
+    (("corpora", "law", "retriever", "members", 0, "weight"), 2),
+    (("corpora", "law", "retriever", "members", 1, "expand_weight"), 0.5),
+    (("corpora", "case", "retriever", "rrf_k"), 5),
+    (("corpora", "guide", "retriever", "bm25", "char_ngram"), 3),
+    (("corpora", "civil", "include_ids"), []),
+    (("corpora", "civil", "query_expander"), "src.retrieval.terms.expand_civil"),
+    (("corpora", "civil", "retriever", "depth"), 20),
+    (("corpora", "civil", "retriever", "members", 0, "expand_weight"), 0.5),
+    (("corpora", "civil", "retriever", "members", 1, "weight"), 2),
+    (("corpora", "civil", "seed_retriever", "rrf_k"), 60),
+    (("corpora", "civil", "seed_retriever", "depth"), 26),
+    (("corpora", "civil", "seed_retriever", "bm25", "b"), 0.5),
+    (("civil_selection", "policy"), "unreviewed-profile"),
+    (("civil_selection", "method"), "top-three-only"),
+    (("civil_selection", "request_embedding_cache"), False),
+    (("corpora", "law", "retriever", "members", 0, "weight"), True),
+    (("civil_selection", "request_embedding_cache"), 1),
+], ids=lambda value: ".".join(map(str, value)) if isinstance(value, tuple) else str(value))
+@pytest.mark.parametrize("snapshot", ["settings", "settings_before", "settings_after"])
+def test_settings_drift_is_rejected_even_after_rehash(artifact, path, replacement, snapshot):
+    audit = evaluation.read(artifact / "audit.json")
+    target = audit[snapshot]
+    for key in path[:-1]:
+        target = target[key]
+    assert type(target[path[-1]]) is not type(replacement) or target[path[-1]] != replacement
+    target[path[-1]] = replacement
+    evaluation.write(artifact / "audit.json", audit)
+    rehash(artifact)
+    with pytest.raises(ValueError, match="settings"):
+        evaluation.check(artifact)
+
+
+@pytest.mark.parametrize("corruption", ["same_drift", "extra_key", "member_order", "include_id_order"])
+def test_matching_settings_snapshots_still_require_the_reviewed_contract(artifact, corruption):
+    audit = evaluation.read(artifact / "audit.json")
+    settings = audit["settings"]
+    if corruption == "same_drift":
+        settings["search_k"]["k_law"] = 4
+    elif corruption == "extra_key":
+        settings["corpora"]["law"]["retriever"]["reranker"] = "unreviewed"
+    elif corruption == "member_order":
+        settings["corpora"]["law"]["retriever"]["members"].reverse()
+    else:
+        settings["corpora"]["civil"]["include_ids"].reverse()
+    audit["settings_before"] = deepcopy(settings)
+    audit["settings_after"] = deepcopy(settings)
+    evaluation.write(artifact / "audit.json", audit)
+    rehash(artifact)
+    with pytest.raises(ValueError, match="settings"):
+        evaluation.check(artifact)
 
 
 @pytest.mark.parametrize("rehash_changed_file", [False, True])

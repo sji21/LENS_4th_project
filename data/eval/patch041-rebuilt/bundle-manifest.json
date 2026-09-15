@@ -3,14 +3,14 @@
   "build-provenance.json": "1a2dd67dd6c4894a133ac188f4226efb6625578b170cbc7261b24187368d2da9",
   "build-result.json": "85d47ba56e8bd252391f54a0bc420df22ae32381ee9538371b9a7284054e6d1f",
   "build-verification.json": "e31abdb2d8172934fc06575558e9339ee4eac4203e552f392492394b226aecca",
-  "capture/audit.json": "6e1b3730fdbb5e641994dd3788c6bf864192430b4cf8d6d06149bd052af3b1e4",
-  "capture/manifest.json": "5556583dfbbbb2a6baac5ddc3658d48503cec28297fd71ebf9ff9703ec26f9ce",
+  "capture/audit.json": "59946046f4add4c3ac4b974c6681039b7b9cff53b9961b65412a0e50b8f81abf",
+  "capture/manifest.json": "4272c209f08e3b7e418fdfc8595108a8f205dadabc295f6bd90c87c873f64212",
   "capture/report.json": "492092266e0d169f8353c5208b13c07638c47f34d93cdfe7d8f27ac4c81bf70c",
-  "capture/rows.json": "d01e4fb79762c5cab0865d32d76ac34762066f6835ca3ffe21b1fa2ca5e68914",
+  "capture/rows.json": "4674d4f5bec0cdd74b607515002fd1813bf0e90a414cd8bc7c1dc3e5fba3d9f7",
   "corpus-comparison.json": "6dfe66598d05c7dcf49cc3c4cceb27a3c72b3b316a529d9951a9f8f94325e659",
   "existing-snapshot.json": "fffcaf63731fd5c67d9b93a32568a0f9a7d2a250e6f0f3ef35a0279bf521d333",
   "public-existing-db.json": "af8a4d5927e32fbb9b00e7e6421dadd0bcedf42aadd39414eb28061f3a6574a3",
   "public-regression.json": "0d10ffcaa6a93efb90e52ee42f06a90c46dd4043362c1f83e0620c9678b19422",
-  "summary.json": "c63f604616b118d02688a428d066d541ceee2eda12e355a0577bdc47b615e9a5",
-  "validation.json": "da9c049dcd71e2a7dcbdcd03e0fccee784ef68043b8abd594b3262f047a1fa4a"
+  "summary.json": "66dcfde077301655b7ef309ffc51532398b10e7842288abf8b9d0697a3031436",
+  "validation.json": "2caf71bf7bd2a18e83f161b98c7afaa51190d51652a146fe369f6346b114681d"
 }

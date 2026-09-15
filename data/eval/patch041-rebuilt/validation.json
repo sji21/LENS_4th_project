@@ -1,17 +1,17 @@
 {
   "command": "python -X utf8 -m pytest -q",
-  "passed": 1586,
+  "passed": 1732,
   "skipped": 3,
   "subtests_passed": 172,
-  "seconds": 275.8,
+  "seconds": 298.78,
   "skip_reasons": {
     "LangSmith tracing disabled": 2,
     "local registry PDF not specified": 1
   },
-  "independent_evaluator_tests": 50,
+  "independent_evaluator_tests": 196,
   "product_code_changed": false,
   "llm_evaluated": false,
-  "commit_status": "uncommitted PR29 review fixes on 5ac669e; product source base 7cd5633",
+  "commit_status": "uncommitted PR29 P2 settings fixes on 241088f; product source base 7cd5633",
   "initial_validation": {
     "passed": 1576,
     "skipped": 3,
@@ -21,5 +21,24 @@
     "commit_status": "uncommitted evaluation harness; product base 7cd5633"
   },
   "review_regression_cases_added": 10,
-  "checkout_replay_scope": "LF/CRLF checkout fixtures on Windows; no separate Linux runtime run"
+  "checkout_replay_scope": "LF/CRLF checkout fixtures on Windows; no separate Linux runtime run",
+  "previous_review_validation": {
+    "passed": 1586,
+    "skipped": 3,
+    "subtests_passed": 172,
+    "seconds": 275.8,
+    "independent_evaluator_tests": 50,
+    "commit_status": "uncommitted PR29 review fixes on 5ac669e; product source base 7cd5633"
+  },
+  "settings_regression_cases_added": 146,
+  "first_settings_validation_attempt": {
+    "failed": 16,
+    "errors": 7,
+    "passed": 1709,
+    "skipped": 3,
+    "subtests_passed": 172,
+    "seconds": 234.92,
+    "cause": "git dubious ownership under execution account; archived source replay could not run git show",
+    "resolution": "set safe.directory for this worktree in process-local GIT_CONFIG environment and rerun entire suite"
+  }
 }

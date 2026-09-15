@@ -886,10 +886,10 @@
     "existing": 103,
     "rebuilt": 103
   },
-  "timing_scope": "diagnostic timings with concurrent local test workload; excludes initial loading, LLM and web; not a performance or RunPod comparison",
-  "final_search_mean_seconds": 0.4536889144682101,
-  "final_search_median_seconds": 0.3853386999999202,
-  "capture_commit": "5ac669e30307736517740c1ab3e9792ad6a3a92a",
+  "timing_scope": "diagnostic timings with concurrent local verification workload; excludes initial loading, LLM and web; not a performance or RunPod comparison",
+  "final_search_mean_seconds": 0.4241368076595926,
+  "final_search_median_seconds": 0.36704200000167475,
+  "capture_commit": "241088f948217e8586b1fa81bc70197fc323a2bc",
   "review_recapture": {
     "previous_capture_commit": "8a57092",
     "previous_capture_manifest_sha256": "701e9555520bd89cbb3d806b27c916bd9177babd724ca9f807ab8e21fe7a041d",
@@ -901,5 +901,13 @@
       "cases": "chunk_id",
       "guides": "chunk_id"
     }
+  },
+  "settings_recapture": {
+    "previous_artifact_commit": "241088f",
+    "previous_capture_manifest_sha256": "5556583dfbbbb2a6baac5ddc3658d48503cec28297fd71ebf9ff9703ec26f9ce",
+    "all_235_returned_evidence_equal_to_previous_capture": true,
+    "recorded_settings_equal_to_previous_capture": true,
+    "contract_source": "scripts/patch041_settings_contract.py",
+    "validation": "strict independent fixed contract; live settings checked before and after retrieval; offline replay checks all snapshots"
   }
 }

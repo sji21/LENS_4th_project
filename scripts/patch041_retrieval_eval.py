@@ -17,6 +17,7 @@ import time
 from scripts.dev100_v2.report import load_dataset
 from scripts.patch015_baseline import norm
 from scripts.patch023_report import diagnose, summarize
+from scripts.patch041_settings_contract import snapshot_settings, validate_settings
 from src.evaluation.baseline import SEARCH_K, settings
 from src.retrieval.expanded import POLICY
 from src.retrieval.profile import CHUNKS, FILES, INDEXES, PROFILE, index_hash
@@ -301,6 +302,7 @@ def evaluator_source_hashes() -> dict[str, str]:
     names = (
         "scripts/patch041_retrieval_eval.py", "scripts/dev100_v2/report.py",
         "scripts/patch015_baseline.py", "scripts/patch023_report.py",
+        "scripts/patch041_settings_contract.py",
         "src/evaluation/baseline.py", "src/retrieval/profile.py",
     )
     return {name: source_sha(ROOT / name) for name in names}
@@ -421,6 +423,7 @@ def capture(data_root: Path, out: Path) -> dict:
     model_audit = read(ROOT / "data/eval/patch027-full/capture/audit.json")["model_files"]
     model_root = Path(HF_HUB_CACHE).expanduser().resolve() / "models--nlpai-lab--KURE-v1"
     service, profile, logical_before = prepare_product_service(data_root)
+    settings_before = snapshot_settings(settings(service))
     model_hashes_before = {name: sha(model_root / name) for name in model_audit}
     data_before = data_hashes(data_root)
     paths = tuple(data_root / name for name in CHUNKS)
@@ -447,6 +450,7 @@ def capture(data_root: Path, out: Path) -> dict:
             or any(row["model_calls"] <= 0 for row in rows)):
         raise ValueError("Both dense channels must make measured KURE calls")
     report = analyze(rows, available_articles=available)
+    settings_after = snapshot_settings(settings(service))
     logical_after = [index_hash(retriever) for retriever in (service.dense, service.civil_dense)]
     data_after, source_after = data_hashes(data_root), product_source_hashes()
     payload_after = _payload_hashes(data_root)
@@ -470,7 +474,9 @@ def capture(data_root: Path, out: Path) -> dict:
         "harness_sha256": sha(Path(__file__)), "python": platform.python_version(),
         "platform": platform.platform(), "generation_performed": False,
         "packages": packages, "embedding_device": str(delegate._model.device),
-        "data_root": str(data_root), "profile": profile, "settings": settings(service),
+        "data_root": str(data_root), "profile": profile,
+        "settings_before": settings_before, "settings_after": settings_after,
+        "settings": settings_after,
         "criteria_hashes_before": criteria_before, "criteria_hashes_after": criteria_after,
         "reference_hashes_before": reference_before, "reference_hashes_after": reference_after,
         "evaluator_source_hashes_before": evaluator_before,
@@ -514,6 +520,9 @@ def check(run: Path) -> dict:
     reference_after = audit.get("reference_hashes_after")
     evaluator_before = audit.get("evaluator_source_hashes_before")
     evaluator_after = audit.get("evaluator_source_hashes_after")
+    validate_settings(audit.get("settings_before"))
+    validate_settings(audit.get("settings_after"))
+    validate_settings(audit.get("settings"))
     if (audit.get("schema") != "patch041-retrieval-eval-v1" or audit.get("inputs") != 235
             or audit.get("generation_performed") is not False
             or audit.get("product_source_clean") is not True

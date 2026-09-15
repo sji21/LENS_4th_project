@@ -13,6 +13,8 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
+- PATCH-041 validates recorded retrieval settings against an independent frozen contract, including search limits, RRF/depth, BM25, query expansion, weights and civil selection. Check live settings before and after capture and reject missing or altered settings during offline replay even if artifact hashes are recomputed. (commit: pending)
+
 - PATCH-041 normalizes evaluation-criteria line endings for cross-checkout replay and compares case/guide rankings by stable chunk ID alongside law article IDs. Raw source-bundle, data and model integrity checks remain enforced. Adds 10 regression cases; a fresh 235-input run preserves all four channels and scores. (commit: b2ae7eb)
 
 ### Changed

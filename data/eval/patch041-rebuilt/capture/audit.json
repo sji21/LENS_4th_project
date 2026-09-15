@@ -1,11 +1,11 @@
 {
   "schema": "patch041-retrieval-eval-v1",
-  "created_at": "2026-09-15T05:01:51.889738+00:00",
-  "commit": "5ac669e30307736517740c1ab3e9792ad6a3a92a",
+  "created_at": "2026-09-15T05:53:16.653811+00:00",
+  "commit": "241088f948217e8586b1fa81bc70197fc323a2bc",
   "branch": "test/patch-041-rebuilt-retrieval-eval",
-  "git_status": " M LIST.md\n M scripts/patch041_retrieval_eval.py",
+  "git_status": " M CHANGELOG.md\n M CHANGELOG_Kr.md\n M LIST.md\n M docs/patch041-rebuilt-retrieval-evaluation.md\n M scripts/patch041_retrieval_eval.py\n M tests/test_patch041_retrieval_eval.py\n?? scripts/patch041_settings_contract.py",
   "product_source_clean": true,
-  "harness_sha256": "8176ebcfaae772286e4ac5e2520e2eaae978743ca552b99db0aa0f8276b77d5d",
+  "harness_sha256": "958fa3e8377b2c44410c24e846ff08ba713a8d5cbd8c3876fa09f696fe7c45d5",
   "python": "3.11.9",
   "platform": "Windows-10-10.0.26200-SP0",
   "generation_performed": false,
@@ -62,6 +62,394 @@
       "c585bccfe3f152d7aef5de1053ae256513b3945b0ef770cc79a8fefb4fb6e297",
       "8ba204f34f23a294036511fb2c338c75a92269cea03bba290508b726c3b6735d"
     ]
+  },
+  "settings_before": {
+    "search_k": {
+      "k_law": 5,
+      "k_case": 5,
+      "k_guide": 2,
+      "k_civil": 3
+    },
+    "corpora": {
+      "law": {
+        "name": "법령",
+        "doc_types": [
+          "law",
+          "decree",
+          "rule"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 5,
+        "query_expander": "src.retrieval.context_policy.final_law_terms",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [],
+        "retriever": {
+          "rrf_k": 5,
+          "depth": 20,
+          "bm25": {
+            "kind": "partitioned_raw_score_pool",
+            "score_weight": 1.0,
+            "procedure_titles": [
+              "주민등록법",
+              "국세징수법",
+              "국세징수법 시행령",
+              "지방세징수법",
+              "지방세징수법 시행령"
+            ],
+            "partitions": {
+              "core": {
+                "k1": 1.5,
+                "b": 0.75,
+                "char_ngram": 2
+              },
+              "procedure": {
+                "k1": 1.5,
+                "b": 0.75,
+                "char_ngram": 2
+              }
+            }
+          },
+          "members": [
+            {
+              "name": "bm25_context",
+              "weight": 1,
+              "expand_weight": 1.0
+            },
+            {
+              "name": "dense_context",
+              "weight": 1,
+              "expand_weight": 0.0
+            }
+          ]
+        }
+      },
+      "case": {
+        "name": "판례",
+        "doc_types": [
+          "case"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 60,
+        "query_expander": "src.retrieval.terms.expand",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [],
+        "retriever": {
+          "rrf_k": 60,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      },
+      "guide": {
+        "name": "안내",
+        "doc_types": [
+          "guide"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 60,
+        "query_expander": "src.retrieval.terms.expand",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [],
+        "retriever": {
+          "rrf_k": 60,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      },
+      "civil": {
+        "name": "민법",
+        "doc_types": [
+          "law",
+          "decree",
+          "rule"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 5,
+        "query_expander": "src.retrieval.expanded.civil_terms",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [
+          "민법-제105조",
+          "민법-제111조",
+          "민법-제113조",
+          "민법-제114조",
+          "민법-제118조",
+          "민법-제147조",
+          "민법-제186조",
+          "민법-제187조",
+          "민법-제265조",
+          "민법-제357조",
+          "민법-제390조",
+          "민법-제393조",
+          "민법-제470조",
+          "민법-제536조",
+          "민법-제543조",
+          "민법-제548조",
+          "민법-제615조",
+          "민법-제623조",
+          "민법-제626조",
+          "민법-제627조",
+          "민법-제629조",
+          "민법-제632조",
+          "민법-제634조",
+          "민법-제636조",
+          "민법-제640조",
+          "민법-제654조"
+        ],
+        "retriever": {
+          "rrf_k": 5,
+          "depth": 26,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          },
+          "members": [
+            {
+              "name": "bm25_context",
+              "weight": 1,
+              "expand_weight": 1.0
+            },
+            {
+              "name": "dense_context",
+              "weight": 1,
+              "expand_weight": 0.0
+            }
+          ]
+        },
+        "seed_retriever": {
+          "rrf_k": 5,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      }
+    },
+    "civil_selection": {
+      "policy": "expanded-laws-record-v1",
+      "method": "same-edition reference pair or topic-seeded RRF with dense tail",
+      "request_embedding_cache": true
+    },
+    "profile": "expanded-laws-record-v1"
+  },
+  "settings_after": {
+    "search_k": {
+      "k_law": 5,
+      "k_case": 5,
+      "k_guide": 2,
+      "k_civil": 3
+    },
+    "corpora": {
+      "law": {
+        "name": "법령",
+        "doc_types": [
+          "law",
+          "decree",
+          "rule"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 5,
+        "query_expander": "src.retrieval.context_policy.final_law_terms",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [],
+        "retriever": {
+          "rrf_k": 5,
+          "depth": 20,
+          "bm25": {
+            "kind": "partitioned_raw_score_pool",
+            "score_weight": 1.0,
+            "procedure_titles": [
+              "주민등록법",
+              "국세징수법",
+              "국세징수법 시행령",
+              "지방세징수법",
+              "지방세징수법 시행령"
+            ],
+            "partitions": {
+              "core": {
+                "k1": 1.5,
+                "b": 0.75,
+                "char_ngram": 2
+              },
+              "procedure": {
+                "k1": 1.5,
+                "b": 0.75,
+                "char_ngram": 2
+              }
+            }
+          },
+          "members": [
+            {
+              "name": "bm25_context",
+              "weight": 1,
+              "expand_weight": 1.0
+            },
+            {
+              "name": "dense_context",
+              "weight": 1,
+              "expand_weight": 0.0
+            }
+          ]
+        }
+      },
+      "case": {
+        "name": "판례",
+        "doc_types": [
+          "case"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 60,
+        "query_expander": "src.retrieval.terms.expand",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [],
+        "retriever": {
+          "rrf_k": 60,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      },
+      "guide": {
+        "name": "안내",
+        "doc_types": [
+          "guide"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 60,
+        "query_expander": "src.retrieval.terms.expand",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [],
+        "retriever": {
+          "rrf_k": 60,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      },
+      "civil": {
+        "name": "민법",
+        "doc_types": [
+          "law",
+          "decree",
+          "rule"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 5,
+        "query_expander": "src.retrieval.expanded.civil_terms",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [
+          "민법-제105조",
+          "민법-제111조",
+          "민법-제113조",
+          "민법-제114조",
+          "민법-제118조",
+          "민법-제147조",
+          "민법-제186조",
+          "민법-제187조",
+          "민법-제265조",
+          "민법-제357조",
+          "민법-제390조",
+          "민법-제393조",
+          "민법-제470조",
+          "민법-제536조",
+          "민법-제543조",
+          "민법-제548조",
+          "민법-제615조",
+          "민법-제623조",
+          "민법-제626조",
+          "민법-제627조",
+          "민법-제629조",
+          "민법-제632조",
+          "민법-제634조",
+          "민법-제636조",
+          "민법-제640조",
+          "민법-제654조"
+        ],
+        "retriever": {
+          "rrf_k": 5,
+          "depth": 26,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          },
+          "members": [
+            {
+              "name": "bm25_context",
+              "weight": 1,
+              "expand_weight": 1.0
+            },
+            {
+              "name": "dense_context",
+              "weight": 1,
+              "expand_weight": 0.0
+            }
+          ]
+        },
+        "seed_retriever": {
+          "rrf_k": 5,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      }
+    },
+    "civil_selection": {
+      "policy": "expanded-laws-record-v1",
+      "method": "same-edition reference pair or topic-seeded RRF with dense tail",
+      "request_embedding_cache": true
+    },
+    "profile": "expanded-laws-record-v1"
   },
   "settings": {
     "search_k": {
@@ -336,18 +724,20 @@
     "data/eval/patch027-context-tuning/audit.json": "702265e6ff5c018632548579d16b8b0a752f4f3ee726c572f9c3c673296c2cba"
   },
   "evaluator_source_hashes_before": {
-    "scripts/patch041_retrieval_eval.py": "8176ebcfaae772286e4ac5e2520e2eaae978743ca552b99db0aa0f8276b77d5d",
+    "scripts/patch041_retrieval_eval.py": "958fa3e8377b2c44410c24e846ff08ba713a8d5cbd8c3876fa09f696fe7c45d5",
     "scripts/dev100_v2/report.py": "54a78f58028b15ad1cc53ca6ec1a6560a6c757bb4fd7131acd3288fc890e44b6",
     "scripts/patch015_baseline.py": "de0230cb9ee5ace1c13ce9162804b461c59642dfdf5387d80ee0c7f923aa9518",
     "scripts/patch023_report.py": "f6837eb71a9bfb307e6ed1aaf312620edbf6cb177d56507de80456c4135e2072",
+    "scripts/patch041_settings_contract.py": "f2ed899feadd87185eb9bb7941654cb645dc5bf593b4af66e0de971be95e4075",
     "src/evaluation/baseline.py": "5026eab59cda0cc23e96b509df1dc61e763ac229188f2b05ee160fbbee87bd29",
     "src/retrieval/profile.py": "cf084ca2f6d39515632b04cd651e0d1155fccdfcf6bae2fd802f9a29baadb63a"
   },
   "evaluator_source_hashes_after": {
-    "scripts/patch041_retrieval_eval.py": "8176ebcfaae772286e4ac5e2520e2eaae978743ca552b99db0aa0f8276b77d5d",
+    "scripts/patch041_retrieval_eval.py": "958fa3e8377b2c44410c24e846ff08ba713a8d5cbd8c3876fa09f696fe7c45d5",
     "scripts/dev100_v2/report.py": "54a78f58028b15ad1cc53ca6ec1a6560a6c757bb4fd7131acd3288fc890e44b6",
     "scripts/patch015_baseline.py": "de0230cb9ee5ace1c13ce9162804b461c59642dfdf5387d80ee0c7f923aa9518",
     "scripts/patch023_report.py": "f6837eb71a9bfb307e6ed1aaf312620edbf6cb177d56507de80456c4135e2072",
+    "scripts/patch041_settings_contract.py": "f2ed899feadd87185eb9bb7941654cb645dc5bf593b4af66e0de971be95e4075",
     "src/evaluation/baseline.py": "5026eab59cda0cc23e96b509df1dc61e763ac229188f2b05ee160fbbee87bd29",
     "src/retrieval/profile.py": "cf084ca2f6d39515632b04cd651e0d1155fccdfcf6bae2fd802f9a29baadb63a"
   },
@@ -392,16 +782,16 @@
     "chunks/guides.jsonl": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
     "database/civil.sqlite3": "2b59c85b1b149d0edbde7484cbccc2769457e22c808342f6f5f30eb5518e5b5e",
     "database/knowledge.sqlite3": "0729e2a2ae793085fa9dd08c1cef749f5cbd8e142188b58395fe2786c03b4c35",
-    "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/data_level0.bin": "8aaaec72a5d49f2a39684664ee87b820ca9193cf4bcf2a56d6328536724b4afd",
+    "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/data_level0.bin": "db146d02371b4ed906883e84992acbc7fb30c1ad6db0a16b7e5242040d597ece",
     "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
-    "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/length.bin": "c9f7815a6e38de9fb59a4788c1778dbf089276568bbc596bf6686506654e22a1",
+    "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/length.bin": "8791f6e9e5ef24d30fe01d37f447ffb740d11cc599a38831a5fc0a6094f2178d",
     "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "index/chroma_civil_kurev1_1024/chroma.sqlite3": "a5ac5453a2354ebd70d361bef8fb45ea9c970f3046b2e364934129d7303021a3",
-    "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/data_level0.bin": "c003f05276db7da9baaf6189b9360613f6f6597f9ee71afb1e78618d0642f0bb",
+    "index/chroma_civil_kurev1_1024/chroma.sqlite3": "795514740cc7d576d35703e45db2b8dd9331d16f8d0bb37662dc05aa766621b5",
+    "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/data_level0.bin": "5804b700bafb8929c83f8b3ed2cb903ab0581d3b679cfe0535cb9850024ddac1",
     "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
-    "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/length.bin": "03663060f2ff00b25750316b0dd95bc0d6d698f1a60037615edce9ac57e3c8fe",
+    "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/length.bin": "a720411b82f6f587a3a61b0cde5a11a5a7e884d66e209fc8fb1a7a25ba1a0bc9",
     "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "index/chroma_kurev1_1024/chroma.sqlite3": "e12e6956e3b557ce78d6508e597e0342ce4114de86f76956fd3e2ae08ad74e69",
+    "index/chroma_kurev1_1024/chroma.sqlite3": "173aad21d242afd56daca19e02644f09434ea85f506415d1ab51e297bff274bd",
     "index/retrieval-profile.json": "30af1f372e52b995ae3a11c8f1f2d50bfe44f4a4f09628c463b7270672c80616"
   },
   "data_hashes_after": {
@@ -411,6 +801,25 @@
     "chunks/guides.jsonl": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
     "database/civil.sqlite3": "2b59c85b1b149d0edbde7484cbccc2769457e22c808342f6f5f30eb5518e5b5e",
     "database/knowledge.sqlite3": "0729e2a2ae793085fa9dd08c1cef749f5cbd8e142188b58395fe2786c03b4c35",
+    "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/data_level0.bin": "db146d02371b4ed906883e84992acbc7fb30c1ad6db0a16b7e5242040d597ece",
+    "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+    "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/length.bin": "8791f6e9e5ef24d30fe01d37f447ffb740d11cc599a38831a5fc0a6094f2178d",
+    "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "index/chroma_civil_kurev1_1024/chroma.sqlite3": "795514740cc7d576d35703e45db2b8dd9331d16f8d0bb37662dc05aa766621b5",
+    "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/data_level0.bin": "5804b700bafb8929c83f8b3ed2cb903ab0581d3b679cfe0535cb9850024ddac1",
+    "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+    "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/length.bin": "a720411b82f6f587a3a61b0cde5a11a5a7e884d66e209fc8fb1a7a25ba1a0bc9",
+    "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "index/chroma_kurev1_1024/chroma.sqlite3": "173aad21d242afd56daca19e02644f09434ea85f506415d1ab51e297bff274bd",
+    "index/retrieval-profile.json": "30af1f372e52b995ae3a11c8f1f2d50bfe44f4a4f09628c463b7270672c80616"
+  },
+  "data_hashes_preopen": {
+    "chunks/cases.jsonl": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
+    "chunks/chunks.jsonl": "8784c57ca4f2ba4ece469cf8f773e225bec0d8d0a1c54563e0e4b22add8ce324",
+    "chunks/civil.jsonl": "d2adac18e6f4eb1a85a3829f13628470930f55b7dcd7ee1a2502402344ea2b0c",
+    "chunks/guides.jsonl": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
+    "database/civil.sqlite3": "2b59c85b1b149d0edbde7484cbccc2769457e22c808342f6f5f30eb5518e5b5e",
+    "database/knowledge.sqlite3": "0729e2a2ae793085fa9dd08c1cef749f5cbd8e142188b58395fe2786c03b4c35",
     "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/data_level0.bin": "8aaaec72a5d49f2a39684664ee87b820ca9193cf4bcf2a56d6328536724b4afd",
     "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
     "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/length.bin": "c9f7815a6e38de9fb59a4788c1778dbf089276568bbc596bf6686506654e22a1",
@@ -421,25 +830,6 @@
     "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/length.bin": "03663060f2ff00b25750316b0dd95bc0d6d698f1a60037615edce9ac57e3c8fe",
     "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "index/chroma_kurev1_1024/chroma.sqlite3": "e12e6956e3b557ce78d6508e597e0342ce4114de86f76956fd3e2ae08ad74e69",
-    "index/retrieval-profile.json": "30af1f372e52b995ae3a11c8f1f2d50bfe44f4a4f09628c463b7270672c80616"
-  },
-  "data_hashes_preopen": {
-    "chunks/cases.jsonl": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
-    "chunks/chunks.jsonl": "8784c57ca4f2ba4ece469cf8f773e225bec0d8d0a1c54563e0e4b22add8ce324",
-    "chunks/civil.jsonl": "d2adac18e6f4eb1a85a3829f13628470930f55b7dcd7ee1a2502402344ea2b0c",
-    "chunks/guides.jsonl": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
-    "database/civil.sqlite3": "2b59c85b1b149d0edbde7484cbccc2769457e22c808342f6f5f30eb5518e5b5e",
-    "database/knowledge.sqlite3": "0729e2a2ae793085fa9dd08c1cef749f5cbd8e142188b58395fe2786c03b4c35",
-    "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/data_level0.bin": "014145ee6e91bbfe84e7f65107ff0960b2f301b70802c596f5cf8f9fd19af2b5",
-    "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
-    "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/length.bin": "dbf34cbe03f7ccc7c0c062d8e0db0c0be919e48399c278289ad0fa8b7c87947b",
-    "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "index/chroma_civil_kurev1_1024/chroma.sqlite3": "1a391758ff653dd308db8c982ba99d9f1f6091c21e7b4349db3368d7edcc0607",
-    "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/data_level0.bin": "676ce38e5744b1f457a18235c997ee78d81ca4b179a2e7b24f31b2d751ccd7a7",
-    "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
-    "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/length.bin": "7003c2cb0dca8b6448d5e61643ccb4f4eb490367838623ccfbed85fbc3b861c7",
-    "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "index/chroma_kurev1_1024/chroma.sqlite3": "23303c54ca7916dace532d882277fc53c3f077b543cf4ff882d8ec5fe2b5594a",
     "index/retrieval-profile.json": "30af1f372e52b995ae3a11c8f1f2d50bfe44f4a4f09628c463b7270672c80616"
   },
   "index_opening_changes": [
