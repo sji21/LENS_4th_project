@@ -53,4 +53,4 @@ payload = service.evidence_payload(result)
 
 2026-09-15 기준 최신 원격 main(`44078ce`)에서 새 PATCH-043 브랜치를 만들고 Windows 전체 테스트를 실행했다. 기존 PATCH-024 봉인 보고서 재계산 테스트 한 건을 제외하고 1,777개 통과, 3개 생략, 1개 선택 제외였다. 관련 검색·생성·인용 테스트는 218개 통과했다. PATCH-024의 부동소수점 마지막 자리 차이는 이전 변경 없는 main에서도 재현됐다. 앞선 RunPod 1,767개 통과·4개 생략·172 subtests 통과 기록은 PATCH-042 이름을 사용하던 이전 기준 체크아웃의 결과이며, 이번 최신 main 재검증 수치로 사용하지 않는다. Django 설정 검사와 WSGI 로딩은 필수 DJANGO_SECRET_KEY를 임시로 넣은 로컬 검사에서 통과했다. 이 결과는 PATCH-043의 실제 판례 DB·모델 파일을 이용한 로컬 검색, 새 독립 Holdout 채점 또는 운영 서버 전체 기동을 증명하지 않는다.
 
-마지막으로 저장된 LENS-HO2 `FINAL_ONE_SHOT_EVALUATION`은 frozen Git commit `462e80a2bf98696747ec48e04b345776dd0e8f7e`, profile SHA-256 `448352c6faabf33ed6fd887370c89ac1f07fa9d27441c58d6d3f469364890455`, 판례 반환 계약 20건에 대한 결과다. PATCH-043 새 구현 commit (pending)과 판례 명시적 Top-2의 독립 실행 결과로 승격하지 않는다. 기존 봉인 점수와 입력은 유지한다.
+마지막으로 저장된 LENS-HO2 `FINAL_ONE_SHOT_EVALUATION`은 frozen Git commit `462e80a2bf98696747ec48e04b345776dd0e8f7e`, profile SHA-256 `448352c6faabf33ed6fd887370c89ac1f07fa9d27441c58d6d3f469364890455`, 판례 반환 계약 20건에 대한 결과다. PATCH-043 새 구현 commit b63f263과 판례 명시적 Top-2의 독립 실행 결과로 승격하지 않는다. 기존 봉인 점수와 입력은 유지한다.
