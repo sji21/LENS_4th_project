@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
-- PATCH-041 verifies the latest product retriever against a fresh source-built database on local CPU: all four channels match the adopted baseline on 235 inputs, and 78 public regression questions match the existing database under the same code. Required evidence remains 43/75 in both DEV100 v2 modes and 28/29 in CIV35; previous misses remain, with no new rebuild losses. Adds reproducible capture, integrity checks and provenance. Full tests: 1,576 passed, 3 skipped, 172 subtests passed. No retrieval tuning, corpus additions, or LLM assessment. (commit: pending)
+- PATCH-041 verifies the latest product retriever against a fresh source-built database on local CPU: all four channels match the adopted baseline on 235 inputs, and 78 public regression questions match the existing database under the same code. Required evidence remains 43/75 in both DEV100 v2 modes and 28/29 in CIV35; previous misses remain, with no new rebuild losses. Adds reproducible capture, integrity checks and provenance. Full tests: 1,576 passed, 3 skipped, 172 subtests passed. No retrieval tuning, corpus additions, or LLM assessment. (commit: 8a57092)
 
 ### Changed
 
