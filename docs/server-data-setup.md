@@ -85,7 +85,9 @@ setup에서 이미 DB를 구축했으므로 바로 `prepare_retrieval`을 반복
 
 LLM(Ollama/RunPod 엔드포인트) 설정은 README6.3을 따릅니다. 서버 외부 접속에는 실제 호스트에 맞는 Django 호스트·CSRF·프록시 설정이 별도로 필요합니다. 위 명령만으로 외부 배포가 완료되지는 않습니다.
 
-**macOS·RunPod 설치 확인을 완료했습니다.** RunPod는 `/opt/lens-venv` 환경에서 KURE 검증·DB 구축·적용·기본 검색 확인까지 완료했고, 일반178·민법26·판례26·안내6청크, 최초 임베딩210+26개가 완료 로그에 기록됐습니다. CUDA 초기화 경고가 있어 GPU 정상 작동은 확인되지 않았으며 설치 속도의 전후 정량 비교·전체 검색 평가·LLM 검증은 별도입니다.
+**macOS·RunPod 설치 확인을 완료했습니다.** 이전 RunPod는 `/opt/lens-venv` 환경에서 KURE 검증·DB 구축·적용·기본 검색 확인까지 완료했고, 일반178·민법26·판례26·안내6청크, 최초 임베딩210+26개가 완료 로그에 기록됐습니다. 당시에는 CUDA 초기화 경고가 있어 GPU 정상 작동을 확인하지 못했습니다.
+
+2026-09-15에는 새 RTX A4000 Pod에서 main `b3cb8ac`의 `setup_data.py --venv-dir /opt/lens-venv --prepare-only`를 실행했습니다. Python3.11.15·torch2.14.0+cu130·드라이버595.91.07에서 실제 CUDA 행렬 연산과 KURE 기본/명시적 GPU 선택·임베딩이 모두 통과했습니다. 현재 확인한 Pod에는 추가 CUDA 수정이 필요하지 않습니다. 과거 오류의 원인은 미확정이며 PATCH-029 CUDA12.8 후보를 적용하거나 검증한 결과는 아닙니다. 새 Pod의 DB 구축·검색 재평가·LLM 검증과 설치 속도 비교는 미실시입니다. [상세 실측 기록](patch040-runpod-gpu-verification.md)을 참고하세요.
 
 ## 검증된 DB를 그대로 복원할 때만
 
