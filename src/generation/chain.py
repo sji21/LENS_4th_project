@@ -145,6 +145,11 @@ def fallback_chunk_paths() -> tuple:
 
 
 def _build_service() -> RetrievalService:
+    from src.retrieval.case_profile import configured_case_profile
+
+    if configured_case_profile():
+        # A sealed case corpus must fail visibly rather than load another dataset.
+        return RetrievalService.from_index()
     try:
         return RetrievalService.from_index()
     except Exception as error:
