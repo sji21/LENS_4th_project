@@ -1,0 +1,15 @@
+{
+  "command": "python -X utf8 -m pytest -q",
+  "passed": 1576,
+  "skipped": 3,
+  "subtests_passed": 172,
+  "seconds": 245.68,
+  "skip_reasons": {
+    "LangSmith tracing disabled": 2,
+    "local registry PDF not specified": 1
+  },
+  "independent_evaluator_tests": 40,
+  "product_code_changed": false,
+  "llm_evaluated": false,
+  "commit_status": "uncommitted evaluation harness; product base 7cd5633"
+}
