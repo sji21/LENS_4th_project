@@ -132,6 +132,88 @@ class CitationTests(unittest.TestCase):
         self.assertEqual([m.text for m in guides], ["국세청"])
         self.assertFalse(guides[0].supported)
 
+    def test_passive_voice_provider_clause_is_still_a_material_citation(self):
+        """"제공된/발간된" 같은 피동형도 "제공한"과 동일하게 자료 인용으로 본다.
+
+        피동형 어미를 벗겨내지 못하면 뒤에 남은 "에서"가 절차 설명으로 오인되어
+        실제 자료 인용이 검사 대상에서 통째로 빠진다(검색 근거 없는 인용이
+        그대로 통과할 위험).
+        """
+        guide = make_evidence(chunk_id="tax-guide", doc_type="guide",
+                              citation="국세청 안내자료", text="안내")
+        for verb in ("제공", "발간", "배포", "발표", "게시"):
+            for ending in ("된", "되는", "되고 있는", "되어 있는", "돼 있는"):
+                for particle in ("에서", "에서는", "이", ""):
+                    for supplied in (False, True):
+                        with self.subTest(verb=verb, ending=ending, particle=particle, supplied=supplied):
+                            raw = f"국세청{particle} {verb}{ending} 자료에 따르면 가능합니다."
+                            mentions = [m for m in extract_citation_mentions(raw, (guide,) if supplied else ())
+                                        if m.kind == "guide"]
+                            self.assertEqual([m.text for m in mentions], ["국세청"])
+                            self.assertEqual(mentions[0].supported, supplied)
+
+    def test_joint_attribution_separators_and_partial_evidence(self):
+        law = make_evidence(chunk_id="law", doc_type="law", citation="주택임대차보호법 제14조", text="조정")
+        tax = make_evidence(chunk_id="tax", doc_type="guide", citation="국세청 안내", text="안내")
+        hug = make_evidence(chunk_id="hug", doc_type="guide", citation="HUG 안내", text="안내")
+        for separator in ("과 ", " 및 ", ", ", ", 그리고 ", ", 및 ", "·", " · "):
+            for guides in ((), (tax,), (hug,), (tax, hug)):
+                with self.subTest(separator=separator, guides=guides):
+                    raw = f"주택임대차보호법 제14조에 따른 절차입니다. 국세청{separator}HUG의 안내에 따르면 가능합니다."
+                    audit = audit_citations(Answer(question="q", status="answered", text="", raw_text=raw,
+                                                   laws=(law,), guides=guides))
+                    self.assertEqual([m.text for m in audit.mentions if m.kind == "guide"], ["국세청", "HUG"])
+                    self.assertEqual(audit.is_valid, len(guides) == 2)
+
+    def test_publication_passive_attribution_and_receipt(self):
+        law = make_evidence(chunk_id="law", doc_type="law", citation="주택임대차보호법 제14조", text="조정")
+        for phrase in ("발행된", "발행되어 있는", "제공되어 있는", "제공돼 있는"):
+            for tail, expected in (("안내서에 따르면 가능합니다", False), ("안내서를 받으세요", True)):
+                with self.subTest(phrase=phrase, tail=tail):
+                    raw = f"주택임대차보호법 제14조에 따른 절차입니다. 국세청에서 {phrase} {tail}."
+                    audit = audit_citations(Answer(question="q", status="answered", text="", raw_text=raw, laws=(law,)))
+                    self.assertEqual(audit.is_valid, expected)
+
+    def test_joint_procedure_and_separate_source_stay_separate(self):
+        for raw in ("국세청·HUG에서 안내서를 받으세요.", "국세청, 그리고 HUG에서 안내를 받을 수 있습니다."):
+            with self.subTest(raw=raw):
+                self.assertFalse([m for m in extract_citation_mentions(raw, ()) if m.kind == "guide"])
+        mentions = extract_citation_mentions("국세청에 신청하고, HUG 안내에 따르면 가능합니다.", ())
+        self.assertEqual([m.text for m in mentions if m.kind == "guide"], ["HUG"])
+        mentions = extract_citation_mentions("국세청·HUG 및 국토교통부 안내에 따르면 가능합니다.", ())
+        self.assertEqual([m.text for m in mentions if m.kind == "guide"], ["국세청", "HUG", "국토교통부"])
+
+    def test_joint_agency_attribution_requires_every_participant_supported(self):
+        """"국세청과 HUG의 안내에 따르면"처럼 접속사로 묶인 공동 인용은, 언급된
+        기관 전원이 각자 검색 근거를 가져야 한다. 마지막 기관 뒤의 서술부만 보고
+        tail을 자르면 앞선 기관은 접속사(과/와)만 남아 절차 설명으로 오인되어
+        인용 검사에서 조용히 누락되고, 그 결과 근거 없는 기관 인용도 감사를
+        통과할 수 있다.
+        """
+        hug = make_evidence(chunk_id="hug-guide", doc_type="guide",
+                            citation="HUG 안내자료", text="안내")
+        nts = make_evidence(chunk_id="nts-guide", doc_type="guide",
+                            citation="국세청 안내자료", text="안내")
+        raw = "국세청과 HUG의 안내에 따르면 가능합니다."
+
+        with self.subTest("only_hug_supplied"):
+            mentions = {m.text: m.supported for m in extract_citation_mentions(raw, (hug,)) if m.kind == "guide"}
+            self.assertEqual(mentions, {"국세청": False, "HUG": True})
+
+        with self.subTest("both_supplied"):
+            mentions = {m.text: m.supported for m in extract_citation_mentions(raw, (hug, nts)) if m.kind == "guide"}
+            self.assertEqual(mentions, {"국세청": True, "HUG": True})
+
+        with self.subTest("only_hug_supplied_audit_is_invalid"):
+            answer = Answer(question="문의", status="answered", text="", raw_text=raw, guides=(hug,))
+            audit = audit_citations(answer)
+            self.assertFalse(audit.is_valid)
+
+        with self.subTest("both_supplied_audit_is_valid"):
+            answer = Answer(question="문의", status="answered", text="", raw_text=raw, guides=(hug, nts))
+            audit = audit_citations(answer)
+            self.assertTrue(audit.is_valid)
+
     @staticmethod
     def document_evidence(text: str) -> SessionDocumentEvidence:
         return SessionDocumentEvidence(
