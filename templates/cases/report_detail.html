@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}상담 리포트 v{{ report.version }} · LENS{% endblock %}
+{% block head %}<link rel="stylesheet" href="{% static 'cases/app.css' %}?v=20260914-3">{% endblock %}
+{% block content %}
+<main class="report-page">
+  <div class="report-page-actions"><a href="{% url 'cases:dashboard-detail' case.pk %}">← {{ case.title }} 마이페이지</a><a class="primary-link" href="{% url 'cases:download-report' case.pk report.pk %}">PDF 다운로드</a></div>
+  <header><span class="eyebrow">REPORT SNAPSHOT</span><h1>현재 상담 리포트 v{{ report.version }}</h1><p>{{ report.created_at|date:'Y년 m월 d일 H:i' }} 생성 · {{ report.generation_mode }}</p></header>
+  <section><h2>계약 기본 정보</h2><p>{{ report.content_json.case_summary }}</p></section>
+  <section><h2>사용자가 궁금해한 내용</h2><ul>{% for value in report.content_json.user_interests %}<li>{{ value }}</li>{% empty %}<li>정리된 질문이 없습니다.</li>{% endfor %}</ul></section>
+  <section><h2>주요 질문과 확인한 내용</h2><ul>{% for value in report.content_json.questions_and_answers %}<li>{{ value }}</li>{% empty %}<li>검증을 통과한 답변이 없습니다.</li>{% endfor %}</ul></section>
+  <section><h2>확인된 내용</h2><ul>{% for value in report.content_json.confirmed_items %}<li>{{ value }}</li>{% empty %}<li>확인된 항목이 없습니다.</li>{% endfor %}</ul></section>
+  <section><h2>미확인 내용</h2><ul>{% for value in report.content_json.unresolved_items %}<li>{{ value }}</li>{% empty %}<li>표시할 항목이 없습니다.</li>{% endfor %}</ul></section>
+  <section class="warning-section"><h2>추가로 알아봐야 할 내용</h2><ul>{% for value in report.content_json.next_checks %}<li>{{ value }}</li>{% empty %}<li>추가 확인 항목이 없습니다.</li>{% endfor %}</ul></section>
+  <section><h2>참고 근거</h2><ul>{% for value in report.content_json.source_refs %}<li>{{ value }}</li>{% empty %}<li>연결된 출처가 없습니다.</li>{% endfor %}</ul></section>
+  <p class="report-disclaimer">이 리포트는 생성 시점까지 확인된 상담 기록을 재구성한 스냅샷이며 법률 자문이나 계약 안전 판정을 대신하지 않습니다.</p>
+</main>
+{% endblock %}

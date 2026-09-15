@@ -16,7 +16,7 @@ ALLOWED_HOSTS = [h.strip() for h in os.getenv("DJANGO_ALLOWED_HOSTS", "localhost
 INSTALLED_APPS = [
     "django.contrib.admin", "django.contrib.auth", "django.contrib.contenttypes",
     "django.contrib.sessions", "django.contrib.messages", "django.contrib.staticfiles",
-    "accounts", "chat",
+    "accounts", "cases", "chat",
 ]
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -59,8 +59,12 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "data" / "staticfiles"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+LOGIN_URL = "accounts:login"
+LOGIN_REDIRECT_URL = "chat:home"
+LOGOUT_REDIRECT_URL = "accounts:login"
 SESSION_ENGINE = "django.contrib.sessions.backends.db"
-SESSION_COOKIE_AGE = 3600
+SESSION_COOKIE_AGE = int(os.getenv("DJANGO_SESSION_COOKIE_AGE", str(14 * 24 * 60 * 60)))
+SESSION_SAVE_EVERY_REQUEST = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = "Lax"
@@ -77,3 +81,8 @@ CHAT_MAX_MESSAGES = 100
 # Renewed every 10 seconds; a terminated worker releases its lease within 30s.
 CHAT_LEASE_SECONDS = 30
 CHAT_TTL_SECONDS = 3600
+
+# Private originals are encrypted before being written below this directory.
+# Generate a Fernet key once per environment; never commit it with the database.
+PRIVATE_UPLOAD_ROOT = Path(os.getenv("LENS_PRIVATE_UPLOAD_ROOT", BASE_DIR / "data" / "private"))
+FILE_ENCRYPTION_KEY = os.getenv("LENS_FILE_ENCRYPTION_KEY", "")

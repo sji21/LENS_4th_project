@@ -13,6 +13,27 @@
   let estimatedSeconds = 30;
   const csrf = form.querySelector('[name="csrfmiddlewaretoken"]').value;
 
+  document.querySelectorAll("[data-room-row]").forEach((row) => {
+    const edit = row.querySelector("[data-room-edit]");
+    const renameForm = row.querySelector("[data-room-form]");
+    const roomLink = row.querySelector(".case-shortcut");
+    const cancel = row.querySelector("[data-room-cancel]");
+    if (!edit || !renameForm || !roomLink || !cancel) return;
+    edit.addEventListener("click", () => {
+      roomLink.hidden = true;
+      edit.hidden = true;
+      renameForm.hidden = false;
+      const title = renameForm.querySelector('input[name="title"]');
+      title.focus();
+      title.select();
+    });
+    cancel.addEventListener("click", () => {
+      renameForm.hidden = true;
+      roomLink.hidden = false;
+      edit.hidden = false;
+    });
+  });
+
   function element(tag, text, className) {
     const node = document.createElement(tag);
     if (text !== undefined) node.textContent = text;
@@ -27,6 +48,22 @@
     if (reload) {
       const link = element("a", "새로고침"); link.href = window.location.pathname; box.append(link);
     }
+  }
+  function toast(message, type = "success") {
+    const stack = $("toast-stack");
+    if (!stack) return;
+    const item = element("div", undefined, `app-toast ${type}`);
+    item.setAttribute("role", type === "error" ? "alert" : "status");
+    item.append(element("span", type === "error" ? "!" : "✓", "toast-icon"));
+    const copy = element("span", undefined, "toast-copy");
+    copy.append(element("strong", type === "error" ? "리포트 생성 실패" : "리포트 생성 완료"));
+    copy.append(element("small", message));
+    item.append(copy);
+    stack.replaceChildren(item);
+    window.setTimeout(() => {
+      item.classList.add("leaving");
+      window.setTimeout(() => item.remove(), 180);
+    }, 4200);
   }
   function controls() {
     const locked = busy || externalBusy || !conversationId;
@@ -300,15 +337,58 @@
   form.addEventListener("submit", (event) => {
     event.preventDefault(); const question = input.value.trim();
     if (!question) return;
+    input.value = "";
+    controls();
     action("근거를 확인하고 답변을 준비하고 있어요", async () => {
       $("welcome").hidden = true;
       $("messages").append(renderMessage({ role: "user", content: question })); scrollBottom();
       lastRendered = "";
       const data = await post(form.dataset.sendUrl, { message: question, document_id: $("document-select").value || null });
-      // Preserve text the user typed while waiting.
-      if (input.value.trim() === question) input.value = "";
-      render(data); input.focus();
+      render(data);
+      if (data.room_created) {
+        window.location.reload();
+        return;
+      }
+      input.focus();
     }, true);
+  });
+  const reportForm = $("report-form");
+  if (reportForm) reportForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const button = reportForm.querySelector("button");
+    const label = reportForm.querySelector(".report-button-label");
+    if (button.disabled) return;
+    button.disabled = true;
+    button.classList.add("loading");
+    label.textContent = "리포트 생성 중";
+    try {
+      const response = await fetch(reportForm.action, {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "X-CSRFToken": csrf },
+      });
+      if (!response.ok) throw new Error("리포트를 만들지 못했습니다.");
+      const blob = await response.blob();
+      if (blob.type !== "application/pdf") throw new Error("PDF 응답을 확인하지 못했습니다.");
+      const disposition = response.headers.get("Content-Disposition") || "";
+      const filenameMatch = disposition.match(/filename="?([^";]+)"?/i);
+      const filename = filenameMatch ? filenameMatch[1] : "LENS_report.pdf";
+      const downloadUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = filename;
+      document.body.append(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000);
+      toast("PDF가 다운로드되고 마이페이지에 저장됐습니다.");
+    } catch (error) {
+      toast(error.message || "잠시 후 다시 시도해 주세요.", "error");
+    } finally {
+      button.disabled = false;
+      button.classList.remove("loading");
+      label.textContent = "리포트 PDF";
+    }
   });
   document.querySelectorAll("[data-question]").forEach((button) => button.addEventListener("click", () => {
     input.value = button.dataset.question; controls(); input.focus();
@@ -333,13 +413,15 @@
       await syncState();
     });
   });
-  $("new-chat").addEventListener("click", () => $("reset-dialog").showModal());
-  $("cancel-reset").addEventListener("click", () => $("reset-dialog").close());
-  $("confirm-reset").addEventListener("click", () => {
-    $("reset-dialog").close(); action("새 대화를 준비하고 있어요", async () => {
-      render(await post(form.dataset.resetUrl)); input.value = ""; $("upload-progress").replaceChildren(); input.focus();
+  if ($("new-chat").dataset.createRoom !== "true") {
+    $("new-chat").addEventListener("click", () => $("reset-dialog").showModal());
+    $("cancel-reset").addEventListener("click", () => $("reset-dialog").close());
+    $("confirm-reset").addEventListener("click", () => {
+      $("reset-dialog").close(); action("새 대화를 준비하고 있어요", async () => {
+        render(await post(form.dataset.resetUrl)); input.value = ""; $("upload-progress").replaceChildren(); input.focus();
+      });
     });
-  });
+  }
   $("cancel-delete").addEventListener("click", () => $("delete-dialog").close());
   $("confirm-delete").addEventListener("click", () => {
     $("delete-dialog").close(); action("문서를 삭제하고 있어요", async () => {
