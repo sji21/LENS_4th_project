@@ -73,20 +73,47 @@ _COURT_NAME_RE = re.compile(
 )
 
 _AGENCY_RE = re.compile(
-    r"HUG|NTS|"
-    r"[가-힣A-Za-z0-9·]{2,30}(?:부|청|공사|공단|원)",
+    r"(?<![가-힣A-Za-z0-9·])"
+    r"(?:HUG|NTS|[가-힣A-Za-z0-9·]{2,30}?"
+    r"(?:위원\s*회|부|청|공사|공단|원(?!\s*회)))"
+    r"(?=$|[\s.,!?;:()「」『』]|안내|자료|가이드|에\s*(?:따르면|의하면)|"
+    r"(?:으로부터|로부터|에서는|에서|에게|의|에|은|는|이|가|을|를|와|과|으로|로)"
+    r"(?=$|[\s.,!?;:()「」『』]))",
     re.IGNORECASE,
 )
 
-_GUIDE_MENTION_RE = re.compile(
-    r"(?P<agency>"
-    r"HUG|NTS|"
-    r"[가-힣A-Za-z0-9·]{2,30}(?:부|청|공사|공단|원)"
-    r")"
-    r"(?P<tail>[^.\n]{0,40}?"
-    r"(?:안내|자료|가이드|에\s*따르면|에\s*의하면))",
-    re.IGNORECASE,
-)
+
+def _is_guide_citation(tail: str) -> bool:
+    """자료 인용과 방문·신청·안내받기 같은 절차 설명을 구분한다."""
+    tail = re.split(r"[.!?;\n]", tail, maxsplit=1)[0].strip()
+    if re.match(r"에\s*(?:따르면|의하면)", tail):
+        return True
+    # 발행 주체를 나타내는 절만 제거한다. '에서 신청하고'까지 지우면
+    # 일반 절차 설명 뒤의 '안내'를 다시 출처로 오인하게 된다.
+    tail = re.sub(
+        r"^(?:에서는|에서|가|이)?\s*(?:제공|발간|배포|발표|게시)"
+        r"(?:하고\s*있는|\s*중인|하는|한)\s*", "", tail,
+    )
+    tail = re.sub(r"^의\s*", "", tail)
+    if re.match(r"(?:으로부터|로부터|에서는|에서|에게|에|으로|로|을|를|와|과)(?:\s|$)", tail):
+        return False
+    # 긴 자료명을 먼저 소비한다. '안내서'를 '안내'까지만 읽으면
+    # 뒤의 '서를 받으세요'를 수령 안내로 인식하지 못한다.
+    material = re.match(
+        r"[가-힣A-Za-z0-9·()「」『』\"' \t-]{0,60}?"
+        r"(?:안내자료|안내문|안내서|자료집|가이드북|안내|자료|가이드)"
+        r"(?=$|[\s「」『』\"')]|에|의|을|를|은|는|이|가|상)", tail,
+    )
+    if material is None:
+        return False
+    remainder = tail[material.end():].lstrip(" \t」』\"')")
+    # 인용/근거 표지는 행동 안내보다 먼저 확인한다.
+    if re.match(r"(?:에\s*(?:따르|의하|의해|근거)|(?:을|를)\s*(?:근거|인용)|상(?:으로)?\s)", remainder):
+        return True
+    if re.match(r"(?:을|를)?\s*(?:받|수령|다운로드|내려받|신청|요청)", remainder):
+        return False
+    # 명시적으로 자료를 지목한 나머지는 기존처럼 출처 확인 대상으로 둔다.
+    return True
 
 _LAW_DOC_TYPES = frozenset({"law", "decree", "rule"})
 
@@ -350,19 +377,9 @@ def _build_guide_index(evidences: tuple[Evidence, ...]) -> dict[str, set[str]]:
         if evidence.doc_type != "guide":
             continue
 
-        citation_compact = _compact(evidence.citation)
-        matched_alias = False
-
-        for canonical, aliases in _GUIDE_ALIAS_GROUPS.items():
-            if any(_compact(alias) in citation_compact for alias in aliases):
-                index.setdefault(_compact(canonical), set()).add(evidence.chunk_id)
-                matched_alias = True
-
-        if matched_alias:
-            continue
-
-        agency_match = _AGENCY_RE.search(evidence.citation)
-        if agency_match is not None:
+        # 답변과 근거에 동일한 기관명 경계를 적용한다. 부분 문자열만으로
+        # '국세청장' 같은 다른 이름을 '국세청'의 근거로 연결하지 않는다.
+        for agency_match in _AGENCY_RE.finditer(citation_scan_text(evidence.citation)):
             index.setdefault(
                 _guide_identity(agency_match.group(0)),
                 set(),
@@ -429,8 +446,13 @@ def extract_citation_mentions(
             )
         )
 
-    for match in _GUIDE_MENTION_RE.finditer(raw_text or ""):
-        agency = match.group("agency")
+    guide_scan = citation_scan_text(raw_text or "")
+    agencies = list(_AGENCY_RE.finditer(guide_scan))
+    for index, match in enumerate(agencies):
+        agency = match.group(0)
+        end = agencies[index + 1].start() if index + 1 < len(agencies) else len(guide_scan)
+        if not _is_guide_citation(guide_scan[match.end():min(end, match.end() + 100)]):
+            continue
         # "대법원 판례에 따르면"의 대법원을 안내 기관으로 해석하면, 사건번호가
         # 있는 정상 판례 인용에도 지원되지 않는 guide 출처 오류가 함께 생긴다.
         # 법원명은 case 인용에서만 다루며, 사건번호 없이는 검증 가능한 출처가 아니다.
