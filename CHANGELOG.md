@@ -5,6 +5,12 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-15
+
+### Changed
+
+- PATCH-040 documents successful CUDA operations and KURE automatic/explicit GPU embeddings after the README environment setup on a new RTX A4000 Pod (driver 595.91.07, Python 3.11.15, torch 2.14.0+cu130). No CUDA code change is needed for this tested environment. Keep the earlier warning unresolved, PATCH-029 unapplied and unverified on a Pod, and new-Pod DB/search/LLM evaluation unrun. Documentation only. (commit: 7773253)
+
 ## 2026-09-14
 
 ### Fixed (Bug Fixes)

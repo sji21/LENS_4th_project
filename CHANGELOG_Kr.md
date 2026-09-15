@@ -5,6 +5,12 @@
 [3차 프로젝트 변경 이력](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG_Kr.md)에 있습니다.
 이 파일은 4차 프로젝트의 첫 변경부터 기록합니다.
 
+## 2026-09-15
+
+### 변경
+
+- PATCH-040 새 RTX A4000 Pod에서 README 환경 준비 후 CUDA 연산과 KURE 자동/명시적 GPU 임베딩이 통과한 결과를 기록합니다(드라이버595.91.07, Python3.11.15, torch2.14.0+cu130). 현재 확인한 환경에는 추가 CUDA 코드 수정이 필요하지 않습니다. 과거 경고 원인 미확정, PATCH-029 미적용·Pod 실검증 대기, 새 Pod DB·검색·LLM 평가 미실시를 구분합니다. 문서만 변경했습니다. (commit: 7773253)
+
 ## 2026-09-14
 
 ### 버그 수정 (Fixed)
