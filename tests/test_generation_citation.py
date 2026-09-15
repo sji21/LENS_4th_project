@@ -29,6 +29,109 @@ def make_evidence(
 
 
 class CitationTests(unittest.TestCase):
+    def test_provider_material_variants_require_retrieved_source(self):
+        guide = make_evidence(chunk_id="tax", doc_type="guide", citation="국세청 안내", text="안내")
+        for verb in ("제공", "발간", "배포", "발표", "게시"):
+            for ending in ("한", "하는", " 중인", "하고 있는"):
+                for particle in ("에서", "에서는", "이", ""):
+                    for supplied in (False, True):
+                        with self.subTest(verb=verb, ending=ending, particle=particle, supplied=supplied):
+                            raw = f"국세청{particle} {verb}{ending} 자료에 따르면 가능합니다."
+                            mentions = [m for m in extract_citation_mentions(raw, (guide,) if supplied else ())
+                                        if m.kind == "guide"]
+                            self.assertEqual([m.text for m in mentions], ["국세청"])
+                            self.assertEqual(mentions[0].supported, supplied)
+
+    def test_material_receipt_is_not_attribution(self):
+        for material in ("안내", "안내서", "안내문", "안내자료", "자료", "자료집", "가이드북"):
+            for action in ("를 받으세요", "를 수령하세요", "를 다운로드하세요", "를 요청하세요"):
+                with self.subTest(material=material, action=action):
+                    raw = f"국세청에서 제공하는 {material}{action}."
+                    self.assertFalse([m for m in extract_citation_mentions(raw, ()) if m.kind == "guide"])
+
+    def test_material_attribution_survives_later_action(self):
+        for material in ("안내서", "안내문", "안내자료", "자료집", "가이드북", "「미납국세 안내서」"):
+            with self.subTest(material=material):
+                raw = f"국세청에서 제공 중인 {material}에 따르면 지원금을 받을 수 있습니다."
+                mentions = [m for m in extract_citation_mentions(raw, ()) if m.kind == "guide"]
+                self.assertEqual([m.text for m in mentions], ["국세청"])
+                self.assertFalse(mentions[0].supported)
+
+    def test_agency_alias_requires_whole_name_in_evidence(self):
+        for name in ("국세청장", "가짜국세청", "HUGPLUS"):
+            with self.subTest(name=name):
+                guide = make_evidence(chunk_id="other", doc_type="guide", citation=f"{name} 안내", text="안내")
+                raw = "국세청 안내에 따르면 가능합니다. HUG 안내에 따르면 가능합니다."
+                mentions = [m for m in extract_citation_mentions(raw, (guide,)) if m.kind == "guide"]
+                self.assertEqual(len(mentions), 2)
+                self.assertTrue(all(not m.supported for m in mentions))
+
+    def test_agency_procedures_are_not_source_citations(self):
+        law = make_evidence(chunk_id="law-14", doc_type="law",
+                            citation="주택임대차보호법 제14조", text="분쟁조정위원회")
+        for agency in ("조정위원회", "심의위원회", "분쟁조정위원회", "국세청", "HUG", "**조정위원**회"):
+            for tail in ("에 신청해야 하며, 조정 절차 및 효력 등에 대한 **안내**를 받을 수 있습니다.",
+                         "로부터 안내를 받을 수 있습니다.", "에서 안내를 받을 수 있습니다."):
+                with self.subTest(agency=agency, tail=tail):
+                    raw = "주택임대차보호법 제14조에 따라 조정을 신청할 수 있습니다. " + agency + tail
+                    answer = Answer(question="조정", status="answered", text="", raw_text=raw, laws=(law,))
+                    audit = audit_citations(answer)
+                    self.assertTrue(audit.is_valid)
+                    self.assertFalse([m for m in audit.mentions if m.kind == "guide"])
+
+    def test_committee_sources_need_exact_retrieved_agency(self):
+        law = make_evidence(chunk_id="law-14", doc_type="law",
+                            citation="주택임대차보호법 제14조", text="분쟁조정위원회")
+        guide = make_evidence(chunk_id="committee", doc_type="guide",
+                              citation="분쟁조정위원회 안내", text="조정 안내")
+        other = make_evidence(chunk_id="other", doc_type="guide",
+                              citation="분쟁조정위원 안내", text="다른 출처")
+        for phrase in ("분쟁조정위원회 안내에 따르면 가능합니다.",
+                       "분쟁조정위원회 주택임대차 분쟁조정 안내에 따르면 가능합니다.",
+                       "분쟁조정위원회에서 제공한 자료에 따르면 가능합니다.",
+                       "분쟁조정위원회에 따르면 가능합니다.",
+                       "분쟁조정위원회에따르면 가능합니다.",
+                       "**분쟁조정위원**회 의 **자료**에 따르면 가능합니다."):
+            for guides, expected in (((), False), ((other,), False), ((guide,), True)):
+                with self.subTest(phrase=phrase, guides=guides):
+                    raw = "주택임대차보호법 제14조에 따른 절차입니다. " + phrase
+                    audit = audit_citations(Answer(question="조정", status="answered", text="", raw_text=raw,
+                                                   laws=(law,), guides=guides))
+                    mentions = [m for m in audit.mentions if m.kind == "guide"]
+                    self.assertEqual(len(mentions), 1)
+                    self.assertEqual("".join(mentions[0].text.split()), "분쟁조정위원회")
+                    self.assertEqual(audit.is_valid, expected)
+
+    def test_present_tense_provider_clause_is_still_a_material_citation(self):
+        """"제공하는"처럼 현재형 관형사형도 "제공한"과 동일하게 자료 인용으로 본다.
+
+        "에서 제공하는 안내에 따르면"에서 "하는"을 벗겨내지 못하면, 뒤에 남은
+        "에서"가 절차 설명으로 오인되어 실제 자료 인용이 검사 대상에서 통째로
+        빠지는 결과가 된다(검색 근거 없는 인용이 그대로 통과할 위험).
+        """
+        law = make_evidence(chunk_id="law-14", doc_type="law",
+                            citation="주택임대차보호법 제14조", text="국세청")
+        guide = make_evidence(chunk_id="tax-guide", doc_type="guide",
+                              citation="국세청 미납국세 열람 안내", text="열람 안내")
+        for verb_phrase in ("제공하는", "제공한", "발간하는", "배포하는", "발표하는", "게시하는"):
+            for particle in ("에서", "이", ""):
+                with self.subTest(verb_phrase=verb_phrase, particle=particle):
+                    raw = f"국세청{particle} {verb_phrase} 안내에 따르면 열람할 수 있습니다."
+                    answer = Answer(question="열람", status="answered", text="", raw_text=raw,
+                                    laws=(law,), guides=(guide,))
+                    audit = audit_citations(answer)
+                    guides_found = [m for m in audit.mentions if m.kind == "guide"]
+                    self.assertEqual([m.text for m in guides_found], ["국세청"])
+                    self.assertTrue(guides_found[0].supported)
+                    self.assertTrue(audit.is_valid)
+
+    def test_procedure_does_not_hide_next_agency_citation(self):
+        mentions = extract_citation_mentions(
+            "조정위원회에 신청하고 국세청 안내에 따르면 가능합니다.", ())
+        guides = [m for m in mentions if m.kind == "guide"]
+        self.assertEqual([m.text for m in guides], ["국세청"])
+        self.assertFalse(guides[0].supported)
+
     @staticmethod
     def document_evidence(text: str) -> SessionDocumentEvidence:
         return SessionDocumentEvidence(

@@ -59,9 +59,16 @@ LLM_MODEL = os.getenv("JEONSEON_LLM_MODEL", "qwen3:8b-q4_K_M")
 # 법령의 조건·시점 표현이 매 실행마다 달라지지 않도록 기본 생성은 결정적으로 한다.
 LLM_TEMPERATURE = _env_number("JEONSEON_LLM_TEMPERATURE", "0.0", float)
 LLM_TIMEOUT = _env_number("JEONSEON_LLM_TIMEOUT", "180", float)
-LLM_MAX_TOKENS = _env_number("JEONSEON_LLM_MAX_TOKENS", "256", int)
-# 현재 RAG 프롬프트를 담으면서 KV 캐시 적재를 최소화한다.
-LLM_NUM_CTX = _env_number("JEONSEON_LLM_NUM_CTX", "4096", int)
+# 256에서는 두 조문을 비교하는 답변이 중간에 잘려 인용이 사라졌다(dev-022).
+# 다만 상한은 답변 발산을 막는 장치이기도 하므로, 과거 발산 구간(1,700자 이상)
+# 보다는 충분히 낮게 유지한다.
+LLM_MAX_TOKENS = _env_number("JEONSEON_LLM_MAX_TOKENS", "512", int)
+# 현재 RAG 프롬프트를 담으면서 KV 캐시 적재를 최소화한다. PATCH-027 법령 확대
+# 이후 4096에서는 컨텍스트가 가득 차는 질문이 나왔고(dev-006 프롬프트 4094),
+# 창이 포화되면 생성이 무너져 같은 구절을 반복했다.
+LLM_NUM_CTX = _env_number("JEONSEON_LLM_NUM_CTX", "8192", int)
+# 같은 구절 반복 방지를 서버 기본값에만 맡기지 않고 명시적으로 전달한다.
+LLM_REPEAT_PENALTY = _env_number("JEONSEON_LLM_REPEAT_PENALTY", "1.1", float)
 LLM_KEEP_ALIVE = os.getenv("JEONSEON_LLM_KEEP_ALIVE", "30m").strip() or "30m"
 OLLAMA_USER_AGENT = "PATCH32-Streamlit/1.0"
 LOCAL_OLLAMA_BASE_URL = "http://localhost:11434"
@@ -185,7 +192,11 @@ def _extra_body() -> dict:
     기존 테스트/호출부가 이 함수를 사용하므로 인터페이스를 유지한다.
     native API에서는 max_tokens를 options.num_predict로, think를 top-level think로 변환한다.
     """
-    body: dict = {"max_tokens": LLM_MAX_TOKENS, "num_ctx": LLM_NUM_CTX}
+    body: dict = {
+        "max_tokens": LLM_MAX_TOKENS,
+        "num_ctx": LLM_NUM_CTX,
+        "repeat_penalty": LLM_REPEAT_PENALTY,
+    }
     if THINK_OFF:
         body["think"] = False
     return body
