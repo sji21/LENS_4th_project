@@ -12,7 +12,7 @@ def calculate(items):
         groups=item['groups'] if item['in_R'] else []
         available=[g for g in groups if g['corpus_supported']]
         success=[g for g in available if g['primary_supported'] and item['execution_status']=='ok']
-        ranks=[max(g['primary_supporting_return_ranks']) for g in success]
+        ranks=[min(g['primary_supporting_return_ranks']) for g in success]
         rows.append({'qid':item['qid'],'P':item['in_P'],'U':item['in_U'],'R':item['in_R'],
             'E':bool(available),'G':len(groups),'C':len(available),'recovered':len(success),
             'hit':bool(success),'mrr':1/min(ranks) if ranks else 0,

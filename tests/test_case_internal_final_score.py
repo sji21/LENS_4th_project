@@ -28,3 +28,12 @@ def test_errors_and_empty_returns_never_pass():
     assert s['hit_at_2']==0 and s['macro_group_recall_at_2']==0
     assert s['official_relevance_ratio'] is None and s['eligible_empty_returns']==2
     assert s['errors']==1
+
+
+def test_mrr_uses_earliest_return_when_two_cases_support_one_group():
+    supported=group('a',True)
+    supported['available_keys']=['a','b']
+    supported['primary_supporting_return_ranks']=[1,2]
+    rows,summary=calculate([item('a',[supported])])
+    assert rows[0]['mrr']==1
+    assert summary['mrr_at_2']==1
