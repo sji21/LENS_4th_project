@@ -212,10 +212,10 @@ RetrievalResult(laws, cases, guides)
 | 모델 | `qwen3:8b-q4_K_M` |
 | API | Ollama native `/api/chat` |
 | Temperature | `0.0` |
-| 일반 답변 길이 상한 | `256 tokens` |
+| 일반 답변 길이 상한 | `512 tokens` |
 | 문서 내용만 답하는 경우 | 최소 `384 tokens` |
 | 보조 판정 길이 상한 | `160 tokens` |
-| Context | `4096` |
+| Context | `8192` |
 | Thinking | 비활성화 |
 
 기본 실행 위치는 Local Ollama입니다. `.env`에 RunPod 주소를 설정하면 원격 Ollama를 먼저
