@@ -1,0 +1,266 @@
+{
+  "scope": "Published development/regression, not independent holdout or LLM quality",
+  "groups": {
+    "question_only:law3+civil3": {
+      "n": 75,
+      "before_any": 57,
+      "after_any": 57,
+      "before_all": 40,
+      "after_all": 40
+    },
+    "question_only:law5+civil3": {
+      "n": 75,
+      "before_any": 58,
+      "after_any": 58,
+      "before_all": 47,
+      "after_all": 47
+    },
+    "context_diagnostic:law3+civil3": {
+      "n": 75,
+      "before_any": 55,
+      "after_any": 55,
+      "before_all": 39,
+      "after_all": 39
+    },
+    "context_diagnostic:law5+civil3": {
+      "n": 75,
+      "before_any": 60,
+      "after_any": 60,
+      "before_all": 48,
+      "after_all": 48
+    },
+    "required_law:law3+civil3": {
+      "n": 29,
+      "before_any": 29,
+      "after_any": 29,
+      "before_all": 28,
+      "after_all": 28
+    },
+    "required_law:law5+civil3": {
+      "n": 29,
+      "before_any": 29,
+      "after_any": 29,
+      "before_all": 28,
+      "after_all": 28
+    },
+    "legacy_dev:law3": {
+      "n": 24,
+      "before_any": 23,
+      "after_any": 23,
+      "before_all": 22,
+      "after_all": 23
+    },
+    "legacy_dev:law5": {
+      "n": 24,
+      "before_any": 24,
+      "after_any": 24,
+      "before_all": 23,
+      "after_all": 24
+    },
+    "legacy_holdout:law3": {
+      "n": 18,
+      "before_any": 17,
+      "after_any": 17,
+      "before_all": 11,
+      "after_all": 12
+    },
+    "legacy_holdout:law5": {
+      "n": 18,
+      "before_any": 18,
+      "after_any": 18,
+      "before_all": 13,
+      "after_all": 13
+    },
+    "civil_public:law3+civil3": {
+      "n": 15,
+      "before_any": 11,
+      "after_any": 11,
+      "before_all": 9,
+      "after_all": 9
+    },
+    "civil_public:law5+civil3": {
+      "n": 15,
+      "before_any": 13,
+      "after_any": 13,
+      "before_all": 12,
+      "after_all": 12
+    },
+    "case_dev13:law3+case5": {
+      "n": 13,
+      "before_any": 13,
+      "after_any": 13,
+      "before_all": 5,
+      "after_all": 5
+    },
+    "case_dev13:law5+case5": {
+      "n": 13,
+      "before_any": 13,
+      "after_any": 13,
+      "before_all": 5,
+      "after_all": 5
+    },
+    "case_external8:law3+case5": {
+      "n": 8,
+      "before_any": 8,
+      "after_any": 8,
+      "before_all": 4,
+      "after_all": 4
+    },
+    "case_external8:law5+case5": {
+      "n": 8,
+      "before_any": 8,
+      "after_any": 8,
+      "before_all": 4,
+      "after_all": 4
+    }
+  },
+  "changes": [
+    {
+      "qid": "dev-001",
+      "mode": "question_only",
+      "k": 3,
+      "targets": [
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의2"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조"
+      ],
+      "after": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의2"
+      ],
+      "before_all": false,
+      "after_all": true
+    },
+    {
+      "qid": "dev-001",
+      "mode": "question_only",
+      "k": 5,
+      "targets": [
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의2"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조",
+        "주택임대차보호법-제3조의6",
+        "주택임대차보호법-제3조의4"
+      ],
+      "after": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의2",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "before_all": false,
+      "after_all": true
+    },
+    {
+      "qid": "holdout-002",
+      "mode": "question_only",
+      "k": 3,
+      "targets": [
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의2"
+      ],
+      "before": [
+        "주택임대차보호법-제3조",
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조의3"
+      ],
+      "after": [
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의2",
+        "부동산거래신고등에관한법률-제6조의5"
+      ],
+      "before_all": false,
+      "after_all": true
+    },
+    {
+      "qid": "holdout-002",
+      "mode": "question_only",
+      "k": 5,
+      "targets": [
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의2"
+      ],
+      "before": [
+        "주택임대차보호법-제3조",
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조의3",
+        "주택임대차보호법-제3조의4",
+        "주택임대차보호법-제3조의2"
+      ],
+      "after": [
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의2",
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조의3",
+        "주택임대차보호법-제3조의4"
+      ],
+      "before_all": true,
+      "after_all": true
+    },
+    {
+      "qid": "case26-dev-001",
+      "mode": "question_only",
+      "k": 3,
+      "targets": [
+        "CASE-2009DA101275",
+        "CASE-2015DA254507",
+        "CASE-97DA22393",
+        "CASE-98CHU40"
+      ],
+      "before": [
+        "CASE-2015DA254507",
+        "CASE-97DA22393",
+        "CASE-2004DA69741",
+        "CASE-98CHU40",
+        "CASE-97DA43468"
+      ],
+      "after": [
+        "CASE-2015DA254507",
+        "CASE-97DA22393",
+        "CASE-2004DA69741",
+        "CASE-98CHU40",
+        "CASE-97DA43468"
+      ],
+      "before_all": false,
+      "after_all": false
+    },
+    {
+      "qid": "case26-dev-001",
+      "mode": "question_only",
+      "k": 5,
+      "targets": [
+        "CASE-2009DA101275",
+        "CASE-2015DA254507",
+        "CASE-97DA22393",
+        "CASE-98CHU40"
+      ],
+      "before": [
+        "CASE-2015DA254507",
+        "CASE-97DA22393",
+        "CASE-2004DA69741",
+        "CASE-98CHU40",
+        "CASE-97DA43468"
+      ],
+      "after": [
+        "CASE-2015DA254507",
+        "CASE-97DA22393",
+        "CASE-2004DA69741",
+        "CASE-98CHU40",
+        "CASE-97DA43468"
+      ],
+      "before_all": false,
+      "after_all": false
+    }
+  ],
+  "required_target_losses": []
+}
