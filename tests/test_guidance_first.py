@@ -69,3 +69,18 @@ def test_guides_only_in_renewal_official_search():
     assert with_dialogue_guides(service, proposal(topic="시설수리")) is service
     assert with_dialogue_guides(service, renewal(document_id="document-a")) is service
     assert isinstance(with_dialogue_guides(service, renewal()), GuidedSearch)
+
+
+def test_procedure_spacing_is_applied_before_annotation_offsets():
+    import time
+    from src.generation.models import Answer
+    from src.retrieval.service import Evidence
+    evidence = Evidence(rank=1, chunk_id='test-law', doc_type='law',
+                        citation='주택임대차보호법 제6조의3', text='갱신 요구', score=1)
+    text = '언제: 시기를 확인하세요. 어떻게: 주택임대차보호법 제6조의3을 확인하세요. 확인할 사항: 조건입니다.'
+    answer = Answer(question='갱신 방법', status='answered', text=text, raw_text=text, laws=(evidence,))
+    message = services.answer_message(answer, time.perf_counter())
+    assert '\n\n어떻게:' in message['content']
+    assert '\n\n확인할 사항:' in message['content']
+    span = message['citations'][0]
+    assert message['content'][span['start']:span['end']] == '주택임대차보호법 제6조의3'

@@ -1,0 +1,36 @@
+{
+  "execution_commit": "9aadb63",
+  "platform": "Windows",
+  "installation": "fresh",
+  "counts": {
+    "laws": 178,
+    "civil_laws": 26,
+    "cases": 26,
+    "guides": 6
+  },
+  "local_run": "tmp\\patch028-fresh-check\\tmp\\retrieval-data\\20260913T074731Z-4865c437",
+  "captures": {
+    "preflight": {
+      "commit": "9aadb63f171c58fbf6b4283318e1653b3345f2d5",
+      "inputs": 235,
+      "model_calls": 375,
+      "rows_sha256": "27c4981f469382ecc1a41aea046519bf6061949368a482a764641fcbb7a055c6"
+    },
+    "postflight": {
+      "commit": "9aadb63f171c58fbf6b4283318e1653b3345f2d5",
+      "inputs": 235,
+      "model_calls": 375,
+      "rows_sha256": "0b2e4ebec152b420ee431db9752395b22aaa15bc07ad840339a9115fee26f0f7"
+    }
+  },
+  "handoff_archive": {
+    "name": "lens-data-204.zip",
+    "size_bytes": 2335239,
+    "sha256": "2794cbbf3a7d379b20429e3393e4d01c884c061d4f7762924c039e7554ca8063"
+  },
+  "limitations": [
+    "macOS runtime not tested",
+    "Fresh-install integration used the existing Windows virtualenv and model cache; first-time package/model downloads tested with mocks",
+    "Full per-input captures retained in the local run directory, not duplicated in Git"
+  ]
+}

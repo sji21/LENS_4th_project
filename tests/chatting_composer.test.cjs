@@ -3,15 +3,16 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const vm = require("node:vm");
 const source = fs.readFileSync(require.resolve("../static/chat/app.js"), "utf8");
-const submit = source.slice(source.indexOf('  form.addEventListener("submit"'), source.indexOf('  document.querySelectorAll("[data-question]").forEach'));
+const submit = source.slice(source.indexOf('  form.addEventListener("submit"'), source.indexOf('  const reportForm'));
 
 for (const failure of [false, true]) {
   for (const newDraft of ["", "다음 질문"]) {
     test(`composer clears immediately; failure=${failure}, draft=${newDraft}`, async () => {
-      let handler, operation, resolve, reject;
+      let handler, operation, resolve, reject, reloaded = false;
       const response = new Promise((yes, no) => { resolve = yes; reject = no; });
       const input = {value: "첫 질문", focus() {}};
       const context = {
+        window: {location: {reload() { reloaded = true; }}},
         input, replyingTo: "pending-1", conversationId: "chat-1", lastRendered: "",
         form: {dataset: {sendUrl: "/send"}, addEventListener: (_, fn) => { handler = fn; }},
         action: (_, fn) => { operation = fn(); },
@@ -30,9 +31,10 @@ for (const failure of [false, true]) {
         assert.equal(input.value, newDraft || "첫 질문");
         assert.equal(context.replyingTo, newDraft ? null : "pending-1");
       } else {
-        resolve({});
+        resolve({room_created: true});
         await operation;
         assert.equal(input.value, newDraft);
+        assert.equal(reloaded, !newDraft);
       }
     });
   }

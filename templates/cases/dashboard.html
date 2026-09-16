@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}나의 프로필 · LENS{% endblock %}
+{% block head %}
+  <link rel="stylesheet" href="{% static 'cases/app.css' %}?v=20260915-2">
+  <link rel="stylesheet" href="{% static 'cases/mypage.css' %}?v=20260915-5">
+{% endblock %}
+{% block content %}
+<div class="case-layout">
+  <aside class="case-sidebar">
+    <a class="brand" href="{% url 'chat:home' %}" aria-label="LENS 채팅으로 돌아가기"><span class="brand-mark">L</span><span>LENS<span class="brand-caption">Lease Evidence Navigation System</span></span></a>
+    <a class="back-to-chat" href="{% url 'chat:home' %}"><span aria-hidden="true">←</span> 채팅으로 돌아가기</a>
+    <div class="sidebar-label">나의 채팅방</div>
+    <nav class="case-list" aria-label="나의 채팅방">
+      {% for room in rooms %}
+        <div class="case-room-item" data-room-row>
+          <a class="{% if selected.pk == room.case.pk %}selected{% endif %}" href="{% url 'cases:open-chat' room.case.pk %}"><i class="room-swatch room-color-{{ room.color_index }}"></i><span>{{ room.case.title }}<small>{% if selected.pk == room.case.pk %}현재 채팅방{% else %}대화 열기{% endif %}</small></span></a>
+          <button class="room-rename-button" type="button" data-room-edit aria-label="{{ room.case.title }} 이름 수정" title="채팅방 이름 수정">✎</button>
+          <form class="room-rename-form" data-room-form method="post" action="{% url 'cases:rename' room.case.pk %}" hidden>{% csrf_token %}<label class="sr-only" for="mypage-room-title-{{ forloop.counter }}">채팅방 이름</label><input id="mypage-room-title-{{ forloop.counter }}" name="title" value="{{ room.case.title }}" maxlength="120" required><input type="hidden" name="next" value="mypage"><button type="submit">저장</button><button type="button" data-room-cancel>취소</button></form>
+        </div>
+      {% empty %}<p class="sidebar-empty">등록된 채팅방이 없습니다.</p>{% endfor %}
+    </nav>
+    <form method="post" action="{% url 'accounts:logout' %}" class="logout-form">{% csrf_token %}<button type="submit">로그아웃</button></form>
+  </aside>
+
+  <main class="case-main">
+    <header class="mypage-topbar"><div><span class="eyebrow">MY PAGE</span><h1>나의 프로필</h1></div><a href="{% url 'chat:home' %}">상담 화면으로</a></header>
+    <section class="member-summary" aria-label="회원 기본 정보">
+      <span class="profile-avatar">{{ user.get_username|first|upper }}</span>
+      <div class="member-name"><strong>{{ user.get_username }}</strong><span>회원</span></div>
+      <dl><div><dt>이메일</dt><dd>{{ user.email|default:'등록되지 않음' }}</dd></div><div><dt>가입일</dt><dd>{{ user.date_joined|date:'Y.m.d' }}</dd></div><div><dt>채팅방</dt><dd>{{ cases|length }}개</dd></div></dl>
+    </section>
+
+    {% if rooms %}
+      <section class="mypage-grid">
+        <article class="panel calendar-panel">
+          <div class="panel-heading calendar-heading">
+            <div><span class="eyebrow">CALENDAR</span><h2>전체 대화 일정</h2></div>
+            <div class="calendar-nav" aria-label="달력 월 이동"><button id="calendar-prev" type="button" aria-label="이전 달">‹</button><strong id="calendar-month" aria-live="polite"></strong><button id="calendar-next" type="button" aria-label="다음 달">›</button></div>
+          </div>
+          <p class="panel-description">모든 채팅방의 대화에서 확인된 날짜와 기한을 한 달력에 표시합니다.</p>
+          <div class="calendar-weekdays" aria-hidden="true"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div>
+          <div id="calendar-grid" class="calendar-grid" role="grid" aria-label="전체 채팅방 월간 달력"></div>
+          <div class="calendar-status"><span><i class="candidate-dot"></i>대화에서 찾음</span><span><i class="confirmed-dot"></i>확정</span></div>
+          <div id="calendar-events" hidden>
+            {% for row in calendar_events %}<span data-calendar-event data-date="{{ row.event.starts_at|date:'Y-m-d' }}" data-time="{{ row.event.starts_at|date:'H:i' }}" data-status="{{ row.event.status }}" data-color="{{ row.color_index }}" data-room="{{ row.case.title }}" data-title="{{ row.event.title }}" data-description="{{ row.event.description }}"></span>{% endfor %}
+          </div>
+        </article>
+
+        <aside class="right-column">
+          <article class="panel room-overview-panel">
+            <div class="panel-heading"><div><span class="eyebrow">CHAT ROOMS</span><h2>채팅방별 표시</h2></div></div>
+            <p class="panel-description">채팅방 색상과 달력 일정 색상이 서로 연결됩니다.</p>
+            <div class="room-legend">
+              {% for room in rooms %}<a href="{% url 'cases:open-chat' room.case.pk %}"><i class="room-swatch room-color-{{ room.color_index }}"></i><span><strong>{{ room.case.title }}</strong><small>일정 {{ room.event_count }}개</small></span><b>›</b></a>{% endfor %}
+            </div>
+          </article>
+
+          <article class="panel checklist-panel">
+            <div class="panel-heading"><div><span class="eyebrow">CHECKLIST</span><h2>전체 체크리스트</h2></div></div>
+            <p class="panel-description">대화별로 생성된 확인 항목입니다.</p>
+            <div class="checklist">
+              {% if checklist_count %}{% for room in rooms %}{% for item in room.case.checklist_items.all %}
+                  <form method="post" action="{% url 'cases:toggle-checklist' room.case.pk item.pk %}">{% csrf_token %}<button type="submit" class="check-row {{ item.state }}"><span class="reminder-dot room-color-{{ room.color_index }}" aria-hidden="true">{% if item.state == 'done' %}✓{% endif %}</span><span class="check-copy"><strong>{{ item.title }}</strong><small><i class="room-swatch room-color-{{ room.color_index }}"></i>{{ room.case.title }}</small></span></button></form>
+                {% endfor %}{% endfor %}{% else %}<div class="empty-state"><span>✓</span><p>채팅을 시작하면 대화에 맞춰<br>확인할 항목이 생성됩니다.</p></div>{% endif %}
+            </div>
+          </article>
+        </aside>
+
+        <article class="panel reports-panel">
+          <div class="panel-heading"><div><span class="eyebrow">MY FILES</span><h2>채팅방별 리포트 파일</h2></div><a class="small-link" href="{% url 'chat:home' %}">채팅에서 리포트 만들기 →</a></div>
+          <p class="panel-description">채팅에서 생성한 PDF가 해당 채팅방 폴더에 버전별로 저장됩니다. 폴더를 눌러 파일을 확인하세요.</p>
+          <div class="report-folders">
+            {% for room in rooms %}
+              <details class="report-folder" {% if selected.pk == room.case.pk %}open{% endif %}>
+                <summary><span class="folder-icon room-color-{{ room.color_index }}" aria-hidden="true">▰</span><span class="folder-name"><strong>{{ room.case.title }}</strong><small>PDF {{ room.case.reports.count }}개</small></span><span class="folder-arrow">⌄</span></summary>
+                <div class="folder-files">
+                  {% for report in room.case.reports.all %}
+                    <div class="report-file"><span class="pdf-icon">PDF</span><div><a href="{% url 'cases:download-report' room.case.pk report.pk %}">LENS 상담 리포트 v{{ report.version }}.pdf</a><time>{{ report.created_at|date:'Y.m.d H:i' }}</time></div><a class="preview-link" href="{% url 'cases:report' room.case.pk report.pk %}">미리보기</a><a class="download-chip" href="{% url 'cases:download-report' room.case.pk report.pk %}">다운로드</a></div>
+                  {% empty %}<p class="folder-empty">이 채팅방에서 생성된 PDF가 없습니다.</p>{% endfor %}
+                </div>
+              </details>
+            {% endfor %}
+          </div>
+        </article>
+      </section>
+    {% else %}
+      <section class="empty-case"><h2>아직 저장된 채팅방이 없습니다</h2><p>채팅 화면에서 첫 질문을 보내면 대화방이 자동으로 저장됩니다.</p><a class="back-to-chat" href="{% url 'chat:home' %}">첫 상담 시작하기</a></section>
+    {% endif %}
+  </main>
+</div>
+<script src="{% static 'cases/mypage.js' %}?v=20260915-5" defer></script>
+{% endblock %}

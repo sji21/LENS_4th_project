@@ -372,7 +372,7 @@ def test_default_model_uses_bounded_structured_output_and_disables_transport_fal
 
     factory.assert_called_once()
     config = factory.call_args.kwargs
-    assert config["timeout"] == 35
+    assert config["timeout"] == 60
     assert config["max_tokens"] == 768
     assert config["temperature"] == 0
     assert config["allow_route_fallback"] is False

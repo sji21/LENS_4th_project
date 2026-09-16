@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>         
+  <script type="text/javascript" src="/LSW/js/jquery/jquery.js"></script> 
+  <script type="text/javascript" src="/LSW/js/common/jquery-custom.js"></script> 
+  <script type="text/javascript" src="/LSW/js/common/common.js"></script> 
+  <script type="text/javascript" src="/LSW/js/common/common-ex.js"></script> 
+  <script type="text/javascript" src="/LSW/js/common/xmlHttpUtil.js"></script> 
+  <script type="text/javascript" src="/LSW/js/ls/ls.js"></script> 
+  <script type="text/javascript" src="/LSW/js/ls/lsLink.js"></script> 
+  <script type="text/javascript" src="/LSW/js/ls/lsJo.js"></script> 
+  <script type="text/javascript" src="/LSW/js/ls/lsPopLayer.js"></script> 
+  <script type="text/javascript" src="/LSW/js/ls/lsOutPutJoNew.js"></script> 
+  <script type="text/javascript" src="/LSW/js/jquery/jquery.loadmask.js"></script> 
+  <script type="text/javascript" src="/LSW/js/jquery/jquery-ui.js"></script> 
+  <script type="text/javascript" src="/LSW/js/jquery/jquery.layout-latest.js"></script> 
+  <script type="text/javascript" src="/LSW/js/jquery/jquery.print.js"></script> 
+  <script type="text/javascript" src="/LSW/js/ls/lumLsLinkPop.js"></script>   
+  <link rel="stylesheet" type="text/css" href="/LSW/css/lsw/xtheme-ls.css" />
+  <link rel="stylesheet" type="text/css" href="/LSW/css/lsw/common.css" />
+  <link rel="stylesheet" type="text/css" href="/LSW/css/lsw/ext_all_ex.css" />
+  <link rel="stylesheet" type="text/css" href="/LSW/css/ui_2017.css" />
+  <link rel="stylesheet" type="text/css" href="/LSW/css/lsw/commonForLs.css" />
+  <link rel="stylesheet" type="text/css" href="/LSW/js/jquery/layout-default-latest.css" />
+  <link rel="stylesheet" type="text/css" href="/LSW/css/lsw/xtheme-layer.css" />
+  <link rel="stylesheet" type="text/css" href="/LSW/css/lumLsLinkPop.css" />
+  <style type="text/css">
+	.ui-layout-toggler-west-open {
+		background-image: url(/LSW/images/button/leslidev7_1.gif);
+		background-color: white;
+		background-repeat: no-repeat;
+		border: none;
+	}
+	.ui-layout-toggler-west-closed {
+		background-image: url(/LSW/images/button/leslidev7_2.gif);
+		background-color: white;
+		background-repeat: no-repeat;
+		border: none;
+		object-fit: contain;
+		width: 15px;
+		height: auto;
+	}
+</style>
+  <title>국가법령정보센터 | 연계정보</title>
+ </head> 
+ <body id="bodyId"> 
+  <div class="outer-north" id="topMenu"> 
+   <div class="div-top-container" id="top-container"> 
+    <div class="div-top" id="pop_top"> 
+     <div style="float:left;margin-left:10px;color:#fff;font-size:14px;font-weight:bolder;line-height:36px;">
+      연계정보
+     </div> 
+     <div style="float:right;margin-right:10px;"> 
+      <a href="https://www.law.go.kr" target="_blank"><img src="/LSW/images/common/poplogo.gif" alt="법제처 국가법령정보센터" title="법제처 국가법령정보센터가 새창으로 열립니다." /></a> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="div-message-container" id="message-container" style="background-color:#f7f7f7; height:40px; display: flex;"> 
+    <span style="display: inline-block; margin: 0 0 0 15px;"> <a href="javascript:;" id="backBtn" title="이전으로" onclick="goBack();"><img src="/LSW/images/btn_pre_pop.png" alt="이전으로" /></a> </span> 
+    <div class="r_bx" style="margin-left: auto;"> 
+     <div id="saveAndPrintBtn" class="div-print" style="display: flex; align-items: center;"> 
+      <label for="bdySearch" class="blind">검색</label>
+      <input id="bdySearch" type="text" maxlength="10" onkeydown="onKeyDown();" value="" /> 
+      <a href="javascript:;" title="검색" class="btn type4" id="keywordSch" onclick="joBdySearch()" style="display: flex; align-items: center; margin-right: 10px;"> 검색 </a> 
+      <a href="javascript:;" title="저장" class="btn_c type3 typeB" id="bdySaveBtn" onclick="saveAndPrint(0, this ,0);"> <img src="/LSW/images/common/btn_v13fn6_1.png" alt="저장" /> </a> 
+      <a href="javascript:;" class="btn_c type3 typeC" id="bdyPrintBtn" title="인쇄" onclick="javascript:lsLinkCommonPrint('');"> <img src="/LSW/images/common/btn_v13fn7_1.png" alt="인쇄" /> </a> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="outer-west" id="content_left"> 
+   <p class="deactive" id="ls004552" title="민간임대주택에 관한 특별법 시행령"> 민간임대주택에 관한 특별법 시행령<br /> <span class="subtit1_1"> [시행 2026. 2. 26.] [대통령령 제35340호, 2025. 2. 25., 일부개정] </span> </p> 
+   <ul class="sub-menu"> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo94837113:0034:02" onclick="f_autoScroll(this);" title="제34조의2 임대료">제34조의2 임대료</a> </li> 
+   </ul> 
+  </div> 
+  <div class="outer-center" id="content-container"> 
+   <div class="middle-north" id="content-title"></div> 
+   <div class="middle-center" id="linkedJoContent"> 
+    <!-- 법령명 --> 
+    <div id="conTop" class="cont_top"> 
+     <a id="top"></a> 
+     <h2 id="004552"> 민간임대주택에 관한 특별법 시행령 <span>( 약칭: 민간임대주택법 시행령 )</span> </h2> 
+     <div class="ct_sub"> 
+      <span>[시행 2026. 2. 26.] [대통령령 제35340호, 2025. 2. 25., 일부개정]</span> 
+      <img src="/LSW/images/button/btn_alljo.gif" alt="전체조문보기" onclick="javascript:window.open('/LSW/lsInfoP.do?lsiSeq=269343')" /> 
+     </div> 
+    </div> 
+    <!-- 조문정보 --> 
+    <a name="J34:2" id="J34:2"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y003402" id="J94837113:0034:02"> 제34조의2(임대료) </label> </span> <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1032135385','ALLJO','');" href="javascript:;">법</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1032135377','JO','');" href="javascript:;">제44조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1032135373','JO','');" href="javascript:;">제2항</a>에서 “대통령령으로 정하는 증액 비율”이란 다음 각 호의 구분에 따른 비율을 말한다. <span class="sfon">&lt;개정 2025. 1. 21., 2025. 10. 1.&gt;</span> </p>
+      <p class="pty1_de2h">1. 100세대 이상 민간임대주택단지(<a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1032135381','ALLJO','');" href="javascript:;">법</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1032135367','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1032135365','JO','');" href="javascript:;">제4호</a><a title="팝업으로 이동" class="link sfon5" onclick="javascript:fncLsLawPop('1032135375','JO','');" href="javascript:;">가목</a>에 따른 공공지원민간임대주택 중 20년 이상 임대할 목적으로 건설 또는 매입하는 100세대 이상 민간임대주택단지는 제외한다): <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1032135379','ALLJO','');" href="javascript:;">「통계법」</a>에 따라 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link_not" onclick="javascript:joDelegatePop('269343','0034','02','010102','NOT','국가데이터처장이 고시하는','40421');">국가데이터처장이 고시하는</a> 지출목적별 소비자물가지수 항목 중 해당 임대주택이 소재한 특별시, 광역시, 특별자치시, 도 또는 특별자치도의 주택임차료, 주거시설 유지ㆍ보수 및 기타 주거관련 서비스 지수를 가중 평균한 값의 변동률. 다만, 임대료의 5퍼센트 범위에서 시ㆍ군ㆍ자치구의 <a href="#AJAX" title="팝업으로 이동" class="delegatedOrdin_link" onclick="javascript:joDelegateOrdinPop('269343','004552','0034','02','010103','','조례로');">조례</a>로 해당 시ㆍ군ㆍ자치구에서 적용하는 비율을 정하고 있는 경우에는 그에 따른다. </p> 
+      <p class="pty1_de2h">2. 제1호를 제외한 민간임대주택: 임대료의 5퍼센트. 다만, 주거비 물가지수 및 인근 지역의 임대료 변동률 등을 고려해야 한다. </p> 
+      <p class="pty1_de2"> <span class="sfon">[본조신설 2019. 2. 12.]</span> </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <!-- 조문정보 --> 
+   </div> 
+  </div> 
+  <div id="lsOutPutDivWrite"> 
+   <div id="lsOutPutLayer"> 
+    <!-- 본문 저장 layer --> 
+    <div class="vwrap7" id="infoSaveLayer" style="display:none;"> 
+     <form id="infoSaveForm" name="infoSaveForm" target="_self" action=""> 
+      <fieldset> 
+       <legend>파일형식 선택</legend> 
+       <input type="hidden" name="saveExt" value="" /> 
+       <input type="hidden" name="lspttninfSeq" value="150800" /> 
+      </fieldset> 
+     </form> 
+     <div class="contwrap"> 
+      <div class="viewla"> 
+       <div class="ins" id="infoSaveLayerLoding"> 
+        <div class="inctn"> 
+         <ul> 
+          <li class="itit">파일형식</li> 
+          <li class="rdi"> <input type="radio" class="radio" name="fileType" id="FileSaveHwp" checked="checked" value="hwp" style="margin-left:50px" /><label for="FileSaveHwp">HWP</label> <input type="radio" class="radio" name="fileType" id="FileSavePdf" value="pdf" /><label for="FileSavePdf">PDF</label> </li> 
+         </ul> 
+        </div> 
+        <!-- button --> 
+        <div class="btnc2_1"> 
+         <input id="lsSaveBtn" type="image" onclick="javascript:saveContent();" src="/LSW/images/button/btn_save2.gif" alt="저장" /> 
+         <span class="btn_close"><a href="javascript:;" onkeypress="" onclick="javascript:saveAndPrint(0, this ,0);"><img src="/LSW/images/button/btn_close2.gif" alt="닫기" /></a></span> 
+        </div> 
+        <!-- button //--> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <!-- 본문 저장 layer //--> 
+   </div> 
+  </div> 
+  <div id="lsLinkDivWrite"> 
+   <div id="lsLinkLayer" style="display:none"></div> 
+  </div> 
+  <div id="tmpLsLinkDivWrite"> 
+   <div id="joTempDeleLayer" style="display:none"></div> 
+  </div> 
+  <script type="text/javascript" src="/LSW/js/common/hrefRemove.js"></script>  
+  <script type="text/javascript">
+//<![CDATA[
+	 /* jstl 변수를 스크립트에서 사용하기위해 html태그 뒤에 스크립트를 선언 */	 
+	var lsSearchObj = new LsSearchObj();
+
+	if ((typeof Range !=="undefined") && !Range.prototype.createContextualFragment){
+		Range.prototype.createContextualFragment = function(html){
+			var frag = document.createDocumentFragment(),
+			div = document.createElement("div");
+			frag.appendChild(div);
+			div.outerHTML = html;
+			return frag;
+		};
+	}
+	
+	var pageLayoutOptions = {
+			name:					'pageLayout'
+		,	resizeWithWindowDelay:	1
+		,	north__paneSelector:	".outer-north"
+		,	north__spacing_open:	0
+		,	north__size:			71
+		,	north__maxSize:		    71
+		,	resizable:				true
+		,	slidable:				false
+		,	closable:				true
+		,	west__paneSelector:  	".outer-west"
+		,	west__onresize:			sizeControll
+		,	west__size:				185
+		,	west__maxSize:		    400
+		,	west__initClosed:		false		
+		,	west__spacing_open:		15
+		,	west__spacing_closed:	15
+		,west__togglerLength_closed:65
+		,west__togglerLength_open:	65
+		,	center__paneSelector:	".outer-center" 
+		,	center__children: {
+					name:					'middle-contentLayoput'
+				,	center__paneSelector:	".middle-center"
+				,	center__size:             605
+		}
+	};
+	
+    $(document).ready(function() {
+		// 뒤로가기 버튼 설정
+    	updateBackBtn();
+        
+    	$("body").layout( pageLayoutOptions );
+    	$('#printContents').html($('#linkedJoContent').html());
+    	var content_head = $('#content_left > p');
+    	content_head.first().removeClass('deactive');
+    	content_head.first().addClass('active')
+
+    	// 법령목록의 첫번째 법령의 본문과 선택 조로 focus 이동
+		//f_findLinkedJoContent(el('firstRlatLsId').value);
+    	
+    	content_head.on('click', function(event) {
+           event.preventDefault();
+        	        
+           if ($(this).attr('class') != 'active'){
+           	content_head.removeClass('deactive');
+           	content_head.removeClass('active');
+           	content_head.addClass('deactive');
+               $(this).removeClass('deactive');
+               $(this).addClass('active');
+           }
+            
+            // 법령명 클릭했을때 해당 본문 띄우기
+            var activeId = $('.active').attr('id');
+            scrollActiveId = activeId.substring(2);
+			if(typeof activeId == "undefined"){
+				alert("정보가 없습니다.");
+			}else{
+				target = document.getElementById(scrollActiveId);
+				target.scrollIntoView(true);
+				return;
+			}
+        });
+    });
+    
+	$(window).resize(function() {
+		sizeControll();
+	});
+	
+	function onKeyDown(){
+		if(event.keyCode == 13){
+			joBdySearch();
+		}
+	}
+
+	function joBdySearch() {
+		var schKey = el("bdySearch");
+		var chkMode = "down";
+
+		if (schKey == null || schKey.value == "") {
+			alert("검색키워드를 입력하세요");
+			el("bdySearch").focus();
+
+		} else {
+			bodyInfoRSearch('linkedJoContent');
+		}
+	}
+	
+	/* 뒤로가기 버튼 */
+	function goBack() {		
+		var preUrl = document.referrer;                      // 전 페이지 url
+		var iniUrl = sessionStorage.getItem('iniUrl');	     // 최초 팝업창 url
+
+		if(window.history.length > 1){                       // 최초 팝업창(length=1)이 아니라면
+			if(iniUrl == preUrl) {                           // 뒤로갈 페이지가 처음 열린 팝업창일 때
+				sessionStorage.setItem('equalUrl', 'init');				
+			} else {
+				sessionStorage.setItem('equalUrl', 'diff');
+			}		
+			window.history.back();                           // 뒤로 가기			
+		} 
+	}
+	
+	/* 뒤로가기 버튼 세팅 */
+	function updateBackBtn() {
+		var backBtn = document.getElementById('backBtn');
+ 				
+		if (window.history.length == 1) {                    // 처음 팝업을 열었을때 길이는 1
+			backBtn.style.display = 'none'; 			
+			// 최초의 열린 팝업 url 저장
+			sessionStorage.setItem('iniUrl', window.location.href);
+
+		} else {                                             // history 길이가 2 이상  
+			var equalUrl = sessionStorage.getItem('equalUrl');
+			
+			if (equalUrl == "init"){
+				backBtn.style.display = 'none';              // 최초 url과 동일할 경우 뒤로가기 아이콘 숨김
+				sessionStorage.setItem('equalUrl', 'diff');		
+						
+			} else {
+				backBtn.style.display = 'inline-block';      // diff 인  경우
+			}
+		} 
+	}
+
+	//]]>
+</script>  
+ </body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "data/eval/patch024-expansion/report.json": "4c791dde3e9e2395a55903d3df21ff81f6e93c1f6181a8a12b87992c4439391d",
+  "data/eval/patch024-expansion/results.json": "c9fa20cc92276be8408d63826d36bcfae87be9f60e60896a11018cdc26282ba4",
+  "data/eval/patch025-ranking/live-verification.json": "4c9ca8758db5088597a553a953a5ee24e14c6232fc5680e73fb1d0121c39bfcf",
+  "data/eval/patch015-baseline/capture/results.json": "3834e7c0e8d5f1eb5c2f60bfd6f3106cf1a765fe8f18c535dac444af91029f4c"
+}

@@ -12,7 +12,8 @@ from .dialogue_contract import (
     Decision, DecisionError, _unique_object, ROLE_ALIASES, PROPERTY_ALIASES, build_decision_input, parse_decision,
 )
 
-PLANNER_TIMEOUT = 35
+# Allow a cold context switch after generation; the overall turn budget still applies.
+PLANNER_TIMEOUT = 60
 PLANNER_MAX_TOKENS = 768
 PLANNER_CONTEXT = 8192
 PLANNER_THINK = False

@@ -17,7 +17,7 @@
 
 Ollama의 [`format` JSON Schema](https://docs.ollama.com/capabilities/structured-outputs)를
 native `/api/chat` 최상위에 전달한다. 형식 설정이 없는 기존 생성 요청의 동작은 유지한다.
-판단 요청은 temperature 0, think false, 최대 768 토큰, context 8192, timeout 35초다.
+판단 요청은 temperature 0, think false, 최대 768 토큰, context 8192, timeout 60초다. 2026-09-16 main 통합에서 문맥 전환 지연을 반영했으며 이전 실험 수치는 당시 35초 설정이다.
 `allow_route_fallback=False`로 선택된 서버의 생성 실패 후 다른 서버에서 재생성하지 않는다.
 서버 준비 단계의 경로 선택은 기존 설정을 사용한다. 형식 오류를 고치는 두 번째 모델 호출은 없다.
 

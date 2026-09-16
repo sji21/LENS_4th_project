@@ -1,0 +1,913 @@
+{
+  "product_commit": "7cd5633f9e034ad674ea39fea15092cb56cbec0f",
+  "purpose": "retrieval regression only; no LLM or independent holdout evaluation",
+  "build_counts": {
+    "laws": 178,
+    "civil_laws": 26,
+    "cases": 26,
+    "guides": 6
+  },
+  "dev_civil_groups": {
+    "question_only": {
+      "n": 100,
+      "categories": {
+        "all_required_returned": 43,
+        "retrieval_miss": 32,
+        "no_fixed_target": 23,
+        "historical_review": 2
+      },
+      "channel_metrics": {
+        "general": {
+          "all_target_items": {
+            "n": 47,
+            "mrr": 0.5496453900709218,
+            "hit@1": 0.3829787234042553,
+            "hit@2": 0.6382978723404256,
+            "hit@3": 0.723404255319149,
+            "hit@5": 0.7659574468085106,
+            "recall@1": 0.2957446808510638,
+            "recall@2": 0.46205673758865246,
+            "recall@3": 0.5815602836879432,
+            "recall@5": 0.6627659574468086
+          },
+          "all_targets_held": {
+            "n": 47,
+            "mrr": 0.5496453900709218,
+            "hit@1": 0.3829787234042553,
+            "hit@2": 0.6382978723404256,
+            "hit@3": 0.723404255319149,
+            "hit@5": 0.7659574468085106,
+            "recall@1": 0.2957446808510638,
+            "recall@2": 0.46205673758865246,
+            "recall@3": 0.5815602836879432,
+            "recall@5": 0.6627659574468086
+          }
+        },
+        "civil": {
+          "all_target_items": {
+            "n": 32,
+            "mrr": 0.6354166666666667,
+            "hit@1": 0.5625,
+            "hit@2": 0.6875,
+            "hit@3": 0.71875,
+            "recall@1": 0.4947916666666667,
+            "recall@2": 0.6458333333333334,
+            "recall@3": 0.6927083333333334
+          },
+          "all_targets_held": {
+            "n": 32,
+            "mrr": 0.6354166666666667,
+            "hit@1": 0.5625,
+            "hit@2": 0.6875,
+            "hit@3": 0.71875,
+            "recall@1": 0.4947916666666667,
+            "recall@2": 0.6458333333333334,
+            "recall@3": 0.6927083333333334
+          }
+        }
+      },
+      "union_all_required": {
+        "hits": 43,
+        "n": 75
+      }
+    },
+    "context_diagnostic": {
+      "n": 100,
+      "categories": {
+        "retrieval_miss": 32,
+        "all_required_returned": 43,
+        "no_fixed_target": 23,
+        "historical_review": 2
+      },
+      "channel_metrics": {
+        "general": {
+          "all_target_items": {
+            "n": 47,
+            "mrr": 0.5507092198581559,
+            "hit@1": 0.3617021276595745,
+            "hit@2": 0.6170212765957447,
+            "hit@3": 0.7021276595744681,
+            "hit@5": 0.851063829787234,
+            "recall@1": 0.274468085106383,
+            "recall@2": 0.45248226950354614,
+            "recall@3": 0.5719858156028369,
+            "recall@5": 0.7046099290780142
+          },
+          "all_targets_held": {
+            "n": 47,
+            "mrr": 0.5507092198581559,
+            "hit@1": 0.3617021276595745,
+            "hit@2": 0.6170212765957447,
+            "hit@3": 0.7021276595744681,
+            "hit@5": 0.851063829787234,
+            "recall@1": 0.274468085106383,
+            "recall@2": 0.45248226950354614,
+            "recall@3": 0.5719858156028369,
+            "recall@5": 0.7046099290780142
+          }
+        },
+        "civil": {
+          "all_target_items": {
+            "n": 32,
+            "mrr": 0.53125,
+            "hit@1": 0.4375,
+            "hit@2": 0.5625,
+            "hit@3": 0.65625,
+            "recall@1": 0.3697916666666667,
+            "recall@2": 0.5208333333333333,
+            "recall@3": 0.6302083333333334
+          },
+          "all_targets_held": {
+            "n": 32,
+            "mrr": 0.53125,
+            "hit@1": 0.4375,
+            "hit@2": 0.5625,
+            "hit@3": 0.65625,
+            "recall@1": 0.3697916666666667,
+            "recall@2": 0.5208333333333333,
+            "recall@3": 0.6302083333333334
+          }
+        }
+      },
+      "union_all_required": {
+        "hits": 43,
+        "n": 75
+      }
+    },
+    "required_law": {
+      "n": 29,
+      "categories": {
+        "all_required_returned": 28,
+        "retrieval_miss": 1
+      },
+      "channel_metrics": {
+        "general": {
+          "all_target_items": {
+            "n": 1,
+            "mrr": 1.0,
+            "hit@1": 1.0,
+            "hit@2": 1.0,
+            "hit@3": 1.0,
+            "hit@5": 1.0,
+            "recall@1": 0.5,
+            "recall@2": 0.5,
+            "recall@3": 0.5,
+            "recall@5": 0.5
+          },
+          "all_targets_held": {
+            "n": 1,
+            "mrr": 1.0,
+            "hit@1": 1.0,
+            "hit@2": 1.0,
+            "hit@3": 1.0,
+            "hit@5": 1.0,
+            "recall@1": 0.5,
+            "recall@2": 0.5,
+            "recall@3": 0.5,
+            "recall@5": 0.5
+          }
+        },
+        "civil": {
+          "all_target_items": {
+            "n": 29,
+            "mrr": 0.8793103448275862,
+            "hit@1": 0.7586206896551724,
+            "hit@2": 1.0,
+            "hit@3": 1.0,
+            "recall@1": 0.7413793103448276,
+            "recall@2": 0.9827586206896551,
+            "recall@3": 1.0
+          },
+          "all_targets_held": {
+            "n": 29,
+            "mrr": 0.8793103448275862,
+            "hit@1": 0.7586206896551724,
+            "hit@2": 1.0,
+            "hit@3": 1.0,
+            "recall@1": 0.7413793103448276,
+            "recall@2": 0.9827586206896551,
+            "recall@3": 1.0
+          }
+        }
+      },
+      "union_all_required": {
+        "hits": 28,
+        "n": 29
+      }
+    },
+    "scope_provisional": {
+      "n": 1,
+      "categories": {
+        "all_required_returned": 1
+      },
+      "channel_metrics": {
+        "general": {
+          "all_target_items": {
+            "n": 0
+          },
+          "all_targets_held": {
+            "n": 0
+          }
+        },
+        "civil": {
+          "all_target_items": {
+            "n": 1,
+            "mrr": 0.5,
+            "hit@1": 0.0,
+            "hit@2": 1.0,
+            "hit@3": 1.0,
+            "recall@1": 0.0,
+            "recall@2": 1.0,
+            "recall@3": 1.0
+          },
+          "all_targets_held": {
+            "n": 1,
+            "mrr": 0.5,
+            "hit@1": 0.0,
+            "hit@2": 1.0,
+            "hit@3": 1.0,
+            "recall@1": 0.0,
+            "recall@2": 1.0,
+            "recall@3": 1.0
+          }
+        }
+      },
+      "union_all_required": {
+        "hits": 1,
+        "n": 1
+      }
+    },
+    "diagnostic_only": {
+      "n": 5,
+      "categories": {
+        "no_fixed_target": 5
+      },
+      "channel_metrics": {
+        "general": {
+          "all_target_items": {
+            "n": 0
+          },
+          "all_targets_held": {
+            "n": 0
+          }
+        },
+        "civil": {
+          "all_target_items": {
+            "n": 0
+          },
+          "all_targets_held": {
+            "n": 0
+          }
+        }
+      },
+      "union_all_required": {
+        "hits": 0,
+        "n": 0
+      }
+    }
+  },
+  "vs_finalist": {
+    "all_235_law_civil_rankings_equal": true,
+    "new_required_losses": [],
+    "new_required_gains": [],
+    "matching_rank_and_body_rows_by_channel": {
+      "laws": 235,
+      "civil_laws": 235,
+      "cases": 235,
+      "guides": 235
+    },
+    "all_235_four_channel_rankings_equal": true
+  },
+  "remaining_losses_vs_old143": [
+    {
+      "qid": "DEV-005",
+      "mode": "context_diagnostic",
+      "lost": [
+        "주택임대차보호법-제3조의6"
+      ]
+    },
+    {
+      "qid": "DEV-009",
+      "mode": "question_only",
+      "lost": [
+        "상가건물임대차보호법-제2조"
+      ]
+    },
+    {
+      "qid": "DEV-009",
+      "mode": "context_diagnostic",
+      "lost": [
+        "주택임대차보호법-제2조"
+      ]
+    },
+    {
+      "qid": "DEV-010",
+      "mode": "question_only",
+      "lost": [
+        "주택임대차보호법-제3조의3"
+      ]
+    },
+    {
+      "qid": "DEV-012",
+      "mode": "question_only",
+      "lost": [
+        "민법-제114조"
+      ]
+    },
+    {
+      "qid": "DEV-015",
+      "mode": "context_diagnostic",
+      "lost": [
+        "주택임대차보호법-제3조"
+      ]
+    },
+    {
+      "qid": "DEV-059",
+      "mode": "question_only",
+      "lost": [
+        "민법-제626조"
+      ]
+    }
+  ],
+  "general_top3_losses_vs_old143": [
+    {
+      "qid": "DEV-005",
+      "mode": "question_only",
+      "lost": [
+        "주택임대차보호법-제3조의6"
+      ]
+    },
+    {
+      "qid": "DEV-005",
+      "mode": "context_diagnostic",
+      "lost": [
+        "주택임대차보호법-제3조의6"
+      ]
+    },
+    {
+      "qid": "DEV-009",
+      "mode": "question_only",
+      "lost": [
+        "상가건물임대차보호법-제2조"
+      ]
+    },
+    {
+      "qid": "DEV-009",
+      "mode": "context_diagnostic",
+      "lost": [
+        "주택임대차보호법-제2조"
+      ]
+    },
+    {
+      "qid": "DEV-010",
+      "mode": "question_only",
+      "lost": [
+        "주택임대차보호법-제3조의3"
+      ]
+    },
+    {
+      "qid": "DEV-049",
+      "mode": "context_diagnostic",
+      "lost": [
+        "주택임대차보호법-제7조"
+      ]
+    },
+    {
+      "qid": "DEV-088",
+      "mode": "context_diagnostic",
+      "lost": [
+        "상가건물임대차보호법-제3조"
+      ]
+    }
+  ],
+  "existing204_vs_rebuilt_public": {
+    "dev": {
+      "n": 24,
+      "question_gold_sha256": "79f626d6dd985e28a6034cfc33c4e9f90b4f9e25f73e4d8a163e3f57dbda086c",
+      "metrics": {
+        "hit@1": 0.75,
+        "hit@2": 0.9166666666666666,
+        "hit@3": 0.9583333333333334,
+        "hit@5": 1.0,
+        "recall@1": 0.6666666666666666,
+        "recall@2": 0.8541666666666666,
+        "recall@3": 0.9375,
+        "recall@5": 0.9791666666666666,
+        "mrr": 0.8576388888888888
+      },
+      "metrics_comparable": true,
+      "required_evidence_changes": [
+        {
+          "qid": "dev-001",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-002",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-003",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-004",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-005",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-006",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-007",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-008",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-009",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-010",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-011",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-012",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-013",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-014",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-015",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-016",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-017",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-018",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-019",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-020",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-021",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-022",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-024",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "dev-025",
+          "lost_gold": [],
+          "gained_gold": []
+        }
+      ],
+      "has_required_evidence_loss": false,
+      "metrics_equal": true,
+      "rankings_equal": true
+    },
+    "holdout": {
+      "n": 18,
+      "question_gold_sha256": "e284515efa214e4617b7b182268a8c5a9a97d0f2c442511badf3fb665fa9bab6",
+      "metrics": {
+        "hit@1": 0.7222222222222222,
+        "hit@2": 0.8888888888888888,
+        "hit@3": 0.9444444444444444,
+        "hit@5": 1.0,
+        "recall@1": 0.6111111111111112,
+        "recall@2": 0.712962962962963,
+        "recall@3": 0.787037037037037,
+        "recall@5": 0.8703703703703703,
+        "mrr": 0.837962962962963
+      },
+      "metrics_comparable": true,
+      "required_evidence_changes": [
+        {
+          "qid": "holdout-001",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "holdout-002",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "holdout-003",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "holdout-004",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "holdout-005",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "holdout-007",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "holdout-008",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "holdout-010",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "holdout-011",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "holdout-012",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "holdout-013",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "holdout-014",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "holdout-015",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "holdout-016",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "holdout-017",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "holdout-018",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "holdout-019",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "holdout-020",
+          "lost_gold": [],
+          "gained_gold": []
+        }
+      ],
+      "has_required_evidence_loss": false,
+      "metrics_equal": true,
+      "rankings_equal": true
+    },
+    "civil_published_regression": {
+      "n": 15,
+      "question_gold_sha256": "1450c64728c722bdc245d19dfa7a6342c1bbf82c18ecd6cf342283d1b876d1ef",
+      "metrics": {
+        "hit@law5+civil3": 0.8666666666666667,
+        "all@law5+civil3": 0.8,
+        "recall@law5+civil3": 0.8222222222222222
+      },
+      "metrics_comparable": true,
+      "required_evidence_changes": [
+        {
+          "qid": "civil-review-001",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "civil-review-002",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "civil-review-003",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "civil-review-004",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "civil-review-005",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "civil-review-006",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "civil-review-007",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "civil-review-008",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "civil-review-009",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "civil-review-010",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "civil-review-011",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "civil-review-012",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "civil-review-013",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "civil-review-014",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "civil-review-015",
+          "lost_gold": [],
+          "gained_gold": []
+        }
+      ],
+      "has_required_evidence_loss": false,
+      "metrics_equal": true,
+      "rankings_equal": true
+    },
+    "case_dev13": {
+      "n": 13,
+      "question_gold_sha256": "f084dd971f1a9e66ddf9830d8eeb7ffacceeef7e40ecf97dee80c0a9df6c4209",
+      "metrics": {
+        "hit@1": 0.9230769230769231,
+        "hit@2": 0.9230769230769231,
+        "hit@3": 0.9230769230769231,
+        "hit@5": 1.0,
+        "recall@1": 0.3296351084812624,
+        "recall@2": 0.46055226824457596,
+        "recall@3": 0.5465976331360947,
+        "recall@5": 0.6999506903353058,
+        "mrr": 0.9423076923076923
+      },
+      "metrics_comparable": true,
+      "required_evidence_changes": [
+        {
+          "qid": "case26-dev-001",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-dev-002",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-dev-003",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-dev-004",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-dev-005",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-dev-006",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-dev-009",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-dev-010",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-dev-012",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-dev-013",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-dev-018",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-dev-020",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-dev-022",
+          "lost_gold": [],
+          "gained_gold": []
+        }
+      ],
+      "has_required_evidence_loss": false,
+      "metrics_equal": true,
+      "rankings_equal": true
+    },
+    "case_external8": {
+      "n": 8,
+      "question_gold_sha256": "d73848b6d9dc1f1fa4dafdfd76a3300b6ce1169a7583a2f9e6e6b577d2bd562f",
+      "metrics": {
+        "hit@1": 0.75,
+        "hit@2": 0.875,
+        "hit@3": 1.0,
+        "hit@5": 1.0,
+        "recall@1": 0.29166666666666663,
+        "recall@2": 0.4479166666666667,
+        "recall@3": 0.5520833333333333,
+        "recall@5": 0.75,
+        "mrr": 0.8541666666666666
+      },
+      "metrics_comparable": true,
+      "required_evidence_changes": [
+        {
+          "qid": "case26-ext-002",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-ext-004",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-ext-008",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-ext-009",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-ext-010",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-ext-012",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-ext-014",
+          "lost_gold": [],
+          "gained_gold": []
+        },
+        {
+          "qid": "case26-ext-015",
+          "lost_gold": [],
+          "gained_gold": []
+        }
+      ],
+      "has_required_evidence_loss": false,
+      "metrics_equal": true,
+      "rankings_equal": true
+    },
+    "case_legacy20": {
+      "state": "not_scored",
+      "reason": "gold absent from current corpus",
+      "input_count": 20
+    }
+  },
+  "preliminary_and_final_235_evidence_equal": true,
+  "final_model_calls": {
+    "actual_kure_calls": 375,
+    "general_backend_requests": 494,
+    "civil_backend_requests": 298
+  },
+  "public_model_calls": {
+    "existing": 103,
+    "rebuilt": 103
+  },
+  "timing_scope": "diagnostic timings with concurrent local verification workload; excludes initial loading, LLM and web; not a performance or RunPod comparison",
+  "final_search_mean_seconds": 0.4241368076595926,
+  "final_search_median_seconds": 0.36704200000167475,
+  "capture_commit": "241088f948217e8586b1fa81bc70197fc323a2bc",
+  "review_recapture": {
+    "previous_capture_commit": "8a57092",
+    "previous_capture_manifest_sha256": "701e9555520bd89cbb3d806b27c916bd9177babd724ca9f807ab8e21fe7a041d",
+    "all_235_returned_evidence_equal_to_previous_capture": true,
+    "criteria_hash_policy": "UTF-8 text with CRLF/CR normalized to LF; source bundle manifests remain byte-exact",
+    "ranking_identity": {
+      "laws": "article_id",
+      "civil_laws": "article_id",
+      "cases": "chunk_id",
+      "guides": "chunk_id"
+    }
+  },
+  "settings_recapture": {
+    "previous_artifact_commit": "241088f",
+    "previous_capture_manifest_sha256": "5556583dfbbbb2a6baac5ddc3658d48503cec28297fd71ebf9ff9703ec26f9ce",
+    "all_235_returned_evidence_equal_to_previous_capture": true,
+    "recorded_settings_equal_to_previous_capture": true,
+    "contract_source": "scripts/patch041_settings_contract.py",
+    "validation": "strict independent fixed contract; live settings checked before and after retrieval; offline replay checks all snapshots"
+  }
+}

@@ -509,7 +509,7 @@ class StructuredOutputTests(unittest.TestCase):
         )
         self.assertEqual(schema, payload["format"])
         self.assertNotIn("format", payload["options"])
-        self.assertEqual({"temperature": 0.1, "num_predict": 600, "seed": 7, "num_ctx": 2048}, payload["options"])
+        self.assertEqual({"temperature": 0.1, "num_predict": 600, "seed": 7, "repeat_penalty": llm_module.LLM_REPEAT_PENALTY, "num_ctx": 2048}, payload["options"])
         self.assertEqual(llm_module.THINK_OFF, not payload["think"])
         self.assertEqual(42, model.timeout)
         self.assertTrue(model.allow_route_fallback)

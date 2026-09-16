@@ -9,21 +9,38 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-040 Provide general guidance before one missing-fact question for personal renewal/deposit procedures. Add attributed renewal guidance as a conversation-only retrieval supplement, preserving legal validation and existing indexes. Reserve 8,192 context and 512 output tokens for conversational generation to avoid dropping instructions. A factual reply after verified guidance is saved and acknowledged before the next missing-fact question; substantive follow-ups still use RAG. (commit: `d649504`)
+- PATCH-050 Integrate conversation management with member rooms, source annotations, and main citation validation. Clear dialogue memory on member reset; preserve pending questions, retry identity, and drafts when rooms are created. Allow 60 seconds for planner context switching while retaining the overall call budget. Renumber conversation records to 047–049/050 while retaining main patch IDs by user approval. (commit: pending)
+
+- PATCH-050 Provide general guidance before one missing-fact question for personal renewal/deposit procedures. Add attributed renewal guidance as a conversation-only retrieval supplement, preserving legal validation and existing indexes. Reserve 8,192 context and 512 output tokens for conversational generation to avoid dropping instructions. A factual reply after verified guidance is saved and acknowledged before the next missing-fact question; substantive follow-ups still use RAG. (commit: `d649504`)
 
 ## 2026-09-15
 
+
 ### Fixed (Bug Fixes)
 
-- PATCH-040 Clear the composer when a question is sent, preserve a newer draft during the response, and restore failed submissions only into an empty composer. Nine JavaScript regressions pass. (commit: `d649504`)
+- PATCH-050 Clear the composer when a question is sent, preserve a newer draft during the response, and restore failed submissions only into an empty composer. Nine JavaScript regressions pass. (commit: `d649504`)
+
+- PATCH-041 validates recorded retrieval settings against an independent frozen contract, including search limits, RRF/depth, BM25, query expansion, weights and civil selection. Check live settings before and after capture and reject missing or altered settings during offline replay even if artifact hashes are recomputed. (commit: daf49f3)
+
+- PATCH-041 normalizes evaluation-criteria line endings for cross-checkout replay and compares case/guide rankings by stable chunk ID alongside law article IDs. Raw source-bundle, data and model integrity checks remain enforced. Adds 10 regression cases; a fresh 235-input run preserves all four channels and scores. (commit: b2ae7eb)
+
+### Added
+
+- PATCH-045 adds member-owned chat rooms while keeping chat as the post-login and return landing page. A blank landing or New Chat does not create a database room; the first successfully answered member question creates and names it, and the sidebar pencil action renames the same room everywhere. A data migration removes only empty legacy auto-created default rooms while preserving any room with chat, document, calendar, checklist, fact, or report data. My Page combines all room schedules in a real monthly calendar, room-colored checklist items, and versioned PDF folders per chat room. Reports are generated from the current conversation, downloaded immediately, retained for later member downloads, and announced in the chat UI. STT UI and processing are excluded. Related Django checks: 77 passed. Existing PATCH-044 citation validation files remain unchanged. (commit: pending)
+
+- PATCH-041 verifies the latest product retriever against a fresh source-built database on local CPU: all four channels match the adopted baseline on 235 inputs, and 78 public regression questions match the existing database under the same code. Required evidence remains 43/75 in both DEV100 v2 modes and 28/29 in CIV35; previous misses remain, with no new rebuild losses. Adds reproducible capture, integrity checks and provenance. Full tests: 1,576 passed, 3 skipped, 172 subtests passed. No retrieval tuning, corpus additions, or LLM assessment. (commit: 8a57092)
+
+### Changed
+
+- PATCH-040 documents successful CUDA operations and KURE automatic/explicit GPU embeddings after the README environment setup on a new RTX A4000 Pod (driver 595.91.07, Python 3.11.15, torch 2.14.0+cu130). No CUDA code change is needed for this tested environment. Keep the earlier warning unresolved, PATCH-029 unapplied and unverified on a Pod, and new-Pod DB/search/LLM evaluation unrun. Documentation only. (commit: 7773253)
 
 ## 2026-09-14
 
 ### Fixed (Bug Fixes)
 
-- PATCH-040 Separate procedure answer labels into paragraphs in the chat display, including saved responses, and request blank lines in generated procedure answers. Version the script URL to refresh cached clients; verify the existing conversation in the browser. (commit: `d649504`)
+- PATCH-050 Separate procedure answer labels into paragraphs in the chat display, including saved responses, and request blank lines in generated procedure answers. Version the script URL to refresh cached clients; verify the existing conversation in the browser. (commit: `d649504`)
 
-- PATCH-040 Pass question purpose separately from topic into retrieval and answer instructions, distinguishing procedures, timing, specific permission, definitions, documents and sources. Keep legacy proposals compatible and preserve follow-up targets. Live answer quality remains under review; see docs/chatting-question-purpose.md. (commit: `d649504`)
+- PATCH-050 Pass question purpose separately from topic into retrieval and answer instructions, distinguishing procedures, timing, specific permission, definitions, documents and sources. Keep legacy proposals compatible and preserve follow-up targets. Live answer quality remains under review; see docs/chatting-question-purpose.md. (commit: `d649504`)
 
 - PATCH-038 Fix renewal-method follow-ups being mistaken for new contract facts and rejected despite preserved context. Keep fact validation strict; verify normal, recovery, and pending-question contexts with the local model. (commit: `876e19f`)
 
@@ -41,6 +58,7 @@ This file records the 4th project from its first change onward.
 
 ## 2026-09-13
 
+
 ### Added
 
 - PATCH-036 Bound conversation model calls and context, retain request identities after uncertain responses, and exclude rejected history and sensitive exception text. (commit: `4b35221`)
@@ -55,7 +73,62 @@ This file records the 4th project from its first change onward.
 
 - PATCH-031 Adds bounded single-call Qwen conversation planning, source-checked structured decisions, and development captures that distinguish raw model errors from source-preserving normalization. (commit: `5a70d95`)
 
+### Changed
+
+- PATCH-028 locks the resolved data target across checkouts and both source/frozen tools, while allowing independent targets to proceed. Preserve the lock file outside replaced payloads and ignore the default local lock in Git. Cross-process and focused checks:107 passed. (commit: e2872e5)
+
+- PATCH-028 rolls back source/frozen installations on Ctrl-C, including first installs and interrupted postflight checks. Wait for mutating children before rollback and track paths before renaming originals. Record ten resolved embedding/index dependency versions to invalidate incompatible reuse. Focused tests:138 passed. (commit: 23d3b8c)
+
+- PATCH-028 fixes schema-change detection, invalidates vector reuse on embedding/index pipeline changes, and recovers damaged owned data with explicit --rebuild. Explain unsupported source-to-frozen conversion without modifying data. Record completed Mac/RunPod installation checks, including RunPod DB/basic-search completion; CUDA compatibility remains unresolved. Focused tests:86 passed. (commit: 150e769, df08178)
+
+- PATCH-028 streams builder progress and warnings to the terminal while preserving per-worker logs and failure diagnostics. Stop workers before releasing control on interrupted output. Focused validation:68 passed; no DB or GPU dependency changes. (commit: 587f632)
+
+- PATCH-028 allows `--venv-dir` for a container-local RunPod environment while retaining persistent DB/model storage and default Windows/Mac `.venv` behavior. Preserve existing environments; use the selected interpreter throughout preparation/build. Document ephemeral-environment reinstallation and the completed Mac installation check; RunPod speed is not yet measured. (commit: a6cc50b)
+
+- PATCH-028 makes source-based server construction the default: parse approved sources, build SQLite and separate indexes, reuse unchanged vectors, and expose Django `prepare_retrieval`. Keep frozen DB bundles for evaluation reproduction only; support persistent Hugging Face caches for RunPod. (commit: 9e50649, c19b4b1, 2654264)
+
+- PATCH-028 adds an environment bootstrap (venv, required packages, verified KURE cache), explains the handoff data folder before manual setup, and supports verified first installation into an empty checkout with failure recovery. macOS runtime remains unverified. (commit: 9aadb63, e59f53f)
+
+- PATCH-028 documents the macOS Python entry point alongside Windows commands, including environment setup and the lack of macOS runtime verification. Documentation only. (commit: c5249ad)
+
+- PATCH-028 defaults to a single no-argument command showing DB check → apply if needed → confirmation. Prompt for the source only when needed, skip identical data and keep subprocess diagnostics in per-step logs.24 focused tests pass; retrieval/data unchanged. (commit: 6b3e43d)
+
+- PATCH-028 completes the main-checkout rollout: general178/civil26 with235/235 matches before and after installation,375 model calls each. Repeated apply leaves all payload bytes unchanged and creates no additional backup. Preserve prior local PATCH-024 edits separately. Validation:1,135 full-suite passes,3 skips,172 subtests;20 focused passes after the copy-inspection correction. (commit: 0e80edd)
+
+- PATCH-028 inspection now opens disposable copies because Chroma may rewrite physical index files on read. Repeat apply preserves every installed payload byte and creates no new run or backup. (commit: e8e3a61)
+
+- PATCH-028 adds a local retrieval-data status/apply/restore command and a virtual-environment PowerShell launcher. Verify complete bundle identity and duplicate article/chunk keys, skip identical installations, serialize writers, and automatically restore after postflight or receipt failures. Main-folder rollout verification is pending. (commit: b3669e1)
+
+- PATCH-027 unifies active source, test and data directory names under 027. Preserve all frozen source/capture bytes and hashes; translate only the three old data prefixes on read, leaving execution-code hashes tied to their original commits. Product retrieval and installed data are unchanged. (commit: 36e9791)
+
+- PATCH-027 integrates main `6e40d21` after team PR #24 merged during review. Preserve both patch records and distinguish the legacy civil10 setup from the expanded civil26 profile in README. Retrieval code is unchanged; the integrated checkout passes 1,111 tests with 3 skips and 172 subtests. (commit: 7be0613)
+
+- PATCH-027 fixes PR #25 receipt-failure rollback: validate and store the installation receipt inside the protected transaction, so missing, partial or invalid writes restore the original payload without requiring receipt-based recovery. Rename explanatory documents to PATCH-027, update links and mark old experiments explicitly while preserving captured script/data paths and hashes. Retrieval policy and active data are unchanged. (commit: 562905d)
+
+- PATCH-027 completes product rollout in the patch worktree: back up the 143-article data and activate the verified 204-article/civil26 profile. Both preflight and post-install default-factory runs match all 235 final-test outputs across four channels, with 375 model calls each. Publish capture/backup records and setup/restore instructions; 1,042 tests pass, 3 skip and 124 subtests pass after activation. Main-checkout/server data remain unchanged until their separate post-merge rollout. (commit: 4ddf8cf)
+
+- PATCH-027 connects the selected expanded-law policy to the product factory and BM25 fallback through a corpus/index-verified local profile. Preserve the general5/civil3/case5/guide2 API, report active evaluator settings and share embeddings only within a request. Add staged 235-input product verification and byte-verified backup, transactional replacement and restore tools. Worktree rollout verification is pending. (commit: 15a3461, 4457916)
+
+- PATCH-027 completes 705 fresh service calls and selects the record-lookup candidate for the 61-article expansion under the new user-authorized net-benefit protocol. DEV complete retrieval is 28→43/75 questions and 30→43/75 contexts; general3+civil3 coverage is 27→40 and 28→38/75. The last refinement recovers one prior loss, leaving seven returned-target and seven general TOP3 loss inputs. Model calls rise 235→375 and mean latency 0.232→0.403s. Preserve the remaining regressions and verified sources; 1,014 tests pass, 3 skip, 124 subtests pass. Technical adoption is recommended; production policy wiring and operating-data rollout remain pending. (commit: d9ee777)
+
+- PATCH-027 prepares the user-authorized final test for adopting the 61-article expansion. Freeze net gains, consumed evidence coverage, CIV35 preservation and integrity checks instead of requiring zero historical losses. Compare the verified policy with one bounded fixed-date-record lookup refinement using 235 fresh operating/control/candidate searches. Earlier acceptance results remain unchanged. (commit: 7294492)
+
+- PATCH-027 explains the union of eight returned-target and seven general TOP3 loss inputs: eleven distinct inputs, five complete-to-incomplete regressions, with all missing targets still present among candidates. One offline seedless-RRF comparison across 235 inputs recovers DEV-059 and gains DEV-064 but loses DEV-058; question complete retrieval rises 43→44/75 and context stays 42/75. Preserve both gains and losses, paired-context diagnostics and replay checks. No operating change or retrospective acceptance-gate revision. (commit: 4da57fd)
+
+- PATCH-027 corrects same-edition Civil Act reference parsing/revalidation, notice negation versus failed delivery, and public/private rental context separation. Freeze `context_both + context_reference` and verify 235 fresh service outputs against recombined rankings, bodies, sources, cases and guides. DEV complete retrieval remains 43/75 questions and 42/75 contexts, with nine new required civil articles retrieved; civil question Hit3 is 23/32 rather than the earlier 24/32 preview. Eight prior-return and seven general TOP3 loss inputs remain, so adoption is withheld. Measured model calls increase 235→375; the zero-additional-call claim is withdrawn. Share the clean-commit capture and replay guards; 988 tests pass, 3 skip, 124 subtests pass. Operating data and retrieval remain unchanged. (implementation: 5ea42a8, f8597cd; verification: dd47e58)
+
+- PATCH-027 compares concept expansion on the same 204 articles and 235 inputs. Expanding both BM25 and KURE raises civil Hit3 from 13→23/32 (question) and 13→20/32 (context), retrieving eight of nine newly required civil articles, but introduces two new evidence-loss inputs against the untuned 204-article result. Lexical-only civil expansion retrieves seven new articles without new returned-target losses against that result. General-law both-channel expansion improves Hit3 28→32/47 and 28→33/47, but loses prior targets; hard TOP3 preservation blocks newly added TOP3 gains. No policy passes the fixed adoption gate. A return-mail concept false positive was narrowed before final recapture. Operating retrieval/data remain unchanged. (commit: bf8b6eb, 082d3d7; analysis: 0fd54bd)
+
+- Renumber the local law-expansion work from PATCH-026 to PATCH-027 because team PR #24 has published PATCH-026. Resume the same local PATCH-027 work previously folded into local 26; do not reuse it for an unrelated task. Preserve capture paths/hashes and historical commits; rename only the active branch and current records. (commit: 052af96)
+
+- PATCH-027 compares six general-law alternatives and four civil-selection alternatives against the fixed 204-article/235-input capture. Question complete retrieval reaches 37/75, but every general alternative loses at least eight prior TOP3 targets by input; no policy passes the predeclared adoption gate. Removing civil topic selection worsens DEV retrieval, and none retrieves the nine newly required civil articles at TOP3 in their target inputs. Preserve traces, fixed denominators, regressions and replay validation; operating data and ranking policy remain unchanged. PATCH-027 stays in progress. (commit: f079a0f)
+
+- PATCH-027 adds 61 verified article records to a 204-article candidate and evaluates 235 identical inputs with all 26 Civil Act articles searchable. Existing version members, article bodies, source/structure data and vectors are preserved. DEV fixed-target data gaps drop from 32 to 0; complete retrieval rises 28→32 / 30→34, but 16 inputs lose prior required evidence. General TOP3 loss affects 13 inputs; civil TOP3 loses 3. Full-corpus ranks and source checks are reproducible offline. Operating adoption is deferred pending ranking improvements; historical/guide/appendix coverage and LLM answers are not claimed complete. (commit: be56037, 598ced4; analysis: 1758a7f)
+
+- PATCH-027 prioritizes completing the reviewed DEV100 law corpus before further five-article tuning. The inventory identifies 27 missing fixed-required articles plus 17 other reviewed references, with six law-tagged sources requiring document/article/version identification. These are collection candidates, not newly ingested or legally reverified records. Gold and operating data remain unchanged. (commit: f3c0728)
+
 ## 2026-09-12
+
 
 ### Added
 
@@ -63,11 +136,24 @@ This file records the 4th project from its first change onward.
 
 - PATCH-029 Adds session-scoped user statements with quoted provenance, corrections, topic boundaries and private answer memory; document deletion and expiry clear derived context. (commit: `02a030f`)
 
-- PATCH-028 Adds a synthetic conversation capture runner, explicit non-observable checks, source fingerprints, latency and model-call measurements with predeclared acceptance gates. Records 23 real-model baseline turns and synchronizes local data with the already reviewed 10-article Civil Act corpus. (commit: `3b6986a`)
+- PATCH-049 Adds a synthetic conversation capture runner, explicit non-observable checks, source fingerprints, latency and model-call measurements with predeclared acceptance gates. Records 23 real-model baseline turns and synchronizes local data with the already reviewed 10-article Civil Act corpus. (commit: `3b6986a`)
 
-- PATCH-027 Adds separate development and acceptance conversation scenarios with per-turn action, fact and query expectations; infrastructure checks remain distinct from legal-answer accuracy. (commit: `411d3ec`)
+- PATCH-048 Adds separate development and acceptance conversation scenarios with per-turn action, fact and query expectations; infrastructure checks remain distinct from legal-answer accuracy. (commit: `411d3ec`)
 
-- PATCH-026 defines the conversational chatbot roadmap on `chatting-upgrade`: twelve sequential patches with planned child branches, acceptance criteria, test scenarios, a baseline and per-feature review before integration. Product behavior is unchanged. See `LIST.md`. (commit: `6c091a8`)
+- PATCH-047 defines the conversational chatbot roadmap on `chatting-upgrade`: twelve sequential patches with planned child branches, acceptance criteria, test scenarios, a baseline and per-feature review before integration. Product behavior is unchanged. See `LIST.md`. (commit: `6c091a8`)
+- PATCH-039 matches uploaded-document law citations by law/article/branch identity instead of display text containing conjunctions. Preserve original issue text, exact chunk attribution, and rejection of absent or similarly numbered citations. Related 546 passed, 16 subtests; full UTF-8 suite 1,536 passed, 3 skipped, 172 subtests. Explicit incorporation relationships and live 27-question outcome/cost evaluation remain separate follow-ups; current relation policy is unchanged. (commit: fbc3500)
+
+- PATCH-039 shares copied-title and emphasis parsing across article validation, paragraph validation and display spans. Only matching retrieved titles are excluded; independent claims remain checked. Preserve correct evidence links with split emphasis, reject wrong-law fallback, and support nested-title URLs. Related 482 passed, 16 subtests; full UTF-8 suite 1,467 passed, 3 skipped, 172 subtests. (commit: 6e3064a)
+
+- PATCH-039 identifies retrieved laws from the citation head, excluding article references inside the parenthesized title. Share this identity with paragraph/header validation while rejecting ambiguous trailing sources. Related 387 passed; full UTF-8 suite 1,434 passed, 3 skipped, 172 subtests passed. (commit: 3d8355b)
+
+- PATCH-039 checks each adjacent law citation independently instead of absorbing an earlier article into the next law name. Preserve plain/emphasized citations, conjunctions, multiword law names, and paragraph offsets. PR #27 P1 regression fixed; related 366 passed, full UTF-8 suite 1,413 passed, 3 skipped, 172 subtests passed. (commit: ce37159)
+
+- PATCH-039 separates law-name context from retrieved article provenance: body cross-references no longer authorize unretrieved citations. Paired Markdown emphasis is masked for citation/paragraph parsing with original offsets and issue excerpts preserved. Related tests: 225 passed, 6 subtests passed. Full suite with Python UTF-8 mode: 1,272 passed, 3 skipped, 172 subtests passed. Default Windows cp949 mode fails an unchanged frontend test's file read; no live LLM evaluation was performed. (commit: 88e23db)
+
+### Changed
+
+- PATCH-027 combines selection, candidate ingestion, retrieval improvements and evaluation for the same five residence/tax procedure articles. The two local experiments are consolidated without rewriting commits and their trace paths are preserved. Initial full/tax/residence ingestion loses prior TOP5 evidence on 6/4/1 inputs. The partitioned lexical candidate reproduces all 235 product outputs, raises DEV full targets 28→29/30→31 and preserves prior TOP5 evidence, but loses one TOP3 anchor. This patch remains in progress and operating data adoption is deferred. (commit: 8ed2733, b40834f, 54013ac, 0a57247, 6085564, 34ea1f0, 473dccc; consolidation: 36ca04a)
 
 ### Fixed (Bug Fixes)
 

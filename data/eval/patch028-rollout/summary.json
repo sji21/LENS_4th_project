@@ -1,0 +1,18 @@
+{
+  "execution_commit": "50c4ed8dc3b0bd360f9a80199789fc738221f37f",
+  "target": "C:/team_project/4th_project/data",
+  "run_directory": "tmp\\retrieval-data\\20260913T065737Z-21385343",
+  "backup": "tmp\\retrieval-data\\20260913T065737Z-21385343\\backup",
+  "state": "installed",
+  "counts": {
+    "laws": 178,
+    "civil_laws": 26,
+    "cases": 26,
+    "guides": 6
+  },
+  "preflight_inputs": 235,
+  "postflight_inputs": 235,
+  "each_model_calls": 375,
+  "repeat_verification": "repeat.json",
+  "note": "Captures precede the inspection-copy correction; repeat check follows it. No retrieval policy change."
+}

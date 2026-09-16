@@ -1,0 +1,53 @@
+{
+  "comparison": "local operating corpus vs fresh source build; identities and text, not index bytes",
+  "files": {
+    "chunks": {
+      "before_sha256": "4affcd2bb78022df481bf3026788e8d74791f1865781cc9c33d527560f7298d2",
+      "after_sha256": "8784c57ca4f2ba4ece469cf8f773e225bec0d8d0a1c54563e0e4b22add8ce324",
+      "before_count": 204,
+      "after_count": 204,
+      "identity_key": "article_id",
+      "added": [],
+      "removed": [],
+      "body_changed": [],
+      "chunk_id_changed": 129,
+      "source_changed": 140
+    },
+    "civil": {
+      "before_sha256": "60e8146bdfe48caa8e07a59ee438c68865e63153b171b4bbcc37dab22704c1f7",
+      "after_sha256": "d2adac18e6f4eb1a85a3829f13628470930f55b7dcd7ee1a2502402344ea2b0c",
+      "before_count": 26,
+      "after_count": 26,
+      "identity_key": "article_id",
+      "added": [],
+      "removed": [],
+      "body_changed": [],
+      "chunk_id_changed": 0,
+      "source_changed": 7
+    },
+    "cases": {
+      "before_sha256": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
+      "after_sha256": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
+      "before_count": 26,
+      "after_count": 26,
+      "identity_key": "case_id",
+      "added": [],
+      "removed": [],
+      "body_changed": [],
+      "chunk_id_changed": 0,
+      "source_changed": 0
+    },
+    "guides": {
+      "before_sha256": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
+      "after_sha256": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
+      "before_count": 6,
+      "after_count": 6,
+      "identity_key": "chunk_id",
+      "added": [],
+      "removed": [],
+      "body_changed": [],
+      "chunk_id_changed": 0,
+      "source_changed": 0
+    }
+  }
+}

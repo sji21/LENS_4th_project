@@ -533,3 +533,32 @@ def test_pending_view_has_only_public_choices_and_stale_choice_is_rejected(brows
     assert Conversation.objects.get().state == before
     calls.planner.assert_called_once()
     calls.official.assert_called_once()
+
+
+def test_member_room_preserves_followup_and_reset_clears_dialogue(client, calls, settings, monkeypatch):
+    from django.contrib.auth import get_user_model
+    from chat.models import Message
+    settings.CHAT_CONVERSATION_ENABLED = True
+    user = get_user_model().objects.create_user('dialogue-member', password='test-only-password')
+    client.force_login(user)
+    assert client.get('/').status_code == 200
+    monkeypatch.setattr('cases.services.conversation_guidance.refresh_conversation_guidance', lambda *a, **k: {})
+    plan(calls, topic='계약갱신', purpose='procedure', clarify_field='end_date')
+    first = post(client, '월세집 계약 갱신은 어떻게 해?')
+    assert first.status_code == 200 and first.json()['room_created']
+    conversation = Conversation.objects.get(pk=current(client)['conversation_id'])
+    assert conversation.case_id and conversation.user_id == user.pk
+    assert Message.objects.get(conversation=conversation, role='assistant').metadata['followup_question']
+    plan(calls, intent='clarification_answer', topic='계약갱신', clarify_field='landlord_notified',
+         updates={'end_date': {'value': '2026년 12월 31일', 'evidence': '2026년 12월 31일'}})
+    second = post(client, '2026년 12월 31일이야')
+    assert second.status_code == 200
+    assert second.json()['messages'][-1]['action'] == 'clarify'
+    conversation.refresh_from_db()
+    assert conversation.state['dialogue']['facts']['end_date']['value'] == '2026년 12월 31일'
+    result = client.post('/api/reset/', data=json.dumps({'conversation_id': str(conversation.pk), 'request_id': str(uuid.uuid4())}), content_type='application/json')
+    assert result.status_code == 200
+    conversation.refresh_from_db()
+    assert conversation.case_id
+    assert conversation.state['dialogue'] == services.empty_dialogue()
+    assert not Message.objects.filter(conversation=conversation).exists()

@@ -319,7 +319,7 @@ def test_public_message_contains_no_planner_payload_or_runtime_diagnostics(runti
     call(state, runtime)
     public = services.public_state(SimpleNamespace(state=state, id="conversation"))
     assert "dialogue" not in public and "dialogue_runtime" not in public
-    assert set(public["messages"][-1]) == {"id", "role", "status", "content", "sources", "used_history", "elapsed_seconds", "action", "intent", "reason"}
+    assert set(public["messages"][-1]) == {"id", "role", "status", "content", "sources", "used_history", "elapsed_seconds", "action", "intent", "reason", "glossary", "citations", "followups", "simplified"}
     assert "PRIVATE_" not in str(public)
     assert "search_query" not in str(public)
 

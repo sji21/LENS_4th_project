@@ -4,6 +4,7 @@ data/parsed/
 data/chunks/
 data/database/
 data/index/
+/data/.retrieval-data.lock
 
 # 환경 변수 · 비밀정보
 .env

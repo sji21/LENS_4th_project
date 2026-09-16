@@ -1,0 +1,625 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>         
+  <script type="text/javascript" src="/LSW/js/jquery/jquery.js"></script> 
+  <script type="text/javascript" src="/LSW/js/common/jquery-custom.js"></script> 
+  <script type="text/javascript" src="/LSW/js/common/common.js"></script> 
+  <script type="text/javascript" src="/LSW/js/common/common-ex.js"></script> 
+  <script type="text/javascript" src="/LSW/js/common/xmlHttpUtil.js"></script> 
+  <script type="text/javascript" src="/LSW/js/ls/ls.js"></script> 
+  <script type="text/javascript" src="/LSW/js/ls/lsLink.js"></script> 
+  <script type="text/javascript" src="/LSW/js/ls/lsJo.js"></script> 
+  <script type="text/javascript" src="/LSW/js/ls/lsPopLayer.js"></script> 
+  <script type="text/javascript" src="/LSW/js/ls/lsOutPutJoNew.js"></script> 
+  <script type="text/javascript" src="/LSW/js/jquery/jquery.loadmask.js"></script> 
+  <script type="text/javascript" src="/LSW/js/jquery/jquery-ui.js"></script> 
+  <script type="text/javascript" src="/LSW/js/jquery/jquery.layout-latest.js"></script> 
+  <script type="text/javascript" src="/LSW/js/jquery/jquery.print.js"></script> 
+  <script type="text/javascript" src="/LSW/js/ls/lumLsLinkPop.js"></script>   
+  <link rel="stylesheet" type="text/css" href="/LSW/css/lsw/xtheme-ls.css" />
+  <link rel="stylesheet" type="text/css" href="/LSW/css/lsw/common.css" />
+  <link rel="stylesheet" type="text/css" href="/LSW/css/lsw/ext_all_ex.css" />
+  <link rel="stylesheet" type="text/css" href="/LSW/css/ui_2017.css" />
+  <link rel="stylesheet" type="text/css" href="/LSW/css/lsw/commonForLs.css" />
+  <link rel="stylesheet" type="text/css" href="/LSW/js/jquery/layout-default-latest.css" />
+  <link rel="stylesheet" type="text/css" href="/LSW/css/lsw/xtheme-layer.css" />
+  <link rel="stylesheet" type="text/css" href="/LSW/css/lumLsLinkPop.css" />
+  <style type="text/css">
+	.ui-layout-toggler-west-open {
+		background-image: url(/LSW/images/button/leslidev7_1.gif);
+		background-color: white;
+		background-repeat: no-repeat;
+		border: none;
+	}
+	.ui-layout-toggler-west-closed {
+		background-image: url(/LSW/images/button/leslidev7_2.gif);
+		background-color: white;
+		background-repeat: no-repeat;
+		border: none;
+		object-fit: contain;
+		width: 15px;
+		height: auto;
+	}
+</style>
+  <title>국가법령정보센터 | 연계정보</title>
+ </head> 
+ <body id="bodyId"> 
+  <div class="outer-north" id="topMenu"> 
+   <div class="div-top-container" id="top-container"> 
+    <div class="div-top" id="pop_top"> 
+     <div style="float:left;margin-left:10px;color:#fff;font-size:14px;font-weight:bolder;line-height:36px;">
+      연계정보
+     </div> 
+     <div style="float:right;margin-right:10px;"> 
+      <a href="https://www.law.go.kr" target="_blank"><img src="/LSW/images/common/poplogo.gif" alt="법제처 국가법령정보센터" title="법제처 국가법령정보센터가 새창으로 열립니다." /></a> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="div-message-container" id="message-container" style="background-color:#f7f7f7; height:40px; display: flex;"> 
+    <span style="display: inline-block; margin: 0 0 0 15px;"> <a href="javascript:;" id="backBtn" title="이전으로" onclick="goBack();"><img src="/LSW/images/btn_pre_pop.png" alt="이전으로" /></a> </span> 
+    <div class="r_bx" style="margin-left: auto;"> 
+     <div id="saveAndPrintBtn" class="div-print" style="display: flex; align-items: center;"> 
+      <label for="bdySearch" class="blind">검색</label>
+      <input id="bdySearch" type="text" maxlength="10" onkeydown="onKeyDown();" value="" /> 
+      <a href="javascript:;" title="검색" class="btn type4" id="keywordSch" onclick="joBdySearch()" style="display: flex; align-items: center; margin-right: 10px;"> 검색 </a> 
+      <a href="javascript:;" title="저장" class="btn_c type3 typeB" id="bdySaveBtn" onclick="saveAndPrint(0, this ,0);"> <img src="/LSW/images/common/btn_v13fn6_1.png" alt="저장" /> </a> 
+      <a href="javascript:;" class="btn_c type3 typeC" id="bdyPrintBtn" title="인쇄" onclick="javascript:lsLinkCommonPrint('');"> <img src="/LSW/images/common/btn_v13fn7_1.png" alt="인쇄" /> </a> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="outer-west" id="content_left"> 
+   <p class="deactive" id="ls009724" title="공공주택 특별법 시행규칙"> 공공주택 특별법 시행규칙<br /> <span class="subtit1_1"> [시행 2026. 8. 24.] [국토교통부령 제1616호, 2026. 8. 24., 일부개정] </span> </p> 
+   <ul class="sub-menu"> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo99060889:0013:00" onclick="f_autoScroll(this);" title="제13조 공공주택의 입주자 자격 등">제13조 공공주택의 입주자 자격 등</a> </li> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo99060891:0013:02" onclick="f_autoScroll(this);" title="제13조의2 취소된 사전청약의 당첨자에 대한 우선공급">제13조의2 취소된 사전청약의 당첨자에 대한 우선공급</a> </li> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo99060893:0014:00" onclick="f_autoScroll(this);" title="제14조 영구임대주택의 입주자 선정 등">제14조 영구임대주택의 입주자 선정 등</a> </li> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo99060895:0015:00" onclick="f_autoScroll(this);" title="제15조 국민임대주택의 입주자 선정 등">제15조 국민임대주택의 입주자 선정 등</a> </li> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo99060899:0017:00" onclick="f_autoScroll(this);" title="제17조 행복주택의 입주자 선정 등">제17조 행복주택의 입주자 선정 등</a> </li> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo99060901:0017:02" onclick="f_autoScroll(this);" title="제17조의2 통합공공임대주택의 입주자 선정 등">제17조의2 통합공공임대주택의 입주자 선정 등</a> </li> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo99060903:0018:00" onclick="f_autoScroll(this);" title="제18조 장기전세주택의 입주자 선정 등">제18조 장기전세주택의 입주자 선정 등</a> </li> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo99060905:0019:00" onclick="f_autoScroll(this);" title="제19조 분양전환공공임대주택 등의 입주자 선정 등">제19조 분양전환공공임대주택 등의 입주자 선정 등</a> </li> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo99060907:0020:00" onclick="f_autoScroll(this);" title="제20조 기존주택등매입임대주택의 입주자 선정 등">제20조 기존주택등매입임대주택의 입주자 선정 등</a> </li> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo99060909:0021:00" onclick="f_autoScroll(this);" title="제21조 기존주택전세임대주택의 입주자 선정 등">제21조 기존주택전세임대주택의 입주자 선정 등</a> </li> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo99060911:0022:00" onclick="f_autoScroll(this);" title="제22조 부도임대주택의 입주자 선정에 관한 특례">제22조 부도임대주택의 입주자 선정에 관한 특례</a> </li> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo99060913:0023:00" onclick="f_autoScroll(this);" title="제23조 공공임대주택의 입주자 선정에 관한 특례 등">제23조 공공임대주택의 입주자 선정에 관한 특례 등</a> </li> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo99060915:0023:02" onclick="f_autoScroll(this);" title="제23조의2 공공사업의 시행에 따른 국민임대주택 등의 임시사용에 관한 특례">제23조의2 공공사업의 시행에 따른 국민임대주택 등의 임시사용에 관한 특례</a> </li> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo99060917:0023:03" onclick="f_autoScroll(this);" title="제23조의3 긴급 주거지원을 위한 공공임대주택의 임시사용에 관한 특례">제23조의3 긴급 주거지원을 위한 공공임대주택의 임시사용에 관한 특례</a> </li> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo99060919:0023:04" onclick="f_autoScroll(this);" title="제23조의4 긴급 주거지원을 위한 임시주거시설의 제공">제23조의4 긴급 주거지원을 위한 임시주거시설의 제공</a> </li> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo99060921:0023:05" onclick="f_autoScroll(this);" title="제23조의5 지분적립형 분양주택 등의 입주자 선정 등">제23조의5 지분적립형 분양주택 등의 입주자 선정 등</a> </li> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo99060925:0025:00" onclick="f_autoScroll(this);" title="제25조 공공임대주택의 입주자 관리">제25조 공공임대주택의 입주자 관리</a> </li> 
+    <li class="rlatJoLi"> <a href="javascript:;" id="jo99060927:0026:00" onclick="f_autoScroll(this);" title="제26조 입주자 선정을 위한 분양전환가격 등의 공고">제26조 입주자 선정을 위한 분양전환가격 등의 공고</a> </li> 
+   </ul> 
+  </div> 
+  <div class="outer-center" id="content-container"> 
+   <div class="middle-north" id="content-title"></div> 
+   <div class="middle-center" id="linkedJoContent"> 
+    <!-- 법령명 --> 
+    <div id="conTop" class="cont_top"> 
+     <a id="top"></a> 
+     <h2 id="009724"> 공공주택 특별법 시행규칙 </h2> 
+     <div class="ct_sub"> 
+      <span>[시행 2026. 8. 24.] [국토교통부령 제1616호, 2026. 8. 24., 일부개정]</span> 
+      <img src="/LSW/images/button/btn_alljo.gif" alt="전체조문보기" onclick="javascript:window.open('/LSW/lsInfoP.do?lsiSeq=289013')" /> 
+     </div> 
+    </div> 
+    <!-- 조문정보 --> 
+    <a name="J13:0" id="J13:0"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y001300" id="J99060889:0013:00"> 제13조(공공주택의 입주자 자격 등) </label> </span> ① 공공주택의 입주자 자격, 입주자 선정방법 및 입주자 관리는 이 규칙에서 정하는 바에 따르되, 이 규칙에서 정하지 아니한 사항은 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342281','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a>이 정하는 바에 따른다. </p>
+      <p class="pty1_de2_1">② 제1항에 따른 공공주택의 입주자 자격을 판단하거나 입주자를 선정ㆍ관리하는 경우로서 해당 세대(신청자 본인, 배우자 및 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342341','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342301','JO','');" href="javascript:;">제42조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342303','JO','');" href="javascript:;">제1항</a> 각 호로 구성된 세대를 말한다. 이하 같다)의 구성원이 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342283','ALLJO','');" href="javascript:;">「국민기초생활 보장법 시행령」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342363','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342345','JO','');" href="javascript:;">제2항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342347','JO','');" href="javascript:;">제5호부터 제7호</a>까지의 규정에 해당하는 경우 그 구성원은 해당 세대의 구성원이 아닌 것으로 본다. <span class="sfon">&lt;신설 2022. 2. 28.&gt;</span> </p> 
+      <p class="pty1_de2_1">③ 국토교통부장관은 이 규칙에서 정하는 공공주택의 입주자 자격 외에 부동산, 자동차 등 자산에 관한 별도의 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link" onclick="javascript:joDelegatePop('289013','0013','00','010102','DEG','요건을 정할 수 있다','2757');">요건을 정할 수 있다</a>. 이 경우 공공주택 유형별로 달리 정할 수 있다. <span class="sfon">&lt;개정 2022. 2. 28.&gt;</span> </p> 
+      <p class="pty1_de2_1">④ 국토교통부장관, 특별시장ㆍ광역시장ㆍ도지사 또는 특별자치도지사(이하 “시ㆍ도지사”라 한다) 또는 공공주택사업자는 이 규칙에서 정하는 공공주택의 입주자 자격, 입주자 선정방법 및 입주자 관리에 관한 세부적인 사항을 따로 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link" onclick="javascript:joDelegatePop('289013','0013','00','010102','DEG','정할 수 있다','54973');">정할 수 있다</a>. <span class="sfon">&lt;개정 2019. 12. 26., 2022. 2. 28.&gt;</span> </p> 
+      <p class="pty1_de2_1">⑤ 공공주택사업자는 공공주택의 효율적인 공급을 위하여 필요한 경우 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link" onclick="javascript:joDelegatePop('289013','0013','00','010102','DEG','국토교통부장관이 정하는','18027');">국토교통부장관이 정하는</a> 바에 따라 예비입주자를 모집ㆍ선정 및 관리 등을 할 수 있다. <span class="sfon">&lt;신설 2018. 9. 28., 2022. 2. 28.&gt;</span> </p> 
+      <p class="pty1_de2_1">⑥ 공공주택사업자는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342327','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342317','JO','');" href="javascript:;">제21조</a>에 따른 입주자모집공고(이하 “입주자모집공고”라 한다)를 할 때 제1항부터 제5항까지에 따른 내용(제5항의 경우 예비입주자를 모집하는 경우만 해당한다)을 포함하여 공고하여야 한다. <span class="sfon">&lt;개정 2018. 9. 28., 2022. 2. 28.&gt;</span> </p> 
+      <p class="pty1_de2_1">⑦ 공공주택사업자는 입주자모집공고 이후 공고한 내용 중 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342299','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342365','JO','');" href="javascript:;">제21조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342305','JO','');" href="javascript:;">제3항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342367','JO','');" href="javascript:;">제3호</a>, <a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342355','JO','');" href="javascript:;">제8호</a>부터 제11호까지, 제22호, 제24호 및 제25호의 사항을 변경하는 경우에는 최초 청약 신청 접수 전에 5일 이상 공고해야 한다. <span class="sfon">&lt;신설 2021. 2. 2., 2022. 2. 28.&gt;</span> </p> 
+      <p class="pty1_de2_1">⑧ 공공주택사업자는 다음 각 호의 어느 하나에 해당하는 경우에는 공공주택의 입주예약을 사전에 신청 받아 입주예약자를 선정하여 입주예약자에게 주택을 우선 공급할 수 있다. 이 경우 입주예약자의 모집ㆍ선정 및 관리 등에 관한 사항은 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link" onclick="javascript:joDelegatePop('289013','0013','00','010102','DEG','국토교통부장관이 정하여 고시한다','22783');">국토교통부장관이 정하여 고시한다</a>. <span class="sfon">&lt;신설 2021. 2. 2., 2021. 7. 12., 2022. 2. 28., 2022. 8. 18., 2022. 12. 29., 2023. 12. 29.&gt;</span> </p> 
+      <p class="pty1_de2h">1. 공공주택지구계획의 승인을 받은 경우 </p> 
+      <p class="pty1_de2h">2. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342369','ALLJO','');" href="javascript:;">법</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342307','JO','');" href="javascript:;">제35조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342349','JO','');" href="javascript:;">제1항</a> 또는 <a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342285','JO','');" href="javascript:;">제2항</a>에 따른 공공주택에 대한 사업계획의 승인을 받은 경우 </p> 
+      <p class="pty1_de2h">3. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342315','ALLJO','');" href="javascript:;">법</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342325','JO','');" href="javascript:;">제40조의8</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342359','JO','');" href="javascript:;">제1항</a>에 따른 도심 공공주택 복합사업계획의 승인을 받은 경우 </p> 
+      <p class="pty1_de2h">4. 공동주택[공동주택과 주거용 외의 용도가 복합된 건축물(다수의 건축물이 일체적으로 연결된 하나의 건축물을 포함한다)을 포함한다] 건설용지의 조성ㆍ개발 또는 공급에 관한 내용이 포함된 다음 각 목에 따른 계획을 해당 계획과 관련된 구역ㆍ지구의 지정권자가 작성하거나 시행자가 해당 계획에 대한 인가ㆍ승인 등을 받은 경우 </p> 
+      <p class="pty1_de3">가. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342287','ALLJO','');" href="javascript:;">「도시개발법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342357','JO','');" href="javascript:;">제17조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342333','JO','');" href="javascript:;">제1항</a>에 따른 도시개발사업에 관한 실시계획 <span class="sfon"></span></p> 
+      <p class="pty1_de3">나. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342297','ALLJO','');" href="javascript:;">「민간임대주택에 관한 특별법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342361','JO','');" href="javascript:;">제28조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342343','JO','');" href="javascript:;">제1항</a>에 따른 공공지원민간임대주택 공급촉진지구계획 <span class="sfon"></span></p> 
+      <p class="pty1_de3">다. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342309','ALLJO','');" href="javascript:;">「택지개발촉진법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342335','JO','');" href="javascript:;">제9조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342311','JO','');" href="javascript:;">제1항</a>에 따른 택지개발사업 실시계획 <span class="sfon"></span></p> 
+      <p class="pty1_de2_1">⑨ 공공주택사업자는 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342337','JO','');" href="javascript:;">제19조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342313','JO','');" href="javascript:;">제1항</a> 및 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342319','JO','');" href="javascript:;">제23조의4</a>에도 불구하고 다음 각 호의 자에게 공공분양주택을 우선 공급할 수 있다. <span class="sfon">&lt;신설 2021. 9. 17., 2022. 2. 28., 2025. 8. 1.&gt;</span> </p> 
+      <p class="pty1_de2h">1. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342331','ALLJO','');" href="javascript:;">법</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342293','JO','');" href="javascript:;">제40조의10</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342353','JO','');" href="javascript:;">제6항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342295','JO','');" href="javascript:;">제1호</a>에 따라 건축물 중 주택으로 보상받기로 한 복합지구토지등소유자 </p> 
+      <p class="pty1_de2h">2. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342351','ALLJO','');" href="javascript:;">「도시재생 활성화 및 지원에 관한 특별법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342291','JO','');" href="javascript:;">제55조의3</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342329','JO','');" href="javascript:;">제1항</a>에 따라 주택으로 보상받기로 한 토지등소유자 </p> 
+      <p class="pty1_de2_1">⑩ 제9항에 따라 공공분양주택을 우선 공급하는 경우<a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342339','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342323','JO','');" href="javascript:;">제54조</a>를 적용하지 않는다. 다만, 제9항 각 호에 해당하는 자 또는 같은 항 각 호에 해당하는 자가 속한 세대에 속한 자가 같은 항에 따라 우선 공급하는 공공분양주택의 분양계약 체결을 위한 공고일의 5년 전부터 공고일 전일까지의 기간에 같은 항에 따라 다른 공공분양주택(<a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342321','ALLJO','');" href="javascript:;">「주택법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342289','JO','');" href="javascript:;">제63조</a>에 따라 지정된 투기과열지구에서 공급하는 주택으로 한정한다)을 우선 공급받은 경우에는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342339','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342323','JO','');" href="javascript:;">제54조</a>를 적용한다. <span class="sfon">&lt;신설 2021. 9. 17., 2022. 2. 28.&gt;</span> </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <a name="J13:2" id="J13:2"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y001302" id="J99060891:0013:02"> 제13조의2(취소된 사전청약의 당첨자에 대한 우선공급) </label> </span> ① <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341935','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341975','JO','');" href="javascript:;">제24조의2</a>에 따른 사전당첨자 모집 후에 사업계획 승인의 취소 또는 변경 등으로 사전당첨자 선정이 취소된 이후 해당 공공택지를 공급받은 공공주택사업자는 그 공공택지에서 공공주택을 공급하는 경우에는 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341951','JO','');" href="javascript:;">제13조</a>에도 불구하고 종전에 선정이 취소된 사전당첨자(이하 “사전당첨취소자”라 한다)에게 1세대 1주택을 기준으로 우선공급할 수 있다. </p>
+      <p class="pty1_de2_1">② 공공주택사업자는 제1항에 따라 우선공급하려는 경우에는 사전당첨취소자에게 종전에 사전당첨된 주택과 주거전용면적이 동일하거나 공공주택사업자가 주거전용면적이 유사하다고 인정하는 주택을 공급받기를 희망하는지에 관한 의사를 확인해야 하며, 공급받기를 희망하는 사전당첨취소자의 명단을 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341929','ALLJO','');" href="javascript:;">「주택법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341953','JO','');" href="javascript:;">제56조의2</a>에 따라 지정ㆍ고시된 주택청약업무수행기관에 통보해야 한다. </p> 
+      <p class="pty1_de2_1">③ 사전당첨취소자는 다음 각 호의 어느 하나에 해당하는 경우에는 제1항에 따른 우선공급을 받을 수 없다. </p> 
+      <p class="pty1_de2h">1. 취소된 사전청약의 사전당첨자모집공고에서 정한 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341959','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341945','JO','');" href="javascript:;">제4조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341941','JO','');" href="javascript:;">제5항</a> 및 <a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341961','JO','');" href="javascript:;">제6항</a>에 따른 거주요건을 갖추지 못한 경우. 이 경우 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341933','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341971','JO','');" href="javascript:;">제4조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341973','JO','');" href="javascript:;">제6항</a> 전단에 따른 거주기간 산정 기준은 제1항에 따른 우선공급의 입주자모집공고일을 기준으로 한다. </p> 
+      <p class="pty1_de2h">2. 취소된 사전청약의 당첨자발표일부터 사전청약의 취소를 통보받은 날의 전날까지 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341943','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341939','JO','');" href="javascript:;">제4조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341957','JO','');" href="javascript:;">제10항</a> 각 호의 요건을 유지하지 못한 경우 </p> 
+      <p class="pty1_de2h">3. 가목에 따른 주택 수가 나목에 따른 주택 수보다 많은 경우 </p> 
+      <p class="pty1_de3">가. 제1항에 따른 우선공급의 입주자모집공고일을 기준으로 사전당첨취소자 세대에서 소유하던 주택 수 <span class="sfon"></span></p> 
+      <p class="pty1_de3">나. 취소된 사전청약 당첨일을 기준으로 사전당첨취소자 세대에서 소유하던 주택 수 <span class="sfon"></span></p> 
+      <p class="pty1_de2h">4. 제1항에 따른 우선공급의 입주자모집공고일을 기준으로 주택청약종합저축(<a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341963','ALLJO','');" href="javascript:;">「주택법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341947','JO','');" href="javascript:;">제56조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341927','JO','');" href="javascript:;">제2항</a>에 따른 주택청약종합저축을 말한다. 이하 같다)에 가입되어 있지 않은 경우. 이 경우 종전의 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341955','ALLJO','');" href="javascript:;">「주택법」</a>(법률 제13379호로 개정되기 전의 것을 말한다) <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341965','JO','');" href="javascript:;">제75조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341949','JO','');" href="javascript:;">제2항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341967','JO','');" href="javascript:;">제2호</a> 또는 <a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341969','JO','');" href="javascript:;">제3호</a>에 따른 청약예금 또는 청약부금에 가입되어 있는 경우에는 주택청약종합저축에 가입되어 있는 것으로 본다. </p> 
+      <p class="pty1_de2_1">④ 공공주택사업자는 사전당첨취소자가 다음 각 호의 어느 하나에 해당하는 경우에는 해당 사전당첨취소자에게 공급하였거나 공급하려던 주택을 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341977','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341931','JO','');" href="javascript:;">제26조의2</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341937','JO','');" href="javascript:;">제4항</a> 및 <a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341979','JO','');" href="javascript:;">제5항</a>에 따른 방법으로 공급해야 한다. </p> 
+      <p class="pty1_de2h">1. 제3항 각 호의 어느 하나에 해당하여 당첨이 취소된 경우 </p> 
+      <p class="pty1_de2h">2. 공급계약을 체결하지 않은 경우 </p> 
+      <p class="pty1_de2h">3. 공급계약을 해약한 경우 </p> 
+      <p class="pty1_de2_1">⑤ 제1항에 따라 우선공급받은 사전당첨취소자는 종전에 사전당첨된 주택의 공급방법과 동일한 공급방법에 따라 공급받은 것으로 본다. </p> 
+      <p class="pty1_de2"> <span class="sfon">[본조신설 2025. 6. 30.]</span> </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <a name="J14:0" id="J14:0"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y001400" id="J99060893:0014:00"> 제14조(영구임대주택의 입주자 선정 등) </label> </span> ① 공공주택사업자는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341263','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341267','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341271','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341277','JO','');" href="javascript:;">제1호</a>에 따른 영구임대주택(이하 “영구임대주택”이라 한다)을 공급하는 경우에는 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034341275','BE','');" href="javascript:;">별표 3</a>에 따라 입주자를 선정하여야 한다. </p>
+      <p class="pty1_de2_1">② 제1항에도 불구하고 한국토지주택공사(<a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341265','ALLJO','');" href="javascript:;">「한국토지주택공사법」</a>에 따른 한국토지주택공사를 말한다. 이하 같다)가 건설ㆍ공급하는 영구임대주택의 경우 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034341269','BE','');" href="javascript:;">별표 3</a> 제1호가목부터 타목까지, <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034341269','BE','');" href="javascript:;">별표 3</a> 제2호가목부터 라목까지에 해당하는 입주자 자격을 가진 사람에 대해서는 시ㆍ도지사가 입주자를 선정하여 한국토지주택공사에 그 명단을 통보해 주어야 한다. <span class="sfon">&lt;개정 2016. 9. 30., 2016. 11. 25., 2018. 12. 19., 2021. 2. 2.&gt;</span> </p> 
+      <p class="pty1_de2h">1. 삭제 <span class="sfon">&lt;2021. 2. 2.&gt;</span> </p> 
+      <p class="pty1_de2h">2. 삭제 <span class="sfon">&lt;2021. 2. 2.&gt;</span> </p> 
+      <p class="pty1_de2h">3. 삭제 <span class="sfon">&lt;2021. 2. 2.&gt;</span> </p> 
+      <p class="pty1_de2_1">③ 공공주택사업자는 제1항에 따라 입주자를 선정하고 남은 주택이 있는 경우에는 제1항에도 불구하고 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link" onclick="javascript:joDelegatePop('289013','0014','00','010102','DEG','국토교통부장관이 정하는','32475');">국토교통부장관이 정하는</a> 기준 및 절차 등에 따라 입주자 자격을 일부 완화하여 입주자를 선정할 수 있다. 이 경우 공공주택사업자는 지역에 거주하고 있는 사람에게 우선공급하는 등 입주자모집에 관한 사항을 시ㆍ도지사와 사전에 협의해야 한다. <span class="sfon">&lt;신설 2019. 12. 26., 2021. 2. 2.&gt;</span> </p> 
+      <p class="pty1_de2_1">④ 제1항 및 제3항에 따라 입주자를 선정하는 경우 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341273','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341261','JO','');" href="javascript:;">제57조</a>는 적용하지 않는다. <span class="sfon">&lt;개정 2019. 12. 26., 2021. 2. 2.&gt;</span> </p> 
+      <p class="pty1_de2_1">⑤ 공공주택사업자는 영구임대주택단지 안의 복리시설 중 사회복지관을 관할 지방자치단체의 장에게 무상으로 사용하게 할 수 있다. <span class="sfon">&lt;개정 2019. 12. 26., 2021. 2. 2.&gt;</span> </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <a name="J15:0" id="J15:0"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y001500" id="J99060895:0015:00"> 제15조(국민임대주택의 입주자 선정 등) </label> </span> ① 공공주택사업자는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341023','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341025','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341027','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341029','JO','');" href="javascript:;">제2호</a>에 따른 국민임대주택(이하 “국민임대주택”이라 한다)을 공급하는 경우에는 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034341021','BE','');" href="javascript:;">별표 4</a>에 따라 입주자를 선정하여야 한다. </p>
+      <p class="pty1_de2_1">② 공공주택사업자는 제1항에 따라 입주자를 선정하고 남은 주택이 있는 경우에는 제1항에도 불구하고 입주자 자격을 일부 완화하거나 선착순의 방법으로 입주자를 선정할 수 있다. </p> 
+      <p class="pty1_de2_1">③ 다음 각 호의 어느 하나에 해당하는 경우에는 국토교통부장관(제1호에 해당하는 경우로 한정한다) 또는 시ㆍ도지사(제2호에 해당하는 경우로 한정한다)는 제1항 및 제2항에도 불구하고 해당 지역의 실정을 고려하여 국민임대주택을 우선공급 받을 수 있는 대상자 및 그 공급비율과 입주자 선정 순위에 관한 기준을 별도로 정할 수 있다. <span class="sfon">&lt;개정 2018. 4. 17.&gt;</span> </p> 
+      <p class="pty1_de2h">1. 한국토지주택공사가 국민임대주택을 건설하여 공급하는 경우 </p> 
+      <p class="pty1_de2h">2. 지방자치단체 또는 지방공사(<a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341219','ALLJO','');" href="javascript:;">「지방공기업법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341221','JO','');" href="javascript:;">제49조</a>에 따라 주택사업을 목적으로 설립된 지방공사를 말한다. 이하 같다)가 국민임대주택을 건설하여 공급하는 경우 </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <a name="J17:0" id="J17:0"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y001700" id="J99060899:0017:00"> 제17조(행복주택의 입주자 선정 등) </label> </span> ① 공공주택사업자는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341225','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341227','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341229','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341231','JO','');" href="javascript:;">제3호</a>에 따른 행복주택(이하 “행복주택”이라 한다)을 공급하는 경우에는 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034341223','BE','');" href="javascript:;">별표 5</a> 제1호 및 제2호에 따라 입주자를 선정하여야 한다. </p>
+      <p class="pty1_de2_1">② 행복주택의 임대차계약은 2년마다 갱신하며, 입주자의 최대 거주기간은 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034341233','BE','');" href="javascript:;">별표 5</a> 제3호 및 제4호에 따른다. </p> 
+      <p class="pty1_de2_1">③ 공공주택사업자는 제1항에 따라 입주자를 선정하고 남은 주택이 있는 경우에는 제1항에도 불구하고 입주자 자격을 일부 완화하거나 선착순의 방법으로 입주자를 선정할 수 있다. <span class="sfon">&lt;신설 2018. 3. 14., 2020. 12. 23.&gt;</span> </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <a name="J17:2" id="J17:2"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y001702" id="J99060901:0017:02"> 제17조의2(통합공공임대주택의 입주자 선정 등) </label> </span> ① 공공주택사업자는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341451','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341445','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341447','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341449','JO','');" href="javascript:;">제3호의2</a>에 따른 통합공공임대주택(이하 “통합공공임대주택”이라 한다)을 공급하는 경우에는 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034341443','BE','');" href="javascript:;">별표 5의2</a>에 따라 입주자를 선정해야 한다. </p>
+      <p class="pty1_de2_1">② 공공주택사업자는 제1항에 따라 입주자를 선정하고 남은 주택이 있는 경우에는 제1항에도 불구하고 입주자 자격을 일부 완화하여 입주자를 선정할 수 있다. </p> 
+      <p class="pty1_de2_1">③ 제1항 및 제2항에도 불구하고 공공주택사업자 중 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341453','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341455','JO','');" href="javascript:;">제6조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341457','JO','');" href="javascript:;">제1항</a> 각 호의 공공기관이 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341529','JO','');" href="javascript:;">같은 조</a> <a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341531','JO','');" href="javascript:;">제2항</a> 및 제3항에 따라 공공주택사업을 시행하여 특정 자격 요건을 갖춘 사람에게 통합공공임대주택을 공급하는 경우 해당 주택의 입주자 자격 및 거주기간 등은 다음 각 호에 따른 기준의 범위에서 해당 공공기관이 국토교통부장관의 승인을 받아 따로 정할 수 있다. <span class="sfon">&lt;신설 2022. 5. 27.&gt;</span> </p> 
+      <p class="pty1_de2h">1. 입주자 자격: 세대구성원 모두가 통합공공임대주택의 소재지에 주택을 소유하고 있지 않을 것. 다만, 입주자를 선정하고 남은 주택이 있는 경우에는 그렇지 않다. </p> 
+      <p class="pty1_de2h">2. 거주기간: 30년 이내일 것 </p> 
+      <p class="pty1_de2_1">④ 국토교통부장관은 제3항에 따라 입주자 자격 및 거주기간 등을 승인하려는 경우 미리 관계 행정기관의 장의 의견을 들어야 한다. <span class="sfon">&lt;신설 2022. 5. 27.&gt;</span> </p> 
+      <p class="pty1_de2"> <span class="sfon">[본조신설 2021. 4. 13.]</span> </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <a name="J18:0" id="J18:0"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y001800" id="J99060903:0018:00"> 제18조(장기전세주택의 입주자 선정 등) </label> </span> ① 공공주택사업자는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341999','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342025','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341993','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342027','JO','');" href="javascript:;">제4호</a>에 따른 장기전세주택(이하 “장기전세주택”이라 한다)을 공급하는 경우에는 다음 각 호에 따라 입주자를 선정하여야 한다. <span class="sfon">&lt;개정 2024. 12. 5., 2025. 3. 31.&gt;</span> </p>
+      <p class="pty1_de2h">1. 전용면적이 85제곱미터 이하인 주택: <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342021','JO','');" href="javascript:;">제15조</a><a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034341981','BE','');" href="javascript:;">[별표 4</a> 제3호다목1)은 제외한다]에 따라 입주자를 선정하되, <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342017','BE','');" href="javascript:;">별표 4</a>에 따른 소득요건의 50퍼센트[본인 및 배우자가 모두 소득(<a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342011','ALLJO','');" href="javascript:;">「소득세법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342001','JO','');" href="javascript:;">제19조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342013','JO','');" href="javascript:;">제1항</a>에 따른 사업소득 또는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342009','ALLJO','');" href="javascript:;">같은 법</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341985','JO','');" href="javascript:;">제20조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342029','JO','');" href="javascript:;">제1항</a>에 따른 근로소득을 말한다)이 있는 경우에는 100퍼센트]를 더한 범위에서 공공주택사업자가 별도로 소득요건을 정할 수 있다. </p> 
+      <p class="pty1_de2h">2. 전용면적이 85제곱미터를 초과하는 주택: <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341983','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> 제4장에 따라 입주자를 선정하되, 소득요건은 공공주택사업자가 별도로 정할 수 있다. </p> 
+      <p class="pty1_de2_1">② 공공주택사업자는 제1항에도 불구하고 같은 순위에서 경쟁이 있는 때에는 다음 각 호의 내용이 포함된 기준을 별도로 정하여 입주자를 선정할 수 있다. <span class="sfon">&lt;개정 2020. 12. 23., 2025. 6. 30.&gt;</span> </p> 
+      <p class="pty1_de2h">1. 주택청약종합저축 가입기간 또는 납입횟수ㆍ금액 </p> 
+      <p class="pty1_de2h">2. 무주택기간(<a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341987','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342015','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342003','JO','');" href="javascript:;">제8호</a><a title="팝업으로 이동" class="link sfon5" onclick="javascript:fncLsLawPop('1034341995','JO','');" href="javascript:;">가목</a>에 따른 무주택기간을 말한다. 이하 같다) </p> 
+      <p class="pty1_de2h">3. 부양가족수(<a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341989','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342019','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342005','JO','');" href="javascript:;">제8호</a><a title="팝업으로 이동" class="link sfon5" onclick="javascript:fncLsLawPop('1034341997','JO','');" href="javascript:;">나목</a>에 따른 부양가족수를 말한다. 이하 같다) </p> 
+      <p class="pty1_de2h">4. 해당 주택건설지역(<a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341991','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342023','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342007','JO','');" href="javascript:;">제2호</a>에 따른 주택건설지역을 말한다. 이하 같다) 거주기간 </p> 
+      <p class="pty1_de2h">5. 과거 장기전세주택 입주자 선정 여부 </p> 
+      <p class="pty1_de2h">6. 그 밖에 공공주택사업자가 필요하다고 판단하는 사항 </p> 
+      <p class="pty1_de2_1">③ 제1항 및 제2항에도 불구하고 국토교통부장관, 지방자치단체 및 공공주택사업자는 제2항제1호부터 제5호까지의 규정을 고려하여 별도의 우선공급 대상자 및 입주자 선정을 위한 가점ㆍ감점기준을 정하고, 장기전세주택 전체 건설량의 10퍼센트 범위에서 우선공급할 수 있다. </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <a name="J19:0" id="J19:0"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y001900" id="J99060905:0019:00"> 제19조(분양전환공공임대주택 등의 입주자 선정 등) </label> </span> ① 공공주택사업자는 공공분양주택 및 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342415','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342385','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342411','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342421','JO','');" href="javascript:;">제5호</a>에 따른 분양전환공공임대주택(이하 “분양전환공공임대주택”이라 한다)을 공급하는 경우에는 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342395','BE','');" href="javascript:;">별표 6</a>에 따라 입주자를 선정해야 한다. 다만, 분양전환공공임대주택 중 임대의무기간이 6년인 주택을 공급하는 경우에는 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342391','BE','');" href="javascript:;">별표 6의2</a>에 따라 입주자를 선정해야 한다. <span class="sfon">&lt;개정 2018. 12. 19., 2021. 2. 2., 2022. 12. 29.&gt;</span> </p>
+      <p class="pty1_de2_1">② 제1항 단서에도 불구하고 공공주택사업자 중 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342417','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342389','JO','');" href="javascript:;">제6조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342405','JO','');" href="javascript:;">제1항</a> 각 호의 공공기관이 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342403','JO','');" href="javascript:;">같은 조</a> <a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342393','JO','');" href="javascript:;">제2항</a> 및 제3항에 따라 공공주택사업을 시행하여 특정 자격 요건을 갖춘 사람에게 임대의무기간이 6년인 분양전환공공임대주택을 공급하는 경우 해당 주택의 입주자 자격 등은 해당 공공기관이 국토교통부장관의 승인을 받아 따로 정할 수 있다. <span class="sfon">&lt;신설 2025. 8. 1.&gt;</span> </p> 
+      <p class="pty1_de2_1">③ 국토교통부장관은 제2항에 따라 입주자 자격 등을 승인하려는 경우 미리 관계 행정기관의 장의 의견을 들어야 한다. <span class="sfon">&lt;신설 2025. 8. 1.&gt;</span> </p> 
+      <p class="pty1_de2_1">④ 공공주택사업자는 다음 각 호의 요건에 모두 해당하는 주택(이하 “신혼희망타운주택”이라 한다) 중 공공분양주택을 공급하는 경우에는 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342383','BE','');" href="javascript:;">별표 6의3</a>에 따라 입주자를 선정해야 한다. <span class="sfon">&lt;신설 2018. 12. 19., 2022. 5. 27., 2022. 12. 29., 2025. 8. 1.&gt;</span> </p> 
+      <p class="pty1_de2h">1. 신혼부부 및 한부모가족(<a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342371','ALLJO','');" href="javascript:;">「한부모가족지원법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342419','JO','');" href="javascript:;">제4조</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342377','JO','');" href="javascript:;">제2호</a>에 따른 한부모가족을 말한다. 이하 같다)을 대상으로 공급할 것 </p> 
+      <p class="pty1_de2h">2. 다음 각 목의 어느 하나에 해당하는 유형으로 공급할 것 </p> 
+      <p class="pty1_de3">가. 공공분양주택 <span class="sfon"></span></p> 
+      <p class="pty1_de3">나. 공공분양주택과 통합공공임대주택 또는 행복주택을 혼합하여 공급하되, 공공분양주택이 단지 전체 호수의 100분의 50 이상일 것 <span class="sfon"></span></p> 
+      <p class="pty1_de2_1">⑤ 공공주택사업자는 신혼희망타운주택 중 통합공공임대주택을 공급하는 경우에는 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342375','BE','');" href="javascript:;">별표 5의2</a> 제1호나목, 같은 표 제3호가목, 같은 호 바목부터 자목까지 및 같은 표 제5호에 따라 1세대 1주택의 기준으로 입주자를 선정해야 한다. <span class="sfon">&lt;신설 2018. 12. 19., 2022. 5. 27., 2024. 3. 25., 2024. 12. 5., 2025. 8. 1.&gt;</span> </p> 
+      <p class="pty1_de2_1">⑥ 제5항에 따라 공급하는 통합공공임대주택의 거주기간에 관하여는 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342401','BE','');" href="javascript:;">별표 5</a> 제3호나목 및 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342413','BE','');" href="javascript:;">별표 6의4</a> 제3호타목5)를 준용한다. <span class="sfon">&lt;신설 2022. 5. 27., 2025. 3. 31., 2025. 8. 1.&gt;</span> </p> 
+      <p class="pty1_de2_1">⑦ 공공주택사업자는 신혼희망타운주택 중 행복주택을 공급하는 경우에는 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342387','BE','');" href="javascript:;">별표 5</a> 제1호가목1)다), 같은 표 제2호 및 같은 표 제4호사목부터 자목까지에 따라 입주자를 선정해야 한다. <span class="sfon">&lt;신설 2018. 12. 19., 2022. 5. 27., 2024. 12. 5., 2025. 8. 1.&gt;</span> </p> 
+      <p class="pty1_de2_1">⑧ 공공주택사업자는 제4항부터 제7항까지의 규정에 따라 신혼희망타운주택의 입주자를 선정할 때 공공분양주택과 통합공공임대주택 또는 행복주택의 동ㆍ호수를 추첨의 방법에 따라 배정한다. 다만, <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342397','ALLJO','');" href="javascript:;">「장애인ㆍ고령자 등 주거약자 지원에 관한 법률 시행령」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342407','JO','');" href="javascript:;">제6조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342379','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342399','JO','');" href="javascript:;">제1호</a><a title="팝업으로 이동" class="link sfon5" onclick="javascript:fncLsLawPop('1034342373','JO','');" href="javascript:;">가목</a>에 해당하는 주택은 입주자를 선정하기 전에 동ㆍ호수를 결정할 수 있다. <span class="sfon">&lt;신설 2018. 12. 19., 2022. 5. 27., 2025. 8. 1.&gt;</span> </p> 
+      <p class="pty1_de2_1">⑨ 신혼희망타운주택 중 공공분양주택의 입주자로 선정된 경우에는 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342381','BE','');" href="javascript:;">별표 6</a> 제2호나목에 따른 공공분양주택의 특별공급을 받은 것으로 본다. 다만, <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342409','BE','');" href="javascript:;">별표 6의3</a> 제2호바목에 따라 선정된 경우에는 그렇지 않다. <span class="sfon">&lt;신설 2018. 12. 19., 2022. 5. 27., 2022. 12. 29., 2024. 3. 25., 2025. 8. 1.&gt;</span> </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <a name="J20:0" id="J20:0"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y002000" id="J99060907:0020:00"> 제20조(기존주택등매입임대주택의 입주자 선정 등) </label> </span> ① 공공주택사업자, 시장ㆍ군수 또는 구청장은 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342431','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342433','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342443','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342437','JO','');" href="javascript:;">제6호</a>에 따른 기존주택등매입임대주택(이하 “기존주택등매입임대주택”이라 한다)을 공급하는 경우에는 다음 각 호에 해당하는 사람을 입주자로 선정해야 한다. <span class="sfon">&lt;개정 2019. 12. 26., 2020. 10. 19., 2021. 2. 2., 2022. 2. 28., 2025. 10. 31.&gt;</span> </p>
+      <p class="pty1_de2h">1. 무주택세대구성원(<a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342425','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342445','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342451','JO','');" href="javascript:;">제4호</a>에 따른 무주택세대구성원을 말한다. 이하 같다)으로서 다음 각 목의 어느 하나에 해당하는 사람 </p> 
+      <p class="pty1_de3">가. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342435','ALLJO','');" href="javascript:;">「국민기초생활 보장법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342447','JO','');" href="javascript:;">제7조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342439','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342427','JO','');" href="javascript:;">제1호</a>에 따른 생계급여 수급자 또는 같은 항 제3호에 따른 의료급여 수급자 <span class="sfon"></span></p> 
+      <p class="pty1_de3">나. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342423','ALLJO','');" href="javascript:;">「한부모가족지원법 시행규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342449','JO','');" href="javascript:;">제3조</a>에 따라 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link" onclick="javascript:joDelegatePop('289013','0020','00','010102','DEG','성평등가족부장관이 정하는','9660');">성평등가족부장관이 정하는</a> 기준에 해당하는 지원대상 한부모가족 <span class="sfon"></span></p> 
+      <p class="pty1_de3">다. 해당 세대의 월평균소득이 전년도 도시근로자 가구원(태아를 포함한다) 수별 가구당 월평균소득(이하 “전년도 도시근로자 가구원수별 가구당 월평균소득”이라 한다) 대비 다음의 구분에 따른 비율 이하인 사람. 다만, 국토교통부장관이 필요하다고 인정하는 경우에는 전년도 도시근로자 가구원수별 가구당 월평균소득 이하의 범위에서 소득기준을 달리 정할 수 있다. <span class="sfon"></span></p>
+      <p class="pty1_de4_1">1) 가구원 수가 1명인 경우: 70퍼센트 <span class="sfon"></span></p>
+      <p class="pty1_de4_1">2) 가구원 수가 2명인 경우: 60퍼센트 <span class="sfon"></span></p>
+      <p class="pty1_de4_1">3) 그 밖의 경우: 50퍼센트 <span class="sfon"></span></p> 
+      <p class="pty1_de2h">2. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342441','ALLJO','');" href="javascript:;">「긴급복지 지원법」</a>에 따라 긴급지원대상자로 선정된 사람, <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342429','ALLJO','');" href="javascript:;">「국가유공자 등 예우 및 지원에 관한 법률」</a>에 따른 국가유공자 등 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link" onclick="javascript:joDelegatePop('289013','0020','00','010102','DEG','국토교통부장관이 정하는','5474');">국토교통부장관이 정하는</a> 사람 </p> 
+      <p class="pty1_de2h">3. 그 밖에 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link" onclick="javascript:joDelegatePop('289013','0020','00','010102','DEG','국토교통부장관이 정하는','5613');">국토교통부장관이 정하는</a> 사람 </p> 
+      <p class="pty1_de2_1">② 제1항에 따른 입주자 선정의 구체적인 기준 및 절차 등은 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link" onclick="javascript:joDelegatePop('289013','0020','00','010102','DEG','국토교통부장관이 정한다','7274');">국토교통부장관이 정한다</a>. </p> 
+      <p class="pty1_de2"> <span class="sfon">[제목개정 2020. 10. 19.]</span> </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <a name="J21:0" id="J21:0"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y002100" id="J99060909:0021:00"> 제21조(기존주택전세임대주택의 입주자 선정 등) </label> </span> ① 공공주택사업자, 시장ㆍ군수 또는 구청장은 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341283','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341279','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341285','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341281','JO','');" href="javascript:;">제7호</a>에 따른 기존주택전세임대주택(이하 “기존주택전세임대주택”이라 한다)을 공급하는 경우에는 다음 각 호에 해당하는 사람을 입주자로 선정해야 한다. <span class="sfon">&lt;개정 2019. 12. 26., 2021. 2. 2.&gt;</span> </p>
+      <p class="pty1_de2h">1. 무주택세대구성원으로서 해당 세대의 월평균소득이 전년도 도시근로자 가구원수별 가구당 월평균소득 대비 다음 각 목의 구분에 따른 비율 이하인 사람. 다만, 국토교통부장관이 필요하다고 인정하는 경우에는 전년도 도시근로자 가구원수별 가구당 월평균소득 이하의 범위에서 소득기준을 달리 정할 수 있다. </p> 
+      <p class="pty1_de3">가. 가구원 수가 1명인 경우: 70퍼센트 <span class="sfon"></span></p> 
+      <p class="pty1_de3">나. 가구원 수가 2명인 경우: 60퍼센트 <span class="sfon"></span></p> 
+      <p class="pty1_de3">다. 그 밖의 경우: 50퍼센트 <span class="sfon"></span></p> 
+      <p class="pty1_de2h">2. 제1호의 소득기준에 해당하는 세대의 구성원으로서 대학 소재 지역 외의 지역 출신인 대학생 </p> 
+      <p class="pty1_de2h">3. 그 밖에 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link" onclick="javascript:joDelegatePop('289013','0021','00','010102','DEG','국토교통부장관이 정하는 사람','9216');">국토교통부장관이 정하는 사람</a> </p> 
+      <p class="pty1_de2_1">② 제1항에 따른 입주자 선정의 구체적인 기준 및 절차 등은 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link" onclick="javascript:joDelegatePop('289013','0021','00','010102','DEG','국토교통부장관이 정한다','4666');">국토교통부장관이 정한다</a>. </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <a name="J22:0" id="J22:0"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y002200" id="J99060911:0022:00"> 제22조(부도임대주택의 입주자 선정에 관한 특례) </label> </span> ① 공공주택사업자는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341243','ALLJO','');" href="javascript:;">법</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341245','JO','');" href="javascript:;">제41조</a> 또는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341257','ALLJO','');" href="javascript:;">「부도공공건설임대주택 임차인 보호를 위한 특별법」</a>에 따라 부도임대주택(법률 제13499호로 개정되기 전의 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341251','ALLJO','');" href="javascript:;">「임대주택법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341253','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341255','JO','');" href="javascript:;">제2호의2</a>에 해당하는 주택 중 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341535','JO','');" href="javascript:;">같은 조</a> <a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341533','JO','');" href="javascript:;">제8호</a>의 부도임대주택등을 말한다. 이하 같다)을 매입하여 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341259','ALLJO','');" href="javascript:;">법</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341235','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341237','JO','');" href="javascript:;">제1호</a><a title="팝업으로 이동" class="link sfon5" onclick="javascript:fncLsLawPop('1034341239','JO','');" href="javascript:;">가목</a>에 따른 공공임대주택(이하 “공공임대주택”이라 한다)으로 공급하는 경우에는 무주택세대구성원에 대하여 1세대 1주택의 기준으로 다음 각 호의 순위에 따라 입주자를 우선 선정해야 한다. <span class="sfon">&lt;개정 2020. 12. 23.&gt;</span> </p>
+      <p class="pty1_de2h">1. 제1순위: 해당 임대주택에 거주하는 임차인(해당 임대주택에 거주하지 아니하는 자로서 등기되는 부동산임차권 또는 전세권을 설정한 임차인을 포함한다) </p> 
+      <p class="pty1_de2h">2. 제2순위: 해당 임대주택의 임차인과 임대차 계약을 체결하고 그 임대주택에 거주하는 자 </p> 
+      <p class="pty1_de2h">3. 제3순위: 해당 임대주택단지 안의 부도임대주택에 거주하는 자 </p> 
+      <p class="pty1_de2_1">② 공공주택사업자는 제1항에 따라 입주자를 선정하고 남은 주택이 있는 경우에는 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341241','JO','');" href="javascript:;">제13조부터 제17조</a>까지 및 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341247','JO','');" href="javascript:;">제19조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341249','JO','');" href="javascript:;">제1항</a>에 따라 입주자를 선정하여야 한다. <span class="sfon">&lt;개정 2018. 12. 19.&gt;</span> </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <a name="J23:0" id="J23:0"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y002300" id="J99060913:0023:00"> 제23조(공공임대주택의 입주자 선정에 관한 특례 등) </label> </span> ① 공공주택사업자는 영구임대주택, 국민임대주택, 행복주택, 통합공공임대주택 또는 기존주택등매입임대주택 중에서 다음 각 호의 주택을 공급하는 경우에는 각 호에서 정하는 바에 따라 입주자를 선정해야 한다. <span class="sfon">&lt;개정 2021. 4. 13., 2021. 9. 17., 2022. 8. 18., 2022. 12. 29., 2023. 8. 4., 2024. 3. 25.&gt;</span> </p>
+      <p class="pty1_de2h">1. 주택과 사회복지시설이 복합 설치된 영구임대주택, 국민임대주택, 행복주택 또는 통합공공임대주택으로서 고령자 주거 안정을 위하여 국토교통부장관이 해당 지방자치단체와의 협의를 거쳐 지정한 주택(이하 “고령자복지주택”이라 한다): <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342507','JO','');" href="javascript:;">제14조</a>, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342557','JO','');" href="javascript:;">제15조</a>, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342497','JO','');" href="javascript:;">제17조</a> 및 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342467','JO','');" href="javascript:;">제17조의2</a>에도 불구하고 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342483','BE','');" href="javascript:;">별표 6의4</a> 제1호에 따라 선정할 것 </p> 
+      <p class="pty1_de2h">2. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342555','ALLJO','');" href="javascript:;">「장애인ㆍ고령자 등 주거약자 지원에 관한 법률 시행령」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342487','JO','');" href="javascript:;">제6조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342527','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342489','JO','');" href="javascript:;">제1호</a><a title="팝업으로 이동" class="link sfon5" onclick="javascript:fncLsLawPop('1034342461','JO','');" href="javascript:;">가목</a>에 해당하는 주택(이하 “주거약자용 공공건설임대주택”이라 한다): <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342475','BE','');" href="javascript:;">별표 6의4</a> 제2호에 따라 선정할 것 </p> 
+      <p class="pty1_de2h">3. 행복주택, 통합공공임대주택 또는 기존주택등매입임대주택으로서 국토교통부장관이 청년 일자리 창출 및 지역경제 활성화를 위해 일자리와 연계한 주거지원이 필요하다고 인정하여 지정한 주택(이하 “일자리연계형 지원주택”이라 한다): <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342495','JO','');" href="javascript:;">제17조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342511','JO','');" href="javascript:;">제1항</a>(<a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342569','BE','');" href="javascript:;">별표 5</a> 제2호가목은 제외한다), <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342459','JO','');" href="javascript:;">제17조의2</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342551','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342505','BE','');" href="javascript:;">[별표 5의2</a> 제2호나목1)가) 및 라)는 제외한다] 및 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342541','JO','');" href="javascript:;">제20조</a>에도 불구하고 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342543','BE','');" href="javascript:;">별표 6의4</a> 제3호(타목은 제외한다)에 따라 선정할 것 </p> 
+      <p class="pty1_de3">가. 삭제 <span class="sfon">&lt;2023. 8. 4.&gt;</span></p> 
+      <p class="pty1_de3">나. 삭제 <span class="sfon">&lt;2023. 8. 4.&gt;</span></p> 
+      <p class="pty1_de2h">4. 삭제 <span class="sfon">&lt;2023. 8. 4.&gt;</span> </p> 
+      <p class="pty1_de2h">5. 통합공공임대주택으로서 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342521','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342481','JO','');" href="javascript:;">제52조의2</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342457','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342503','JO','');" href="javascript:;">제1호</a>에 따른 복합지구 또는 같은 항 제2호에 따른 주거재생혁신지구에 건설하는 주택: <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342537','JO','');" href="javascript:;">제17조의2</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342471','JO','');" href="javascript:;">제1항</a>에도 불구하고 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342463','BE','');" href="javascript:;">별표 6의4</a> 제5호에 따라 선정할 것 </p> 
+      <p class="pty1_de2h">6. 영구임대주택, 국민임대주택 및 행복주택으로서 해당 공공임대주택의 입주자 재선정 시 국토교통부장관이 지역의 실정 또는 주택수요 등을 고려할 때 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342531','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342491','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342465','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342533','JO','');" href="javascript:;">제3호의2</a>에 해당하는 사람에게 공급하는 것이 필요하다고 인정하는 주택: <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342509','JO','');" href="javascript:;">제14조</a>, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342517','JO','');" href="javascript:;">제15조</a> 및 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342545','JO','');" href="javascript:;">제17조</a>에도 불구하고 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342453','JO','');" href="javascript:;">제17조의2</a>에 따라 입주자를 선정할 것 </p> 
+      <p class="pty1_de2h">7. 통합공공임대주택으로서 국토교통부장관이 도심 내 청년층의 주거안정을 위해 공급이 필요하다고 인정하여 지정한 주택(이하 “청년특화주택”이라 한다): <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342523','JO','');" href="javascript:;">제17조의2</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342485','JO','');" href="javascript:;">제1항</a>에도 불구하고 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342539','BE','');" href="javascript:;">별표 6의4</a> 제6호에 따라 선정할 것 </p> 
+      <p class="pty1_de2_1">② 공공주택사업자는 제1항 각 호의 주택 외에 국토교통부장관이 정하는 절차에 따라 영구임대주택, 국민임대주택, 행복주택, 통합공공임대주택, 장기전세주택 또는 기존주택등매입임대주택 중에서 해당 지역의 실정 또는 주택 수요 등을 고려하여 특정 자격 요건을 갖춘 사람에게 공급이 필요하다고 인정되는 주택을 공급하는 경우에는 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342455','JO','');" href="javascript:;">제14조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342519','JO','');" href="javascript:;">제1항</a>ㆍ제2항, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342473','JO','');" href="javascript:;">제15조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342513','JO','');" href="javascript:;">제1항</a>[별표 4 제2호가목1) 및 4)는 제외한다] 및 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342559','JO','');" href="javascript:;">같은 조</a> <a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342561','JO','');" href="javascript:;">제3항</a>, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342547','JO','');" href="javascript:;">제17조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342549','JO','');" href="javascript:;">제1항</a>(<a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342529','BE','');" href="javascript:;">별표 5</a> 제2호가목은 제외한다), <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342553','JO','');" href="javascript:;">제17조의2</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342525','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342479','BE','');" href="javascript:;">[별표 5의2</a> 제2호나목1)가) 및 라)는 제외한다], <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342515','JO','');" href="javascript:;">제18조</a> 및 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342501','JO','');" href="javascript:;">제20조</a>에도 불구하고 해당 지방자치단체의 장 또는 관계 행정기관의 장과 협의를 거쳐 별도로 정하는 입주자 자격 및 선정방법에 따라 입주자를 선정할 수 있다. <span class="sfon">&lt;개정 2021. 4. 13., 2024. 8. 23., 2025. 12. 29.&gt;</span> </p> 
+      <p class="pty1_de2_1">③ 공공주택사업자는 제2항에 따라 입주자를 선정하고 남은 공공임대주택에 대해서는 같은 항에 따라 입주자를 다시 선정하거나 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342567','JO','');" href="javascript:;">제14조</a>, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342469','JO','');" href="javascript:;">제15조</a>, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342477','JO','');" href="javascript:;">제17조</a>, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342563','JO','');" href="javascript:;">제17조의2</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342565','JO','');" href="javascript:;">제1항</a>ㆍ제2항, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342571','JO','');" href="javascript:;">제18조</a> 또는 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342499','JO','');" href="javascript:;">제20조</a>에 따라 선정해야 한다. <span class="sfon">&lt;개정 2021. 4. 13., 2022. 5. 27., 2024. 8. 23., 2025. 12. 29.&gt;</span> </p> 
+      <p class="pty1_de2_1">④ 제1항제3호에 따른 일자리연계형 지원주택 입주자의 거주기간은 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342535','BE','');" href="javascript:;">별표 6의4</a> 제3호타목에 따른다. <span class="sfon">&lt;신설 2023. 8. 4.&gt;</span> </p> 
+      <p class="pty1_de2_1">⑤ 청년특화주택 입주자의 거주기간은 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342493','BE','');" href="javascript:;">별표 6의4</a> 제6호사목에 따른다. <span class="sfon">&lt;신설 2024. 3. 25.&gt;</span> </p> 
+      <p class="pty1_de2_1">⑥ 제2항에 따라 선정(제3항에 따라 공공임대주택에 대해 제2항에 따라 입주자를 다시 선정하는 경우를 포함한다)된 입주자의 거주기간은 공공주택사업자가 제2항에 따른 해당 지방자치단체의 장 또는 관계 행정기관의 장과 협의를 거쳐 별도로 정할 수 있다. <span class="sfon">&lt;신설 2024. 8. 23.&gt;</span> </p> 
+      <p class="pty1_de2"> <span class="sfon">[전문개정 2021. 2. 2.] [제목개정 2023. 8. 4.]</span> </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <a name="J23:2" id="J23:2"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y002302" id="J99060915:0023:02"> 제23조의2(공공사업의 시행에 따른 국민임대주택 등의 임시사용에 관한 특례) </label> </span> ① 공공주택사업자는 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341745','JO','');" href="javascript:;">제14조</a>, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341747','JO','');" href="javascript:;">제15조</a>, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341805','JO','');" href="javascript:;">제17조</a>, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341793','JO','');" href="javascript:;">제17조의2</a>, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341807','JO','');" href="javascript:;">제18조</a>, <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341811','JO','');" href="javascript:;">제20조</a> 및 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341813','JO','');" href="javascript:;">제21조</a>에도 불구하고 다음 각 호의 사업의 시행을 위하여 철거되는 주택의 소유자ㆍ세입자, <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034341803','BE','');" href="javascript:;">별표 4</a> 제2호바목ㆍ아목 및 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034341797','BE','');" href="javascript:;">별표 5의2</a> 제2호나목6)가)ㆍ다)에 따른 비닐간이공작물 거주자 및 무허가건축물등에 입주한 세입자에 대하여 해당 주택건설지역 또는 연접지역[주택건설지역과 연접한 특별시ㆍ광역시ㆍ특별자치시ㆍ특별자치도 또는 시ㆍ군(광역시의 군은 제외한다)의 행정구역을 말한다. 이하 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034341785','BE','');" href="javascript:;">별표 6의4</a>에서 같다]에서 공급되는 영구임대주택, 국민임대주택, 행복주택, 통합공공임대주택, 장기전세주택, 기존주택등매입임대주택 및 기존주택전세임대주택 공급량의 각 30퍼센트의 범위에서 해당 공공사업의 시행기간 동안 이를 사용하게 할 수 있다. 다만, 제1호(도심 공공주택 복합사업으로 한정한다) 및 제7호부터 제9호까지의 사업의 경우에는 30퍼센트를 초과하여 사용하게 할 수 있다. <span class="sfon">&lt;개정 2021. 2. 2., 2021. 4. 13., 2021. 9. 17., 2022. 12. 29., 2023. 8. 4., 2024. 11. 25.&gt;</span> </p>
+      <p class="pty1_de2h">1. 공공주택사업 </p> 
+      <p class="pty1_de2h">2. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341763','ALLJO','');" href="javascript:;">「택지개발촉진법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341815','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341743','JO','');" href="javascript:;">제4호</a>의 택지개발사업 </p> 
+      <p class="pty1_de2h">3. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341801','ALLJO','');" href="javascript:;">「도시 및 주거환경정비법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341741','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341787','JO','');" href="javascript:;">제2호</a><a title="팝업으로 이동" class="link sfon5" onclick="javascript:fncLsLawPop('1034341789','JO','');" href="javascript:;">가목</a> 및 <a title="팝업으로 이동" class="link sfon5" onclick="javascript:fncLsLawPop('1034341753','JO','');" href="javascript:;">나목</a>의 주거환경개선사업 및 재개발사업 </p> 
+      <p class="pty1_de2h">4. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341767','ALLJO','');" href="javascript:;">「도시개발법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341769','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341771','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341749','JO','');" href="javascript:;">제2호</a>의 도시개발사업 </p> 
+      <p class="pty1_de2h">5. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341735','ALLJO','');" href="javascript:;">「산업입지 및 개발에 관한 법률」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341817','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341795','JO','');" href="javascript:;">제9호</a>의 산업단지개발사업(개발계획상 주택건설용지에 관한 계획이 포함된 경우로 한정한다) </p> 
+      <p class="pty1_de2h">6. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341779','ALLJO','');" href="javascript:;">「혁신도시 조성 및 발전에 관한 특별법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341799','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341739','JO','');" href="javascript:;">제5호</a>의 혁신도시개발사업 </p> 
+      <p class="pty1_de2h">7. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341781','ALLJO','');" href="javascript:;">「도시재생 활성화 및 지원에 관한 특별법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341783','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341751','JO','');" href="javascript:;">제6호의3</a>의 주거재생혁신지구(이하 “주거재생혁신지구”라 한다)에서 시행하는 <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341791','JO','');" href="javascript:;">같은 조</a> <a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341755','JO','');" href="javascript:;">제7호</a><a title="팝업으로 이동" class="link sfon5" onclick="javascript:fncLsLawPop('1034341757','JO','');" href="javascript:;">나목</a>의 혁신지구재생사업(이하 “혁신지구재생사업”이라 한다) </p> 
+      <p class="pty1_de2h">8. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341773','ALLJO','');" href="javascript:;">「빈집 및 소규모주택 정비에 관한 특례법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341775','JO','');" href="javascript:;">제18조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341777','JO','');" href="javascript:;">제1항</a>에 따라 시장ㆍ군수등 또는 토지주택공사등(토지주택공사등이 건설업자 또는 등록사업자와 공동으로 시행하는 경우는 제외한다)이 시행하는 가로주택정비사업, 소규모재건축사업 또는 소규모재개발사업 </p> 
+      <p class="pty1_de2h">9. 「장기공공임대 입주자 삶의 질 향상 지원법」 제9조에 따른 장기공공임대주택 재정비사업 </p> 
+      <p class="pty1_de2h">10. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341759','ALLJO','');" href="javascript:;">「민간임대주택에 관한 특별법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341733','JO','');" href="javascript:;">제23조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341809','JO','');" href="javascript:;">제2항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341761','JO','');" href="javascript:;">제1호</a>에 따른 공공지원민간임대주택 공급촉진지구 조성사업(<a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341765','JO','');" href="javascript:;">같은 조</a> <a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341819','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341737','JO','');" href="javascript:;">제2호</a>에 따른 시행자가 시행하는 경우만 해당한다) </p> 
+      <p class="pty1_de2_1">② 제1항에 따른 임시사용자의 선정ㆍ관리 방법, 임시사용 공공임대주택의 운영 및 관리에 필요한 사항은 공공주택사업자가 따로 정할 수 있다. </p> 
+      <p class="pty1_de2"> <span class="sfon">[본조신설 2020. 12. 23.] [제23조의4에서 이동, 종전 제23조의2는 삭제 &lt;2021. 2. 2.&gt;]</span> </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <a name="J23:3" id="J23:3"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y002303" id="J99060917:0023:03"> 제23조의3(긴급 주거지원을 위한 공공임대주택의 임시사용에 관한 특례) </label> </span> ① 공공주택사업자는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341289','ALLJO','');" href="javascript:;">「재해구호법」</a>에 따른 이재민 등 지방자치단체의 장이 긴급한 주거지원이 필요하다고 인정하는 사람에게 공공임대주택 중 다음 각 호의 어느 하나에 해당하는 주택을 임시로 사용하게 할 수 있다. <span class="sfon">&lt;개정 2020. 12. 23.&gt;</span> </p>
+      <p class="pty1_de2h">1. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341297','ALLJO','');" href="javascript:;">법</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341291','JO','');" href="javascript:;">제45조의2</a>에 따라 기존주택을 임차한 공공임대주택의 경우: <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341287','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341295','JO','');" href="javascript:;">제40조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341293','JO','');" href="javascript:;">제3항</a>에 따라 <a href="#AJAX" title="팝업으로 이동" class="delegatedAdmRul_link" onclick="javascript:joDelegatePop('289013','0023','03','010102','DEG','국토교통부장관이 정하는','32485');">국토교통부장관이 정하는</a> 주택 </p> 
+      <p class="pty1_de2h">2. 그 밖의 공공임대주택의 경우: 입주자 및 예비입주자를 선정하고 남은 주택 </p> 
+      <p class="pty1_de2_1">② 제1항에 따른 공공임대주택의 임시 사용기간은 공공주택사업자가 제공하는 날부터 6개월로 하되, 공공주택사업자와 지방자치단체의 장이 협의하여 정하는 바에 따라 연장할 수 있다. </p> 
+      <p class="pty1_de2_1">③ 제1항 및 제2항에서 규정한 사항 외에 제1항에 따른 공공임대주택의 사용조건 및 운영 등에 필요한 사항은 공공주택사업자와 지방자치단체의 장이 협의하여 정한다. </p> 
+      <p class="pty1_de2"> <span class="sfon">[본조신설 2018. 9. 28.] [제23조의5에서 이동, 종전 제23조의3은 삭제 &lt;2021. 2. 2.&gt;]</span> </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <a name="J23:4" id="J23:4"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y002304" id="J99060919:0023:04"> 제23조의4(긴급 주거지원을 위한 임시주거시설의 제공) </label> </span> 공공주택사업자는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342599','ALLJO','');" href="javascript:;">「재해구호법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342603','JO','');" href="javascript:;">제4조의2</a>에 따른 임시주거시설의 제공을 위해 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342601','ALLJO','');" href="javascript:;">「주택법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342597','JO','');" href="javascript:;">제51조</a>에 따른 공업화주택 등 모듈러형 주택(건축물의 전부 또는 상당 부분을 공장 등 현장 외의 장소에서 미리 제작하고, 이를 현장에서 조립ㆍ설치하는 방식으로 생산된 주택을 말한다)을 공급할 수 있다. 이 경우 모듈러형 주택의 확보ㆍ설치ㆍ운영 등에 필요한 사항은 국토교통부장관이 행정안전부장관 및 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342591','ALLJO','');" href="javascript:;">「재해구호법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342595','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342593','JO','');" href="javascript:;">제3호</a>의 구호기관과 협의하여 정한다. </p>
+      <p class="pty1_de2"> <span class="sfon">[본조신설 2026. 6. 22.] [종전 제23조의4는 제23조의5로 이동 &lt;2026. 6. 22.&gt;]</span> </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <a name="J23:5" id="J23:5"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y002305" id="J99060921:0023:05"> 제23조의5(지분적립형 분양주택 등의 입주자 선정 등) </label> </span> ① 공공주택사업자는 지분적립형 분양주택을 공급하는 경우에는 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342615','BE','');" href="javascript:;">별표 6의5</a>에 따라 입주자를 선정해야 한다. <span class="sfon">&lt;개정 2022. 12. 29.&gt;</span> </p>
+      <p class="pty1_de2h">1. 삭제 <span class="sfon">&lt;2022. 12. 29.&gt;</span> </p> 
+      <p class="pty1_de2h">2. 삭제 <span class="sfon">&lt;2022. 12. 29.&gt;</span> </p> 
+      <p class="pty1_de2h">3. 삭제 <span class="sfon">&lt;2022. 12. 29.&gt;</span> </p> 
+      <p class="pty1_de2_1">② 공공주택사업자는 이익공유형 분양주택 및 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034342611','ALLJO','');" href="javascript:;">「주택법」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342619','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342609','JO','');" href="javascript:;">제9호</a>의 토지임대부 분양주택을 공급하는 경우에는 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342613','BE','');" href="javascript:;">별표 6의6</a>에 따라 입주자를 선정해야 한다. <span class="sfon">&lt;신설 2022. 12. 29.&gt;</span> </p> 
+      <p class="pty1_de2_1">③ 공공주택사업자는 다음 각 호의 사업으로 건설하는 공공분양주택(제1항 각 호의 주택은 제외한다)을 공급하는 경우에는 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034342621','BE','');" href="javascript:;">별표 6의7</a>에 따라 입주자를 선정해야 한다. <span class="sfon">&lt;개정 2022. 12. 29.&gt;</span> </p> 
+      <p class="pty1_de2h">1. 도심 공공주택 복합사업 </p> 
+      <p class="pty1_de2h">2. 혁신지구재생사업 </p> 
+      <p class="pty1_de2h">3. <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034342605','JO','');" href="javascript:;">제23조의2</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034342607','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034342617','JO','');" href="javascript:;">제8호</a>의 사업 </p> 
+      <p class="pty1_de2"> <span class="sfon">[본조신설 2021. 9. 17.] [제23조의4에서 이동 &lt;2026. 6. 22.&gt;]</span> </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <a name="J25:0" id="J25:0"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y002500" id="J99060925:0025:00"> 제25조(공공임대주택의 입주자 관리) </label> </span> ① 공공임대주택의 입주자는 해당 주택에서 퇴거할 때에는 공공주택사업자에게 그 주택을 명도하여야 한다. <span class="sfon">&lt;개정 2018. 9. 28.&gt;</span> </p>
+      <p class="pty1_de2_1">② 공공임대주택의 입주자로 선정된 자는 공공임대주택의 임대기간 만료시까지 거주할 수 있다. 다만, 임대기간 만료 전에 다음 각 호의 어느 하나에 해당하는 경우에는 공공주택사업자에게 해당 공공임대주택을 명도하여야 한다. <span class="sfon">&lt;개정 2018. 12. 19.&gt;</span> </p> 
+      <p class="pty1_de2h">1. 전용면적이 85제곱미터 이하인 공공임대주택(<a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341913','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341915','JO','');" href="javascript:;">제25조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341917','JO','');" href="javascript:;">제6항</a>에 따라 공급하는 주택은 제외한다)으로서 입주자 본인 또는 그 세대에 속한 자가 다른 주택을 소유하거나 다른 공공임대주택에 당첨되어 입주하는 경우 </p> 
+      <p class="pty1_de2h">2. 전용면적이 85제곱미터를 초과하는 공공임대주택과 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341901','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341903','JO','');" href="javascript:;">제25조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341879','JO','');" href="javascript:;">제6항</a>에 따라 공급하는 공공임대주택으로서 입주자 본인 또는 그 세대에 속한 자가 다른 공공임대주택에 당첨되어 입주하는 경우 </p> 
+      <p class="pty1_de2h">3. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341887','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a>에 따른 분양권등을 갖고 있는 사람의 경우 그 입주예정일(분양권등이 여러 개인 경우에는 가장 빨리 도래하는 입주예정일을 말한다)이 도래한 경우 </p> 
+      <p class="pty1_de2_1">③ 공공임대주택의 공공주택사업자는 다음 각 호의 어느 하나에 해당하는 경우에는 미리 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341831','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341841','JO','');" href="javascript:;">제52조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341843','JO','');" href="javascript:;">제1항</a>에 따라 주택소유 여부를 확인하여야 한다. </p> 
+      <p class="pty1_de2h">1. 임대차계약을 체결하는 경우 </p> 
+      <p class="pty1_de2h">2. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341853','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341867','JO','');" href="javascript:;">제48조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341889','JO','');" href="javascript:;">제1항</a> 각 호에 따른 임차권의 양도 또는 공공임대주택의 전대(轉貸)에 대한 동의를 하는 경우 </p> 
+      <p class="pty1_de2h">3. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341925','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341833','JO','');" href="javascript:;">제54조</a>2제2항제2호에 따라 임대의무기간 중에 분양전환하는 경우 </p> 
+      <p class="pty1_de2h">4. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341849','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341851','JO','');" href="javascript:;">제55조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341863','JO','');" href="javascript:;">제1항</a>에 따라 공공임대주택을 우선 분양전환하는 경우 </p> 
+      <p class="pty1_de2_1">④ 공공임대주택의 공공주택사업자는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341895','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341897','JO','');" href="javascript:;">제52조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341899','JO','');" href="javascript:;">제1항</a>에 따라 해당 공공임대주택의 임차인에 대하여 매년 1회 이상 주택소유 여부를 확인하여야 한다. </p> 
+      <p class="pty1_de2_1">⑤ 공공임대주택의 공공주택사업자는 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341821','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341905','JO','');" href="javascript:;">제57조</a>에 따라 해당 공공임대주택의 임차인에 대하여 다른 공공임대주택의 당첨 여부를 2년마다 확인하여야 한다. </p> 
+      <p class="pty1_de2_1">⑥ 공공주택사업자는 제5항에 따라 다른 공공임대주택에의 당첨이 확인된 입주자에게 그 사실을 통보하고 10일 이상의 기간을 정하여 소명자료를 제출받아 다른 공공임대주택에 입주하였는지 여부를 확인하여야 한다. </p> 
+      <p class="pty1_de2_1">⑦ 공공임대주택의 공공주택사업자는 제3항제1호ㆍ제2호 및 제4항에도 불구하고 다음 각 호의 어느 하나에 해당하는 경우에는 주택소유 여부를 확인하지 아니할 수 있다. </p> 
+      <p class="pty1_de2h">1. 해당 공공임대주택에 최초로 입주하는 경우로서 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341861','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341845','JO','');" href="javascript:;">제27조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341847','JO','');" href="javascript:;">제5항</a>에 따라 선정된 임차인과 임대차계약을 체결하는 경우 </p> 
+      <p class="pty1_de2h">2. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341825','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341919','JO','');" href="javascript:;">제47조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341921','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341881','JO','');" href="javascript:;">제12호</a><a title="팝업으로 이동" class="link sfon5" onclick="javascript:fncLsLawPop('1034341827','JO','');" href="javascript:;">다목</a> 및 <a title="팝업으로 이동" class="link sfon5" onclick="javascript:fncLsLawPop('1034341923','JO','');" href="javascript:;">라목</a>에 해당하는 경우 </p> 
+      <p class="pty1_de2_1">⑧ 공공임대주택의 공공주택사업자는 제3항, 제4항 및 제7항에 따라 주택을 소유한 것으로 확인된 자에 대해서는 임대 또는 제3항 각 호의 행위를 해서는 아니 된다. 다만, 다음 각 호의 어느 하나에 해당하는 경우에는 그러하지 아니하다. <span class="sfon">&lt;개정 2018. 12. 19.&gt;</span> </p> 
+      <p class="pty1_de2h">1. 임대차계약기간 중이거나 재계약을 하는 경우. 이 경우 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341869','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a>에 따른 분양권등을 갖고 있는 경우에는 입주예정일(분양권등이 여러 개인 경우에는 가장 빨리 도래하는 입주예정일을 말한다)까지는 임대하거나 임대차계약을 체결할 수 있다. </p> 
+      <p class="pty1_de2h">2. 제3항제2호에 해당하는 경우로서 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341871','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341857','JO','');" href="javascript:;">제47조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341859','JO','');" href="javascript:;">제2항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341873','JO','');" href="javascript:;">제4호</a> 각 목에 해당하는 경우 </p> 
+      <p class="pty1_de2h">3. 제3항제3호 및 제4호에 해당하는 경우로서 <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341891','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341875','JO','');" href="javascript:;">제55조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341893','JO','');" href="javascript:;">제1항</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341877','JO','');" href="javascript:;">제2호</a>ㆍ제4호 및 제5호에 해당하는 경우 </p> 
+      <p class="pty1_de2_1">⑨ 제2항 단서에도 불구하고 다른 공공임대주택 입주자의 세대에 속한 다음 각 호의 어느 하나에 해당하는 자가 행복주택 또는 통합공공임대주택에 당첨되어 입주하는 경우에는 다른 공공임대주택 입주자는 해당 공공임대주택을 공공주택사업자에게 명도하지 않을 수 있다. <span class="sfon">&lt;신설 2016. 3. 29., 2021. 4. 13., 2024. 3. 25.&gt;</span> </p> 
+      <p class="pty1_de2h">1. <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034341883','BE','');" href="javascript:;">별표 5</a> 제1호가목1)에 해당하는 사람 </p> 
+      <p class="pty1_de2h">2. <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034341855','BE','');" href="javascript:;">별표 5의2</a> 제1호가목 또는 나목에 해당하는 사람 </p> 
+      <p class="pty1_de2h">3. <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034341911','BE','');" href="javascript:;">별표 5의2</a> 제1호라목에 해당하는 사람 중 혼인 중이 아닌 경우로서 단독세대주(<a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341907','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341909','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341823','JO','');" href="javascript:;">제3호의2</a>에 따른 단독세대주를 말한다. 이하 같다)로 입주하려는 사람 </p> 
+      <p class="pty1_de2h">4. <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034341865','BE','');" href="javascript:;">별표 5의2</a> 제2호나목8) 또는 9)에 해당하는 사람 </p> 
+      <p class="pty1_de2_1">⑩ 공공임대주택에 거주하는 동안 출생한 2세 미만(2세가 되는 날을 포함한다)의 자녀(<a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341829','ALLJO','');" href="javascript:;">「주택공급에 관한 규칙」</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341835','JO','');" href="javascript:;">제2조</a><a title="팝업으로 이동" class="link sfon4" onclick="javascript:fncLsLawPop('1034341837','JO','');" href="javascript:;">제2호의3</a><a title="팝업으로 이동" class="link sfon5" onclick="javascript:fncLsLawPop('1034341839','JO','');" href="javascript:;">라목</a> 및 <a title="팝업으로 이동" class="link sfon5" onclick="javascript:fncLsLawPop('1034341885','JO','');" href="javascript:;">마목</a>의 세대원에 해당하는 자녀를 말하며, 태아를 포함한다)를 둔 임차인은 공공주택사업자에게 거주 중이던 주택보다 넓은 면적의 공공임대주택으로의 이주를 신청할 수 있다. 이 경우 공공주택사업자는 다음 각 호의 경우를 제외하고는 신청 순서에 따라 해당 공공주택사업자가 공급하는 공공임대주택(임차인의 거주 주택이 속한 특별시ㆍ광역시ㆍ특별자치시ㆍ도ㆍ특별자치도에 있는 공공임대주택만 해당한다)으로 이주(이주하려는 주택에 예비입주자가 있는 경우에는 최후순위 예비입주자로의 선정을 말한다)하게 할 수 있다. <span class="sfon">&lt;신설 2025. 3. 31.&gt;</span> </p> 
+      <p class="pty1_de2h">1. 장기전세주택, 분양전환공공임대주택 또는 기존주택전세임대주택에서 거주하는 임차인이 이주를 신청하는 경우. 다만, 장기전세주택에서 거주하는 임차인이 다른 장기전세주택으로의 이주를 신청하는 경우는 제외한다. </p> 
+      <p class="pty1_de2h">2. 임차인이 장기전세주택, 분양전환공공임대주택 또는 기존주택전세임대주택으로의 이주를 신청하는 경우. 다만, 장기전세주택에서 거주하는 임차인이 다른 장기전세주택으로의 이주를 신청하는 경우는 제외한다. </p> 
+      <p class="pty1_de2h">3. 임차인이 최초 입주가 개시되지 않은 공공임대주택으로의 이주를 신청하는 경우 </p> 
+      <p class="pty1_de2_1">⑪ 공공주택사업자는 제10항에 따른 이주 및 임대조건 등에 관한 세부사항을 별도로 정할 수 있다. <span class="sfon">&lt;신설 2025. 3. 31.&gt;</span> </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <a name="J26:0" id="J26:0"></a> 
+    <div class="pgroup"> 
+     <ul class="lawico01"> 
+     </ul> 
+     <div class="lawcon"> 
+      <p class="pty1_p4"> <span class="bl"> <label for="Y002600" id="J99060927:0026:00"> 제26조(입주자 선정을 위한 분양전환가격 등의 공고) </label> </span> 공공주택사업자는 분양전환공공임대주택의 입주자모집공고를 할 때에는 공고문에 다음 각 호의 사항을 포함시켜야 한다. 다만, 전용면적이 85제곱미터를 초과하는 주택인 경우에는 제1호 및 제3호의 사항을 공고하지 아니할 수 있으며, 분납임대주택(분양전환공공임대주택 중 임대보증금 없이 분양전환금을 분할하여 납부하는 공공건설임대주택을 말한다. 이하 같다)의 경우에는 제5호 및 제6호의 사항을 제외한다. </p>
+      <p class="pty1_de2h">1. <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034341035','BE','');" href="javascript:;">별표 7</a> 제2호가목1)에 따른 최초 입주자모집공고 당시(공공임대주택으로 사업계획 변경승인을 받은 경우에는 사업계획을 변경승인하기 전의 최초 입주자모집공고 당시를 말한다. 이하 이 호에서 같다)의 주택가격(건축비와 택지비로 구분하여 공고한다. 이하 이 호에서 같다). 다만, 분납임대주택의 경우에는 <a title="팝업으로 이동" class="link sfon6" onclick="javascript:fncLsLawPop('1034341031','BE','');" href="javascript:;">별표 8</a>에 따른 분납금(<a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341301','ALLJO','');" href="javascript:;">영</a> <a title="팝업으로 이동" class="link sfon2" onclick="javascript:fncLsLawPop('1034341299','JO','');" href="javascript:;">제55조</a><a title="팝업으로 이동" class="link sfon3" onclick="javascript:fncLsLawPop('1034341303','JO','');" href="javascript:;">제3항</a>에 따른 분양전환금의 일부를 말한다. 이하 같다) 산정기준에 따라 산정한 최초 입주자모집공고 당시의 주택가격을 말한다. </p> 
+      <p class="pty1_de2h">2. 임대의무기간 및 분양전환 시기 </p> 
+      <p class="pty1_de2h">3. 분양전환가격의 산정기준. 다만, 분납임대주택의 경우에는 분납금의 납부 시기 및 산정기준을 말한다. </p> 
+      <p class="pty1_de2h">4. 분양전환시의 해당 공공임대주택에 대한 수선ㆍ보수의 범위 </p> 
+      <p class="pty1_de2h">5. <a title="팝업으로 이동" class="link sfon1" onclick="javascript:fncLsLawPop('1034341033','ALLJO','');" href="javascript:;">「주택임대차보호법」</a>에 따른 임대보증금의 회수에 관한 사항 </p> 
+      <p></p> 
+     </div> 
+    </div> 
+    <!-- 조문정보 --> 
+   </div> 
+  </div> 
+  <div id="lsOutPutDivWrite"> 
+   <div id="lsOutPutLayer"> 
+    <!-- 본문 저장 layer --> 
+    <div class="vwrap7" id="infoSaveLayer" style="display:none;"> 
+     <form id="infoSaveForm" name="infoSaveForm" target="_self" action=""> 
+      <fieldset> 
+       <legend>파일형식 선택</legend> 
+       <input type="hidden" name="saveExt" value="" /> 
+       <input type="hidden" name="lspttninfSeq" value="124639" /> 
+      </fieldset> 
+     </form> 
+     <div class="contwrap"> 
+      <div class="viewla"> 
+       <div class="ins" id="infoSaveLayerLoding"> 
+        <div class="inctn"> 
+         <ul> 
+          <li class="itit">파일형식</li> 
+          <li class="rdi"> <input type="radio" class="radio" name="fileType" id="FileSaveHwp" checked="checked" value="hwp" style="margin-left:50px" /><label for="FileSaveHwp">HWP</label> <input type="radio" class="radio" name="fileType" id="FileSavePdf" value="pdf" /><label for="FileSavePdf">PDF</label> </li> 
+         </ul> 
+        </div> 
+        <!-- button --> 
+        <div class="btnc2_1"> 
+         <input id="lsSaveBtn" type="image" onclick="javascript:saveContent();" src="/LSW/images/button/btn_save2.gif" alt="저장" /> 
+         <span class="btn_close"><a href="javascript:;" onkeypress="" onclick="javascript:saveAndPrint(0, this ,0);"><img src="/LSW/images/button/btn_close2.gif" alt="닫기" /></a></span> 
+        </div> 
+        <!-- button //--> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <!-- 본문 저장 layer //--> 
+   </div> 
+  </div> 
+  <div id="lsLinkDivWrite"> 
+   <div id="lsLinkLayer" style="display:none"></div> 
+  </div> 
+  <div id="tmpLsLinkDivWrite"> 
+   <div id="joTempDeleLayer" style="display:none"></div> 
+  </div> 
+  <script type="text/javascript" src="/LSW/js/common/hrefRemove.js"></script>  
+  <script type="text/javascript">
+//<![CDATA[
+	 /* jstl 변수를 스크립트에서 사용하기위해 html태그 뒤에 스크립트를 선언 */	 
+	var lsSearchObj = new LsSearchObj();
+
+	if ((typeof Range !=="undefined") && !Range.prototype.createContextualFragment){
+		Range.prototype.createContextualFragment = function(html){
+			var frag = document.createDocumentFragment(),
+			div = document.createElement("div");
+			frag.appendChild(div);
+			div.outerHTML = html;
+			return frag;
+		};
+	}
+	
+	var pageLayoutOptions = {
+			name:					'pageLayout'
+		,	resizeWithWindowDelay:	1
+		,	north__paneSelector:	".outer-north"
+		,	north__spacing_open:	0
+		,	north__size:			71
+		,	north__maxSize:		    71
+		,	resizable:				true
+		,	slidable:				false
+		,	closable:				true
+		,	west__paneSelector:  	".outer-west"
+		,	west__onresize:			sizeControll
+		,	west__size:				185
+		,	west__maxSize:		    400
+		,	west__initClosed:		false		
+		,	west__spacing_open:		15
+		,	west__spacing_closed:	15
+		,west__togglerLength_closed:65
+		,west__togglerLength_open:	65
+		,	center__paneSelector:	".outer-center" 
+		,	center__children: {
+					name:					'middle-contentLayoput'
+				,	center__paneSelector:	".middle-center"
+				,	center__size:             605
+		}
+	};
+	
+    $(document).ready(function() {
+		// 뒤로가기 버튼 설정
+    	updateBackBtn();
+        
+    	$("body").layout( pageLayoutOptions );
+    	$('#printContents').html($('#linkedJoContent').html());
+    	var content_head = $('#content_left > p');
+    	content_head.first().removeClass('deactive');
+    	content_head.first().addClass('active')
+
+    	// 법령목록의 첫번째 법령의 본문과 선택 조로 focus 이동
+		//f_findLinkedJoContent(el('firstRlatLsId').value);
+    	
+    	content_head.on('click', function(event) {
+           event.preventDefault();
+        	        
+           if ($(this).attr('class') != 'active'){
+           	content_head.removeClass('deactive');
+           	content_head.removeClass('active');
+           	content_head.addClass('deactive');
+               $(this).removeClass('deactive');
+               $(this).addClass('active');
+           }
+            
+            // 법령명 클릭했을때 해당 본문 띄우기
+            var activeId = $('.active').attr('id');
+            scrollActiveId = activeId.substring(2);
+			if(typeof activeId == "undefined"){
+				alert("정보가 없습니다.");
+			}else{
+				target = document.getElementById(scrollActiveId);
+				target.scrollIntoView(true);
+				return;
+			}
+        });
+    });
+    
+	$(window).resize(function() {
+		sizeControll();
+	});
+	
+	function onKeyDown(){
+		if(event.keyCode == 13){
+			joBdySearch();
+		}
+	}
+
+	function joBdySearch() {
+		var schKey = el("bdySearch");
+		var chkMode = "down";
+
+		if (schKey == null || schKey.value == "") {
+			alert("검색키워드를 입력하세요");
+			el("bdySearch").focus();
+
+		} else {
+			bodyInfoRSearch('linkedJoContent');
+		}
+	}
+	
+	/* 뒤로가기 버튼 */
+	function goBack() {		
+		var preUrl = document.referrer;                      // 전 페이지 url
+		var iniUrl = sessionStorage.getItem('iniUrl');	     // 최초 팝업창 url
+
+		if(window.history.length > 1){                       // 최초 팝업창(length=1)이 아니라면
+			if(iniUrl == preUrl) {                           // 뒤로갈 페이지가 처음 열린 팝업창일 때
+				sessionStorage.setItem('equalUrl', 'init');				
+			} else {
+				sessionStorage.setItem('equalUrl', 'diff');
+			}		
+			window.history.back();                           // 뒤로 가기			
+		} 
+	}
+	
+	/* 뒤로가기 버튼 세팅 */
+	function updateBackBtn() {
+		var backBtn = document.getElementById('backBtn');
+ 				
+		if (window.history.length == 1) {                    // 처음 팝업을 열었을때 길이는 1
+			backBtn.style.display = 'none'; 			
+			// 최초의 열린 팝업 url 저장
+			sessionStorage.setItem('iniUrl', window.location.href);
+
+		} else {                                             // history 길이가 2 이상  
+			var equalUrl = sessionStorage.getItem('equalUrl');
+			
+			if (equalUrl == "init"){
+				backBtn.style.display = 'none';              // 최초 url과 동일할 경우 뒤로가기 아이콘 숨김
+				sessionStorage.setItem('equalUrl', 'diff');		
+						
+			} else {
+				backBtn.style.display = 'inline-block';      // diff 인  경우
+			}
+		} 
+	}
+
+	//]]>
+</script>  
+ </body>
+</html>

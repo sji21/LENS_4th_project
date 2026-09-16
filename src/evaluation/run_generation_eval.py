@@ -1,7 +1,10 @@
 """현재 dev 평가셋을 실제 Retrieval + Qwen runtime으로 평가한다.
 
 기존 ``src.evaluation.run_eval``은 검색기만 평가한다. 이 실행기는
-``src.generation.chain.answer_question``을 그대로 호출해 최종 서비스 흐름을 본다.
+운영 웹과 동일한 ``src.generation.graph.answer_question``으로 단일 질문의 생성
+흐름을 평가한다. 웹 세션·멀티턴·업로드 UI 평가는 포함하지 않는다.
+생성 모듈을 가져오기 전에 프로젝트 ``.env``를 로드하므로 Django를
+거치지 않고 명령행에서 실행해도 동일한 LLM 설정을 사용한다.
 
 기본 실행:
     python -m src.evaluation.run_generation_eval
@@ -19,6 +22,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import time
 from dataclasses import asdict, dataclass
@@ -26,13 +30,58 @@ from datetime import datetime
 from pathlib import Path
 from typing import Iterable
 
-from src.generation.chain import answer_question, get_default_service
+from src.environment import load_project_environment
+
+# src.generation.llm은 import 시점에 환경 변수를 읽으므로 반드시 생성 모듈보다
+# 먼저 로드한다. 셸에서 명시한 값은 load_project_environment()가 덮어쓰지 않는다.
+load_project_environment()
+
+from src.generation.chain import get_default_service  # noqa: E402
+from src.generation.graph import answer_question  # noqa: E402
 from src.generation.models import Answer
 from src.retrieval.retriever import load_chunks
 from src.retrieval.service import CASE_CHUNKS, GUIDE_CHUNKS, LAW_CHUNKS
 
 DEFAULT_EVAL_SET = Path("data/eval/dev.jsonl")
 DEFAULT_OUTPUT_DIR = Path("data/eval/runs/generation")
+RUNNER_NAME = "langgraph"
+RUNNER_VERSION = 1
+
+# --resume가 코드 변경 전 결과를 코드 변경 후 실행과 섞지 않도록, 생성 결과에
+# 영향을 주는 핵심 모듈의 내용을 해시해 checkpoint 행마다 함께 남긴다.
+# 버전이 다른 행은 재사용하지 않고 다시 평가한다.
+_VERSION_SOURCE_FILES = (
+    Path("src/generation/graph.py"),
+    Path("src/generation/chain.py"),
+    Path("src/generation/prompt.py"),
+    Path("src/generation/llm.py"),
+    Path("src/generation/validation.py"),
+    Path("src/generation/abstention.py"),
+    Path("src/generation/citation.py"),
+    Path("src/retrieval/service.py"),
+    Path("src/retrieval/hybrid.py"),
+    Path("src/retrieval/dense.py"),
+    Path("src/security/secret_filter.py"),
+    Path("src/security/prompt_injection.py"),
+)
+
+
+def compute_code_version() -> str:
+    """생성·검색·보안 핵심 모듈의 내용으로 짧은 버전 해시를 만든다.
+
+    git 커밋 해시가 아니라 파일 내용 자체를 해시하므로 커밋하지 않은
+    변경도 감지한다. 이 해시가 --resume 재사용 여부를 가르는 유일한
+    기준이다.
+    """
+    hasher = hashlib.sha256()
+    for path in _VERSION_SOURCE_FILES:
+        try:
+            hasher.update(path.read_bytes())
+        except OSError:
+            # 파일이 없으면 경로 자체를 해시에 포함해 버전이 달라지게 한다.
+            hasher.update(f"MISSING:{path}".encode("utf-8"))
+        hasher.update(b"\x00")
+    return hasher.hexdigest()[:12]
 
 
 @dataclass
@@ -58,6 +107,7 @@ class EvalRow:
     manual_correct: str = ""
     manual_note: str = ""
     validation_mode: str = "not_applicable"
+    code_version: str = ""
 
 
 def load_questions(path: Path) -> list[dict]:
@@ -140,6 +190,7 @@ def evaluate_one(
     question: dict,
     service,
     chunk_to_article: dict[str, str],
+    code_version: str,
 ) -> EvalRow:
     started = time.perf_counter()
     answer = answer_question(
@@ -173,6 +224,7 @@ def evaluate_one(
         elapsed_seconds=round(elapsed, 3),
         failure_stage=infer_failure_stage(answer),
         validation_mode=answer.validation_mode,
+        code_version=code_version,
     )
 
 
@@ -193,16 +245,33 @@ def select_questions(
     return selected
 
 
-def load_completed(checkpoint_path: Path) -> dict[str, EvalRow]:
+def load_completed(
+    checkpoint_path: Path, code_version: str
+) -> dict[str, EvalRow]:
+    """현재 코드 버전과 일치하는 완료 행만 재사용 대상으로 돌려준다.
+
+    버전이 없거나(과거 checkpoint) 다른 행은 코드가 바뀐 뒤 결과가
+    달라졌을 수 있으므로 반환하지 않는다. main()의 실행 루프는 이렇게
+    걸러진 qid를 다시 평가한다.
+    """
     if not checkpoint_path.exists():
         return {}
     rows: dict[str, EvalRow] = {}
+    stale = 0
     with checkpoint_path.open(encoding="utf-8") as handle:
         for line in handle:
             line = line.strip()
             if line:
                 payload = json.loads(line)
-                rows[payload["qid"]] = EvalRow(**payload)
+                row = EvalRow(**payload)
+                if row.code_version != code_version:
+                    stale += 1
+                    continue
+                rows[payload["qid"]] = row
+    if stale:
+        print(
+            f"checkpoint 중 {stale}개 문항은 코드 버전이 달라 재평가합니다."
+        )
     return rows
 
 
@@ -324,7 +393,11 @@ def main() -> None:
     parser.add_argument(
         "--resume",
         action="store_true",
-        help="같은 run-id의 jsonl checkpoint가 있으면 완료된 qid를 건너뜀",
+        help=(
+            "같은 run-id의 jsonl checkpoint가 있으면 완료된 qid를 건너뜀. "
+            "단, 생성·검색·보안 핵심 모듈이 바뀌어 코드 버전이 달라졌으면 "
+            "그 qid는 checkpoint와 무관하게 다시 평가함"
+        ),
     )
     args = parser.parse_args()
 
@@ -340,6 +413,7 @@ def main() -> None:
         limit=args.limit,
     )
 
+    code_version = compute_code_version()
     print("Retrieval service 준비 중...")
     service = get_default_service()
     mode = "hybrid" if getattr(service, "dense", None) is not None else "lexical_only"
@@ -348,7 +422,9 @@ def main() -> None:
     print()
 
     chunk_to_article = load_article_map()
-    completed = load_completed(checkpoint_path) if args.resume else {}
+    completed = (
+        load_completed(checkpoint_path, code_version) if args.resume else {}
+    )
     if not args.resume and checkpoint_path.exists():
         checkpoint_path.unlink()
     rows: list[EvalRow] = []
@@ -367,6 +443,7 @@ def main() -> None:
                 question,
                 service,
                 chunk_to_article,
+                code_version,
             )
         except KeyboardInterrupt:
             print("\n사용자 중단. 완료된 문항은 jsonl checkpoint에 남아 있습니다.")
@@ -393,6 +470,7 @@ def main() -> None:
                 elapsed_seconds=0.0,
                 failure_stage="exception",
                 manual_note=f"{type(error).__name__}: {error}",
+                code_version=code_version,
             )
         rows.append(row)
         append_checkpoint(checkpoint_path, row)
@@ -403,6 +481,7 @@ def main() -> None:
     payload = {
         "run_id": run_id,
         "eval_set": str(args.eval_set),
+        "runner": {"name": RUNNER_NAME, "version": RUNNER_VERSION},
         "generation_mode": "integrated-main-prompt",
         "retrieval_mode": mode,
         "summary": summary,

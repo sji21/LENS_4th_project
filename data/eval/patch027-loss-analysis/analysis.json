@@ -1,0 +1,3801 @@
+{
+  "scope": "frozen loss analysis and one offline counterfactual; no adoption or legal regrading",
+  "source_hashes": {
+    "data/eval/patch027-context-tuning/manifest.json": "ee0f8420d58783b8d8e681ba04926b1511d6592241dca638f55894371833f055",
+    "data/eval/patch026-full/capture/before.json": "45d2fb994b85c968c19c0f1af3692dab6387aaf2dff8f85001ff2b251e18a9f2",
+    "data/eval/patch026-full/capture/after.json": "964580953044ae273015990580206ba75404b0b933028c605eec0ecde40a385e",
+    "data/eval/patch015-baseline/capture/results.json": "3834e7c0e8d5f1eb5c2f60bfd6f3106cf1a765fe8f18c535dac444af91029f4c",
+    "data/eval/patch024-expansion/report.json": "4c791dde3e9e2395a55903d3df21ff81f6e93c1f6181a8a12b87992c4439391d",
+    "data/eval/patch026-full/capture/audit.json": "8cbfe25b771f236e0e822af87d79d3ca8e50f26e3392a8dd99cd2f7a839659be"
+  },
+  "counts": {
+    "returned_loss_inputs": 8,
+    "top3_loss_inputs": 7,
+    "overlap_inputs": 4,
+    "union_inputs": 11,
+    "top3_only_inputs": 3,
+    "complete_to_incomplete": 5,
+    "all_lost_targets_in_candidate_union": true,
+    "returned_losses_already_absent_untuned": 8
+  },
+  "items": [
+    {
+      "qid": "DEV-005",
+      "mode": "context_diagnostic",
+      "query": "전세계약 잔금일은 2026년 9월 8일. 임대인이 이날 열쇠를 넘겨주기로 했고 실제 짐을 옮길 예정일은 2026년 9월 15일. 임대차 신고 여부와 현재 주민등록 상태는 제시하지 않음.\n사용자 질문: 오늘 잔금 내고 열쇠는 받는데 실제 이사는 일주일 뒤예요. 전입신고랑 확정일자는 언제 해야 하나요?",
+      "targets": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "returned_losses": [
+        "주택임대차보호법-제3조의6"
+      ],
+      "top3_losses": [
+        "주택임대차보호법-제3조의6"
+      ],
+      "missing_targets": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "complete_operating": false,
+      "complete_untuned": false,
+      "complete_current": false,
+      "expansion": {
+        "general": [
+          "주민등록 전입신고 주택 인도 대항력",
+          "확정일자 부여 현황 정보제공"
+        ],
+        "civil": []
+      },
+      "operating": {
+        "qid": "DEV-005",
+        "mode": "context_diagnostic",
+        "laws": [
+          "주택임대차보호법시행령-제4조",
+          "주택임대차보호법-제3조의7",
+          "주택임대차보호법-제3조의6",
+          "주택임대차보호법-제3조",
+          "주택임대차보호법시행령-제6조"
+        ],
+        "civil_laws": [
+          "민법-제623조",
+          "민법-제634조",
+          "민법-제629조"
+        ],
+        "cases": [
+          "case:CASE-98CHU40#0",
+          "case:CASE-2021DA266631#0",
+          "case:CASE-2024DA326398#0",
+          "case:CASE-2015DA254507#0",
+          "case:CASE-2004DA69741#0"
+        ],
+        "guides": []
+      },
+      "untuned": {
+        "qid": "DEV-005",
+        "mode": "context_diagnostic",
+        "laws": [
+          "부동산거래신고등에관한법률-제6조의5",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조",
+          "주택임대차보호법시행령-제4조"
+        ],
+        "civil_laws": [
+          "민법-제634조",
+          "민법-제623조",
+          "민법-제636조"
+        ],
+        "cases": [
+          "case:CASE-98CHU40#0",
+          "case:CASE-2021DA266631#0",
+          "case:CASE-2024DA326398#0",
+          "case:CASE-2015DA254507#0",
+          "case:CASE-2004DA69741#0"
+        ],
+        "guides": []
+      },
+      "current": {
+        "qid": "DEV-005",
+        "mode": "context_diagnostic",
+        "laws": [
+          "부동산거래신고등에관한법률-제6조의5",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조",
+          "주택임대차보호법-제3조"
+        ],
+        "civil_laws": [
+          "민법-제634조",
+          "민법-제623조",
+          "민법-제636조"
+        ],
+        "cases": [
+          "case:CASE-98CHU40#0",
+          "case:CASE-2021DA266631#0",
+          "case:CASE-2024DA326398#0",
+          "case:CASE-2015DA254507#0",
+          "case:CASE-2004DA69741#0"
+        ],
+        "guides": []
+      },
+      "target_diagnostics": [
+        {
+          "target": "주택임대차보호법-제3조의6",
+          "channel": "general",
+          "operating_rank": 3,
+          "untuned_rank": null,
+          "final_rank": null,
+          "member_ranks": {
+            "bm25_original": 18,
+            "dense_original": 7,
+            "bm25_context": 6,
+            "dense_context": 7
+          },
+          "rrf_rank": 7,
+          "candidate_present": true,
+          "selected_outside_limit": false
+        }
+      ],
+      "added_vs_operating": {
+        "laws": [
+          "부동산거래신고등에관한법률-제6조의5",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조"
+        ],
+        "civil_laws": [
+          "민법-제636조"
+        ]
+      }
+    },
+    {
+      "qid": "DEV-005",
+      "mode": "question_only",
+      "query": "오늘 잔금 내고 열쇠는 받는데 실제 이사는 일주일 뒤예요. 전입신고랑 확정일자는 언제 해야 하나요?",
+      "targets": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "returned_losses": [],
+      "top3_losses": [
+        "주택임대차보호법-제3조의6"
+      ],
+      "missing_targets": [
+        "주민등록법-제16조"
+      ],
+      "complete_operating": false,
+      "complete_untuned": false,
+      "complete_current": false,
+      "expansion": {
+        "general": [
+          "주민등록 전입신고 주택 인도 대항력",
+          "확정일자 부여 현황 정보제공"
+        ],
+        "civil": []
+      },
+      "operating": {
+        "qid": "DEV-005",
+        "mode": "question_only",
+        "laws": [
+          "주택임대차보호법-제3조의6",
+          "주택임대차보호법-제3조",
+          "주택임대차보호법시행령-제4조",
+          "주택임대차보호법-제3조의7",
+          "주택임대차보호법-제3조의4"
+        ],
+        "civil_laws": [
+          "민법-제357조",
+          "민법-제623조",
+          "민법-제634조"
+        ],
+        "cases": [
+          "case:CASE-98CHU40#0",
+          "case:CASE-2015DA254507#0",
+          "case:CASE-97DA22393#0",
+          "case:CASE-2004DA69741#0",
+          "case:CASE-2009DA101275#0"
+        ],
+        "guides": []
+      },
+      "untuned": {
+        "qid": "DEV-005",
+        "mode": "question_only",
+        "laws": [
+          "부동산거래신고등에관한법률-제6조의5",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조",
+          "주택임대차보호법-제3조의6"
+        ],
+        "civil_laws": [
+          "민법-제357조",
+          "민법-제623조",
+          "민법-제634조"
+        ],
+        "cases": [
+          "case:CASE-98CHU40#0",
+          "case:CASE-2015DA254507#0",
+          "case:CASE-97DA22393#0",
+          "case:CASE-2004DA69741#0",
+          "case:CASE-2009DA101275#0"
+        ],
+        "guides": []
+      },
+      "current": {
+        "qid": "DEV-005",
+        "mode": "question_only",
+        "laws": [
+          "부동산거래신고등에관한법률-제6조의5",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조",
+          "주택임대차보호법-제3조",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조",
+          "주택임대차보호법-제3조의6"
+        ],
+        "civil_laws": [
+          "민법-제357조",
+          "민법-제623조",
+          "민법-제634조"
+        ],
+        "cases": [
+          "case:CASE-98CHU40#0",
+          "case:CASE-2015DA254507#0",
+          "case:CASE-97DA22393#0",
+          "case:CASE-2004DA69741#0",
+          "case:CASE-2009DA101275#0"
+        ],
+        "guides": []
+      },
+      "target_diagnostics": [
+        {
+          "target": "주택임대차보호법-제3조의6",
+          "channel": "general",
+          "operating_rank": 1,
+          "untuned_rank": 5,
+          "final_rank": 5,
+          "member_ranks": {
+            "bm25_original": 6,
+            "dense_original": 5,
+            "bm25_context": 5,
+            "dense_context": 4
+          },
+          "rrf_rank": 5,
+          "candidate_present": true,
+          "selected_outside_limit": false
+        }
+      ],
+      "added_vs_operating": {
+        "laws": [
+          "부동산거래신고등에관한법률-제6조의5",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조"
+        ],
+        "civil_laws": []
+      }
+    },
+    {
+      "qid": "DEV-009",
+      "mode": "context_diagnostic",
+      "query": "단독주택 일부를 임차할 예정. 임차인은 그 공간에서 실제 거주하면서 예약제로 네일 서비스를 운영할 계획이라고 설명함. 건축물의 용도, 사업자등록 여부, 영업에 사용하는 면적 비율 등은 제시하지 않음.\n사용자 질문: 원래 주택인 곳을 빌려서 제가 살면서 작은 네일숍도 같이 하려고 해요. 계약서에는 그냥 월세계약이라고만 되어 있는데, 이런 경우에는 주택 임대차로 보면 되는 건가요, 상가로 보면 되는 건가요?",
+      "targets": [
+        "상가건물임대차보호법-제2조",
+        "주택임대차보호법-제2조"
+      ],
+      "returned_losses": [
+        "주택임대차보호법-제2조"
+      ],
+      "top3_losses": [
+        "주택임대차보호법-제2조"
+      ],
+      "missing_targets": [
+        "주택임대차보호법-제2조"
+      ],
+      "complete_operating": true,
+      "complete_untuned": false,
+      "complete_current": false,
+      "expansion": {
+        "general": [],
+        "civil": []
+      },
+      "operating": {
+        "qid": "DEV-009",
+        "mode": "context_diagnostic",
+        "laws": [
+          "상가건물임대차보호법-제2조",
+          "상가건물임대차보호법시행령-제3조",
+          "주택임대차보호법-제2조",
+          "상가건물임대차보호법시행령-제3조의3",
+          "상가건물임대차보호법-제17조"
+        ],
+        "civil_laws": [
+          "민법-제627조",
+          "민법-제632조",
+          "민법-제629조"
+        ],
+        "cases": [
+          "case:CASE-2020DA202371#0",
+          "case:CASE-2000DA24184#0",
+          "case:CASE-2000DA44799#0",
+          "case:CASE-2022DA279795#0",
+          "case:CASE-95DA30338#0"
+        ],
+        "guides": []
+      },
+      "untuned": {
+        "qid": "DEV-009",
+        "mode": "context_diagnostic",
+        "laws": [
+          "상가건물임대차보호법시행령-제3조",
+          "상가건물임대차보호법-제2조",
+          "상가건물임대차보호법시행령-제3조의3",
+          "상가건물임대차보호법-제17조",
+          "주택임대차보호법-제6조의3"
+        ],
+        "civil_laws": [
+          "민법-제627조",
+          "민법-제632조",
+          "민법-제629조"
+        ],
+        "cases": [
+          "case:CASE-2020DA202371#0",
+          "case:CASE-2000DA24184#0",
+          "case:CASE-2000DA44799#0",
+          "case:CASE-2022DA279795#0",
+          "case:CASE-95DA30338#0"
+        ],
+        "guides": []
+      },
+      "current": {
+        "qid": "DEV-009",
+        "mode": "context_diagnostic",
+        "laws": [
+          "상가건물임대차보호법시행령-제3조",
+          "상가건물임대차보호법-제2조",
+          "상가건물임대차보호법시행령-제3조의3",
+          "상가건물임대차보호법-제17조",
+          "주택임대차보호법-제6조의3"
+        ],
+        "civil_laws": [
+          "민법-제627조",
+          "민법-제632조",
+          "민법-제629조"
+        ],
+        "cases": [
+          "case:CASE-2020DA202371#0",
+          "case:CASE-2000DA24184#0",
+          "case:CASE-2000DA44799#0",
+          "case:CASE-2022DA279795#0",
+          "case:CASE-95DA30338#0"
+        ],
+        "guides": []
+      },
+      "target_diagnostics": [
+        {
+          "target": "주택임대차보호법-제2조",
+          "channel": "general",
+          "operating_rank": 3,
+          "untuned_rank": null,
+          "final_rank": null,
+          "member_ranks": {
+            "bm25_original": null,
+            "dense_original": 2,
+            "bm25_context": null,
+            "dense_context": 2
+          },
+          "rrf_rank": 6,
+          "candidate_present": true,
+          "selected_outside_limit": false
+        }
+      ],
+      "added_vs_operating": {
+        "laws": [
+          "주택임대차보호법-제6조의3"
+        ],
+        "civil_laws": []
+      }
+    },
+    {
+      "qid": "DEV-009",
+      "mode": "question_only",
+      "query": "원래 주택인 곳을 빌려서 제가 살면서 작은 네일숍도 같이 하려고 해요. 계약서에는 그냥 월세계약이라고만 되어 있는데, 이런 경우에는 주택 임대차로 보면 되는 건가요, 상가로 보면 되는 건가요?",
+      "targets": [
+        "상가건물임대차보호법-제2조",
+        "주택임대차보호법-제2조"
+      ],
+      "returned_losses": [
+        "상가건물임대차보호법-제2조"
+      ],
+      "top3_losses": [
+        "상가건물임대차보호법-제2조"
+      ],
+      "missing_targets": [
+        "상가건물임대차보호법-제2조",
+        "주택임대차보호법-제2조"
+      ],
+      "complete_operating": false,
+      "complete_untuned": false,
+      "complete_current": false,
+      "expansion": {
+        "general": [],
+        "civil": []
+      },
+      "operating": {
+        "qid": "DEV-009",
+        "mode": "question_only",
+        "laws": [
+          "상가건물임대차보호법시행령-제3조의3",
+          "상가건물임대차보호법-제2조",
+          "상가건물임대차보호법-제10조의3",
+          "상가건물임대차보호법-제17조",
+          "주택임대차보호법-제6조의3"
+        ],
+        "civil_laws": [
+          "민법-제629조",
+          "민법-제640조",
+          "민법-제627조"
+        ],
+        "cases": [
+          "case:CASE-2000DA44799#0",
+          "case:CASE-2000DA24184#0",
+          "case:CASE-2004DA69741#0",
+          "case:CASE-95DA30338#0",
+          "case:CASE-94DA37646#0"
+        ],
+        "guides": []
+      },
+      "untuned": {
+        "qid": "DEV-009",
+        "mode": "question_only",
+        "laws": [
+          "부동산거래신고등에관한법률시행규칙-제6조의2",
+          "상가건물임대차보호법-제17조",
+          "주택임대차보호법-제6조의3",
+          "상가건물임대차보호법-제10조의3",
+          "주택임대차보호법-제12조"
+        ],
+        "civil_laws": [
+          "민법-제636조",
+          "민법-제629조",
+          "민법-제627조"
+        ],
+        "cases": [
+          "case:CASE-2000DA44799#0",
+          "case:CASE-2000DA24184#0",
+          "case:CASE-2004DA69741#0",
+          "case:CASE-95DA30338#0",
+          "case:CASE-94DA37646#0"
+        ],
+        "guides": []
+      },
+      "current": {
+        "qid": "DEV-009",
+        "mode": "question_only",
+        "laws": [
+          "부동산거래신고등에관한법률시행규칙-제6조의2",
+          "상가건물임대차보호법-제17조",
+          "주택임대차보호법-제6조의3",
+          "상가건물임대차보호법-제10조의3",
+          "주택임대차보호법-제12조"
+        ],
+        "civil_laws": [
+          "민법-제636조",
+          "민법-제629조",
+          "민법-제627조"
+        ],
+        "cases": [
+          "case:CASE-2000DA44799#0",
+          "case:CASE-2000DA24184#0",
+          "case:CASE-2004DA69741#0",
+          "case:CASE-95DA30338#0",
+          "case:CASE-94DA37646#0"
+        ],
+        "guides": []
+      },
+      "target_diagnostics": [
+        {
+          "target": "상가건물임대차보호법-제2조",
+          "channel": "general",
+          "operating_rank": 2,
+          "untuned_rank": null,
+          "final_rank": null,
+          "member_ranks": {
+            "bm25_original": null,
+            "dense_original": 3,
+            "bm25_context": null,
+            "dense_context": 3
+          },
+          "rrf_rank": 8,
+          "candidate_present": true,
+          "selected_outside_limit": false
+        }
+      ],
+      "added_vs_operating": {
+        "laws": [
+          "부동산거래신고등에관한법률시행규칙-제6조의2",
+          "주택임대차보호법-제12조"
+        ],
+        "civil_laws": [
+          "민법-제636조"
+        ]
+      }
+    },
+    {
+      "qid": "DEV-010",
+      "mode": "question_only",
+      "query": "그럼 저는 이미 2021년에 그 집에서 이사까지 나온 상태인데, 지금이라도 할 수 있는 절차가 있나요?",
+      "targets": [
+        "주택임대차보호법-제3조의3"
+      ],
+      "returned_losses": [
+        "주택임대차보호법-제3조의3"
+      ],
+      "top3_losses": [
+        "주택임대차보호법-제3조의3"
+      ],
+      "missing_targets": [
+        "주택임대차보호법-제3조의3"
+      ],
+      "complete_operating": true,
+      "complete_untuned": false,
+      "complete_current": false,
+      "expansion": {
+        "general": [],
+        "civil": []
+      },
+      "operating": {
+        "qid": "DEV-010",
+        "mode": "question_only",
+        "laws": [
+          "주택임대차보호법시행령-제31조",
+          "주택임대차보호법-제3조의4",
+          "주택임대차보호법-제3조의3",
+          "주택임대차보호법-제21조",
+          "주택임대차보호법-제3조의2"
+        ],
+        "civil_laws": [
+          "민법-제634조",
+          "민법-제623조",
+          "민법-제627조"
+        ],
+        "cases": [
+          "case:CASE-2021DA266631#0",
+          "case:CASE-2021DA238650#0",
+          "case:CASE-2024DA326398#0",
+          "case:CASE-2011DA49523#0",
+          "case:CASE-2025DA210305#0"
+        ],
+        "guides": []
+      },
+      "untuned": {
+        "qid": "DEV-010",
+        "mode": "question_only",
+        "laws": [
+          "공공주택특별법시행규칙-제13조",
+          "공공주택특별법시행규칙-제25조",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조",
+          "주택임대차보호법시행령-제31조",
+          "주택임대차보호법-제3조의4"
+        ],
+        "civil_laws": [
+          "민법-제634조",
+          "민법-제623조",
+          "민법-제187조"
+        ],
+        "cases": [
+          "case:CASE-2021DA266631#0",
+          "case:CASE-2021DA238650#0",
+          "case:CASE-2024DA326398#0",
+          "case:CASE-2011DA49523#0",
+          "case:CASE-2025DA210305#0"
+        ],
+        "guides": []
+      },
+      "current": {
+        "qid": "DEV-010",
+        "mode": "question_only",
+        "laws": [
+          "공공주택특별법시행규칙-제13조",
+          "공공주택특별법시행규칙-제25조",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조",
+          "주택임대차보호법시행령-제31조",
+          "주택임대차보호법-제3조의4"
+        ],
+        "civil_laws": [
+          "민법-제634조",
+          "민법-제623조",
+          "민법-제187조"
+        ],
+        "cases": [
+          "case:CASE-2021DA266631#0",
+          "case:CASE-2021DA238650#0",
+          "case:CASE-2024DA326398#0",
+          "case:CASE-2011DA49523#0",
+          "case:CASE-2025DA210305#0"
+        ],
+        "guides": []
+      },
+      "target_diagnostics": [
+        {
+          "target": "주택임대차보호법-제3조의3",
+          "channel": "general",
+          "operating_rank": 3,
+          "untuned_rank": null,
+          "final_rank": null,
+          "member_ranks": {
+            "bm25_original": 11,
+            "dense_original": 8,
+            "bm25_context": 11,
+            "dense_context": 8
+          },
+          "rrf_rank": 9,
+          "candidate_present": true,
+          "selected_outside_limit": false
+        }
+      ],
+      "added_vs_operating": {
+        "laws": [
+          "공공주택특별법시행규칙-제13조",
+          "공공주택특별법시행규칙-제25조",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조"
+        ],
+        "civil_laws": [
+          "민법-제187조"
+        ]
+      }
+    },
+    {
+      "qid": "DEV-012",
+      "mode": "question_only",
+      "query": "계약하러 나온 사람이 집주인 배우자라면서 신분증 사진을 보여줬어요. 이 사람이 진짜 계약할 권한이 있는지 여기서 확인해 줄 수 있나요?",
+      "targets": [
+        "민법-제114조"
+      ],
+      "returned_losses": [
+        "민법-제114조"
+      ],
+      "top3_losses": [],
+      "missing_targets": [
+        "민법-제114조"
+      ],
+      "complete_operating": true,
+      "complete_untuned": false,
+      "complete_current": false,
+      "expansion": {
+        "general": [],
+        "civil": []
+      },
+      "operating": {
+        "qid": "DEV-012",
+        "mode": "question_only",
+        "laws": [
+          "주택임대차보호법-제3조의7",
+          "주택임대차보호법시행령-제6조",
+          "주택임대차보호법-제3조의6",
+          "주택임대차보호법-제3조의4",
+          "주택임대차보호법-제24조"
+        ],
+        "civil_laws": [
+          "민법-제629조",
+          "민법-제640조",
+          "민법-제114조"
+        ],
+        "cases": [
+          "case:CASE-2021DA266631#0",
+          "case:CASE-95DA30338#0",
+          "case:CASE-98CHU40#0",
+          "case:CASE-2022DA279795#0",
+          "case:CASE-96DA17653#0"
+        ],
+        "guides": []
+      },
+      "untuned": {
+        "qid": "DEV-012",
+        "mode": "question_only",
+        "laws": [
+          "부동산거래신고등에관한법률시행규칙-제6조의2",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조",
+          "부동산거래신고등에관한법률-제6조의2",
+          "신탁법-제31조",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조"
+        ],
+        "civil_laws": [
+          "민법-제629조",
+          "민법-제640조",
+          "민법-제634조"
+        ],
+        "cases": [
+          "case:CASE-2021DA266631#0",
+          "case:CASE-95DA30338#0",
+          "case:CASE-98CHU40#0",
+          "case:CASE-2022DA279795#0",
+          "case:CASE-96DA17653#0"
+        ],
+        "guides": []
+      },
+      "current": {
+        "qid": "DEV-012",
+        "mode": "question_only",
+        "laws": [
+          "부동산거래신고등에관한법률시행규칙-제6조의2",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조",
+          "부동산거래신고등에관한법률-제6조의2",
+          "신탁법-제31조",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조"
+        ],
+        "civil_laws": [
+          "민법-제629조",
+          "민법-제640조",
+          "민법-제634조"
+        ],
+        "cases": [
+          "case:CASE-2021DA266631#0",
+          "case:CASE-95DA30338#0",
+          "case:CASE-98CHU40#0",
+          "case:CASE-2022DA279795#0",
+          "case:CASE-96DA17653#0"
+        ],
+        "guides": []
+      },
+      "target_diagnostics": [
+        {
+          "target": "민법-제114조",
+          "channel": "civil",
+          "operating_rank": 3,
+          "untuned_rank": null,
+          "final_rank": null,
+          "member_ranks": {
+            "bm25_original": 12,
+            "dense_original": 2,
+            "bm25_expanded": 12,
+            "dense_expanded": 2,
+            "bm25_context": 12,
+            "dense_context": 2
+          },
+          "rrf_rank": 5,
+          "candidate_present": true,
+          "selected_outside_limit": false
+        }
+      ],
+      "added_vs_operating": {
+        "laws": [
+          "부동산거래신고등에관한법률시행규칙-제6조의2",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조",
+          "부동산거래신고등에관한법률-제6조의2",
+          "신탁법-제31조",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조"
+        ],
+        "civil_laws": [
+          "민법-제634조"
+        ]
+      }
+    },
+    {
+      "qid": "DEV-015",
+      "mode": "context_diagnostic",
+      "query": "임차인은 전세계약을 체결하고 계약금을 지급한 상태. 잔금 지급 전 임대인이 주택을 제3자에게 매도할 예정이라고 알려옴. 소유권 이전 시점과 잔금 지급 예정일의 선후관계는 확정되지 않음.\n사용자 질문: 계약금 낸 뒤에 집주인이 집을 다른 사람한테 팔기로 했대요. 잔금은 원래 집주인한테 줘야 하는 건가요, 새 집주인한테 줘야 하는 건가요?",
+      "targets": [
+        "민법-제105조",
+        "주택임대차보호법-제3조"
+      ],
+      "returned_losses": [
+        "주택임대차보호법-제3조"
+      ],
+      "top3_losses": [],
+      "missing_targets": [
+        "민법-제105조",
+        "주택임대차보호법-제3조"
+      ],
+      "complete_operating": false,
+      "complete_untuned": false,
+      "complete_current": false,
+      "expansion": {
+        "general": [],
+        "civil": [
+          "부동산 물권변동 등기 물권취득"
+        ]
+      },
+      "operating": {
+        "qid": "DEV-015",
+        "mode": "context_diagnostic",
+        "laws": [
+          "주택임대차보호법-제3조의7",
+          "주택임대차보호법-제6조의3",
+          "주택임대차보호법-제3조의2",
+          "주택임대차보호법-제3조",
+          "주택임대차보호법-제10조의2"
+        ],
+        "civil_laws": [
+          "민법-제634조",
+          "민법-제629조",
+          "민법-제623조"
+        ],
+        "cases": [
+          "case:CASE-2011DA49523#0",
+          "case:CASE-96DA17653#0",
+          "case:CASE-2025DA213466#0",
+          "case:CASE-2009DA40790#0",
+          "case:CASE-99DA59306#0"
+        ],
+        "guides": []
+      },
+      "untuned": {
+        "qid": "DEV-015",
+        "mode": "context_diagnostic",
+        "laws": [
+          "주택임대차보호법-제6조의3",
+          "주택임대차보호법-제3조의7",
+          "공공주택특별법시행규칙-제25조",
+          "공공주택특별법-제49조의2",
+          "부동산거래신고등에관한법률-제6조의5"
+        ],
+        "civil_laws": [
+          "민법-제634조",
+          "민법-제623조",
+          "민법-제629조"
+        ],
+        "cases": [
+          "case:CASE-2011DA49523#0",
+          "case:CASE-96DA17653#0",
+          "case:CASE-2025DA213466#0",
+          "case:CASE-2009DA40790#0",
+          "case:CASE-99DA59306#0"
+        ],
+        "guides": []
+      },
+      "current": {
+        "qid": "DEV-015",
+        "mode": "context_diagnostic",
+        "laws": [
+          "주택임대차보호법-제6조의3",
+          "주택임대차보호법-제3조의7",
+          "공공주택특별법시행규칙-제25조",
+          "공공주택특별법-제49조의2",
+          "부동산거래신고등에관한법률-제6조의5"
+        ],
+        "civil_laws": [
+          "민법-제634조",
+          "민법-제186조",
+          "민법-제629조"
+        ],
+        "cases": [
+          "case:CASE-2011DA49523#0",
+          "case:CASE-96DA17653#0",
+          "case:CASE-2025DA213466#0",
+          "case:CASE-2009DA40790#0",
+          "case:CASE-99DA59306#0"
+        ],
+        "guides": []
+      },
+      "target_diagnostics": [
+        {
+          "target": "주택임대차보호법-제3조",
+          "channel": "general",
+          "operating_rank": 4,
+          "untuned_rank": null,
+          "final_rank": null,
+          "member_ranks": {
+            "bm25_original": 10,
+            "dense_original": 18,
+            "bm25_context": 10,
+            "dense_context": 18
+          },
+          "rrf_rank": 11,
+          "candidate_present": true,
+          "selected_outside_limit": false
+        }
+      ],
+      "added_vs_operating": {
+        "laws": [
+          "공공주택특별법시행규칙-제25조",
+          "공공주택특별법-제49조의2",
+          "부동산거래신고등에관한법률-제6조의5"
+        ],
+        "civil_laws": [
+          "민법-제186조"
+        ]
+      }
+    },
+    {
+      "qid": "DEV-049",
+      "mode": "context_diagnostic",
+      "query": "월세계약 기간 중 임대인이 월세 인상을 요구함. 계약서에 임대료 조정 관련 특약이 있는지는 제시하지 않음.\n사용자 질문: 계약기간이 아직 8개월 남았는데 집주인이 다음 달부터 월세를 올려달라고 문자했어요. 중간에 이렇게 바꿀 수 있나요?",
+      "targets": [
+        "주택임대차보호법-제7조"
+      ],
+      "returned_losses": [],
+      "top3_losses": [
+        "주택임대차보호법-제7조"
+      ],
+      "missing_targets": [],
+      "complete_operating": true,
+      "complete_untuned": true,
+      "complete_current": true,
+      "expansion": {
+        "general": [],
+        "civil": [
+          "임의규정 당사자 의사표시"
+        ]
+      },
+      "operating": {
+        "qid": "DEV-049",
+        "mode": "context_diagnostic",
+        "laws": [
+          "주택임대차보호법-제6조의3",
+          "주택임대차보호법-제7조",
+          "주택임대차보호법시행령-제8조",
+          "주택임대차보호법-제6조",
+          "주택임대차보호법-제4조"
+        ],
+        "civil_laws": [
+          "민법-제626조",
+          "민법-제629조",
+          "민법-제640조"
+        ],
+        "cases": [
+          "case:CASE-2021DA266631#0",
+          "case:CASE-94DA37646#0",
+          "case:CASE-2020DA202371#0",
+          "case:CASE-2022DA279795#0",
+          "case:CASE-2011DA49523#0"
+        ],
+        "guides": []
+      },
+      "untuned": {
+        "qid": "DEV-049",
+        "mode": "context_diagnostic",
+        "laws": [
+          "주택임대차보호법-제6조의3",
+          "민간임대주택에관한특별법-제46조",
+          "민간임대주택에관한특별법-제44조",
+          "주택임대차보호법-제7조",
+          "주택임대차보호법-제6조"
+        ],
+        "civil_laws": [
+          "민법-제636조",
+          "민법-제626조",
+          "민법-제629조"
+        ],
+        "cases": [
+          "case:CASE-2021DA266631#0",
+          "case:CASE-94DA37646#0",
+          "case:CASE-2020DA202371#0",
+          "case:CASE-2022DA279795#0",
+          "case:CASE-2011DA49523#0"
+        ],
+        "guides": []
+      },
+      "current": {
+        "qid": "DEV-049",
+        "mode": "context_diagnostic",
+        "laws": [
+          "주택임대차보호법-제6조의3",
+          "민간임대주택에관한특별법-제46조",
+          "민간임대주택에관한특별법-제44조",
+          "주택임대차보호법-제7조",
+          "주택임대차보호법-제6조"
+        ],
+        "civil_laws": [
+          "민법-제636조",
+          "민법-제626조",
+          "민법-제640조"
+        ],
+        "cases": [
+          "case:CASE-2021DA266631#0",
+          "case:CASE-94DA37646#0",
+          "case:CASE-2020DA202371#0",
+          "case:CASE-2022DA279795#0",
+          "case:CASE-2011DA49523#0"
+        ],
+        "guides": []
+      },
+      "target_diagnostics": [
+        {
+          "target": "주택임대차보호법-제7조",
+          "channel": "general",
+          "operating_rank": 2,
+          "untuned_rank": 4,
+          "final_rank": 4,
+          "member_ranks": {
+            "bm25_original": 10,
+            "dense_original": 2,
+            "bm25_context": 10,
+            "dense_context": 2
+          },
+          "rrf_rank": 4,
+          "candidate_present": true,
+          "selected_outside_limit": false
+        }
+      ],
+      "added_vs_operating": {
+        "laws": [
+          "민간임대주택에관한특별법-제46조",
+          "민간임대주택에관한특별법-제44조"
+        ],
+        "civil_laws": [
+          "민법-제636조"
+        ]
+      }
+    },
+    {
+      "qid": "DEV-059",
+      "mode": "question_only",
+      "query": "기사님이 제 집 안 문제가 아니라 윗집 배관 쪽에서 샌 것 같다고 했어요. 그러면 제가 먼저 낸 38만 원은 누구한테 얘기해야 하나요?",
+      "targets": [
+        "민법-제626조"
+      ],
+      "returned_losses": [
+        "민법-제626조"
+      ],
+      "top3_losses": [],
+      "missing_targets": [
+        "민법-제626조"
+      ],
+      "complete_operating": true,
+      "complete_untuned": false,
+      "complete_current": false,
+      "expansion": {
+        "general": [],
+        "civil": []
+      },
+      "operating": {
+        "qid": "DEV-059",
+        "mode": "question_only",
+        "laws": [
+          "주택임대차보호법시행령-제19조",
+          "주택임대차보호법-제21조",
+          "주택임대차보호법-제10조의2",
+          "주택임대차보호법-제19조",
+          "주택임대차보호법시행령-제28조"
+        ],
+        "civil_laws": [
+          "민법-제634조",
+          "민법-제626조",
+          "민법-제640조"
+        ],
+        "cases": [
+          "case:CASE-2009DA40790#0",
+          "case:CASE-93DA39676#0",
+          "case:CASE-95DA30338#0",
+          "case:CASE-95DA44597#0",
+          "case:CASE-2011DA49523#0"
+        ],
+        "guides": []
+      },
+      "untuned": {
+        "qid": "DEV-059",
+        "mode": "question_only",
+        "laws": [
+          "상법-제389조",
+          "주택임대차보호법-제10조의2",
+          "공인중개사법-제32조",
+          "민사집행법-제56조",
+          "주택임대차보호법시행령-제28조"
+        ],
+        "civil_laws": [
+          "민법-제634조",
+          "민법-제536조",
+          "민법-제640조"
+        ],
+        "cases": [
+          "case:CASE-2009DA40790#0",
+          "case:CASE-93DA39676#0",
+          "case:CASE-95DA30338#0",
+          "case:CASE-95DA44597#0",
+          "case:CASE-2011DA49523#0"
+        ],
+        "guides": []
+      },
+      "current": {
+        "qid": "DEV-059",
+        "mode": "question_only",
+        "laws": [
+          "상법-제389조",
+          "주택임대차보호법-제10조의2",
+          "공인중개사법-제32조",
+          "민사집행법-제56조",
+          "주택임대차보호법시행령-제28조"
+        ],
+        "civil_laws": [
+          "민법-제634조",
+          "민법-제536조",
+          "민법-제640조"
+        ],
+        "cases": [
+          "case:CASE-2009DA40790#0",
+          "case:CASE-93DA39676#0",
+          "case:CASE-95DA30338#0",
+          "case:CASE-95DA44597#0",
+          "case:CASE-2011DA49523#0"
+        ],
+        "guides": []
+      },
+      "target_diagnostics": [
+        {
+          "target": "민법-제626조",
+          "channel": "civil",
+          "operating_rank": 2,
+          "untuned_rank": null,
+          "final_rank": null,
+          "member_ranks": {
+            "bm25_original": 7,
+            "dense_original": 4,
+            "bm25_expanded": 7,
+            "dense_expanded": 4,
+            "bm25_context": 7,
+            "dense_context": 4
+          },
+          "rrf_rank": 3,
+          "candidate_present": true,
+          "selected_outside_limit": true
+        }
+      ],
+      "added_vs_operating": {
+        "laws": [
+          "상법-제389조",
+          "공인중개사법-제32조",
+          "민사집행법-제56조"
+        ],
+        "civil_laws": [
+          "민법-제536조"
+        ]
+      }
+    },
+    {
+      "qid": "DEV-088",
+      "mode": "context_diagnostic",
+      "query": "점포 임대차계약을 체결하고 열쇠를 받아 내부 공사 중. 실제 영업 개시 예정일은 약 한 달 뒤이며 사업자등록은 아직 하지 않음.\n사용자 질문: 상가 열쇠는 먼저 받았는데 인테리어 중이라 영업은 한 달 뒤에 시작해요. 사업자등록이나 주소 관련 절차는 언제 챙겨야 하나요?",
+      "targets": [
+        "부가가치세법-제8조",
+        "상가건물임대차보호법-제3조"
+      ],
+      "returned_losses": [],
+      "top3_losses": [
+        "상가건물임대차보호법-제3조"
+      ],
+      "missing_targets": [],
+      "complete_operating": false,
+      "complete_untuned": true,
+      "complete_current": true,
+      "expansion": {
+        "general": [],
+        "civil": []
+      },
+      "operating": {
+        "qid": "DEV-088",
+        "mode": "context_diagnostic",
+        "laws": [
+          "상가건물임대차보호법시행령-제3조의3",
+          "상가건물임대차보호법시행령-제3조",
+          "상가건물임대차보호법-제3조",
+          "상가건물임대차보호법-제7조",
+          "상가건물임대차보호법-제4조"
+        ],
+        "civil_laws": [
+          "민법-제623조",
+          "민법-제634조",
+          "민법-제629조"
+        ],
+        "cases": [
+          "case:CASE-98CHU40#0",
+          "case:CASE-95DA44597#0",
+          "case:CASE-2004DA69741#0",
+          "case:CASE-2007DA17475#0",
+          "case:CASE-97DA22393#0"
+        ],
+        "guides": []
+      },
+      "untuned": {
+        "qid": "DEV-088",
+        "mode": "context_diagnostic",
+        "laws": [
+          "부가가치세법-제8조",
+          "상가건물임대차보호법시행령-제3조의3",
+          "상가건물임대차보호법시행령-제3조",
+          "상가건물임대차보호법-제7조",
+          "상가건물임대차보호법-제3조"
+        ],
+        "civil_laws": [
+          "민법-제623조",
+          "민법-제634조",
+          "민법-제636조"
+        ],
+        "cases": [
+          "case:CASE-98CHU40#0",
+          "case:CASE-95DA44597#0",
+          "case:CASE-2004DA69741#0",
+          "case:CASE-2007DA17475#0",
+          "case:CASE-97DA22393#0"
+        ],
+        "guides": []
+      },
+      "current": {
+        "qid": "DEV-088",
+        "mode": "context_diagnostic",
+        "laws": [
+          "부가가치세법-제8조",
+          "상가건물임대차보호법시행령-제3조의3",
+          "상가건물임대차보호법시행령-제3조",
+          "상가건물임대차보호법-제7조",
+          "상가건물임대차보호법-제3조"
+        ],
+        "civil_laws": [
+          "민법-제623조",
+          "민법-제634조",
+          "민법-제636조"
+        ],
+        "cases": [
+          "case:CASE-98CHU40#0",
+          "case:CASE-95DA44597#0",
+          "case:CASE-2004DA69741#0",
+          "case:CASE-2007DA17475#0",
+          "case:CASE-97DA22393#0"
+        ],
+        "guides": []
+      },
+      "target_diagnostics": [
+        {
+          "target": "상가건물임대차보호법-제3조",
+          "channel": "general",
+          "operating_rank": 3,
+          "untuned_rank": 5,
+          "final_rank": 5,
+          "member_ranks": {
+            "bm25_original": null,
+            "dense_original": 1,
+            "bm25_context": null,
+            "dense_context": 1
+          },
+          "rrf_rank": 5,
+          "candidate_present": true,
+          "selected_outside_limit": false
+        }
+      ],
+      "added_vs_operating": {
+        "laws": [
+          "부가가치세법-제8조"
+        ],
+        "civil_laws": [
+          "민법-제636조"
+        ]
+      }
+    },
+    {
+      "qid": "DEV-099",
+      "mode": "context_diagnostic",
+      "query": "2018년에 입주한 전세계약이 최근 종료됐고 보증금이 아직 반환되지 않았다고 함. 전입신고 시점, 확정일자 유무, 계약 갱신 이력과 현재 거주 여부는 제시하지 않음.\n사용자 질문: 2018년에 들어간 전셋집인데 확정일자를 받았는지 기억이 안 나요. 지금 계약이 끝나고 보증금을 못 받은 상태면 예전 기록부터 어떻게 확인해야 하나요?",
+      "targets": [
+        "주택임대차보호법-제3조의6"
+      ],
+      "returned_losses": [
+        "주택임대차보호법-제3조의6"
+      ],
+      "top3_losses": [],
+      "missing_targets": [
+        "주택임대차보호법-제3조의6"
+      ],
+      "complete_operating": true,
+      "complete_untuned": false,
+      "complete_current": false,
+      "expansion": {
+        "general": [
+          "주민등록 전입신고 주택 인도 대항력",
+          "확정일자 우선변제 주택 인도 주민등록"
+        ],
+        "civil": []
+      },
+      "operating": {
+        "qid": "DEV-099",
+        "mode": "context_diagnostic",
+        "laws": [
+          "주택임대차보호법시행령-제6조",
+          "주택임대차보호법-제12조",
+          "주택임대차보호법시행령-제4조",
+          "주택임대차보호법-제3조의6",
+          "주택임대차보호법-제3조의2"
+        ],
+        "civil_laws": [
+          "민법-제634조",
+          "민법-제357조",
+          "민법-제626조"
+        ],
+        "cases": [
+          "case:CASE-2024DA326398#0",
+          "case:CASE-98CHU40#0",
+          "case:CASE-2025DA213466#0",
+          "case:CASE-2015DA254507#0",
+          "case:CASE-2021DA266631#0"
+        ],
+        "guides": []
+      },
+      "untuned": {
+        "qid": "DEV-099",
+        "mode": "context_diagnostic",
+        "laws": [
+          "주택임대차보호법시행령-제6조",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조",
+          "부동산거래신고등에관한법률-제6조의5",
+          "주택임대차보호법시행령-제4조",
+          "민간임대주택에관한특별법-제46조"
+        ],
+        "civil_laws": [
+          "민법-제548조",
+          "민법-제623조",
+          "민법-제634조"
+        ],
+        "cases": [
+          "case:CASE-2024DA326398#0",
+          "case:CASE-98CHU40#0",
+          "case:CASE-2025DA213466#0",
+          "case:CASE-2015DA254507#0",
+          "case:CASE-2021DA266631#0"
+        ],
+        "guides": []
+      },
+      "current": {
+        "qid": "DEV-099",
+        "mode": "context_diagnostic",
+        "laws": [
+          "부동산거래신고등에관한법률-제6조의5",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조",
+          "주택임대차보호법-제3조",
+          "주택임대차보호법시행령-제4조",
+          "주택임대차보호법시행령-제6조"
+        ],
+        "civil_laws": [
+          "민법-제548조",
+          "민법-제623조",
+          "민법-제634조"
+        ],
+        "cases": [
+          "case:CASE-2024DA326398#0",
+          "case:CASE-98CHU40#0",
+          "case:CASE-2025DA213466#0",
+          "case:CASE-2015DA254507#0",
+          "case:CASE-2021DA266631#0"
+        ],
+        "guides": []
+      },
+      "target_diagnostics": [
+        {
+          "target": "주택임대차보호법-제3조의6",
+          "channel": "general",
+          "operating_rank": 4,
+          "untuned_rank": null,
+          "final_rank": null,
+          "member_ranks": {
+            "bm25_original": 14,
+            "dense_original": 7,
+            "bm25_context": 11,
+            "dense_context": 10
+          },
+          "rrf_rank": 10,
+          "candidate_present": true,
+          "selected_outside_limit": false
+        }
+      ],
+      "added_vs_operating": {
+        "laws": [
+          "부동산거래신고등에관한법률-제6조의5",
+          "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조",
+          "주택임대차보호법-제3조"
+        ],
+        "civil_laws": [
+          "민법-제548조",
+          "민법-제623조"
+        ]
+      }
+    }
+  ],
+  "paired_modes": [
+    {
+      "qid": "DEV-005",
+      "mode": "question_only",
+      "query": "오늘 잔금 내고 열쇠는 받는데 실제 이사는 일주일 뒤예요. 전입신고랑 확정일자는 언제 해야 하나요?",
+      "targets": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "category": "retrieval_miss",
+      "laws": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조",
+        "주택임대차보호법-제3조",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "civil_laws": [
+        "민법-제357조",
+        "민법-제623조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "DEV-005",
+      "mode": "context_diagnostic",
+      "query": "전세계약 잔금일은 2026년 9월 8일. 임대인이 이날 열쇠를 넘겨주기로 했고 실제 짐을 옮길 예정일은 2026년 9월 15일. 임대차 신고 여부와 현재 주민등록 상태는 제시하지 않음.\n사용자 질문: 오늘 잔금 내고 열쇠는 받는데 실제 이사는 일주일 뒤예요. 전입신고랑 확정일자는 언제 해야 하나요?",
+      "targets": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "category": "retrieval_miss",
+      "laws": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조",
+        "주택임대차보호법-제3조"
+      ],
+      "civil_laws": [
+        "민법-제634조",
+        "민법-제623조",
+        "민법-제636조"
+      ]
+    },
+    {
+      "qid": "DEV-009",
+      "mode": "question_only",
+      "query": "원래 주택인 곳을 빌려서 제가 살면서 작은 네일숍도 같이 하려고 해요. 계약서에는 그냥 월세계약이라고만 되어 있는데, 이런 경우에는 주택 임대차로 보면 되는 건가요, 상가로 보면 되는 건가요?",
+      "targets": [
+        "상가건물임대차보호법-제2조",
+        "주택임대차보호법-제2조"
+      ],
+      "category": "retrieval_miss",
+      "laws": [
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "상가건물임대차보호법-제17조",
+        "주택임대차보호법-제6조의3",
+        "상가건물임대차보호법-제10조의3",
+        "주택임대차보호법-제12조"
+      ],
+      "civil_laws": [
+        "민법-제636조",
+        "민법-제629조",
+        "민법-제627조"
+      ]
+    },
+    {
+      "qid": "DEV-009",
+      "mode": "context_diagnostic",
+      "query": "단독주택 일부를 임차할 예정. 임차인은 그 공간에서 실제 거주하면서 예약제로 네일 서비스를 운영할 계획이라고 설명함. 건축물의 용도, 사업자등록 여부, 영업에 사용하는 면적 비율 등은 제시하지 않음.\n사용자 질문: 원래 주택인 곳을 빌려서 제가 살면서 작은 네일숍도 같이 하려고 해요. 계약서에는 그냥 월세계약이라고만 되어 있는데, 이런 경우에는 주택 임대차로 보면 되는 건가요, 상가로 보면 되는 건가요?",
+      "targets": [
+        "상가건물임대차보호법-제2조",
+        "주택임대차보호법-제2조"
+      ],
+      "category": "retrieval_miss",
+      "laws": [
+        "상가건물임대차보호법시행령-제3조",
+        "상가건물임대차보호법-제2조",
+        "상가건물임대차보호법시행령-제3조의3",
+        "상가건물임대차보호법-제17조",
+        "주택임대차보호법-제6조의3"
+      ],
+      "civil_laws": [
+        "민법-제627조",
+        "민법-제632조",
+        "민법-제629조"
+      ]
+    },
+    {
+      "qid": "DEV-010",
+      "mode": "question_only",
+      "query": "그럼 저는 이미 2021년에 그 집에서 이사까지 나온 상태인데, 지금이라도 할 수 있는 절차가 있나요?",
+      "targets": [
+        "주택임대차보호법-제3조의3"
+      ],
+      "category": "retrieval_miss",
+      "laws": [
+        "공공주택특별법시행규칙-제13조",
+        "공공주택특별법시행규칙-제25조",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조",
+        "주택임대차보호법시행령-제31조",
+        "주택임대차보호법-제3조의4"
+      ],
+      "civil_laws": [
+        "민법-제634조",
+        "민법-제623조",
+        "민법-제187조"
+      ]
+    },
+    {
+      "qid": "DEV-010",
+      "mode": "context_diagnostic",
+      "query": "**이전 대화**\n사용자: “예전에 전세보증금 일부를 못 받은 일이 있는데, 이런 경우 어떤 절차를 알아봐야 하나요?”\n어시스턴트: “계약이 언제 끝났는지, 언제 이사했는지, 아직 받지 못한 금액과 당시 따로 진행한 절차가 있었는지 알려주시면 현재 상황을 파악하는 데 도움이 됩니다.”\n사용자 추가 상황: 계약은 2019년에 시작해 2021년에 종료됐고, 종료 무렵 해당 주택에서 이사해 전입도 다른 주소로 옮겼다고 함. 보증금 중 일부를 아직 받지 못했다고 하나 금액과 당시 취한 조치는 밝히지 않음.\n사용자 질문: 그럼 저는 이미 2021년에 그 집에서 이사까지 나온 상태인데, 지금이라도 할 수 있는 절차가 있나요?",
+      "targets": [
+        "주택임대차보호법-제3조의3"
+      ],
+      "category": "all_required_returned",
+      "laws": [
+        "주택임대차보호법-제3조의3",
+        "공공주택특별법시행령-제47조",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제6조의3",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조"
+      ],
+      "civil_laws": [
+        "민법-제536조",
+        "민법-제627조",
+        "민법-제636조"
+      ]
+    },
+    {
+      "qid": "DEV-012",
+      "mode": "question_only",
+      "query": "계약하러 나온 사람이 집주인 배우자라면서 신분증 사진을 보여줬어요. 이 사람이 진짜 계약할 권한이 있는지 여기서 확인해 줄 수 있나요?",
+      "targets": [
+        "민법-제114조"
+      ],
+      "category": "retrieval_miss",
+      "laws": [
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조",
+        "부동산거래신고등에관한법률-제6조의2",
+        "신탁법-제31조",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조"
+      ],
+      "civil_laws": [
+        "민법-제629조",
+        "민법-제640조",
+        "민법-제634조"
+      ]
+    },
+    {
+      "qid": "DEV-012",
+      "mode": "context_diagnostic",
+      "query": "등기상 소유자는 계약 현장에 오지 않았고 배우자라고 주장하는 사람이 대신 계약하려는 상황. 사용자는 상대방의 신분과 권한을 서비스가 직접 확인해 달라고 요청함. 위임 관련 서류는 제공되지 않음.\n사용자 질문: 계약하러 나온 사람이 집주인 배우자라면서 신분증 사진을 보여줬어요. 이 사람이 진짜 계약할 권한이 있는지 여기서 확인해 줄 수 있나요?",
+      "targets": [
+        "민법-제114조"
+      ],
+      "category": "all_required_returned",
+      "laws": [
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조",
+        "주택임대차보호법시행령-제6조",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제11조"
+      ],
+      "civil_laws": [
+        "민법-제118조",
+        "민법-제186조",
+        "민법-제114조"
+      ]
+    },
+    {
+      "qid": "DEV-015",
+      "mode": "question_only",
+      "query": "계약금 낸 뒤에 집주인이 집을 다른 사람한테 팔기로 했대요. 잔금은 원래 집주인한테 줘야 하는 건가요, 새 집주인한테 줘야 하는 건가요?",
+      "targets": [
+        "민법-제105조",
+        "주택임대차보호법-제3조"
+      ],
+      "category": "retrieval_miss",
+      "laws": [
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "주택임대차보호법-제6조의3",
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조의7",
+        "공공주택특별법시행규칙-제25조"
+      ],
+      "civil_laws": [
+        "민법-제629조",
+        "민법-제623조",
+        "민법-제640조"
+      ]
+    },
+    {
+      "qid": "DEV-015",
+      "mode": "context_diagnostic",
+      "query": "임차인은 전세계약을 체결하고 계약금을 지급한 상태. 잔금 지급 전 임대인이 주택을 제3자에게 매도할 예정이라고 알려옴. 소유권 이전 시점과 잔금 지급 예정일의 선후관계는 확정되지 않음.\n사용자 질문: 계약금 낸 뒤에 집주인이 집을 다른 사람한테 팔기로 했대요. 잔금은 원래 집주인한테 줘야 하는 건가요, 새 집주인한테 줘야 하는 건가요?",
+      "targets": [
+        "민법-제105조",
+        "주택임대차보호법-제3조"
+      ],
+      "category": "retrieval_miss",
+      "laws": [
+        "주택임대차보호법-제6조의3",
+        "주택임대차보호법-제3조의7",
+        "공공주택특별법시행규칙-제25조",
+        "공공주택특별법-제49조의2",
+        "부동산거래신고등에관한법률-제6조의5"
+      ],
+      "civil_laws": [
+        "민법-제634조",
+        "민법-제186조",
+        "민법-제629조"
+      ]
+    },
+    {
+      "qid": "DEV-049",
+      "mode": "question_only",
+      "query": "계약기간이 아직 8개월 남았는데 집주인이 다음 달부터 월세를 올려달라고 문자했어요. 중간에 이렇게 바꿀 수 있나요?",
+      "targets": [
+        "주택임대차보호법-제7조"
+      ],
+      "category": "all_required_returned",
+      "laws": [
+        "주택임대차보호법시행령-제8조",
+        "주택임대차보호법-제6조의3",
+        "주택임대차보호법-제7조",
+        "주택임대차보호법-제10조의2",
+        "민간임대주택에관한특별법-제46조"
+      ],
+      "civil_laws": [
+        "민법-제640조",
+        "민법-제629조",
+        "민법-제636조"
+      ]
+    },
+    {
+      "qid": "DEV-049",
+      "mode": "context_diagnostic",
+      "query": "월세계약 기간 중 임대인이 월세 인상을 요구함. 계약서에 임대료 조정 관련 특약이 있는지는 제시하지 않음.\n사용자 질문: 계약기간이 아직 8개월 남았는데 집주인이 다음 달부터 월세를 올려달라고 문자했어요. 중간에 이렇게 바꿀 수 있나요?",
+      "targets": [
+        "주택임대차보호법-제7조"
+      ],
+      "category": "all_required_returned",
+      "laws": [
+        "주택임대차보호법-제6조의3",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제44조",
+        "주택임대차보호법-제7조",
+        "주택임대차보호법-제6조"
+      ],
+      "civil_laws": [
+        "민법-제636조",
+        "민법-제626조",
+        "민법-제640조"
+      ]
+    },
+    {
+      "qid": "DEV-059",
+      "mode": "question_only",
+      "query": "기사님이 제 집 안 문제가 아니라 윗집 배관 쪽에서 샌 것 같다고 했어요. 그러면 제가 먼저 낸 38만 원은 누구한테 얘기해야 하나요?",
+      "targets": [
+        "민법-제626조"
+      ],
+      "category": "retrieval_miss",
+      "laws": [
+        "상법-제389조",
+        "주택임대차보호법-제10조의2",
+        "공인중개사법-제32조",
+        "민사집행법-제56조",
+        "주택임대차보호법시행령-제28조"
+      ],
+      "civil_laws": [
+        "민법-제634조",
+        "민법-제536조",
+        "민법-제640조"
+      ]
+    },
+    {
+      "qid": "DEV-059",
+      "mode": "context_diagnostic",
+      "query": "**이전 대화**\n사용자: “새벽에 천장에서 물이 계속 새서 수리하고 38만 원을 냈는데 집주인은 연락이 안 됐어요.”\n추가 상황: 이후 수리기사가 누수 원인이 임차주택 내부가 아니라 윗집 또는 공용배관 쪽일 가능성이 있다고 설명함. 최종 원인 조사 결과는 아직 없음.\n사용자 질문: 기사님이 제 집 안 문제가 아니라 윗집 배관 쪽에서 샌 것 같다고 했어요. 그러면 제가 먼저 낸 38만 원은 누구한테 얘기해야 하나요?",
+      "targets": [
+        "민법-제626조"
+      ],
+      "category": "retrieval_miss",
+      "laws": [
+        "주택임대차보호법-제3조의3",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제5조",
+        "주택임대차보호법-제6조의3",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조"
+      ],
+      "civil_laws": [
+        "민법-제623조",
+        "민법-제634조",
+        "민법-제627조"
+      ]
+    },
+    {
+      "qid": "DEV-088",
+      "mode": "question_only",
+      "query": "상가 열쇠는 먼저 받았는데 인테리어 중이라 영업은 한 달 뒤에 시작해요. 사업자등록이나 주소 관련 절차는 언제 챙겨야 하나요?",
+      "targets": [
+        "부가가치세법-제8조",
+        "상가건물임대차보호법-제3조"
+      ],
+      "category": "all_required_returned",
+      "laws": [
+        "부가가치세법-제8조",
+        "상가건물임대차보호법시행령-제3조",
+        "상가건물임대차보호법-제3조",
+        "상가건물임대차보호법-제5조",
+        "상가건물임대차보호법-제7조"
+      ],
+      "civil_laws": [
+        "민법-제634조",
+        "민법-제186조",
+        "민법-제187조"
+      ]
+    },
+    {
+      "qid": "DEV-088",
+      "mode": "context_diagnostic",
+      "query": "점포 임대차계약을 체결하고 열쇠를 받아 내부 공사 중. 실제 영업 개시 예정일은 약 한 달 뒤이며 사업자등록은 아직 하지 않음.\n사용자 질문: 상가 열쇠는 먼저 받았는데 인테리어 중이라 영업은 한 달 뒤에 시작해요. 사업자등록이나 주소 관련 절차는 언제 챙겨야 하나요?",
+      "targets": [
+        "부가가치세법-제8조",
+        "상가건물임대차보호법-제3조"
+      ],
+      "category": "all_required_returned",
+      "laws": [
+        "부가가치세법-제8조",
+        "상가건물임대차보호법시행령-제3조의3",
+        "상가건물임대차보호법시행령-제3조",
+        "상가건물임대차보호법-제7조",
+        "상가건물임대차보호법-제3조"
+      ],
+      "civil_laws": [
+        "민법-제623조",
+        "민법-제634조",
+        "민법-제636조"
+      ]
+    },
+    {
+      "qid": "DEV-099",
+      "mode": "question_only",
+      "query": "2018년에 들어간 전셋집인데 확정일자를 받았는지 기억이 안 나요. 지금 계약이 끝나고 보증금을 못 받은 상태면 예전 기록부터 어떻게 확인해야 하나요?",
+      "targets": [
+        "주택임대차보호법-제3조의6"
+      ],
+      "category": "all_required_returned",
+      "laws": [
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조",
+        "주택임대차보호법시행령-제4조",
+        "주택임대차보호법-제3조의6",
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조의2"
+      ],
+      "civil_laws": [
+        "민법-제357조",
+        "민법-제634조",
+        "민법-제636조"
+      ]
+    },
+    {
+      "qid": "DEV-099",
+      "mode": "context_diagnostic",
+      "query": "2018년에 입주한 전세계약이 최근 종료됐고 보증금이 아직 반환되지 않았다고 함. 전입신고 시점, 확정일자 유무, 계약 갱신 이력과 현재 거주 여부는 제시하지 않음.\n사용자 질문: 2018년에 들어간 전셋집인데 확정일자를 받았는지 기억이 안 나요. 지금 계약이 끝나고 보증금을 못 받은 상태면 예전 기록부터 어떻게 확인해야 하나요?",
+      "targets": [
+        "주택임대차보호법-제3조의6"
+      ],
+      "category": "retrieval_miss",
+      "laws": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법시행령-제4조",
+        "주택임대차보호법시행령-제6조"
+      ],
+      "civil_laws": [
+        "민법-제548조",
+        "민법-제623조",
+        "민법-제634조"
+      ]
+    }
+  ],
+  "current": {
+    "groups": {
+      "question_only": {
+        "n": 100,
+        "categories": {
+          "all_required_returned": 43,
+          "retrieval_miss": 32,
+          "no_fixed_target": 23,
+          "historical_review": 2
+        },
+        "channel_metrics": {
+          "general": {
+            "all_target_items": {
+              "n": 47,
+              "mrr": 0.5354609929078012,
+              "hit@1": 0.3617021276595745,
+              "hit@2": 0.6170212765957447,
+              "hit@3": 0.723404255319149,
+              "hit@5": 0.7659574468085106,
+              "recall@1": 0.274468085106383,
+              "recall@2": 0.4407801418439716,
+              "recall@3": 0.5815602836879432,
+              "recall@5": 0.6627659574468086
+            },
+            "all_targets_held": {
+              "n": 47,
+              "mrr": 0.5354609929078012,
+              "hit@1": 0.3617021276595745,
+              "hit@2": 0.6170212765957447,
+              "hit@3": 0.723404255319149,
+              "hit@5": 0.7659574468085106,
+              "recall@1": 0.274468085106383,
+              "recall@2": 0.4407801418439716,
+              "recall@3": 0.5815602836879432,
+              "recall@5": 0.6627659574468086
+            }
+          },
+          "civil": {
+            "all_target_items": {
+              "n": 32,
+              "mrr": 0.6354166666666667,
+              "hit@1": 0.5625,
+              "hit@2": 0.6875,
+              "hit@3": 0.71875,
+              "recall@1": 0.4947916666666667,
+              "recall@2": 0.6458333333333334,
+              "recall@3": 0.6927083333333334
+            },
+            "all_targets_held": {
+              "n": 32,
+              "mrr": 0.6354166666666667,
+              "hit@1": 0.5625,
+              "hit@2": 0.6875,
+              "hit@3": 0.71875,
+              "recall@1": 0.4947916666666667,
+              "recall@2": 0.6458333333333334,
+              "recall@3": 0.6927083333333334
+            }
+          }
+        },
+        "union_all_required": {
+          "hits": 43,
+          "n": 75
+        }
+      },
+      "context_diagnostic": {
+        "n": 100,
+        "categories": {
+          "retrieval_miss": 33,
+          "all_required_returned": 42,
+          "no_fixed_target": 23,
+          "historical_review": 2
+        },
+        "channel_metrics": {
+          "general": {
+            "all_target_items": {
+              "n": 47,
+              "mrr": 0.5464539007092198,
+              "hit@1": 0.3617021276595745,
+              "hit@2": 0.6170212765957447,
+              "hit@3": 0.7021276595744681,
+              "hit@5": 0.8297872340425532,
+              "recall@1": 0.274468085106383,
+              "recall@2": 0.45248226950354614,
+              "recall@3": 0.5719858156028369,
+              "recall@5": 0.6833333333333333
+            },
+            "all_targets_held": {
+              "n": 47,
+              "mrr": 0.5464539007092198,
+              "hit@1": 0.3617021276595745,
+              "hit@2": 0.6170212765957447,
+              "hit@3": 0.7021276595744681,
+              "hit@5": 0.8297872340425532,
+              "recall@1": 0.274468085106383,
+              "recall@2": 0.45248226950354614,
+              "recall@3": 0.5719858156028369,
+              "recall@5": 0.6833333333333333
+            }
+          },
+          "civil": {
+            "all_target_items": {
+              "n": 32,
+              "mrr": 0.53125,
+              "hit@1": 0.4375,
+              "hit@2": 0.5625,
+              "hit@3": 0.65625,
+              "recall@1": 0.3697916666666667,
+              "recall@2": 0.5208333333333333,
+              "recall@3": 0.6302083333333334
+            },
+            "all_targets_held": {
+              "n": 32,
+              "mrr": 0.53125,
+              "hit@1": 0.4375,
+              "hit@2": 0.5625,
+              "hit@3": 0.65625,
+              "recall@1": 0.3697916666666667,
+              "recall@2": 0.5208333333333333,
+              "recall@3": 0.6302083333333334
+            }
+          }
+        },
+        "union_all_required": {
+          "hits": 42,
+          "n": 75
+        }
+      },
+      "required_law": {
+        "n": 29,
+        "categories": {
+          "all_required_returned": 28,
+          "retrieval_miss": 1
+        },
+        "channel_metrics": {
+          "general": {
+            "all_target_items": {
+              "n": 1,
+              "mrr": 1.0,
+              "hit@1": 1.0,
+              "hit@2": 1.0,
+              "hit@3": 1.0,
+              "hit@5": 1.0,
+              "recall@1": 0.5,
+              "recall@2": 0.5,
+              "recall@3": 0.5,
+              "recall@5": 0.5
+            },
+            "all_targets_held": {
+              "n": 1,
+              "mrr": 1.0,
+              "hit@1": 1.0,
+              "hit@2": 1.0,
+              "hit@3": 1.0,
+              "hit@5": 1.0,
+              "recall@1": 0.5,
+              "recall@2": 0.5,
+              "recall@3": 0.5,
+              "recall@5": 0.5
+            }
+          },
+          "civil": {
+            "all_target_items": {
+              "n": 29,
+              "mrr": 0.8793103448275862,
+              "hit@1": 0.7586206896551724,
+              "hit@2": 1.0,
+              "hit@3": 1.0,
+              "recall@1": 0.7413793103448276,
+              "recall@2": 0.9827586206896551,
+              "recall@3": 1.0
+            },
+            "all_targets_held": {
+              "n": 29,
+              "mrr": 0.8793103448275862,
+              "hit@1": 0.7586206896551724,
+              "hit@2": 1.0,
+              "hit@3": 1.0,
+              "recall@1": 0.7413793103448276,
+              "recall@2": 0.9827586206896551,
+              "recall@3": 1.0
+            }
+          }
+        },
+        "union_all_required": {
+          "hits": 28,
+          "n": 29
+        }
+      },
+      "scope_provisional": {
+        "n": 1,
+        "categories": {
+          "all_required_returned": 1
+        },
+        "channel_metrics": {
+          "general": {
+            "all_target_items": {
+              "n": 0
+            },
+            "all_targets_held": {
+              "n": 0
+            }
+          },
+          "civil": {
+            "all_target_items": {
+              "n": 1,
+              "mrr": 0.5,
+              "hit@1": 0.0,
+              "hit@2": 1.0,
+              "hit@3": 1.0,
+              "recall@1": 0.0,
+              "recall@2": 1.0,
+              "recall@3": 1.0
+            },
+            "all_targets_held": {
+              "n": 1,
+              "mrr": 0.5,
+              "hit@1": 0.0,
+              "hit@2": 1.0,
+              "hit@3": 1.0,
+              "recall@1": 0.0,
+              "recall@2": 1.0,
+              "recall@3": 1.0
+            }
+          }
+        },
+        "union_all_required": {
+          "hits": 1,
+          "n": 1
+        }
+      },
+      "diagnostic_only": {
+        "n": 5,
+        "categories": {
+          "no_fixed_target": 5
+        },
+        "channel_metrics": {
+          "general": {
+            "all_target_items": {
+              "n": 0
+            },
+            "all_targets_held": {
+              "n": 0
+            }
+          },
+          "civil": {
+            "all_target_items": {
+              "n": 0
+            },
+            "all_targets_held": {
+              "n": 0
+            }
+          }
+        },
+        "union_all_required": {
+          "hits": 0,
+          "n": 0
+        }
+      }
+    },
+    "losses_vs_operating": [
+      {
+        "qid": "DEV-005",
+        "mode": "context_diagnostic",
+        "lost": [
+          "주택임대차보호법-제3조의6"
+        ]
+      },
+      {
+        "qid": "DEV-009",
+        "mode": "question_only",
+        "lost": [
+          "상가건물임대차보호법-제2조"
+        ]
+      },
+      {
+        "qid": "DEV-009",
+        "mode": "context_diagnostic",
+        "lost": [
+          "주택임대차보호법-제2조"
+        ]
+      },
+      {
+        "qid": "DEV-010",
+        "mode": "question_only",
+        "lost": [
+          "주택임대차보호법-제3조의3"
+        ]
+      },
+      {
+        "qid": "DEV-012",
+        "mode": "question_only",
+        "lost": [
+          "민법-제114조"
+        ]
+      },
+      {
+        "qid": "DEV-015",
+        "mode": "context_diagnostic",
+        "lost": [
+          "주택임대차보호법-제3조"
+        ]
+      },
+      {
+        "qid": "DEV-059",
+        "mode": "question_only",
+        "lost": [
+          "민법-제626조"
+        ]
+      },
+      {
+        "qid": "DEV-099",
+        "mode": "context_diagnostic",
+        "lost": [
+          "주택임대차보호법-제3조의6"
+        ]
+      }
+    ],
+    "losses_vs_current": [],
+    "general_top3_losses": [
+      {
+        "qid": "DEV-005",
+        "mode": "question_only",
+        "lost": [
+          "주택임대차보호법-제3조의6"
+        ],
+        "gained": []
+      },
+      {
+        "qid": "DEV-005",
+        "mode": "context_diagnostic",
+        "lost": [
+          "주택임대차보호법-제3조의6"
+        ],
+        "gained": []
+      },
+      {
+        "qid": "DEV-009",
+        "mode": "question_only",
+        "lost": [
+          "상가건물임대차보호법-제2조"
+        ],
+        "gained": []
+      },
+      {
+        "qid": "DEV-009",
+        "mode": "context_diagnostic",
+        "lost": [
+          "주택임대차보호법-제2조"
+        ],
+        "gained": []
+      },
+      {
+        "qid": "DEV-010",
+        "mode": "question_only",
+        "lost": [
+          "주택임대차보호법-제3조의3"
+        ],
+        "gained": []
+      },
+      {
+        "qid": "DEV-049",
+        "mode": "context_diagnostic",
+        "lost": [
+          "주택임대차보호법-제7조"
+        ],
+        "gained": []
+      },
+      {
+        "qid": "DEV-088",
+        "mode": "context_diagnostic",
+        "lost": [
+          "상가건물임대차보호법-제3조"
+        ],
+        "gained": [
+          "부가가치세법-제8조"
+        ]
+      }
+    ]
+  },
+  "counterfactual": {
+    "name": "seedless_rrf",
+    "changed_inputs": [
+      {
+        "qid": "DEV-001",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제186조",
+          "민법-제629조",
+          "민법-제634조"
+        ],
+        "after": [
+          "민법-제186조",
+          "민법-제629조",
+          "민법-제118조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-005",
+        "mode": "question_only",
+        "before": [
+          "민법-제357조",
+          "민법-제623조",
+          "민법-제634조"
+        ],
+        "after": [
+          "민법-제357조",
+          "민법-제623조",
+          "민법-제470조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-005",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제634조",
+          "민법-제623조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제634조",
+          "민법-제623조",
+          "민법-제626조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-009",
+        "mode": "question_only",
+        "before": [
+          "민법-제636조",
+          "민법-제629조",
+          "민법-제627조"
+        ],
+        "after": [
+          "민법-제636조",
+          "민법-제629조",
+          "민법-제640조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-010",
+        "mode": "question_only",
+        "before": [
+          "민법-제634조",
+          "민법-제623조",
+          "민법-제187조"
+        ],
+        "after": [
+          "민법-제634조",
+          "민법-제623조",
+          "민법-제118조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-011",
+        "mode": "question_only",
+        "before": [
+          "민법-제265조",
+          "민법-제640조",
+          "민법-제629조"
+        ],
+        "after": [
+          "민법-제265조",
+          "민법-제640조",
+          "민법-제623조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-012",
+        "mode": "question_only",
+        "before": [
+          "민법-제629조",
+          "민법-제640조",
+          "민법-제634조"
+        ],
+        "after": [
+          "민법-제629조",
+          "민법-제640조",
+          "민법-제623조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-014",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제629조",
+          "민법-제623조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제629조",
+          "민법-제623조",
+          "민법-제118조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-015",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제634조",
+          "민법-제186조",
+          "민법-제629조"
+        ],
+        "after": [
+          "민법-제634조",
+          "민법-제186조",
+          "민법-제623조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-016",
+        "mode": "question_only",
+        "before": [
+          "민법-제536조",
+          "민법-제118조",
+          "민법-제357조"
+        ],
+        "after": [
+          "민법-제536조",
+          "민법-제118조",
+          "민법-제640조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-017",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제186조",
+          "민법-제187조",
+          "민법-제634조"
+        ],
+        "after": [
+          "민법-제186조",
+          "민법-제187조",
+          "민법-제629조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-020",
+        "mode": "question_only",
+        "before": [
+          "민법-제357조",
+          "민법-제634조",
+          "민법-제615조"
+        ],
+        "after": [
+          "민법-제357조",
+          "민법-제634조",
+          "민법-제640조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-020",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제629조",
+          "민법-제357조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제629조",
+          "민법-제357조",
+          "민법-제187조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-022",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제187조",
+          "민법-제186조",
+          "민법-제634조"
+        ],
+        "after": [
+          "민법-제187조",
+          "민법-제186조",
+          "민법-제632조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-026",
+        "mode": "question_only",
+        "before": [
+          "민법-제634조",
+          "민법-제623조",
+          "민법-제640조"
+        ],
+        "after": [
+          "민법-제634조",
+          "민법-제623조",
+          "민법-제629조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-028",
+        "mode": "question_only",
+        "before": [
+          "민법-제640조",
+          "민법-제634조",
+          "민법-제629조"
+        ],
+        "after": [
+          "민법-제640조",
+          "민법-제634조",
+          "민법-제623조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-028",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제640조",
+          "민법-제634조",
+          "민법-제626조"
+        ],
+        "after": [
+          "민법-제640조",
+          "민법-제634조",
+          "민법-제623조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-031",
+        "mode": "question_only",
+        "before": [
+          "민법-제629조",
+          "민법-제636조",
+          "민법-제634조"
+        ],
+        "after": [
+          "민법-제629조",
+          "민법-제636조",
+          "민법-제640조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-032",
+        "mode": "question_only",
+        "before": [
+          "민법-제629조",
+          "민법-제632조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제629조",
+          "민법-제632조",
+          "민법-제548조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-033",
+        "mode": "question_only",
+        "before": [
+          "민법-제636조",
+          "민법-제105조",
+          "민법-제629조"
+        ],
+        "after": [
+          "민법-제636조",
+          "민법-제105조",
+          "민법-제543조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-035",
+        "mode": "question_only",
+        "before": [
+          "민법-제186조",
+          "민법-제187조",
+          "민법-제629조"
+        ],
+        "after": [
+          "민법-제186조",
+          "민법-제187조",
+          "민법-제640조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-036",
+        "mode": "question_only",
+        "before": [
+          "민법-제629조",
+          "민법-제634조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제629조",
+          "민법-제634조",
+          "민법-제640조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-036",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제629조",
+          "민법-제634조",
+          "민법-제627조"
+        ],
+        "after": [
+          "민법-제629조",
+          "민법-제634조",
+          "민법-제623조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-037",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제543조",
+          "민법-제632조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제543조",
+          "민법-제632조",
+          "민법-제548조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-038",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제634조",
+          "민법-제629조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제634조",
+          "민법-제629조",
+          "민법-제640조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-039",
+        "mode": "question_only",
+        "before": [
+          "민법-제357조",
+          "민법-제548조",
+          "민법-제147조"
+        ],
+        "after": [
+          "민법-제357조",
+          "민법-제548조",
+          "민법-제640조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-040",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제623조",
+          "민법-제632조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제623조",
+          "민법-제632조",
+          "민법-제357조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-041",
+        "mode": "question_only",
+        "before": [
+          "민법-제634조",
+          "민법-제629조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제634조",
+          "민법-제629조",
+          "민법-제640조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-041",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제629조",
+          "민법-제634조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제629조",
+          "민법-제634조",
+          "민법-제640조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-042",
+        "mode": "question_only",
+        "before": [
+          "민법-제629조",
+          "민법-제640조",
+          "민법-제632조"
+        ],
+        "after": [
+          "민법-제629조",
+          "민법-제640조",
+          "민법-제636조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-044",
+        "mode": "question_only",
+        "before": [
+          "민법-제357조",
+          "민법-제105조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제357조",
+          "민법-제105조",
+          "민법-제393조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-044",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제629조",
+          "민법-제627조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제629조",
+          "민법-제627조",
+          "민법-제634조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-045",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제627조",
+          "민법-제636조",
+          "민법-제634조"
+        ],
+        "after": [
+          "민법-제627조",
+          "민법-제636조",
+          "민법-제640조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-046",
+        "mode": "question_only",
+        "before": [
+          "민법-제640조",
+          "민법-제629조",
+          "민법-제654조"
+        ],
+        "after": [
+          "민법-제640조",
+          "민법-제629조",
+          "민법-제636조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-046",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제629조",
+          "민법-제623조",
+          "민법-제654조"
+        ],
+        "after": [
+          "민법-제629조",
+          "민법-제623조",
+          "민법-제636조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-048",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제629조",
+          "민법-제634조",
+          "민법-제626조"
+        ],
+        "after": [
+          "민법-제629조",
+          "민법-제634조",
+          "민법-제623조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-049",
+        "mode": "question_only",
+        "before": [
+          "민법-제640조",
+          "민법-제629조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제640조",
+          "민법-제629조",
+          "민법-제626조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-050",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제629조",
+          "민법-제640조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제629조",
+          "민법-제640조",
+          "민법-제626조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-051",
+        "mode": "question_only",
+        "before": [
+          "민법-제623조",
+          "민법-제629조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제623조",
+          "민법-제629조",
+          "민법-제640조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-053",
+        "mode": "question_only",
+        "before": [
+          "민법-제634조",
+          "민법-제629조",
+          "민법-제632조"
+        ],
+        "after": [
+          "민법-제634조",
+          "민법-제629조",
+          "민법-제111조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-053",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제634조",
+          "민법-제627조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제634조",
+          "민법-제627조",
+          "민법-제623조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-058",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제636조",
+          "민법-제632조",
+          "민법-제627조"
+        ],
+        "after": [
+          "민법-제636조",
+          "민법-제632조",
+          "민법-제640조"
+        ],
+        "gained_targets": [],
+        "lost_targets": [
+          "민법-제627조"
+        ]
+      },
+      {
+        "qid": "DEV-059",
+        "mode": "question_only",
+        "before": [
+          "민법-제634조",
+          "민법-제536조",
+          "민법-제640조"
+        ],
+        "after": [
+          "민법-제634조",
+          "민법-제536조",
+          "민법-제626조"
+        ],
+        "gained_targets": [
+          "민법-제626조"
+        ],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-064",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제629조",
+          "민법-제636조",
+          "민법-제627조"
+        ],
+        "after": [
+          "민법-제629조",
+          "민법-제636조",
+          "민법-제105조"
+        ],
+        "gained_targets": [
+          "민법-제105조"
+        ],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-065",
+        "mode": "question_only",
+        "before": [
+          "민법-제623조",
+          "민법-제629조",
+          "민법-제640조"
+        ],
+        "after": [
+          "민법-제623조",
+          "민법-제629조",
+          "민법-제626조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-067",
+        "mode": "question_only",
+        "before": [
+          "민법-제536조",
+          "민법-제548조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제536조",
+          "민법-제548조",
+          "민법-제390조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-067",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제536조",
+          "민법-제626조",
+          "민법-제634조"
+        ],
+        "after": [
+          "민법-제536조",
+          "민법-제626조",
+          "민법-제623조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-068",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제536조",
+          "민법-제634조",
+          "민법-제626조"
+        ],
+        "after": [
+          "민법-제536조",
+          "민법-제634조",
+          "민법-제629조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-069",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제186조",
+          "민법-제187조",
+          "민법-제629조"
+        ],
+        "after": [
+          "민법-제186조",
+          "민법-제187조",
+          "민법-제536조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-070",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제187조",
+          "민법-제634조",
+          "민법-제626조"
+        ],
+        "after": [
+          "민법-제187조",
+          "민법-제634조",
+          "민법-제536조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-073",
+        "mode": "question_only",
+        "before": [
+          "민법-제626조",
+          "민법-제634조",
+          "민법-제357조"
+        ],
+        "after": [
+          "민법-제626조",
+          "민법-제634조",
+          "민법-제640조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-075",
+        "mode": "question_only",
+        "before": [
+          "민법-제634조",
+          "민법-제626조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제634조",
+          "민법-제626조",
+          "민법-제629조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-076",
+        "mode": "question_only",
+        "before": [
+          "민법-제626조",
+          "민법-제627조",
+          "민법-제393조"
+        ],
+        "after": [
+          "민법-제626조",
+          "민법-제627조",
+          "민법-제548조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-076",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제634조",
+          "민법-제627조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제634조",
+          "민법-제627조",
+          "민법-제623조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-077",
+        "mode": "question_only",
+        "before": [
+          "민법-제113조",
+          "민법-제640조",
+          "민법-제548조"
+        ],
+        "after": [
+          "민법-제113조",
+          "민법-제640조",
+          "민법-제626조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-082",
+        "mode": "question_only",
+        "before": [
+          "민법-제548조",
+          "민법-제615조",
+          "민법-제626조"
+        ],
+        "after": [
+          "민법-제548조",
+          "민법-제615조",
+          "민법-제536조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-082",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제632조",
+          "민법-제548조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제632조",
+          "민법-제548조",
+          "민법-제629조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-083",
+        "mode": "question_only",
+        "before": [
+          "민법-제634조",
+          "민법-제629조",
+          "민법-제187조"
+        ],
+        "after": [
+          "민법-제634조",
+          "민법-제629조",
+          "민법-제626조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-085",
+        "mode": "question_only",
+        "before": [
+          "민법-제623조",
+          "민법-제634조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제623조",
+          "민법-제634조",
+          "민법-제357조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-086",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제626조",
+          "민법-제548조",
+          "민법-제615조"
+        ],
+        "after": [
+          "민법-제626조",
+          "민법-제548조",
+          "민법-제623조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-087",
+        "mode": "question_only",
+        "before": [
+          "민법-제186조",
+          "민법-제187조",
+          "민법-제634조"
+        ],
+        "after": [
+          "민법-제186조",
+          "민법-제187조",
+          "민법-제629조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-088",
+        "mode": "question_only",
+        "before": [
+          "민법-제634조",
+          "민법-제186조",
+          "민법-제187조"
+        ],
+        "after": [
+          "민법-제634조",
+          "민법-제186조",
+          "민법-제470조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-089",
+        "mode": "question_only",
+        "before": [
+          "민법-제640조",
+          "민법-제629조",
+          "민법-제626조"
+        ],
+        "after": [
+          "민법-제640조",
+          "민법-제629조",
+          "민법-제627조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-090",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제626조",
+          "민법-제536조",
+          "민법-제634조"
+        ],
+        "after": [
+          "민법-제626조",
+          "민법-제536조",
+          "민법-제623조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-091",
+        "mode": "question_only",
+        "before": [
+          "민법-제629조",
+          "민법-제640조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제629조",
+          "민법-제640조",
+          "민법-제623조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-092",
+        "mode": "question_only",
+        "before": [
+          "민법-제640조",
+          "민법-제636조",
+          "민법-제629조"
+        ],
+        "after": [
+          "민법-제640조",
+          "민법-제636조",
+          "민법-제626조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-094",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제636조",
+          "민법-제623조",
+          "민법-제654조"
+        ],
+        "after": [
+          "민법-제636조",
+          "민법-제623조",
+          "민법-제105조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-095",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제634조",
+          "민법-제623조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제634조",
+          "민법-제623조",
+          "민법-제629조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-096",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제636조",
+          "민법-제623조",
+          "민법-제634조"
+        ],
+        "after": [
+          "민법-제636조",
+          "민법-제623조",
+          "민법-제640조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-097",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제640조",
+          "민법-제623조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제640조",
+          "민법-제623조",
+          "민법-제627조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-098",
+        "mode": "question_only",
+        "before": [
+          "민법-제640조",
+          "민법-제629조",
+          "민법-제634조"
+        ],
+        "after": [
+          "민법-제640조",
+          "민법-제629조",
+          "민법-제636조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-098",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제640조",
+          "민법-제623조",
+          "민법-제634조"
+        ],
+        "after": [
+          "민법-제640조",
+          "민법-제623조",
+          "민법-제629조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-099",
+        "mode": "question_only",
+        "before": [
+          "민법-제357조",
+          "민법-제634조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제357조",
+          "민법-제634조",
+          "민법-제548조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-100",
+        "mode": "question_only",
+        "before": [
+          "민법-제548조",
+          "민법-제623조",
+          "민법-제626조"
+        ],
+        "after": [
+          "민법-제548조",
+          "민법-제623조",
+          "민법-제187조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "DEV-100",
+        "mode": "context_diagnostic",
+        "before": [
+          "민법-제536조",
+          "민법-제626조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제536조",
+          "민법-제626조",
+          "민법-제623조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "CIV-DRAFT-008",
+        "mode": "question_context",
+        "before": [
+          "민법-제640조",
+          "민법-제626조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제640조",
+          "민법-제626조",
+          "민법-제629조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      },
+      {
+        "qid": "CIV-DRAFT-012",
+        "mode": "question_context",
+        "before": [
+          "민법-제627조",
+          "민법-제640조",
+          "민법-제636조"
+        ],
+        "after": [
+          "민법-제627조",
+          "민법-제640조",
+          "민법-제629조"
+        ],
+        "gained_targets": [],
+        "lost_targets": []
+      }
+    ],
+    "new_required_civil_articles": [
+      "민법-제111조",
+      "민법-제113조",
+      "민법-제186조",
+      "민법-제187조",
+      "민법-제265조",
+      "민법-제390조",
+      "민법-제536조",
+      "민법-제615조",
+      "민법-제654조"
+    ],
+    "groups": {
+      "question_only": {
+        "n": 100,
+        "categories": {
+          "all_required_returned": 44,
+          "retrieval_miss": 31,
+          "no_fixed_target": 23,
+          "historical_review": 2
+        },
+        "channel_metrics": {
+          "general": {
+            "all_target_items": {
+              "n": 47,
+              "mrr": 0.5354609929078012,
+              "hit@1": 0.3617021276595745,
+              "hit@2": 0.6170212765957447,
+              "hit@3": 0.723404255319149,
+              "hit@5": 0.7659574468085106,
+              "recall@1": 0.274468085106383,
+              "recall@2": 0.4407801418439716,
+              "recall@3": 0.5815602836879432,
+              "recall@5": 0.6627659574468086
+            },
+            "all_targets_held": {
+              "n": 47,
+              "mrr": 0.5354609929078012,
+              "hit@1": 0.3617021276595745,
+              "hit@2": 0.6170212765957447,
+              "hit@3": 0.723404255319149,
+              "hit@5": 0.7659574468085106,
+              "recall@1": 0.274468085106383,
+              "recall@2": 0.4407801418439716,
+              "recall@3": 0.5815602836879432,
+              "recall@5": 0.6627659574468086
+            }
+          },
+          "civil": {
+            "all_target_items": {
+              "n": 32,
+              "mrr": 0.6458333333333334,
+              "hit@1": 0.5625,
+              "hit@2": 0.6875,
+              "hit@3": 0.75,
+              "recall@1": 0.4947916666666667,
+              "recall@2": 0.6458333333333334,
+              "recall@3": 0.7239583333333334
+            },
+            "all_targets_held": {
+              "n": 32,
+              "mrr": 0.6458333333333334,
+              "hit@1": 0.5625,
+              "hit@2": 0.6875,
+              "hit@3": 0.75,
+              "recall@1": 0.4947916666666667,
+              "recall@2": 0.6458333333333334,
+              "recall@3": 0.7239583333333334
+            }
+          }
+        },
+        "union_all_required": {
+          "hits": 44,
+          "n": 75
+        }
+      },
+      "context_diagnostic": {
+        "n": 100,
+        "categories": {
+          "retrieval_miss": 33,
+          "all_required_returned": 42,
+          "no_fixed_target": 23,
+          "historical_review": 2
+        },
+        "channel_metrics": {
+          "general": {
+            "all_target_items": {
+              "n": 47,
+              "mrr": 0.5464539007092198,
+              "hit@1": 0.3617021276595745,
+              "hit@2": 0.6170212765957447,
+              "hit@3": 0.7021276595744681,
+              "hit@5": 0.8297872340425532,
+              "recall@1": 0.274468085106383,
+              "recall@2": 0.45248226950354614,
+              "recall@3": 0.5719858156028369,
+              "recall@5": 0.6833333333333333
+            },
+            "all_targets_held": {
+              "n": 47,
+              "mrr": 0.5464539007092198,
+              "hit@1": 0.3617021276595745,
+              "hit@2": 0.6170212765957447,
+              "hit@3": 0.7021276595744681,
+              "hit@5": 0.8297872340425532,
+              "recall@1": 0.274468085106383,
+              "recall@2": 0.45248226950354614,
+              "recall@3": 0.5719858156028369,
+              "recall@5": 0.6833333333333333
+            }
+          },
+          "civil": {
+            "all_target_items": {
+              "n": 32,
+              "mrr": 0.53125,
+              "hit@1": 0.4375,
+              "hit@2": 0.5625,
+              "hit@3": 0.65625,
+              "recall@1": 0.3697916666666667,
+              "recall@2": 0.5208333333333333,
+              "recall@3": 0.6302083333333334
+            },
+            "all_targets_held": {
+              "n": 32,
+              "mrr": 0.53125,
+              "hit@1": 0.4375,
+              "hit@2": 0.5625,
+              "hit@3": 0.65625,
+              "recall@1": 0.3697916666666667,
+              "recall@2": 0.5208333333333333,
+              "recall@3": 0.6302083333333334
+            }
+          }
+        },
+        "union_all_required": {
+          "hits": 42,
+          "n": 75
+        }
+      },
+      "required_law": {
+        "n": 29,
+        "categories": {
+          "all_required_returned": 28,
+          "retrieval_miss": 1
+        },
+        "channel_metrics": {
+          "general": {
+            "all_target_items": {
+              "n": 1,
+              "mrr": 1.0,
+              "hit@1": 1.0,
+              "hit@2": 1.0,
+              "hit@3": 1.0,
+              "hit@5": 1.0,
+              "recall@1": 0.5,
+              "recall@2": 0.5,
+              "recall@3": 0.5,
+              "recall@5": 0.5
+            },
+            "all_targets_held": {
+              "n": 1,
+              "mrr": 1.0,
+              "hit@1": 1.0,
+              "hit@2": 1.0,
+              "hit@3": 1.0,
+              "hit@5": 1.0,
+              "recall@1": 0.5,
+              "recall@2": 0.5,
+              "recall@3": 0.5,
+              "recall@5": 0.5
+            }
+          },
+          "civil": {
+            "all_target_items": {
+              "n": 29,
+              "mrr": 0.8793103448275862,
+              "hit@1": 0.7586206896551724,
+              "hit@2": 1.0,
+              "hit@3": 1.0,
+              "recall@1": 0.7413793103448276,
+              "recall@2": 0.9827586206896551,
+              "recall@3": 1.0
+            },
+            "all_targets_held": {
+              "n": 29,
+              "mrr": 0.8793103448275862,
+              "hit@1": 0.7586206896551724,
+              "hit@2": 1.0,
+              "hit@3": 1.0,
+              "recall@1": 0.7413793103448276,
+              "recall@2": 0.9827586206896551,
+              "recall@3": 1.0
+            }
+          }
+        },
+        "union_all_required": {
+          "hits": 28,
+          "n": 29
+        }
+      },
+      "scope_provisional": {
+        "n": 1,
+        "categories": {
+          "all_required_returned": 1
+        },
+        "channel_metrics": {
+          "general": {
+            "all_target_items": {
+              "n": 0
+            },
+            "all_targets_held": {
+              "n": 0
+            }
+          },
+          "civil": {
+            "all_target_items": {
+              "n": 1,
+              "mrr": 0.5,
+              "hit@1": 0.0,
+              "hit@2": 1.0,
+              "hit@3": 1.0,
+              "recall@1": 0.0,
+              "recall@2": 1.0,
+              "recall@3": 1.0
+            },
+            "all_targets_held": {
+              "n": 1,
+              "mrr": 0.5,
+              "hit@1": 0.0,
+              "hit@2": 1.0,
+              "hit@3": 1.0,
+              "recall@1": 0.0,
+              "recall@2": 1.0,
+              "recall@3": 1.0
+            }
+          }
+        },
+        "union_all_required": {
+          "hits": 1,
+          "n": 1
+        }
+      },
+      "diagnostic_only": {
+        "n": 5,
+        "categories": {
+          "no_fixed_target": 5
+        },
+        "channel_metrics": {
+          "general": {
+            "all_target_items": {
+              "n": 0
+            },
+            "all_targets_held": {
+              "n": 0
+            }
+          },
+          "civil": {
+            "all_target_items": {
+              "n": 0
+            },
+            "all_targets_held": {
+              "n": 0
+            }
+          }
+        },
+        "union_all_required": {
+          "hits": 0,
+          "n": 0
+        }
+      }
+    },
+    "losses_vs_operating": [
+      {
+        "qid": "DEV-005",
+        "mode": "context_diagnostic",
+        "lost": [
+          "주택임대차보호법-제3조의6"
+        ]
+      },
+      {
+        "qid": "DEV-009",
+        "mode": "question_only",
+        "lost": [
+          "상가건물임대차보호법-제2조"
+        ]
+      },
+      {
+        "qid": "DEV-009",
+        "mode": "context_diagnostic",
+        "lost": [
+          "주택임대차보호법-제2조"
+        ]
+      },
+      {
+        "qid": "DEV-010",
+        "mode": "question_only",
+        "lost": [
+          "주택임대차보호법-제3조의3"
+        ]
+      },
+      {
+        "qid": "DEV-012",
+        "mode": "question_only",
+        "lost": [
+          "민법-제114조"
+        ]
+      },
+      {
+        "qid": "DEV-015",
+        "mode": "context_diagnostic",
+        "lost": [
+          "주택임대차보호법-제3조"
+        ]
+      },
+      {
+        "qid": "DEV-058",
+        "mode": "context_diagnostic",
+        "lost": [
+          "민법-제627조"
+        ]
+      },
+      {
+        "qid": "DEV-099",
+        "mode": "context_diagnostic",
+        "lost": [
+          "주택임대차보호법-제3조의6"
+        ]
+      }
+    ],
+    "losses_vs_current": [
+      {
+        "qid": "DEV-058",
+        "mode": "context_diagnostic",
+        "lost": [
+          "민법-제627조"
+        ]
+      }
+    ],
+    "general_top3_losses": [
+      {
+        "qid": "DEV-005",
+        "mode": "question_only",
+        "lost": [
+          "주택임대차보호법-제3조의6"
+        ],
+        "gained": []
+      },
+      {
+        "qid": "DEV-005",
+        "mode": "context_diagnostic",
+        "lost": [
+          "주택임대차보호법-제3조의6"
+        ],
+        "gained": []
+      },
+      {
+        "qid": "DEV-009",
+        "mode": "question_only",
+        "lost": [
+          "상가건물임대차보호법-제2조"
+        ],
+        "gained": []
+      },
+      {
+        "qid": "DEV-009",
+        "mode": "context_diagnostic",
+        "lost": [
+          "주택임대차보호법-제2조"
+        ],
+        "gained": []
+      },
+      {
+        "qid": "DEV-010",
+        "mode": "question_only",
+        "lost": [
+          "주택임대차보호법-제3조의3"
+        ],
+        "gained": []
+      },
+      {
+        "qid": "DEV-049",
+        "mode": "context_diagnostic",
+        "lost": [
+          "주택임대차보호법-제7조"
+        ],
+        "gained": []
+      },
+      {
+        "qid": "DEV-088",
+        "mode": "context_diagnostic",
+        "lost": [
+          "상가건물임대차보호법-제3조"
+        ],
+        "gained": [
+          "부가가치세법-제8조"
+        ]
+      }
+    ]
+  }
+}

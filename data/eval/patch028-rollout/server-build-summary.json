@@ -1,0 +1,133 @@
+{
+  "first_build_commit": "9e50649",
+  "rebuild_and_noop_commit": "c19b4b1",
+  "platform": "Windows",
+  "existing_database_required": false,
+  "copied_vectors_for_first_build": false,
+  "first_build": {
+    "counts": {
+      "laws": 178,
+      "civil_laws": 26,
+      "cases": 26,
+      "guides": 6
+    },
+    "indexing": [
+      {
+        "embedded": 210,
+        "reused": 0,
+        "removed": 0
+      },
+      {
+        "embedded": 26,
+        "reused": 0,
+        "removed": 0
+      }
+    ]
+  },
+  "forced_rebuild": {
+    "counts": {
+      "laws": 178,
+      "civil_laws": 26,
+      "cases": 26,
+      "guides": 6
+    },
+    "indexing": [
+      {
+        "embedded": 0,
+        "reused": 210,
+        "removed": 0
+      },
+      {
+        "embedded": 0,
+        "reused": 26,
+        "removed": 0
+      }
+    ]
+  },
+  "normal_repeat": {
+    "state": "unchanged",
+    "embedded": 0,
+    "payload_bytes_unchanged": true,
+    "new_build_runs": 0
+  },
+  "content_comparison": {
+    "chunks": {
+      "before": 204,
+      "after": 204,
+      "anchor_changes": 0,
+      "body_changes": 0,
+      "internal_id_changes": 129,
+      "source_url_changes": 140
+    },
+    "civil": {
+      "before": 26,
+      "after": 26,
+      "anchor_changes": 0,
+      "body_changes": 0,
+      "internal_id_changes": 0,
+      "source_url_changes": 7
+    },
+    "cases": {
+      "before": 26,
+      "after": 26,
+      "anchor_changes": 0,
+      "body_changes": 0,
+      "internal_id_changes": 0,
+      "source_url_changes": 0
+    },
+    "guides": {
+      "before": 6,
+      "after": 6,
+      "anchor_changes": 0,
+      "body_changes": 0,
+      "internal_id_changes": 0,
+      "source_url_changes": 0
+    }
+  },
+  "django_management_command": "prepare_retrieval --settings=config.test_settings --data-root tmp/patch028-server-final/data",
+  "django_settings_check": "config.settings passed with a process-only temporary key; local .env lacks DJANGO_SECRET_KEY and was not modified",
+  "full_tests": {
+    "passed": 1168,
+    "skipped": 3,
+    "subtests_passed": 172,
+    "commit": "9e50649"
+  },
+  "focused_tests": {
+    "passed": 55,
+    "commit": "2654264"
+  },
+  "limitations": [
+    "Existing Windows virtualenv and KURE cache used",
+    "No macOS/RunPod/GPU or actual LLM execution",
+    "Basic retrieval smoke tests, not full235 ranking evaluation",
+    "Source snapshots are approved versions, not automatic latest-law collection"
+  ],
+  "local_runs": [
+    "tmp\\server-build\\b47e3b4436704a40a9a1c3adef034109",
+    "tmp\\server-build\\27ffb977ce3149cf9d87737d1b01145b",
+    "tmp\\server-build\\9d847d81dbd444d3a51e162f15490b5a"
+  ],
+  "normal_repeat_commit": "2654264",
+  "source_link_update": {
+    "commit": "2654264",
+    "counts": {
+      "laws": 178,
+      "civil_laws": 26,
+      "cases": 26,
+      "guides": 6
+    },
+    "indexing": [
+      {
+        "embedded": 0,
+        "reused": 210,
+        "removed": 0
+      },
+      {
+        "embedded": 0,
+        "reused": 26,
+        "removed": 0
+      }
+    ]
+  },
+  "content_comparison_commit": "2654264"
+}

@@ -14,10 +14,11 @@ from time import perf_counter
 
 from src.evaluation.metrics import hit_at_k, recall_at_k, reciprocal_rank
 from src.retrieval.retriever import BM25Retriever, load_chunks
+from src.retrieval.partitioned import PartitionedBM25Retriever
 from src.retrieval.index import clean_metadata
 from src.retrieval.service import (
-    CASE, CASE_CHUNKS, DEFAULT_INDEX, DEFAULT_MODEL, GUIDE, GUIDE_CHUNKS,
-    LAW, LAW_CHUNKS, LAW_TYPES, DEFAULT_CIVIL_INDEX, RetrievalService, CIVIL_TAIL_DENSE_MULTIPLIER,
+    CASE_CHUNKS, DEFAULT_INDEX, DEFAULT_MODEL, GUIDE_CHUNKS,
+    LAW_CHUNKS, LAW_TYPES, DEFAULT_CIVIL_INDEX, RetrievalService, CIVIL_TAIL_DENSE_MULTIPLIER,
 )
 
 SEARCH_K = {"k_law": 5, "k_case": 5, "k_guide": 2, "k_civil": 3}
@@ -149,10 +150,17 @@ def retriever_settings(retriever) -> dict | None:
     if retriever is None:
         return None
     bm25 = next((m.retriever for m in retriever.members
-                 if isinstance(m.retriever, BM25Retriever)), None)
+                 if isinstance(m.retriever, (BM25Retriever, PartitionedBM25Retriever))), None)
+    def lexical_config(r):
+        return {"k1": r.k1, "b": r.b, "char_ngram": r.char_ngram}
+    if isinstance(bm25, PartitionedBM25Retriever):
+        config = {"kind": "partitioned_raw_score_pool", "score_weight": 1.0,
+                  "procedure_titles": bm25.procedure_titles,
+                  "partitions": {name: lexical_config(r) for name, r in bm25.partitions.items()}}
+    else:
+        config = None if bm25 is None else lexical_config(bm25)
     return {"rrf_k": retriever.rrf_k, "depth": retriever.depth,
-            "bm25": None if bm25 is None
-                    else {"k1": bm25.k1, "b": bm25.b, "char_ngram": bm25.char_ngram}}
+            "bm25": config}
 
 
 def settings(service) -> dict:
@@ -162,9 +170,28 @@ def settings(service) -> dict:
                   for f in fields(corpus) for value in [getattr(corpus, f.name)]}
         config["retriever"] = retriever_settings(service._retrievers.get(corpus.name))
         corpora[key] = config
-    return {"search_k": SEARCH_K, "corpora": corpora,
+    result = {"search_k": SEARCH_K, "corpora": corpora,
             "civil_selection": {"preserve_top": 2, "tail_dense_multiplier": CIVIL_TAIL_DENSE_MULTIPLIER,
                                 "applies_at_limit": 3}}
+    if getattr(service, "profile_name", None):
+        def function_name(function):
+            return f"{function.__module__}.{function.__name__}"
+        def context_config(retriever):
+            return {**retriever_settings(retriever), "members": [
+                {"name": m.name, "weight": m.weight, "expand_weight": m.expand_weight}
+                for m in retriever.members]}
+        result["profile"] = service.profile_name
+        corpora["law"]["retriever"] = context_config(service._context_law)
+        corpora["law"]["query_expander"] = function_name(
+            service._context_law.members[0].retriever.partitions["core"].query_expander)
+        corpora["civil"]["seed_retriever"] = corpora["civil"]["retriever"]
+        corpora["civil"]["retriever"] = context_config(service._context_civil)
+        corpora["civil"]["query_expander"] = function_name(service._context_civil.members[0].retriever.query_expander)
+        result["civil_selection"] = {
+            "policy": service.profile_name, "method": "same-edition reference pair or topic-seeded RRF with dense tail",
+            "request_embedding_cache": True,
+        }
+    return result
 
 
 def main(argv: list[str] | None = None) -> int:

@@ -12,7 +12,29 @@
   let lastRendered = "";
   let replyingTo = null;
   const submission = new ChatRequestIdentity(() => crypto.randomUUID());
+  let estimatedSeconds = 30;
   const csrf = form.querySelector('[name="csrfmiddlewaretoken"]').value;
+
+  document.querySelectorAll("[data-room-row]").forEach((row) => {
+    const edit = row.querySelector("[data-room-edit]");
+    const renameForm = row.querySelector("[data-room-form]");
+    const roomLink = row.querySelector(".case-shortcut");
+    const cancel = row.querySelector("[data-room-cancel]");
+    if (!edit || !renameForm || !roomLink || !cancel) return;
+    edit.addEventListener("click", () => {
+      roomLink.hidden = true;
+      edit.hidden = true;
+      renameForm.hidden = false;
+      const title = renameForm.querySelector('input[name="title"]');
+      title.focus();
+      title.select();
+    });
+    cancel.addEventListener("click", () => {
+      renameForm.hidden = true;
+      roomLink.hidden = false;
+      edit.hidden = false;
+    });
+  });
 
   function element(tag, text, className) {
     const node = document.createElement(tag);
@@ -29,11 +51,27 @@
       const link = element("a", "새로고침"); link.href = window.location.pathname; box.append(link);
     }
   }
+  function toast(message, type = "success") {
+    const stack = $("toast-stack");
+    if (!stack) return;
+    const item = element("div", undefined, `app-toast ${type}`);
+    item.setAttribute("role", type === "error" ? "alert" : "status");
+    item.append(element("span", type === "error" ? "!" : "✓", "toast-icon"));
+    const copy = element("span", undefined, "toast-copy");
+    copy.append(element("strong", type === "error" ? "리포트 생성 실패" : "리포트 생성 완료"));
+    copy.append(element("small", message));
+    item.append(copy);
+    stack.replaceChildren(item);
+    window.setTimeout(() => {
+      item.classList.add("leaving");
+      window.setTimeout(() => item.remove(), 180);
+    }, 4200);
+  }
   function controls() {
     const locked = busy || externalBusy || !conversationId;
     $("send").disabled = locked || !input.value.trim();
     for (const id of ["attach", "new-chat", "upload-suggestion", "document-select"]) $(id).disabled = locked;
-    document.querySelectorAll("[data-question], .document-card button, .clarification-panel button").forEach((b) => { b.disabled = locked; });
+    document.querySelectorAll("[data-question], .document-card button, .clarification-panel button, .text-action").forEach((b) => { b.disabled = locked; });
     form.setAttribute("aria-busy", String(busy));
   }
   async function request(url, options = {}) {
@@ -69,15 +107,85 @@
     return value.replace(/[ \t\r\n]*(\*\*)?(언제|어떻게|확인할 사항):/g,
       (match, bold, label, offset) => `${offset ? "\n\n" : ""}${bold || ""}${label}:`);
   }
-  function answerText(text, assistant = false) {
-    const body = element("div", undefined, "answer-body");
+  function markup(text, target) {
     // A deliberately small text-only Markdown subset; never inject model HTML.
-    const parts = (assistant ? formatAnswerSections(text) : String(text)).split(/(\*\*[^*\n]+\*\*|`[^`\n]+`)/g);
+    const parts = String(text).split(/(\*\*[^*\n]+\*\*|`[^`\n]+`)/g);
     for (const part of parts) {
-      if (part.startsWith("**") && part.endsWith("**")) body.append(element("strong", part.slice(2, -2)));
-      else if (part.startsWith("`") && part.endsWith("`")) body.append(element("code", part.slice(1, -1)));
-      else body.append(document.createTextNode(part));
+      if (part.startsWith("**") && part.endsWith("**")) target.append(element("strong", part.slice(2, -2)));
+      else if (part.startsWith("`") && part.endsWith("`")) target.append(element("code", part.slice(1, -1)));
+      else target.append(document.createTextNode(part));
     }
+    return target;
+  }
+  function annotations(message) {
+    // Offsets refer to message.content exactly as rendered. Citations win ties so a
+    // glossary term inside a citation never splits the link.
+    const spans = [
+      ...(message.citations || []).map((s) => ({ ...s, kind: "cite" })),
+      ...(message.glossary || []).map((s) => ({ ...s, kind: "glossary-term" })),
+    ].sort((a, b) => a.start - b.start || (a.kind === "cite" ? -1 : 1));
+    const kept = [];
+    let cursor = 0;
+    for (const span of spans) {
+      if (!Number.isInteger(span.start) || !Number.isInteger(span.end)) continue;
+      if (span.start < cursor || span.end <= span.start) continue;
+      kept.push(span); cursor = span.end;
+    }
+    return kept;
+  }
+  function detailFor(span, label) {
+    const box = element("div", undefined, "annotation-detail");
+    if (span.kind === "glossary-term") {
+      box.append(element("p", span.definition || ""));
+      return box;
+    }
+    box.append(element("span", span.citation || label, "annotation-source"));
+    box.append(element("p", span.excerpt || ""));
+    if (span.url) { const link = safeLink(span.url, "원문 보기"); link.className = "annotation-link"; box.append(link); }
+    if (span.current_url && span.current_url !== span.url) box.append(safeLink(span.current_url, span.doc_type === "case" ? "종합법률정보 사건번호 검색" : "현행 조문 보기 (검색 근거와 판본이 다를 수 있음)"));
+    return box;
+  }
+  function trigger(span, label) {
+    // A span, not a button: buttons bring their own line-height and text-align and
+    // would disturb the pre-wrap answer body.
+    const node = element("span", label, span.kind);
+    node.setAttribute("role", "button");
+    node.tabIndex = 0;
+    node.setAttribute("aria-expanded", "false");
+    node.setAttribute("aria-label", `${label} ${span.kind === "cite" ? "근거" : "뜻"} 보기`);
+    const open = () => {
+      const bubble = node.closest(".bubble");
+      const shown = bubble.querySelector(".annotation-detail");
+      const mine = node.getAttribute("aria-expanded") === "true";
+      if (shown) shown.remove();
+      bubble.querySelectorAll('[aria-expanded="true"]').forEach((n) => n.setAttribute("aria-expanded", "false"));
+      if (mine) return;
+      node.setAttribute("aria-expanded", "true");
+      bubble.querySelector(".answer-body").after(detailFor(span, label));
+    };
+    node.addEventListener("click", open);
+    node.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") { event.preventDefault(); open(); }
+    });
+    return node;
+  }
+  function answerText(text, message = {}) {
+    const body = element("div", undefined, "answer-body");
+    const source = Array.from(String(text));
+    const spans = annotations(message);
+    if (!spans.length) return markup(message.role === "assistant" ? formatAnswerSections(source.join("")) : source.join(""), body);
+    let cursor = 0;
+    for (const span of spans) {
+      if (span.start > cursor) markup(source.slice(cursor, span.start).join(""), body);
+      body.append(trigger(span, source.slice(span.start, span.end).join("")));
+      if (span.kind === "cite" && span.url) {
+        const link = safeLink(span.url, " ↗");
+        link.setAttribute("aria-label", `${span.citation} 원문 보기`);
+        body.append(link);
+      }
+      cursor = span.end;
+    }
+    if (cursor < source.length) markup(source.slice(cursor).join(""), body);
     return body;
   }
   function renderMessage(message) {
@@ -85,7 +193,7 @@
     row.setAttribute("aria-label", message.role === "user" ? "내 질문" : "LENS 답변");
     if (message.role !== "user") row.append(element("span", "L", "avatar"));
     const bubble = element("div", undefined, "bubble");
-    bubble.append(answerText(message.content, message.role === "assistant"));
+    bubble.append(answerText(message.content, message.role === "assistant" ? message : {}));
     if (message.role === "assistant" && message.followup_question) {
       const followup = element("div", undefined, "followup-question");
       followup.append(element("strong", "상황을 조금 더 알려주세요"), element("p", message.followup_question));
@@ -109,6 +217,31 @@
           li.append(safeLink(source.url, source.label)); list.append(li);
         }
         sources.append(list); bubble.append(sources);
+      }
+      if (message.simplified) {
+        const box = element("div", undefined, "simplified");
+        box.append(element("span", "쉽게 다시 설명", "simplified-label"));
+        box.append(markup(message.simplified, element("p")));
+        bubble.append(box);
+      } else if (message.status === "answered" && message.id) {
+        const button = element("button", "쉽게 다시 설명해줘", "text-action");
+        button.type = "button"; button.dataset.simplify = message.id;
+        button.addEventListener("click", () => action("답변을 쉬운 말로 바꾸고 있어요", async () => {
+          render(await post(form.dataset.simplifyUrl, { message_id: message.id }));
+        }));
+        bubble.append(button);
+      }
+      if (message.followups?.length) {
+        const box = element("div", undefined, "followups");
+        box.append(element("span", "이 조항의 다른 부분도 궁금하신가요?", "followups-label"));
+        const chips = element("div", undefined, "followup-chips");
+        for (const citation of message.followups) {
+          const chip = element("button", citation, "followup");
+          chip.type = "button"; chip.dataset.question = `${citation}에 대해 설명해줘`;
+          chip.addEventListener("click", () => { input.value = chip.dataset.question; controls(); input.focus(); });
+          chips.append(chip);
+        }
+        box.append(chips); bubble.append(box);
       }
     }
     row.append(bubble); return row;
@@ -178,6 +311,8 @@
   }
   function render(data) {
     if (conversationId !== data.conversation_id) submission.clear();
+    const durations = (data.messages || []).filter(m => m.role === "assistant" && m.status === "answered" && Number.isFinite(m.elapsed_seconds) && m.elapsed_seconds > 0).slice(-5).map(m => m.elapsed_seconds).sort((a,b) => a-b);
+    estimatedSeconds = durations.length ? Math.max(5, durations[Math.floor(durations.length / 2)]) : 30;
     conversationId = data.conversation_id;
     externalBusy = Boolean(data.busy);
     const signature = JSON.stringify([data.messages, data.documents]);
@@ -202,12 +337,28 @@
     try { const wasBusy = externalBusy; render(await request(form.dataset.stateUrl)); if (wasBusy && !externalBusy) notice(""); }
     catch (error) { notice(error.message, true); }
   }
-  async function action(label, operation) {
+  async function action(label, operation, showEstimate = false) {
     if (busy || externalBusy || !conversationId) return;
     busy = true; controls(); notice("");
     $("pending").hidden = false; $("pending-text").textContent = label;
     const start = Date.now(); $("elapsed").textContent = "";
-    const timer = setInterval(() => { $("elapsed").textContent = `${Math.floor((Date.now() - start) / 1000)}초`; }, 1000);
+    const estimate = estimatedSeconds;
+    $("estimate").hidden = !showEstimate;
+    $("answer-progress").value = 0;
+    $("estimate-text").textContent = `예상 약 ${Math.ceil(estimate)}초 남음`;
+    const timer = setInterval(() => {
+      const elapsed = (Date.now() - start) / 1000;
+      $("elapsed").textContent = `${Math.floor(elapsed)}초`;
+      if (showEstimate) {
+        if (elapsed < estimate) {
+          $("answer-progress").value = Math.min(95, elapsed / estimate * 100);
+          $("estimate-text").textContent = `예상 약 ${Math.ceil(estimate - elapsed)}초 남음`;
+        } else {
+          $("answer-progress").removeAttribute("value");
+          $("estimate-text").textContent = "예상보다 오래 걸리고 있어요. 답변을 준비 중입니다.";
+        }
+      }
+    }, 1000);
     try { await operation(); }
     catch (error) {
       notice(error.message, [403, 409, 410].includes(error.status) || !error.status);
@@ -244,8 +395,48 @@
         throw error;
       }
       submission.clear();
-      render(data); input.focus();
-    });
+      render(data);
+      if (data.room_created && !input.value) { window.location.reload(); return; }
+      input.focus();
+    }, true);
+  });
+  const reportForm = $("report-form");
+  if (reportForm) reportForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const button = reportForm.querySelector("button");
+    const label = reportForm.querySelector(".report-button-label");
+    if (button.disabled) return;
+    button.disabled = true;
+    button.classList.add("loading");
+    label.textContent = "리포트 생성 중";
+    try {
+      const response = await fetch(reportForm.action, {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "X-CSRFToken": csrf },
+      });
+      if (!response.ok) throw new Error("리포트를 만들지 못했습니다.");
+      const blob = await response.blob();
+      if (blob.type !== "application/pdf") throw new Error("PDF 응답을 확인하지 못했습니다.");
+      const disposition = response.headers.get("Content-Disposition") || "";
+      const filenameMatch = disposition.match(/filename="?([^";]+)"?/i);
+      const filename = filenameMatch ? filenameMatch[1] : "LENS_report.pdf";
+      const downloadUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = filename;
+      document.body.append(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000);
+      toast("PDF가 다운로드되고 마이페이지에 저장됐습니다.");
+    } catch (error) {
+      toast(error.message || "잠시 후 다시 시도해 주세요.", "error");
+    } finally {
+      button.disabled = false;
+      button.classList.remove("loading");
+      label.textContent = "리포트 PDF";
+    }
   });
   document.querySelectorAll("[data-question]").forEach((button) => button.addEventListener("click", () => {
     input.value = button.dataset.question; replyingTo = null; controls(); input.focus();
@@ -270,13 +461,15 @@
       await syncState();
     });
   });
-  $("new-chat").addEventListener("click", () => $("reset-dialog").showModal());
-  $("cancel-reset").addEventListener("click", () => $("reset-dialog").close());
-  $("confirm-reset").addEventListener("click", () => {
-    $("reset-dialog").close(); action("새 대화를 준비하고 있어요", async () => {
-      render(await post(form.dataset.resetUrl)); submission.clear(); replyingTo = null; input.value = ""; $("upload-progress").replaceChildren(); input.focus();
+  if ($("new-chat").dataset.createRoom !== "true") {
+    $("new-chat").addEventListener("click", () => $("reset-dialog").showModal());
+    $("cancel-reset").addEventListener("click", () => $("reset-dialog").close());
+    $("confirm-reset").addEventListener("click", () => {
+      $("reset-dialog").close(); action("새 대화를 준비하고 있어요", async () => {
+        render(await post(form.dataset.resetUrl)); submission.clear(); replyingTo = null; input.value = ""; $("upload-progress").replaceChildren(); input.focus();
+      });
     });
-  });
+  }
   $("cancel-delete").addEventListener("click", () => $("delete-dialog").close());
   $("confirm-delete").addEventListener("click", () => {
     $("delete-dialog").close(); action("문서를 삭제하고 있어요", async () => {
