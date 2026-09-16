@@ -1,0 +1,8 @@
+{
+  "capture/audit.json": "60106653ea77232f16f01f555425e28afd11385ce301245bcc88bec2d74787c1",
+  "capture/manifest.json": "e91729f3e9a5ace2e736e411e34e7b6a3e7595198377ca39fa19a3e7e3ce9dba",
+  "capture/report.json": "492092266e0d169f8353c5208b13c07638c47f34d93cdfe7d8f27ac4c81bf70c",
+  "capture/rows.json": "54b1b85ca0bdfba7dc3e0fd285e0894ebcca55cac98339f2da6964b4559ce67f",
+  "provenance.json": "448bf17073d567528c5c2fe73c5840cc980b28654b9095ff672b52e3b675b987",
+  "traces.json": "794c4672437e64aba666aee873b1c6c756b2408e21703ee178b404fb7c020b2b"
+}

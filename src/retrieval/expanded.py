@@ -8,6 +8,7 @@ from src.retrieval.context_policy import (
     final_dense_query, final_law_terms,
 )
 from src.retrieval.hybrid import HybridRetriever, Member
+from src.retrieval.multi_evidence import POLICY_CONFIG, TaxLookupSelector, requested_tax_scopes
 from src.retrieval.partitioned import PartitionedBM25Retriever
 from src.retrieval.retriever import BM25Retriever
 from src.retrieval.service import CIVIL, LAW, PROCEDURE_TITLES, RetrievalService, _to_evidence
@@ -50,6 +51,8 @@ class ExpandedLawRetrievalService(RetrievalService):
         self._reference_graph, _ = _reference_graph(chunks, CIVIL_IDS)
         laws = [c for c in chunks if c["metadata"].get("doc_type") in LAW.doc_types
                 and c["metadata"].get("title") != "민법"]
+        self._tax_lookup_selector = TaxLookupSelector(laws)
+        self.selection_config = POLICY_CONFIG
         lexical = lambda part: BM25Retriever(part, b=LAW.bm25_b, query_expander=final_law_terms)
         law_bm25 = PartitionedBM25Retriever({
             "core": lexical([c for c in laws if c["metadata"].get("title") not in PROCEDURE_TITLES]),
@@ -81,7 +84,13 @@ class ExpandedLawRetrievalService(RetrievalService):
             return super()._search_one(corpus, question, k)
         if k <= 0:
             return []
-        hits = self._context_law.search(question, k, corpus.where())
+        # Both members already search depth20. Retain more of that same fused
+        # pool only when a direct lookup request needs its companion evidence.
+        if requested_tax_scopes(question):
+            hits = self._context_law.search(question, max(k, POLICY_CONFIG["candidate_depth"]), corpus.where())
+            hits = self._tax_lookup_selector.select(question, hits, k, corpus.where())
+        else:
+            hits = self._context_law.search(question, k, corpus.where())
         return [_to_evidence(i, self._chunks[cid], score) for i, (cid, score) in enumerate(hits, 1)]
 
     def _search_civil_candidates(self, question, topics, limit):

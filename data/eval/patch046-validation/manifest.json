@@ -1,0 +1,7 @@
+{
+  "data/eval/patch046-improvement/manifest.json": "9064fdee7e2659e093d2eb49a396bcdf1acea73c7b27a0599eeb320f9d8d5544",
+  "data/eval/patch046-public-regression.json": "8a5e636f6266596513be312a94c8d009ff52cebf9d055ce6c421808c6f9b2186",
+  "data/eval/patch046-validation/full-tests.log": "379926f2d4ae96b32ed3f3ea125d14e7f682f8ccf2b89f5938e12383a2295217",
+  "data/eval/patch046-validation/independent-verification.json": "52a1cd18a7f20ac77600591f1d19e77f1f38f1abbef2891ddfa09c008ffbcbec",
+  "data/eval/patch046-validation/independent_verification.py": "ff68068dc2eb5ee526c7c58de0a558ce4e06df0efbde58cc2f0bb6cd3325d12a"
+}

@@ -5,6 +5,12 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-16
+
+### Added
+
+- PATCH-046 improves companion evidence retrieval for explicit unpaid-tax lookup requests within the existing fused TOP20 and general5/civil3 limits. Actual KURE evaluation improves complete evidence from 43/75 to 47/75 question-only and 48/75 with context, with no new required-evidence loss or extra model calls. All 78 published regression questions retain their rankings and metrics. Full tests: 1,796 passed, 3 skipped, 665 subtests. Gold, data, model, civil selection and generation are unchanged by this patch. Renumbers the unpublished local PATCH-042 work after a remote ID collision; frozen analysis paths are retained for integrity. (commit: pending)
+
 ## 2026-09-15
 
 ### Added

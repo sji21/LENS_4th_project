@@ -1,0 +1,4152 @@
+{
+  "purpose": "published regression, not independent evaluation or LLM assessment",
+  "code_commit": "3eb534f54028eabf363d7b35fcb58f64175509a5",
+  "worktree_dirty": true,
+  "source_hashes": {
+    "requirements.txt": "d04329a808e377a6c21f93b47e5f2641cf03fc269c59f6aeeed0dd9a65df2d59",
+    "scripts/build_project_plan_pdf.py": "fb2c53ec746893a56aa8416ddbf240aa542637f2063a61b3d2a515c3ac36601a",
+    "scripts/compare_case_embedding_models.py": "bb0e2022f1c4c065b32b5ea5767b5a2fa04613de0d9c33545556bae70b778293",
+    "scripts/compare_case_embedding_models_hf_api.py": "09f160ff83814c3de8ae28ed62f259eae953c8e5929f5db05c83c81a7e089a0e",
+    "scripts/compare_case_holdout_retrievers.py": "0be5de38a945ed76dee74e109ded3b020998cfa689f3f55571f934490cd17a8d",
+    "scripts/dev100_diagnostics/capture.py": "d3e8f827394bf0a10e8e0674a48f664ddfa76d15efd4ccbd473c9d27709ed7a2",
+    "scripts/dev100_diagnostics/repair_public_regression.py": "8ac35e8d92dfd4024cddd29214cc438ea062500149d7cdbc94d4c2f756fe7365",
+    "scripts/dev100_diagnostics/repair_regression.py": "e5380c32b6b781681a5cb97eb4e70d31687c3951b5cf832e844cb18ec7daa4a8",
+    "scripts/dev100_diagnostics/report.py": "dfe648d41c94cabc24fc3747e059422a19cdc6477eca5e3c0ab70e5e39765748",
+    "scripts/dev100_v2/report.py": "54a78f58028b15ad1cc53ca6ec1a6560a6c757bb4fd7131acd3288fc890e44b6",
+    "scripts/evaluate_case_holdout.py": "9d34f2c238a1bbfdde94deb39fec14b267847cd673bd32b9ddf27f501e62a573",
+    "scripts/evaluate_case_only_retriever.py": "815b9e9735de22a51d32e6221b4e03c060a565ee10853bf1ab521eeeefd21111",
+    "scripts/evaluate_civil_regression.py": "7b4dc1c91bb62e3214b79f937e902ac33ea53944345c3528d146403f7f1af633",
+    "scripts/init_databases.py": "0ff630361e52d1ac016737e65e0934fb206c6d20fde8db2baa8bf4c31bde3211",
+    "scripts/load_case_only_demo_corpus.py": "2355178e4937f980d69cdef2ab6249717c95b62df76ddeff0a40ef276ea86566",
+    "scripts/manage_retrieval_data.py": "f73c211097812cbc32db64ba9de65c4ffdc8f2c0d3bfdbcc96569cdbc78eb633",
+    "scripts/patch015_baseline.py": "de0230cb9ee5ace1c13ce9162804b461c59642dfdf5387d80ee0c7f923aa9518",
+    "scripts/patch015_report.py": "5ddcc591574089227061baca912769ae264dfba96eeddae00d7db1f931f37371",
+    "scripts/patch016_candidates.py": "08156e3a7285d1d9ab7b70f0c30feb6e3632d510e4a387534d859713f61d0422",
+    "scripts/patch017_selection.py": "97cdeddffb6f90b6ebc27dd38687c930376b1419f265a4ef6bc74b5b235e0976",
+    "scripts/patch018_separate.py": "a11e6760336125eaa1e816a94e75d0526174e86a3dac28e3a2f14cd086c0835c",
+    "scripts/patch020_budget.py": "23d614d380b365cd0a59eb2b4e8b58c1dafae86a7cdca22b1408b32b45739052",
+    "scripts/patch021_verify.py": "72cffc023a80b6d2687e43afc5fa050f55367ab0140c074e68475dcbf8d2d05f",
+    "scripts/patch023_report.py": "f6837eb71a9bfb307e6ed1aaf312620edbf6cb177d56507de80456c4135e2072",
+    "scripts/patch024_expand.py": "889ccb5477a20670189691e0fdd3580219f8633473375d559312d9b1408151ff",
+    "scripts/patch024_report.py": "c7684f73674cbb3a7553158f2e01b52fb8f6ce799852e7c8e049c8dec9d3ab08",
+    "scripts/patch025_ranking.py": "f9554fd836222ede7defd478b52f94e9794c59d8886f526251f2e2c54abf02a9",
+    "scripts/patch027_context_live.py": "deb335fd72dfc973116c33ec5b4ef443f3ca24a63f4511083bda7c27cfcc9655",
+    "scripts/patch027_context_tuning.py": "d146d0d6a4b3984e0db92cfb3a1e8bfae6ea54451f284cbbe7182810757784fb",
+    "scripts/patch027_expand.py": "7a2c60771fdbec2a15155f5cee492d7a9d57ce51448b771fb89fa4a7ffc0b9d0",
+    "scripts/patch027_expansion_report.py": "74035777036c7b8d855ae470495a3b9b7a87bb4cc81be3eafe4a4bd080f32ec5",
+    "scripts/patch027_final_policy.py": "bbf79d743a6c720154ab713fe990b0fe5993db3bbecea733fe0bd7b6124003ce",
+    "scripts/patch027_final_test.py": "23e6057d0a50fba47fa30626979d513314a68c71f6babf9a658b587967b000fc",
+    "scripts/patch027_full_eval.py": "8a595ac7f5651133e0259a879f2f7d79f136a2c5656fe56c6bf69aee2646d3a0",
+    "scripts/patch027_full_ranking.py": "53ecf9f809a440d58813f5b875f4c7987c51e20a26b00f1e58dea59ca322f7dc",
+    "scripts/patch027_full_report.py": "1f70e1e015387fe92d82255a4cb51d2e2b5ba38b8a8fd2123d6111b72ce3314d",
+    "scripts/patch027_full_sources.py": "3360b45a5f01ddbf994411aa73aeaaec785ec5891de86b69f2ba196c32eb5c65",
+    "scripts/patch027_loss_analysis.py": "f5cf2e64844d8c0b83558e4d26cc23ba736c72c61803768e28cf6cff208d2c6a",
+    "scripts/patch027_partition.py": "bb77fafbc7fdb41d586fe8c37298bdff21f55038b86a886f2ee3192203a8bb75",
+    "scripts/patch027_paths.py": "711acceca110fd0f7f1fdc444d711b0470e7a672560e4312fdf5dfcdb969776e",
+    "scripts/patch027_report.py": "3fa5a06a02ba79fea9eaabb1aee60efa14498104f5445992b4e0484ad3d09dd3",
+    "scripts/patch027_rollout.py": "49011f0b4a9d9889add9bdf83c4f81e464770d102f36eeee1c9e055ada04c749",
+    "scripts/patch027_sources.py": "4a710e9c8b04e8adf2c21a5ee8ad155255719a20cba0d69584642756ceaa8cb8",
+    "scripts/patch027_subsets.py": "ce7a8987cca5c2f25e2ddbb0a12bac21e015f5250cd6bebdbccf5ba5f95898b7",
+    "scripts/patch027_tuning.py": "8eade82568cdd33f45df5cdfd74e9a0249eea7c6a5153782b9ee8a4ebc3d1009",
+    "scripts/patch027_verify.py": "5943e4594821364d2580f725004ea1621d4d9e4921e8e41a5cf0b41acb371326",
+    "scripts/patch041_public_regression.py": "7acb50f8e13bbccf77046309ffbd5a3a53cd49171d174a601d991b22f373cfb7",
+    "scripts/patch041_retrieval_eval.py": "958fa3e8377b2c44410c24e846ff08ba713a8d5cbd8c3876fa09f696fe7c45d5",
+    "scripts/patch041_settings_contract.py": "f2ed899feadd87185eb9bb7941654cb645dc5bf593b4af66e0de971be95e4075",
+    "scripts/patch042_candidate_trace.py": "dee297512c5ddd60973e16c788a4c543e8c06936307848780c79f39b93916b83",
+    "scripts/patch042_gap_analysis.py": "b664449f17c4bb0cd6c9258c882ceb1c0795e05b70618837897e42d75cdd3ea1",
+    "scripts/patch042_stratified_analysis.py": "afbfc2d86cd1acb8014d8dc5470e6bcff71a117f54affea132400ba07cb65ea1",
+    "scripts/patch042_trace_diagnosis.py": "40f8906b0e4e58b25445501f5fe92db5ccd4814c59b0c67001569e290c2bf4b8",
+    "scripts/patch046_improvement_eval.py": "f6ee99ef3334c8becf8de1f71e258c1470529d907d7ce1b2643cc04ba5d61432",
+    "scripts/reload_base_index_civil_safe.py": "c12919648658e4eec9b2d9e625bbdefa4533d16422a3e7e2e246cdf8367c1200",
+    "scripts/verify_project.py": "70f0fb361e3aeea13087ce0c526b99f26dc4cf91a6a9d80d50cacb5633dfff18",
+    "setup_data.py": "ec73d9fb57294770d539ebc6334dee65c018a5997dd99e80499e08304df486cd",
+    "src/contract_check/__init__.py": "651018c3eecb6e004aead84ec87aa6c6b1bc6f53d538f4af9147b0fcec3c3278",
+    "src/contract_check/models.py": "bf73914978b17a805b8337ff375b5bc4367d4eb56016d8aefc44454e3d98503d",
+    "src/contract_check/rules.py": "33547dfe31c59be4b3034e998429fcb640f1a5a721e09cce7e2e78b322c87c70",
+    "src/contract_check/service.py": "0c28f52bd3628637af2c0bc7828f3795cb6707dc8c7c068f0b00685247f54e36",
+    "src/database/__init__.py": "0f151ed6a0ea4a214cfb71e9048e9aafbd154aa098a53ecfaefc4c057b1f463d",
+    "src/database/config.py": "a7c01f4f77ce4dd83454a0919dbf936749c7203ab34447fa276881289aa39919",
+    "src/database/relational.py": "3715d14d2e12e375d8d53356e9ec2ba35852b5afc6e4308edb4f01ba65ee2c0a",
+    "src/database/vector.py": "ea65b183aa6206a9e52889db722d066d6f1423f1755c0e9dbaa0c40079636bcb",
+    "src/document_check/__init__.py": "29f545ade772469a9ed8d7d4840d50c7739907128309a90cdccd6620d627a4ac",
+    "src/document_check/analysis_models.py": "fa147e34c060a61383b218fde1124991fef28e6e4f29ab682f92ae655fa09320",
+    "src/document_check/document_kind.py": "b50ea8e7113ae0bd46559dde1690b69170f3c221a80a3294e211b04e4226e4ff",
+    "src/document_check/extraction.py": "a0ac4c3939ece0c997b204b0c084a4354d93d0a0717c9bab56fd883a5415c832",
+    "src/document_check/extraction_models.py": "ccdba9c3b84a98c317b7e1a5af2fe037693742548c2259f3a062c3d5a227d861",
+    "src/document_check/models.py": "6d8347066b14d9ebf318e6871e52f1a54f0aad0746ca6f1f4ad0227fc9bbcd91",
+    "src/document_check/privacy.py": "2bbe2f2f0469d599df1fcb4a4e25c3fb946483d023c15438f05081dee84b9b75",
+    "src/document_check/rag_handoff.py": "38b3b3b3e04eec1972a05efebf73af48b9c1a65732b3179856bdf885c2e85de6",
+    "src/document_check/risk_rules.py": "7e5bc2bc2fdcca7886cd7a3c11a8b15f964fc4709507c5ea8a0819dae99f3169",
+    "src/document_check/service.py": "246671c36a4cc0b86bd49bd4e136a5dafd1e415939e95d1ab9e7b0a2a3da14e2",
+    "src/document_check/session_retrieval.py": "1f6e7677284c9ec601e13a46887d0b8d203f80c775e578f72f8b560913bc6bed",
+    "src/document_check/upload_analysis.py": "7c00cfa7bf4720c867d9f2e88d9cd8da3ef1c1c935075c77bd0cc4cb65ef4f67",
+    "src/environment.py": "4f2dea3b61ddf68afe822b92ff43672752efb14317175d4d16b2a4e1930ea932",
+    "src/evaluation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/evaluation/audit_eval.py": "11c8be118ffe0d375d884c5e35d9d286cca9a3c89d32eb2b229c263a0ed660f6",
+    "src/evaluation/baseline.py": "5026eab59cda0cc23e96b509df1dc61e763ac229188f2b05ee160fbbee87bd29",
+    "src/evaluation/benchmark_retrievers.py": "4762e31c99aa6ec2dbe3c428061a4b61356dfaef92d84127d4baa69d58e62a46",
+    "src/evaluation/case_holdout.py": "5f65fc222f67ca684f35829fd5a4bd19bea6b00cbb7156e234493030756909b6",
+    "src/evaluation/case_only.py": "7a40aa2c90ddcc202fed109980707bdd0cab2aa7b54a8ed81e3a76ea5af95bc4",
+    "src/evaluation/compare.py": "0f7536df9e9c8834c87e3ea2a6e0a9975cdc2e504386fdf765f0f03b60d7f481",
+    "src/evaluation/compare_embeddings.py": "af3e60cba5e110ffcedd3429dac36ba9e4efb3e36aa994b6c118844313f0d5e3",
+    "src/evaluation/compare_hybrid.py": "f9c0780c99bcd7a20abef0412761f6ce733ad9624aeb8ebd2c9aab75bb37132e",
+    "src/evaluation/compare_law_top3.py": "bc801c255453e0283ab7dbdc44fb19fb4b688a99d58d361d2761877911e253f6",
+    "src/evaluation/metrics.py": "fd6207584993676efe2430bfdcdc49c86182bbde5bbb638fc2e6929c8e3edcc3",
+    "src/evaluation/run_eval.py": "0167633ddf486ca8994fa9dd5de579fb034d4b02b3bd94ead35403bea6fb8b64",
+    "src/evaluation/run_generation_eval.py": "fb5315ed7b5b2f1e3220595ce8734ba0364f4b98c36272056e9672b6c232d44c",
+    "src/evaluation/sweep.py": "7ae6643f964f5b36d99f0984a23b7e28862bec0637d022193b2b6eeadd41c001",
+    "src/generation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/generation/abstention.py": "7e4501dc9e7564d7df39d115a412e1f1746ddbe17065261e90884d8facd14476",
+    "src/generation/chain.py": "9856654ada98a0781ba0d11121021a3b3af5ddcf405e1c06e4189bdf8b1a2062",
+    "src/generation/citation.py": "e1b1f6d969ef517fa2b9c012eeb35d4037655b90ebb3ffc8665a3e766ae08631",
+    "src/generation/conversation.py": "a35889cb47085b64248c50e0975f889e37302474f6470b77b4b3f20cf077ebb0",
+    "src/generation/evidence_highlight.py": "d5b6794830482664966725088eda52ec79b70f32a22f234d54c3f6ff81a1adb6",
+    "src/generation/evidence_routing.py": "9e425bb90c5f943866ee635604573340b199de23371bf8e83c22c62697f72100",
+    "src/generation/followup.py": "12945aeeef16cc833ef049804efc7b26e40ac6f00cd144b92a0e8ab086ea4b7a",
+    "src/generation/glossary.py": "7dbe57a57941c13a7ca68ec7508acfacf5a8a95faad663d09dd001d3ebc8afbb",
+    "src/generation/graph.py": "401562bf0804d202682da5ec1e5d19a5d49369900fe55fbf031d63ecf46c06be",
+    "src/generation/llm.py": "57490b1b36df982a9b2a5f43c5a6da9fd53337a26b2546296254f87ee8e1a43b",
+    "src/generation/models.py": "f1e5d0a63c8d94d7e373495f28a4988719a1b10c50d13bfd86de715bb078420c",
+    "src/generation/paragraph.py": "11083c18d7ffb0abf09fda16a497e6b929072da602f6242e40d69a74ac88b596",
+    "src/generation/prompt.py": "40ac22ec44e071c8dfdf14e0a438bc3fabc7442bef97ccfe7abdd469b6131960",
+    "src/generation/simplify.py": "6adbaac996c571aeb68afaa8d6ff8532ad5acca283442171fad5523cb2421b29",
+    "src/generation/source_links.py": "cbe4de569e7637419c2b507b6c229b1b06aa7e0ad72e913b519b4621e52510b8",
+    "src/generation/validation.py": "7879ac22ea21c1c38376302c8cdacf4278413ba602255b2cba7f012ae9db05e1",
+    "src/ingestion/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/ingestion/build_mock.py": "ca3466746f3a3c2ede9420e37906c8491ead55dff688b42404948987f9ddf237",
+    "src/ingestion/build_verified_case_source.py": "f7dcc4e989632ccc30f31f86d701b44724236403e908c4e06aa6a7e4fa79e997",
+    "src/ingestion/chunk.py": "274698fe1e6acc34aa62d33935c337068f73b8cfd99ca8adf6f0600cfdab970a",
+    "src/ingestion/export_case_review_queue.py": "402cffe24b611c6157378a101c101f1cdf6adec583dc34e83eadb093a49a375f",
+    "src/ingestion/fetch_guides.py": "101306590ce7340f1506262a3ce4df2357f5579dfef202f2af0e48ad7b6adc22",
+    "src/ingestion/fetch_law.py": "ec4da71fb1d81087aac1a54fdd21027b520993f9ce1388b3c424ab4c742c636f",
+    "src/ingestion/fetch_law_mock.py": "6a41aa6d4e0581ca8fb39fcc40a99746840ccbef0c55e528cac26ad6eb719285",
+    "src/ingestion/fetch_minbeop.py": "329ecde173c806295181d204f4762fafb4e886730d32b0f5acfea37d36665736",
+    "src/ingestion/law_structure.py": "8cea77f7f5a8c3bbecdf836a92069cccba28656d567a8781ac19b35471d53b7c",
+    "src/ingestion/load_cases.py": "1e9f4d53e6daaefb116abde1612ecbad6ef771b134316493259b295b7920cea7",
+    "src/ingestion/load_guides.py": "78e07b0b4ea5ce5a7de26e8d2e2cadac0205f2ce1b91455b675bf3cfdaf02915",
+    "src/ingestion/load_laws.py": "5454e28bb6c19a3ca51c3b223911be810ce7ed38bf4fae7cdc33a9c8a8141767",
+    "src/ingestion/merge_chunks.py": "0bc1953953df8f58db7bc439d0767a2f0a25c40ace1f2ebec5ecdbe88e2f3ad8",
+    "src/ingestion/parse_cases.py": "bb379d09f3ed2cba95ff41fa86384dc6dda4aef4b2e34c357566ee15ea000d56",
+    "src/ingestion/parse_law.py": "e641d31a36a13b7a3d0362721fecaad67a7d4c7412f9cbffb4ac122f61bfbed6",
+    "src/ingestion/parse_pdf.py": "9cd079bc7e625c887e27c656d1762c12046b6d850dfe69a7f078173e9616c567",
+    "src/ingestion/refetch_case_details.py": "bd807ee63919c57779da4c2d9f3b07770d57f1607a38f7ba4809d02d5819615c",
+    "src/ingestion/resolve_case_ids.py": "13af28e2dcb55c2d60296b9eab97542ce6cb87caeac328301242f7587608f8eb",
+    "src/ingestion/server_build.py": "82838eb29d8529dab595545e1e60048d7a0c4efc6ffd1b17b3440d7bb304aebf",
+    "src/ingestion/server_sources.py": "0397cc3301c120f10517fcc82e9f1eb3f359b8530faf0d1be8ae76f171d54912",
+    "src/ingestion/validate_chunks.py": "3475b17b6eb93bdbf77877173993c10533e23036425e25027a293327610e9e03",
+    "src/retrieval/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/retrieval/context_policy.py": "ddd2c531c49b15dc19b073e7877692605a8ddc50e89bf648b46ae85113532cca",
+    "src/retrieval/dense.py": "4182dc226f1e5d46d4b94fcd887d796ac09ea685d596f3a217c2537ebc5e96a3",
+    "src/retrieval/expanded.py": "a2f14403eb120a264d403b5c8f7115aea015e105ec6bcdc084b7ed3607e415cb",
+    "src/retrieval/hybrid.py": "c82d7be47e95b3419a617a5aaeaf5f6d0a271fcd144a85b38fd53d00d0cb5812",
+    "src/retrieval/index.py": "227f3d11eb4bf8a7913b0d658af543331364f0cd997a9b825264914c02ed031a",
+    "src/retrieval/multi_evidence.py": "7512d9cda0fa0343189d66e281f2d5d4c5c01c52704ad1de41c13b065af4fd1d",
+    "src/retrieval/partitioned.py": "22fa64c966a155424f9e14b1399fed912b1a6bd730fc255bc11c161e40da587b",
+    "src/retrieval/profile.py": "cf084ca2f6d39515632b04cd651e0d1155fccdfcf6bae2fd802f9a29baadb63a",
+    "src/retrieval/readiness.py": "86b55af4ce81135ff487001a6ba4b8985dff275805da47981927e29c2f4f8c86",
+    "src/retrieval/refs.py": "5c770deff1141f65509955c3d62c9da6f47c3591da84e7f7f567b669a7342639",
+    "src/retrieval/retriever.py": "6e01e43aeceaf93fc6795c1e3f920662daed035caa87587ae4e1b84d9dc57ebe",
+    "src/retrieval/service.py": "43a540ff04f16471f294d10cc3bd98ec717b0caa1582139aa7ce808c932b6584",
+    "src/retrieval/terms.py": "34354c085495148a535c15c409f2a5761808e2fbc106b25141874117f5836a6e",
+    "src/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/security/prompt_injection.py": "fba1e4fa6d2ec68258fff02d5426c8b7670c05702243c2f58f9fdf073343c974",
+    "src/security/secret_filter.py": "504e83a39acc0558796e31f40716cf81cf374769b6fb548421423319dd3ff855",
+    "src/security/text_normalization.py": "ac34c895c6edd0b58de66ae52d1c4c02eaae47f6d6af9952d292b73d2f84697a"
+  },
+  "data_files_before": {
+    "chunks/cases.jsonl": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
+    "chunks/chunks.jsonl": "8784c57ca4f2ba4ece469cf8f773e225bec0d8d0a1c54563e0e4b22add8ce324",
+    "chunks/civil.jsonl": "d2adac18e6f4eb1a85a3829f13628470930f55b7dcd7ee1a2502402344ea2b0c",
+    "chunks/guides.jsonl": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
+    "database/civil.sqlite3": "2b59c85b1b149d0edbde7484cbccc2769457e22c808342f6f5f30eb5518e5b5e",
+    "database/knowledge.sqlite3": "0729e2a2ae793085fa9dd08c1cef749f5cbd8e142188b58395fe2786c03b4c35",
+    "index/retrieval-profile.json": "30af1f372e52b995ae3a11c8f1f2d50bfe44f4a4f09628c463b7270672c80616"
+  },
+  "data_files_after": {
+    "chunks/cases.jsonl": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
+    "chunks/chunks.jsonl": "8784c57ca4f2ba4ece469cf8f773e225bec0d8d0a1c54563e0e4b22add8ce324",
+    "chunks/civil.jsonl": "d2adac18e6f4eb1a85a3829f13628470930f55b7dcd7ee1a2502402344ea2b0c",
+    "chunks/guides.jsonl": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
+    "database/civil.sqlite3": "2b59c85b1b149d0edbde7484cbccc2769457e22c808342f6f5f30eb5518e5b5e",
+    "database/knowledge.sqlite3": "0729e2a2ae793085fa9dd08c1cef749f5cbd8e142188b58395fe2786c03b4c35",
+    "index/retrieval-profile.json": "30af1f372e52b995ae3a11c8f1f2d50bfe44f4a4f09628c463b7270672c80616"
+  },
+  "index_hashes_before": [
+    "c585bccfe3f152d7aef5de1053ae256513b3945b0ef770cc79a8fefb4fb6e297",
+    "8ba204f34f23a294036511fb2c338c75a92269cea03bba290508b726c3b6735d"
+  ],
+  "index_hashes_after": [
+    "c585bccfe3f152d7aef5de1053ae256513b3945b0ef770cc79a8fefb4fb6e297",
+    "8ba204f34f23a294036511fb2c338c75a92269cea03bba290508b726c3b6735d"
+  ],
+  "settings": {
+    "search_k": {
+      "k_law": 5,
+      "k_case": 5,
+      "k_guide": 2,
+      "k_civil": 3
+    },
+    "corpora": {
+      "law": {
+        "name": "법령",
+        "doc_types": [
+          "law",
+          "decree",
+          "rule"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 5,
+        "query_expander": "src.retrieval.context_policy.final_law_terms",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [],
+        "retriever": {
+          "rrf_k": 5,
+          "depth": 20,
+          "bm25": {
+            "kind": "partitioned_raw_score_pool",
+            "score_weight": 1.0,
+            "procedure_titles": [
+              "주민등록법",
+              "국세징수법",
+              "국세징수법 시행령",
+              "지방세징수법",
+              "지방세징수법 시행령"
+            ],
+            "partitions": {
+              "core": {
+                "k1": 1.5,
+                "b": 0.75,
+                "char_ngram": 2
+              },
+              "procedure": {
+                "k1": 1.5,
+                "b": 0.75,
+                "char_ngram": 2
+              }
+            }
+          },
+          "members": [
+            {
+              "name": "bm25_context",
+              "weight": 1,
+              "expand_weight": 1.0
+            },
+            {
+              "name": "dense_context",
+              "weight": 1,
+              "expand_weight": 0.0
+            }
+          ]
+        }
+      },
+      "case": {
+        "name": "판례",
+        "doc_types": [
+          "case"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 60,
+        "query_expander": "src.retrieval.terms.expand",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [],
+        "retriever": {
+          "rrf_k": 60,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      },
+      "guide": {
+        "name": "안내",
+        "doc_types": [
+          "guide"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 60,
+        "query_expander": "src.retrieval.terms.expand",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [],
+        "retriever": {
+          "rrf_k": 60,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      },
+      "civil": {
+        "name": "민법",
+        "doc_types": [
+          "law",
+          "decree",
+          "rule"
+        ],
+        "bm25_b": 0.75,
+        "expand_weight": 1.0,
+        "bm25_weight": 1.0,
+        "dense_weight": 1.0,
+        "rrf_k": 5,
+        "query_expander": "src.retrieval.expanded.civil_terms",
+        "exclude_titles": [],
+        "status": "current",
+        "include_ids": [
+          "민법-제105조",
+          "민법-제111조",
+          "민법-제113조",
+          "민법-제114조",
+          "민법-제118조",
+          "민법-제147조",
+          "민법-제186조",
+          "민법-제187조",
+          "민법-제265조",
+          "민법-제357조",
+          "민법-제390조",
+          "민법-제393조",
+          "민법-제470조",
+          "민법-제536조",
+          "민법-제543조",
+          "민법-제548조",
+          "민법-제615조",
+          "민법-제623조",
+          "민법-제626조",
+          "민법-제627조",
+          "민법-제629조",
+          "민법-제632조",
+          "민법-제634조",
+          "민법-제636조",
+          "민법-제640조",
+          "민법-제654조"
+        ],
+        "retriever": {
+          "rrf_k": 5,
+          "depth": 26,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          },
+          "members": [
+            {
+              "name": "bm25_context",
+              "weight": 1,
+              "expand_weight": 1.0
+            },
+            {
+              "name": "dense_context",
+              "weight": 1,
+              "expand_weight": 0.0
+            }
+          ]
+        },
+        "seed_retriever": {
+          "rrf_k": 5,
+          "depth": 20,
+          "bm25": {
+            "k1": 1.5,
+            "b": 0.75,
+            "char_ngram": 2
+          }
+        }
+      }
+    },
+    "civil_selection": {
+      "policy": "expanded-laws-record-v1",
+      "method": "same-edition reference pair or topic-seeded RRF with dense tail",
+      "request_embedding_cache": true
+    },
+    "profile": "expanded-laws-record-v1"
+  },
+  "actual_model_calls": 103,
+  "torch": "2.14.0+cpu",
+  "device": "cpu",
+  "baseline_files": [
+    {
+      "path": "C:\\team_project\\4th_project\\tmp\\patch008\\regression-final.json",
+      "bytes": 140160,
+      "sha256": "08acc5fd25b9fdc3ea0932abfab11d06ab62e3724a644371c17b92cff3ec7ae6"
+    },
+    {
+      "path": "C:\\team_project\\4th_project\\tmp\\patch003-case-dev-check.json",
+      "bytes": 16859,
+      "sha256": "89d7898cc9a84e11c810377fffc972e7ff4bfa125b495b5b3d407c57197e4002"
+    },
+    {
+      "path": "C:\\team_project\\4th_project\\tmp\\diag-case-external.json",
+      "bytes": 10690,
+      "sha256": "c7e75e629df53c4271e2a05f82dba1d3488911377d7834f3f380d4d39d287b7c"
+    },
+    {
+      "path": "C:\\team_project\\3rd_project\\3rd_project_team4\\data\\eval\\runs\\final-main-case26-20260901.json",
+      "bytes": 96118,
+      "sha256": "fb125ab292ad2dda6a8bae45da2f0a7f204d678144acb4b94416d5e115d63e90"
+    }
+  ],
+  "results": {
+    "dev": {
+      "input": {
+        "path": "C:\\team_project\\patch042-worktree\\data\\eval\\dev.jsonl",
+        "bytes": 7520,
+        "sha256": "9e5ab5154b88fd66b5bd597f22c26cf4f633e0451efc7aa863469289f199103d"
+      },
+      "question_gold_sha256": "79f626d6dd985e28a6034cfc33c4e9f90b4f9e25f73e4d8a163e3f57dbda086c",
+      "input_count": 27,
+      "baseline_input_comparison": {
+        "raw_bytes_equal": true
+      },
+      "scope": "general",
+      "ranking": "deduplicate IDs after 5 returned chunks; MRR truncated at 5",
+      "n": 24,
+      "metrics": {
+        "hit@1": 0.75,
+        "hit@2": 0.9166666666666666,
+        "hit@3": 0.9583333333333334,
+        "hit@5": 1.0,
+        "recall@1": 0.6666666666666666,
+        "recall@2": 0.8541666666666666,
+        "recall@3": 0.9375,
+        "recall@5": 0.9791666666666666,
+        "mrr": 0.8576388888888888
+      },
+      "mean_search_seconds": 0.34549034583384736,
+      "questions": [
+        {
+          "qid": "dev-001",
+          "gold": [
+            "주택임대차보호법-제3조",
+            "주택임대차보호법-제3조의2"
+          ],
+          "retrieved_ids": [
+            "부동산 거래신고 등에 관한 법률-제6조의5",
+            "주택임대차보호법-제3조",
+            "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제9조",
+            "주택임대차보호법-제3조의6",
+            "주택임대차보호법-제3조의4"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조": 2,
+            "주택임대차보호법-제3조의2": null
+          },
+          "chunk_ids": [
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제9조#0",
+            "law-주택임대차보호법-20260102#제3조의6#0",
+            "law-주택임대차보호법-20260102#제3조의4#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.5448985999973956,
+          "hit@1": 0,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.0,
+          "recall@2": 0.5,
+          "recall@3": 0.5,
+          "recall@5": 0.5,
+          "mrr": 0.5
+        },
+        {
+          "qid": "dev-002",
+          "gold": [
+            "주택임대차보호법-제3조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법 시행령-제2조",
+            "주택임대차보호법-제3조",
+            "주택임대차보호법-제3조의5",
+            "주택임대차보호법-제3조의3",
+            "주택임대차보호법-제3조의4"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조": 2
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법시행령-20260701#제2조#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제3조의5#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제3조의4#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.20312489999923855,
+          "hit@1": 0,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 0.5
+        },
+        {
+          "qid": "dev-003",
+          "gold": [
+            "주택임대차보호법-제3조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제3조의2",
+            "민간임대주택에 관한 특별법 시행규칙-제18조",
+            "주택임대차보호법-제3조",
+            "주택임대차보호법-제6조의3",
+            "주택임대차보호법-제12조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조": 3
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-민간임대주택에관한특별법시행규칙-20251219#제18조#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제12조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.2330320000037318,
+          "hit@1": 0,
+          "hit@2": 0,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.0,
+          "recall@2": 0.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 0.3333333333333333
+        },
+        {
+          "qid": "dev-004",
+          "gold": [
+            "주택임대차보호법-제3조의2"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제8조",
+            "민사집행법-제83조",
+            "주택임대차보호법 시행령-제10조",
+            "민사소송법-제462조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조의2": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-민사집행법-20260201#제83조#0",
+            "law-주택임대차보호법시행령-20260701#제10조#0",
+            "law-민사소송법-20250712#제462조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.2237851999962004,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "dev-005",
+          "gold": [
+            "주택임대차보호법-제3조의3"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제3조의3",
+            "주택임대차보호법-제12조",
+            "상법-제389조",
+            "민간임대주택에 관한 특별법 시행규칙-제18조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조의3": 2
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제12조#0",
+            "law-상법-20260723#제389조#0",
+            "law-민간임대주택에관한특별법시행규칙-20251219#제18조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.4776086000056239,
+          "hit@1": 0,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 0.5
+        },
+        {
+          "qid": "dev-006",
+          "gold": [
+            "주택임대차보호법-제3조의3"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제3조의3",
+            "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제6조",
+            "주택임대차보호법-제3조의4",
+            "주택임대차보호법-제3조의2",
+            "민간임대주택에 관한 특별법-제5조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조의3": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제6조#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-민간임대주택에관한특별법-20260102#제5조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.5649300000077346,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "dev-007",
+          "gold": [
+            "주택임대차보호법-제3조의3"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제3조의3",
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제12조",
+            "부동산 거래신고 등에 관한 법률 시행규칙-제6조의2",
+            "부동산등기법-제91조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조의3": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제12조#0",
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0",
+            "law-부동산등기법-20250131#제91조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.5213227000058396,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "dev-008",
+          "gold": [
+            "주택임대차보호법-제4조"
+          ],
+          "retrieved_ids": [
+            "공공주택 특별법-제49조의2",
+            "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제7조",
+            "주택임대차보호법-제6조",
+            "주택임대차보호법-제4조",
+            "민간임대주택에 관한 특별법-제47조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제4조": 4
+          },
+          "chunk_ids": [
+            "law-공공주택특별법-20260908#제49조의2#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제7조#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제4조#0",
+            "law-민간임대주택에관한특별법-20260102#제47조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.356999800002086,
+          "hit@1": 0,
+          "hit@2": 0,
+          "hit@3": 0,
+          "hit@5": 1,
+          "recall@1": 0.0,
+          "recall@2": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 1.0,
+          "mrr": 0.25
+        },
+        {
+          "qid": "dev-009",
+          "gold": [
+            "주택임대차보호법-제4조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제4조",
+            "주택임대차보호법-제6조",
+            "주택임대차보호법-제3조의3",
+            "민간임대주택에 관한 특별법-제6조",
+            "주택임대차보호법-제3조의5"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제4조": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제4조#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-민간임대주택에관한특별법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제3조의5#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.32476830000814516,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "dev-010",
+          "gold": [
+            "주택임대차보호법-제6조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제6조",
+            "주택임대차보호법-제6조의2",
+            "주택임대차보호법-제6조의3",
+            "주택임대차보호법-제4조",
+            "주택임대차보호법-제23조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제6조": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제6조의2#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제4조#0",
+            "law-주택임대차보호법-20260102#제23조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.31144549998862203,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "dev-011",
+          "gold": [
+            "주택임대차보호법-제6조의2"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제6조의2",
+            "주택임대차보호법-제6조의3",
+            "주택임대차보호법-제6조",
+            "민간임대주택에 관한 특별법 시행령-제35조",
+            "민사집행법-제83조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제6조의2": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제6조의2#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-민간임대주택에관한특별법시행령-20260226#제35조#0",
+            "law-민사집행법-20260201#제83조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.30336170000373386,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "dev-012",
+          "gold": [
+            "주택임대차보호법-제6조의3"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제6조의3",
+            "주택임대차보호법-제6조의2",
+            "주택임대차보호법-제6조",
+            "주택임대차보호법 시행령-제6조",
+            "부동산 거래신고 등에 관한 법률 시행규칙-제6조의2"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제6조의3": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제6조의2#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법시행령-20260701#제6조#0",
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.30347970000002533,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "dev-013",
+          "gold": [
+            "주택임대차보호법-제6조의3"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제6조의3",
+            "주택임대차보호법-제6조",
+            "공공주택 특별법-제49조의3",
+            "민간임대주택에 관한 특별법-제45조",
+            "공공주택 특별법 시행령-제47조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제6조의3": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-공공주택특별법-20260908#제49조의3#0",
+            "law-민간임대주택에관한특별법-20260102#제45조#0",
+            "law-공공주택특별법시행령-20260908#제47조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.3030486999923596,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "dev-014",
+          "gold": [
+            "주택임대차보호법-제7조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제7조",
+            "주택임대차보호법 시행령-제8조",
+            "주택임대차보호법-제10조의2",
+            "주택임대차보호법 시행령-제10조",
+            "부동산 거래신고 등에 관한 법률 시행령-제4조의3"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제7조": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제7조#0",
+            "law-주택임대차보호법시행령-20260701#제8조#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법시행령-20260701#제10조#0",
+            "law-부동산거래신고등에관한법률시행령-20260529#제4조의3#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.29613529999915045,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "dev-015",
+          "gold": [
+            "주택임대차보호법-제7조의2",
+            "주택임대차보호법 시행령-제9조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제7조의2",
+            "주택임대차보호법-제10조의2",
+            "주택임대차보호법 시행령-제9조",
+            "주택임대차보호법-제12조",
+            "주택임대차보호법-제6조의3"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제7조의2": 1,
+            "주택임대차보호법 시행령-제9조": 3
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제7조의2#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법시행령-20260701#제9조#0",
+            "law-주택임대차보호법-20260102#제12조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.27029030000267085,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.5,
+          "recall@2": 0.5,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "dev-016",
+          "gold": [
+            "주택임대차보호법-제10조의2"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제10조의2",
+            "주택임대차보호법-제7조",
+            "주택임대차보호법 시행령-제8조",
+            "주택임대차보호법-제3조의2",
+            "민간임대주택에 관한 특별법-제44조의2"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제10조의2": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법-20260102#제7조#0",
+            "law-주택임대차보호법시행령-20260701#제8조#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-민간임대주택에관한특별법-20260102#제44조의2#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.20988979999674484,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "dev-017",
+          "gold": [
+            "주택임대차보호법-제3조의7"
+          ],
+          "retrieved_ids": [
+            "국세징수법 시행령-제97조",
+            "주택임대차보호법-제3조의7",
+            "지방세징수법-제6조",
+            "국세징수법-제109조",
+            "지방세징수법 시행령-제8조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조의7": 2
+          },
+          "chunk_ids": [
+            "law-국세징수법시행령-20260227#제97조#0",
+            "law-주택임대차보호법-20260102#제3조의7#0",
+            "law-지방세징수법-20260205#제6조#0",
+            "law-국세징수법-20260602#제109조#0",
+            "law-지방세징수법시행령-20260205#제8조#0"
+          ],
+          "guide_count": 1,
+          "seconds": 0.41793010001129005,
+          "hit@1": 0,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 0.5
+        },
+        {
+          "qid": "dev-018",
+          "gold": [
+            "주택임대차보호법-제3조의6"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제3조의6",
+            "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제7조",
+            "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제3조",
+            "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제11조",
+            "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제6조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조의6": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제3조의6#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제7조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제3조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제11조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제6조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.40775110000686254,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "dev-019",
+          "gold": [
+            "주택임대차보호법-제10조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제10조",
+            "주택임대차보호법-제3조의4",
+            "공공주택 특별법-제49조의2",
+            "주택임대차보호법-제6조의2",
+            "민간임대주택에 관한 특별법-제45조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제10조": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제10조#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-공공주택특별법-20260908#제49조의2#0",
+            "law-주택임대차보호법-20260102#제6조의2#0",
+            "law-민간임대주택에관한특별법-20260102#제45조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.4202835000032792,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "dev-020",
+          "gold": [
+            "주택임대차보호법-제12조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제12조",
+            "부동산 거래신고 등에 관한 법률-제6조의5",
+            "주택임대차보호법-제3조",
+            "주택임대차보호법-제3조의4",
+            "부동산 거래신고 등에 관한 법률 시행규칙-제6조의2"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제12조": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제12조#0",
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.4321644000010565,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "dev-021",
+          "gold": [
+            "주택임대차보호법-제21조",
+            "주택임대차보호법-제14조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제21조",
+            "주택임대차보호법-제14조",
+            "주택임대차보호법-제25조",
+            "주택임대차보호법-제24조",
+            "주택임대차보호법 시행령-제30조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제21조": 1,
+            "주택임대차보호법-제14조": 2
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제21조#0",
+            "law-주택임대차보호법-20260102#제14조#0",
+            "law-주택임대차보호법-20260102#제25조#0",
+            "law-주택임대차보호법-20260102#제24조#0",
+            "law-주택임대차보호법시행령-20260701#제30조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.2816980999923544,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.5,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "dev-022",
+          "gold": [
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제8조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법 시행령-제11조",
+            "주택임대차보호법-제8조",
+            "주택임대차보호법 시행령-제10조",
+            "주택임대차보호법-제3조의3"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조의2": 1,
+            "주택임대차보호법-제8조": 3
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법시행령-20260701#제11조#0",
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-주택임대차보호법시행령-20260701#제10조#0",
+            "law-주택임대차보호법-20260102#제3조의3#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.28894869999203365,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.5,
+          "recall@2": 0.5,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "dev-024",
+          "gold": [
+            "주택임대차보호법 시행령-제10조",
+            "주택임대차보호법 시행령-제11조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법 시행령-제11조",
+            "주택임대차보호법 시행령-제10조",
+            "주택임대차보호법 시행령-제33조",
+            "주택임대차보호법-제8조",
+            "주택임대차보호법-제3조의2"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법 시행령-제10조": 2,
+            "주택임대차보호법 시행령-제11조": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법시행령-20260701#제11조#0",
+            "law-주택임대차보호법시행령-20260701#제10조#0",
+            "law-주택임대차보호법시행령-20260701#제33조#0",
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-주택임대차보호법-20260102#제3조의2#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.2934252999984892,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.5,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "dev-025",
+          "gold": [
+            "주택임대차보호법 시행령-제9조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법 시행령-제9조",
+            "주택임대차보호법-제7조의2",
+            "주택임대차보호법-제10조의2",
+            "민간임대주택에 관한 특별법 시행규칙-제18조",
+            "주택임대차보호법-제6조의3"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법 시행령-제9조": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법시행령-20260701#제9조#0",
+            "law-주택임대차보호법-20260102#제7조의2#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-민간임대주택에관한특별법시행규칙-20251219#제18조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.30144599999766797,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        }
+      ],
+      "exclusions": [
+        {
+          "qid": "dev-017",
+          "reason": "guide gold excluded",
+          "excluded_gold": [
+            "guide-국세청-미납국세열람"
+          ]
+        },
+        {
+          "qid": "dev-023",
+          "reason": "guide gold excluded",
+          "excluded_gold": [
+            "guide-HUG-전세보증금반환보증"
+          ]
+        },
+        {
+          "qid": "dev-026",
+          "reason": "no law gold",
+          "excluded_gold": []
+        },
+        {
+          "qid": "dev-027",
+          "reason": "no law gold",
+          "excluded_gold": []
+        }
+      ],
+      "actual_model_calls": 32,
+      "state": "measured",
+      "comparison": {
+        "metrics_comparable": false,
+        "required_evidence_changes": [
+          {
+            "qid": "dev-001",
+            "lost_gold": [
+              "주택임대차보호법-제3조의2"
+            ],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-002",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-003",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-004",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-005",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-006",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-007",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-008",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-009",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-010",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-011",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-012",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-013",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-014",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-015",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-016",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-017",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-018",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-019",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-020",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-021",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-022",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-024",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "dev-025",
+            "lost_gold": [],
+            "gained_gold": []
+          }
+        ],
+        "has_required_evidence_loss": true,
+        "reason": "Different or unspecified scope/ranking; legacy metrics are not an expected value",
+        "previous_metrics_reference_only": {
+          "hit@1": 0.7916666666666666,
+          "hit@2": 0.9166666666666666,
+          "hit@3": 1.0,
+          "hit@5": 1.0,
+          "recall@1": 0.7083333333333334,
+          "recall@2": 0.8541666666666666,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 0.8819444444444443
+        }
+      }
+    },
+    "holdout": {
+      "input": {
+        "path": "C:\\team_project\\patch042-worktree\\data\\eval\\holdout.jsonl",
+        "bytes": 5720,
+        "sha256": "62bfaa804e42bd436d2dcfda37ae38190c64dcd87f93c33e5d17296dac2964cf"
+      },
+      "question_gold_sha256": "e284515efa214e4617b7b182268a8c5a9a97d0f2c442511badf3fb665fa9bab6",
+      "input_count": 20,
+      "baseline_input_comparison": {
+        "raw_bytes_equal": true
+      },
+      "scope": "general",
+      "ranking": "deduplicate IDs after 5 returned chunks; MRR truncated at 5",
+      "n": 18,
+      "metrics": {
+        "hit@1": 0.7222222222222222,
+        "hit@2": 0.8888888888888888,
+        "hit@3": 0.9444444444444444,
+        "hit@5": 1.0,
+        "recall@1": 0.6111111111111112,
+        "recall@2": 0.712962962962963,
+        "recall@3": 0.787037037037037,
+        "recall@5": 0.8703703703703703,
+        "mrr": 0.837962962962963
+      },
+      "mean_search_seconds": 0.34617990555691197,
+      "questions": [
+        {
+          "qid": "holdout-001",
+          "gold": [
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제3조의3"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제6조의3",
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제10조의2",
+            "주택임대차보호법-제6조의2",
+            "주택임대차보호법-제4조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조의2": 2,
+            "주택임대차보호법-제3조의3": null
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법-20260102#제6조의2#0",
+            "law-주택임대차보호법-20260102#제4조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.24640429999271873,
+          "hit@1": 0,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.0,
+          "recall@2": 0.5,
+          "recall@3": 0.5,
+          "recall@5": 0.5,
+          "mrr": 0.5
+        },
+        {
+          "qid": "holdout-002",
+          "gold": [
+            "주택임대차보호법-제3조",
+            "주택임대차보호법-제3조의2"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제3조",
+            "부동산 거래신고 등에 관한 법률-제6조의5",
+            "주택임대차보호법-제3조의3",
+            "주택임대차보호법-제3조의4",
+            "주택임대차보호법-제3조의2"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조": 1,
+            "주택임대차보호법-제3조의2": 5
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-주택임대차보호법-20260102#제3조의2#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.4784863000095356,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.5,
+          "recall@2": 0.5,
+          "recall@3": 0.5,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "holdout-003",
+          "gold": [
+            "주택임대차보호법-제3조의6"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제3조의6",
+            "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제7조",
+            "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제6조",
+            "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제11조",
+            "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제3조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조의6": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제3조의6#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제7조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제6조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제11조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제3조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.42358649999368936,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "holdout-004",
+          "gold": [
+            "주택임대차보호법-제3조",
+            "주택임대차보호법-제3조의2"
+          ],
+          "retrieved_ids": [
+            "부동산 거래신고 등에 관한 법률-제6조의5",
+            "주택임대차보호법-제3조의6",
+            "주택임대차보호법-제3조",
+            "주택임대차보호법 시행령-제4조",
+            "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제7조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조": 3,
+            "주택임대차보호법-제3조의2": null
+          },
+          "chunk_ids": [
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0",
+            "law-주택임대차보호법-20260102#제3조의6#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법시행령-20260701#제4조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제7조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.49874070000078063,
+          "hit@1": 0,
+          "hit@2": 0,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.0,
+          "recall@2": 0.0,
+          "recall@3": 0.5,
+          "recall@5": 0.5,
+          "mrr": 0.3333333333333333
+        },
+        {
+          "qid": "holdout-005",
+          "gold": [
+            "주택임대차보호법-제3조"
+          ],
+          "retrieved_ids": [
+            "공공주택 특별법-제49조의2",
+            "주택임대차보호법-제3조의7",
+            "민간임대주택에 관한 특별법-제46조",
+            "주택임대차보호법-제3조",
+            "부동산 거래신고 등에 관한 법률 시행규칙-제6조의2"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조": 4
+          },
+          "chunk_ids": [
+            "law-공공주택특별법-20260908#제49조의2#0",
+            "law-주택임대차보호법-20260102#제3조의7#0",
+            "law-민간임대주택에관한특별법-20260102#제46조#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.233416600007331,
+          "hit@1": 0,
+          "hit@2": 0,
+          "hit@3": 0,
+          "hit@5": 1,
+          "recall@1": 0.0,
+          "recall@2": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 1.0,
+          "mrr": 0.25
+        },
+        {
+          "qid": "holdout-007",
+          "gold": [
+            "주택임대차보호법-제6조",
+            "주택임대차보호법-제6조의3"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제6조",
+            "주택임대차보호법-제6조의2",
+            "주택임대차보호법-제6조의3",
+            "공공주택 특별법-제49조의2",
+            "민간임대주택에 관한 특별법-제46조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제6조": 1,
+            "주택임대차보호법-제6조의3": 3
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제6조의2#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-공공주택특별법-20260908#제49조의2#0",
+            "law-민간임대주택에관한특별법-20260102#제46조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.2323270000051707,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.5,
+          "recall@2": 0.5,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "holdout-008",
+          "gold": [
+            "주택임대차보호법-제7조의2",
+            "주택임대차보호법 시행령-제9조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제6조의3",
+            "주택임대차보호법-제7조의2",
+            "민간임대주택에 관한 특별법 시행규칙-제18조",
+            "주택임대차보호법-제3조의7",
+            "주택임대차보호법-제10조의2"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제7조의2": 2,
+            "주택임대차보호법 시행령-제9조": null
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제7조의2#0",
+            "law-민간임대주택에관한특별법시행규칙-20251219#제18조#0",
+            "law-주택임대차보호법-20260102#제3조의7#0",
+            "law-주택임대차보호법-20260102#제10조의2#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.23274360000505112,
+          "hit@1": 0,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.0,
+          "recall@2": 0.5,
+          "recall@3": 0.5,
+          "recall@5": 0.5,
+          "mrr": 0.5
+        },
+        {
+          "qid": "holdout-010",
+          "gold": [
+            "주택임대차보호법-제3조의3"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제3조의3",
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제12조",
+            "주택임대차보호법-제3조의4",
+            "민간임대주택에 관한 특별법-제5조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조의3": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제12조#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-민간임대주택에관한특별법-20260102#제5조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.577528900001198,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "holdout-011",
+          "gold": [
+            "주택임대차보호법-제6조의2"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제6조의2",
+            "주택임대차보호법-제6조",
+            "주택임대차보호법-제6조의3",
+            "공공주택 특별법 시행령-제47조",
+            "민간임대주택에 관한 특별법-제46조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제6조의2": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제6조의2#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-공공주택특별법시행령-20260908#제47조#0",
+            "law-민간임대주택에관한특별법-20260102#제46조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.345621200001915,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "holdout-012",
+          "gold": [
+            "주택임대차보호법-제6조의3"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제6조의3",
+            "주택임대차보호법-제6조",
+            "주택임대차보호법-제6조의2",
+            "부동산 거래신고 등에 관한 법률 시행규칙-제6조의2",
+            "주택임대차보호법-제7조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제6조의3": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제6조의2#0",
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0",
+            "law-주택임대차보호법-20260102#제7조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.3203269000077853,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "holdout-013",
+          "gold": [
+            "주택임대차보호법-제6조의3"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제6조의3",
+            "주택임대차보호법-제6조",
+            "민간임대주택에 관한 특별법 시행령-제35조",
+            "민간임대주택에 관한 특별법-제45조",
+            "공공주택 특별법-제49조의3"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제6조의3": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-민간임대주택에관한특별법시행령-20260226#제35조#0",
+            "law-민간임대주택에관한특별법-20260102#제45조#0",
+            "law-공공주택특별법-20260908#제49조의3#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.31604769999103155,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "holdout-014",
+          "gold": [
+            "주택임대차보호법-제7조의2",
+            "주택임대차보호법 시행령-제9조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제7조의2",
+            "주택임대차보호법 시행령-제10조",
+            "민간임대주택에 관한 특별법 시행규칙-제18조",
+            "주택임대차보호법-제10조의2",
+            "주택임대차보호법-제6조의3"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제7조의2": 1,
+            "주택임대차보호법 시행령-제9조": null
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제7조의2#0",
+            "law-주택임대차보호법시행령-20260701#제10조#0",
+            "law-민간임대주택에관한특별법시행규칙-20251219#제18조#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법-20260102#제6조의3#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.27152080000087153,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.5,
+          "recall@2": 0.5,
+          "recall@3": 0.5,
+          "recall@5": 0.5,
+          "mrr": 1.0
+        },
+        {
+          "qid": "holdout-015",
+          "gold": [
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제8조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제8조",
+            "주택임대차보호법-제10조의2",
+            "주택임대차보호법-제3조의5",
+            "주택임대차보호법 시행령-제10조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조의2": 1,
+            "주택임대차보호법-제8조": 2
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법-20260102#제3조의5#0",
+            "law-주택임대차보호법시행령-20260701#제10조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.2761674000066705,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.5,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "holdout-016",
+          "gold": [
+            "주택임대차보호법-제3조의3"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제3조의3",
+            "주택임대차보호법-제3조",
+            "주택임대차보호법-제3조의4",
+            "공공주택 특별법 시행규칙-제25조",
+            "주택임대차보호법-제3조의2"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조의3": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-공공주택특별법시행규칙-20260824#제25조#0",
+            "law-주택임대차보호법-20260102#제3조의2#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.49972939999133814,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "holdout-017",
+          "gold": [
+            "주택임대차보호법-제8조",
+            "주택임대차보호법 시행령-제10조",
+            "주택임대차보호법 시행령-제11조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제8조",
+            "주택임대차보호법 시행령-제11조",
+            "주택임대차보호법-제3조의5",
+            "주택임대차보호법-제7조의2"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제8조": 2,
+            "주택임대차보호법 시행령-제10조": null,
+            "주택임대차보호법 시행령-제11조": 3
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-주택임대차보호법시행령-20260701#제11조#0",
+            "law-주택임대차보호법-20260102#제3조의5#0",
+            "law-주택임대차보호법-20260102#제7조의2#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.24132570000074338,
+          "hit@1": 0,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.0,
+          "recall@2": 0.3333333333333333,
+          "recall@3": 0.6666666666666666,
+          "recall@5": 0.6666666666666666,
+          "mrr": 0.5
+        },
+        {
+          "qid": "holdout-018",
+          "gold": [
+            "주택임대차보호법-제3조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제3조",
+            "주택임대차보호법-제3조의4",
+            "주택임대차보호법-제3조의3",
+            "부동산 거래신고 등에 관한 법률-제6조의5",
+            "주택임대차보호법-제3조의2"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0",
+            "law-주택임대차보호법-20260102#제3조의2#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.5397694999992382,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "holdout-019",
+          "gold": [
+            "주택임대차보호법-제6조의3"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제6조의3",
+            "주택임대차보호법-제10조의2",
+            "공공주택 특별법-제49조의3",
+            "민간임대주택에 관한 특별법-제44조의2",
+            "공공주택 특별법 시행규칙-제25조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제6조의3": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-공공주택특별법-20260908#제49조의3#0",
+            "law-민간임대주택에관한특별법-20260102#제44조의2#0",
+            "law-공공주택특별법시행규칙-20260824#제25조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.2607377000094857,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "holdout-020",
+          "gold": [
+            "주택임대차보호법-제3조의2"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제8조",
+            "주택임대차보호법-제3조의3",
+            "주택임대차보호법 시행령-제10조",
+            "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제10조"
+          ],
+          "gold_ranks": {
+            "주택임대차보호법-제3조의2": 1
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법시행령-20260701#제10조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제10조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.23675809999986086,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        }
+      ],
+      "exclusions": [
+        {
+          "qid": "holdout-006",
+          "reason": "no law gold",
+          "excluded_gold": []
+        },
+        {
+          "qid": "holdout-009",
+          "reason": "no law gold",
+          "excluded_gold": []
+        }
+      ],
+      "actual_model_calls": 24,
+      "state": "measured",
+      "comparison": {
+        "metrics_comparable": false,
+        "required_evidence_changes": [
+          {
+            "qid": "holdout-001",
+            "lost_gold": [
+              "주택임대차보호법-제3조의3"
+            ],
+            "gained_gold": []
+          },
+          {
+            "qid": "holdout-002",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "holdout-003",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "holdout-004",
+            "lost_gold": [],
+            "gained_gold": [
+              "주택임대차보호법-제3조"
+            ]
+          },
+          {
+            "qid": "holdout-005",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "holdout-007",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "holdout-008",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "holdout-010",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "holdout-011",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "holdout-012",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "holdout-013",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "holdout-014",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "holdout-015",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "holdout-016",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "holdout-017",
+            "lost_gold": [
+              "주택임대차보호법 시행령-제10조"
+            ],
+            "gained_gold": []
+          },
+          {
+            "qid": "holdout-018",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "holdout-019",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "holdout-020",
+            "lost_gold": [],
+            "gained_gold": []
+          }
+        ],
+        "has_required_evidence_loss": true,
+        "reason": "Different or unspecified scope/ranking; legacy metrics are not an expected value",
+        "previous_metrics_reference_only": {
+          "hit@1": 0.6666666666666666,
+          "hit@2": 0.9444444444444444,
+          "hit@3": 0.9444444444444444,
+          "hit@5": 0.9444444444444444,
+          "recall@1": 0.5555555555555556,
+          "recall@2": 0.7685185185185186,
+          "recall@3": 0.8240740740740741,
+          "recall@5": 0.8888888888888888,
+          "mrr": 0.8055555555555556
+        }
+      }
+    },
+    "civil_published_regression": {
+      "input": {
+        "path": "C:\\team_project\\patch042-worktree\\data\\eval\\minbeop_review_holdout_20260901.jsonl",
+        "bytes": 6139,
+        "sha256": "abfa66775f5d75ddc683ddb647cc4dafd8acf7861be1113052c3668620ce71d7"
+      },
+      "question_gold_sha256": "1450c64728c722bdc245d19dfa7a6342c1bbf82c18ecd6cf342283d1b876d1ef",
+      "input_count": 20,
+      "baseline_input_comparison": {
+        "raw_bytes_equal": false,
+        "all_json_rows_equal": true,
+        "historical_sha256": "50dff4be069adbdc32a1b8e94a0aba48f16c01607dd5dd36c078969f357ed2d6",
+        "historical_commit": "174cc76a608be6b5e9fa8ce173586f95302ccad2"
+      },
+      "scope": "combined",
+      "ranking": "unordered union of general 5 and civil 3 chunks; no merged rank/MRR",
+      "n": 15,
+      "metrics": {
+        "hit@law5+civil3": 0.8666666666666667,
+        "all@law5+civil3": 0.8,
+        "recall@law5+civil3": 0.8222222222222222
+      },
+      "mean_search_seconds": 0.3139176800022445,
+      "questions": [
+        {
+          "qid": "civil-review-001",
+          "gold": [
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제3조의3"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제4조",
+            "주택임대차보호법-제6조",
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제6조의3",
+            "주택임대차보호법-제3조의3",
+            "민법-제536조",
+            "민법-제636조",
+            "민법-제626조"
+          ],
+          "channel_retrieved_ids": {
+            "general": [
+              "주택임대차보호법-제4조",
+              "주택임대차보호법-제6조",
+              "주택임대차보호법-제3조의2",
+              "주택임대차보호법-제6조의3",
+              "주택임대차보호법-제3조의3"
+            ],
+            "civil": [
+              "민법-제536조",
+              "민법-제636조",
+              "민법-제626조"
+            ]
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제4조#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-민법-20260317#제536조#0",
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제626조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.5919810000050347,
+          "hit@law5+civil3": 1,
+          "all@law5+civil3": 1,
+          "recall@law5+civil3": 1.0
+        },
+        {
+          "qid": "civil-review-002",
+          "gold": [
+            "주택임대차보호법-제3조의2"
+          ],
+          "retrieved_ids": [
+            "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제7조",
+            "공공주택 특별법-제49조의2",
+            "주택임대차보호법-제30조",
+            "주택임대차보호법-제3조의6",
+            "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제2조",
+            "민법-제636조",
+            "민법-제623조",
+            "민법-제187조"
+          ],
+          "channel_retrieved_ids": {
+            "general": [
+              "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제7조",
+              "공공주택 특별법-제49조의2",
+              "주택임대차보호법-제30조",
+              "주택임대차보호법-제3조의6",
+              "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제2조"
+            ],
+            "civil": [
+              "민법-제636조",
+              "민법-제623조",
+              "민법-제187조"
+            ]
+          },
+          "chunk_ids": [
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제7조#0",
+            "law-공공주택특별법-20260908#제49조의2#0",
+            "law-주택임대차보호법-20260102#제30조#0",
+            "law-주택임대차보호법-20260102#제3조의6#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제2조#0",
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제623조#0",
+            "law-민법-20260317#제187조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.3467299999902025,
+          "hit@law5+civil3": 0,
+          "all@law5+civil3": 0,
+          "recall@law5+civil3": 0.0
+        },
+        {
+          "qid": "civil-review-003",
+          "gold": [
+            "주택임대차보호법-제3조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제6조",
+            "주택임대차보호법-제4조",
+            "주택임대차보호법-제6조의3",
+            "주택임대차보호법-제3조의7",
+            "주택임대차보호법-제6조의2",
+            "민법-제636조",
+            "민법-제629조",
+            "민법-제634조"
+          ],
+          "channel_retrieved_ids": {
+            "general": [
+              "주택임대차보호법-제6조",
+              "주택임대차보호법-제4조",
+              "주택임대차보호법-제6조의3",
+              "주택임대차보호법-제3조의7",
+              "주택임대차보호법-제6조의2"
+            ],
+            "civil": [
+              "민법-제636조",
+              "민법-제629조",
+              "민법-제634조"
+            ]
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제4조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제3조의7#0",
+            "law-주택임대차보호법-20260102#제6조의2#0",
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제634조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.3439782000059495,
+          "hit@law5+civil3": 0,
+          "all@law5+civil3": 0,
+          "recall@law5+civil3": 0.0
+        },
+        {
+          "qid": "civil-review-004",
+          "gold": [
+            "주택임대차보호법-제6조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제6조의3",
+            "주택임대차보호법-제4조",
+            "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제9조",
+            "주택임대차보호법-제3조",
+            "주택임대차보호법-제6조",
+            "민법-제634조",
+            "민법-제623조",
+            "민법-제636조"
+          ],
+          "channel_retrieved_ids": {
+            "general": [
+              "주택임대차보호법-제6조의3",
+              "주택임대차보호법-제4조",
+              "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제9조",
+              "주택임대차보호법-제3조",
+              "주택임대차보호법-제6조"
+            ],
+            "civil": [
+              "민법-제634조",
+              "민법-제623조",
+              "민법-제636조"
+            ]
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제4조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제9조#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제623조#0",
+            "law-민법-20260317#제636조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.24993350000295322,
+          "hit@law5+civil3": 1,
+          "all@law5+civil3": 1,
+          "recall@law5+civil3": 1.0
+        },
+        {
+          "qid": "civil-review-005",
+          "gold": [
+            "주택임대차보호법-제7조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제7조",
+            "주택임대차보호법 시행령-제8조",
+            "주택임대차보호법-제10조의2",
+            "민간임대주택에 관한 특별법-제44조",
+            "주택임대차보호법-제6조의3",
+            "민법-제626조",
+            "민법-제640조",
+            "민법-제629조"
+          ],
+          "channel_retrieved_ids": {
+            "general": [
+              "주택임대차보호법-제7조",
+              "주택임대차보호법 시행령-제8조",
+              "주택임대차보호법-제10조의2",
+              "민간임대주택에 관한 특별법-제44조",
+              "주택임대차보호법-제6조의3"
+            ],
+            "civil": [
+              "민법-제626조",
+              "민법-제640조",
+              "민법-제629조"
+            ]
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제7조#0",
+            "law-주택임대차보호법시행령-20260701#제8조#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-민간임대주택에관한특별법-20260102#제44조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제640조#0",
+            "law-민법-20260317#제629조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.29039160000684205,
+          "hit@law5+civil3": 1,
+          "all@law5+civil3": 1,
+          "recall@law5+civil3": 1.0
+        },
+        {
+          "qid": "civil-review-006",
+          "gold": [
+            "주택임대차보호법-제3조의3"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제10조의2",
+            "주택임대차보호법-제12조",
+            "주택임대차보호법-제3조의3",
+            "상법-제389조",
+            "민법-제536조",
+            "민법-제187조",
+            "민법-제629조"
+          ],
+          "channel_retrieved_ids": {
+            "general": [
+              "주택임대차보호법-제3조의2",
+              "주택임대차보호법-제10조의2",
+              "주택임대차보호법-제12조",
+              "주택임대차보호법-제3조의3",
+              "상법-제389조"
+            ],
+            "civil": [
+              "민법-제536조",
+              "민법-제187조",
+              "민법-제629조"
+            ]
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법-20260102#제12조#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-상법-20260723#제389조#0",
+            "law-민법-20260317#제536조#0",
+            "law-민법-20260317#제187조#0",
+            "law-민법-20260317#제629조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.7416535000083968,
+          "hit@law5+civil3": 1,
+          "all@law5+civil3": 1,
+          "recall@law5+civil3": 1.0
+        },
+        {
+          "qid": "civil-review-007",
+          "gold": [
+            "주택임대차보호법-제8조",
+            "주택임대차보호법 시행령-제10조",
+            "주택임대차보호법 시행령-제11조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제8조",
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제7조의2",
+            "주택임대차보호법-제3조의5",
+            "민간임대주택에 관한 특별법-제6조",
+            "민법-제357조",
+            "민법-제627조",
+            "민법-제187조"
+          ],
+          "channel_retrieved_ids": {
+            "general": [
+              "주택임대차보호법-제8조",
+              "주택임대차보호법-제3조의2",
+              "주택임대차보호법-제7조의2",
+              "주택임대차보호법-제3조의5",
+              "민간임대주택에 관한 특별법-제6조"
+            ],
+            "civil": [
+              "민법-제357조",
+              "민법-제627조",
+              "민법-제187조"
+            ]
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제7조의2#0",
+            "law-주택임대차보호법-20260102#제3조의5#0",
+            "law-민간임대주택에관한특별법-20260102#제6조#0",
+            "law-민법-20260317#제357조#0",
+            "law-민법-20260317#제627조#0",
+            "law-민법-20260317#제187조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.2801242999994429,
+          "hit@law5+civil3": 1,
+          "all@law5+civil3": 0,
+          "recall@law5+civil3": 0.3333333333333333
+        },
+        {
+          "qid": "civil-review-008",
+          "gold": [
+            "민법-제623조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제6조의3",
+            "주택임대차보호법-제10조",
+            "공공주택 특별법 시행령-제47조",
+            "주택임대차보호법 시행령-제5조",
+            "주택임대차보호법-제31조",
+            "민법-제623조",
+            "민법-제634조",
+            "민법-제629조"
+          ],
+          "channel_retrieved_ids": {
+            "general": [
+              "주택임대차보호법-제6조의3",
+              "주택임대차보호법-제10조",
+              "공공주택 특별법 시행령-제47조",
+              "주택임대차보호법 시행령-제5조",
+              "주택임대차보호법-제31조"
+            ],
+            "civil": [
+              "민법-제623조",
+              "민법-제634조",
+              "민법-제629조"
+            ]
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제10조#0",
+            "law-공공주택특별법시행령-20260908#제47조#0",
+            "law-주택임대차보호법시행령-20260701#제5조#0",
+            "law-주택임대차보호법-20260102#제31조#0",
+            "law-민법-20260317#제623조#0",
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제629조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.23079560000041965,
+          "hit@law5+civil3": 1,
+          "all@law5+civil3": 1,
+          "recall@law5+civil3": 1.0
+        },
+        {
+          "qid": "civil-review-009",
+          "gold": [
+            "민법-제634조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제6조의3",
+            "공인중개사법 시행령-제21조",
+            "주택임대차보호법-제8조",
+            "주택임대차보호법-제28조",
+            "부동산 거래신고 등에 관한 법률 시행규칙-제6조의2",
+            "민법-제634조",
+            "민법-제626조",
+            "민법-제629조"
+          ],
+          "channel_retrieved_ids": {
+            "general": [
+              "주택임대차보호법-제6조의3",
+              "공인중개사법 시행령-제21조",
+              "주택임대차보호법-제8조",
+              "주택임대차보호법-제28조",
+              "부동산 거래신고 등에 관한 법률 시행규칙-제6조의2"
+            ],
+            "civil": [
+              "민법-제634조",
+              "민법-제626조",
+              "민법-제629조"
+            ]
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-공인중개사법시행령-20260828#제21조#0",
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-주택임대차보호법-20260102#제28조#0",
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0",
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제629조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.22585719999915455,
+          "hit@law5+civil3": 1,
+          "all@law5+civil3": 1,
+          "recall@law5+civil3": 1.0
+        },
+        {
+          "qid": "civil-review-010",
+          "gold": [
+            "주택임대차보호법-제6조의3"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제6조의3",
+            "주택임대차보호법-제6조",
+            "민간임대주택에 관한 특별법-제45조",
+            "주택임대차보호법-제23조",
+            "민간임대주택에 관한 특별법-제5조",
+            "민법-제640조",
+            "민법-제636조",
+            "민법-제627조"
+          ],
+          "channel_retrieved_ids": {
+            "general": [
+              "주택임대차보호법-제6조의3",
+              "주택임대차보호법-제6조",
+              "민간임대주택에 관한 특별법-제45조",
+              "주택임대차보호법-제23조",
+              "민간임대주택에 관한 특별법-제5조"
+            ],
+            "civil": [
+              "민법-제640조",
+              "민법-제636조",
+              "민법-제627조"
+            ]
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-민간임대주택에관한특별법-20260102#제45조#0",
+            "law-주택임대차보호법-20260102#제23조#0",
+            "law-민간임대주택에관한특별법-20260102#제5조#0",
+            "law-민법-20260317#제640조#0",
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제627조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.24336120000225492,
+          "hit@law5+civil3": 1,
+          "all@law5+civil3": 1,
+          "recall@law5+civil3": 1.0
+        },
+        {
+          "qid": "civil-review-011",
+          "gold": [
+            "민법-제626조"
+          ],
+          "retrieved_ids": [
+            "민간임대주택에 관한 특별법-제44조의2",
+            "주택임대차보호법 시행령-제33조",
+            "주택임대차보호법-제3조의3",
+            "공공주택 특별법 시행령-제47조",
+            "주택임대차보호법-제10조의2",
+            "민법-제626조",
+            "민법-제623조",
+            "민법-제640조"
+          ],
+          "channel_retrieved_ids": {
+            "general": [
+              "민간임대주택에 관한 특별법-제44조의2",
+              "주택임대차보호법 시행령-제33조",
+              "주택임대차보호법-제3조의3",
+              "공공주택 특별법 시행령-제47조",
+              "주택임대차보호법-제10조의2"
+            ],
+            "civil": [
+              "민법-제626조",
+              "민법-제623조",
+              "민법-제640조"
+            ]
+          },
+          "chunk_ids": [
+            "law-민간임대주택에관한특별법-20260102#제44조의2#0",
+            "law-주택임대차보호법시행령-20260701#제33조#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-공공주택특별법시행령-20260908#제47조#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제623조#0",
+            "law-민법-20260317#제640조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.24078819999704137,
+          "hit@law5+civil3": 1,
+          "all@law5+civil3": 1,
+          "recall@law5+civil3": 1.0
+        },
+        {
+          "qid": "civil-review-012",
+          "gold": [
+            "민법-제627조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제10조의2",
+            "주택임대차보호법-제7조의2",
+            "주택임대차보호법-제7조",
+            "주택임대차보호법 시행령-제8조",
+            "주택임대차보호법-제6조의3",
+            "민법-제627조",
+            "민법-제640조",
+            "민법-제626조"
+          ],
+          "channel_retrieved_ids": {
+            "general": [
+              "주택임대차보호법-제10조의2",
+              "주택임대차보호법-제7조의2",
+              "주택임대차보호법-제7조",
+              "주택임대차보호법 시행령-제8조",
+              "주택임대차보호법-제6조의3"
+            ],
+            "civil": [
+              "민법-제627조",
+              "민법-제640조",
+              "민법-제626조"
+            ]
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법-20260102#제7조의2#0",
+            "law-주택임대차보호법-20260102#제7조#0",
+            "law-주택임대차보호법시행령-20260701#제8조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-민법-20260317#제627조#0",
+            "law-민법-20260317#제640조#0",
+            "law-민법-20260317#제626조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.23178790000383742,
+          "hit@law5+civil3": 1,
+          "all@law5+civil3": 1,
+          "recall@law5+civil3": 1.0
+        },
+        {
+          "qid": "civil-review-013",
+          "gold": [
+            "민법-제623조"
+          ],
+          "retrieved_ids": [
+            "부동산 거래신고 등에 관한 법률 시행규칙-제6조의2",
+            "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제12조",
+            "주택임대차보호법-제6조의3",
+            "민간임대주택에 관한 특별법-제47조",
+            "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제7조",
+            "민법-제623조",
+            "민법-제634조",
+            "민법-제629조"
+          ],
+          "channel_retrieved_ids": {
+            "general": [
+              "부동산 거래신고 등에 관한 법률 시행규칙-제6조의2",
+              "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제12조",
+              "주택임대차보호법-제6조의3",
+              "민간임대주택에 관한 특별법-제47조",
+              "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제7조"
+            ],
+            "civil": [
+              "민법-제623조",
+              "민법-제634조",
+              "민법-제629조"
+            ]
+          },
+          "chunk_ids": [
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제12조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-민간임대주택에관한특별법-20260102#제47조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제7조#0",
+            "law-민법-20260317#제623조#0",
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제629조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.23127870001189876,
+          "hit@law5+civil3": 1,
+          "all@law5+civil3": 1,
+          "recall@law5+civil3": 1.0
+        },
+        {
+          "qid": "civil-review-014",
+          "gold": [
+            "민법-제629조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제6조의3",
+            "민간임대주택에 관한 특별법 시행규칙-제18조",
+            "주택임대차보호법-제3조의6",
+            "주택임대차보호법-제28조",
+            "주택임대차보호법-제11조",
+            "민법-제629조",
+            "민법-제632조",
+            "민법-제634조"
+          ],
+          "channel_retrieved_ids": {
+            "general": [
+              "주택임대차보호법-제6조의3",
+              "민간임대주택에 관한 특별법 시행규칙-제18조",
+              "주택임대차보호법-제3조의6",
+              "주택임대차보호법-제28조",
+              "주택임대차보호법-제11조"
+            ],
+            "civil": [
+              "민법-제629조",
+              "민법-제632조",
+              "민법-제634조"
+            ]
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-민간임대주택에관한특별법시행규칙-20251219#제18조#0",
+            "law-주택임대차보호법-20260102#제3조의6#0",
+            "law-주택임대차보호법-20260102#제28조#0",
+            "law-주택임대차보호법-20260102#제11조#0",
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제632조#0",
+            "law-민법-20260317#제634조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.2245925999886822,
+          "hit@law5+civil3": 1,
+          "all@law5+civil3": 1,
+          "recall@law5+civil3": 1.0
+        },
+        {
+          "qid": "civil-review-015",
+          "gold": [
+            "민법-제627조"
+          ],
+          "retrieved_ids": [
+            "주택임대차보호법-제6조",
+            "주택임대차보호법-제6조의3",
+            "주택임대차보호법-제4조",
+            "공공주택 특별법 시행령-제47조",
+            "민간임대주택에 관한 특별법 시행령-제35조",
+            "민법-제627조",
+            "민법-제636조",
+            "민법-제640조"
+          ],
+          "channel_retrieved_ids": {
+            "general": [
+              "주택임대차보호법-제6조",
+              "주택임대차보호법-제6조의3",
+              "주택임대차보호법-제4조",
+              "공공주택 특별법 시행령-제47조",
+              "민간임대주택에 관한 특별법 시행령-제35조"
+            ],
+            "civil": [
+              "민법-제627조",
+              "민법-제636조",
+              "민법-제640조"
+            ]
+          },
+          "chunk_ids": [
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제4조#0",
+            "law-공공주택특별법시행령-20260908#제47조#0",
+            "law-민간임대주택에관한특별법시행령-20260226#제35조#0",
+            "law-민법-20260317#제627조#0",
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제640조#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.23551170001155697,
+          "hit@law5+civil3": 1,
+          "all@law5+civil3": 1,
+          "recall@law5+civil3": 1.0
+        }
+      ],
+      "exclusions": [
+        {
+          "qid": "civil-review-016",
+          "reason": "no law gold",
+          "excluded_gold": []
+        },
+        {
+          "qid": "civil-review-017",
+          "reason": "no law gold",
+          "excluded_gold": []
+        },
+        {
+          "qid": "civil-review-018",
+          "reason": "no law gold",
+          "excluded_gold": []
+        },
+        {
+          "qid": "civil-review-019",
+          "reason": "no law gold",
+          "excluded_gold": []
+        },
+        {
+          "qid": "civil-review-020",
+          "reason": "no law gold",
+          "excluded_gold": []
+        }
+      ],
+      "actual_model_calls": 17,
+      "state": "measured",
+      "comparison": {
+        "metrics_comparable": false,
+        "required_evidence_changes": [
+          {
+            "qid": "civil-review-001",
+            "lost_gold": [],
+            "gained_gold": [
+              "주택임대차보호법-제3조의3"
+            ]
+          },
+          {
+            "qid": "civil-review-002",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "civil-review-003",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "civil-review-004",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "civil-review-005",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "civil-review-006",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "civil-review-007",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "civil-review-008",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "civil-review-009",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "civil-review-010",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "civil-review-011",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "civil-review-012",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "civil-review-013",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "civil-review-014",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "civil-review-015",
+            "lost_gold": [],
+            "gained_gold": []
+          }
+        ],
+        "has_required_evidence_loss": false,
+        "reason": "Different or unspecified scope/ranking; legacy metrics are not an expected value",
+        "previous_metrics_reference_only": {
+          "hit@1": 0.6666666666666666,
+          "hit@2": 0.7333333333333333,
+          "hit@3": 0.8,
+          "hit@5": 0.8666666666666667,
+          "recall@1": 0.6222222222222221,
+          "recall@2": 0.6555555555555554,
+          "recall@3": 0.7222222222222222,
+          "recall@5": 0.788888888888889,
+          "mrr": 0.7388888888888888
+        }
+      }
+    },
+    "case_dev13": {
+      "input": {
+        "path": "C:\\team_project\\4th_project\\tmp\\patch003-case-dev-input.jsonl",
+        "bytes": 2798,
+        "sha256": "65b9f15a432087065a71a026d5b7bdb196fc25aa253b34dbd3ef700241672316"
+      },
+      "question_gold_sha256": "f084dd971f1a9e66ddf9830d8eeb7ffacceeef7e40ecf97dee80c0a9df6c4209",
+      "input_count": 13,
+      "scope": "case",
+      "ranking": "deduplicate IDs after 5 returned chunks; MRR truncated at 5",
+      "n": 13,
+      "metrics": {
+        "hit@1": 0.9230769230769231,
+        "hit@2": 0.9230769230769231,
+        "hit@3": 0.9230769230769231,
+        "hit@5": 1.0,
+        "recall@1": 0.3296351084812624,
+        "recall@2": 0.46055226824457596,
+        "recall@3": 0.5465976331360947,
+        "recall@5": 0.6999506903353058,
+        "mrr": 0.9423076923076923
+      },
+      "mean_search_seconds": 0.32071914615517017,
+      "questions": [
+        {
+          "qid": "case26-dev-001",
+          "gold": [
+            "CASE-2009DA101275",
+            "CASE-2015DA254507",
+            "CASE-97DA22393",
+            "CASE-98CHU40"
+          ],
+          "retrieved_ids": [
+            "CASE-2015DA254507",
+            "CASE-97DA22393",
+            "CASE-2004DA69741",
+            "CASE-98CHU40",
+            "CASE-97DA43468"
+          ],
+          "gold_ranks": {
+            "CASE-2009DA101275": null,
+            "CASE-2015DA254507": 1,
+            "CASE-97DA22393": 2,
+            "CASE-98CHU40": 4
+          },
+          "chunk_ids": [
+            "case:CASE-2015DA254507#0",
+            "case:CASE-97DA22393#0",
+            "case:CASE-2004DA69741#0",
+            "case:CASE-98CHU40#0",
+            "case:CASE-97DA43468#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.4399522000021534,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.25,
+          "recall@2": 0.5,
+          "recall@3": 0.5,
+          "recall@5": 0.75,
+          "mrr": 1.0
+        },
+        {
+          "qid": "case26-dev-002",
+          "gold": [
+            "CASE-2000DA24184",
+            "CASE-2000DA44799",
+            "CASE-2004DA69741",
+            "CASE-2015DA254507",
+            "CASE-2024DA326398",
+            "CASE-2025DA210305",
+            "CASE-2025DA213466",
+            "CASE-95DA30338",
+            "CASE-96DA17653",
+            "CASE-97DA43468",
+            "CASE-98DA32939",
+            "CASE-99DA59306"
+          ],
+          "retrieved_ids": [
+            "CASE-2025DA210305",
+            "CASE-2021DA238650",
+            "CASE-2024DA326398",
+            "CASE-97DA43468",
+            "CASE-2025DA213466"
+          ],
+          "gold_ranks": {
+            "CASE-2000DA24184": null,
+            "CASE-2000DA44799": null,
+            "CASE-2004DA69741": null,
+            "CASE-2015DA254507": null,
+            "CASE-2024DA326398": 3,
+            "CASE-2025DA210305": 1,
+            "CASE-2025DA213466": 5,
+            "CASE-95DA30338": null,
+            "CASE-96DA17653": null,
+            "CASE-97DA43468": 4,
+            "CASE-98DA32939": null,
+            "CASE-99DA59306": null
+          },
+          "chunk_ids": [
+            "case:CASE-2025DA210305#0",
+            "case:CASE-2021DA238650#0",
+            "case:CASE-2024DA326398#0",
+            "case:CASE-97DA43468#0",
+            "case:CASE-2025DA213466#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.20804900000803173,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.08333333333333333,
+          "recall@2": 0.08333333333333333,
+          "recall@3": 0.16666666666666666,
+          "recall@5": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        {
+          "qid": "case26-dev-003",
+          "gold": [
+            "CASE-2011DA49523",
+            "CASE-2021DA238650",
+            "CASE-93DA39676",
+            "CASE-96DA17653",
+            "CASE-98DA32939",
+            "CASE-99DA59306"
+          ],
+          "retrieved_ids": [
+            "CASE-2011DA49523",
+            "CASE-2021DA238650",
+            "CASE-2022DA279795",
+            "CASE-2024DA326398",
+            "CASE-2009DA101275"
+          ],
+          "gold_ranks": {
+            "CASE-2011DA49523": 1,
+            "CASE-2021DA238650": 2,
+            "CASE-93DA39676": null,
+            "CASE-96DA17653": null,
+            "CASE-98DA32939": null,
+            "CASE-99DA59306": null
+          },
+          "chunk_ids": [
+            "case:CASE-2011DA49523#0",
+            "case:CASE-2021DA238650#0",
+            "case:CASE-2022DA279795#0",
+            "case:CASE-2024DA326398#0",
+            "case:CASE-2009DA101275#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.21452149999095127,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.16666666666666666,
+          "recall@2": 0.3333333333333333,
+          "recall@3": 0.3333333333333333,
+          "recall@5": 0.3333333333333333,
+          "mrr": 1.0
+        },
+        {
+          "qid": "case26-dev-004",
+          "gold": [
+            "CASE-2000DA61466",
+            "CASE-2004DA69741",
+            "CASE-2007DA17475",
+            "CASE-2009DA101275",
+            "CASE-2009DA40790",
+            "CASE-2025DA210305",
+            "CASE-2025DA213466",
+            "CASE-93DA39676",
+            "CASE-94DA37646",
+            "CASE-95DA44597",
+            "CASE-97DA22393",
+            "CASE-98DA32939",
+            "CASE-99DA59306"
+          ],
+          "retrieved_ids": [
+            "CASE-99DA59306",
+            "CASE-2009DA101275",
+            "CASE-2000DA61466",
+            "CASE-98DA32939",
+            "CASE-2024DA326398"
+          ],
+          "gold_ranks": {
+            "CASE-2000DA61466": 3,
+            "CASE-2004DA69741": null,
+            "CASE-2007DA17475": null,
+            "CASE-2009DA101275": 2,
+            "CASE-2009DA40790": null,
+            "CASE-2025DA210305": null,
+            "CASE-2025DA213466": null,
+            "CASE-93DA39676": null,
+            "CASE-94DA37646": null,
+            "CASE-95DA44597": null,
+            "CASE-97DA22393": null,
+            "CASE-98DA32939": 4,
+            "CASE-99DA59306": 1
+          },
+          "chunk_ids": [
+            "case:CASE-99DA59306#0",
+            "case:CASE-2009DA101275#0",
+            "case:CASE-2000DA61466#0",
+            "case:CASE-98DA32939#0",
+            "case:CASE-2024DA326398#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.2926733000058448,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.07692307692307693,
+          "recall@2": 0.15384615384615385,
+          "recall@3": 0.23076923076923078,
+          "recall@5": 0.3076923076923077,
+          "mrr": 1.0
+        },
+        {
+          "qid": "case26-dev-005",
+          "gold": [
+            "CASE-2024DA326398",
+            "CASE-93DA39676",
+            "CASE-94DA37646",
+            "CASE-97DA43468"
+          ],
+          "retrieved_ids": [
+            "CASE-2024DA326398",
+            "CASE-93DA39676",
+            "CASE-2021DA238650",
+            "CASE-2011DA49523",
+            "CASE-97DA43468"
+          ],
+          "gold_ranks": {
+            "CASE-2024DA326398": 1,
+            "CASE-93DA39676": 2,
+            "CASE-94DA37646": null,
+            "CASE-97DA43468": 5
+          },
+          "chunk_ids": [
+            "case:CASE-2024DA326398#0",
+            "case:CASE-93DA39676#0",
+            "case:CASE-2021DA238650#0",
+            "case:CASE-2011DA49523#0",
+            "case:CASE-97DA43468#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.5824533999984851,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.25,
+          "recall@2": 0.5,
+          "recall@3": 0.5,
+          "recall@5": 0.75,
+          "mrr": 1.0
+        },
+        {
+          "qid": "case26-dev-006",
+          "gold": [
+            "CASE-2024DA326398",
+            "CASE-97DA43468"
+          ],
+          "retrieved_ids": [
+            "CASE-2024DA326398",
+            "CASE-2004DA69741",
+            "CASE-2000DA44799",
+            "CASE-99DA59306",
+            "CASE-94DA37646"
+          ],
+          "gold_ranks": {
+            "CASE-2024DA326398": 1,
+            "CASE-97DA43468": null
+          },
+          "chunk_ids": [
+            "case:CASE-2024DA326398#0",
+            "case:CASE-2004DA69741#0",
+            "case:CASE-2000DA44799#0",
+            "case:CASE-99DA59306#0",
+            "case:CASE-94DA37646#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.5038207000034163,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.5,
+          "recall@2": 0.5,
+          "recall@3": 0.5,
+          "recall@5": 0.5,
+          "mrr": 1.0
+        },
+        {
+          "qid": "case26-dev-009",
+          "gold": [
+            "CASE-2024DA326398",
+            "CASE-94DA37646"
+          ],
+          "retrieved_ids": [
+            "CASE-2024DA326398",
+            "CASE-2020DA202371",
+            "CASE-2011DA49523",
+            "CASE-2000DA24184",
+            "CASE-93DA39676"
+          ],
+          "gold_ranks": {
+            "CASE-2024DA326398": 1,
+            "CASE-94DA37646": null
+          },
+          "chunk_ids": [
+            "case:CASE-2024DA326398#0",
+            "case:CASE-2020DA202371#0",
+            "case:CASE-2011DA49523#0",
+            "case:CASE-2000DA24184#0",
+            "case:CASE-93DA39676#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.20765169999503996,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.5,
+          "recall@2": 0.5,
+          "recall@3": 0.5,
+          "recall@5": 0.5,
+          "mrr": 1.0
+        },
+        {
+          "qid": "case26-dev-010",
+          "gold": [
+            "CASE-2020DA202371"
+          ],
+          "retrieved_ids": [
+            "CASE-2020DA202371",
+            "CASE-2021DA266631",
+            "CASE-2022DA279795",
+            "CASE-2025DA213466",
+            "CASE-98CHU40"
+          ],
+          "gold_ranks": {
+            "CASE-2020DA202371": 1
+          },
+          "chunk_ids": [
+            "case:CASE-2020DA202371#0",
+            "case:CASE-2021DA266631#0",
+            "case:CASE-2022DA279795#0",
+            "case:CASE-2025DA213466#0",
+            "case:CASE-98CHU40#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.21350519999396056,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 1.0,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "case26-dev-012",
+          "gold": [
+            "CASE-2020DA202371",
+            "CASE-2021DA266631",
+            "CASE-2022DA279795"
+          ],
+          "retrieved_ids": [
+            "CASE-2022DA279795",
+            "CASE-2021DA266631",
+            "CASE-2020DA202371",
+            "CASE-95DA44597",
+            "CASE-93DA39676"
+          ],
+          "gold_ranks": {
+            "CASE-2020DA202371": 3,
+            "CASE-2021DA266631": 2,
+            "CASE-2022DA279795": 1
+          },
+          "chunk_ids": [
+            "case:CASE-2022DA279795#0",
+            "case:CASE-2021DA266631#0",
+            "case:CASE-2020DA202371#0",
+            "case:CASE-95DA44597#0",
+            "case:CASE-93DA39676#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.2088312000123551,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.3333333333333333,
+          "recall@2": 0.6666666666666666,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "case26-dev-013",
+          "gold": [
+            "CASE-2021DA266631",
+            "CASE-2022DA279795"
+          ],
+          "retrieved_ids": [
+            "CASE-2021DA266631",
+            "CASE-2020DA202371",
+            "CASE-2022DA279795",
+            "CASE-97DA43468",
+            "CASE-2024DA326398"
+          ],
+          "gold_ranks": {
+            "CASE-2021DA266631": 1,
+            "CASE-2022DA279795": 3
+          },
+          "chunk_ids": [
+            "case:CASE-2021DA266631#0",
+            "case:CASE-2020DA202371#0",
+            "case:CASE-2022DA279795#0",
+            "case:CASE-97DA43468#0",
+            "case:CASE-2024DA326398#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.21530530000745784,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.5,
+          "recall@2": 0.5,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "case26-dev-018",
+          "gold": [
+            "CASE-97DA22393",
+            "CASE-98CHU40"
+          ],
+          "retrieved_ids": [
+            "CASE-98CHU40",
+            "CASE-97DA22393",
+            "CASE-2009DA101275",
+            "CASE-95DA44597",
+            "CASE-2000DA61466"
+          ],
+          "gold_ranks": {
+            "CASE-97DA22393": 2,
+            "CASE-98CHU40": 1
+          },
+          "chunk_ids": [
+            "case:CASE-98CHU40#0",
+            "case:CASE-97DA22393#0",
+            "case:CASE-2009DA101275#0",
+            "case:CASE-95DA44597#0",
+            "case:CASE-2000DA61466#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.39661440000054426,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.5,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "case26-dev-020",
+          "gold": [
+            "CASE-2000DA24184"
+          ],
+          "retrieved_ids": [
+            "CASE-2004DA69741",
+            "CASE-2015DA254507",
+            "CASE-2007DA17475",
+            "CASE-2000DA24184",
+            "CASE-2024DA326398"
+          ],
+          "gold_ranks": {
+            "CASE-2000DA24184": 4
+          },
+          "chunk_ids": [
+            "case:CASE-2004DA69741#0",
+            "case:CASE-2015DA254507#0",
+            "case:CASE-2007DA17475#0",
+            "case:CASE-2000DA24184#0",
+            "case:CASE-2024DA326398#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.45532040001126006,
+          "hit@1": 0,
+          "hit@2": 0,
+          "hit@3": 0,
+          "hit@5": 1,
+          "recall@1": 0.0,
+          "recall@2": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 1.0,
+          "mrr": 0.25
+        },
+        {
+          "qid": "case26-dev-022",
+          "gold": [
+            "CASE-2000DA61466",
+            "CASE-2004DA69741",
+            "CASE-2007DA17475",
+            "CASE-2009DA101275",
+            "CASE-2009DA40790",
+            "CASE-93DA39676",
+            "CASE-95DA44597",
+            "CASE-97DA22393"
+          ],
+          "retrieved_ids": [
+            "CASE-95DA44597",
+            "CASE-2004DA69741",
+            "CASE-97DA22393",
+            "CASE-2009DA101275",
+            "CASE-2009DA40790"
+          ],
+          "gold_ranks": {
+            "CASE-2000DA61466": null,
+            "CASE-2004DA69741": 2,
+            "CASE-2007DA17475": null,
+            "CASE-2009DA101275": 4,
+            "CASE-2009DA40790": 5,
+            "CASE-93DA39676": null,
+            "CASE-95DA44597": 1,
+            "CASE-97DA22393": 3
+          },
+          "chunk_ids": [
+            "case:CASE-95DA44597#0",
+            "case:CASE-2004DA69741#0",
+            "case:CASE-97DA22393#0",
+            "case:CASE-2009DA101275#0",
+            "case:CASE-2009DA40790#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.23065059998771176,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.125,
+          "recall@2": 0.25,
+          "recall@3": 0.375,
+          "recall@5": 0.625,
+          "mrr": 1.0
+        }
+      ],
+      "exclusions": [],
+      "actual_model_calls": 18,
+      "state": "measured",
+      "comparison": {
+        "metrics_comparable": false,
+        "required_evidence_changes": [
+          {
+            "qid": "case26-dev-001",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-dev-002",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-dev-003",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-dev-004",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-dev-005",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-dev-006",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-dev-009",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-dev-010",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-dev-012",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-dev-013",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-dev-018",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-dev-020",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-dev-022",
+            "lost_gold": [],
+            "gained_gold": []
+          }
+        ],
+        "has_required_evidence_loss": false,
+        "reason": "Different or unspecified scope/ranking; legacy metrics are not an expected value",
+        "previous_metrics_reference_only": {
+          "hit@1": 0.9230769230769231,
+          "hit@2": 0.9230769230769231,
+          "hit@3": 0.9230769230769231,
+          "hit@5": 1.0,
+          "recall@1": 0.3296351084812624,
+          "recall@2": 0.46055226824457596,
+          "recall@3": 0.5465976331360947,
+          "recall@5": 0.6999506903353058,
+          "mrr": 0.9423076923076923
+        }
+      }
+    },
+    "case_external8": {
+      "input": {
+        "path": "C:\\team_project\\3rd_project\\3rd_project_team4\\data\\eval\\case26_external_8.jsonl",
+        "bytes": 2613,
+        "sha256": "28ff1e459b2e30b60da5160ff5f6d831eeb0113396dd0e8d9791cea37a3c8889"
+      },
+      "question_gold_sha256": "d73848b6d9dc1f1fa4dafdfd76a3300b6ce1169a7583a2f9e6e6b577d2bd562f",
+      "input_count": 8,
+      "scope": "case",
+      "ranking": "deduplicate IDs after 5 returned chunks; MRR truncated at 5",
+      "n": 8,
+      "metrics": {
+        "hit@1": 0.75,
+        "hit@2": 0.875,
+        "hit@3": 1.0,
+        "hit@5": 1.0,
+        "recall@1": 0.29166666666666663,
+        "recall@2": 0.4479166666666667,
+        "recall@3": 0.5520833333333333,
+        "recall@5": 0.75,
+        "mrr": 0.8541666666666666
+      },
+      "mean_search_seconds": 0.3994362750036089,
+      "questions": [
+        {
+          "qid": "case26-ext-002",
+          "gold": [
+            "CASE-2015DA254507",
+            "CASE-97DA43468",
+            "CASE-2000DA44799",
+            "CASE-95DA30338"
+          ],
+          "retrieved_ids": [
+            "CASE-2015DA254507",
+            "CASE-2004DA69741",
+            "CASE-2024DA326398",
+            "CASE-95DA30338",
+            "CASE-98CHU40"
+          ],
+          "gold_ranks": {
+            "CASE-2015DA254507": 1,
+            "CASE-97DA43468": null,
+            "CASE-2000DA44799": null,
+            "CASE-95DA30338": 4
+          },
+          "chunk_ids": [
+            "case:CASE-2015DA254507#0",
+            "case:CASE-2004DA69741#0",
+            "case:CASE-2024DA326398#0",
+            "case:CASE-95DA30338#0",
+            "case:CASE-98CHU40#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.5345813000021735,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.25,
+          "recall@2": 0.25,
+          "recall@3": 0.25,
+          "recall@5": 0.5,
+          "mrr": 1.0
+        },
+        {
+          "qid": "case26-ext-004",
+          "gold": [
+            "CASE-2011DA49523",
+            "CASE-2021DA238650",
+            "CASE-96DA17653",
+            "CASE-93DA39676"
+          ],
+          "retrieved_ids": [
+            "CASE-2021DA266631",
+            "CASE-2022DA279795",
+            "CASE-2011DA49523",
+            "CASE-96DA17653",
+            "CASE-2020DA202371"
+          ],
+          "gold_ranks": {
+            "CASE-2011DA49523": 3,
+            "CASE-2021DA238650": null,
+            "CASE-96DA17653": 4,
+            "CASE-93DA39676": null
+          },
+          "chunk_ids": [
+            "case:CASE-2021DA266631#0",
+            "case:CASE-2022DA279795#0",
+            "case:CASE-2011DA49523#0",
+            "case:CASE-96DA17653#0",
+            "case:CASE-2020DA202371#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.2815670999989379,
+          "hit@1": 0,
+          "hit@2": 0,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.0,
+          "recall@2": 0.0,
+          "recall@3": 0.25,
+          "recall@5": 0.5,
+          "mrr": 0.3333333333333333
+        },
+        {
+          "qid": "case26-ext-008",
+          "gold": [
+            "CASE-2021DA266631",
+            "CASE-2022DA279795"
+          ],
+          "retrieved_ids": [
+            "CASE-2021DA266631",
+            "CASE-2022DA279795",
+            "CASE-2020DA202371",
+            "CASE-97DA43468",
+            "CASE-2011DA49523"
+          ],
+          "gold_ranks": {
+            "CASE-2021DA266631": 1,
+            "CASE-2022DA279795": 2
+          },
+          "chunk_ids": [
+            "case:CASE-2021DA266631#0",
+            "case:CASE-2022DA279795#0",
+            "case:CASE-2020DA202371#0",
+            "case:CASE-97DA43468#0",
+            "case:CASE-2011DA49523#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.30322840000735596,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.5,
+          "recall@2": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "case26-ext-009",
+          "gold": [
+            "CASE-2004DA69741",
+            "CASE-2009DA40790",
+            "CASE-97DA22393",
+            "CASE-98CHU40"
+          ],
+          "retrieved_ids": [
+            "CASE-2004DA69741",
+            "CASE-98CHU40",
+            "CASE-97DA22393",
+            "CASE-2009DA40790",
+            "CASE-2009DA101275"
+          ],
+          "gold_ranks": {
+            "CASE-2004DA69741": 1,
+            "CASE-2009DA40790": 4,
+            "CASE-97DA22393": 3,
+            "CASE-98CHU40": 2
+          },
+          "chunk_ids": [
+            "case:CASE-2004DA69741#0",
+            "case:CASE-98CHU40#0",
+            "case:CASE-97DA22393#0",
+            "case:CASE-2009DA40790#0",
+            "case:CASE-2009DA101275#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.5865107999998145,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.25,
+          "recall@2": 0.5,
+          "recall@3": 0.75,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "case26-ext-010",
+          "gold": [
+            "CASE-2024DA326398",
+            "CASE-97DA43468"
+          ],
+          "retrieved_ids": [
+            "CASE-2024DA326398",
+            "CASE-2011DA49523",
+            "CASE-2000DA24184",
+            "CASE-93DA39676",
+            "CASE-2021DA238650"
+          ],
+          "gold_ranks": {
+            "CASE-2024DA326398": 1,
+            "CASE-97DA43468": null
+          },
+          "chunk_ids": [
+            "case:CASE-2024DA326398#0",
+            "case:CASE-2011DA49523#0",
+            "case:CASE-2000DA24184#0",
+            "case:CASE-93DA39676#0",
+            "case:CASE-2021DA238650#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.4875208000012208,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.5,
+          "recall@2": 0.5,
+          "recall@3": 0.5,
+          "recall@5": 0.5,
+          "mrr": 1.0
+        },
+        {
+          "qid": "case26-ext-012",
+          "gold": [
+            "CASE-94DA37646",
+            "CASE-93DA39676",
+            "CASE-2009DA101275"
+          ],
+          "retrieved_ids": [
+            "CASE-94DA37646",
+            "CASE-2024DA326398",
+            "CASE-2009DA101275",
+            "CASE-93DA39676",
+            "CASE-99DA59306"
+          ],
+          "gold_ranks": {
+            "CASE-94DA37646": 1,
+            "CASE-93DA39676": 4,
+            "CASE-2009DA101275": 3
+          },
+          "chunk_ids": [
+            "case:CASE-94DA37646#0",
+            "case:CASE-2024DA326398#0",
+            "case:CASE-2009DA101275#0",
+            "case:CASE-93DA39676#0",
+            "case:CASE-99DA59306#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.22544840000045951,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.3333333333333333,
+          "recall@2": 0.3333333333333333,
+          "recall@3": 0.6666666666666666,
+          "recall@5": 1.0,
+          "mrr": 1.0
+        },
+        {
+          "qid": "case26-ext-014",
+          "gold": [
+            "CASE-95DA44597",
+            "CASE-2009DA101275"
+          ],
+          "retrieved_ids": [
+            "CASE-93DA39676",
+            "CASE-2009DA101275",
+            "CASE-2000DA24184",
+            "CASE-94DA37646",
+            "CASE-95DA44597"
+          ],
+          "gold_ranks": {
+            "CASE-95DA44597": 5,
+            "CASE-2009DA101275": 2
+          },
+          "chunk_ids": [
+            "case:CASE-93DA39676#0",
+            "case:CASE-2009DA101275#0",
+            "case:CASE-2000DA24184#0",
+            "case:CASE-94DA37646#0",
+            "case:CASE-95DA44597#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.2465305000077933,
+          "hit@1": 0,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.0,
+          "recall@2": 0.5,
+          "recall@3": 0.5,
+          "recall@5": 1.0,
+          "mrr": 0.5
+        },
+        {
+          "qid": "case26-ext-015",
+          "gold": [
+            "CASE-2024DA326398",
+            "CASE-97DA43468"
+          ],
+          "retrieved_ids": [
+            "CASE-2024DA326398",
+            "CASE-93DA39676",
+            "CASE-2011DA49523",
+            "CASE-2021DA238650",
+            "CASE-2025DA213466"
+          ],
+          "gold_ranks": {
+            "CASE-2024DA326398": 1,
+            "CASE-97DA43468": null
+          },
+          "chunk_ids": [
+            "case:CASE-2024DA326398#0",
+            "case:CASE-93DA39676#0",
+            "case:CASE-2011DA49523#0",
+            "case:CASE-2021DA238650#0",
+            "case:CASE-2025DA213466#0"
+          ],
+          "guide_count": 0,
+          "seconds": 0.5301029000111157,
+          "hit@1": 1,
+          "hit@2": 1,
+          "hit@3": 1,
+          "hit@5": 1,
+          "recall@1": 0.5,
+          "recall@2": 0.5,
+          "recall@3": 0.5,
+          "recall@5": 0.5,
+          "mrr": 1.0
+        }
+      ],
+      "exclusions": [],
+      "actual_model_calls": 12,
+      "state": "measured",
+      "comparison": {
+        "metrics_comparable": false,
+        "required_evidence_changes": [
+          {
+            "qid": "case26-ext-002",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-ext-004",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-ext-008",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-ext-009",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-ext-010",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-ext-012",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-ext-014",
+            "lost_gold": [],
+            "gained_gold": []
+          },
+          {
+            "qid": "case26-ext-015",
+            "lost_gold": [],
+            "gained_gold": []
+          }
+        ],
+        "has_required_evidence_loss": false,
+        "reason": "Different or unspecified scope/ranking; legacy metrics are not an expected value",
+        "previous_metrics_reference_only": {
+          "hit@1": 0.75,
+          "hit@2": 0.875,
+          "hit@3": 1.0,
+          "hit@5": 1.0,
+          "recall@1": 0.29166666666666663,
+          "recall@2": 0.4479166666666667,
+          "recall@3": 0.5520833333333333,
+          "recall@5": 0.75,
+          "mrr": 0.8541666666666666
+        }
+      }
+    },
+    "case_legacy20": {
+      "input": {
+        "path": "C:\\team_project\\patch042-worktree\\data\\eval\\case_holdout_current_20.jsonl",
+        "bytes": 5691,
+        "sha256": "aaf518f87d98a05e0aee7d9220bb46f3a1ba930c8fb1e6e4afeaf0956e55c947"
+      },
+      "question_gold_sha256": "1ddad6982b19fa352e959c9bac31220b12ec83fd4ff6d113d5aad42d2f2c0578",
+      "input_count": 20,
+      "state": "not_scored",
+      "reason": "gold absent from current corpus",
+      "missing_gold": {
+        "case-holdout-001": [
+          "75829"
+        ],
+        "case-holdout-002": [
+          "118615"
+        ],
+        "case-holdout-003": [
+          "201827"
+        ],
+        "case-holdout-004": [
+          "200844"
+        ],
+        "case-holdout-005": [
+          "117855"
+        ],
+        "case-holdout-006": [
+          "192145"
+        ],
+        "case-holdout-007": [
+          "190337"
+        ],
+        "case-holdout-008": [
+          "190669"
+        ],
+        "case-holdout-009": [
+          "191129"
+        ],
+        "case-holdout-010": [
+          "71381"
+        ],
+        "case-holdout-011": [
+          "81316"
+        ],
+        "case-holdout-012": [
+          "81330"
+        ],
+        "case-holdout-013": [
+          "81841"
+        ],
+        "case-holdout-014": [
+          "194464"
+        ],
+        "case-holdout-015": [
+          "168106"
+        ],
+        "case-holdout-016": [
+          "187509"
+        ],
+        "case-holdout-017": [
+          "183073"
+        ],
+        "case-holdout-018": [
+          "184312"
+        ],
+        "case-holdout-019": [
+          "185576"
+        ],
+        "case-holdout-020": [
+          "207117"
+        ]
+      },
+      "metrics": null
+    }
+  }
+}

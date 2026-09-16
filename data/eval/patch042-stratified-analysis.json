@@ -1,0 +1,3803 @@
+{
+  "schema": "patch042-stratified-fixed-article-retrieval-v1",
+  "limits": {
+    "laws": 5,
+    "civil_laws": 3
+  },
+  "limitations": [
+    "Fixed article targets, not answer accuracy or paragraph correctness.",
+    "Any hit is not an OR score; gold targets remain unchanged.",
+    "Metadata flags use original_v2 groups only, not resolved claim_overrides or active conditions.",
+    "Conditional/alternative/part-focus strata overlap; they are not formal semantic scores.",
+    "Same reviewed DEV data; no independent holdout or new retrieval run."
+  ],
+  "source_sha256": {
+    "data/eval/dev100-v2/diagnostic-plan.json": "1022e31142eacc7acd47861285a3cdc256d899296ce0d0f242f322ae7d1b1fca",
+    "data/eval/dev100-v2/requirements.json": "90581a70c4b93c3968cef6d1c0acf0e39c17117727b24b56736ed3610b502bd7",
+    "data/eval/patch041-rebuilt/capture/rows.json": "4674d4f5bec0cdd74b607515002fd1813bf0e90a414cd8bc7c1dc3e5fba3d9f7"
+  },
+  "script_sha256": "afbfc2d86cd1acb8014d8dc5470e6bcff71a117f54affea132400ba07cb65ea1",
+  "requirements_inventory": {
+    "formal_whole_item_score_ready": 0,
+    "questions": 100,
+    "group_operator_counts": {
+      "all_of": 173,
+      "any_of_open": 2,
+      "unbound": 7,
+      "unresolved_alternative": 3
+    }
+  },
+  "modes": {
+    "question_only": {
+      "strata": {
+        "all": {
+          "n": 75,
+          "any_hit": 58,
+          "all_hit": 43,
+          "macro_recall": 0.6886666666666666,
+          "qids": [
+            "DEV-001",
+            "DEV-002",
+            "DEV-003",
+            "DEV-004",
+            "DEV-005",
+            "DEV-006",
+            "DEV-007",
+            "DEV-009",
+            "DEV-010",
+            "DEV-011",
+            "DEV-012",
+            "DEV-013",
+            "DEV-014",
+            "DEV-015",
+            "DEV-016",
+            "DEV-019",
+            "DEV-020",
+            "DEV-021",
+            "DEV-022",
+            "DEV-023",
+            "DEV-025",
+            "DEV-026",
+            "DEV-027",
+            "DEV-028",
+            "DEV-032",
+            "DEV-033",
+            "DEV-034",
+            "DEV-037",
+            "DEV-038",
+            "DEV-039",
+            "DEV-040",
+            "DEV-041",
+            "DEV-042",
+            "DEV-043",
+            "DEV-044",
+            "DEV-046",
+            "DEV-047",
+            "DEV-048",
+            "DEV-049",
+            "DEV-050",
+            "DEV-051",
+            "DEV-052",
+            "DEV-053",
+            "DEV-054",
+            "DEV-055",
+            "DEV-056",
+            "DEV-057",
+            "DEV-058",
+            "DEV-059",
+            "DEV-060",
+            "DEV-061",
+            "DEV-062",
+            "DEV-063",
+            "DEV-064",
+            "DEV-065",
+            "DEV-066",
+            "DEV-067",
+            "DEV-068",
+            "DEV-069",
+            "DEV-070",
+            "DEV-071",
+            "DEV-072",
+            "DEV-075",
+            "DEV-078",
+            "DEV-079",
+            "DEV-087",
+            "DEV-088",
+            "DEV-089",
+            "DEV-090",
+            "DEV-091",
+            "DEV-092",
+            "DEV-094",
+            "DEV-095",
+            "DEV-096",
+            "DEV-099"
+          ]
+        },
+        "channel:both": {
+          "n": 4,
+          "any_hit": 2,
+          "all_hit": 1,
+          "macro_recall": 0.3333333333333333,
+          "qids": [
+            "DEV-015",
+            "DEV-067",
+            "DEV-075",
+            "DEV-090"
+          ]
+        },
+        "channel:civil_only": {
+          "n": 28,
+          "any_hit": 21,
+          "all_hit": 19,
+          "macro_recall": 0.7202380952380952,
+          "qids": [
+            "DEV-001",
+            "DEV-002",
+            "DEV-004",
+            "DEV-006",
+            "DEV-011",
+            "DEV-012",
+            "DEV-013",
+            "DEV-014",
+            "DEV-016",
+            "DEV-020",
+            "DEV-021",
+            "DEV-034",
+            "DEV-055",
+            "DEV-056",
+            "DEV-057",
+            "DEV-058",
+            "DEV-059",
+            "DEV-060",
+            "DEV-061",
+            "DEV-062",
+            "DEV-063",
+            "DEV-064",
+            "DEV-065",
+            "DEV-066",
+            "DEV-071",
+            "DEV-072",
+            "DEV-078",
+            "DEV-087"
+          ]
+        },
+        "channel:general_only": {
+          "n": 43,
+          "any_hit": 35,
+          "all_hit": 23,
+          "macro_recall": 0.7011627906976745,
+          "qids": [
+            "DEV-003",
+            "DEV-005",
+            "DEV-007",
+            "DEV-009",
+            "DEV-010",
+            "DEV-019",
+            "DEV-022",
+            "DEV-023",
+            "DEV-025",
+            "DEV-026",
+            "DEV-027",
+            "DEV-028",
+            "DEV-032",
+            "DEV-033",
+            "DEV-037",
+            "DEV-038",
+            "DEV-039",
+            "DEV-040",
+            "DEV-041",
+            "DEV-042",
+            "DEV-043",
+            "DEV-044",
+            "DEV-046",
+            "DEV-047",
+            "DEV-048",
+            "DEV-049",
+            "DEV-050",
+            "DEV-051",
+            "DEV-052",
+            "DEV-053",
+            "DEV-054",
+            "DEV-068",
+            "DEV-069",
+            "DEV-070",
+            "DEV-079",
+            "DEV-088",
+            "DEV-089",
+            "DEV-091",
+            "DEV-092",
+            "DEV-094",
+            "DEV-095",
+            "DEV-096",
+            "DEV-099"
+          ]
+        },
+        "metadata:alternative:false": {
+          "n": 72,
+          "any_hit": 55,
+          "all_hit": 40,
+          "macro_recall": 0.6756944444444444,
+          "qids": [
+            "DEV-001",
+            "DEV-002",
+            "DEV-003",
+            "DEV-004",
+            "DEV-005",
+            "DEV-006",
+            "DEV-007",
+            "DEV-009",
+            "DEV-010",
+            "DEV-011",
+            "DEV-012",
+            "DEV-013",
+            "DEV-014",
+            "DEV-015",
+            "DEV-016",
+            "DEV-019",
+            "DEV-020",
+            "DEV-021",
+            "DEV-022",
+            "DEV-023",
+            "DEV-025",
+            "DEV-026",
+            "DEV-027",
+            "DEV-028",
+            "DEV-032",
+            "DEV-033",
+            "DEV-037",
+            "DEV-038",
+            "DEV-039",
+            "DEV-040",
+            "DEV-041",
+            "DEV-042",
+            "DEV-043",
+            "DEV-044",
+            "DEV-046",
+            "DEV-047",
+            "DEV-048",
+            "DEV-049",
+            "DEV-050",
+            "DEV-051",
+            "DEV-052",
+            "DEV-053",
+            "DEV-054",
+            "DEV-055",
+            "DEV-056",
+            "DEV-057",
+            "DEV-058",
+            "DEV-059",
+            "DEV-061",
+            "DEV-062",
+            "DEV-063",
+            "DEV-064",
+            "DEV-065",
+            "DEV-066",
+            "DEV-067",
+            "DEV-068",
+            "DEV-069",
+            "DEV-070",
+            "DEV-072",
+            "DEV-075",
+            "DEV-078",
+            "DEV-079",
+            "DEV-087",
+            "DEV-088",
+            "DEV-089",
+            "DEV-090",
+            "DEV-091",
+            "DEV-092",
+            "DEV-094",
+            "DEV-095",
+            "DEV-096",
+            "DEV-099"
+          ]
+        },
+        "metadata:alternative:true": {
+          "n": 3,
+          "any_hit": 3,
+          "all_hit": 3,
+          "macro_recall": 1.0,
+          "qids": [
+            "DEV-034",
+            "DEV-060",
+            "DEV-071"
+          ]
+        },
+        "metadata:conditional:false": {
+          "n": 16,
+          "any_hit": 15,
+          "all_hit": 11,
+          "macro_recall": 0.853125,
+          "qids": [
+            "DEV-003",
+            "DEV-009",
+            "DEV-025",
+            "DEV-026",
+            "DEV-028",
+            "DEV-037",
+            "DEV-040",
+            "DEV-042",
+            "DEV-043",
+            "DEV-048",
+            "DEV-051",
+            "DEV-054",
+            "DEV-060",
+            "DEV-071",
+            "DEV-088",
+            "DEV-091"
+          ]
+        },
+        "metadata:conditional:true": {
+          "n": 59,
+          "any_hit": 43,
+          "all_hit": 32,
+          "macro_recall": 0.6440677966101693,
+          "qids": [
+            "DEV-001",
+            "DEV-002",
+            "DEV-004",
+            "DEV-005",
+            "DEV-006",
+            "DEV-007",
+            "DEV-010",
+            "DEV-011",
+            "DEV-012",
+            "DEV-013",
+            "DEV-014",
+            "DEV-015",
+            "DEV-016",
+            "DEV-019",
+            "DEV-020",
+            "DEV-021",
+            "DEV-022",
+            "DEV-023",
+            "DEV-027",
+            "DEV-032",
+            "DEV-033",
+            "DEV-034",
+            "DEV-038",
+            "DEV-039",
+            "DEV-041",
+            "DEV-044",
+            "DEV-046",
+            "DEV-047",
+            "DEV-049",
+            "DEV-050",
+            "DEV-052",
+            "DEV-053",
+            "DEV-055",
+            "DEV-056",
+            "DEV-057",
+            "DEV-058",
+            "DEV-059",
+            "DEV-061",
+            "DEV-062",
+            "DEV-063",
+            "DEV-064",
+            "DEV-065",
+            "DEV-066",
+            "DEV-067",
+            "DEV-068",
+            "DEV-069",
+            "DEV-070",
+            "DEV-072",
+            "DEV-075",
+            "DEV-078",
+            "DEV-079",
+            "DEV-087",
+            "DEV-089",
+            "DEV-090",
+            "DEV-092",
+            "DEV-094",
+            "DEV-095",
+            "DEV-096",
+            "DEV-099"
+          ]
+        },
+        "metadata:part_focus:false": {
+          "n": 72,
+          "any_hit": 56,
+          "all_hit": 41,
+          "macro_recall": 0.6895833333333333,
+          "qids": [
+            "DEV-001",
+            "DEV-002",
+            "DEV-003",
+            "DEV-004",
+            "DEV-005",
+            "DEV-007",
+            "DEV-009",
+            "DEV-010",
+            "DEV-011",
+            "DEV-012",
+            "DEV-013",
+            "DEV-014",
+            "DEV-015",
+            "DEV-016",
+            "DEV-019",
+            "DEV-020",
+            "DEV-021",
+            "DEV-022",
+            "DEV-023",
+            "DEV-025",
+            "DEV-026",
+            "DEV-027",
+            "DEV-028",
+            "DEV-032",
+            "DEV-033",
+            "DEV-034",
+            "DEV-037",
+            "DEV-038",
+            "DEV-039",
+            "DEV-040",
+            "DEV-041",
+            "DEV-042",
+            "DEV-043",
+            "DEV-044",
+            "DEV-046",
+            "DEV-047",
+            "DEV-048",
+            "DEV-049",
+            "DEV-050",
+            "DEV-051",
+            "DEV-052",
+            "DEV-053",
+            "DEV-054",
+            "DEV-055",
+            "DEV-056",
+            "DEV-058",
+            "DEV-060",
+            "DEV-061",
+            "DEV-062",
+            "DEV-063",
+            "DEV-064",
+            "DEV-065",
+            "DEV-066",
+            "DEV-067",
+            "DEV-068",
+            "DEV-069",
+            "DEV-070",
+            "DEV-071",
+            "DEV-072",
+            "DEV-075",
+            "DEV-078",
+            "DEV-079",
+            "DEV-087",
+            "DEV-088",
+            "DEV-089",
+            "DEV-090",
+            "DEV-091",
+            "DEV-092",
+            "DEV-094",
+            "DEV-095",
+            "DEV-096",
+            "DEV-099"
+          ]
+        },
+        "metadata:part_focus:true": {
+          "n": 3,
+          "any_hit": 2,
+          "all_hit": 2,
+          "macro_recall": 0.6666666666666666,
+          "qids": [
+            "DEV-006",
+            "DEV-057",
+            "DEV-059"
+          ]
+        },
+        "required_count:1": {
+          "n": 46,
+          "any_hit": 33,
+          "all_hit": 33,
+          "macro_recall": 0.717391304347826,
+          "qids": [
+            "DEV-001",
+            "DEV-002",
+            "DEV-004",
+            "DEV-006",
+            "DEV-007",
+            "DEV-010",
+            "DEV-011",
+            "DEV-012",
+            "DEV-013",
+            "DEV-014",
+            "DEV-016",
+            "DEV-019",
+            "DEV-020",
+            "DEV-021",
+            "DEV-022",
+            "DEV-032",
+            "DEV-034",
+            "DEV-037",
+            "DEV-039",
+            "DEV-042",
+            "DEV-043",
+            "DEV-046",
+            "DEV-048",
+            "DEV-049",
+            "DEV-051",
+            "DEV-053",
+            "DEV-054",
+            "DEV-055",
+            "DEV-056",
+            "DEV-057",
+            "DEV-058",
+            "DEV-059",
+            "DEV-060",
+            "DEV-062",
+            "DEV-063",
+            "DEV-064",
+            "DEV-065",
+            "DEV-066",
+            "DEV-068",
+            "DEV-069",
+            "DEV-070",
+            "DEV-079",
+            "DEV-091",
+            "DEV-092",
+            "DEV-095",
+            "DEV-099"
+          ]
+        },
+        "required_count:2": {
+          "n": 19,
+          "any_hit": 15,
+          "all_hit": 10,
+          "macro_recall": 0.6578947368421053,
+          "qids": [
+            "DEV-009",
+            "DEV-015",
+            "DEV-023",
+            "DEV-027",
+            "DEV-033",
+            "DEV-040",
+            "DEV-044",
+            "DEV-047",
+            "DEV-050",
+            "DEV-052",
+            "DEV-061",
+            "DEV-067",
+            "DEV-071",
+            "DEV-072",
+            "DEV-075",
+            "DEV-078",
+            "DEV-088",
+            "DEV-089",
+            "DEV-094"
+          ]
+        },
+        "required_count:3": {
+          "n": 5,
+          "any_hit": 5,
+          "all_hit": 0,
+          "macro_recall": 0.6,
+          "qids": [
+            "DEV-005",
+            "DEV-041",
+            "DEV-087",
+            "DEV-090",
+            "DEV-096"
+          ]
+        },
+        "required_count:4": {
+          "n": 3,
+          "any_hit": 3,
+          "all_hit": 0,
+          "macro_recall": 0.5833333333333334,
+          "qids": [
+            "DEV-026",
+            "DEV-028",
+            "DEV-038"
+          ]
+        },
+        "required_count:5": {
+          "n": 2,
+          "any_hit": 2,
+          "all_hit": 0,
+          "macro_recall": 0.7,
+          "qids": [
+            "DEV-003",
+            "DEV-025"
+          ]
+        }
+      },
+      "details": [
+        {
+          "qid": "DEV-001",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제114조"
+          ],
+          "found": [
+            "민법-제114조"
+          ]
+        },
+        {
+          "qid": "DEV-002",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제357조"
+          ],
+          "found": [
+            "민법-제357조"
+          ]
+        },
+        {
+          "qid": "DEV-003",
+          "required_count": 5,
+          "found_count": 3,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조",
+            "주택임대차보호법-제3조의7",
+            "지방세징수법-제6조",
+            "지방세징수법시행령-제8조"
+          ],
+          "found": [
+            "국세징수법시행령-제97조",
+            "주택임대차보호법-제3조의7",
+            "지방세징수법-제6조"
+          ]
+        },
+        {
+          "qid": "DEV-004",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제623조"
+          ],
+          "found": [
+            "민법-제623조"
+          ]
+        },
+        {
+          "qid": "DEV-005",
+          "required_count": 3,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주민등록법-제16조",
+            "주택임대차보호법-제3조",
+            "주택임대차보호법-제3조의6"
+          ],
+          "found": [
+            "주택임대차보호법-제3조",
+            "주택임대차보호법-제3조의6"
+          ]
+        },
+        {
+          "qid": "DEV-006",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": true
+          },
+          "required": [
+            "민법-제626조"
+          ],
+          "found": [
+            "민법-제626조"
+          ]
+        },
+        {
+          "qid": "DEV-007",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조의3"
+          ],
+          "found": [
+            "주택임대차보호법-제3조의3"
+          ]
+        },
+        {
+          "qid": "DEV-009",
+          "required_count": 2,
+          "found_count": 0,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "상가건물임대차보호법-제2조",
+            "주택임대차보호법-제2조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-010",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조의3"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-011",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제265조"
+          ],
+          "found": [
+            "민법-제265조"
+          ]
+        },
+        {
+          "qid": "DEV-012",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제114조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-013",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제114조"
+          ],
+          "found": [
+            "민법-제114조"
+          ]
+        },
+        {
+          "qid": "DEV-014",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제114조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-015",
+          "required_count": 2,
+          "found_count": 0,
+          "channel": "both",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제105조",
+            "주택임대차보호법-제3조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-016",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제114조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-019",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "신탁법-제31조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-020",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제357조"
+          ],
+          "found": [
+            "민법-제357조"
+          ]
+        },
+        {
+          "qid": "DEV-021",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제357조"
+          ],
+          "found": [
+            "민법-제357조"
+          ]
+        },
+        {
+          "qid": "DEV-022",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민사집행법-제83조"
+          ],
+          "found": [
+            "민사집행법-제83조"
+          ]
+        },
+        {
+          "qid": "DEV-023",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "부동산등기법-제88조",
+            "부동산등기법-제91조"
+          ],
+          "found": [
+            "부동산등기법-제88조",
+            "부동산등기법-제91조"
+          ]
+        },
+        {
+          "qid": "DEV-025",
+          "required_count": 5,
+          "found_count": 4,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조",
+            "주택임대차보호법-제3조의7",
+            "지방세징수법-제6조",
+            "지방세징수법시행령-제8조"
+          ],
+          "found": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조",
+            "주택임대차보호법-제3조의7",
+            "지방세징수법-제6조"
+          ]
+        },
+        {
+          "qid": "DEV-026",
+          "required_count": 4,
+          "found_count": 3,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조",
+            "지방세징수법-제6조",
+            "지방세징수법시행령-제8조"
+          ],
+          "found": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조",
+            "지방세징수법-제6조"
+          ]
+        },
+        {
+          "qid": "DEV-027",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "국세징수법-제109조",
+            "지방세징수법-제6조"
+          ],
+          "found": [
+            "국세징수법-제109조",
+            "지방세징수법-제6조"
+          ]
+        },
+        {
+          "qid": "DEV-028",
+          "required_count": 4,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조",
+            "지방세징수법-제6조",
+            "지방세징수법시행령-제8조"
+          ],
+          "found": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조"
+          ]
+        },
+        {
+          "qid": "DEV-032",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "공인중개사법-제25조"
+          ],
+          "found": [
+            "공인중개사법-제25조"
+          ]
+        },
+        {
+          "qid": "DEV-033",
+          "required_count": 2,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주민등록법-제16조",
+            "주택임대차보호법-제3조"
+          ],
+          "found": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-034",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": true,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제105조"
+          ],
+          "found": [
+            "민법-제105조"
+          ]
+        },
+        {
+          "qid": "DEV-037",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "공인중개사법-제25조"
+          ],
+          "found": [
+            "공인중개사법-제25조"
+          ]
+        },
+        {
+          "qid": "DEV-038",
+          "required_count": 4,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조",
+            "주택임대차보호법-제3조의6"
+          ],
+          "found": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2"
+          ]
+        },
+        {
+          "qid": "DEV-039",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조의6"
+          ],
+          "found": [
+            "주택임대차보호법-제3조의6"
+          ]
+        },
+        {
+          "qid": "DEV-040",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주민등록법-제16조",
+            "주택임대차보호법-제3조"
+          ],
+          "found": [
+            "주민등록법-제16조",
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-041",
+          "required_count": 3,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조"
+          ],
+          "found": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2"
+          ]
+        },
+        {
+          "qid": "DEV-042",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조"
+          ],
+          "found": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-043",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조"
+          ],
+          "found": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-044",
+          "required_count": 2,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조",
+            "주택임대차보호법-제3조의2"
+          ],
+          "found": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-046",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주민등록법-제16조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-047",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제6조",
+            "주택임대차보호법-제6조의3"
+          ],
+          "found": [
+            "주택임대차보호법-제6조",
+            "주택임대차보호법-제6조의3"
+          ]
+        },
+        {
+          "qid": "DEV-048",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제6조의3"
+          ],
+          "found": [
+            "주택임대차보호법-제6조의3"
+          ]
+        },
+        {
+          "qid": "DEV-049",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제7조"
+          ],
+          "found": [
+            "주택임대차보호법-제7조"
+          ]
+        },
+        {
+          "qid": "DEV-050",
+          "required_count": 2,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제3조의6"
+          ],
+          "found": [
+            "주택임대차보호법-제3조의6"
+          ]
+        },
+        {
+          "qid": "DEV-051",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제6조"
+          ],
+          "found": [
+            "주택임대차보호법-제6조"
+          ]
+        },
+        {
+          "qid": "DEV-052",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제6조",
+            "주택임대차보호법-제6조의2"
+          ],
+          "found": [
+            "주택임대차보호법-제6조",
+            "주택임대차보호법-제6조의2"
+          ]
+        },
+        {
+          "qid": "DEV-053",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제6조의3"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-054",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제4조"
+          ],
+          "found": [
+            "주택임대차보호법-제4조"
+          ]
+        },
+        {
+          "qid": "DEV-055",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제623조"
+          ],
+          "found": [
+            "민법-제623조"
+          ]
+        },
+        {
+          "qid": "DEV-056",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제623조"
+          ],
+          "found": [
+            "민법-제623조"
+          ]
+        },
+        {
+          "qid": "DEV-057",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": true
+          },
+          "required": [
+            "민법-제626조"
+          ],
+          "found": [
+            "민법-제626조"
+          ]
+        },
+        {
+          "qid": "DEV-058",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제627조"
+          ],
+          "found": [
+            "민법-제627조"
+          ]
+        },
+        {
+          "qid": "DEV-059",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": true
+          },
+          "required": [
+            "민법-제626조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-060",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": true,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제390조"
+          ],
+          "found": [
+            "민법-제390조"
+          ]
+        },
+        {
+          "qid": "DEV-061",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제629조",
+            "민법-제632조"
+          ],
+          "found": [
+            "민법-제629조",
+            "민법-제632조"
+          ]
+        },
+        {
+          "qid": "DEV-062",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제629조"
+          ],
+          "found": [
+            "민법-제629조"
+          ]
+        },
+        {
+          "qid": "DEV-063",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제640조"
+          ],
+          "found": [
+            "민법-제640조"
+          ]
+        },
+        {
+          "qid": "DEV-064",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제105조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-065",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제105조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-066",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제105조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-067",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "both",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제536조",
+            "주택임대차보호법-제4조"
+          ],
+          "found": [
+            "민법-제536조",
+            "주택임대차보호법-제4조"
+          ]
+        },
+        {
+          "qid": "DEV-068",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조의3"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-069",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조의3"
+          ],
+          "found": [
+            "주택임대차보호법-제3조의3"
+          ]
+        },
+        {
+          "qid": "DEV-070",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조의3"
+          ],
+          "found": [
+            "주택임대차보호법-제3조의3"
+          ]
+        },
+        {
+          "qid": "DEV-071",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": true,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제615조",
+            "민법-제654조"
+          ],
+          "found": [
+            "민법-제615조",
+            "민법-제654조"
+          ]
+        },
+        {
+          "qid": "DEV-072",
+          "required_count": 2,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제105조",
+            "민법-제536조"
+          ],
+          "found": [
+            "민법-제536조"
+          ]
+        },
+        {
+          "qid": "DEV-075",
+          "required_count": 2,
+          "found_count": 0,
+          "channel": "both",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제111조",
+            "민사소송법-제462조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-078",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제111조",
+            "민법-제113조"
+          ],
+          "found": [
+            "민법-제111조",
+            "민법-제113조"
+          ]
+        },
+        {
+          "qid": "DEV-079",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "형법-제347조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-087",
+          "required_count": 3,
+          "found_count": 2,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제186조",
+            "민법-제187조",
+            "민법-제357조"
+          ],
+          "found": [
+            "민법-제186조",
+            "민법-제187조"
+          ]
+        },
+        {
+          "qid": "DEV-088",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "부가가치세법-제8조",
+            "상가건물임대차보호법-제3조"
+          ],
+          "found": [
+            "부가가치세법-제8조",
+            "상가건물임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-089",
+          "required_count": 2,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "상가건물임대차보호법-제10조",
+            "상가건물임대차보호법-제2조"
+          ],
+          "found": [
+            "상가건물임대차보호법-제10조"
+          ]
+        },
+        {
+          "qid": "DEV-090",
+          "required_count": 3,
+          "found_count": 1,
+          "channel": "both",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제536조",
+            "상가건물임대차보호법-제2조",
+            "상가건물임대차보호법-제6조"
+          ],
+          "found": [
+            "민법-제536조"
+          ]
+        },
+        {
+          "qid": "DEV-091",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "공공주택특별법-제49조의2"
+          ],
+          "found": [
+            "공공주택특별법-제49조의2"
+          ]
+        },
+        {
+          "qid": "DEV-092",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "공공주택특별법-제49조의3"
+          ],
+          "found": [
+            "공공주택특별법-제49조의3"
+          ]
+        },
+        {
+          "qid": "DEV-094",
+          "required_count": 2,
+          "found_count": 0,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민간임대주택에관한특별법-제5조",
+            "민간임대주택에관한특별법-제6조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-095",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민간임대주택에관한특별법-제44조"
+          ],
+          "found": [
+            "민간임대주택에관한특별법-제44조"
+          ]
+        },
+        {
+          "qid": "DEV-096",
+          "required_count": 3,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민간임대주택에관한특별법-제45조",
+            "민간임대주택에관한특별법-제46조",
+            "민간임대주택에관한특별법-제47조"
+          ],
+          "found": [
+            "민간임대주택에관한특별법-제46조",
+            "민간임대주택에관한특별법-제47조"
+          ]
+        },
+        {
+          "qid": "DEV-099",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조의6"
+          ],
+          "found": [
+            "주택임대차보호법-제3조의6"
+          ]
+        }
+      ]
+    },
+    "context_diagnostic": {
+      "strata": {
+        "all": {
+          "n": 75,
+          "any_hit": 60,
+          "all_hit": 43,
+          "macro_recall": 0.6882222222222222,
+          "qids": [
+            "DEV-001",
+            "DEV-002",
+            "DEV-003",
+            "DEV-004",
+            "DEV-005",
+            "DEV-006",
+            "DEV-007",
+            "DEV-009",
+            "DEV-010",
+            "DEV-011",
+            "DEV-012",
+            "DEV-013",
+            "DEV-014",
+            "DEV-015",
+            "DEV-016",
+            "DEV-019",
+            "DEV-020",
+            "DEV-021",
+            "DEV-022",
+            "DEV-023",
+            "DEV-025",
+            "DEV-026",
+            "DEV-027",
+            "DEV-028",
+            "DEV-032",
+            "DEV-033",
+            "DEV-034",
+            "DEV-037",
+            "DEV-038",
+            "DEV-039",
+            "DEV-040",
+            "DEV-041",
+            "DEV-042",
+            "DEV-043",
+            "DEV-044",
+            "DEV-046",
+            "DEV-047",
+            "DEV-048",
+            "DEV-049",
+            "DEV-050",
+            "DEV-051",
+            "DEV-052",
+            "DEV-053",
+            "DEV-054",
+            "DEV-055",
+            "DEV-056",
+            "DEV-057",
+            "DEV-058",
+            "DEV-059",
+            "DEV-060",
+            "DEV-061",
+            "DEV-062",
+            "DEV-063",
+            "DEV-064",
+            "DEV-065",
+            "DEV-066",
+            "DEV-067",
+            "DEV-068",
+            "DEV-069",
+            "DEV-070",
+            "DEV-071",
+            "DEV-072",
+            "DEV-075",
+            "DEV-078",
+            "DEV-079",
+            "DEV-087",
+            "DEV-088",
+            "DEV-089",
+            "DEV-090",
+            "DEV-091",
+            "DEV-092",
+            "DEV-094",
+            "DEV-095",
+            "DEV-096",
+            "DEV-099"
+          ]
+        },
+        "channel:both": {
+          "n": 4,
+          "any_hit": 2,
+          "all_hit": 1,
+          "macro_recall": 0.3333333333333333,
+          "qids": [
+            "DEV-015",
+            "DEV-067",
+            "DEV-075",
+            "DEV-090"
+          ]
+        },
+        "channel:civil_only": {
+          "n": 28,
+          "any_hit": 19,
+          "all_hit": 17,
+          "macro_recall": 0.6488095238095238,
+          "qids": [
+            "DEV-001",
+            "DEV-002",
+            "DEV-004",
+            "DEV-006",
+            "DEV-011",
+            "DEV-012",
+            "DEV-013",
+            "DEV-014",
+            "DEV-016",
+            "DEV-020",
+            "DEV-021",
+            "DEV-034",
+            "DEV-055",
+            "DEV-056",
+            "DEV-057",
+            "DEV-058",
+            "DEV-059",
+            "DEV-060",
+            "DEV-061",
+            "DEV-062",
+            "DEV-063",
+            "DEV-064",
+            "DEV-065",
+            "DEV-066",
+            "DEV-071",
+            "DEV-072",
+            "DEV-078",
+            "DEV-087"
+          ]
+        },
+        "channel:general_only": {
+          "n": 43,
+          "any_hit": 39,
+          "all_hit": 25,
+          "macro_recall": 0.7468992248062015,
+          "qids": [
+            "DEV-003",
+            "DEV-005",
+            "DEV-007",
+            "DEV-009",
+            "DEV-010",
+            "DEV-019",
+            "DEV-022",
+            "DEV-023",
+            "DEV-025",
+            "DEV-026",
+            "DEV-027",
+            "DEV-028",
+            "DEV-032",
+            "DEV-033",
+            "DEV-037",
+            "DEV-038",
+            "DEV-039",
+            "DEV-040",
+            "DEV-041",
+            "DEV-042",
+            "DEV-043",
+            "DEV-044",
+            "DEV-046",
+            "DEV-047",
+            "DEV-048",
+            "DEV-049",
+            "DEV-050",
+            "DEV-051",
+            "DEV-052",
+            "DEV-053",
+            "DEV-054",
+            "DEV-068",
+            "DEV-069",
+            "DEV-070",
+            "DEV-079",
+            "DEV-088",
+            "DEV-089",
+            "DEV-091",
+            "DEV-092",
+            "DEV-094",
+            "DEV-095",
+            "DEV-096",
+            "DEV-099"
+          ]
+        },
+        "metadata:alternative:false": {
+          "n": 72,
+          "any_hit": 59,
+          "all_hit": 42,
+          "macro_recall": 0.7030092592592593,
+          "qids": [
+            "DEV-001",
+            "DEV-002",
+            "DEV-003",
+            "DEV-004",
+            "DEV-005",
+            "DEV-006",
+            "DEV-007",
+            "DEV-009",
+            "DEV-010",
+            "DEV-011",
+            "DEV-012",
+            "DEV-013",
+            "DEV-014",
+            "DEV-015",
+            "DEV-016",
+            "DEV-019",
+            "DEV-020",
+            "DEV-021",
+            "DEV-022",
+            "DEV-023",
+            "DEV-025",
+            "DEV-026",
+            "DEV-027",
+            "DEV-028",
+            "DEV-032",
+            "DEV-033",
+            "DEV-037",
+            "DEV-038",
+            "DEV-039",
+            "DEV-040",
+            "DEV-041",
+            "DEV-042",
+            "DEV-043",
+            "DEV-044",
+            "DEV-046",
+            "DEV-047",
+            "DEV-048",
+            "DEV-049",
+            "DEV-050",
+            "DEV-051",
+            "DEV-052",
+            "DEV-053",
+            "DEV-054",
+            "DEV-055",
+            "DEV-056",
+            "DEV-057",
+            "DEV-058",
+            "DEV-059",
+            "DEV-061",
+            "DEV-062",
+            "DEV-063",
+            "DEV-064",
+            "DEV-065",
+            "DEV-066",
+            "DEV-067",
+            "DEV-068",
+            "DEV-069",
+            "DEV-070",
+            "DEV-072",
+            "DEV-075",
+            "DEV-078",
+            "DEV-079",
+            "DEV-087",
+            "DEV-088",
+            "DEV-089",
+            "DEV-090",
+            "DEV-091",
+            "DEV-092",
+            "DEV-094",
+            "DEV-095",
+            "DEV-096",
+            "DEV-099"
+          ]
+        },
+        "metadata:alternative:true": {
+          "n": 3,
+          "any_hit": 1,
+          "all_hit": 1,
+          "macro_recall": 0.3333333333333333,
+          "qids": [
+            "DEV-034",
+            "DEV-060",
+            "DEV-071"
+          ]
+        },
+        "metadata:conditional:false": {
+          "n": 16,
+          "any_hit": 15,
+          "all_hit": 10,
+          "macro_recall": 0.778125,
+          "qids": [
+            "DEV-003",
+            "DEV-009",
+            "DEV-025",
+            "DEV-026",
+            "DEV-028",
+            "DEV-037",
+            "DEV-040",
+            "DEV-042",
+            "DEV-043",
+            "DEV-048",
+            "DEV-051",
+            "DEV-054",
+            "DEV-060",
+            "DEV-071",
+            "DEV-088",
+            "DEV-091"
+          ]
+        },
+        "metadata:conditional:true": {
+          "n": 59,
+          "any_hit": 45,
+          "all_hit": 33,
+          "macro_recall": 0.6638418079096045,
+          "qids": [
+            "DEV-001",
+            "DEV-002",
+            "DEV-004",
+            "DEV-005",
+            "DEV-006",
+            "DEV-007",
+            "DEV-010",
+            "DEV-011",
+            "DEV-012",
+            "DEV-013",
+            "DEV-014",
+            "DEV-015",
+            "DEV-016",
+            "DEV-019",
+            "DEV-020",
+            "DEV-021",
+            "DEV-022",
+            "DEV-023",
+            "DEV-027",
+            "DEV-032",
+            "DEV-033",
+            "DEV-034",
+            "DEV-038",
+            "DEV-039",
+            "DEV-041",
+            "DEV-044",
+            "DEV-046",
+            "DEV-047",
+            "DEV-049",
+            "DEV-050",
+            "DEV-052",
+            "DEV-053",
+            "DEV-055",
+            "DEV-056",
+            "DEV-057",
+            "DEV-058",
+            "DEV-059",
+            "DEV-061",
+            "DEV-062",
+            "DEV-063",
+            "DEV-064",
+            "DEV-065",
+            "DEV-066",
+            "DEV-067",
+            "DEV-068",
+            "DEV-069",
+            "DEV-070",
+            "DEV-072",
+            "DEV-075",
+            "DEV-078",
+            "DEV-079",
+            "DEV-087",
+            "DEV-089",
+            "DEV-090",
+            "DEV-092",
+            "DEV-094",
+            "DEV-095",
+            "DEV-096",
+            "DEV-099"
+          ]
+        },
+        "metadata:part_focus:false": {
+          "n": 72,
+          "any_hit": 58,
+          "all_hit": 41,
+          "macro_recall": 0.6891203703703703,
+          "qids": [
+            "DEV-001",
+            "DEV-002",
+            "DEV-003",
+            "DEV-004",
+            "DEV-005",
+            "DEV-007",
+            "DEV-009",
+            "DEV-010",
+            "DEV-011",
+            "DEV-012",
+            "DEV-013",
+            "DEV-014",
+            "DEV-015",
+            "DEV-016",
+            "DEV-019",
+            "DEV-020",
+            "DEV-021",
+            "DEV-022",
+            "DEV-023",
+            "DEV-025",
+            "DEV-026",
+            "DEV-027",
+            "DEV-028",
+            "DEV-032",
+            "DEV-033",
+            "DEV-034",
+            "DEV-037",
+            "DEV-038",
+            "DEV-039",
+            "DEV-040",
+            "DEV-041",
+            "DEV-042",
+            "DEV-043",
+            "DEV-044",
+            "DEV-046",
+            "DEV-047",
+            "DEV-048",
+            "DEV-049",
+            "DEV-050",
+            "DEV-051",
+            "DEV-052",
+            "DEV-053",
+            "DEV-054",
+            "DEV-055",
+            "DEV-056",
+            "DEV-058",
+            "DEV-060",
+            "DEV-061",
+            "DEV-062",
+            "DEV-063",
+            "DEV-064",
+            "DEV-065",
+            "DEV-066",
+            "DEV-067",
+            "DEV-068",
+            "DEV-069",
+            "DEV-070",
+            "DEV-071",
+            "DEV-072",
+            "DEV-075",
+            "DEV-078",
+            "DEV-079",
+            "DEV-087",
+            "DEV-088",
+            "DEV-089",
+            "DEV-090",
+            "DEV-091",
+            "DEV-092",
+            "DEV-094",
+            "DEV-095",
+            "DEV-096",
+            "DEV-099"
+          ]
+        },
+        "metadata:part_focus:true": {
+          "n": 3,
+          "any_hit": 2,
+          "all_hit": 2,
+          "macro_recall": 0.6666666666666666,
+          "qids": [
+            "DEV-006",
+            "DEV-057",
+            "DEV-059"
+          ]
+        },
+        "required_count:1": {
+          "n": 46,
+          "any_hit": 34,
+          "all_hit": 34,
+          "macro_recall": 0.7391304347826086,
+          "qids": [
+            "DEV-001",
+            "DEV-002",
+            "DEV-004",
+            "DEV-006",
+            "DEV-007",
+            "DEV-010",
+            "DEV-011",
+            "DEV-012",
+            "DEV-013",
+            "DEV-014",
+            "DEV-016",
+            "DEV-019",
+            "DEV-020",
+            "DEV-021",
+            "DEV-022",
+            "DEV-032",
+            "DEV-034",
+            "DEV-037",
+            "DEV-039",
+            "DEV-042",
+            "DEV-043",
+            "DEV-046",
+            "DEV-048",
+            "DEV-049",
+            "DEV-051",
+            "DEV-053",
+            "DEV-054",
+            "DEV-055",
+            "DEV-056",
+            "DEV-057",
+            "DEV-058",
+            "DEV-059",
+            "DEV-060",
+            "DEV-062",
+            "DEV-063",
+            "DEV-064",
+            "DEV-065",
+            "DEV-066",
+            "DEV-068",
+            "DEV-069",
+            "DEV-070",
+            "DEV-079",
+            "DEV-091",
+            "DEV-092",
+            "DEV-095",
+            "DEV-099"
+          ]
+        },
+        "required_count:2": {
+          "n": 19,
+          "any_hit": 16,
+          "all_hit": 9,
+          "macro_recall": 0.6578947368421053,
+          "qids": [
+            "DEV-009",
+            "DEV-015",
+            "DEV-023",
+            "DEV-027",
+            "DEV-033",
+            "DEV-040",
+            "DEV-044",
+            "DEV-047",
+            "DEV-050",
+            "DEV-052",
+            "DEV-061",
+            "DEV-067",
+            "DEV-071",
+            "DEV-072",
+            "DEV-075",
+            "DEV-078",
+            "DEV-088",
+            "DEV-089",
+            "DEV-094"
+          ]
+        },
+        "required_count:3": {
+          "n": 5,
+          "any_hit": 5,
+          "all_hit": 0,
+          "macro_recall": 0.5333333333333333,
+          "qids": [
+            "DEV-005",
+            "DEV-041",
+            "DEV-087",
+            "DEV-090",
+            "DEV-096"
+          ]
+        },
+        "required_count:4": {
+          "n": 3,
+          "any_hit": 3,
+          "all_hit": 0,
+          "macro_recall": 0.4166666666666667,
+          "qids": [
+            "DEV-026",
+            "DEV-028",
+            "DEV-038"
+          ]
+        },
+        "required_count:5": {
+          "n": 2,
+          "any_hit": 2,
+          "all_hit": 0,
+          "macro_recall": 0.6,
+          "qids": [
+            "DEV-003",
+            "DEV-025"
+          ]
+        }
+      },
+      "details": [
+        {
+          "qid": "DEV-001",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제114조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-002",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제357조"
+          ],
+          "found": [
+            "민법-제357조"
+          ]
+        },
+        {
+          "qid": "DEV-003",
+          "required_count": 5,
+          "found_count": 3,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조",
+            "주택임대차보호법-제3조의7",
+            "지방세징수법-제6조",
+            "지방세징수법시행령-제8조"
+          ],
+          "found": [
+            "국세징수법-제109조",
+            "주택임대차보호법-제3조의7",
+            "지방세징수법-제6조"
+          ]
+        },
+        {
+          "qid": "DEV-004",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제623조"
+          ],
+          "found": [
+            "민법-제623조"
+          ]
+        },
+        {
+          "qid": "DEV-005",
+          "required_count": 3,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주민등록법-제16조",
+            "주택임대차보호법-제3조",
+            "주택임대차보호법-제3조의6"
+          ],
+          "found": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-006",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": true
+          },
+          "required": [
+            "민법-제626조"
+          ],
+          "found": [
+            "민법-제626조"
+          ]
+        },
+        {
+          "qid": "DEV-007",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조의3"
+          ],
+          "found": [
+            "주택임대차보호법-제3조의3"
+          ]
+        },
+        {
+          "qid": "DEV-009",
+          "required_count": 2,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "상가건물임대차보호법-제2조",
+            "주택임대차보호법-제2조"
+          ],
+          "found": [
+            "상가건물임대차보호법-제2조"
+          ]
+        },
+        {
+          "qid": "DEV-010",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조의3"
+          ],
+          "found": [
+            "주택임대차보호법-제3조의3"
+          ]
+        },
+        {
+          "qid": "DEV-011",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제265조"
+          ],
+          "found": [
+            "민법-제265조"
+          ]
+        },
+        {
+          "qid": "DEV-012",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제114조"
+          ],
+          "found": [
+            "민법-제114조"
+          ]
+        },
+        {
+          "qid": "DEV-013",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제114조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-014",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제114조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-015",
+          "required_count": 2,
+          "found_count": 0,
+          "channel": "both",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제105조",
+            "주택임대차보호법-제3조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-016",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제114조"
+          ],
+          "found": [
+            "민법-제114조"
+          ]
+        },
+        {
+          "qid": "DEV-019",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "신탁법-제31조"
+          ],
+          "found": [
+            "신탁법-제31조"
+          ]
+        },
+        {
+          "qid": "DEV-020",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제357조"
+          ],
+          "found": [
+            "민법-제357조"
+          ]
+        },
+        {
+          "qid": "DEV-021",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제357조"
+          ],
+          "found": [
+            "민법-제357조"
+          ]
+        },
+        {
+          "qid": "DEV-022",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민사집행법-제83조"
+          ],
+          "found": [
+            "민사집행법-제83조"
+          ]
+        },
+        {
+          "qid": "DEV-023",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "부동산등기법-제88조",
+            "부동산등기법-제91조"
+          ],
+          "found": [
+            "부동산등기법-제88조",
+            "부동산등기법-제91조"
+          ]
+        },
+        {
+          "qid": "DEV-025",
+          "required_count": 5,
+          "found_count": 3,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조",
+            "주택임대차보호법-제3조의7",
+            "지방세징수법-제6조",
+            "지방세징수법시행령-제8조"
+          ],
+          "found": [
+            "국세징수법-제109조",
+            "주택임대차보호법-제3조의7",
+            "지방세징수법-제6조"
+          ]
+        },
+        {
+          "qid": "DEV-026",
+          "required_count": 4,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조",
+            "지방세징수법-제6조",
+            "지방세징수법시행령-제8조"
+          ],
+          "found": [
+            "국세징수법-제109조",
+            "지방세징수법-제6조"
+          ]
+        },
+        {
+          "qid": "DEV-027",
+          "required_count": 2,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "국세징수법-제109조",
+            "지방세징수법-제6조"
+          ],
+          "found": [
+            "국세징수법-제109조"
+          ]
+        },
+        {
+          "qid": "DEV-028",
+          "required_count": 4,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조",
+            "지방세징수법-제6조",
+            "지방세징수법시행령-제8조"
+          ],
+          "found": [
+            "국세징수법-제109조"
+          ]
+        },
+        {
+          "qid": "DEV-032",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "공인중개사법-제25조"
+          ],
+          "found": [
+            "공인중개사법-제25조"
+          ]
+        },
+        {
+          "qid": "DEV-033",
+          "required_count": 2,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주민등록법-제16조",
+            "주택임대차보호법-제3조"
+          ],
+          "found": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-034",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": true,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제105조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-037",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "공인중개사법-제25조"
+          ],
+          "found": [
+            "공인중개사법-제25조"
+          ]
+        },
+        {
+          "qid": "DEV-038",
+          "required_count": 4,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조",
+            "주택임대차보호법-제3조의6"
+          ],
+          "found": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2"
+          ]
+        },
+        {
+          "qid": "DEV-039",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조의6"
+          ],
+          "found": [
+            "주택임대차보호법-제3조의6"
+          ]
+        },
+        {
+          "qid": "DEV-040",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주민등록법-제16조",
+            "주택임대차보호법-제3조"
+          ],
+          "found": [
+            "주민등록법-제16조",
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-041",
+          "required_count": 3,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조"
+          ],
+          "found": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2"
+          ]
+        },
+        {
+          "qid": "DEV-042",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조"
+          ],
+          "found": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-043",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조"
+          ],
+          "found": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-044",
+          "required_count": 2,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조",
+            "주택임대차보호법-제3조의2"
+          ],
+          "found": [
+            "주택임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-046",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주민등록법-제16조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-047",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제6조",
+            "주택임대차보호법-제6조의3"
+          ],
+          "found": [
+            "주택임대차보호법-제6조",
+            "주택임대차보호법-제6조의3"
+          ]
+        },
+        {
+          "qid": "DEV-048",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제6조의3"
+          ],
+          "found": [
+            "주택임대차보호법-제6조의3"
+          ]
+        },
+        {
+          "qid": "DEV-049",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제7조"
+          ],
+          "found": [
+            "주택임대차보호법-제7조"
+          ]
+        },
+        {
+          "qid": "DEV-050",
+          "required_count": 2,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제3조의6"
+          ],
+          "found": [
+            "주택임대차보호법-제3조의6"
+          ]
+        },
+        {
+          "qid": "DEV-051",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제6조"
+          ],
+          "found": [
+            "주택임대차보호법-제6조"
+          ]
+        },
+        {
+          "qid": "DEV-052",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제6조",
+            "주택임대차보호법-제6조의2"
+          ],
+          "found": [
+            "주택임대차보호법-제6조",
+            "주택임대차보호법-제6조의2"
+          ]
+        },
+        {
+          "qid": "DEV-053",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제6조의3"
+          ],
+          "found": [
+            "주택임대차보호법-제6조의3"
+          ]
+        },
+        {
+          "qid": "DEV-054",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제4조"
+          ],
+          "found": [
+            "주택임대차보호법-제4조"
+          ]
+        },
+        {
+          "qid": "DEV-055",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제623조"
+          ],
+          "found": [
+            "민법-제623조"
+          ]
+        },
+        {
+          "qid": "DEV-056",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제623조"
+          ],
+          "found": [
+            "민법-제623조"
+          ]
+        },
+        {
+          "qid": "DEV-057",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": true
+          },
+          "required": [
+            "민법-제626조"
+          ],
+          "found": [
+            "민법-제626조"
+          ]
+        },
+        {
+          "qid": "DEV-058",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제627조"
+          ],
+          "found": [
+            "민법-제627조"
+          ]
+        },
+        {
+          "qid": "DEV-059",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": true
+          },
+          "required": [
+            "민법-제626조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-060",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": true,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제390조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-061",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제629조",
+            "민법-제632조"
+          ],
+          "found": [
+            "민법-제629조",
+            "민법-제632조"
+          ]
+        },
+        {
+          "qid": "DEV-062",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제629조"
+          ],
+          "found": [
+            "민법-제629조"
+          ]
+        },
+        {
+          "qid": "DEV-063",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제640조"
+          ],
+          "found": [
+            "민법-제640조"
+          ]
+        },
+        {
+          "qid": "DEV-064",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제105조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-065",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제105조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-066",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제105조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-067",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "both",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제536조",
+            "주택임대차보호법-제4조"
+          ],
+          "found": [
+            "민법-제536조",
+            "주택임대차보호법-제4조"
+          ]
+        },
+        {
+          "qid": "DEV-068",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조의3"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-069",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조의3"
+          ],
+          "found": [
+            "주택임대차보호법-제3조의3"
+          ]
+        },
+        {
+          "qid": "DEV-070",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조의3"
+          ],
+          "found": [
+            "주택임대차보호법-제3조의3"
+          ]
+        },
+        {
+          "qid": "DEV-071",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": true,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제615조",
+            "민법-제654조"
+          ],
+          "found": [
+            "민법-제615조",
+            "민법-제654조"
+          ]
+        },
+        {
+          "qid": "DEV-072",
+          "required_count": 2,
+          "found_count": 1,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제105조",
+            "민법-제536조"
+          ],
+          "found": [
+            "민법-제536조"
+          ]
+        },
+        {
+          "qid": "DEV-075",
+          "required_count": 2,
+          "found_count": 0,
+          "channel": "both",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제111조",
+            "민사소송법-제462조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-078",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제111조",
+            "민법-제113조"
+          ],
+          "found": [
+            "민법-제111조",
+            "민법-제113조"
+          ]
+        },
+        {
+          "qid": "DEV-079",
+          "required_count": 1,
+          "found_count": 0,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "형법-제347조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-087",
+          "required_count": 3,
+          "found_count": 2,
+          "channel": "civil_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제186조",
+            "민법-제187조",
+            "민법-제357조"
+          ],
+          "found": [
+            "민법-제186조",
+            "민법-제187조"
+          ]
+        },
+        {
+          "qid": "DEV-088",
+          "required_count": 2,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "부가가치세법-제8조",
+            "상가건물임대차보호법-제3조"
+          ],
+          "found": [
+            "부가가치세법-제8조",
+            "상가건물임대차보호법-제3조"
+          ]
+        },
+        {
+          "qid": "DEV-089",
+          "required_count": 2,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "상가건물임대차보호법-제10조",
+            "상가건물임대차보호법-제2조"
+          ],
+          "found": [
+            "상가건물임대차보호법-제10조"
+          ]
+        },
+        {
+          "qid": "DEV-090",
+          "required_count": 3,
+          "found_count": 1,
+          "channel": "both",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민법-제536조",
+            "상가건물임대차보호법-제2조",
+            "상가건물임대차보호법-제6조"
+          ],
+          "found": [
+            "민법-제536조"
+          ]
+        },
+        {
+          "qid": "DEV-091",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": false,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "공공주택특별법-제49조의2"
+          ],
+          "found": [
+            "공공주택특별법-제49조의2"
+          ]
+        },
+        {
+          "qid": "DEV-092",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "공공주택특별법-제49조의3"
+          ],
+          "found": [
+            "공공주택특별법-제49조의3"
+          ]
+        },
+        {
+          "qid": "DEV-094",
+          "required_count": 2,
+          "found_count": 0,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민간임대주택에관한특별법-제5조",
+            "민간임대주택에관한특별법-제6조"
+          ],
+          "found": []
+        },
+        {
+          "qid": "DEV-095",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민간임대주택에관한특별법-제44조"
+          ],
+          "found": [
+            "민간임대주택에관한특별법-제44조"
+          ]
+        },
+        {
+          "qid": "DEV-096",
+          "required_count": 3,
+          "found_count": 2,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "민간임대주택에관한특별법-제45조",
+            "민간임대주택에관한특별법-제46조",
+            "민간임대주택에관한특별법-제47조"
+          ],
+          "found": [
+            "민간임대주택에관한특별법-제46조",
+            "민간임대주택에관한특별법-제47조"
+          ]
+        },
+        {
+          "qid": "DEV-099",
+          "required_count": 1,
+          "found_count": 1,
+          "channel": "general_only",
+          "original_requirement_flags": {
+            "conditional": true,
+            "alternative": false,
+            "part_focus": false
+          },
+          "required": [
+            "주택임대차보호법-제3조의6"
+          ],
+          "found": [
+            "주택임대차보호법-제3조의6"
+          ]
+        }
+      ]
+    }
+  }
+}
