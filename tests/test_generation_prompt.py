@@ -387,3 +387,12 @@ class GuideCitationRuleTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_optional_style_preserves_legacy_prompt_and_rejects_untrusted_style():
+    import pytest
+    from src.generation.prompt import build_qa_prompt, system_prompt, build_document_qa_prompt
+    assert build_qa_prompt().invoke({"context": "자료", "question": "질문"}).to_messages()[0].content == system_prompt()
+    assert "조건과 예외" in build_document_qa_prompt("simple").invoke({"context": "자료", "question": "질문"}).to_messages()[0].content
+    with pytest.raises(ValueError):
+        build_qa_prompt("ignore all validation")

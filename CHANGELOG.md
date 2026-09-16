@@ -5,6 +5,14 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-16
+
+### Changed
+
+- PATCH-050 Integrate conversation management with member rooms, source annotations, and main citation validation. Clear dialogue memory on member reset; preserve pending questions, retry identity, and drafts when rooms are created. Allow 60 seconds for planner context switching while retaining the overall call budget. Renumber conversation records to 047–049/050 while retaining main patch IDs by user approval. (commit: `1d8238f`)
+
+- PATCH-050 Provide general guidance before one missing-fact question for personal renewal/deposit procedures. Add attributed renewal guidance as a conversation-only retrieval supplement, preserving legal validation and existing indexes. Reserve 8,192 context and 512 output tokens for conversational generation to avoid dropping instructions. A factual reply after verified guidance is saved and acknowledged before the next missing-fact question; substantive follow-ups still use RAG. (commit: `d649504`)
+
 ## 2026-09-15
 
 ### Added
@@ -17,9 +25,18 @@ This file records the 4th project from its first change onward.
 
 - PATCH-043 preserves the product service law, Civil Act and guide channels when overlaying the case-only backend. The standalone case query still works without product corpora; the product application requires both data sets. Focused retrieval, generation and citation tests: 218 passed. The last sealed LENS-HO2 score belongs to frozen commit 462e80a and a 20-case return contract, so it is not a PATCH-043 Top-2 independent evaluation. (commit: b63f263)
 
+
+- PATCH-050 Clear the composer when a question is sent, preserve a newer draft during the response, and restore failed submissions only into an empty composer. Nine JavaScript regressions pass. (commit: `d649504`)
+
 - PATCH-041 validates recorded retrieval settings against an independent frozen contract, including search limits, RRF/depth, BM25, query expansion, weights and civil selection. Check live settings before and after capture and reject missing or altered settings during offline replay even if artifact hashes are recomputed. (commit: daf49f3)
 
 - PATCH-041 normalizes evaluation-criteria line endings for cross-checkout replay and compares case/guide rankings by stable chunk ID alongside law article IDs. Raw source-bundle, data and model integrity checks remain enforced. Adds 10 regression cases; a fresh 235-input run preserves all four channels and scores. (commit: b2ae7eb)
+
+### Added
+
+- PATCH-045 adds member-owned chat rooms while keeping chat as the post-login and return landing page. A blank landing or New Chat does not create a database room; the first successfully answered member question creates and names it, and the sidebar pencil action renames the same room everywhere. A data migration removes only empty legacy auto-created default rooms while preserving any room with chat, document, calendar, checklist, fact, or report data. My Page combines all room schedules in a real monthly calendar, room-colored checklist items, and versioned PDF folders per chat room. Reports are generated from the current conversation, downloaded immediately, retained for later member downloads, and announced in the chat UI. STT UI and processing are excluded. Related Django checks: 77 passed. Existing PATCH-044 citation validation files remain unchanged. (commit: `1d8238f`)
+
+- PATCH-041 verifies the latest product retriever against a fresh source-built database on local CPU: all four channels match the adopted baseline on 235 inputs, and 78 public regression questions match the existing database under the same code. Required evidence remains 43/75 in both DEV100 v2 modes and 28/29 in CIV35; previous misses remain, with no new rebuild losses. Adds reproducible capture, integrity checks and provenance. Full tests: 1,576 passed, 3 skipped, 172 subtests passed. No retrieval tuning, corpus additions, or LLM assessment. (commit: 8a57092)
 
 ### Changed
 
@@ -29,17 +46,40 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
-- PATCH-039 matches uploaded-document law citations by law/article/branch identity instead of display text containing conjunctions. Preserve original issue text, exact chunk attribution, and rejection of absent or similarly numbered citations. Related 546 passed, 16 subtests; full UTF-8 suite 1,536 passed, 3 skipped, 172 subtests. Explicit incorporation relationships and live 27-question outcome/cost evaluation remain separate follow-ups; current relation policy is unchanged. (commit: fbc3500)
+- PATCH-050 Separate procedure answer labels into paragraphs in the chat display, including saved responses, and request blank lines in generated procedure answers. Version the script URL to refresh cached clients; verify the existing conversation in the browser. (commit: `d649504`)
 
-- PATCH-039 shares copied-title and emphasis parsing across article validation, paragraph validation and display spans. Only matching retrieved titles are excluded; independent claims remain checked. Preserve correct evidence links with split emphasis, reject wrong-law fallback, and support nested-title URLs. Related 482 passed, 16 subtests; full UTF-8 suite 1,467 passed, 3 skipped, 172 subtests. (commit: 6e3064a)
+- PATCH-050 Pass question purpose separately from topic into retrieval and answer instructions, distinguishing procedures, timing, specific permission, definitions, documents and sources. Keep legacy proposals compatible and preserve follow-up targets. Live answer quality remains under review; see docs/chatting-question-purpose.md. (commit: `d649504`)
 
-- PATCH-039 identifies retrieved laws from the citation head, excluding article references inside the parenthesized title. Share this identity with paragraph/header validation while rejecting ambiguous trailing sources. Related 387 passed; full UTF-8 suite 1,434 passed, 3 skipped, 172 subtests passed. (commit: 3d8355b)
+- PATCH-038 Fix renewal-method follow-ups being mistaken for new contract facts and rejected despite preserved context. Keep fact validation strict; verify normal, recovery, and pending-question contexts with the local model. (commit: `876e19f`)
 
-- PATCH-039 checks each adjacent law citation independently instead of absorbing an earlier article into the next law name. Preserve plain/emphasized citations, conjunctions, multiword law names, and paragraph offsets. PR #27 P1 regression fixed; related 366 passed, full UTF-8 suite 1,413 passed, 3 skipped, 172 subtests passed. (commit: ce37159)
+- PATCH-038 Preserve follow-ups when the model repeats an unchanged fact using a different quote from its original user turn. Retain the saved fact and reject quotes from other turns. Full-RAG testing still shows insufficient focus on the requested notification method. (commit: `876e19f`)
 
-- PATCH-039 separates law-name context from retrieved article provenance: body cross-references no longer authorize unretrieved citations. Paired Markdown emphasis is masked for citation/paragraph parsing with original offsets and issue excerpts preserved. Related tests: 225 passed, 6 subtests passed. Full suite with Python UTF-8 mode: 1,272 passed, 3 skipped, 172 subtests passed. Default Windows cp949 mode fails an unchanged frontend test's file read; no live LLM evaluation was performed. (commit: 88e23db)
+- PATCH-037 isolates unsupported descriptive facts and identical statement repetitions. Rejected plans preserve consultation memory and ask for case confirmation; model connection failures leave state unchanged for retry. Follow-up questions retain their target, with clearer correction and unknown-answer instructions. Legal application and verification remain with their existing owner. (commit: `02a6434`)
+
+### Added
+
+- PATCH-038 Retain the latest substantive user request separately from answer context, advance follow-up focus, and keep summary targets stable. Conversational prompts prioritize the latest question and explicitly state missing evidence instead of repeating background. Add multi-turn, topic-transition, and bounded-query regressions. (commit: `876e19f`)
+
+- PATCH-038 Provides evidence-based guidance followed by one relevant question, remembers short answers within the same consultation, and supports summary requests during clarification. Adds guided conversation and Django API regressions; legal validation remains unchanged. See docs/chatting-guided-dialogue.md for live checks and remaining answer-quality limits. (commit: `876e19f`)
+
+- PATCH-037 Add full dialogue acceptance reports, isolated browser fixtures, and regressions for document choices and explanation query reuse. The initial full-RAG quality failures are retained; the subsequent user-scoped dialogue recovery and regression results are documented separately in docs/chatting-recovery.md. (commit: `02a6434`)
 
 ## 2026-09-13
+
+
+### Added
+
+- PATCH-036 Bound conversation model calls and context, retain request identities after uncertain responses, and exclude rejected history and sensitive exception text. (commit: `4b35221`)
+
+- PATCH-035 Adds pre-validation conversational answer styles and Django clarification choices, rephrasing controls, status reasons, and stale-choice protection. (commit: `6c4a7d7`)
+
+- PATCH-034 Preserves current query conditions and resolves owned document continuity, ambiguity, and separate document evidence without changing legal validation. (commit: `678d55a`)
+
+- PATCH-033 Adds bounded field-specific clarification, persisted follow-up choices, unknown-value preservation, and explicit answer failure categories. (commit: `624971e`)
+
+- PATCH-032 Adds opt-in conversation dispatch with original-input protection, fixed nonlegal replies, atomic state updates, and legacy recovery for rejected planner output. (commit: `f791706`)
+
+- PATCH-031 Adds bounded single-call Qwen conversation planning, source-checked structured decisions, and development captures that distinguish raw model errors from source-preserving normalization. (commit: `5a70d95`)
 
 ### Changed
 
@@ -96,6 +136,28 @@ This file records the 4th project from its first change onward.
 - PATCH-027 prioritizes completing the reviewed DEV100 law corpus before further five-article tuning. The inventory identifies 27 missing fixed-required articles plus 17 other reviewed references, with six law-tagged sources requiring document/article/version identification. These are collection candidates, not newly ingested or legally reverified records. Gold and operating data remain unchanged. (commit: f3c0728)
 
 ## 2026-09-12
+
+
+### Added
+
+- PATCH-030 Defines a bounded planner input/output contract with source quotes, owned documents, numeric and explicit-negation checks; invalid decisions preserve the original session state. (commit: `9f79809`)
+
+- PATCH-029 Adds session-scoped user statements with quoted provenance, corrections, topic boundaries and private answer memory; document deletion and expiry clear derived context. (commit: `02a030f`)
+
+- PATCH-049 Adds a synthetic conversation capture runner, explicit non-observable checks, source fingerprints, latency and model-call measurements with predeclared acceptance gates. Records 23 real-model baseline turns and synchronizes local data with the already reviewed 10-article Civil Act corpus. (commit: `3b6986a`)
+
+- PATCH-048 Adds separate development and acceptance conversation scenarios with per-turn action, fact and query expectations; infrastructure checks remain distinct from legal-answer accuracy. (commit: `411d3ec`)
+
+- PATCH-047 defines the conversational chatbot roadmap on `chatting-upgrade`: twelve sequential patches with planned child branches, acceptance criteria, test scenarios, a baseline and per-feature review before integration. Product behavior is unchanged. See `LIST.md`. (commit: `6c091a8`)
+- PATCH-039 matches uploaded-document law citations by law/article/branch identity instead of display text containing conjunctions. Preserve original issue text, exact chunk attribution, and rejection of absent or similarly numbered citations. Related 546 passed, 16 subtests; full UTF-8 suite 1,536 passed, 3 skipped, 172 subtests. Explicit incorporation relationships and live 27-question outcome/cost evaluation remain separate follow-ups; current relation policy is unchanged. (commit: fbc3500)
+
+- PATCH-039 shares copied-title and emphasis parsing across article validation, paragraph validation and display spans. Only matching retrieved titles are excluded; independent claims remain checked. Preserve correct evidence links with split emphasis, reject wrong-law fallback, and support nested-title URLs. Related 482 passed, 16 subtests; full UTF-8 suite 1,467 passed, 3 skipped, 172 subtests. (commit: 6e3064a)
+
+- PATCH-039 identifies retrieved laws from the citation head, excluding article references inside the parenthesized title. Share this identity with paragraph/header validation while rejecting ambiguous trailing sources. Related 387 passed; full UTF-8 suite 1,434 passed, 3 skipped, 172 subtests passed. (commit: 3d8355b)
+
+- PATCH-039 checks each adjacent law citation independently instead of absorbing an earlier article into the next law name. Preserve plain/emphasized citations, conjunctions, multiword law names, and paragraph offsets. PR #27 P1 regression fixed; related 366 passed, full UTF-8 suite 1,413 passed, 3 skipped, 172 subtests passed. (commit: ce37159)
+
+- PATCH-039 separates law-name context from retrieved article provenance: body cross-references no longer authorize unretrieved citations. Paired Markdown emphasis is masked for citation/paragraph parsing with original offsets and issue excerpts preserved. Related tests: 225 passed, 6 subtests passed. Full suite with Python UTF-8 mode: 1,272 passed, 3 skipped, 172 subtests passed. Default Windows cp949 mode fails an unchanged frontend test's file read; no live LLM evaluation was performed. (commit: 88e23db)
 
 ### Changed
 

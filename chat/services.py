@@ -4,6 +4,7 @@ from functools import lru_cache
 from hashlib import sha256
 import time
 import uuid
+import re
 
 from src.document_check.privacy import mask_sensitive_text
 from src.security.secret_filter import redact_secrets
@@ -22,6 +23,7 @@ from src.generation.glossary import find_glossary_spans
 from src.generation.simplify import simplify_answer
 from src.generation.source_links import citation_url
 from src.retrieval.readiness import BackgroundServiceLoader
+from .dialogue_state import empty_dialogue
 
 LABELS = {"registry": "등기사항증명서", "contract": "임대차계약서", "unknown": "종류 확인 필요"}
 
@@ -36,19 +38,31 @@ def retrieval_loader():
 
 
 def initial_state():
-    return {"messages": [], "documents": [], "completed_requests": []}
+    return {"messages": [], "documents": [], "completed_requests": [], "dialogue": empty_dialogue()}
 
 
 def public_state(conversation):
     state = conversation.state
+    from django.conf import settings
+    from .dialogue_state import ensure_dialogue
+    from copy import deepcopy
+    dialogue = ensure_dialogue(deepcopy(state))
+    pending = dialogue["pending"]
+    conversation_view = {
+        "enabled": bool(getattr(settings, "CHAT_CONVERSATION_ENABLED", False)),
+        "active_document_id": dialogue["active_document_id"],
+        "can_rephrase": bool(dialogue["last_answer"]),
+        "pending": ({key: pending[key] for key in ("message_id", "question", "choices", "mode") if key in pending} if pending else None),
+    }
     return {
+        "conversation": conversation_view,
         "conversation_id": str(conversation.id),
         "messages": [{k: v for k, v in m.items() if k != "context_content"} for m in state.get("messages", [])],
         "documents": [{k: v for k, v in d.items() if k not in {"context", "checksum"}} for d in state.get("documents", [])],
     }
 
 
-def add_document(state, filename, data, session_id):
+def add_document(state, filename, data, session_id, *, case=None, content_type=""):
     checksum = sha256(data).hexdigest()
     if any(d["checksum"] == checksum for d in state["documents"]):
         return "이미 추가된 문서입니다."
@@ -63,13 +77,21 @@ def add_document(state, filename, data, session_id):
     )
     if context.is_empty:
         raise ValueError("읽을 수 있는 문구가 없습니다. 더 선명한 파일을 첨부해 주세요.")
-    state["documents"].append({
+    document = {
         "document_id": document_id, "filename": filename,
         "kind": classification.kind, "label": LABELS[classification.kind],
         "confidence": classification.confidence, "page_count": classified.extraction.page_count,
         "checksum": checksum, "context": asdict(context),
         "analysis": classified.analysis.to_public_dict(),
-    })
+    }
+    state["documents"].append(document)
+    if case is not None:
+        from cases.services.attachments import record_document
+        attachment = record_document(
+            case, data=data, filename=filename, content_type=content_type,
+            document=document, extracted_text=classified.extraction.text,
+        )
+        document["attachment_id"] = str(attachment.pk)
     return "문서 분석을 완료했습니다."
 
 
@@ -137,7 +159,7 @@ def simplify_message(state, message_id):
     return message
 
 
-def respond(state, question, document_id=None):
+def _respond_legacy(state, question, document_id=None):
     started = time.perf_counter()
     documents = state["documents"]
     kinds = tuple(dict.fromkeys(d["kind"] for d in documents))
@@ -155,8 +177,18 @@ def respond(state, question, document_id=None):
         resolved = resolve_question(question, state["messages"])
         answer = graph.answer_question(resolved.standalone, service=retrieval_loader().result())
         used_history = resolved.used_history
+    message = answer_message(answer, started, used_history)
+    append_exchange(state, question, message)
+    return message
+
+
+def answer_message(answer, started, used_history=False):
     # raw_text is never a fallback for an empty or rejected answer.
     content = safe_text((answer.text or "").strip()) or "답변 본문을 표시하지 못했습니다. 다시 질문해 주세요."
+    if all(label in content for label in ("언제:", "어떻게:", "확인할 사항:")):
+        # Compute annotation offsets only after inserting display whitespace.
+        content = re.sub(r"\s*(\*\*)?(언제|어떻게|확인할 사항):",
+                         lambda m: ("\n\n" if m.start() else "") + (m[1] or "") + m[2] + ":", content)
     law_sources = answer.sources()
     for item in law_sources:
         item["url"] = item.get("url") or citation_url(item["label"], item["doc_type"])
@@ -168,7 +200,38 @@ def respond(state, question, document_id=None):
         "used_history": used_history, "elapsed_seconds": round(time.perf_counter() - started, 1),
         **display_extras(answer, content, law_sources),
     }
+    return message
+
+
+def append_exchange(state, question, message):
     state["messages"].extend([
         {"id": uuid.uuid4().hex, "role": "user", "content": question}, message,
     ])
-    return message
+
+
+def respond(state, question, document_id=None):
+    from django.conf import settings
+    if not getattr(settings, "CHAT_CONVERSATION_ENABLED", False):
+        return _respond_legacy(state, question, document_id)
+    from .dialogue_router import respond_conversational
+    return respond_conversational(state, question, document_id, legacy=_respond_legacy)
+
+
+
+def sync_persistent_messages(conversation):
+    """Mirror public conversation messages into normalized rows for case history."""
+    if conversation.case_id is None:
+        return
+    from .models import Message
+    for item in conversation.state.get("messages", []):
+        public_id = item.get("id")
+        if not public_id:
+            continue
+        Message.objects.update_or_create(
+            conversation=conversation, public_id=public_id,
+            defaults={
+                "role": item.get("role", ""), "content": item.get("content", ""),
+                "status": item.get("status", ""), "sources": item.get("sources", []),
+                "metadata": {k: v for k, v in item.items() if k not in {"id", "role", "content", "status", "sources", "context_content"}},
+            },
+        )

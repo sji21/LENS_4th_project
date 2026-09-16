@@ -1,0 +1,85 @@
+{
+  "mode": "real_django_full_rag",
+  "http_status": 200,
+  "seconds": 47.36,
+  "messages": [
+    {
+      "id": "b7edb21e127545bbb29b3f7de8e149a7",
+      "role": "user",
+      "content": "전세 계약이 끝나가는데 보증금을 아직 돌려받지 못했어"
+    },
+    {
+      "id": "78fc507469d640e6993aae8c7721c69b",
+      "role": "assistant",
+      "status": "answered",
+      "content": "주택임대차보호법 제4조에 따르면, 전세계약의 임대차기간이 2년 미만으로 정해진 경우는 2년으로 간주하며, 계약 종료 후에도 보증금 반환까지는 임대차관계가 존속합니다. 따라서 보증금을 아직 돌려받지 못한 경우, 계약 종료 시까지 임대차관계가 이어지므로 반환을 요청할 수 있습니다. 다만, 보증금 반환 여부는 계약서에 명시된 조건이나 임대인의 의무에 따라 달라질 수 있으므로, 계약서 내용을 확인하는 것이 중요합니다. 또한, 민법 제627조에 따라 임차물의 일부 멸실 시 감액청구나 계약 해지 권리가 있을 수 있으므로, 해당 사유가 있는 경우에도 관련 조항을 검토해야 합니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+      "sources": [
+        {
+          "label": "주택임대차보호법 제12조(미등기 전세에의 준용)",
+          "url": "https://www.law.go.kr/법령/주택임대차보호법/제12조",
+          "doc_type": "law",
+          "chunk_id": "law-주택임대차보호법-20260102#제12조#0"
+        },
+        {
+          "label": "주택임대차보호법 제4조(임대차기간 등)",
+          "url": "https://www.law.go.kr/법령/주택임대차보호법/제4조",
+          "doc_type": "law",
+          "chunk_id": "law-주택임대차보호법-20260102#제4조#0"
+        },
+        {
+          "label": "주택임대차보호법 제10조의2(초과 차임 등의 반환청구)",
+          "url": "https://www.law.go.kr/법령/주택임대차보호법/제10조의2",
+          "doc_type": "law",
+          "chunk_id": "law-주택임대차보호법-20260102#제10조의2#0"
+        },
+        {
+          "label": "민법 제623조(임대인의 의무)",
+          "url": "https://www.law.go.kr/법령/민법/제623조",
+          "doc_type": "law",
+          "chunk_id": "law-민법-20260317#제623조#0"
+        },
+        {
+          "label": "민법 제627조(일부멸실 등과 감액청구, 해지권)",
+          "url": "https://www.law.go.kr/법령/민법/제627조",
+          "doc_type": "law",
+          "chunk_id": "law-민법-20260317#제627조#0"
+        },
+        {
+          "label": "민법 제626조(임차인의 상환청구권)",
+          "url": "https://www.law.go.kr/법령/민법/제626조",
+          "doc_type": "law",
+          "chunk_id": "law-민법-20260317#제626조#0"
+        }
+      ],
+      "used_history": false,
+      "elapsed_seconds": 47.3,
+      "reason": "answered",
+      "followup_question": "계약 종료일을 알려주시겠어요?",
+      "choices": [
+        {
+          "label": "모르겠어요",
+          "message": "모르겠어요"
+        }
+      ],
+      "action": "rag",
+      "intent": "question"
+    }
+  ],
+  "conversation": {
+    "enabled": true,
+    "active_document_id": null,
+    "can_rephrase": true,
+    "pending": {
+      "message_id": "78fc507469d640e6993aae8c7721c69b",
+      "question": "계약 종료일을 알려주시겠어요?",
+      "choices": [
+        {
+          "label": "모르겠어요",
+          "message": "모르겠어요"
+        }
+      ],
+      "mode": "after_answer"
+    }
+  },
+  "error": null
+}

@@ -180,7 +180,7 @@ def reset_default_service() -> None:
 
 # ── LCEL 체인 ─────────────────────────────────────────────────
 
-def build_qa_chain(llm=None) -> Runnable:
+def build_qa_chain(llm=None, *, response_style=None) -> Runnable:
     """prompt | llm | 문자열 파싱 | 후처리(사고 과정 제거 · 잘린 문장 다듬기).
 
     `clean_output` 을 체인 안에 두는 이유는, 체인을 직접 가져다 쓰는 쪽
@@ -189,19 +189,19 @@ def build_qa_chain(llm=None) -> Runnable:
     """
     llm = llm if llm is not None else get_llm()
     return (
-        prompt_module.build_qa_prompt()
+        (prompt_module.build_qa_prompt() if response_style is None else prompt_module.build_qa_prompt(response_style))
         | llm
         | StrOutputParser()
         | RunnableLambda(clean_output)
     )
 
 
-def build_document_qa_chain(llm=None) -> Runnable:
+def build_document_qa_chain(llm=None, *, response_style=None) -> Runnable:
     """업로드 문서만 사용하는 질문을 위한 짧은 생성 체인."""
 
     llm = llm if llm is not None else get_llm()
     return (
-        prompt_module.build_document_qa_prompt()
+        (prompt_module.build_document_qa_prompt() if response_style is None else prompt_module.build_document_qa_prompt(response_style))
         | llm
         | StrOutputParser()
         | RunnableLambda(clean_output)
@@ -591,7 +591,7 @@ def answer_question(
             }
         )
     except Exception as error:
-        logger.warning("LLM 호출이 실패했습니다: %s", error, exc_info=True)
+        logger.warning("LLM 호출이 실패했습니다: %s", type(error).__name__)
         return Answer(
             question=safe_question,
             status="abstained",

@@ -506,6 +506,13 @@ python manage.py runserver 127.0.0.1:8000 --noreload
 회원가입 담당자의 연결 지점, API, 개인정보 보관·정리, 실행 제약은
 [`docs/django-web.md`](docs/django-web.md)를 참고하세요. 회원가입 화면은 아직 구현하지 않았습니다.
 
+### 대화형 챗봇 실험 경로
+
+`CHAT_CONVERSATION_ENABLED=true`로 대화 관리 계층을 활성화할 수 있습니다. 기본값은
+`false`입니다. 초기 전체 수용평가 실패 뒤 법률 적용 이전의 대화 계층을 보정하고 [35턴 공개 회귀 검사](docs/chatting-recovery.md)를 완료했습니다. 전체 법률 답변의 품질·지연 승인은 별도이며, 구조·실행·API 연결 지점·기존 경로 복귀 방법은
+[`docs/chatting-handoff.md`](docs/chatting-handoff.md)에 정리했습니다. 실제 모델 평가와
+고정 응답을 사용하는 UI 검증은 구분하며 검증 통과 전 main 반영을 권장하지 않습니다.
+
 ## 7. 테스트
 
 ### 전체 회귀 테스트

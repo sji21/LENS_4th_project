@@ -213,11 +213,45 @@ def test_foreign_document_id_is_rejected(browser, extracted_document, model_call
 
 
 def test_delete_document_clears_followup_context(browser, extracted_document, model_calls):
+    from chat.dialogue_state import apply_user_update
     doc_id = attach(browser).json()["documents"][0]["document_id"]
     post(browser, "/api/chat/", {"message": "질문"})
+    conversation = Conversation.objects.get()
+    apply_user_update(conversation.state, user="월세 계약서예요.", updates={"contract_type": {"value": "월세", "evidence": "월세"}}, document_id=doc_id)
+    conversation.state["dialogue"]["pending"] = {"field": "contract_ended", "question": "계약은 끝났나요?", "attempts": 1}
+    conversation.save(update_fields=["state"])
     response = post(browser, f"/api/documents/{doc_id}/delete/")
     assert response.status_code == 200
     assert response.json()["documents"] == [] and response.json()["messages"] == []
+    assert Conversation.objects.get().state["dialogue"] == services.empty_dialogue()
+
+
+def test_dialogue_roundtrips_in_django_but_internal_memory_is_not_public(browser):
+    from chat.dialogue_state import apply_user_update, ensure_dialogue
+    conversation = Conversation.objects.get()
+    apply_user_update(conversation.state, user="월세 보증금을 못 받았어요.", topic="보증금반환", updates={"contract_type": {"value": "월세", "evidence": "월세"}})
+    conversation.state["dialogue"]["pending"] = {"field": "contract_ended", "question": "계약은 끝났나요?", "attempts": 1}
+    conversation.save(update_fields=["state"])
+    restored = Conversation.objects.get().state
+    assert ensure_dialogue(restored)["facts"]["contract_type"]["value"] == "월세"
+    assert restored["dialogue"]["pending"]["field"] == "contract_ended"
+    public = current(browser)
+    assert "dialogue" not in public
+    assert "source_turn" not in json.dumps(public)
+    assert browser.get("/").status_code == 200
+    assert Conversation.objects.get().state["dialogue"] == restored["dialogue"]
+
+
+def test_expired_conversation_does_not_restore_user_statements(browser):
+    from chat.dialogue_state import apply_user_update
+    conversation = Conversation.objects.get()
+    apply_user_update(conversation.state, user="월세예요.", updates={"contract_type": {"value": "월세", "evidence": "월세"}})
+    conversation.expires_at = timezone.now() - timedelta(seconds=1)
+    conversation.save(update_fields=["state", "expires_at"])
+    browser.get("/")
+    new = Conversation.objects.get()
+    assert new.pk != conversation.pk
+    assert new.state["dialogue"] == services.empty_dialogue()
 
 
 def test_reset_keeps_auth_session_and_erases_chat(browser, extracted_document, model_calls):

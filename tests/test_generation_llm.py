@@ -471,6 +471,132 @@ class ExtraBodyOverrideTests(unittest.TestCase):
         self.assertEqual(7, body["max_tokens"])
 
 
+class StructuredOutputTests(unittest.TestCase):
+    """Native format placement and build-time validation without HTTP requests."""
+
+    def capture_payload(self, **overrides):
+        import json
+        from io import BytesIO
+        from unittest import mock
+
+        captured = []
+
+        def response(request, timeout):
+            captured.append(json.loads(request.data))
+            return BytesIO(b'{"message":{"content":"{}"},"done":true}')
+
+        local = llm_module.LOCAL_OLLAMA_BASE_URL
+        self.addCleanup(llm_module._ROUTE_CACHE.clear)
+        with mock.patch.object(llm_module, "_select_ollama_base", return_value=local), mock.patch.object(
+            llm_module.urllib.request, "urlopen", side_effect=response
+        ):
+            model = llm_module.get_llm(**overrides)
+            model.invoke("Return a JSON object")
+        self.assertEqual(1, len(captured))
+        return model, captured[0]
+
+    def test_json_format_is_top_level_and_not_an_option(self):
+        model, payload = self.capture_payload(extra_body={"format": "json"})
+        self.assertEqual("json", payload["format"])
+        self.assertNotIn("format", payload["options"])
+        self.assertEqual("json", model.extra_body["format"])
+
+    def test_schema_format_preserves_existing_generation_overrides(self):
+        schema = {"type": "object", "properties": {"intent": {"type": "string"}}, "required": ["intent"], "additionalProperties": False}
+        model, payload = self.capture_payload(
+            temperature=0.1, max_tokens=600, timeout=42, max_retries=0,
+            extra_body={"format": schema, "seed": 7, "num_ctx": 2048},
+        )
+        self.assertEqual(schema, payload["format"])
+        self.assertNotIn("format", payload["options"])
+        self.assertEqual({"temperature": 0.1, "num_predict": 600, "seed": 7, "repeat_penalty": llm_module.LLM_REPEAT_PENALTY, "num_ctx": 2048}, payload["options"])
+        self.assertEqual(llm_module.THINK_OFF, not payload["think"])
+        self.assertEqual(42, model.timeout)
+        self.assertTrue(model.allow_route_fallback)
+
+    def test_default_payload_has_no_format_field(self):
+        model, payload = self.capture_payload()
+        self.assertNotIn("format", payload)
+        self.assertNotIn("format", payload["options"])
+        self.assertNotIn("format", model.extra_body)
+        self.assertEqual(llm_module.LLM_MAX_TOKENS, payload["options"]["num_predict"])
+
+    def test_schema_is_copied_at_client_creation(self):
+        schema = {"type": "object", "properties": {"intent": {"enum": ["question"]}}}
+        model = llm_module.get_llm(extra_body={"format": schema})
+        schema["properties"]["intent"]["enum"].append("untrusted")
+        self.assertEqual(["question"], model.extra_body["format"]["properties"]["intent"]["enum"])
+
+    def test_invalid_format_is_rejected_before_model_or_network_use(self):
+        from unittest import mock
+
+        invalid = (None, 123, True, [], "", "xml", {"default": object()}, {"default": float("nan")})
+        with mock.patch.object(llm_module, "_select_ollama_base") as route, mock.patch.object(llm_module.urllib.request, "urlopen") as request:
+            for output_format in invalid:
+                with self.subTest(output_format=output_format), self.assertRaises((TypeError, ValueError)):
+                    llm_module.get_llm(extra_body={"format": output_format})
+        route.assert_not_called()
+        request.assert_not_called()
+
+    def test_circular_schema_is_rejected_during_client_creation(self):
+        schema = {"type": "object"}
+        schema["properties"] = schema
+        with self.assertRaises(ValueError):
+            llm_module.get_llm(extra_body={"format": schema})
+
+
+class RouteFallbackControlTests(unittest.TestCase):
+    def invoke_after_remote_failure(self, **overrides):
+        from io import BytesIO
+        from unittest import mock
+
+        remote = "https://selected-model.example"
+        local = llm_module.LOCAL_OLLAMA_BASE_URL
+        requests = []
+
+        def response(request, timeout):
+            requests.append(request.full_url)
+            if request.full_url.startswith(remote):
+                raise OSError("synthetic selected endpoint failure")
+            return BytesIO(b'{"message":{"content":"fallback response"},"done":true}')
+
+        self.addCleanup(llm_module._ROUTE_CACHE.clear)
+        with mock.patch.object(llm_module, "LLM_BASE_URL", remote + "/v1"), mock.patch.object(
+            llm_module, "_select_ollama_base", return_value=remote
+        ), mock.patch.object(llm_module.urllib.request, "urlopen", side_effect=response):
+            model = llm_module.get_llm(**overrides)
+            if overrides.get("allow_route_fallback") is False:
+                with self.assertRaises(RuntimeError):
+                    model.invoke("test")
+                result = None
+            else:
+                result = model.invoke("test")
+        return requests, result
+
+    def test_disabled_fallback_makes_only_one_generation_attempt(self):
+        requests, result = self.invoke_after_remote_failure(allow_route_fallback=False)
+        self.assertEqual(["https://selected-model.example/api/chat"], requests)
+        self.assertIsNone(result)
+
+    def test_default_still_retries_the_local_model(self):
+        requests, result = self.invoke_after_remote_failure()
+        self.assertEqual([
+            "https://selected-model.example/api/chat",
+            llm_module.LOCAL_OLLAMA_BASE_URL + "/api/chat",
+        ], requests)
+        self.assertEqual("fallback response", result.content)
+
+    def test_explicit_true_keeps_existing_route_fallback(self):
+        requests, result = self.invoke_after_remote_failure(allow_route_fallback=True)
+        self.assertEqual(2, len(requests))
+        self.assertEqual("fallback response", result.content)
+
+    def test_fallback_flag_requires_a_boolean(self):
+        for flag in (None, 0, 1, "false", []):
+            with self.subTest(flag=flag), self.assertRaises(TypeError):
+                llm_module.get_llm(allow_route_fallback=flag)
+
+
 class EnvNumberTests(unittest.TestCase):
     """잘못된 숫자 환경 변수가 모듈 import 를 깨뜨리지 않는가.
 

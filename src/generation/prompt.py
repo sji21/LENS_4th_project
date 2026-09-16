@@ -185,7 +185,47 @@ def human_prompt() -> str:
     return HUMAN_QA_NO_THINK if llm_module.THINK_OFF else HUMAN_QA
 
 
-def build_qa_prompt() -> ChatPromptTemplate:
+STYLE_GUIDANCE = {
+    "purpose_procedure": "사용자는 실행 절차를 묻습니다. 서론이나 제도 소개를 생략하고 '언제: …', '어떻게: …', '확인할 사항: …' 순서로 각각 한 문장씩 완결하세요. 각 항목은 새 문단에서 시작하고 항목 사이에 빈 줄을 하나 넣으세요. 여러 항목을 한 줄에 이어 붙이지 마세요. 첫 문장에 사용한 출처명을 적으세요. 시기·전달 방법·실행 순서는 자료가 직접 뒷받침하는 내용만 쓰고, 특정 방법이 자료에 없으면 '제공된 자료로는 전달 방법을 확인할 수 없습니다'처럼 한계를 적으세요. 조건을 충족했다고 추정하거나 항목을 채우려고 절차를 만들지 마세요.",
+    "purpose_timing": "사용자는 시기나 기한을 묻습니다. 근거로 확인되는 시점과 적용 조건을 먼저 답하세요. 계약 종료일처럼 계산에 필요한 사용자 정보가 없으면 날짜를 임의로 계산하지 마세요.",
+    "purpose_eligibility": "사용자가 지목한 구체적인 행동·방법의 가능 여부에 먼저 답하세요. 일반 권리가 있다는 이유만으로 특정 방법이 유효하다고 추론하지 마세요. 근거가 부족하면 그 구체적인 방법을 확인하기 어렵다고 답하세요.",
+    "purpose_definition": "질문한 개념의 의미나 차이를 먼저 쉬운 말로 설명하세요. 요청하지 않은 절차나 개인 상담을 길게 덧붙이지 마세요.",
+    "purpose_documents": "질문한 상황에서 필요한 서류·준비 항목을 근거에 맞춰 목록으로 답하세요. 각 서류의 용도와 확인 가능한 발급처만 설명하고 없는 목록을 만들지 마세요.",
+    "purpose_source": "직전 설명을 뒷받침하는 출처와 해당 근거를 먼저 제시하세요. 관련 주제의 조문을 무관하게 나열하지 마세요.",
+    "consult": "상담 상황을 사용자 진술에 맞게 한 문장으로 짚고, 근거로 뒷받침되는 현재 단계의 우선 대응을 2~3가지 순서로 안내하세요. 이미 확인된 사실을 다시 묻거나 아직 확인되지 않은 조건을 확정하지 마세요. 계약이 끝나가는 것과 이미 끝난 것을 구분하고, 나중에 조건이 충족되어야 가능한 절차는 현재 할 일과 구분하세요. 이른 결론이나 관련 없는 조문으로 빈칸을 채우지 마세요. 근거가 부족한 부분은 한계를 명확히 밝히세요. 안내 뒤 필요한 확인 질문은 서버가 별도로 표시합니다.",
+    "standard": "현재 질문에 바로 답하고 짧은 문단과 자연스러운 존댓말을 사용하세요. 필요한 조건과 근거를 함께 설명하세요.",
+    "simple": "쉬운 말과 짧은 문장으로 설명하세요. 어려운 법률 용어는 필요한 경우에만 풀어 쓰고 조건과 예외를 생략하지 마세요.",
+    "brief": "핵심 답과 꼭 필요한 조건, 근거를 짧게 요약하세요. 단순화하려고 예외나 불확실성을 삭제하지 마세요.",
+}
+
+
+def style_guidance(style=None):
+    if style is None:
+        return ""
+    if style not in STYLE_GUIDANCE:
+        raise ValueError("Unsupported answer style")
+    return "\n\n앞의 근거·인용·안전 규칙을 그대로 지키면서 표현하세요. 사용자 진술은 확인된 법률 사실이 아닙니다. " + STYLE_GUIDANCE[style] + " 새 확인 질문을 임의로 덧붙이지 마세요."
+
+
+def focus_guidance(response_style):
+    if response_style is None:
+        return ""
+    return (
+        "\n\n[후속 질문 답변 원칙]\n"
+        "마지막 '사용자 입력'이 현재 답해야 할 질문입니다. "
+        "'직전 답변 질문'과 계약 사실은 생략된 대상을 이해하기 위한 배경이며 다시 답할 질문이 아닙니다. "
+        "첫 문장에서 현재 질문의 가능 여부·방법·시점 등 물어본 항목에 직접 답하세요. "
+        "사용자가 달성하려는 결과와 행동 주체를 유지하세요. 예를 들어 세입자가 계속 살기 위한 갱신 방법을 물으면 "
+        "세입자의 갱신 요청 방법을 답해야 하며 집주인의 갱신 거절 절차나 자동 갱신 설명으로 대신하지 마세요. "
+        "현재 질문이 요약·쉬운 설명 요청이면 직전 질문에 대한 설명을 그 방식으로 정리하세요. "
+        "참고 자료가 현재 질문의 구체적인 항목을 뒷받침하지 않으면 첫 문장에서 "
+        "'현재 찾은 자료로는 [사용자가 물은 항목]까지 확인하기 어렵습니다'라고 한계를 명시하세요. "
+        "배경 주제의 일반론만 반복하거나, 그 일반론에서 구체적인 허용 여부를 추론하지 마세요. "
+        "답변을 마치기 전에 현재 질문에 직접 답했거나 해당 근거의 부족을 명시했는지 확인하세요."
+    )
+
+
+def build_qa_prompt(response_style=None) -> ChatPromptTemplate:
     """근거 기반 Q&A 프롬프트.
 
     입력 변수는 `context` 와 `question` 두 개다. context 는
@@ -193,20 +233,31 @@ def build_qa_prompt() -> ChatPromptTemplate:
     """
     return ChatPromptTemplate.from_messages(
         [
-            ("system", system_prompt()),
-            ("human", human_prompt()),
+            ("system", system_prompt() + style_guidance(response_style)),
+            ("human", human_prompt() + focus_guidance(response_style) + (
+                "\n\n[이번 답변 형식]\n" + STYLE_GUIDANCE[response_style]
+                if response_style and response_style.startswith("purpose_") else ""
+            ) + (
+                "\n\n상담 응답 형식: 먼저 사용자 상황을 한 문장으로 짚으세요. "
+                "그다음 '지금 확인할 일' 아래에 현재 할 수 있는 확인·대응을 번호 목록으로 쓰세요. "
+                "각 항목에는 무엇을 확인할지와 참고 자료가 뒷받침하는 이유를 함께 쓰세요. "
+                "실행 조건이 확인되지 않은 절차는 조건부로만 설명하세요. "
+                "자료가 부족하면 그 한계를 적고, 관련 없는 조문이나 대응을 채우지 마세요. "
+                "후속 확인 질문은 화면에서 별도로 제공하므로 작성하지 마세요."
+                if response_style == "consult" else ""
+            )),
         ]
     )
 
 
-def build_document_qa_prompt() -> ChatPromptTemplate:
+def build_document_qa_prompt(response_style=None) -> ChatPromptTemplate:
     """공식 검색을 섞지 않는 업로드 문서 사실·요약 전용 프롬프트."""
 
     human = HUMAN_DOCUMENT_QA_NO_THINK if llm_module.THINK_OFF else HUMAN_DOCUMENT_QA
     return ChatPromptTemplate.from_messages(
         [
-            ("system", SYSTEM_DOCUMENT_QA),
-            ("human", human),
+            ("system", SYSTEM_DOCUMENT_QA + style_guidance(response_style)),
+            ("human", human + focus_guidance(response_style)),
         ]
     )
 
