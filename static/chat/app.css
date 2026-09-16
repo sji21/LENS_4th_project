@@ -660,7 +660,9 @@ button:focus-visible,a:focus-visible,select:focus-visible {
 .composer-report-row {
   display:flex;
   justify-content:flex-end;
-  margin:0 0 8px;
+  width:100%;
+  max-width:800px;
+  margin:0 auto 8px;
 }
 
 .composer-report-row form {
