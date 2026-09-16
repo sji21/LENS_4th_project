@@ -293,7 +293,8 @@ SQLite·Chroma·생성 청크는 Git에 올리지 않으며 각 실행 환경에
 
 평가 절차와 한계는 [`docs/eval-audit.md`](docs/eval-audit.md), 최초 Holdout 절차는
 [`docs/eval-holdout.md`](docs/eval-holdout.md), 검색 재현 방법은
-[`docs/retrieval-handoff.md`](docs/retrieval-handoff.md)를 참고합니다.
+[`docs/retrieval-handoff.md`](docs/retrieval-handoff.md)를 참고합니다. PATCH-043 판례 전용 후보의 로컬 실행 코드와 필요한 SQLite·Chroma·모델 자료는
+[`docs/patch043-local-retriever.md`](docs/patch043-local-retriever.md)에 구분해 기록했습니다.
 
 ## 6. 설치부터 실행까지
 

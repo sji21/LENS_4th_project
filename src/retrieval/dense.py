@@ -67,11 +67,13 @@ class SentenceTransformerEmbedding:
         device: str | None = None,
         batch: int = 16,
         prefer_local_cache: bool = True,
+        revision: str | None = None,
     ) -> None:
         from sentence_transformers import SentenceTransformer
 
         self.name = model_id
         self.batch = batch
+        revision_args = {"revision": revision} if revision else {}
         if prefer_local_cache:
             try:
                 # 캐시가 있는데 네트워크가 막힌 환경에서 Hugging Face의 파일별
@@ -80,6 +82,7 @@ class SentenceTransformerEmbedding:
                     model_id,
                     device=device,
                     local_files_only=True,
+                    **revision_args,
                 )
                 return
             except OSError:
@@ -92,6 +95,7 @@ class SentenceTransformerEmbedding:
             model_id,
             device=device,
             local_files_only=False,
+            **revision_args,
         )
 
     def embed(self, texts: Sequence[str]) -> list[list[float]]:

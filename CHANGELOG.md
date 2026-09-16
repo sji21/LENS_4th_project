@@ -15,8 +15,16 @@ This file records the 4th project from its first change onward.
 
 ## 2026-09-15
 
+### Added
+
+- PATCH-043 adds a versioned case-only retrieval candidate with pinned DB, chunks, index and model checks; DEV policy comparison, application Top-2 evidence, and a gate against reusing exposed evaluation questions. A team handoff explains local entrypoints and required SQLite, Chroma, chunks and model files. On the latest origin/main-based Windows checkout, the full suite passes 1,777 tests with 3 skips and one pre-existing PATCH-024 frozen-report test deselected. That test previously failed on unchanged main because two recomputed metrics differ only in their final floating-point digit. Real candidate DB/model runs and a new independent holdout remain pending; sealed LENS-HO2 inputs and scores are unchanged. (commit: b63f263)
+
+- PATCH-041 verifies the latest product retriever against a fresh source-built database on local CPU: all four channels match the adopted baseline on 235 inputs, and 78 public regression questions match the existing database under the same code. Required evidence remains 43/75 in both DEV100 v2 modes and 28/29 in CIV35; previous misses remain, with no new rebuild losses. Adds reproducible capture, integrity checks and provenance. Full tests: 1,576 passed, 3 skipped, 172 subtests passed. No retrieval tuning, corpus additions, or LLM assessment. (commit: 8a57092)
 
 ### Fixed (Bug Fixes)
+
+- PATCH-043 preserves the product service law, Civil Act and guide channels when overlaying the case-only backend. The standalone case query still works without product corpora; the product application requires both data sets. Focused retrieval, generation and citation tests: 218 passed. The last sealed LENS-HO2 score belongs to frozen commit 462e80a and a 20-case return contract, so it is not a PATCH-043 Top-2 independent evaluation. (commit: b63f263)
+
 
 - PATCH-050 Clear the composer when a question is sent, preserve a newer draft during the response, and restore failed submissions only into an empty composer. Nine JavaScript regressions pass. (commit: `d649504`)
 
