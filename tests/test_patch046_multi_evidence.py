@@ -23,8 +23,17 @@ from src.retrieval.service import route_law_corpus
     ("미납지방세 열람에 필요한 서류를 알려 주세요.", ("local",)),
     ("국세와 지방세 체납을 함께 확인하려면 어떻게 하나요?", ("national", "local")),
     ("임대인이 동의하지 않아도 미납국세를 열람할 수 있나요?", ("national",)),
+    ("미납국세는 임대인 동의가 필요 없어도 열람 방법을 알려 주세요.", ("national",)),
+    ("미납국세는 동의가 필요 없을 때 어떻게 열람하나요?", ("national",)),
     ("미납국세만 조회하고 미납지방세는 묻지 않습니다.", ("national",)),
     ("미납국세 조회가 아니고 미납지방세 열람 방법을 알려 주세요.", ("local",)),
+    ("국세와 지방세 체납을 조회하고 싶지만 국세는 제외해 주세요.", ("local",)),
+    ("국세와 지방세 체납 조회 방법을 알려 주세요. 지방세는 제외해 주세요.", ("national",)),
+    ("국세는 제외하고 지방세 체납을 조회하려면 어떻게 하나요?", ("local",)),
+    ("국세와 지방세 체납 조회 방법을 알려 주세요. 둘 다 제외해 주세요.", ()),
+    ("국세와 지방세 체납 조회 방법을 알려 주세요. 다만 국세와 지방세는 제외해 주세요.", ()),
+    ('예문은 "국세는 제외해 주세요"입니다. 미납국세 열람 방법은요?', ("national",)),
+    ("이전 대화: 국세는 제외해 주세요.\n사용자 질문: 미납국세 열람 방법은요?", ("national",)),
 ])
 def test_lookup_scope_follows_current_request(question, expected):
     assert requested_tax_scopes(question) == expected
@@ -37,6 +46,9 @@ def test_lookup_scope_follows_current_request(question, expected):
     "주택 세금 납부 방법을 알려 주세요.",
     "국세 환급 내역을 조회할 수 있나요?",
     "지방세 납부확인서를 어디서 발급하나요?",
+    "임대인의 국세 체납 사실을 증명할 납세증명서는 어디서 발급받나요?",
+    "임대인의 지방세 체납 여부를 확인할 납세증명서 발급 방법은요?",
+    "임대인의 국세 체납 여부를 조회하려고 납세증명서를 발급받고 싶어요.",
     "전입신고 기한은 언제까지인가요?",
     "체납세금 조회는 묻지 않습니다. 중개보수를 알려 주세요.",
     "체납세금을 조회하지 않으려 합니다. 수리 비용이 궁금해요.",
@@ -173,6 +185,22 @@ def test_candidate_only_selection_keeps_direct_rank_order_and_original_scores(se
     )
     assert result == [("national-decree", 0.15), ("national", 0.1), ("rent", 0.4)]
     assert ranked == original
+
+
+def test_scope_exclusion_reranks_only_the_remaining_direct_evidence(selector_payload):
+    chunks, ranked = selector_payload
+    result = TaxLookupSelector(chunks).select(
+        "국세와 지방세 체납을 조회하고 싶지만 국세는 제외해 주세요.", ranked, 2,
+    )
+
+    assert result == [("local", 0.2), ("rent", 0.4)]
+
+
+def test_certificate_issuance_keeps_the_existing_ranking(selector_payload):
+    chunks, ranked = selector_payload
+    query = "임대인의 국세 체납 여부를 확인할 납세증명서 발급 방법은요?"
+
+    assert TaxLookupSelector(chunks).select(query, ranked, 3) == ranked[:3]
 
 
 @pytest.mark.parametrize("k", [0, 1, 3, 5])

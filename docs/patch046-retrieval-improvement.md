@@ -1,6 +1,6 @@
 # PATCH-046 복수 근거 검색 개선
 
-**최신 main 통합·검증 완료(2026-09-16), PR 리뷰 준비.** 최초 구현 커밋은 `a8dc8de`다. main `7ae97ee`의 판례 프로필·회원 채팅방·대화 관리 변경을 통합하고 새 대화 입력 형식과의 연결을 보완했다. 통합 구현 커밋: `59f394b`.
+**PR #34 리뷰 보완·검증 완료(2026-09-16).** 최초 구현 커밋은 `a8dc8de`다. main `7ae97ee`의 판례 프로필·회원 채팅방·대화 관리 변경을 통합하고 새 대화 입력 형식과의 연결을 보완했다. 통합 구현 커밋: `59f394b`. 후속 리뷰의 세금 종류 제외·증명서 발급 오탐을 수정하고 실제 검색·전체 검사를 재확인했다.
 
 ## 번호 정정과 재개 기준
 
@@ -90,6 +90,27 @@
 - 두 실측은 동일한 재구축 DB·모델·평가 기준으로 실행했고, `LENS_CASE_RETRIEVAL_PROFILE`은 비활성 상태였다. 실행 중 소스·자료·설정·논리적 인덱스 지문 변동은 없다. 감사의 HEAD `557afe3`은 병합 전 커밋이며, 실제 측정한 병합 작업 트리의 소스 해시를 함께 저장했다. 기존 실행 폴더는 그대로 유지하고 새 산출물만 `data/eval/patch046-main-integration/`에 추가했다.
 - 최종 전체 검사: **2,482 passed, 3 skipped, 678 subtests passed**(383.07초, 종료코드0). [최종 로그](../data/eval/patch046-main-integration/full-tests.log). 생략은 LangSmith 비활성2건·실물 등기 PDF 미지정1건이며 최초3오류는 모두 해소됐다.
 - [독립 검증 결과](../data/eval/patch046-main-integration/independent-verification.json)는 원시 정답·반환 근거로47/48과 신규 손실0을 재계산하고 통합 전235입력·공개78문항의 동일성, 원본 해시와 과거 생성 소스 스냅샷을 확인했다. 반환 근거3,089개와 합성 동시 호출400회도 통과했다. [독립 검증 코드](../data/eval/patch046-main-integration/independent_verification.py)는 저장소 루트에서 `python -X utf8 data/eval/patch046-main-integration/independent_verification.py --out tmp/patch046-main-verification.json`으로 실행한다. [번들 manifest](../data/eval/patch046-main-integration/manifest.json)에 새 검증 파일의 원본 해시를 기록한다.
+
+### PR #34 리뷰 보완
+
+[세금 종류 제외 지적](https://github.com/sji21/LENS_4th_project/pull/34#discussion_r4022379861)과 [증명서 발급 오탐 지적](https://github.com/sji21/LENS_4th_project/pull/34#discussion_r4022379877)을 `289a8ac`에서 재현했다. 국세·지방세를 함께 조회한 뒤 국세를 제외해 달라고 해도 두 종류가 유지됐고, 납세증명서 발급 요청에도 열람 근거 우선 선택이 적용됐다.
+
+동일 PATCH-046 범위에서 다음을 보완했다. 리뷰 보완 구현 커밋: pending.
+
+- 현재 질문의 국세·지방세 제외 요청을 별도로 모아, 앞쪽 문장에서 이미 추가한 우선 선택 범위에서도 제거한다. 한쪽 제외·양쪽 공동 제외·명확한 역순 표현을 처리한다. 세금 종류와 제외 서술이 직접 연결된 경우로 한정하며, 인접한 다른 세금이나 동의 요건을 임의로 제외하지 않는다. 이는 우선 선택 범위의 보완이며 일반 검색 결과에서 해당 종류를 전부 삭제하는 필터는 아니다.
+- `증명`만으로 열람 의도를 활성화하지 않는다. 납세·세금 증명과 발급·교부·준비 등의 요청이 함께 있으면 확인·조회 표현이 섞여도 기존 검색 순위를 유지한다. 명시적인 열람 절차·열람에 필요한 서류 질문은 유지한다.
+- 기존 전역 부정 판별과 대화·인용 경계는 유지한다. 자연어 전수 판별을 보장하지 않으며, 기존의 보수적인 미적용 사례를 모두 완화하는 변경은 아니다.
+- 독립 서비스 검사는 수정 전 6건 실패·9건 통과로 두 지적과 반례를 재현했다. 수정 후 서비스 경로20건과 기존 대화·선택·평가기 검사를 포함해 **94 passed**를 확인했다. 선택된 근거·점수·순서·필터·후보 수·호출 수·입력 불변성도 검사했다.
+- 수정 후 [실제235입력](../data/eval/patch046-review-fixes/capture/rows.json)은 완전 확보 **질문47/75·문맥48/75**, 실제 KURE375회다. main 통합 실측과 실행 시간을 제외한 모든 반환 근거·순서·점수·입력별 호출이 같고, 기존 기준선 대비 새 필수 근거 손실0이다. [정책 적용 대조](../data/eval/patch046-review-fixes/policy-impact.json)에서도235입력의 적용 범위는 동일하며 두 리뷰 예시의 오탐 해소를 기록했다.
+- [공개 회귀78문항](../data/eval/patch046-review-fixes/public-regression.json)은 정답·반환 ID·순서·지표·문항별 필드가 실행 시간 외에는 main 통합 실측과 동일하다. 실제 KURE103회이며 과거 판례20의 미채점도 유지했다. 소스·자료·모델·고정 기준·설정·논리적 인덱스 지문을 검증했고, 기존 실측과 원본 해시는 수정하지 않았다.
+- 리뷰 보완 후 [최종 전체 검사](../data/eval/patch046-review-fixes/full-tests.log): **2,516 passed, 3 skipped, 678 subtests passed**(381.87초, 종료코드0). 생략 사유는 기존 LangSmith2건·실물 등기 PDF1건과 같다.
+- [최종 독립 검증](../data/eval/patch046-review-fixes/independent-verification.json)은 원시 정답·결과로47/48·새 손실0을 재계산하고235입력·공개78문항의 동일성, 반환 근거3,089개와 동시 선택400회를 확인했다. [번들 manifest](../data/eval/patch046-review-fixes/manifest.json)는 후속 산출물의 원본 바이트 해시다. 실측 HEAD `289a8ac` 이후 미커밋 수정은 실행 감사의 소스 지문으로 식별한다.
+
+최신 리뷰 보완 결과는 기존 독립 검증 코드를 수정하지 않고 다음처럼 경로를 명시해 재현한다. 이전 실행의 현재 소스 일치 검사까지 재현하려면 그 실행을 보존한 해당 커밋을 사용한다.
+
+```text
+python -X utf8 data/eval/patch046-main-integration/independent_verification.py --capture data/eval/patch046-review-fixes/capture --previous-capture data/eval/patch046-main-integration/capture --public data/eval/patch046-review-fixes/public-regression.json --previous-public data/eval/patch046-main-integration/public-regression.json --full-tests data/eval/patch046-review-fixes/full-tests.log --out tmp/patch046-review-verification.json
+```
 
 ## 재현과 후속 작업
 
