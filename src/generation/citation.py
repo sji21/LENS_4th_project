@@ -73,13 +73,20 @@ _COURT_NAME_RE = re.compile(
 )
 
 _AGENCY_RE = re.compile(
-    r"(?<![가-힣A-Za-z0-9·])"
+    r"(?<![가-힣A-Za-z0-9])"
     r"(?:HUG|NTS|[가-힣A-Za-z0-9·]{2,30}?"
     r"(?:위원\s*회|부|청|공사|공단|원(?!\s*회)))"
-    r"(?=$|[\s.,!?;:()「」『』]|안내|자료|가이드|에\s*(?:따르면|의하면)|"
+    r"(?=$|[\s.,·!?;:()「」『』]|안내|자료|가이드|에\s*(?:따르면|의하면)|"
     r"(?:으로부터|로부터|에서는|에서|에게|의|에|은|는|이|가|을|를|와|과|으로|로)"
     r"(?=$|[\s.,!?;:()「」『』]))",
     re.IGNORECASE,
+)
+
+# 기관명 사이가 순수 접속(쉼표/및/과/와/그리고/또는)으로만 이어질 때,
+# "국세청과 HUG의 안내에 따르면"처럼 공동으로 인용된 각 기관이 모두
+# 검증 대상이 되도록 묶어서 판단하는 데 쓴다.
+_CONJUNCTION_GAP_RE = re.compile(
+    r"^\s*(?:[,·]\s*(?:(?:및|그리고|또는)\s*)?|(?:및|과|와|그리고|또는)\s*)$"
 )
 
 
@@ -91,8 +98,8 @@ def _is_guide_citation(tail: str) -> bool:
     # 발행 주체를 나타내는 절만 제거한다. '에서 신청하고'까지 지우면
     # 일반 절차 설명 뒤의 '안내'를 다시 출처로 오인하게 된다.
     tail = re.sub(
-        r"^(?:에서는|에서|가|이)?\s*(?:제공|발간|배포|발표|게시)"
-        r"(?:하고\s*있는|\s*중인|하는|한)\s*", "", tail,
+        r"^(?:에서는|에서|가|이)?\s*(?:제공|발간|발행|배포|발표|게시)"
+        r"(?:하고\s*있는|되고\s*있는|되어\s*있는|돼\s*있는|\s*중인|하는|되는|한|된)\s*", "", tail,
     )
     tail = re.sub(r"^의\s*", "", tail)
     if re.match(r"(?:으로부터|로부터|에서는|에서|에게|에|으로|로|을|를|와|과)(?:\s|$)", tail):
@@ -448,10 +455,25 @@ def extract_citation_mentions(
 
     guide_scan = citation_scan_text(raw_text or "")
     agencies = list(_AGENCY_RE.finditer(guide_scan))
+
+    # 공동 기관 인용("국세청과 HUG의 안내에 따르면")은 마지막 기관 뒤의
+    # 서술부만 보고도 앞선 기관들이 같은 서술을 공유한다는 걸 알아야 한다.
+    # 접속사로만 이어진 구간은 뒤쪽 기관의 tail 판정을 그대로 물려받는다.
+    group_end = [len(guide_scan)] * len(agencies)
+    tail_source = list(range(len(agencies)))
+    for i in range(len(agencies) - 2, -1, -1):
+        gap = guide_scan[agencies[i].end():agencies[i + 1].start()]
+        if _CONJUNCTION_GAP_RE.match(gap):
+            group_end[i] = group_end[i + 1]
+            tail_source[i] = tail_source[i + 1]
+        else:
+            group_end[i] = agencies[i + 1].start()
+
     for index, match in enumerate(agencies):
         agency = match.group(0)
-        end = agencies[index + 1].start() if index + 1 < len(agencies) else len(guide_scan)
-        if not _is_guide_citation(guide_scan[match.end():min(end, match.end() + 100)]):
+        source = agencies[tail_source[index]]
+        end = group_end[tail_source[index]]
+        if not _is_guide_citation(guide_scan[source.end():min(end, source.end() + 100)]):
             continue
         # "대법원 판례에 따르면"의 대법원을 안내 기관으로 해석하면, 사건번호가
         # 있는 정상 판례 인용에도 지원되지 않는 guide 출처 오류가 함께 생긴다.
