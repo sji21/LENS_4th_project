@@ -1,0 +1,12 @@
+{
+  "capture/audit.json": "04353e75f40ab5b9654ccbb7a8042e3e2ebe2de4fea1a1f8a2efab502741e1d7",
+  "capture/manifest.json": "21c2ab33dad5db7169d61d69d08811271c29502a33bec82ddadb1d348c509118",
+  "capture/report.json": "a6dd20bc3bc3f90c54b008d36e6110026e67e1e78ee80eb14725a64fd5f4a1b2",
+  "capture/rows.json": "4c3e1077f12feee83d0cc04e577cc0b5666ab0d7a95938616e01839add4d55c2",
+  "capture.log": "280437022d8b206f946705eaf064895ba28341ddab29e73a0a3c26b98dcc66d9",
+  "full-tests.log": "f58d54e773a0b0d3523441cce3c3742c7b528547fb44e11aa862f9fcf0bfa279",
+  "independent-verification.json": "e767bf326f9343388e5f616791ee339972c718f9d66e41244805498211dba556",
+  "policy-impact.json": "56fde72375d11423b7e4828591d41573c68447d979d98e6ec4834ef4159057de",
+  "public-regression.json": "54ead951fdd1083325be8b3310211fe09cb51a8e2ea38a86d47352563b297aed",
+  "public-regression.log": "c8ba03d90f1944f10485932016c29d4ad0c2d502b526fb0aef3c232ae146cbc6"
+}

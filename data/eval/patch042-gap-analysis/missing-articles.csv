@@ -1,0 +1,26 @@
+article_id,channel,question_only_occurrences,context_diagnostic_occurrences,qids,total_occurrences,unique_qid_count
+민법-제105조,civil,5,6,DEV-015 | DEV-034 | DEV-064 | DEV-065 | DEV-066 | DEV-072,11,6
+주민등록법-제16조,general,5,5,DEV-005 | DEV-033 | DEV-038 | DEV-041 | DEV-046,10,5
+지방세징수법시행령-제8조,general,4,4,DEV-003 | DEV-025 | DEV-026 | DEV-028,8,4
+민법-제114조,civil,3,3,DEV-001 | DEV-012 | DEV-013 | DEV-014 | DEV-016,6,5
+상가건물임대차보호법-제2조,general,3,2,DEV-009 | DEV-089 | DEV-090,5,3
+국세징수법시행령-제97조,general,0,4,DEV-003 | DEV-025 | DEV-026 | DEV-028,4,4
+주택임대차보호법-제3조의2,general,2,2,DEV-044 | DEV-050,4,2
+주택임대차보호법-제3조의3,general,2,1,DEV-010 | DEV-068,3,2
+주택임대차보호법-제3조의6,general,1,2,DEV-005 | DEV-038,3,2
+지방세징수법-제6조,general,1,2,DEV-027 | DEV-028,3,2
+민간임대주택에관한특별법-제45조,general,1,1,DEV-096,2,1
+민간임대주택에관한특별법-제5조,general,1,1,DEV-094,2,1
+민간임대주택에관한특별법-제6조,general,1,1,DEV-094,2,1
+민법-제111조,civil,1,1,DEV-075,2,1
+민법-제357조,civil,1,1,DEV-087,2,1
+민법-제626조,civil,1,1,DEV-059,2,1
+민사소송법-제462조,general,1,1,DEV-075,2,1
+상가건물임대차보호법-제6조,general,1,1,DEV-090,2,1
+주택임대차보호법-제2조,general,1,1,DEV-009,2,1
+주택임대차보호법-제3조,general,1,1,DEV-015,2,1
+형법-제347조,general,1,1,DEV-079,2,1
+국세징수법-제109조,general,1,0,DEV-003,1,1
+민법-제390조,civil,0,1,DEV-060,1,1
+신탁법-제31조,general,1,0,DEV-019,1,1
+주택임대차보호법-제6조의3,general,1,0,DEV-053,1,1

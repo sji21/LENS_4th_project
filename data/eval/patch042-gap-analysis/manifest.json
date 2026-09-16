@@ -1,0 +1,33 @@
+{
+  "schema": "patch042-gap-analysis-manifest-v1",
+  "artifacts": {
+    "analysis.json": "ff23ffda489f761e4f28ac7de7d1d3dc9d46ff3eaa87adbdc77bd2122f32aeb9",
+    "missing-inputs.csv": "b6a75a632ef4c6bef945c6aaaab1734bc3ed9873f6476a85e35ba053e9b263f8",
+    "missing-articles.csv": "815703ca42e7a95b7a72af8693d7a7ae9a3a70bb3c00a65ea65cfa8c5259b701",
+    "historical-losses.csv": "dedb09aa69a5f25976715c8dc1a0ac17d7d66408562460fc687ef30f26227acf",
+    "review.md": "8afa72c7f3575336c8d4352775bf47ad8caea3a3201ee60c7079da246f5917ec"
+  },
+  "source_sha256": {
+    "scripts/patch041_retrieval_eval.py": "958fa3e8377b2c44410c24e846ff08ba713a8d5cbd8c3876fa09f696fe7c45d5",
+    "src/generation/chain.py": "9856654ada98a0781ba0d11121021a3b3af5ddcf405e1c06e4189bdf8b1a2062",
+    "data/eval/patch041-rebuilt/capture/manifest.json": "4272c209f08e3b7e418fdfc8595108a8f205dadabc295f6bd90c87c873f64212",
+    "data/eval/patch041-rebuilt/capture/audit.json": "59946046f4add4c3ac4b974c6681039b7b9cff53b9961b65412a0e50b8f81abf",
+    "data/eval/patch041-rebuilt/capture/rows.json": "4674d4f5bec0cdd74b607515002fd1813bf0e90a414cd8bc7c1dc3e5fba3d9f7",
+    "data/eval/patch041-rebuilt/capture/report.json": "492092266e0d169f8353c5208b13c07638c47f34d93cdfe7d8f27ac4c81bf70c",
+    "data/eval/dev100-v2/manifest.json": "1f9d930887161773d95c8b56f608091c4640a5c2cd51f8469741fbf1e5fcec6e",
+    "data/eval/dev100-v2/questions.json": "48952d558a99ad22e726ce778ef045cb48ec8bb250f17aec7e07e15ced0cc964",
+    "data/eval/dev100-v2/diagnostic-plan.json": "1022e31142eacc7acd47861285a3cdc256d899296ce0d0f242f322ae7d1b1fca",
+    "data/eval/dev100-v2/requirements.json": "90581a70c4b93c3968cef6d1c0acf0e39c17117727b24b56736ed3610b502bd7",
+    "data/eval/civil-review2/manifest.json": "8e0c95c8e3e69b0420c5d54c0e284db31942479b08fe0c06a5a9a48043664362",
+    "data/eval/civil-review2/retrieval-plan.json": "0d4da52e5636d7e26b3a01d841a15bf474eaf0214974ea108a306b44317408ca",
+    "data/eval/patch015-baseline/capture/results.json": "3834e7c0e8d5f1eb5c2f60bfd6f3106cf1a765fe8f18c535dac444af91029f4c",
+    "data/eval/patch027-final-test/manifest.json": "66f78e24bc6c5105aa7c0e904ec218a957a1c992c02551f9f5f0545fc4af3274",
+    "data/eval/patch027-final-test/audit.json": "cb4917d04953a45cbb061282f8f27117de0dec1fa900d9f5712a5fa9294c2440",
+    "data/eval/patch027-final-test/rows.json": "3718eb2428bbe75082c202483bdf55bff172b130628b67f933227a996a2e31dd",
+    "data/eval/patch027-final-test/report.json": "7fcec564b8cc4bd86d75cdcfef2cdd252241b5f132fcd43f36149b8943545cb9",
+    "data/eval/patch027-context-tuning/audit.json": "702265e6ff5c018632548579d16b8b0a752f4f3ee726c572f9c3c673296c2cba",
+    "scripts/patch042_trace_diagnosis.py": "40f8906b0e4e58b25445501f5fe92db5ccd4814c59b0c67001569e290c2bf4b8",
+    "data/eval/patch042-candidate-trace/manifest.json": "100b4627a1ccac1969e9402e2b17acdde4475569c46617f9099d8bf9574be5b9",
+    "data/eval/patch042-candidate-diagnosis.json": "ddb03716f2cfff0f872ca1f7fede73cc53bf9abb4a8a796eac3af4be7f9ca1ae"
+  }
+}

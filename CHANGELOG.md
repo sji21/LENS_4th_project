@@ -7,6 +7,10 @@ This file records the 4th project from its first change onward.
 
 ## 2026-09-16
 
+### Added
+
+- PATCH-046 improves companion evidence retrieval for explicit unpaid-tax lookup requests within the existing fused TOP20 and general5/civil3 limits. Actual KURE evaluation improves complete evidence from 43/75 to 47/75 question-only and 48/75 with context, with no new required-evidence loss or extra model calls. All 78 published regression questions retain their rankings and metrics. After merging main 7ae97ee, recognizes the new current-input dialogue boundary without inheriting prior tax scopes and preserves historical replay through a hash-verified source snapshot. Repeats all 235 inputs and 78 public questions with identical results to the first PATCH-046 run. PR #34 review fixes honor explicit national/local-tax exclusions across clauses, exclusive `national only`/`local only` choices, and certificate prerequisites while keeping certificate issuance and filing tasks on ordinary rankings; the first review rerun preserves all 235 inputs and 78 public questions. Full tests after the follow-up review: 2,534 passed, 3 skipped, 678 subtests. Gold, data, model, civil selection and generation are unchanged by this patch. Renumbers the unpublished local PATCH-042 work after a remote ID collision; frozen analysis paths are retained for integrity. (commit: a8dc8de; integration: 59f394b; review: c9079df; follow-up review: 82a4e79)
+
 ### Changed
 
 - PATCH-050 Integrate conversation management with member rooms, source annotations, and main citation validation. Clear dialogue memory on member reset; preserve pending questions, retry identity, and drafts when rooms are created. Allow 60 seconds for planner context switching while retaining the overall call budget. Renumber conversation records to 047–049/050 while retaining main patch IDs by user approval. (commit: `1d8238f`)

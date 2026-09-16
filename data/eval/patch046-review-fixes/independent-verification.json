@@ -1,0 +1,266 @@
+{
+  "verified_at": "2026-09-16T05:22:47.818540+00:00",
+  "status": "passed",
+  "method": "Independent raw JSON/set arithmetic; no evaluator scoring helpers; synthetic selector concurrency only",
+  "scope": "Frozen article retrieval diagnostic and published regression, not formal OR/paragraph/LLM correctness",
+  "script_sha256": "a4f3ff02c8b82ac8470dd5ae91b86ec844573aa131444aacbfc4a262041bd987",
+  "candidate_manifest": {
+    "rows.json": "4c3e1077f12feee83d0cc04e577cc0b5666ab0d7a95938616e01839add4d55c2",
+    "report.json": "a6dd20bc3bc3f90c54b008d36e6110026e67e1e78ee80eb14725a64fd5f4a1b2",
+    "audit.json": "04353e75f40ab5b9654ccbb7a8042e3e2ebe2de4fea1a1f8a2efab502741e1d7"
+  },
+  "previous_patch046_capture": {
+    "path": "data/eval/patch046-main-integration/capture",
+    "manifest_sha256": "337e3cedcbc6df43eab38b3dae1a0e8aaf2dbc4a9c4013f68d3dbfe2c7291c06",
+    "compared_inputs": 235,
+    "all_serialized_row_fields_except_seconds_equal": true
+  },
+  "source_hashes": {
+    "src/retrieval/expanded.py": "a2f14403eb120a264d403b5c8f7115aea015e105ec6bcdc084b7ed3607e415cb",
+    "src/retrieval/multi_evidence.py": "ea6cc14ea292cd188a4bf8d65a3fc0f6bbd21cd36358b5b9e8e51e94bdeb08a6"
+  },
+  "reviewed_inputs": 235,
+  "scores": {
+    "question_only": {
+      "n": 75,
+      "baseline": 43,
+      "candidate": 47
+    },
+    "context_diagnostic": {
+      "n": 75,
+      "baseline": 43,
+      "candidate": 48
+    }
+  },
+  "strata_n_baseline_candidate": {
+    "question_only": {
+      "1": [
+        46,
+        33,
+        33
+      ],
+      "5": [
+        2,
+        0,
+        2
+      ],
+      "3": [
+        5,
+        0,
+        0
+      ],
+      "2": [
+        19,
+        10,
+        10
+      ],
+      "4": [
+        3,
+        0,
+        2
+      ]
+    },
+    "context_diagnostic": {
+      "1": [
+        46,
+        34,
+        34
+      ],
+      "5": [
+        2,
+        0,
+        2
+      ],
+      "3": [
+        5,
+        0,
+        0
+      ],
+      "2": [
+        19,
+        9,
+        10
+      ],
+      "4": [
+        3,
+        0,
+        2
+      ]
+    }
+  },
+  "new_all_hit_items": {
+    "question_only": [
+      "DEV-003",
+      "DEV-025",
+      "DEV-026",
+      "DEV-028"
+    ],
+    "context_diagnostic": [
+      "DEV-003",
+      "DEV-025",
+      "DEV-026",
+      "DEV-027",
+      "DEV-028"
+    ]
+  },
+  "new_required_target_loss": [],
+  "full_evidence_changed_inputs": {
+    "laws": 10,
+    "civil_laws": 0,
+    "cases": 0,
+    "guides": 0
+  },
+  "hit_at_k_counts": {
+    "question_only:general": {
+      "n": 47,
+      "hits": {
+        "1": 18,
+        "2": 30,
+        "3": 34,
+        "5": 36
+      }
+    },
+    "question_only:civil": {
+      "n": 32,
+      "hits": {
+        "1": 18,
+        "2": 22,
+        "3": 23
+      }
+    },
+    "context_diagnostic:general": {
+      "n": 47,
+      "hits": {
+        "1": 17,
+        "2": 31,
+        "3": 35,
+        "5": 40
+      }
+    },
+    "context_diagnostic:civil": {
+      "n": 32,
+      "hits": {
+        "1": 14,
+        "2": 18,
+        "3": 21
+      }
+    }
+  },
+  "actual_kure_calls": 375,
+  "per_input_call_counts_equal": true,
+  "source_hash_count": 27,
+  "criteria_hash_count": 32,
+  "gold_manifest_files": {
+    "dev100-v2": 17,
+    "civil-review2": 8
+  },
+  "payload_current_hash_count": 7,
+  "returned_evidence_identity_body_source_status_channel_checks": 3089,
+  "public_regression_direct_previous_PATCH046_comparison": {
+    "dev": {
+      "n": 24,
+      "actual_model_calls": 32,
+      "metrics": {
+        "hit@1": 0.75,
+        "hit@2": 0.9166666666666666,
+        "hit@3": 0.9583333333333334,
+        "hit@5": 1.0,
+        "recall@1": 0.6666666666666666,
+        "recall@2": 0.8541666666666666,
+        "recall@3": 0.9375,
+        "recall@5": 0.9791666666666666,
+        "mrr": 0.8576388888888888
+      },
+      "all_question_fields_except_seconds_equal": true
+    },
+    "holdout": {
+      "n": 18,
+      "actual_model_calls": 24,
+      "metrics": {
+        "hit@1": 0.7222222222222222,
+        "hit@2": 0.8888888888888888,
+        "hit@3": 0.9444444444444444,
+        "hit@5": 1.0,
+        "recall@1": 0.6111111111111112,
+        "recall@2": 0.712962962962963,
+        "recall@3": 0.787037037037037,
+        "recall@5": 0.8703703703703703,
+        "mrr": 0.837962962962963
+      },
+      "all_question_fields_except_seconds_equal": true
+    },
+    "civil_published_regression": {
+      "n": 15,
+      "actual_model_calls": 17,
+      "metrics": {
+        "hit@law5+civil3": 0.8666666666666667,
+        "all@law5+civil3": 0.8,
+        "recall@law5+civil3": 0.8222222222222222
+      },
+      "all_question_fields_except_seconds_equal": true
+    },
+    "case_dev13": {
+      "n": 13,
+      "actual_model_calls": 18,
+      "metrics": {
+        "hit@1": 0.9230769230769231,
+        "hit@2": 0.9230769230769231,
+        "hit@3": 0.9230769230769231,
+        "hit@5": 1.0,
+        "recall@1": 0.3296351084812624,
+        "recall@2": 0.46055226824457596,
+        "recall@3": 0.5465976331360947,
+        "recall@5": 0.6999506903353058,
+        "mrr": 0.9423076923076923
+      },
+      "all_question_fields_except_seconds_equal": true
+    },
+    "case_external8": {
+      "n": 8,
+      "actual_model_calls": 12,
+      "metrics": {
+        "hit@1": 0.75,
+        "hit@2": 0.875,
+        "hit@3": 1.0,
+        "hit@5": 1.0,
+        "recall@1": 0.29166666666666663,
+        "recall@2": 0.4479166666666667,
+        "recall@3": 0.5520833333333333,
+        "recall@5": 0.75,
+        "mrr": 0.8541666666666666
+      },
+      "all_question_fields_except_seconds_equal": true
+    },
+    "case_legacy20": {
+      "state": "not_scored",
+      "input_count": 20
+    }
+  },
+  "public_previous_artifact": {
+    "path": "data/eval/patch046-main-integration/public-regression.json",
+    "sha256": "bab07383a1bd98ae31ce9ffebaab40690d087ed1d46ecda893bb6a0af05bb7b6"
+  },
+  "public_actual_kure_calls": 103,
+  "historical_gap_replay_inputs": {
+    "artifact_manifest_sha256": "e7f949a932ed4ba67b9badee42f9c49382b8ee8171bd83a289c2443b936f7cf8",
+    "unchanged_artifact_count": 5,
+    "generation_source_normalized_sha256": "9856654ada98a0781ba0d11121021a3b3af5ddcf405e1c06e4189bdf8b1a2062",
+    "archived_source_matches_original_manifest": true
+  },
+  "synthetic_concurrency": {
+    "workers": 8,
+    "calls": 400,
+    "input_unchanged": true,
+    "mixed_scopes_passed": true
+  },
+  "full_suite": {
+    "method": "Directly inspected completed log; process exit code reported by integration agent",
+    "log": "data/eval/patch046-review-fixes/full-tests.log",
+    "sha256": "f58d54e773a0b0d3523441cce3c3742c7b528547fb44e11aa862f9fcf0bfa279",
+    "passed": 2516,
+    "skipped": 3,
+    "subtests_passed": 678,
+    "seconds": 381.87,
+    "summary": "2516 passed, 3 skipped, 678 subtests passed in 381.87s (0:06:21)"
+  }
+}

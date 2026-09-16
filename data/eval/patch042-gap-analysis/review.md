@@ -1,0 +1,862 @@
+# PATCH-042 DEV retrieval gap review
+
+This is an offline article-identifier analysis of the verified PATCH-041 capture.
+
+## Headline counts
+
+| Measure | Question only | Context diagnostic |
+|---|---:|---:|
+| Complete at returned law5+civil3 | 43/75 | 43/75 |
+| Missing | 32 | 32 |
+| Partial / zero | 15 / 17 | 17 / 15 |
+| Complete at consumed law3+civil3 | 40/75 | 38/75 |
+
+Unique missing questions: 37; unique missing articles: 25.
+
+## Interpretation boundaries
+
+- Current final PATCH-041 equals the PATCH-027 `record_lookup` finalist on all 235 four-channel rankings.
+- The current final context result is 43/75. The older PATCH-027 `verified_context` result was 42/75.
+- PATCH-041 alone has unknown visibility beyond final ranks; the linked PATCH-042 candidate diagnosis resolves observed stages for current missing targets.
+- General TOP3 consumption is analyzed separately from the stored general TOP5 return.
+- No fixed target set exceeds return capacity; five inputs per mode exceed the generation general-law 3 capacity.
+
+## Historical PATCH-027 comparison
+
+Returned losses: 7; general TOP3 losses: 7; overlap: 4; TOP3-only: 3.
+These are historical operating-to-finalist changes, not new PATCH-041 regressions.
+
+## Missing input details
+
+### DEV-001 / context_diagnostic
+
+- Area: 1. 계약 상대방·대리인의 권한 확인
+- Question: 집주인이 해외에 있어서 동생이 대신 계약하러 온다는데, 계약 전에 어떤 서류를 확인해야 하나요?
+- Context: 아파트 전세계약을 앞둔 임차인. 중개사에게 “등기상 소유자는 해외 체류 중이고 소유자의 동생이 계약일에 대신 나온다”는 설명을 들음. 아직 대리권 관련 서류는 직접 확인하지 않음.
+- Full query: 아파트 전세계약을 앞둔 임차인. 중개사에게 “등기상 소유자는 해외 체류 중이고 소유자의 동생이 계약일에 대신 나온다”는 설명을 들음. 아직 대리권 관련 서류는 직접 확인하지 않음. / 사용자 질문: 집주인이 해외에 있어서 동생이 대신 계약하러 온다는데, 계약 전에 어떤 서류를 확인해야 하나요?
+- Miss shape: zero; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제114조'] / [] / ['민법-제114조']
+- Returned general IDs: ['주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조', '부동산거래신고등에관한법률시행규칙-제6조의2', '공인중개사법-제25조', '주택임대차보호법-제3조의7', '공공주택특별법시행규칙-제25조']
+- Returned civil IDs: ['민법-제186조', '민법-제629조', '민법-제634조']
+- Candidate follow-up: [{'qid': 'DEV-001', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '민법-제114조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 5, 'member_ranks': {'bm25_context': 4, 'dense_context': 6}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['대리행위 대리권의 범위 본인 권한', '부동산 물권변동 등기 물권취득']}]
+
+### DEV-003 / question_only
+
+- Area: 3. 임대인 체납 확인 절차
+- Question: 집주인이 세금 밀린 게 있는지 제가 계약 전에 확인할 수 있어요? 집주인 주민번호 알려드리면 대신 조회해 줄 수 있나요?
+- Context: 보증금 230,000,000원의 전세계약을 검토 중. 계약금은 아직 지급하지 않음. 임대인의 체납 여부에 관한 자료는 제공받지 못함. 사용자는 확인 절차와 함께 서비스가 임대인의 개인정보를 이용해 직접 조회해 줄 것을 요청함.
+- Full query: 집주인이 세금 밀린 게 있는지 제가 계약 전에 확인할 수 있어요? 집주인 주민번호 알려드리면 대신 조회해 줄 수 있나요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['국세징수법-제109조', '국세징수법시행령-제97조', '주택임대차보호법-제3조의7', '지방세징수법-제6조', '지방세징수법시행령-제8조'] / ['국세징수법시행령-제97조', '주택임대차보호법-제3조의7', '지방세징수법-제6조'] / ['국세징수법-제109조', '지방세징수법시행령-제8조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['주택임대차보호법-제3조의7', '국세징수법시행령-제97조', '부동산거래신고등에관한법률시행규칙-제6조의2', '지방세징수법-제6조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조']
+- Returned civil IDs: ['민법-제634조', '민법-제629조', '민법-제640조']
+- Candidate follow-up: [{'qid': 'DEV-003', 'mode': 'question_only', 'track': 'dev100', 'target': '국세징수법-제109조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 7, 'member_ranks': {'bm25_context': None, 'dense_context': 1}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['미납국세 미납지방세 열람 납세증명'], 'civil_concepts': []}, {'qid': 'DEV-003', 'mode': 'question_only', 'track': 'dev100', 'target': '지방세징수법시행령-제8조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 6, 'member_ranks': {'bm25_context': 8, 'dense_context': 5}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['미납국세 미납지방세 열람 납세증명'], 'civil_concepts': []}]
+
+### DEV-003 / context_diagnostic
+
+- Area: 3. 임대인 체납 확인 절차
+- Question: 집주인이 세금 밀린 게 있는지 제가 계약 전에 확인할 수 있어요? 집주인 주민번호 알려드리면 대신 조회해 줄 수 있나요?
+- Context: 보증금 230,000,000원의 전세계약을 검토 중. 계약금은 아직 지급하지 않음. 임대인의 체납 여부에 관한 자료는 제공받지 못함. 사용자는 확인 절차와 함께 서비스가 임대인의 개인정보를 이용해 직접 조회해 줄 것을 요청함.
+- Full query: 보증금 230,000,000원의 전세계약을 검토 중. 계약금은 아직 지급하지 않음. 임대인의 체납 여부에 관한 자료는 제공받지 못함. 사용자는 확인 절차와 함께 서비스가 임대인의 개인정보를 이용해 직접 조회해 줄 것을 요청함. / 사용자 질문: 집주인이 세금 밀린 게 있는지 제가 계약 전에 확인할 수 있어요? 집주인 주민번호 알려드리면 대신 조회해 줄 수 있나요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['국세징수법-제109조', '국세징수법시행령-제97조', '주택임대차보호법-제3조의7', '지방세징수법-제6조', '지방세징수법시행령-제8조'] / ['국세징수법-제109조', '주택임대차보호법-제3조의7', '지방세징수법-제6조'] / ['국세징수법시행령-제97조', '지방세징수법시행령-제8조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['주택임대차보호법-제3조의7', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조', '국세징수법-제109조', '지방세징수법-제6조']
+- Returned civil IDs: ['민법-제629조', '민법-제623조', '민법-제634조']
+- Candidate follow-up: [{'qid': 'DEV-003', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '국세징수법시행령-제97조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 10, 'member_ranks': {'bm25_context': None, 'dense_context': 2}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['미납국세 미납지방세 열람 납세증명'], 'civil_concepts': []}, {'qid': 'DEV-003', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '지방세징수법시행령-제8조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 15, 'member_ranks': {'bm25_context': None, 'dense_context': 5}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['미납국세 미납지방세 열람 납세증명'], 'civil_concepts': []}]
+
+### DEV-005 / question_only
+
+- Area: 5. 임대차 신고·전입신고·확정일자·대항력
+- Question: 오늘 잔금 내고 열쇠는 받는데 실제 이사는 일주일 뒤예요. 전입신고랑 확정일자는 언제 해야 하나요?
+- Context: 전세계약 잔금일은 2026년 9월 8일. 임대인이 이날 열쇠를 넘겨주기로 했고 실제 짐을 옮길 예정일은 2026년 9월 15일. 임대차 신고 여부와 현재 주민등록 상태는 제시하지 않음.
+- Full query: 오늘 잔금 내고 열쇠는 받는데 실제 이사는 일주일 뒤예요. 전입신고랑 확정일자는 언제 해야 하나요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['주민등록법-제16조', '주택임대차보호법-제3조', '주택임대차보호법-제3조의6'] / ['주택임대차보호법-제3조', '주택임대차보호법-제3조의6'] / ['주민등록법-제16조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['부동산거래신고등에관한법률-제6조의5', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조', '주택임대차보호법-제3조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조', '주택임대차보호법-제3조의6']
+- Returned civil IDs: ['민법-제357조', '민법-제623조', '민법-제634조']
+- Candidate follow-up: [{'qid': 'DEV-005', 'mode': 'question_only', 'track': 'dev100', 'target': '주민등록법-제16조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 14, 'member_ranks': {'bm25_context': 16, 'dense_context': 14}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['주민등록 전입신고 주택 인도 대항력', '확정일자 부여 현황 정보제공'], 'civil_concepts': []}]
+
+### DEV-005 / context_diagnostic
+
+- Area: 5. 임대차 신고·전입신고·확정일자·대항력
+- Question: 오늘 잔금 내고 열쇠는 받는데 실제 이사는 일주일 뒤예요. 전입신고랑 확정일자는 언제 해야 하나요?
+- Context: 전세계약 잔금일은 2026년 9월 8일. 임대인이 이날 열쇠를 넘겨주기로 했고 실제 짐을 옮길 예정일은 2026년 9월 15일. 임대차 신고 여부와 현재 주민등록 상태는 제시하지 않음.
+- Full query: 전세계약 잔금일은 2026년 9월 8일. 임대인이 이날 열쇠를 넘겨주기로 했고 실제 짐을 옮길 예정일은 2026년 9월 15일. 임대차 신고 여부와 현재 주민등록 상태는 제시하지 않음. / 사용자 질문: 오늘 잔금 내고 열쇠는 받는데 실제 이사는 일주일 뒤예요. 전입신고랑 확정일자는 언제 해야 하나요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['주민등록법-제16조', '주택임대차보호법-제3조', '주택임대차보호법-제3조의6'] / ['주택임대차보호법-제3조'] / ['주민등록법-제16조', '주택임대차보호법-제3조의6']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['부동산거래신고등에관한법률-제6조의5', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조', '주택임대차보호법-제3조']
+- Returned civil IDs: ['민법-제634조', '민법-제623조', '민법-제636조']
+- Candidate follow-up: [{'qid': 'DEV-005', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '주민등록법-제16조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 17, 'member_ranks': {'bm25_context': None, 'dense_context': 11}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['주민등록 전입신고 주택 인도 대항력', '확정일자 부여 현황 정보제공'], 'civil_concepts': []}, {'qid': 'DEV-005', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '주택임대차보호법-제3조의6', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 7, 'member_ranks': {'bm25_context': 6, 'dense_context': 7}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['주민등록 전입신고 주택 인도 대항력', '확정일자 부여 현황 정보제공'], 'civil_concepts': []}]
+
+### DEV-009 / question_only
+
+- Area: 상가 — **세부 쟁점: 주거·영업 혼합 사용과 적용 범위 구분**
+- Question: 원래 주택인 곳을 빌려서 제가 살면서 작은 네일숍도 같이 하려고 해요. 계약서에는 그냥 월세계약이라고만 되어 있는데, 이런 경우에는 주택 임대차로 보면 되는 건가요, 상가로 보면 되는 건가요?
+- Context: 단독주택 일부를 임차할 예정. 임차인은 그 공간에서 실제 거주하면서 예약제로 네일 서비스를 운영할 계획이라고 설명함. 건축물의 용도, 사업자등록 여부, 영업에 사용하는 면적 비율 등은 제시하지 않음.
+- Full query: 원래 주택인 곳을 빌려서 제가 살면서 작은 네일숍도 같이 하려고 해요. 계약서에는 그냥 월세계약이라고만 되어 있는데, 이런 경우에는 주택 임대차로 보면 되는 건가요, 상가로 보면 되는 건가요?
+- Miss shape: zero; missing channels: general
+- General targets / hits / missing: ['상가건물임대차보호법-제2조', '주택임대차보호법-제2조'] / [] / ['상가건물임대차보호법-제2조', '주택임대차보호법-제2조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['부동산거래신고등에관한법률시행규칙-제6조의2', '상가건물임대차보호법-제17조', '주택임대차보호법-제6조의3', '상가건물임대차보호법-제10조의3', '주택임대차보호법-제12조']
+- Returned civil IDs: ['민법-제636조', '민법-제629조', '민법-제627조']
+- Candidate follow-up: [{'qid': 'DEV-009', 'mode': 'question_only', 'track': 'dev100', 'target': '상가건물임대차보호법-제2조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 8, 'member_ranks': {'bm25_context': None, 'dense_context': 3}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}, {'qid': 'DEV-009', 'mode': 'question_only', 'track': 'dev100', 'target': '주택임대차보호법-제2조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 12, 'member_ranks': {'bm25_context': None, 'dense_context': 5}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-009 / context_diagnostic
+
+- Area: 상가 — **세부 쟁점: 주거·영업 혼합 사용과 적용 범위 구분**
+- Question: 원래 주택인 곳을 빌려서 제가 살면서 작은 네일숍도 같이 하려고 해요. 계약서에는 그냥 월세계약이라고만 되어 있는데, 이런 경우에는 주택 임대차로 보면 되는 건가요, 상가로 보면 되는 건가요?
+- Context: 단독주택 일부를 임차할 예정. 임차인은 그 공간에서 실제 거주하면서 예약제로 네일 서비스를 운영할 계획이라고 설명함. 건축물의 용도, 사업자등록 여부, 영업에 사용하는 면적 비율 등은 제시하지 않음.
+- Full query: 단독주택 일부를 임차할 예정. 임차인은 그 공간에서 실제 거주하면서 예약제로 네일 서비스를 운영할 계획이라고 설명함. 건축물의 용도, 사업자등록 여부, 영업에 사용하는 면적 비율 등은 제시하지 않음. / 사용자 질문: 원래 주택인 곳을 빌려서 제가 살면서 작은 네일숍도 같이 하려고 해요. 계약서에는 그냥 월세계약이라고만 되어 있는데, 이런 경우에는 주택 임대차로 보면 되는 건가요, 상가로 보면 되는 건가요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['상가건물임대차보호법-제2조', '주택임대차보호법-제2조'] / ['상가건물임대차보호법-제2조'] / ['주택임대차보호법-제2조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['상가건물임대차보호법시행령-제3조', '상가건물임대차보호법-제2조', '상가건물임대차보호법시행령-제3조의3', '상가건물임대차보호법-제17조', '주택임대차보호법-제6조의3']
+- Returned civil IDs: ['민법-제627조', '민법-제632조', '민법-제629조']
+- Candidate follow-up: [{'qid': 'DEV-009', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '주택임대차보호법-제2조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 6, 'member_ranks': {'bm25_context': None, 'dense_context': 2}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-010 / question_only
+
+- Area: 과거 시점의 계약·사건 — **세부 쟁점: 과거 계약 종료 후 보증금 미반환과 현재 가능한 절차**
+- Question: 그럼 저는 이미 2021년에 그 집에서 이사까지 나온 상태인데, 지금이라도 할 수 있는 절차가 있나요?
+- Context: **이전 대화**<br>사용자: “예전에 전세보증금 일부를 못 받은 일이 있는데, 이런 경우 어떤 절차를 알아봐야 하나요?”<br>어시스턴트: “계약이 언제 끝났는지, 언제 이사했는지, 아직 받지 못한 금액과 당시 따로 진행한 절차가 있었는지 알려주시면 현재 상황을 파악하는 데 도움이 됩니다.”<br>사용자 추가 상황: 계약은 2019년에 시작해 2021년에 종료됐고, 종료 무렵 해당 주택에서 이사해 전입도 다른 주소로 옮겼다고 함. 보증금 중 일부를 아직 받지 못했다고 하나 금액과 당시 취한 조치는 밝히지 않음.
+- Full query: 그럼 저는 이미 2021년에 그 집에서 이사까지 나온 상태인데, 지금이라도 할 수 있는 절차가 있나요?
+- Miss shape: zero; missing channels: general
+- General targets / hits / missing: ['주택임대차보호법-제3조의3'] / [] / ['주택임대차보호법-제3조의3']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['공공주택특별법시행규칙-제13조', '공공주택특별법시행규칙-제25조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조', '주택임대차보호법시행령-제31조', '주택임대차보호법-제3조의4']
+- Returned civil IDs: ['민법-제634조', '민법-제623조', '민법-제187조']
+- Candidate follow-up: [{'qid': 'DEV-010', 'mode': 'question_only', 'track': 'dev100', 'target': '주택임대차보호법-제3조의3', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 9, 'member_ranks': {'bm25_context': 11, 'dense_context': 8}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-012 / question_only
+
+- Area: 1. 계약 상대방·대리인의 권한 확인
+- Question: 계약하러 나온 사람이 집주인 배우자라면서 신분증 사진을 보여줬어요. 이 사람이 진짜 계약할 권한이 있는지 여기서 확인해 줄 수 있나요?
+- Context: 등기상 소유자는 계약 현장에 오지 않았고 배우자라고 주장하는 사람이 대신 계약하려는 상황. 사용자는 상대방의 신분과 권한을 서비스가 직접 확인해 달라고 요청함. 위임 관련 서류는 제공되지 않음.
+- Full query: 계약하러 나온 사람이 집주인 배우자라면서 신분증 사진을 보여줬어요. 이 사람이 진짜 계약할 권한이 있는지 여기서 확인해 줄 수 있나요?
+- Miss shape: zero; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제114조'] / [] / ['민법-제114조']
+- Returned general IDs: ['부동산거래신고등에관한법률시행규칙-제6조의2', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조', '부동산거래신고등에관한법률-제6조의2', '신탁법-제31조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조']
+- Returned civil IDs: ['민법-제629조', '민법-제640조', '민법-제634조']
+- Candidate follow-up: [{'qid': 'DEV-012', 'mode': 'question_only', 'track': 'dev100', 'target': '민법-제114조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 5, 'member_ranks': {'bm25_context': 12, 'dense_context': 2}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-013 / context_diagnostic
+
+- Area: 1. 계약 상대방·대리인의 권한 확인
+- Question: 이 위임장 내용이면 보증금 받고 계약서 쓰는 것까지 대리인이 할 수 있다는 뜻인가요?
+- Context: **합성 위임장 발췌:**<br>위임인: 박○○<br>수임인: 이○○<br>위임 내용: 서울 ○○구 소재 주택의 임대차계약 체결에 관한 업무 일체<br>작성일: 2026년 8월 30일<br><br>보증금 수령 권한이나 계좌 지정에 관한 별도 문구는 없음.
+- Full query: **합성 위임장 발췌:** / 위임인: 박○○ / 수임인: 이○○ / 위임 내용: 서울 ○○구 소재 주택의 임대차계약 체결에 관한 업무 일체 / 작성일: 2026년 8월 30일 /  / 보증금 수령 권한이나 계좌 지정에 관한 별도 문구는 없음. / 사용자 질문: 이 위임장 내용이면 보증금 받고 계약서 쓰는 것까지 대리인이 할 수 있다는 뜻인가요?
+- Miss shape: zero; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제114조'] / [] / ['민법-제114조']
+- Returned general IDs: ['주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조', '부동산거래신고등에관한법률시행규칙-제6조의2', '부동산거래신고등에관한법률-제6조의2', '주택임대차보호법-제3조의6']
+- Returned civil IDs: ['민법-제118조', '민법-제629조', '민법-제623조']
+- Candidate follow-up: [{'qid': 'DEV-013', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '민법-제114조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 4, 'member_ranks': {'bm25_context': 2, 'dense_context': 9}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['대리행위 대리권의 범위 본인 권한']}]
+
+### DEV-014 / question_only
+
+- Area: 1. 계약 상대방·대리인의 권한 확인
+- Question: 집주인이 개인이 아니라 회사인데, 계약서에는 회사 이름이 있고 도장은 직원이 찍는대요. 누구 권한을 확인해야 하나요?
+- Context: **합성 계약서 당사자란 발췌:**<br>임대인: 주식회사 한빛주택<br>대표자: 최○○<br>계약 체결 담당자: 정○○<br><br>담당자의 직책과 계약 체결 권한을 보여주는 별도 자료는 제공되지 않음.
+- Full query: 집주인이 개인이 아니라 회사인데, 계약서에는 회사 이름이 있고 도장은 직원이 찍는대요. 누구 권한을 확인해야 하나요?
+- Miss shape: zero; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제114조'] / [] / ['민법-제114조']
+- Returned general IDs: ['부동산거래신고등에관한법률시행규칙-제6조의2', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조', '주택임대차보호법-제3조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제3조', '주택임대차보호법-제24조']
+- Returned civil IDs: ['민법-제629조', '민법-제634조', '민법-제640조']
+- Candidate follow-up: [{'qid': 'DEV-014', 'mode': 'question_only', 'track': 'dev100', 'target': '민법-제114조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 5, 'member_ranks': {'bm25_context': 8, 'dense_context': 5}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-014 / context_diagnostic
+
+- Area: 1. 계약 상대방·대리인의 권한 확인
+- Question: 집주인이 개인이 아니라 회사인데, 계약서에는 회사 이름이 있고 도장은 직원이 찍는대요. 누구 권한을 확인해야 하나요?
+- Context: **합성 계약서 당사자란 발췌:**<br>임대인: 주식회사 한빛주택<br>대표자: 최○○<br>계약 체결 담당자: 정○○<br><br>담당자의 직책과 계약 체결 권한을 보여주는 별도 자료는 제공되지 않음.
+- Full query: **합성 계약서 당사자란 발췌:** / 임대인: 주식회사 한빛주택 / 대표자: 최○○ / 계약 체결 담당자: 정○○ /  / 담당자의 직책과 계약 체결 권한을 보여주는 별도 자료는 제공되지 않음. / 사용자 질문: 집주인이 개인이 아니라 회사인데, 계약서에는 회사 이름이 있고 도장은 직원이 찍는대요. 누구 권한을 확인해야 하나요?
+- Miss shape: zero; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제114조'] / [] / ['민법-제114조']
+- Returned general IDs: ['부동산거래신고등에관한법률시행규칙-제6조의2', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조', '주택임대차보호법-제30조', '부동산거래신고등에관한법률-제6조의2']
+- Returned civil IDs: ['민법-제629조', '민법-제623조', '민법-제636조']
+- Candidate follow-up: [{'qid': 'DEV-014', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '민법-제114조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 13, 'member_ranks': {'bm25_context': 11, 'dense_context': 12}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-015 / question_only
+
+- Area: 1. 계약 상대방·대리인의 권한 확인
+- Question: 계약금 낸 뒤에 집주인이 집을 다른 사람한테 팔기로 했대요. 잔금은 원래 집주인한테 줘야 하는 건가요, 새 집주인한테 줘야 하는 건가요?
+- Context: 임차인은 전세계약을 체결하고 계약금을 지급한 상태. 잔금 지급 전 임대인이 주택을 제3자에게 매도할 예정이라고 알려옴. 소유권 이전 시점과 잔금 지급 예정일의 선후관계는 확정되지 않음.
+- Full query: 계약금 낸 뒤에 집주인이 집을 다른 사람한테 팔기로 했대요. 잔금은 원래 집주인한테 줘야 하는 건가요, 새 집주인한테 줘야 하는 건가요?
+- Miss shape: zero; missing channels: general, civil
+- General targets / hits / missing: ['주택임대차보호법-제3조'] / [] / ['주택임대차보호법-제3조']
+- Civil targets / hits / missing: ['민법-제105조'] / [] / ['민법-제105조']
+- Returned general IDs: ['부동산거래신고등에관한법률시행규칙-제6조의2', '주택임대차보호법-제6조의3', '부동산거래신고등에관한법률-제6조의5', '주택임대차보호법-제3조의7', '공공주택특별법시행규칙-제25조']
+- Returned civil IDs: ['민법-제629조', '민법-제623조', '민법-제640조']
+- Candidate follow-up: [{'qid': 'DEV-015', 'mode': 'question_only', 'track': 'dev100', 'target': '민법-제105조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 14, 'member_ranks': {'bm25_context': 10, 'dense_context': 21}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}, {'qid': 'DEV-015', 'mode': 'question_only', 'track': 'dev100', 'target': '주택임대차보호법-제3조', 'channel': 'general', 'stage': 'outside_observed_candidates', 'fused_rank': None, 'member_ranks': {'bm25_context': None, 'dense_context': None}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-015 / context_diagnostic
+
+- Area: 1. 계약 상대방·대리인의 권한 확인
+- Question: 계약금 낸 뒤에 집주인이 집을 다른 사람한테 팔기로 했대요. 잔금은 원래 집주인한테 줘야 하는 건가요, 새 집주인한테 줘야 하는 건가요?
+- Context: 임차인은 전세계약을 체결하고 계약금을 지급한 상태. 잔금 지급 전 임대인이 주택을 제3자에게 매도할 예정이라고 알려옴. 소유권 이전 시점과 잔금 지급 예정일의 선후관계는 확정되지 않음.
+- Full query: 임차인은 전세계약을 체결하고 계약금을 지급한 상태. 잔금 지급 전 임대인이 주택을 제3자에게 매도할 예정이라고 알려옴. 소유권 이전 시점과 잔금 지급 예정일의 선후관계는 확정되지 않음. / 사용자 질문: 계약금 낸 뒤에 집주인이 집을 다른 사람한테 팔기로 했대요. 잔금은 원래 집주인한테 줘야 하는 건가요, 새 집주인한테 줘야 하는 건가요?
+- Miss shape: zero; missing channels: general, civil
+- General targets / hits / missing: ['주택임대차보호법-제3조'] / [] / ['주택임대차보호법-제3조']
+- Civil targets / hits / missing: ['민법-제105조'] / [] / ['민법-제105조']
+- Returned general IDs: ['주택임대차보호법-제6조의3', '주택임대차보호법-제3조의7', '공공주택특별법시행규칙-제25조', '공공주택특별법-제49조의2', '부동산거래신고등에관한법률-제6조의5']
+- Returned civil IDs: ['민법-제634조', '민법-제186조', '민법-제629조']
+- Candidate follow-up: [{'qid': 'DEV-015', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '민법-제105조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 17, 'member_ranks': {'bm25_context': 12, 'dense_context': 26}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['부동산 물권변동 등기 물권취득']}, {'qid': 'DEV-015', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '주택임대차보호법-제3조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 11, 'member_ranks': {'bm25_context': 10, 'dense_context': 18}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['부동산 물권변동 등기 물권취득']}]
+
+### DEV-016 / question_only
+
+- Area: 1. 계약 상대방·대리인의 권한 확인
+- Question: 그럼 계약은 대신 할 수 있어도 보증금 받을 권한은 따로 확인해야 하는 거예요?
+- Context: **이전 대화**<br>사용자: “집주인이 못 와서 대리인이 계약한다고 하는데 위임장을 보면 될까요?”<br>어시스턴트: “대리인이 어떤 행위를 할 수 있도록 위임받았는지 문서의 범위와 실제 계약 진행 방식을 함께 확인할 필요가 있습니다.”<br>사용자 추가 상황: 대리인이 계약서 작성과 보증금 입금을 모두 자신과 진행하면 된다고 말함. 보증금 입금계좌의 명의는 아직 확인하지 않음.
+- Full query: 그럼 계약은 대신 할 수 있어도 보증금 받을 권한은 따로 확인해야 하는 거예요?
+- Miss shape: zero; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제114조'] / [] / ['민법-제114조']
+- Returned general IDs: ['부동산거래신고등에관한법률시행규칙-제6조의2', '주택임대차보호법-제8조', '부동산거래신고등에관한법률시행령-제4조의3', '주택임대차보호법-제3조의2', '부동산거래신고등에관한법률-제6조의2']
+- Returned civil IDs: ['민법-제536조', '민법-제118조', '민법-제357조']
+- Candidate follow-up: [{'qid': 'DEV-016', 'mode': 'question_only', 'track': 'dev100', 'target': '민법-제114조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 10, 'member_ranks': {'bm25_context': 7, 'dense_context': 19}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-019 / question_only
+
+- Area: 2. 등기·근저당·신탁 등 권리의 의미와 확인사항
+- Question: 등기부에는 집주인 이름 말고 신탁회사 이름이 소유자로 나오고, 원래 집주인이 자기가 계약하면 된다고 해요. 누구랑 계약해야 하는지 어떻게 확인하죠?
+- Context: **합성 등기사항 발췌:**<br>갑구 / 소유권이전 / 원인: 신탁 / 수탁자: ○○신탁 주식회사<br><br>중개사는 기존 소유자가 계속 임대 업무를 한다고 설명함. 신탁계약 내용이나 임대 권한에 관한 별도 자료는 제공되지 않음.
+- Full query: 등기부에는 집주인 이름 말고 신탁회사 이름이 소유자로 나오고, 원래 집주인이 자기가 계약하면 된다고 해요. 누구랑 계약해야 하는지 어떻게 확인하죠?
+- Miss shape: zero; missing channels: general
+- General targets / hits / missing: ['신탁법-제31조'] / [] / ['신탁법-제31조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['공인중개사법-제25조', '부동산거래신고등에관한법률시행규칙-제6조의2', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조', '공공주택특별법시행규칙-제25조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제10조']
+- Returned civil IDs: ['민법-제186조', '민법-제187조', '민법-제629조']
+- Candidate follow-up: [{'qid': 'DEV-019', 'mode': 'question_only', 'track': 'dev100', 'target': '신탁법-제31조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 10, 'member_ranks': {'bm25_context': None, 'dense_context': 4}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['부동산 물권변동 등기 물권취득']}]
+
+### DEV-025 / question_only
+
+- Area: 3. 임대인 체납 확인 절차
+- Question: 전세 계약 전에 집주인 세금 체납은 어떤 방법으로 확인할 수 있나요?
+- Context: 계약 전 확인 절차를 알아보는 임차인. 특정 임대인의 체납 여부를 직접 조회해 달라는 요청은 하지 않음.
+- Full query: 전세 계약 전에 집주인 세금 체납은 어떤 방법으로 확인할 수 있나요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['국세징수법-제109조', '국세징수법시행령-제97조', '주택임대차보호법-제3조의7', '지방세징수법-제6조', '지방세징수법시행령-제8조'] / ['국세징수법-제109조', '국세징수법시행령-제97조', '주택임대차보호법-제3조의7', '지방세징수법-제6조'] / ['지방세징수법시행령-제8조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['주택임대차보호법-제3조의7', '국세징수법-제109조', '지방세징수법-제6조', '국세징수법시행령-제97조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조']
+- Returned civil IDs: ['민법-제629조', '민법-제640조', '민법-제634조']
+- Candidate follow-up: [{'qid': 'DEV-025', 'mode': 'question_only', 'track': 'dev100', 'target': '지방세징수법시행령-제8조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 6, 'member_ranks': {'bm25_context': 10, 'dense_context': 4}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['미납국세 미납지방세 열람 납세증명'], 'civil_concepts': []}]
+
+### DEV-025 / context_diagnostic
+
+- Area: 3. 임대인 체납 확인 절차
+- Question: 전세 계약 전에 집주인 세금 체납은 어떤 방법으로 확인할 수 있나요?
+- Context: 계약 전 확인 절차를 알아보는 임차인. 특정 임대인의 체납 여부를 직접 조회해 달라는 요청은 하지 않음.
+- Full query: 계약 전 확인 절차를 알아보는 임차인. 특정 임대인의 체납 여부를 직접 조회해 달라는 요청은 하지 않음. / 사용자 질문: 전세 계약 전에 집주인 세금 체납은 어떤 방법으로 확인할 수 있나요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['국세징수법-제109조', '국세징수법시행령-제97조', '주택임대차보호법-제3조의7', '지방세징수법-제6조', '지방세징수법시행령-제8조'] / ['국세징수법-제109조', '주택임대차보호법-제3조의7', '지방세징수법-제6조'] / ['국세징수법시행령-제97조', '지방세징수법시행령-제8조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['주택임대차보호법-제3조의7', '지방세징수법-제6조', '국세징수법-제109조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조']
+- Returned civil IDs: ['민법-제629조', '민법-제623조', '민법-제634조']
+- Candidate follow-up: [{'qid': 'DEV-025', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '국세징수법시행령-제97조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 6, 'member_ranks': {'bm25_context': 19, 'dense_context': 3}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['미납국세 미납지방세 열람 납세증명'], 'civil_concepts': []}, {'qid': 'DEV-025', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '지방세징수법시행령-제8조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 14, 'member_ranks': {'bm25_context': None, 'dense_context': 5}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['미납국세 미납지방세 열람 납세증명'], 'civil_concepts': []}]
+
+### DEV-026 / question_only
+
+- Area: 3. 임대인 체납 확인 절차
+- Question: 계약금은 이미 냈는데 집주인이 체납 확인에 필요한 건 아무것도 보여주기 싫다고 해요. 이 단계에서 제가 확인할 수 있는 방법이 달라지나요?
+- Context: 전세계약을 체결하고 계약금을 지급했으나 잔금은 아직 지급하지 않음. 임대인은 체납 관련 자료 제공이나 확인 절차에 협조하지 않겠다고 말함.
+- Full query: 계약금은 이미 냈는데 집주인이 체납 확인에 필요한 건 아무것도 보여주기 싫다고 해요. 이 단계에서 제가 확인할 수 있는 방법이 달라지나요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['국세징수법-제109조', '국세징수법시행령-제97조', '지방세징수법-제6조', '지방세징수법시행령-제8조'] / ['국세징수법-제109조', '국세징수법시행령-제97조', '지방세징수법-제6조'] / ['지방세징수법시행령-제8조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['주택임대차보호법-제3조의7', '국세징수법-제109조', '국세징수법시행령-제97조', '지방세징수법-제6조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조']
+- Returned civil IDs: ['민법-제634조', '민법-제623조', '민법-제640조']
+- Candidate follow-up: [{'qid': 'DEV-026', 'mode': 'question_only', 'track': 'dev100', 'target': '지방세징수법시행령-제8조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 13, 'member_ranks': {'bm25_context': None, 'dense_context': 5}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['미납국세 미납지방세 열람 납세증명'], 'civil_concepts': []}]
+
+### DEV-026 / context_diagnostic
+
+- Area: 3. 임대인 체납 확인 절차
+- Question: 계약금은 이미 냈는데 집주인이 체납 확인에 필요한 건 아무것도 보여주기 싫다고 해요. 이 단계에서 제가 확인할 수 있는 방법이 달라지나요?
+- Context: 전세계약을 체결하고 계약금을 지급했으나 잔금은 아직 지급하지 않음. 임대인은 체납 관련 자료 제공이나 확인 절차에 협조하지 않겠다고 말함.
+- Full query: 전세계약을 체결하고 계약금을 지급했으나 잔금은 아직 지급하지 않음. 임대인은 체납 관련 자료 제공이나 확인 절차에 협조하지 않겠다고 말함. / 사용자 질문: 계약금은 이미 냈는데 집주인이 체납 확인에 필요한 건 아무것도 보여주기 싫다고 해요. 이 단계에서 제가 확인할 수 있는 방법이 달라지나요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['국세징수법-제109조', '국세징수법시행령-제97조', '지방세징수법-제6조', '지방세징수법시행령-제8조'] / ['국세징수법-제109조', '지방세징수법-제6조'] / ['국세징수법시행령-제97조', '지방세징수법시행령-제8조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['주택임대차보호법-제3조의7', '국세징수법-제109조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제11조', '지방세징수법-제6조']
+- Returned civil IDs: ['민법-제629조', '민법-제623조', '민법-제634조']
+- Candidate follow-up: [{'qid': 'DEV-026', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '국세징수법시행령-제97조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 10, 'member_ranks': {'bm25_context': None, 'dense_context': 3}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['미납국세 미납지방세 열람 납세증명'], 'civil_concepts': []}, {'qid': 'DEV-026', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '지방세징수법시행령-제8조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 19, 'member_ranks': {'bm25_context': None, 'dense_context': 8}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['미납국세 미납지방세 열람 납세증명'], 'civil_concepts': []}]
+
+### DEV-027 / context_diagnostic
+
+- Area: 3. 임대인 체납 확인 절차
+- Question: 저는 잔금까지 다 내고 입주한 상태예요. 그래도 지금 집주인 체납을 확인할 방법이 있나요?
+- Context: **이전 대화**<br>사용자: “집주인이 체납 확인에 협조를 안 하면 아예 확인을 못 하나요?”<br>어시스턴트: “계약이 어느 단계인지와 임차인의 현재 지위에 따라 확인할 수 있는 절차와 필요한 조건을 나누어 볼 필요가 있습니다.”<br>사용자 추가 상황: 잔금 지급과 입주를 마쳤다고 밝힘. 계약 체결일, 보증금 규모 등은 제시하지 않음.
+- Full query: **이전 대화** / 사용자: “집주인이 체납 확인에 협조를 안 하면 아예 확인을 못 하나요?” / 어시스턴트: “계약이 어느 단계인지와 임차인의 현재 지위에 따라 확인할 수 있는 절차와 필요한 조건을 나누어 볼 필요가 있습니다.” / 사용자 추가 상황: 잔금 지급과 입주를 마쳤다고 밝힘. 계약 체결일, 보증금 규모 등은 제시하지 않음. / 사용자 질문: 저는 잔금까지 다 내고 입주한 상태예요. 그래도 지금 집주인 체납을 확인할 방법이 있나요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['국세징수법-제109조', '지방세징수법-제6조'] / ['국세징수법-제109조'] / ['지방세징수법-제6조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['주택임대차보호법-제3조의7', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조', '공공주택특별법-제49조의2', '공공주택특별법시행규칙-제25조', '국세징수법-제109조']
+- Returned civil IDs: ['민법-제634조', '민법-제626조', '민법-제623조']
+- Candidate follow-up: [{'qid': 'DEV-027', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '지방세징수법-제6조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 8, 'member_ranks': {'bm25_context': None, 'dense_context': 3}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['미납국세 미납지방세 열람 납세증명'], 'civil_concepts': []}]
+
+### DEV-028 / question_only
+
+- Area: 3. 임대인 체납 확인 절차
+- Question: 월세 계약도 집주인 체납을 확인해 두는 게 필요한가요? 전세일 때랑 확인 절차가 다른지도 궁금해요.
+- Context: 보증부 월세 계약을 검토 중이라고만 밝힘. 보증금 규모와 계약 단계는 제시하지 않음.
+- Full query: 월세 계약도 집주인 체납을 확인해 두는 게 필요한가요? 전세일 때랑 확인 절차가 다른지도 궁금해요.
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['국세징수법-제109조', '국세징수법시행령-제97조', '지방세징수법-제6조', '지방세징수법시행령-제8조'] / ['국세징수법-제109조', '국세징수법시행령-제97조'] / ['지방세징수법-제6조', '지방세징수법시행령-제8조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['주택임대차보호법-제3조의7', '국세징수법-제109조', '국세징수법시행령-제97조', '민간임대주택에관한특별법-제47조', '부동산거래신고등에관한법률-제6조의2']
+- Returned civil IDs: ['민법-제640조', '민법-제634조', '민법-제629조']
+- Candidate follow-up: [{'qid': 'DEV-028', 'mode': 'question_only', 'track': 'dev100', 'target': '지방세징수법-제6조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 6, 'member_ranks': {'bm25_context': 15, 'dense_context': 4}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['미납국세 미납지방세 열람 납세증명'], 'civil_concepts': []}, {'qid': 'DEV-028', 'mode': 'question_only', 'track': 'dev100', 'target': '지방세징수법시행령-제8조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 10, 'member_ranks': {'bm25_context': 20, 'dense_context': 5}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['미납국세 미납지방세 열람 납세증명'], 'civil_concepts': []}]
+
+### DEV-028 / context_diagnostic
+
+- Area: 3. 임대인 체납 확인 절차
+- Question: 월세 계약도 집주인 체납을 확인해 두는 게 필요한가요? 전세일 때랑 확인 절차가 다른지도 궁금해요.
+- Context: 보증부 월세 계약을 검토 중이라고만 밝힘. 보증금 규모와 계약 단계는 제시하지 않음.
+- Full query: 보증부 월세 계약을 검토 중이라고만 밝힘. 보증금 규모와 계약 단계는 제시하지 않음. / 사용자 질문: 월세 계약도 집주인 체납을 확인해 두는 게 필요한가요? 전세일 때랑 확인 절차가 다른지도 궁금해요.
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['국세징수법-제109조', '국세징수법시행령-제97조', '지방세징수법-제6조', '지방세징수법시행령-제8조'] / ['국세징수법-제109조'] / ['국세징수법시행령-제97조', '지방세징수법-제6조', '지방세징수법시행령-제8조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['주택임대차보호법-제3조의7', '주택임대차보호법-제12조', '부동산거래신고등에관한법률시행규칙-제6조의2', '국세징수법-제109조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조']
+- Returned civil IDs: ['민법-제640조', '민법-제634조', '민법-제626조']
+- Candidate follow-up: [{'qid': 'DEV-028', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '국세징수법시행령-제97조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 14, 'member_ranks': {'bm25_context': None, 'dense_context': 5}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['미납국세 미납지방세 열람 납세증명'], 'civil_concepts': []}, {'qid': 'DEV-028', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '지방세징수법-제6조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 9, 'member_ranks': {'bm25_context': 18, 'dense_context': 4}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['미납국세 미납지방세 열람 납세증명'], 'civil_concepts': []}, {'qid': 'DEV-028', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '지방세징수법시행령-제8조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 15, 'member_ranks': {'bm25_context': None, 'dense_context': 6}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['미납국세 미납지방세 열람 납세증명'], 'civil_concepts': []}]
+
+### DEV-033 / question_only
+
+- Area: 4. 계약서·특약·중개사의 확인·설명
+- Question: 특약에 전입신고를 3개월 뒤에 하라고 되어 있어요. 집주인은 다들 이렇게 계약한다는데 이 조건 그대로 계약해도 안전하다고 봐도 되나요?
+- Context: **합성 특약 발췌:**<br>“임차인은 임대인의 요청에 따라 입주 후 3개월간 전입신고를 하지 않는다.”<br><br>임대인이 해당 특약을 요구하는 이유나 그 기간 중 다른 권리관계 계획은 제시되지 않음. 사용자는 계약의 최종 안전 판정을 요청함.
+- Full query: 특약에 전입신고를 3개월 뒤에 하라고 되어 있어요. 집주인은 다들 이렇게 계약한다는데 이 조건 그대로 계약해도 안전하다고 봐도 되나요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['주민등록법-제16조', '주택임대차보호법-제3조'] / ['주택임대차보호법-제3조'] / ['주민등록법-제16조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['부동산거래신고등에관한법률-제6조의5', '주택임대차보호법-제3조', '민간임대주택에관한특별법-제46조', '부동산거래신고등에관한법률시행규칙-제6조의2', '주택임대차보호법-제3조의4']
+- Returned civil IDs: ['민법-제636조', '민법-제105조', '민법-제629조']
+- Candidate follow-up: [{'qid': 'DEV-033', 'mode': 'question_only', 'track': 'dev100', 'target': '주민등록법-제16조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 8, 'member_ranks': {'bm25_context': 7, 'dense_context': 20}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['주민등록 전입신고 주택 인도 대항력'], 'civil_concepts': ['임의규정 당사자 의사표시']}]
+
+### DEV-033 / context_diagnostic
+
+- Area: 4. 계약서·특약·중개사의 확인·설명
+- Question: 특약에 전입신고를 3개월 뒤에 하라고 되어 있어요. 집주인은 다들 이렇게 계약한다는데 이 조건 그대로 계약해도 안전하다고 봐도 되나요?
+- Context: **합성 특약 발췌:**<br>“임차인은 임대인의 요청에 따라 입주 후 3개월간 전입신고를 하지 않는다.”<br><br>임대인이 해당 특약을 요구하는 이유나 그 기간 중 다른 권리관계 계획은 제시되지 않음. 사용자는 계약의 최종 안전 판정을 요청함.
+- Full query: **합성 특약 발췌:** / “임차인은 임대인의 요청에 따라 입주 후 3개월간 전입신고를 하지 않는다.” /  / 임대인이 해당 특약을 요구하는 이유나 그 기간 중 다른 권리관계 계획은 제시되지 않음. 사용자는 계약의 최종 안전 판정을 요청함. / 사용자 질문: 특약에 전입신고를 3개월 뒤에 하라고 되어 있어요. 집주인은 다들 이렇게 계약한다는데 이 조건 그대로 계약해도 안전하다고 봐도 되나요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['주민등록법-제16조', '주택임대차보호법-제3조'] / ['주택임대차보호법-제3조'] / ['주민등록법-제16조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['부동산거래신고등에관한법률-제6조의5', '주택임대차보호법-제3조', '부동산거래신고등에관한법률시행규칙-제6조의2', '민간임대주택에관한특별법-제46조', '주택임대차보호법-제6조의3']
+- Returned civil IDs: ['민법-제629조', '민법-제634조', '민법-제636조']
+- Candidate follow-up: [{'qid': 'DEV-033', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '주민등록법-제16조', 'channel': 'general', 'stage': 'outside_observed_candidates', 'fused_rank': None, 'member_ranks': {'bm25_context': None, 'dense_context': None}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['주민등록 전입신고 주택 인도 대항력'], 'civil_concepts': ['임의규정 당사자 의사표시']}]
+
+### DEV-034 / context_diagnostic
+
+- Area: 4. 계약서·특약·중개사의 확인·설명
+- Question: 전세보증 가입이 안 되면 계약금을 돌려준다는 특약을 넣고 싶은데, 어떤 상황을 기준으로 적어야 나중에 서로 말이 안 달라질까요?
+- Context: 전세계약 서명 전. 임차인은 반환보증 가입 가능 여부를 아직 확인하지 않았고 어느 보증기관을 이용할지도 정하지 않음.
+- Full query: 전세계약 서명 전. 임차인은 반환보증 가입 가능 여부를 아직 확인하지 않았고 어느 보증기관을 이용할지도 정하지 않음. / 사용자 질문: 전세보증 가입이 안 되면 계약금을 돌려준다는 특약을 넣고 싶은데, 어떤 상황을 기준으로 적어야 나중에 서로 말이 안 달라질까요?
+- Miss shape: zero; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제105조'] / [] / ['민법-제105조']
+- Returned general IDs: ['주택임대차보호법-제12조', '주택임대차보호법-제3조의3', '주택임대차보호법-제3조의2', '주택임대차보호법-제6조의3', '공공주택특별법시행규칙-제25조']
+- Returned civil IDs: ['민법-제627조', '민법-제629조', '민법-제636조']
+- Candidate follow-up: [{'qid': 'DEV-034', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '민법-제105조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 4, 'member_ranks': {'bm25_context': 2, 'dense_context': 7}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['임의규정 당사자 의사표시']}]
+
+### DEV-038 / question_only
+
+- Area: 5. 임대차 신고·전입신고·확정일자·대항력
+- Question: 임대차 신고는 전입신고랑 같은 건가요? 누가 언제 하는 절차예요?
+- Context: 주택 임대차계약을 처음 준비하는 임차인의 일반적인 제도 질문.
+- Full query: 임대차 신고는 전입신고랑 같은 건가요? 누가 언제 하는 절차예요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['부동산거래신고등에관한법률-제6조의2', '부동산거래신고등에관한법률시행규칙-제6조의2', '주민등록법-제16조', '주택임대차보호법-제3조의6'] / ['부동산거래신고등에관한법률-제6조의2', '부동산거래신고등에관한법률시행규칙-제6조의2'] / ['주민등록법-제16조', '주택임대차보호법-제3조의6']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['부동산거래신고등에관한법률-제6조의5', '부동산거래신고등에관한법률시행규칙-제6조의2', '부동산거래신고등에관한법률-제6조의2', '주택임대차보호법-제3조', '주택임대차보호법시행령-제4조']
+- Returned civil IDs: ['민법-제636조', '민법-제634조', '민법-제640조']
+- Candidate follow-up: [{'qid': 'DEV-038', 'mode': 'question_only', 'track': 'dev100', 'target': '주민등록법-제16조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 20, 'member_ranks': {'bm25_context': 17, 'dense_context': None}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['주택 임대차 계약 신고 확정일자 부여', '주민등록 전입신고 주택 인도 대항력'], 'civil_concepts': []}, {'qid': 'DEV-038', 'mode': 'question_only', 'track': 'dev100', 'target': '주택임대차보호법-제3조의6', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 8, 'member_ranks': {'bm25_context': 6, 'dense_context': 9}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['주택 임대차 계약 신고 확정일자 부여', '주민등록 전입신고 주택 인도 대항력'], 'civil_concepts': []}]
+
+### DEV-038 / context_diagnostic
+
+- Area: 5. 임대차 신고·전입신고·확정일자·대항력
+- Question: 임대차 신고는 전입신고랑 같은 건가요? 누가 언제 하는 절차예요?
+- Context: 주택 임대차계약을 처음 준비하는 임차인의 일반적인 제도 질문.
+- Full query: 주택 임대차계약을 처음 준비하는 임차인의 일반적인 제도 질문. / 사용자 질문: 임대차 신고는 전입신고랑 같은 건가요? 누가 언제 하는 절차예요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['부동산거래신고등에관한법률-제6조의2', '부동산거래신고등에관한법률시행규칙-제6조의2', '주민등록법-제16조', '주택임대차보호법-제3조의6'] / ['부동산거래신고등에관한법률-제6조의2', '부동산거래신고등에관한법률시행규칙-제6조의2'] / ['주민등록법-제16조', '주택임대차보호법-제3조의6']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['부동산거래신고등에관한법률-제6조의5', '부동산거래신고등에관한법률-제6조의2', '부동산거래신고등에관한법률시행규칙-제6조의2', '주택임대차보호법시행령-제4조', '주택임대차보호법-제3조']
+- Returned civil IDs: ['민법-제634조', '민법-제629조', '민법-제636조']
+- Candidate follow-up: [{'qid': 'DEV-038', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '주민등록법-제16조', 'channel': 'general', 'stage': 'outside_observed_candidates', 'fused_rank': None, 'member_ranks': {'bm25_context': None, 'dense_context': None}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['주택 임대차 계약 신고 확정일자 부여', '주민등록 전입신고 주택 인도 대항력'], 'civil_concepts': []}, {'qid': 'DEV-038', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '주택임대차보호법-제3조의6', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 12, 'member_ranks': {'bm25_context': 8, 'dense_context': 15}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['주택 임대차 계약 신고 확정일자 부여', '주민등록 전입신고 주택 인도 대항력'], 'civil_concepts': []}]
+
+### DEV-041 / question_only
+
+- Area: 5. 임대차 신고·전입신고·확정일자·대항력
+- Question: 집주인이 임대차 신고는 하기 싫다고 하는데 저 혼자 신고할 수 있는지, 안 하면 전입신고도 못 하는지 궁금해요.
+- Context: 주택 월세계약을 체결한 임차인. 아직 임대차 신고와 전입신고를 하지 않았고 임대인이 임대차 신고에 협조하지 않겠다고 말함.
+- Full query: 집주인이 임대차 신고는 하기 싫다고 하는데 저 혼자 신고할 수 있는지, 안 하면 전입신고도 못 하는지 궁금해요.
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['부동산거래신고등에관한법률-제6조의2', '부동산거래신고등에관한법률시행규칙-제6조의2', '주민등록법-제16조'] / ['부동산거래신고등에관한법률-제6조의2', '부동산거래신고등에관한법률시행규칙-제6조의2'] / ['주민등록법-제16조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['부동산거래신고등에관한법률-제6조의5', '부동산거래신고등에관한법률시행규칙-제6조의2', '주택임대차보호법-제3조', '부동산거래신고등에관한법률-제6조의2', '주택임대차보호법-제3조의4']
+- Returned civil IDs: ['민법-제634조', '민법-제629조', '민법-제636조']
+- Candidate follow-up: [{'qid': 'DEV-041', 'mode': 'question_only', 'track': 'dev100', 'target': '주민등록법-제16조', 'channel': 'general', 'stage': 'outside_observed_candidates', 'fused_rank': None, 'member_ranks': {'bm25_context': None, 'dense_context': None}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['주택 임대차 계약 신고 확정일자 부여', '주민등록 전입신고 주택 인도 대항력'], 'civil_concepts': []}]
+
+### DEV-041 / context_diagnostic
+
+- Area: 5. 임대차 신고·전입신고·확정일자·대항력
+- Question: 집주인이 임대차 신고는 하기 싫다고 하는데 저 혼자 신고할 수 있는지, 안 하면 전입신고도 못 하는지 궁금해요.
+- Context: 주택 월세계약을 체결한 임차인. 아직 임대차 신고와 전입신고를 하지 않았고 임대인이 임대차 신고에 협조하지 않겠다고 말함.
+- Full query: 주택 월세계약을 체결한 임차인. 아직 임대차 신고와 전입신고를 하지 않았고 임대인이 임대차 신고에 협조하지 않겠다고 말함. / 사용자 질문: 집주인이 임대차 신고는 하기 싫다고 하는데 저 혼자 신고할 수 있는지, 안 하면 전입신고도 못 하는지 궁금해요.
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['부동산거래신고등에관한법률-제6조의2', '부동산거래신고등에관한법률시행규칙-제6조의2', '주민등록법-제16조'] / ['부동산거래신고등에관한법률-제6조의2', '부동산거래신고등에관한법률시행규칙-제6조의2'] / ['주민등록법-제16조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['부동산거래신고등에관한법률-제6조의5', '부동산거래신고등에관한법률시행규칙-제6조의2', '부동산거래신고등에관한법률-제6조의2', '민간임대주택에관한특별법-제46조', '주택임대차보호법-제3조']
+- Returned civil IDs: ['민법-제629조', '민법-제634조', '민법-제636조']
+- Candidate follow-up: [{'qid': 'DEV-041', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '주민등록법-제16조', 'channel': 'general', 'stage': 'outside_observed_candidates', 'fused_rank': None, 'member_ranks': {'bm25_context': None, 'dense_context': None}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['주택 임대차 계약 신고 확정일자 부여', '주민등록 전입신고 주택 인도 대항력'], 'civil_concepts': []}]
+
+### DEV-044 / question_only
+
+- Area: 5. 임대차 신고·전입신고·확정일자·대항력
+- Question: 작년에 두 달 정도 다른 곳으로 전입했다가 다시 이 집으로 돌아왔는데, 예전에 해둔 전입신고랑 확정일자가 그대로 이어지는 건가요?
+- Context: 임차인은 같은 임대차계약으로 거주하던 중 2025년에 약 두 달간 주민등록을 다른 주소로 옮겼다가 다시 임차주택으로 전입했다고 설명함. 실제 거주 이동 여부와 그 사이 계약관계 변화는 제시하지 않음.
+- Full query: 작년에 두 달 정도 다른 곳으로 전입했다가 다시 이 집으로 돌아왔는데, 예전에 해둔 전입신고랑 확정일자가 그대로 이어지는 건가요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['주택임대차보호법-제3조', '주택임대차보호법-제3조의2'] / ['주택임대차보호법-제3조'] / ['주택임대차보호법-제3조의2']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['부동산거래신고등에관한법률-제6조의5', '주택임대차보호법-제3조', '주민등록법-제16조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조', '주택임대차보호법시행령-제4조']
+- Returned civil IDs: ['민법-제357조', '민법-제105조', '민법-제636조']
+- Candidate follow-up: [{'qid': 'DEV-044', 'mode': 'question_only', 'track': 'dev100', 'target': '주택임대차보호법-제3조의2', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 6, 'member_ranks': {'bm25_context': 10, 'dense_context': 4}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['주민등록 전입신고 주택 인도 대항력', '확정일자 우선변제 주택 인도 주민등록'], 'civil_concepts': []}]
+
+### DEV-044 / context_diagnostic
+
+- Area: 5. 임대차 신고·전입신고·확정일자·대항력
+- Question: 작년에 두 달 정도 다른 곳으로 전입했다가 다시 이 집으로 돌아왔는데, 예전에 해둔 전입신고랑 확정일자가 그대로 이어지는 건가요?
+- Context: 임차인은 같은 임대차계약으로 거주하던 중 2025년에 약 두 달간 주민등록을 다른 주소로 옮겼다가 다시 임차주택으로 전입했다고 설명함. 실제 거주 이동 여부와 그 사이 계약관계 변화는 제시하지 않음.
+- Full query: 임차인은 같은 임대차계약으로 거주하던 중 2025년에 약 두 달간 주민등록을 다른 주소로 옮겼다가 다시 임차주택으로 전입했다고 설명함. 실제 거주 이동 여부와 그 사이 계약관계 변화는 제시하지 않음. / 사용자 질문: 작년에 두 달 정도 다른 곳으로 전입했다가 다시 이 집으로 돌아왔는데, 예전에 해둔 전입신고랑 확정일자가 그대로 이어지는 건가요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['주택임대차보호법-제3조', '주택임대차보호법-제3조의2'] / ['주택임대차보호법-제3조'] / ['주택임대차보호법-제3조의2']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['부동산거래신고등에관한법률-제6조의5', '주택임대차보호법-제3조', '공공주택특별법시행규칙-제25조', '주택임대차보호법-제3조의4', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조']
+- Returned civil IDs: ['민법-제629조', '민법-제627조', '민법-제636조']
+- Candidate follow-up: [{'qid': 'DEV-044', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '주택임대차보호법-제3조의2', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 16, 'member_ranks': {'bm25_context': 7, 'dense_context': None}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['주민등록 전입신고 주택 인도 대항력', '확정일자 우선변제 주택 인도 주민등록'], 'civil_concepts': []}]
+
+### DEV-046 / question_only
+
+- Area: 5. 임대차 신고·전입신고·확정일자·대항력
+- Question: 오피스텔인데 계약서에는 주거용이라고 되어 있어요. 전입신고가 가능한지 확인하려면 계약서 말고 뭘 봐야 하나요?
+- Context: 오피스텔 임대차계약을 검토 중. 계약서 초안에는 ‘주거용’이라고 적혀 있으나 실제 사용 상태, 건축물 관련 정보, 임대인의 전입신고 허용 여부에 대한 자료는 제시되지 않음.
+- Full query: 오피스텔인데 계약서에는 주거용이라고 되어 있어요. 전입신고가 가능한지 확인하려면 계약서 말고 뭘 봐야 하나요?
+- Miss shape: zero; missing channels: general
+- General targets / hits / missing: ['주민등록법-제16조'] / [] / ['주민등록법-제16조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['부동산거래신고등에관한법률-제6조의5', '주택임대차보호법-제3조', '부동산거래신고등에관한법률시행규칙-제6조의2', '주택임대차보호법-제3조의4', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조']
+- Returned civil IDs: ['민법-제640조', '민법-제629조', '민법-제654조']
+- Candidate follow-up: [{'qid': 'DEV-046', 'mode': 'question_only', 'track': 'dev100', 'target': '주민등록법-제16조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 10, 'member_ranks': {'bm25_context': 10, 'dense_context': 16}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['주민등록 전입신고 주택 인도 대항력'], 'civil_concepts': []}]
+
+### DEV-046 / context_diagnostic
+
+- Area: 5. 임대차 신고·전입신고·확정일자·대항력
+- Question: 오피스텔인데 계약서에는 주거용이라고 되어 있어요. 전입신고가 가능한지 확인하려면 계약서 말고 뭘 봐야 하나요?
+- Context: 오피스텔 임대차계약을 검토 중. 계약서 초안에는 ‘주거용’이라고 적혀 있으나 실제 사용 상태, 건축물 관련 정보, 임대인의 전입신고 허용 여부에 대한 자료는 제시되지 않음.
+- Full query: 오피스텔 임대차계약을 검토 중. 계약서 초안에는 ‘주거용’이라고 적혀 있으나 실제 사용 상태, 건축물 관련 정보, 임대인의 전입신고 허용 여부에 대한 자료는 제시되지 않음. / 사용자 질문: 오피스텔인데 계약서에는 주거용이라고 되어 있어요. 전입신고가 가능한지 확인하려면 계약서 말고 뭘 봐야 하나요?
+- Miss shape: zero; missing channels: general
+- General targets / hits / missing: ['주민등록법-제16조'] / [] / ['주민등록법-제16조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['부동산거래신고등에관한법률-제6조의5', '주택임대차보호법-제3조', '부동산거래신고등에관한법률시행규칙-제6조의2', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조']
+- Returned civil IDs: ['민법-제629조', '민법-제623조', '민법-제654조']
+- Candidate follow-up: [{'qid': 'DEV-046', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '주민등록법-제16조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 26, 'member_ranks': {'bm25_context': 18, 'dense_context': None}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['주민등록 전입신고 주택 인도 대항력'], 'civil_concepts': []}]
+
+### DEV-050 / question_only
+
+- Area: 6. 갱신·계약기간·보증금 및 월세 증액
+- Question: 재계약하면서 보증금을 올려주기로 했어요. 새 계약서를 다시 써야 하는지, 확정일자 같은 것도 다시 챙겨야 하는지 궁금해요.
+- Context: 임대인과 임차인이 계약을 계속하면서 보증금을 증액하기로 구두 합의한 상태. 기존 계약의 확정일자 유무와 새 계약서 작성 방식은 아직 정하지 않음.
+- Full query: 재계약하면서 보증금을 올려주기로 했어요. 새 계약서를 다시 써야 하는지, 확정일자 같은 것도 다시 챙겨야 하는지 궁금해요.
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['주택임대차보호법-제3조의2', '주택임대차보호법-제3조의6'] / ['주택임대차보호법-제3조의6'] / ['주택임대차보호법-제3조의2']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조', '주택임대차보호법-제3조의6', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제11조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제3조']
+- Returned civil IDs: ['민법-제640조', '민법-제626조', '민법-제548조']
+- Candidate follow-up: [{'qid': 'DEV-050', 'mode': 'question_only', 'track': 'dev100', 'target': '주택임대차보호법-제3조의2', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 14, 'member_ranks': {'bm25_context': 16, 'dense_context': 16}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['확정일자 부여 현황 정보제공'], 'civil_concepts': []}]
+
+### DEV-050 / context_diagnostic
+
+- Area: 6. 갱신·계약기간·보증금 및 월세 증액
+- Question: 재계약하면서 보증금을 올려주기로 했어요. 새 계약서를 다시 써야 하는지, 확정일자 같은 것도 다시 챙겨야 하는지 궁금해요.
+- Context: 임대인과 임차인이 계약을 계속하면서 보증금을 증액하기로 구두 합의한 상태. 기존 계약의 확정일자 유무와 새 계약서 작성 방식은 아직 정하지 않음.
+- Full query: 임대인과 임차인이 계약을 계속하면서 보증금을 증액하기로 구두 합의한 상태. 기존 계약의 확정일자 유무와 새 계약서 작성 방식은 아직 정하지 않음. / 사용자 질문: 재계약하면서 보증금을 올려주기로 했어요. 새 계약서를 다시 써야 하는지, 확정일자 같은 것도 다시 챙겨야 하는지 궁금해요.
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['주택임대차보호법-제3조의2', '주택임대차보호법-제3조의6'] / ['주택임대차보호법-제3조의6'] / ['주택임대차보호법-제3조의2']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['주택임대차계약증서의확정일자부여및정보제공에관한규칙-제11조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조', '주택임대차보호법-제3조의6']
+- Returned civil IDs: ['민법-제629조', '민법-제640조', '민법-제636조']
+- Candidate follow-up: [{'qid': 'DEV-050', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '주택임대차보호법-제3조의2', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 21, 'member_ranks': {'bm25_context': 16, 'dense_context': None}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['확정일자 부여 현황 정보제공'], 'civil_concepts': ['임의규정 당사자 의사표시']}]
+
+### DEV-053 / question_only
+
+- Area: 6. 갱신·계약기간·보증금 및 월세 증액
+- Question: 그때는 집주인이 직접 들어온다고 해서 나왔는데, 지금 보니까 다른 사람이 살고 있어요. 제가 확인하거나 할 수 있는 게 있나요?
+- Context: **이전 대화**<br>사용자: “작년에 계약 갱신을 원했는데 집주인이 자기가 들어와 살 거라고 해서 이사했어요.”<br>어시스턴트: “당시 갱신 의사표시와 거절 사유, 계약 종료 및 퇴거 시점, 이후 주택 사용 상황을 확인해 볼 필요가 있습니다.”<br>사용자 추가 상황: 2025년에 퇴거했고 최근 해당 주택에 다른 사람이 거주하는 것을 알게 됐다고 함. 그 사람이 임차인인지 가족인지 등은 확인하지 못함.
+- Full query: 그때는 집주인이 직접 들어온다고 해서 나왔는데, 지금 보니까 다른 사람이 살고 있어요. 제가 확인하거나 할 수 있는 게 있나요?
+- Miss shape: zero; missing channels: general
+- General targets / hits / missing: ['주택임대차보호법-제6조의3'] / [] / ['주택임대차보호법-제6조의3']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['공공주택특별법시행규칙-제25조', '공공주택특별법시행령-제47조', '민간임대주택에관한특별법시행령-제35조', '주택임대차보호법-제3조', '부동산거래신고등에관한법률-제6조의5']
+- Returned civil IDs: ['민법-제634조', '민법-제629조', '민법-제632조']
+- Candidate follow-up: [{'qid': 'DEV-053', 'mode': 'question_only', 'track': 'dev100', 'target': '주택임대차보호법-제6조의3', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 8, 'member_ranks': {'bm25_context': 3, 'dense_context': None}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-059 / question_only
+
+- Area: 7. 수선·비용 상환·사용불능
+- Question: 기사님이 제 집 안 문제가 아니라 윗집 배관 쪽에서 샌 것 같다고 했어요. 그러면 제가 먼저 낸 38만 원은 누구한테 얘기해야 하나요?
+- Context: **이전 대화**<br>사용자: “새벽에 천장에서 물이 계속 새서 수리하고 38만 원을 냈는데 집주인은 연락이 안 됐어요.”<br>추가 상황: 이후 수리기사가 누수 원인이 임차주택 내부가 아니라 윗집 또는 공용배관 쪽일 가능성이 있다고 설명함. 최종 원인 조사 결과는 아직 없음.
+- Full query: 기사님이 제 집 안 문제가 아니라 윗집 배관 쪽에서 샌 것 같다고 했어요. 그러면 제가 먼저 낸 38만 원은 누구한테 얘기해야 하나요?
+- Miss shape: zero; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제626조'] / [] / ['민법-제626조']
+- Returned general IDs: ['상법-제389조', '주택임대차보호법-제10조의2', '공인중개사법-제32조', '민사집행법-제56조', '주택임대차보호법시행령-제28조']
+- Returned civil IDs: ['민법-제634조', '민법-제536조', '민법-제640조']
+- Candidate follow-up: [{'qid': 'DEV-059', 'mode': 'question_only', 'track': 'dev100', 'target': '민법-제626조', 'channel': 'civil', 'stage': 'civil_selection_displaced_top3', 'fused_rank': 3, 'member_ranks': {'bm25_context': 7, 'dense_context': 4}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-059 / context_diagnostic
+
+- Area: 7. 수선·비용 상환·사용불능
+- Question: 기사님이 제 집 안 문제가 아니라 윗집 배관 쪽에서 샌 것 같다고 했어요. 그러면 제가 먼저 낸 38만 원은 누구한테 얘기해야 하나요?
+- Context: **이전 대화**<br>사용자: “새벽에 천장에서 물이 계속 새서 수리하고 38만 원을 냈는데 집주인은 연락이 안 됐어요.”<br>추가 상황: 이후 수리기사가 누수 원인이 임차주택 내부가 아니라 윗집 또는 공용배관 쪽일 가능성이 있다고 설명함. 최종 원인 조사 결과는 아직 없음.
+- Full query: **이전 대화** / 사용자: “새벽에 천장에서 물이 계속 새서 수리하고 38만 원을 냈는데 집주인은 연락이 안 됐어요.” / 추가 상황: 이후 수리기사가 누수 원인이 임차주택 내부가 아니라 윗집 또는 공용배관 쪽일 가능성이 있다고 설명함. 최종 원인 조사 결과는 아직 없음. / 사용자 질문: 기사님이 제 집 안 문제가 아니라 윗집 배관 쪽에서 샌 것 같다고 했어요. 그러면 제가 먼저 낸 38만 원은 누구한테 얘기해야 하나요?
+- Miss shape: zero; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제626조'] / [] / ['민법-제626조']
+- Returned general IDs: ['주택임대차보호법-제3조의3', '민간임대주택에관한특별법-제46조', '민간임대주택에관한특별법-제5조', '주택임대차보호법-제6조의3', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조']
+- Returned civil IDs: ['민법-제623조', '민법-제634조', '민법-제627조']
+- Candidate follow-up: [{'qid': 'DEV-059', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '민법-제626조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 4, 'member_ranks': {'bm25_context': 4, 'dense_context': 4}, 'civil_seed': ['민법-제623조'], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-060 / context_diagnostic
+
+- Area: 7. 수선·비용 상환·사용불능
+- Question: 제가 실수로 인덕션 상판을 깨뜨렸는데 이런 것도 집주인한테 수리해 달라고 할 수 있나요?
+- Context: 임차인이 사용 중 물건을 떨어뜨려 주방 인덕션 상판을 파손했다고 스스로 설명함. 계약서의 수선·원상복구 특약 내용은 제시하지 않음.
+- Full query: 임차인이 사용 중 물건을 떨어뜨려 주방 인덕션 상판을 파손했다고 스스로 설명함. 계약서의 수선·원상복구 특약 내용은 제시하지 않음. / 사용자 질문: 제가 실수로 인덕션 상판을 깨뜨렸는데 이런 것도 집주인한테 수리해 달라고 할 수 있나요?
+- Miss shape: zero; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제390조'] / [] / ['민법-제390조']
+- Returned general IDs: ['주택임대차보호법-제6조의3', '주택임대차보호법-제10조', '민간임대주택에관한특별법시행령-제35조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조', '공공주택특별법-제49조의2']
+- Returned civil IDs: ['민법-제623조', '민법-제615조', '민법-제654조']
+- Candidate follow-up: [{'qid': 'DEV-060', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '민법-제390조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 4, 'member_ranks': {'bm25_context': 1, 'dense_context': 11}, 'civil_seed': ['민법-제623조'], 'civil_references': [{'source': '민법-제615조', 'target': '민법-제654조', 'source_rank': 3, 'target_rank': 10}], 'law_concepts': [], 'civil_concepts': ['원상회복의무 철거권 임대차 준용규정', '채무불이행 손해배상 고의 과실', '임의규정 당사자 의사표시']}]
+
+### DEV-064 / question_only
+
+- Area: 8. 전대·연체·중도 종료
+- Question: 회사 발령 때문에 계약기간이 10개월 남았는데 이사를 가야 해요. 집주인이 안 된다고 하면 중간에 나갈 방법이 없나요?
+- Context: 임차인의 개인 사정으로 계약기간 중 이사를 희망함. 계약서에 중도해지 관련 특약이 있는지, 임대인과 별도 합의를 했는지는 제시하지 않음.
+- Full query: 회사 발령 때문에 계약기간이 10개월 남았는데 이사를 가야 해요. 집주인이 안 된다고 하면 중간에 나갈 방법이 없나요?
+- Miss shape: zero; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제105조'] / [] / ['민법-제105조']
+- Returned general IDs: ['공공주택특별법시행령-제47조', '주택임대차보호법-제6조', '주택임대차보호법-제6조의3', '공공주택특별법-제49조의2', '민간임대주택에관한특별법시행령-제35조']
+- Returned civil IDs: ['민법-제629조', '민법-제640조', '민법-제634조']
+- Candidate follow-up: [{'qid': 'DEV-064', 'mode': 'question_only', 'track': 'dev100', 'target': '민법-제105조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 9, 'member_ranks': {'bm25_context': 6, 'dense_context': 18}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-064 / context_diagnostic
+
+- Area: 8. 전대·연체·중도 종료
+- Question: 회사 발령 때문에 계약기간이 10개월 남았는데 이사를 가야 해요. 집주인이 안 된다고 하면 중간에 나갈 방법이 없나요?
+- Context: 임차인의 개인 사정으로 계약기간 중 이사를 희망함. 계약서에 중도해지 관련 특약이 있는지, 임대인과 별도 합의를 했는지는 제시하지 않음.
+- Full query: 임차인의 개인 사정으로 계약기간 중 이사를 희망함. 계약서에 중도해지 관련 특약이 있는지, 임대인과 별도 합의를 했는지는 제시하지 않음. / 사용자 질문: 회사 발령 때문에 계약기간이 10개월 남았는데 이사를 가야 해요. 집주인이 안 된다고 하면 중간에 나갈 방법이 없나요?
+- Miss shape: zero; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제105조'] / [] / ['민법-제105조']
+- Returned general IDs: ['공공주택특별법-제49조의2', '민간임대주택에관한특별법시행령-제35조', '공공주택특별법시행령-제47조', '주택임대차보호법-제6조의2', '주택임대차보호법-제6조']
+- Returned civil IDs: ['민법-제629조', '민법-제636조', '민법-제627조']
+- Candidate follow-up: [{'qid': 'DEV-064', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '민법-제105조', 'channel': 'civil', 'stage': 'civil_selection_displaced_top3', 'fused_rank': 3, 'member_ranks': {'bm25_context': 1, 'dense_context': 6}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['임의규정 당사자 의사표시']}]
+
+### DEV-065 / question_only
+
+- Area: 8. 전대·연체·중도 종료
+- Question: 중간에 나가려고 새 세입자를 제가 구해왔는데 집주인이 중개비도 제가 내고 새 계약 조건도 자기 마음대로 바꾸겠대요. 제가 어디까지 부담해야 하나요?
+- Context: 계약기간 중 퇴거를 원하는 임차인이 후속 임차인 후보를 찾은 상황. 임대인과 중도 종료에 관한 합의 내용, 기존 계약의 중개비 관련 특약, 새 임차인과의 계약 성사 여부는 정해지지 않음.
+- Full query: 중간에 나가려고 새 세입자를 제가 구해왔는데 집주인이 중개비도 제가 내고 새 계약 조건도 자기 마음대로 바꾸겠대요. 제가 어디까지 부담해야 하나요?
+- Miss shape: zero; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제105조'] / [] / ['민법-제105조']
+- Returned general IDs: ['주택임대차보호법-제6조의3', '주택임대차보호법-제6조', '공공주택특별법시행령-제47조', '주택임대차보호법시행령-제22조', '공인중개사법-제32조']
+- Returned civil IDs: ['민법-제623조', '민법-제629조', '민법-제640조']
+- Candidate follow-up: [{'qid': 'DEV-065', 'mode': 'question_only', 'track': 'dev100', 'target': '민법-제105조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 24, 'member_ranks': {'bm25_context': None, 'dense_context': 22}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-065 / context_diagnostic
+
+- Area: 8. 전대·연체·중도 종료
+- Question: 중간에 나가려고 새 세입자를 제가 구해왔는데 집주인이 중개비도 제가 내고 새 계약 조건도 자기 마음대로 바꾸겠대요. 제가 어디까지 부담해야 하나요?
+- Context: 계약기간 중 퇴거를 원하는 임차인이 후속 임차인 후보를 찾은 상황. 임대인과 중도 종료에 관한 합의 내용, 기존 계약의 중개비 관련 특약, 새 임차인과의 계약 성사 여부는 정해지지 않음.
+- Full query: 계약기간 중 퇴거를 원하는 임차인이 후속 임차인 후보를 찾은 상황. 임대인과 중도 종료에 관한 합의 내용, 기존 계약의 중개비 관련 특약, 새 임차인과의 계약 성사 여부는 정해지지 않음. / 사용자 질문: 중간에 나가려고 새 세입자를 제가 구해왔는데 집주인이 중개비도 제가 내고 새 계약 조건도 자기 마음대로 바꾸겠대요. 제가 어디까지 부담해야 하나요?
+- Miss shape: zero; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제105조'] / [] / ['민법-제105조']
+- Returned general IDs: ['주택임대차보호법-제6조의3', '주택임대차보호법시행령-제22조', '주택임대차보호법-제6조', '공공주택특별법시행규칙-제25조', '공공주택특별법-제49조의2']
+- Returned civil IDs: ['민법-제629조', '민법-제626조', '민법-제636조']
+- Candidate follow-up: [{'qid': 'DEV-065', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '민법-제105조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 9, 'member_ranks': {'bm25_context': 8, 'dense_context': 8}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['임의규정 당사자 의사표시']}]
+
+### DEV-066 / question_only
+
+- Area: 8. 전대·연체·중도 종료
+- Question: 집주인이 새 세입자 구하면 나가도 된다고 했어요. 그럼 새 사람이 계약서만 쓰면 제 월세는 그날부터 안 내도 되는 건가요?
+- Context: **이전 대화**<br>사용자: “회사 발령 때문에 계약 중간에 나가고 싶은데 집주인이 처음엔 안 된다고 했어요.”<br>어시스턴트: “중도 종료에 관해 임대인과 어떤 조건으로 합의했는지, 새 임차인의 계약과 입주 시점을 어떻게 정했는지가 중요할 수 있습니다.”<br>사용자 추가 상황: 임대인이 ‘새 세입자를 구하면 퇴거에 동의하겠다’고 메시지를 보냄. 새 임차인 후보가 계약서를 작성했지만 잔금·입주일은 3주 뒤임.
+- Full query: 집주인이 새 세입자 구하면 나가도 된다고 했어요. 그럼 새 사람이 계약서만 쓰면 제 월세는 그날부터 안 내도 되는 건가요?
+- Miss shape: zero; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제105조'] / [] / ['민법-제105조']
+- Returned general IDs: ['주택임대차보호법-제6조의3', '민간임대주택에관한특별법시행령-제35조', '공공주택특별법시행령-제47조', '주택임대차보호법-제6조의2', '민간임대주택에관한특별법-제45조']
+- Returned civil IDs: ['민법-제629조', '민법-제640조', '민법-제636조']
+- Candidate follow-up: [{'qid': 'DEV-066', 'mode': 'question_only', 'track': 'dev100', 'target': '민법-제105조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 20, 'member_ranks': {'bm25_context': 19, 'dense_context': 20}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-066 / context_diagnostic
+
+- Area: 8. 전대·연체·중도 종료
+- Question: 집주인이 새 세입자 구하면 나가도 된다고 했어요. 그럼 새 사람이 계약서만 쓰면 제 월세는 그날부터 안 내도 되는 건가요?
+- Context: **이전 대화**<br>사용자: “회사 발령 때문에 계약 중간에 나가고 싶은데 집주인이 처음엔 안 된다고 했어요.”<br>어시스턴트: “중도 종료에 관해 임대인과 어떤 조건으로 합의했는지, 새 임차인의 계약과 입주 시점을 어떻게 정했는지가 중요할 수 있습니다.”<br>사용자 추가 상황: 임대인이 ‘새 세입자를 구하면 퇴거에 동의하겠다’고 메시지를 보냄. 새 임차인 후보가 계약서를 작성했지만 잔금·입주일은 3주 뒤임.
+- Full query: **이전 대화** / 사용자: “회사 발령 때문에 계약 중간에 나가고 싶은데 집주인이 처음엔 안 된다고 했어요.” / 어시스턴트: “중도 종료에 관해 임대인과 어떤 조건으로 합의했는지, 새 임차인의 계약과 입주 시점을 어떻게 정했는지가 중요할 수 있습니다.” / 사용자 추가 상황: 임대인이 ‘새 세입자를 구하면 퇴거에 동의하겠다’고 메시지를 보냄. 새 임차인 후보가 계약서를 작성했지만 잔금·입주일은 3주 뒤임. / 사용자 질문: 집주인이 새 세입자 구하면 나가도 된다고 했어요. 그럼 새 사람이 계약서만 쓰면 제 월세는 그날부터 안 내도 되는 건가요?
+- Miss shape: zero; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제105조'] / [] / ['민법-제105조']
+- Returned general IDs: ['민간임대주택에관한특별법시행령-제35조', '주택임대차보호법-제6조의3', '공공주택특별법시행령-제47조', '주택임대차보호법-제6조', '주택임대차보호법-제6조의2']
+- Returned civil IDs: ['민법-제640조', '민법-제629조', '민법-제636조']
+- Candidate follow-up: [{'qid': 'DEV-066', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '민법-제105조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 24, 'member_ranks': {'bm25_context': 26, 'dense_context': 18}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-068 / question_only
+
+- Area: 9. 보증금 반환·임차권등기
+- Question: 집주인이 보증금 절반은 이사하는 날 주고 나머지는 두 달 뒤에 주겠대요. 제가 동의하고 먼저 이사할 때 뭘 확인해 둬야 하나요?
+- Context: 계약 종료를 앞두고 임대인이 보증금 분할 반환을 제안함. 임차인은 이사 일정 때문에 제안을 검토 중이며 별도 합의서는 아직 작성하지 않음.
+- Full query: 집주인이 보증금 절반은 이사하는 날 주고 나머지는 두 달 뒤에 주겠대요. 제가 동의하고 먼저 이사할 때 뭘 확인해 둬야 하나요?
+- Miss shape: zero; missing channels: general
+- General targets / hits / missing: ['주택임대차보호법-제3조의3'] / [] / ['주택임대차보호법-제3조의3']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['주택임대차보호법-제3조의7', '주택임대차보호법-제3조의2', '부동산거래신고등에관한법률시행규칙-제6조의2', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조', '주택임대차보호법-제6조의3']
+- Returned civil IDs: ['민법-제536조', '민법-제634조', '민법-제626조']
+- Candidate follow-up: [{'qid': 'DEV-068', 'mode': 'question_only', 'track': 'dev100', 'target': '주택임대차보호법-제3조의3', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 19, 'member_ranks': {'bm25_context': None, 'dense_context': 11}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['쌍무계약 동시이행의 항변권 채무이행 거절']}]
+
+### DEV-068 / context_diagnostic
+
+- Area: 9. 보증금 반환·임차권등기
+- Question: 집주인이 보증금 절반은 이사하는 날 주고 나머지는 두 달 뒤에 주겠대요. 제가 동의하고 먼저 이사할 때 뭘 확인해 둬야 하나요?
+- Context: 계약 종료를 앞두고 임대인이 보증금 분할 반환을 제안함. 임차인은 이사 일정 때문에 제안을 검토 중이며 별도 합의서는 아직 작성하지 않음.
+- Full query: 계약 종료를 앞두고 임대인이 보증금 분할 반환을 제안함. 임차인은 이사 일정 때문에 제안을 검토 중이며 별도 합의서는 아직 작성하지 않음. / 사용자 질문: 집주인이 보증금 절반은 이사하는 날 주고 나머지는 두 달 뒤에 주겠대요. 제가 동의하고 먼저 이사할 때 뭘 확인해 둬야 하나요?
+- Miss shape: zero; missing channels: general
+- General targets / hits / missing: ['주택임대차보호법-제3조의3'] / [] / ['주택임대차보호법-제3조의3']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['주택임대차보호법-제3조의7', '주택임대차보호법-제8조', '주택임대차보호법-제6조의3', '주택임대차보호법-제10조의2', '주택임대차보호법-제3조의2']
+- Returned civil IDs: ['민법-제536조', '민법-제634조', '민법-제626조']
+- Candidate follow-up: [{'qid': 'DEV-068', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '주택임대차보호법-제3조의3', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 14, 'member_ranks': {'bm25_context': None, 'dense_context': 8}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['쌍무계약 동시이행의 항변권 채무이행 거절']}]
+
+### DEV-072 / question_only
+
+- Area: 9. 보증금 반환·임차권등기
+- Question: 이 합의서대로면 제가 먼저 집을 비우고 한 달 뒤에 보증금을 받는 건데, 서명하기 전에 어떤 부분을 확인해야 하나요?
+- Context: **합성 계약종료 합의서 발췌:**<br>“임차인은 2026년 10월 1일까지 목적물을 인도한다. 임대인은 인도 완료일로부터 30일 이내에 임차보증금 전액을 반환한다.”<br><br>미반환 시 처리, 지급일의 구체적 날짜, 별도 담보 등에 관한 문구는 없음.
+- Full query: 이 합의서대로면 제가 먼저 집을 비우고 한 달 뒤에 보증금을 받는 건데, 서명하기 전에 어떤 부분을 확인해야 하나요?
+- Miss shape: partial; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제105조', '민법-제536조'] / ['민법-제536조'] / ['민법-제105조']
+- Returned general IDs: ['부동산거래신고등에관한법률시행규칙-제6조의2', '주택임대차보호법-제3조의2', '주택임대차보호법-제3조의7', '주택임대차보호법-제6조의3', '주택임대차보호법-제8조']
+- Returned civil IDs: ['민법-제536조', '민법-제357조', '민법-제548조']
+- Candidate follow-up: [{'qid': 'DEV-072', 'mode': 'question_only', 'track': 'dev100', 'target': '민법-제105조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 22, 'member_ranks': {'bm25_context': None, 'dense_context': 22}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['쌍무계약 동시이행의 항변권 채무이행 거절']}]
+
+### DEV-072 / context_diagnostic
+
+- Area: 9. 보증금 반환·임차권등기
+- Question: 이 합의서대로면 제가 먼저 집을 비우고 한 달 뒤에 보증금을 받는 건데, 서명하기 전에 어떤 부분을 확인해야 하나요?
+- Context: **합성 계약종료 합의서 발췌:**<br>“임차인은 2026년 10월 1일까지 목적물을 인도한다. 임대인은 인도 완료일로부터 30일 이내에 임차보증금 전액을 반환한다.”<br><br>미반환 시 처리, 지급일의 구체적 날짜, 별도 담보 등에 관한 문구는 없음.
+- Full query: **합성 계약종료 합의서 발췌:** / “임차인은 2026년 10월 1일까지 목적물을 인도한다. 임대인은 인도 완료일로부터 30일 이내에 임차보증금 전액을 반환한다.” /  / 미반환 시 처리, 지급일의 구체적 날짜, 별도 담보 등에 관한 문구는 없음. / 사용자 질문: 이 합의서대로면 제가 먼저 집을 비우고 한 달 뒤에 보증금을 받는 건데, 서명하기 전에 어떤 부분을 확인해야 하나요?
+- Miss shape: partial; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제105조', '민법-제536조'] / ['민법-제536조'] / ['민법-제105조']
+- Returned general IDs: ['주택임대차보호법-제3조의2', '주택임대차보호법-제6조의3', '주택임대차보호법-제3조의3', '주택임대차보호법-제4조', '주택임대차보호법-제26조']
+- Returned civil IDs: ['민법-제536조', '민법-제623조', '민법-제626조']
+- Candidate follow-up: [{'qid': 'DEV-072', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '민법-제105조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 22, 'member_ranks': {'bm25_context': 20, 'dense_context': 22}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['쌍무계약 동시이행의 항변권 채무이행 거절']}]
+
+### DEV-075 / question_only
+
+- Area: 10. 분쟁조정·회수 절차·피해 지원
+- Question: 계약 끝났는데 집주인이 연락을 안 받아요. 내용증명 같은 것부터 소송이나 강제집행까지 어떤 순서의 절차가 있는지 알고 싶어요.
+- Context: 보증금 미반환 상태이며 임대인과 연락이 되지 않는다고 함. 임차권등기, 보증 가입, 이미 보낸 요구서나 법적 절차 여부는 제시하지 않음.
+- Full query: 계약 끝났는데 집주인이 연락을 안 받아요. 내용증명 같은 것부터 소송이나 강제집행까지 어떤 순서의 절차가 있는지 알고 싶어요.
+- Miss shape: zero; missing channels: general, civil
+- General targets / hits / missing: ['민사소송법-제462조'] / [] / ['민사소송법-제462조']
+- Civil targets / hits / missing: ['민법-제111조'] / [] / ['민법-제111조']
+- Returned general IDs: ['민사집행법-제56조', '주택임대차보호법-제3조의3', '주택임대차보호법-제26조', '부동산거래신고등에관한법률시행규칙-제6조의2', '주택임대차보호법-제3조의2']
+- Returned civil IDs: ['민법-제634조', '민법-제626조', '민법-제636조']
+- Candidate follow-up: [{'qid': 'DEV-075', 'mode': 'question_only', 'track': 'dev100', 'target': '민법-제111조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 13, 'member_ranks': {'bm25_context': 20, 'dense_context': 8}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}, {'qid': 'DEV-075', 'mode': 'question_only', 'track': 'dev100', 'target': '민사소송법-제462조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 19, 'member_ranks': {'bm25_context': 11, 'dense_context': None}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-075 / context_diagnostic
+
+- Area: 10. 분쟁조정·회수 절차·피해 지원
+- Question: 계약 끝났는데 집주인이 연락을 안 받아요. 내용증명 같은 것부터 소송이나 강제집행까지 어떤 순서의 절차가 있는지 알고 싶어요.
+- Context: 보증금 미반환 상태이며 임대인과 연락이 되지 않는다고 함. 임차권등기, 보증 가입, 이미 보낸 요구서나 법적 절차 여부는 제시하지 않음.
+- Full query: 보증금 미반환 상태이며 임대인과 연락이 되지 않는다고 함. 임차권등기, 보증 가입, 이미 보낸 요구서나 법적 절차 여부는 제시하지 않음. / 사용자 질문: 계약 끝났는데 집주인이 연락을 안 받아요. 내용증명 같은 것부터 소송이나 강제집행까지 어떤 순서의 절차가 있는지 알고 싶어요.
+- Miss shape: zero; missing channels: general, civil
+- General targets / hits / missing: ['민사소송법-제462조'] / [] / ['민사소송법-제462조']
+- Civil targets / hits / missing: ['민법-제111조'] / [] / ['민법-제111조']
+- Returned general IDs: ['주택임대차보호법-제3조의3', '주택임대차보호법-제3조의2', '주택임대차보호법-제13조', '부동산거래신고등에관한법률시행규칙-제6조의2', '민간임대주택에관한특별법-제6조']
+- Returned civil IDs: ['민법-제187조', '민법-제634조', '민법-제186조']
+- Candidate follow-up: [{'qid': 'DEV-075', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '민법-제111조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 22, 'member_ranks': {'bm25_context': 23, 'dense_context': 21}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['부동산 물권변동 등기 물권취득']}, {'qid': 'DEV-075', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '민사소송법-제462조', 'channel': 'general', 'stage': 'outside_observed_candidates', 'fused_rank': None, 'member_ranks': {'bm25_context': None, 'dense_context': None}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['부동산 물권변동 등기 물권취득']}]
+
+### DEV-079 / question_only
+
+- Area: 10. 분쟁조정·회수 절차·피해 지원
+- Question: 집주인이 처음부터 보증금을 돌려줄 생각이 없었던 것 같아요. 경찰에 신고하는 문제랑 보증금 돌려받는 절차는 따로 봐야 하나요?
+- Context: 임차인은 보증금 미반환과 함께 임대인의 기망 가능성을 의심하고 있음. 계약 당시 어떤 설명을 들었는지, 다수 피해자가 있는지, 형사 절차를 이미 진행했는지는 제시하지 않음.
+- Full query: 집주인이 처음부터 보증금을 돌려줄 생각이 없었던 것 같아요. 경찰에 신고하는 문제랑 보증금 돌려받는 절차는 따로 봐야 하나요?
+- Miss shape: zero; missing channels: general
+- General targets / hits / missing: ['형법-제347조'] / [] / ['형법-제347조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['주택임대차보호법-제3조의2', '주택임대차보호법-제10조의2', '주택임대차보호법시행령-제6조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조', '주택임대차보호법-제3조의3']
+- Returned civil IDs: ['민법-제634조', '민법-제626조', '민법-제615조']
+- Candidate follow-up: [{'qid': 'DEV-079', 'mode': 'question_only', 'track': 'dev100', 'target': '형법-제347조', 'channel': 'general', 'stage': 'outside_observed_candidates', 'fused_rank': None, 'member_ranks': {'bm25_context': None, 'dense_context': None}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-079 / context_diagnostic
+
+- Area: 10. 분쟁조정·회수 절차·피해 지원
+- Question: 집주인이 처음부터 보증금을 돌려줄 생각이 없었던 것 같아요. 경찰에 신고하는 문제랑 보증금 돌려받는 절차는 따로 봐야 하나요?
+- Context: 임차인은 보증금 미반환과 함께 임대인의 기망 가능성을 의심하고 있음. 계약 당시 어떤 설명을 들었는지, 다수 피해자가 있는지, 형사 절차를 이미 진행했는지는 제시하지 않음.
+- Full query: 임차인은 보증금 미반환과 함께 임대인의 기망 가능성을 의심하고 있음. 계약 당시 어떤 설명을 들었는지, 다수 피해자가 있는지, 형사 절차를 이미 진행했는지는 제시하지 않음. / 사용자 질문: 집주인이 처음부터 보증금을 돌려줄 생각이 없었던 것 같아요. 경찰에 신고하는 문제랑 보증금 돌려받는 절차는 따로 봐야 하나요?
+- Miss shape: zero; missing channels: general
+- General targets / hits / missing: ['형법-제347조'] / [] / ['형법-제347조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['주택임대차보호법-제3조의2', '주택임대차보호법-제6조의3', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조', '주택임대차보호법-제3조의7', '민간임대주택에관한특별법-제6조']
+- Returned civil IDs: ['민법-제634조', '민법-제629조', '민법-제626조']
+- Candidate follow-up: [{'qid': 'DEV-079', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '형법-제347조', 'channel': 'general', 'stage': 'outside_observed_candidates', 'fused_rank': None, 'member_ranks': {'bm25_context': None, 'dense_context': None}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-087 / question_only
+
+- Area: 상가 — **세부 쟁점: 계약 전 권리·임대인 확인**
+- Question: 카페를 하려고 상가를 빌리는데 계약하기 전에 집주인이 진짜 소유자인지랑 담보 잡힌 건 어떻게 확인해야 하나요?
+- Context: 상가 임대차계약 체결 전이며 아직 계약금을 지급하지 않음. 임대인이 직접 계약한다고 들었지만 등기 관련 문서는 확인하지 않은 상태.
+- Full query: 카페를 하려고 상가를 빌리는데 계약하기 전에 집주인이 진짜 소유자인지랑 담보 잡힌 건 어떻게 확인해야 하나요?
+- Miss shape: partial; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제186조', '민법-제187조', '민법-제357조'] / ['민법-제186조', '민법-제187조'] / ['민법-제357조']
+- Returned general IDs: ['부동산거래신고등에관한법률시행규칙-제6조의2', '상가건물임대차보호법-제14조', '상가건물임대차보호법-제10조의3', '상가건물임대차보호법시행령-제3조', '공인중개사법-제25조']
+- Returned civil IDs: ['민법-제186조', '민법-제187조', '민법-제634조']
+- Candidate follow-up: [{'qid': 'DEV-087', 'mode': 'question_only', 'track': 'dev100', 'target': '민법-제357조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 11, 'member_ranks': {'bm25_context': 11, 'dense_context': 11}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['부동산 물권변동 등기 물권취득']}]
+
+### DEV-087 / context_diagnostic
+
+- Area: 상가 — **세부 쟁점: 계약 전 권리·임대인 확인**
+- Question: 카페를 하려고 상가를 빌리는데 계약하기 전에 집주인이 진짜 소유자인지랑 담보 잡힌 건 어떻게 확인해야 하나요?
+- Context: 상가 임대차계약 체결 전이며 아직 계약금을 지급하지 않음. 임대인이 직접 계약한다고 들었지만 등기 관련 문서는 확인하지 않은 상태.
+- Full query: 상가 임대차계약 체결 전이며 아직 계약금을 지급하지 않음. 임대인이 직접 계약한다고 들었지만 등기 관련 문서는 확인하지 않은 상태. / 사용자 질문: 카페를 하려고 상가를 빌리는데 계약하기 전에 집주인이 진짜 소유자인지랑 담보 잡힌 건 어떻게 확인해야 하나요?
+- Miss shape: partial; missing channels: civil
+- General targets / hits / missing: [] / [] / []
+- Civil targets / hits / missing: ['민법-제186조', '민법-제187조', '민법-제357조'] / ['민법-제186조', '민법-제187조'] / ['민법-제357조']
+- Returned general IDs: ['부동산거래신고등에관한법률시행규칙-제6조의2', '상가건물임대차보호법-제19조의2', '상가건물임대차보호법-제10조의4', '상가건물임대차보호법시행령-제3조', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조']
+- Returned civil IDs: ['민법-제186조', '민법-제187조', '민법-제634조']
+- Candidate follow-up: [{'qid': 'DEV-087', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '민법-제357조', 'channel': 'civil', 'stage': 'civil_fusion_outside_top3', 'fused_rank': 13, 'member_ranks': {'bm25_context': 21, 'dense_context': 10}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['부동산 물권변동 등기 물권취득']}]
+
+### DEV-089 / question_only
+
+- Area: 상가 — **세부 쟁점: 갱신과 임대료 인상**
+- Question: 가게 계약을 연장하려는데 건물주가 월세를 많이 올려야만 재계약해 준대요. 갱신이랑 월세 인상은 어떤 걸 따로 확인해야 하나요?
+- Context: 상가 임대차계약 만료를 앞둔 임차인이 계속 영업을 원함. 현재 임대료, 과거 인상 내역, 계약기간과 갱신 경과는 제시하지 않음.
+- Full query: 가게 계약을 연장하려는데 건물주가 월세를 많이 올려야만 재계약해 준대요. 갱신이랑 월세 인상은 어떤 걸 따로 확인해야 하나요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['상가건물임대차보호법-제10조', '상가건물임대차보호법-제2조'] / ['상가건물임대차보호법-제10조'] / ['상가건물임대차보호법-제2조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['주택임대차보호법-제6조의3', '상가건물임대차보호법-제10조', '부동산거래신고등에관한법률시행규칙-제6조의2', '상가건물임대차보호법-제10조의2', '부동산거래신고등에관한법률시행령-제4조의3']
+- Returned civil IDs: ['민법-제640조', '민법-제629조', '민법-제626조']
+- Candidate follow-up: [{'qid': 'DEV-089', 'mode': 'question_only', 'track': 'dev100', 'target': '상가건물임대차보호법-제2조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 20, 'member_ranks': {'bm25_context': None, 'dense_context': 12}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-089 / context_diagnostic
+
+- Area: 상가 — **세부 쟁점: 갱신과 임대료 인상**
+- Question: 가게 계약을 연장하려는데 건물주가 월세를 많이 올려야만 재계약해 준대요. 갱신이랑 월세 인상은 어떤 걸 따로 확인해야 하나요?
+- Context: 상가 임대차계약 만료를 앞둔 임차인이 계속 영업을 원함. 현재 임대료, 과거 인상 내역, 계약기간과 갱신 경과는 제시하지 않음.
+- Full query: 상가 임대차계약 만료를 앞둔 임차인이 계속 영업을 원함. 현재 임대료, 과거 인상 내역, 계약기간과 갱신 경과는 제시하지 않음. / 사용자 질문: 가게 계약을 연장하려는데 건물주가 월세를 많이 올려야만 재계약해 준대요. 갱신이랑 월세 인상은 어떤 걸 따로 확인해야 하나요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['상가건물임대차보호법-제10조', '상가건물임대차보호법-제2조'] / ['상가건물임대차보호법-제10조'] / ['상가건물임대차보호법-제2조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['상가건물임대차보호법-제10조', '주택임대차보호법-제6조의3', '주택임대차보호법-제6조', '상가건물임대차보호법-제10조의3', '상가건물임대차보호법-제10조의2']
+- Returned civil IDs: ['민법-제629조', '민법-제626조', '민법-제640조']
+- Candidate follow-up: [{'qid': 'DEV-089', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '상가건물임대차보호법-제2조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 30, 'member_ranks': {'bm25_context': None, 'dense_context': 18}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-090 / question_only
+
+- Area: 상가 — **세부 쟁점: 영업 종료와 보증금 반환**
+- Question: 가게 문 닫고 짐은 다 뺐는데 건물주가 새 임차인 들어올 때까지 보증금을 못 준대요. 지금 어떤 절차를 알아봐야 하나요?
+- Context: 상가 영업을 종료하고 점포에서 집기와 물품을 반출했다고 함. 임대차계약 종료일, 열쇠 반환 여부, 사업자등록 상태, 보증금 반환에 관한 합의는 제시하지 않음.
+- Full query: 가게 문 닫고 짐은 다 뺐는데 건물주가 새 임차인 들어올 때까지 보증금을 못 준대요. 지금 어떤 절차를 알아봐야 하나요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['상가건물임대차보호법-제2조', '상가건물임대차보호법-제6조'] / [] / ['상가건물임대차보호법-제2조', '상가건물임대차보호법-제6조']
+- Civil targets / hits / missing: ['민법-제536조'] / ['민법-제536조'] / []
+- Returned general IDs: ['상가건물임대차보호법-제5조', '주택임대차보호법-제3조의2', '상가건물임대차보호법-제9조', '상가건물임대차보호법-제10조의4', '상가건물임대차보호법-제14조']
+- Returned civil IDs: ['민법-제536조', '민법-제629조', '민법-제640조']
+- Candidate follow-up: [{'qid': 'DEV-090', 'mode': 'question_only', 'track': 'dev100', 'target': '상가건물임대차보호법-제2조', 'channel': 'general', 'stage': 'outside_observed_candidates', 'fused_rank': None, 'member_ranks': {'bm25_context': None, 'dense_context': None}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['쌍무계약 동시이행의 항변권 채무이행 거절']}, {'qid': 'DEV-090', 'mode': 'question_only', 'track': 'dev100', 'target': '상가건물임대차보호법-제6조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 7, 'member_ranks': {'bm25_context': None, 'dense_context': 2}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['쌍무계약 동시이행의 항변권 채무이행 거절']}]
+
+### DEV-090 / context_diagnostic
+
+- Area: 상가 — **세부 쟁점: 영업 종료와 보증금 반환**
+- Question: 가게 문 닫고 짐은 다 뺐는데 건물주가 새 임차인 들어올 때까지 보증금을 못 준대요. 지금 어떤 절차를 알아봐야 하나요?
+- Context: 상가 영업을 종료하고 점포에서 집기와 물품을 반출했다고 함. 임대차계약 종료일, 열쇠 반환 여부, 사업자등록 상태, 보증금 반환에 관한 합의는 제시하지 않음.
+- Full query: 상가 영업을 종료하고 점포에서 집기와 물품을 반출했다고 함. 임대차계약 종료일, 열쇠 반환 여부, 사업자등록 상태, 보증금 반환에 관한 합의는 제시하지 않음. / 사용자 질문: 가게 문 닫고 짐은 다 뺐는데 건물주가 새 임차인 들어올 때까지 보증금을 못 준대요. 지금 어떤 절차를 알아봐야 하나요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['상가건물임대차보호법-제2조', '상가건물임대차보호법-제6조'] / [] / ['상가건물임대차보호법-제2조', '상가건물임대차보호법-제6조']
+- Civil targets / hits / missing: ['민법-제536조'] / ['민법-제536조'] / []
+- Returned general IDs: ['상가건물임대차보호법-제5조', '상가건물임대차보호법-제10조의4', '상가건물임대차보호법-제9조', '상가건물임대차보호법시행령-제3조', '상가건물임대차보호법-제10조의3']
+- Returned civil IDs: ['민법-제626조', '민법-제536조', '민법-제634조']
+- Candidate follow-up: [{'qid': 'DEV-090', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '상가건물임대차보호법-제2조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 12, 'member_ranks': {'bm25_context': 12, 'dense_context': 15}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['쌍무계약 동시이행의 항변권 채무이행 거절']}, {'qid': 'DEV-090', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '상가건물임대차보호법-제6조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 6, 'member_ranks': {'bm25_context': None, 'dense_context': 1}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['쌍무계약 동시이행의 항변권 채무이행 거절']}]
+
+### DEV-094 / question_only
+
+- Area: 등록민간임대 — **세부 쟁점: 등록 여부와 임차인 확인사항**
+- Question: 계약서에 등록임대주택이라고 적혀 있는데 실제 등록된 집인지랑 제가 추가로 확인할 내용은 어디서 봐야 하나요?
+- Context: **합성 계약서 발췌:**<br>특약란: “본 주택은 등록임대주택으로 임대한다.”<br>임대인: 서○○<br><br>등록번호, 등록 유형, 등록 상태를 보여주는 다른 자료는 제공되지 않음.
+- Full query: 계약서에 등록임대주택이라고 적혀 있는데 실제 등록된 집인지랑 제가 추가로 확인할 내용은 어디서 봐야 하나요?
+- Miss shape: zero; missing channels: general
+- General targets / hits / missing: ['민간임대주택에관한특별법-제5조', '민간임대주택에관한특별법-제6조'] / [] / ['민간임대주택에관한특별법-제5조', '민간임대주택에관한특별법-제6조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['부동산거래신고등에관한법률시행규칙-제6조의2', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조', '주택임대차보호법시행령-제4조', '공공주택특별법-제49조의2', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조']
+- Returned civil IDs: ['민법-제640조', '민법-제636조', '민법-제634조']
+- Candidate follow-up: [{'qid': 'DEV-094', 'mode': 'question_only', 'track': 'dev100', 'target': '민간임대주택에관한특별법-제5조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 9, 'member_ranks': {'bm25_context': 13, 'dense_context': 9}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}, {'qid': 'DEV-094', 'mode': 'question_only', 'track': 'dev100', 'target': '민간임대주택에관한특별법-제6조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 8, 'member_ranks': {'bm25_context': 6, 'dense_context': 20}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': []}]
+
+### DEV-094 / context_diagnostic
+
+- Area: 등록민간임대 — **세부 쟁점: 등록 여부와 임차인 확인사항**
+- Question: 계약서에 등록임대주택이라고 적혀 있는데 실제 등록된 집인지랑 제가 추가로 확인할 내용은 어디서 봐야 하나요?
+- Context: **합성 계약서 발췌:**<br>특약란: “본 주택은 등록임대주택으로 임대한다.”<br>임대인: 서○○<br><br>등록번호, 등록 유형, 등록 상태를 보여주는 다른 자료는 제공되지 않음.
+- Full query: **합성 계약서 발췌:** / 특약란: “본 주택은 등록임대주택으로 임대한다.” / 임대인: 서○○ /  / 등록번호, 등록 유형, 등록 상태를 보여주는 다른 자료는 제공되지 않음. / 사용자 질문: 계약서에 등록임대주택이라고 적혀 있는데 실제 등록된 집인지랑 제가 추가로 확인할 내용은 어디서 봐야 하나요?
+- Miss shape: zero; missing channels: general
+- General targets / hits / missing: ['민간임대주택에관한특별법-제5조', '민간임대주택에관한특별법-제6조'] / [] / ['민간임대주택에관한특별법-제5조', '민간임대주택에관한특별법-제6조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['부동산거래신고등에관한법률시행규칙-제6조의2', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조', '주택임대차보호법시행령-제4조', '공공주택특별법-제49조의2', '주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조']
+- Returned civil IDs: ['민법-제636조', '민법-제623조', '민법-제654조']
+- Candidate follow-up: [{'qid': 'DEV-094', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '민간임대주택에관한특별법-제5조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 8, 'member_ranks': {'bm25_context': 7, 'dense_context': 19}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['임의규정 당사자 의사표시']}, {'qid': 'DEV-094', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '민간임대주택에관한특별법-제6조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 11, 'member_ranks': {'bm25_context': 6, 'dense_context': None}, 'civil_seed': [], 'civil_references': [], 'law_concepts': [], 'civil_concepts': ['임의규정 당사자 의사표시']}]
+
+### DEV-096 / question_only
+
+- Area: 등록민간임대 — **세부 쟁점: 계약·신고·갱신 절차의 추가 확인**
+- Question: 등록민간임대 집이면 임대차 신고나 재계약할 때 일반 집이랑 다른 서류나 절차가 더 있나요?
+- Context: 등록민간임대주택 임차를 검토 중인 사용자의 일반 절차 질문. 특정 계약 단계나 문제 상황은 없음.
+- Full query: 등록민간임대 집이면 임대차 신고나 재계약할 때 일반 집이랑 다른 서류나 절차가 더 있나요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['민간임대주택에관한특별법-제45조', '민간임대주택에관한특별법-제46조', '민간임대주택에관한특별법-제47조'] / ['민간임대주택에관한특별법-제46조', '민간임대주택에관한특별법-제47조'] / ['민간임대주택에관한특별법-제45조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['부동산거래신고등에관한법률-제6조의5', '민간임대주택에관한특별법-제46조', '민간임대주택에관한특별법-제47조', '민간임대주택에관한특별법-제44조', '부동산거래신고등에관한법률시행규칙-제6조의2']
+- Returned civil IDs: ['민법-제636조', '민법-제640조', '민법-제634조']
+- Candidate follow-up: [{'qid': 'DEV-096', 'mode': 'question_only', 'track': 'dev100', 'target': '민간임대주택에관한특별법-제45조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 21, 'member_ranks': {'bm25_context': 12, 'dense_context': None}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['주택 임대차 계약 신고 확정일자 부여', '민간임대주택 임대사업자 임대료 임대차계약'], 'civil_concepts': []}]
+
+### DEV-096 / context_diagnostic
+
+- Area: 등록민간임대 — **세부 쟁점: 계약·신고·갱신 절차의 추가 확인**
+- Question: 등록민간임대 집이면 임대차 신고나 재계약할 때 일반 집이랑 다른 서류나 절차가 더 있나요?
+- Context: 등록민간임대주택 임차를 검토 중인 사용자의 일반 절차 질문. 특정 계약 단계나 문제 상황은 없음.
+- Full query: 등록민간임대주택 임차를 검토 중인 사용자의 일반 절차 질문. 특정 계약 단계나 문제 상황은 없음. / 사용자 질문: 등록민간임대 집이면 임대차 신고나 재계약할 때 일반 집이랑 다른 서류나 절차가 더 있나요?
+- Miss shape: partial; missing channels: general
+- General targets / hits / missing: ['민간임대주택에관한특별법-제45조', '민간임대주택에관한특별법-제46조', '민간임대주택에관한특별법-제47조'] / ['민간임대주택에관한특별법-제46조', '민간임대주택에관한특별법-제47조'] / ['민간임대주택에관한특별법-제45조']
+- Civil targets / hits / missing: [] / [] / []
+- Returned general IDs: ['부동산거래신고등에관한법률-제6조의5', '민간임대주택에관한특별법-제46조', '민간임대주택에관한특별법-제47조', '민간임대주택에관한특별법-제44조', '공공주택특별법-제49조의2']
+- Returned civil IDs: ['민법-제636조', '민법-제623조', '민법-제634조']
+- Candidate follow-up: [{'qid': 'DEV-096', 'mode': 'context_diagnostic', 'track': 'dev100', 'target': '민간임대주택에관한특별법-제45조', 'channel': 'general', 'stage': 'general_fusion_outside_top5', 'fused_rank': 18, 'member_ranks': {'bm25_context': 9, 'dense_context': None}, 'civil_seed': [], 'civil_references': [], 'law_concepts': ['주택 임대차 계약 신고 확정일자 부여', '민간임대주택 임대사업자 임대료 임대차계약'], 'civil_concepts': []}]
+

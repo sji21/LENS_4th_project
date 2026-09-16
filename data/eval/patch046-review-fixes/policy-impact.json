@@ -1,0 +1,68 @@
+{
+  "baseline_commit": "289a8ac29b2e6d34c6714b59889a5ca7de1bc64c",
+  "compared_inputs": 235,
+  "changed_inputs": [],
+  "active_inputs": [
+    {
+      "qid": "DEV-003",
+      "mode": "question_only"
+    },
+    {
+      "qid": "DEV-003",
+      "mode": "context_diagnostic"
+    },
+    {
+      "qid": "DEV-025",
+      "mode": "question_only"
+    },
+    {
+      "qid": "DEV-025",
+      "mode": "context_diagnostic"
+    },
+    {
+      "qid": "DEV-026",
+      "mode": "question_only"
+    },
+    {
+      "qid": "DEV-026",
+      "mode": "context_diagnostic"
+    },
+    {
+      "qid": "DEV-027",
+      "mode": "question_only"
+    },
+    {
+      "qid": "DEV-027",
+      "mode": "context_diagnostic"
+    },
+    {
+      "qid": "DEV-028",
+      "mode": "question_only"
+    },
+    {
+      "qid": "DEV-028",
+      "mode": "context_diagnostic"
+    }
+  ],
+  "review_examples": [
+    {
+      "query": "국세와 지방세 체납을 조회하고 싶지만 국세는 제외해 주세요",
+      "before": [
+        "national",
+        "local"
+      ],
+      "after": [
+        "local"
+      ]
+    },
+    {
+      "query": "임대인의 국세 체납 사실을 증명할 납세증명서는 어디서 발급받나요?",
+      "before": [
+        "national"
+      ],
+      "after": []
+    }
+  ],
+  "source_normalized_sha256": "ea6cc14ea292cd188a4bf8d65a3fc0f6bbd21cd36358b5b9e8e51e94bdeb08a6",
+  "scope": "Policy gate check only; actual KURE capture recorded separately"
+}

@@ -1,0 +1,3088 @@
+{
+  "source_manifest_sha256": "100b4627a1ccac1969e9402e2b17acdde4475569c46617f9099d8bf9574be5b9",
+  "analysis_source_sha256": "40f8906b0e4e58b25445501f5fe92db5ccd4814c59b0c67001569e290c2bf4b8",
+  "unit": "missing (question, mode, target article); not unique questions",
+  "dev_missing_target_instances": 83,
+  "dev_stages": {
+    "civil_fusion_outside_top3": 22,
+    "general_fusion_outside_top5": 50,
+    "outside_observed_candidates": 9,
+    "civil_selection_displaced_top3": 2
+  },
+  "dev_general_fused_ranks_6_to_10": 25,
+  "dev_missing_with_member_top5": 31,
+  "details": [
+    {
+      "qid": "DEV-001",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "민법-제114조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 5,
+      "member_ranks": {
+        "bm25_context": 4,
+        "dense_context": 6
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "대리행위 대리권의 범위 본인 권한",
+        "부동산 물권변동 등기 물권취득"
+      ]
+    },
+    {
+      "qid": "DEV-003",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "국세징수법-제109조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 7,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 1
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "미납국세 미납지방세 열람 납세증명"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-003",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "지방세징수법시행령-제8조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 6,
+      "member_ranks": {
+        "bm25_context": 8,
+        "dense_context": 5
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "미납국세 미납지방세 열람 납세증명"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-003",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "국세징수법시행령-제97조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 10,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 2
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "미납국세 미납지방세 열람 납세증명"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-003",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "지방세징수법시행령-제8조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 15,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 5
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "미납국세 미납지방세 열람 납세증명"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-005",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "주민등록법-제16조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 14,
+      "member_ranks": {
+        "bm25_context": 16,
+        "dense_context": 14
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "주민등록 전입신고 주택 인도 대항력",
+        "확정일자 부여 현황 정보제공"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-005",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "주민등록법-제16조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 17,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 11
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "주민등록 전입신고 주택 인도 대항력",
+        "확정일자 부여 현황 정보제공"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-005",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "주택임대차보호법-제3조의6",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 7,
+      "member_ranks": {
+        "bm25_context": 6,
+        "dense_context": 7
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "주민등록 전입신고 주택 인도 대항력",
+        "확정일자 부여 현황 정보제공"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-009",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "상가건물임대차보호법-제2조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 8,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 3
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-009",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "주택임대차보호법-제2조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 12,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 5
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-009",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "주택임대차보호법-제2조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 6,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 2
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-010",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "주택임대차보호법-제3조의3",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 9,
+      "member_ranks": {
+        "bm25_context": 11,
+        "dense_context": 8
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-012",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "민법-제114조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 5,
+      "member_ranks": {
+        "bm25_context": 12,
+        "dense_context": 2
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-013",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "민법-제114조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 4,
+      "member_ranks": {
+        "bm25_context": 2,
+        "dense_context": 9
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "대리행위 대리권의 범위 본인 권한"
+      ]
+    },
+    {
+      "qid": "DEV-014",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "민법-제114조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 5,
+      "member_ranks": {
+        "bm25_context": 8,
+        "dense_context": 5
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-014",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "민법-제114조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 13,
+      "member_ranks": {
+        "bm25_context": 11,
+        "dense_context": 12
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-015",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "민법-제105조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 14,
+      "member_ranks": {
+        "bm25_context": 10,
+        "dense_context": 21
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-015",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "주택임대차보호법-제3조",
+      "channel": "general",
+      "stage": "outside_observed_candidates",
+      "fused_rank": null,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": null
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-015",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "민법-제105조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 17,
+      "member_ranks": {
+        "bm25_context": 12,
+        "dense_context": 26
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "부동산 물권변동 등기 물권취득"
+      ]
+    },
+    {
+      "qid": "DEV-015",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "주택임대차보호법-제3조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 11,
+      "member_ranks": {
+        "bm25_context": 10,
+        "dense_context": 18
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "부동산 물권변동 등기 물권취득"
+      ]
+    },
+    {
+      "qid": "DEV-016",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "민법-제114조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 10,
+      "member_ranks": {
+        "bm25_context": 7,
+        "dense_context": 19
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-019",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "신탁법-제31조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 10,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 4
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "부동산 물권변동 등기 물권취득"
+      ]
+    },
+    {
+      "qid": "DEV-025",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "지방세징수법시행령-제8조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 6,
+      "member_ranks": {
+        "bm25_context": 10,
+        "dense_context": 4
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "미납국세 미납지방세 열람 납세증명"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-025",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "국세징수법시행령-제97조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 6,
+      "member_ranks": {
+        "bm25_context": 19,
+        "dense_context": 3
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "미납국세 미납지방세 열람 납세증명"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-025",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "지방세징수법시행령-제8조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 14,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 5
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "미납국세 미납지방세 열람 납세증명"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-026",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "지방세징수법시행령-제8조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 13,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 5
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "미납국세 미납지방세 열람 납세증명"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-026",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "국세징수법시행령-제97조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 10,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 3
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "미납국세 미납지방세 열람 납세증명"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-026",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "지방세징수법시행령-제8조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 19,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 8
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "미납국세 미납지방세 열람 납세증명"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-027",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "지방세징수법-제6조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 8,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 3
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "미납국세 미납지방세 열람 납세증명"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-028",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "지방세징수법-제6조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 6,
+      "member_ranks": {
+        "bm25_context": 15,
+        "dense_context": 4
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "미납국세 미납지방세 열람 납세증명"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-028",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "지방세징수법시행령-제8조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 10,
+      "member_ranks": {
+        "bm25_context": 20,
+        "dense_context": 5
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "미납국세 미납지방세 열람 납세증명"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-028",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "국세징수법시행령-제97조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 14,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 5
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "미납국세 미납지방세 열람 납세증명"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-028",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "지방세징수법-제6조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 9,
+      "member_ranks": {
+        "bm25_context": 18,
+        "dense_context": 4
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "미납국세 미납지방세 열람 납세증명"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-028",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "지방세징수법시행령-제8조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 15,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 6
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "미납국세 미납지방세 열람 납세증명"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-033",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "주민등록법-제16조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 8,
+      "member_ranks": {
+        "bm25_context": 7,
+        "dense_context": 20
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "주민등록 전입신고 주택 인도 대항력"
+      ],
+      "civil_concepts": [
+        "임의규정 당사자 의사표시"
+      ]
+    },
+    {
+      "qid": "DEV-033",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "주민등록법-제16조",
+      "channel": "general",
+      "stage": "outside_observed_candidates",
+      "fused_rank": null,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": null
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "주민등록 전입신고 주택 인도 대항력"
+      ],
+      "civil_concepts": [
+        "임의규정 당사자 의사표시"
+      ]
+    },
+    {
+      "qid": "DEV-034",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "민법-제105조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 4,
+      "member_ranks": {
+        "bm25_context": 2,
+        "dense_context": 7
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "임의규정 당사자 의사표시"
+      ]
+    },
+    {
+      "qid": "DEV-038",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "주민등록법-제16조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 20,
+      "member_ranks": {
+        "bm25_context": 17,
+        "dense_context": null
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "주택 임대차 계약 신고 확정일자 부여",
+        "주민등록 전입신고 주택 인도 대항력"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-038",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "주택임대차보호법-제3조의6",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 8,
+      "member_ranks": {
+        "bm25_context": 6,
+        "dense_context": 9
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "주택 임대차 계약 신고 확정일자 부여",
+        "주민등록 전입신고 주택 인도 대항력"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-038",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "주민등록법-제16조",
+      "channel": "general",
+      "stage": "outside_observed_candidates",
+      "fused_rank": null,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": null
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "주택 임대차 계약 신고 확정일자 부여",
+        "주민등록 전입신고 주택 인도 대항력"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-038",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "주택임대차보호법-제3조의6",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 12,
+      "member_ranks": {
+        "bm25_context": 8,
+        "dense_context": 15
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "주택 임대차 계약 신고 확정일자 부여",
+        "주민등록 전입신고 주택 인도 대항력"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-041",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "주민등록법-제16조",
+      "channel": "general",
+      "stage": "outside_observed_candidates",
+      "fused_rank": null,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": null
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "주택 임대차 계약 신고 확정일자 부여",
+        "주민등록 전입신고 주택 인도 대항력"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-041",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "주민등록법-제16조",
+      "channel": "general",
+      "stage": "outside_observed_candidates",
+      "fused_rank": null,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": null
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "주택 임대차 계약 신고 확정일자 부여",
+        "주민등록 전입신고 주택 인도 대항력"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-044",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "주택임대차보호법-제3조의2",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 6,
+      "member_ranks": {
+        "bm25_context": 10,
+        "dense_context": 4
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "주민등록 전입신고 주택 인도 대항력",
+        "확정일자 우선변제 주택 인도 주민등록"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-044",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "주택임대차보호법-제3조의2",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 16,
+      "member_ranks": {
+        "bm25_context": 7,
+        "dense_context": null
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "주민등록 전입신고 주택 인도 대항력",
+        "확정일자 우선변제 주택 인도 주민등록"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-046",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "주민등록법-제16조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 10,
+      "member_ranks": {
+        "bm25_context": 10,
+        "dense_context": 16
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "주민등록 전입신고 주택 인도 대항력"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-046",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "주민등록법-제16조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 26,
+      "member_ranks": {
+        "bm25_context": 18,
+        "dense_context": null
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "주민등록 전입신고 주택 인도 대항력"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-050",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "주택임대차보호법-제3조의2",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 14,
+      "member_ranks": {
+        "bm25_context": 16,
+        "dense_context": 16
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "확정일자 부여 현황 정보제공"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-050",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "주택임대차보호법-제3조의2",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 21,
+      "member_ranks": {
+        "bm25_context": 16,
+        "dense_context": null
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "확정일자 부여 현황 정보제공"
+      ],
+      "civil_concepts": [
+        "임의규정 당사자 의사표시"
+      ]
+    },
+    {
+      "qid": "DEV-053",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "주택임대차보호법-제6조의3",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 8,
+      "member_ranks": {
+        "bm25_context": 3,
+        "dense_context": null
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-059",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "민법-제626조",
+      "channel": "civil",
+      "stage": "civil_selection_displaced_top3",
+      "fused_rank": 3,
+      "member_ranks": {
+        "bm25_context": 7,
+        "dense_context": 4
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-059",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "민법-제626조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 4,
+      "member_ranks": {
+        "bm25_context": 4,
+        "dense_context": 4
+      },
+      "civil_seed": [
+        "민법-제623조"
+      ],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-060",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "민법-제390조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 4,
+      "member_ranks": {
+        "bm25_context": 1,
+        "dense_context": 11
+      },
+      "civil_seed": [
+        "민법-제623조"
+      ],
+      "civil_references": [
+        {
+          "source": "민법-제615조",
+          "target": "민법-제654조",
+          "source_rank": 3,
+          "target_rank": 10
+        }
+      ],
+      "law_concepts": [],
+      "civil_concepts": [
+        "원상회복의무 철거권 임대차 준용규정",
+        "채무불이행 손해배상 고의 과실",
+        "임의규정 당사자 의사표시"
+      ]
+    },
+    {
+      "qid": "DEV-064",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "민법-제105조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 9,
+      "member_ranks": {
+        "bm25_context": 6,
+        "dense_context": 18
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-064",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "민법-제105조",
+      "channel": "civil",
+      "stage": "civil_selection_displaced_top3",
+      "fused_rank": 3,
+      "member_ranks": {
+        "bm25_context": 1,
+        "dense_context": 6
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "임의규정 당사자 의사표시"
+      ]
+    },
+    {
+      "qid": "DEV-065",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "민법-제105조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 24,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 22
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-065",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "민법-제105조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 9,
+      "member_ranks": {
+        "bm25_context": 8,
+        "dense_context": 8
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "임의규정 당사자 의사표시"
+      ]
+    },
+    {
+      "qid": "DEV-066",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "민법-제105조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 20,
+      "member_ranks": {
+        "bm25_context": 19,
+        "dense_context": 20
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-066",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "민법-제105조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 24,
+      "member_ranks": {
+        "bm25_context": 26,
+        "dense_context": 18
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-068",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "주택임대차보호법-제3조의3",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 19,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 11
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "쌍무계약 동시이행의 항변권 채무이행 거절"
+      ]
+    },
+    {
+      "qid": "DEV-068",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "주택임대차보호법-제3조의3",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 14,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 8
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "쌍무계약 동시이행의 항변권 채무이행 거절"
+      ]
+    },
+    {
+      "qid": "DEV-072",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "민법-제105조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 22,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 22
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "쌍무계약 동시이행의 항변권 채무이행 거절"
+      ]
+    },
+    {
+      "qid": "DEV-072",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "민법-제105조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 22,
+      "member_ranks": {
+        "bm25_context": 20,
+        "dense_context": 22
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "쌍무계약 동시이행의 항변권 채무이행 거절"
+      ]
+    },
+    {
+      "qid": "DEV-075",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "민법-제111조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 13,
+      "member_ranks": {
+        "bm25_context": 20,
+        "dense_context": 8
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-075",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "민사소송법-제462조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 19,
+      "member_ranks": {
+        "bm25_context": 11,
+        "dense_context": null
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-075",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "민법-제111조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 22,
+      "member_ranks": {
+        "bm25_context": 23,
+        "dense_context": 21
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "부동산 물권변동 등기 물권취득"
+      ]
+    },
+    {
+      "qid": "DEV-075",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "민사소송법-제462조",
+      "channel": "general",
+      "stage": "outside_observed_candidates",
+      "fused_rank": null,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": null
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "부동산 물권변동 등기 물권취득"
+      ]
+    },
+    {
+      "qid": "DEV-079",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "형법-제347조",
+      "channel": "general",
+      "stage": "outside_observed_candidates",
+      "fused_rank": null,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": null
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-079",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "형법-제347조",
+      "channel": "general",
+      "stage": "outside_observed_candidates",
+      "fused_rank": null,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": null
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-087",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "민법-제357조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 11,
+      "member_ranks": {
+        "bm25_context": 11,
+        "dense_context": 11
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "부동산 물권변동 등기 물권취득"
+      ]
+    },
+    {
+      "qid": "DEV-087",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "민법-제357조",
+      "channel": "civil",
+      "stage": "civil_fusion_outside_top3",
+      "fused_rank": 13,
+      "member_ranks": {
+        "bm25_context": 21,
+        "dense_context": 10
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "부동산 물권변동 등기 물권취득"
+      ]
+    },
+    {
+      "qid": "DEV-089",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "상가건물임대차보호법-제2조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 20,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 12
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-089",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "상가건물임대차보호법-제2조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 30,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 18
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-090",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "상가건물임대차보호법-제2조",
+      "channel": "general",
+      "stage": "outside_observed_candidates",
+      "fused_rank": null,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": null
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "쌍무계약 동시이행의 항변권 채무이행 거절"
+      ]
+    },
+    {
+      "qid": "DEV-090",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "상가건물임대차보호법-제6조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 7,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 2
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "쌍무계약 동시이행의 항변권 채무이행 거절"
+      ]
+    },
+    {
+      "qid": "DEV-090",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "상가건물임대차보호법-제2조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 12,
+      "member_ranks": {
+        "bm25_context": 12,
+        "dense_context": 15
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "쌍무계약 동시이행의 항변권 채무이행 거절"
+      ]
+    },
+    {
+      "qid": "DEV-090",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "상가건물임대차보호법-제6조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 6,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 1
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "쌍무계약 동시이행의 항변권 채무이행 거절"
+      ]
+    },
+    {
+      "qid": "DEV-094",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "민간임대주택에관한특별법-제5조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 9,
+      "member_ranks": {
+        "bm25_context": 13,
+        "dense_context": 9
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-094",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "민간임대주택에관한특별법-제6조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 8,
+      "member_ranks": {
+        "bm25_context": 6,
+        "dense_context": 20
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-094",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "민간임대주택에관한특별법-제5조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 8,
+      "member_ranks": {
+        "bm25_context": 7,
+        "dense_context": 19
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "임의규정 당사자 의사표시"
+      ]
+    },
+    {
+      "qid": "DEV-094",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "민간임대주택에관한특별법-제6조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 11,
+      "member_ranks": {
+        "bm25_context": 6,
+        "dense_context": null
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": [
+        "임의규정 당사자 의사표시"
+      ]
+    },
+    {
+      "qid": "DEV-096",
+      "mode": "question_only",
+      "track": "dev100",
+      "target": "민간임대주택에관한특별법-제45조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 21,
+      "member_ranks": {
+        "bm25_context": 12,
+        "dense_context": null
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "주택 임대차 계약 신고 확정일자 부여",
+        "민간임대주택 임대사업자 임대료 임대차계약"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "DEV-096",
+      "mode": "context_diagnostic",
+      "track": "dev100",
+      "target": "민간임대주택에관한특별법-제45조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 18,
+      "member_ranks": {
+        "bm25_context": 9,
+        "dense_context": null
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [
+        "주택 임대차 계약 신고 확정일자 부여",
+        "민간임대주택 임대사업자 임대료 임대차계약"
+      ],
+      "civil_concepts": []
+    },
+    {
+      "qid": "CIV-DRAFT-028",
+      "mode": "question_context",
+      "track": "required_law",
+      "target": "상가건물임대차보호법-제2조",
+      "channel": "general",
+      "stage": "general_fusion_outside_top5",
+      "fused_rank": 9,
+      "member_ranks": {
+        "bm25_context": null,
+        "dense_context": 5
+      },
+      "civil_seed": [],
+      "civil_references": [],
+      "law_concepts": [],
+      "civil_concepts": []
+    }
+  ],
+  "offline_alternatives": {
+    "general_top10_same_civil3": {
+      "groups": {
+        "question_only": {
+          "n": 75,
+          "before_complete": 43,
+          "after_complete": 53
+        },
+        "context_diagnostic": {
+          "n": 75,
+          "before_complete": 43,
+          "after_complete": 45
+        },
+        "required_law": {
+          "n": 29,
+          "before_complete": 28,
+          "after_complete": 29
+        },
+        "scope_provisional": {
+          "n": 1,
+          "before_complete": 1,
+          "after_complete": 1
+        }
+      },
+      "changed_inputs": [
+        {
+          "qid": "DEV-001",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-001",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-002",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-002",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-003",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-003",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-004",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-004",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-005",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-005",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-006",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-006",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-007",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-007",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-008",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-008",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-009",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-009",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-010",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-010",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-011",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-011",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-012",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-012",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-013",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-013",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-014",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-014",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-015",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-015",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-016",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-016",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-017",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-017",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-018",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-018",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-019",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-019",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-020",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-020",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-021",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-021",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-022",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-022",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-023",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-023",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-024",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-024",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-025",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-025",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-026",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-026",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-027",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-027",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-028",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-028",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-029",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-029",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-030",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-030",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-031",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-031",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-032",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-032",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-033",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-033",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-034",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-034",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-035",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-035",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-036",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-036",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-037",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-037",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-038",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-038",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-039",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-039",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-040",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-040",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-041",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-041",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-042",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-042",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-043",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-043",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-044",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-044",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-045",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-045",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-046",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-046",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-047",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-047",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-048",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-048",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-049",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-049",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-050",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-050",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-051",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-051",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-052",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-052",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-053",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-053",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-054",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-054",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-055",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-055",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-056",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-056",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-057",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-057",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-058",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-058",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-059",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-059",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-060",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-060",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-061",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-061",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-062",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-062",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-063",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-063",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-064",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-064",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-065",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-065",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-066",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-066",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-067",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-067",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-068",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-068",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-069",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-069",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-070",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-070",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-071",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-071",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-072",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-072",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-073",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-073",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-074",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-074",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-075",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-075",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-076",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-076",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-077",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-077",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-078",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-078",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-079",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-079",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-080",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-080",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-081",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-081",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-082",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-082",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-083",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-083",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-084",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-084",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-085",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-085",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-086",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-086",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-087",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-087",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-088",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-088",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-089",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-089",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-090",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-090",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-091",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-091",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-092",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-092",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-093",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-093",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-094",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-094",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-095",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-095",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-096",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-096",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-097",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-097",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-098",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-098",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-099",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-099",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-100",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-100",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "CIV-DRAFT-001",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-002",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-003",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-004",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-005",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-006",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-007",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-008",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-009",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-010",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-011",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-012",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-013",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-014",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-015",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-016",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-017",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-018",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-019",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-020",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-021",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-022",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-023",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-024",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-025",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-026",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-027",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-028",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-029",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-030",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-031",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-032",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-033",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-034",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-035",
+          "mode": "question_context"
+        }
+      ],
+      "gained_targets": [
+        {
+          "qid": "DEV-003",
+          "mode": "question_only",
+          "targets": [
+            "국세징수법-제109조",
+            "지방세징수법시행령-제8조"
+          ]
+        },
+        {
+          "qid": "DEV-003",
+          "mode": "context_diagnostic",
+          "targets": [
+            "국세징수법시행령-제97조"
+          ]
+        },
+        {
+          "qid": "DEV-005",
+          "mode": "context_diagnostic",
+          "targets": [
+            "주택임대차보호법-제3조의6"
+          ]
+        },
+        {
+          "qid": "DEV-009",
+          "mode": "question_only",
+          "targets": [
+            "상가건물임대차보호법-제2조"
+          ]
+        },
+        {
+          "qid": "DEV-009",
+          "mode": "context_diagnostic",
+          "targets": [
+            "주택임대차보호법-제2조"
+          ]
+        },
+        {
+          "qid": "DEV-010",
+          "mode": "question_only",
+          "targets": [
+            "주택임대차보호법-제3조의3"
+          ]
+        },
+        {
+          "qid": "DEV-019",
+          "mode": "question_only",
+          "targets": [
+            "신탁법-제31조"
+          ]
+        },
+        {
+          "qid": "DEV-025",
+          "mode": "question_only",
+          "targets": [
+            "지방세징수법시행령-제8조"
+          ]
+        },
+        {
+          "qid": "DEV-025",
+          "mode": "context_diagnostic",
+          "targets": [
+            "국세징수법시행령-제97조"
+          ]
+        },
+        {
+          "qid": "DEV-026",
+          "mode": "context_diagnostic",
+          "targets": [
+            "국세징수법시행령-제97조"
+          ]
+        },
+        {
+          "qid": "DEV-027",
+          "mode": "context_diagnostic",
+          "targets": [
+            "지방세징수법-제6조"
+          ]
+        },
+        {
+          "qid": "DEV-028",
+          "mode": "question_only",
+          "targets": [
+            "지방세징수법-제6조",
+            "지방세징수법시행령-제8조"
+          ]
+        },
+        {
+          "qid": "DEV-028",
+          "mode": "context_diagnostic",
+          "targets": [
+            "지방세징수법-제6조"
+          ]
+        },
+        {
+          "qid": "DEV-033",
+          "mode": "question_only",
+          "targets": [
+            "주민등록법-제16조"
+          ]
+        },
+        {
+          "qid": "DEV-038",
+          "mode": "question_only",
+          "targets": [
+            "주택임대차보호법-제3조의6"
+          ]
+        },
+        {
+          "qid": "DEV-044",
+          "mode": "question_only",
+          "targets": [
+            "주택임대차보호법-제3조의2"
+          ]
+        },
+        {
+          "qid": "DEV-046",
+          "mode": "question_only",
+          "targets": [
+            "주민등록법-제16조"
+          ]
+        },
+        {
+          "qid": "DEV-053",
+          "mode": "question_only",
+          "targets": [
+            "주택임대차보호법-제6조의3"
+          ]
+        },
+        {
+          "qid": "DEV-090",
+          "mode": "question_only",
+          "targets": [
+            "상가건물임대차보호법-제6조"
+          ]
+        },
+        {
+          "qid": "DEV-090",
+          "mode": "context_diagnostic",
+          "targets": [
+            "상가건물임대차보호법-제6조"
+          ]
+        },
+        {
+          "qid": "DEV-094",
+          "mode": "question_only",
+          "targets": [
+            "민간임대주택에관한특별법-제5조",
+            "민간임대주택에관한특별법-제6조"
+          ]
+        },
+        {
+          "qid": "DEV-094",
+          "mode": "context_diagnostic",
+          "targets": [
+            "민간임대주택에관한특별법-제5조"
+          ]
+        },
+        {
+          "qid": "CIV-DRAFT-028",
+          "mode": "question_context",
+          "targets": [
+            "상가건물임대차보호법-제2조"
+          ]
+        }
+      ],
+      "lost_targets": []
+    },
+    "seedless_tail_override_removed": {
+      "groups": {
+        "question_only": {
+          "n": 75,
+          "before_complete": 43,
+          "after_complete": 44
+        },
+        "context_diagnostic": {
+          "n": 75,
+          "before_complete": 43,
+          "after_complete": 43
+        },
+        "required_law": {
+          "n": 29,
+          "before_complete": 28,
+          "after_complete": 28
+        },
+        "scope_provisional": {
+          "n": 1,
+          "before_complete": 1,
+          "after_complete": 1
+        }
+      },
+      "changed_inputs": [
+        {
+          "qid": "DEV-001",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-005",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-005",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-009",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-010",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-011",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-012",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-014",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-015",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-016",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-017",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-020",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-020",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-022",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-026",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-028",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-028",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-031",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-032",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-033",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-035",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-036",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-036",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-037",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-038",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-039",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-040",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-041",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-041",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-042",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-044",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-044",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-045",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-046",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-046",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-048",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-049",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-050",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-051",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-053",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-053",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-058",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-059",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-064",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-065",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-067",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-067",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-068",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-069",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-070",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-073",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-075",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-076",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-076",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-077",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-082",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-082",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-083",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-085",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-086",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-087",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-088",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-089",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-090",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-091",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-092",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-094",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-095",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-096",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-097",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-098",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-098",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "DEV-099",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-100",
+          "mode": "question_only"
+        },
+        {
+          "qid": "DEV-100",
+          "mode": "context_diagnostic"
+        },
+        {
+          "qid": "CIV-DRAFT-008",
+          "mode": "question_context"
+        },
+        {
+          "qid": "CIV-DRAFT-012",
+          "mode": "question_context"
+        }
+      ],
+      "gained_targets": [
+        {
+          "qid": "DEV-059",
+          "mode": "question_only",
+          "targets": [
+            "민법-제626조"
+          ]
+        },
+        {
+          "qid": "DEV-064",
+          "mode": "context_diagnostic",
+          "targets": [
+            "민법-제105조"
+          ]
+        }
+      ],
+      "lost_targets": [
+        {
+          "qid": "DEV-058",
+          "mode": "context_diagnostic",
+          "targets": [
+            "민법-제627조"
+          ]
+        }
+      ]
+    }
+  },
+  "limitations": "Alternatives recombine observed candidates after seeing DEV results. No production changes or new policy live runs; no LLM or independent holdout evaluation. General top10 returns more evidence and may increase downstream context/token cost, which was not measured; member depth remains20. Gains are not a recommendation to increase budgets."
+}

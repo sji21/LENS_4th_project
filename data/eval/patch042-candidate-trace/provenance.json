@@ -1,0 +1,13 @@
+{
+  "schema": "patch042-observed-candidates-v1",
+  "inputs": 235,
+  "driver_source_sha256": "dee297512c5ddd60973e16c788a4c543e8c06936307848780c79f39b93916b83",
+  "baseline_manifest_sha256": "4272c209f08e3b7e418fdfc8595108a8f205dadabc295f6bd90c87c873f64212",
+  "all_235_results_exactly_equal_to_patch041": true,
+  "method": "Observe actual product member hits without changing query, depth, weights or selection; full fusion recomputed and actual prefix checked",
+  "candidate_depth": {
+    "general_per_member": 20,
+    "civil_per_member": 26
+  },
+  "limitations": "Gold not used in search or observation; candidate ranks are diagnostic, not tuned or independent evaluation"
+}
