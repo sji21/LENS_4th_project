@@ -1,0 +1,43 @@
+{
+  "patch": "PATCH-051",
+  "base_commit": "42c71a1242c4568274f85313eb6a7a170e7e6119",
+  "command": "python -X utf8 -m pytest -q",
+  "exit_code": 0,
+  "passed": 2604,
+  "skipped": 3,
+  "subtests_passed": 678,
+  "skip_reasons": {
+    "LangSmith not configured": 2,
+    "REGISTRY_SAMPLE_PDF not supplied": 1
+  },
+  "python": "3.11.9",
+  "packages": {
+    "torch": "2.14.0",
+    "transformers": "5.16.1",
+    "sentence-transformers": "6.0.1",
+    "chromadb": "1.5.9",
+    "pytest": "9.1.1"
+  },
+  "test_and_product_source_hashes": {
+    "src/retrieval/companion_evidence.py": "b24c43b9db7711667ce0bdd09f69e7af4925e53d673207f7341dccc860f8ee09",
+    "src/retrieval/expanded.py": "ffc3b9bfbfb8d04fe3acadd4db66118465c3f8014f6568991173ab9e6cc1d461",
+    "tests/test_patch051_adversarial.py": "2af56c85c5dc73266e84c72e03b481c0dc3de3e1569c7a1fa1cb59010a862f76",
+    "tests/test_patch051_companion_evidence.py": "2ca3ca893b2e31f16c97def388616910715eec6b58fc21e39fce78ec7b8d4171",
+    "tests/test_patch051_evaluation_contract.py": "67d26361d78d07faffe84988e1c51e16af0ce1a97473ff4ebffff0ba22eef48f",
+    "tests/test_patch051_generation_delivery.py": "ad94f232f7410cbf5233ee5c82b77d306ee679d4f68ed9522e573d07d4d3bb21"
+  },
+  "artifacts_sha256": {
+    "comparison.json": "8f909172f5ca4820010939a12288a8ecda871697d5132494cb9392f08cf7c7d7",
+    "full-tests.log": "9d823f18a7a752da8312e1560bf9e1083008335f72e7df0068062ede5ebccdaa",
+    "independent-verification.json": "7751f22b76a4c5108da828b2c0cf9670ee3ef9ff2ec8369b966a956e3c9791c9",
+    "verify_independently.py": "56e5c0611c65e48350fb6e9461dbd673d712aa497c4469fdfd6fe5f032a413b8",
+    "after/audit.json": "d564897782ec87d0ecd56857a73263fee05148c4a0494e6ec67eda9510b4a1b7",
+    "after/manifest.json": "e453bb99fa36819f2cf88884f1ffe84a4aef337ab872e5c5ae37c007e10357a6",
+    "after/rows.json": "7e212da1afec7be88ae41dd7ce1329e5862ac87b34c30dce7f2f4efcb09f15a8",
+    "after/target-trace.json": "55b94fc1de5fc3a22e2d3b0fa30b790094acae87e20319d8830cf130501671d4",
+    "before/audit.json": "a8318a46578870eb608c055a578fb8d0557d1cd9e1faec982540662d1d99e28f",
+    "before/manifest.json": "fa2b681661c49ab4906500d70fa80af18cb9e88711d9231421b7c9f6cab523ce",
+    "before/rows.json": "a868f68c6352352c99e713fcb7a1e71d7640607e9538dcfd1d695313274a64c3",
+    "before/target-trace.json": "55b94fc1de5fc3a22e2d3b0fa30b790094acae87e20319d8830cf130501671d4"
+  }
+}

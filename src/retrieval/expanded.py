@@ -8,6 +8,9 @@ from src.retrieval.context_policy import (
     final_dense_query, final_law_terms,
 )
 from src.retrieval.hybrid import HybridRetriever, Member
+from src.retrieval.companion_evidence import (
+    COMPANION_POLICY_CONFIG, LeaseProtectionSelector, requests_lease_protection,
+)
 from src.retrieval.multi_evidence import POLICY_CONFIG, TaxLookupSelector, requested_tax_scopes
 from src.retrieval.partitioned import PartitionedBM25Retriever
 from src.retrieval.retriever import BM25Retriever
@@ -53,6 +56,8 @@ class ExpandedLawRetrievalService(RetrievalService):
                 and c["metadata"].get("title") != "민법"]
         self._tax_lookup_selector = TaxLookupSelector(laws)
         self.selection_config = POLICY_CONFIG
+        self._lease_protection_selector = LeaseProtectionSelector(laws)
+        self.companion_selection_config = COMPANION_POLICY_CONFIG
         lexical = lambda part: BM25Retriever(part, b=LAW.bm25_b, query_expander=final_law_terms)
         law_bm25 = PartitionedBM25Retriever({
             "core": lexical([c for c in laws if c["metadata"].get("title") not in PROCEDURE_TITLES]),
@@ -89,6 +94,9 @@ class ExpandedLawRetrievalService(RetrievalService):
         if requested_tax_scopes(question):
             hits = self._context_law.search(question, max(k, POLICY_CONFIG["candidate_depth"]), corpus.where())
             hits = self._tax_lookup_selector.select(question, hits, k, corpus.where())
+        elif k >= COMPANION_POLICY_CONFIG["minimum_budget"] and requests_lease_protection(question):
+            hits = self._context_law.search(question, max(k, COMPANION_POLICY_CONFIG["candidate_depth"]), corpus.where())
+            hits = self._lease_protection_selector.select(question, hits, k, corpus.where())
         else:
             hits = self._context_law.search(question, k, corpus.where())
         return [_to_evidence(i, self._chunks[cid], score) for i, (cid, score) in enumerate(hits, 1)]

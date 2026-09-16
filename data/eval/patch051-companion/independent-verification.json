@@ -1,0 +1,309 @@
+{
+  "schema": "patch051-independent-verification-v1",
+  "verified_at": "2026-09-16T06:54:12.469387+00:00",
+  "method": "Standalone stdlib replay; no evaluator imports, model or network calls",
+  "data_root": "C:\\team_project\\patch041-worktree\\data",
+  "capture_rows_each": 313,
+  "manifest_and_execution_stability": true,
+  "source_changes": [
+    "src/retrieval/companion_evidence.py",
+    "src/retrieval/expanded.py"
+  ],
+  "cross_run_unchanged_fields": [
+    "criteria",
+    "payload",
+    "model",
+    "logical_indices",
+    "settings",
+    "public_inputs",
+    "tax_selection"
+  ],
+  "all_evidence_body_identity_source_status_and_budget_checks": {
+    "before": {
+      "laws": 2504,
+      "civil_laws": 1878,
+      "cases": 3130,
+      "guides": 70
+    },
+    "after": {
+      "laws": 2504,
+      "civil_laws": 1878,
+      "cases": 3130,
+      "guides": 70
+    }
+  },
+  "model_usage_each": {
+    "actual_kure_calls": 957,
+    "general_backend_requests": 1303,
+    "civil_backend_requests": 770
+  },
+  "raw_candidate_trace_unchanged": true,
+  "k3_equals_k5_law_prefix_rows_each": 313,
+  "first_law_preserved_at_both_budgets_rows": 313,
+  "channel_change_counts": {
+    "laws": 6,
+    "civil_laws": 0,
+    "cases": 0,
+    "guides": 0
+  },
+  "changes": [
+    {
+      "qid": "dev-001",
+      "mode": "question_only",
+      "law_k": 3,
+      "channels": [
+        "laws"
+      ],
+      "before_laws": [
+        "부동산 거래신고 등에 관한 법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제9조"
+      ],
+      "after_laws": [
+        "부동산 거래신고 등에 관한 법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의2"
+      ]
+    },
+    {
+      "qid": "dev-001",
+      "mode": "question_only",
+      "law_k": 5,
+      "channels": [
+        "laws"
+      ],
+      "before_laws": [
+        "부동산 거래신고 등에 관한 법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제9조",
+        "주택임대차보호법-제3조의6",
+        "주택임대차보호법-제3조의4"
+      ],
+      "after_laws": [
+        "부동산 거래신고 등에 관한 법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의2",
+        "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제9조",
+        "주택임대차보호법-제3조의6"
+      ]
+    },
+    {
+      "qid": "holdout-002",
+      "mode": "question_only",
+      "law_k": 3,
+      "channels": [
+        "laws"
+      ],
+      "before_laws": [
+        "주택임대차보호법-제3조",
+        "부동산 거래신고 등에 관한 법률-제6조의5",
+        "주택임대차보호법-제3조의3"
+      ],
+      "after_laws": [
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의2",
+        "부동산 거래신고 등에 관한 법률-제6조의5"
+      ]
+    },
+    {
+      "qid": "holdout-002",
+      "mode": "question_only",
+      "law_k": 5,
+      "channels": [
+        "laws"
+      ],
+      "before_laws": [
+        "주택임대차보호법-제3조",
+        "부동산 거래신고 등에 관한 법률-제6조의5",
+        "주택임대차보호법-제3조의3",
+        "주택임대차보호법-제3조의4",
+        "주택임대차보호법-제3조의2"
+      ],
+      "after_laws": [
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의2",
+        "부동산 거래신고 등에 관한 법률-제6조의5",
+        "주택임대차보호법-제3조의3",
+        "주택임대차보호법-제3조의4"
+      ]
+    },
+    {
+      "qid": "case26-dev-001",
+      "mode": "question_only",
+      "law_k": 3,
+      "channels": [
+        "laws"
+      ],
+      "before_laws": [
+        "부동산 거래신고 등에 관한 법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제9조"
+      ],
+      "after_laws": [
+        "부동산 거래신고 등에 관한 법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의2"
+      ]
+    },
+    {
+      "qid": "case26-dev-001",
+      "mode": "question_only",
+      "law_k": 5,
+      "channels": [
+        "laws"
+      ],
+      "before_laws": [
+        "부동산 거래신고 등에 관한 법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제9조",
+        "주택임대차보호법-제3조의6",
+        "주택임대차보호법-제3조의4"
+      ],
+      "after_laws": [
+        "부동산 거래신고 등에 관한 법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의2",
+        "주택임대차계약증서의 확정일자 부여 및 정보제공에 관한 규칙-제9조",
+        "주택임대차보호법-제3조의6"
+      ]
+    }
+  ],
+  "groups": {
+    "question_only:law3+civil3": {
+      "n": 75,
+      "before_any": 57,
+      "after_any": 57,
+      "before_all": 40,
+      "after_all": 40
+    },
+    "question_only:law5+civil3": {
+      "n": 75,
+      "before_any": 58,
+      "after_any": 58,
+      "before_all": 47,
+      "after_all": 47
+    },
+    "context_diagnostic:law3+civil3": {
+      "n": 75,
+      "before_any": 55,
+      "after_any": 55,
+      "before_all": 39,
+      "after_all": 39
+    },
+    "context_diagnostic:law5+civil3": {
+      "n": 75,
+      "before_any": 60,
+      "after_any": 60,
+      "before_all": 48,
+      "after_all": 48
+    },
+    "required_law:law3+civil3": {
+      "n": 29,
+      "before_any": 29,
+      "after_any": 29,
+      "before_all": 28,
+      "after_all": 28
+    },
+    "required_law:law5+civil3": {
+      "n": 29,
+      "before_any": 29,
+      "after_any": 29,
+      "before_all": 28,
+      "after_all": 28
+    },
+    "legacy_dev:law3": {
+      "n": 24,
+      "before_any": 23,
+      "after_any": 23,
+      "before_all": 22,
+      "after_all": 23
+    },
+    "legacy_dev:law5": {
+      "n": 24,
+      "before_any": 24,
+      "after_any": 24,
+      "before_all": 23,
+      "after_all": 24
+    },
+    "legacy_holdout:law3": {
+      "n": 18,
+      "before_any": 17,
+      "after_any": 17,
+      "before_all": 11,
+      "after_all": 12
+    },
+    "legacy_holdout:law5": {
+      "n": 18,
+      "before_any": 18,
+      "after_any": 18,
+      "before_all": 13,
+      "after_all": 13
+    },
+    "civil_public:law3+civil3": {
+      "n": 15,
+      "before_any": 11,
+      "after_any": 11,
+      "before_all": 9,
+      "after_all": 9
+    },
+    "civil_public:law5+civil3": {
+      "n": 15,
+      "before_any": 13,
+      "after_any": 13,
+      "before_all": 12,
+      "after_all": 12
+    },
+    "case_dev13:law3+case5": {
+      "n": 13,
+      "before_any": 13,
+      "after_any": 13,
+      "before_all": 5,
+      "after_all": 5
+    },
+    "case_dev13:law5+case5": {
+      "n": 13,
+      "before_any": 13,
+      "after_any": 13,
+      "before_all": 5,
+      "after_all": 5
+    },
+    "case_external8:law3+case5": {
+      "n": 8,
+      "before_any": 8,
+      "after_any": 8,
+      "before_all": 4,
+      "after_all": 4
+    },
+    "case_external8:law5+case5": {
+      "n": 8,
+      "before_any": 8,
+      "after_any": 8,
+      "before_all": 4,
+      "after_all": 4
+    }
+  },
+  "required_target_losses": [],
+  "target_core_body_checks": [
+    {
+      "article_id": "주택임대차보호법-제3조",
+      "chunk_id": "law-주택임대차보호법-20260102#제3조#0",
+      "text_chars": 726,
+      "text_sha256": "31e5d53f0623f9c0d28e5463b5654390040565643e98415dfb13d15a9f8706d2",
+      "required_paragraph": "①",
+      "paragraph_sha256": "ce3ce6cfbb87ad615c84c983b383c4f2f501d5001b46f879cedd1e05a0152def"
+    },
+    {
+      "article_id": "주택임대차보호법-제3조의2",
+      "chunk_id": "law-주택임대차보호법-20260102#제3조의2#0",
+      "text_chars": 1603,
+      "text_sha256": "d4a0067f2c17e13e1b0c1b5a82a7b643942a03a5da783a4e727e35435175152c",
+      "required_paragraph": "②",
+      "paragraph_sha256": "2df4d28e49a13fb53ca8c963108e668210bf4dfcb25833c5aabfbf6301d48079"
+    }
+  ],
+  "limits": [
+    "Article coverage is distinct from paragraph/model-answer correctness.",
+    "HTTP payload delivery is covered separately by test_patch051_generation_delivery.py.",
+    "Published evaluation inputs are regression data, not independent held-out quality evidence."
+  ]
+}
