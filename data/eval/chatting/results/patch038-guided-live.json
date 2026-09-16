@@ -1,0 +1,361 @@
+{
+  "mode": "real_planner_fixed_legal_backend",
+  "files": {
+    "chat/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "chat/dialogue_clarification.py": "c9b6e160afb2f18cf9e490e64dc4e686c327c2c395ef338f3acd0e9e72604548",
+    "chat/dialogue_contract.py": "2dd66fa9bb5bbe0bf7e8ba6ae77f7aed39cb9e99da22a886ca3304d451a31fc0",
+    "chat/dialogue_documents.py": "f9b844cfebb884b8d64f9afe5270ecd33a6a1a174b0585912216c2d36315d20a",
+    "chat/dialogue_normalization.py": "e9363d67a3da23f76681603a25695e4dd3cacc2d07a8bce16d5881a7ef6b6739",
+    "chat/dialogue_planner.py": "193ae5b79e2db25ffbbdd6fc00d2014e843a1b915cf655f8487fcb826daedce3",
+    "chat/dialogue_query.py": "0fda7ba0fb35466ca7b71d812c072e38fcf54046edb106e1adb4df68d92b832b",
+    "chat/dialogue_recovery.py": "75e49cd993b11f4afe57b08fadb554bd00204771678e842c0c738d6c96f0498c",
+    "chat/dialogue_router.py": "6ce3bea0f360f475d3309f312d7a7d9f39751e816d18f30926e4fab2dda285dd",
+    "chat/dialogue_state.py": "763bdc8c04867f177a5718c9bf6febd91cb89f40f4a065cb4ab586b325b30f21",
+    "chat/models.py": "413609bf0ebf1a9450d621122f3f4a82cbdac75161c18f5aeae4c4da0ec420b1",
+    "chat/services.py": "b8c153cef9cff9d6c2e952a63caf6fdd4d7b06935e6a79f016e18830227aaea2",
+    "chat/uploads.py": "0ae80dc0708af8321171f412577c18b3e5a087216e866a7b4b22a1e21784c295",
+    "chat/urls.py": "19346b62a4ce16cb2e2154396c40008f3fade0221266e458050304ee18cab9c7",
+    "chat/views.py": "326bf6038c196b30c5e61ad5fd4fa96458f0fc6dd387a2b235336780878bc94a",
+    "data/chunks/base_sample.jsonl": "0a569cd52b5360cb7dad72c9ac497866031b1d9a116af7fd738885f25abdd35b",
+    "data/chunks/cases.jsonl": "f6190b01d00b0a6f4630ef8c8a2ceebe19ca5a443a9874d06ca2655a5e5efce9",
+    "data/chunks/chunks.jsonl": "c61cba0ef9969cc271ab665b4e237bbd468025dec6199f7ecff2b040fec1958a",
+    "data/chunks/civil.jsonl": "635a4b2f4c3a4cb4f54d0c081bb91a84d5f1f8dc8d0b26a7987e30130df5a10a",
+    "data/chunks/guides.jsonl": "5b67bf5cf59ded40e0dc0289716cb6843ce473bed3d518b17b98fa9a2e54ba93",
+    "data/eval/chatting/acceptance.json": "26eb3122cd56cbcd11f5e3e70d01751b761103e4f6058bc461826456a670bfaa",
+    "data/eval/chatting/dev.json": "bcd030f67235bf5c6437dfce4e8af59c851d0af826c5991016c48d7179463c42",
+    "src/evaluation/chatting_dialogue_run.py": "8c8bd0446ad41974dac52c1988d05d30e1705ec0bc614f48556db5b0002352e2",
+    "src/evaluation/chatting_plan_run.py": "40642dac4c6cd448c45adb209fe543aa7f64057dc39f9454be7abab541b63159",
+    "src/evaluation/chatting_provenance.py": "547278915c1ba10433cacda21a590d05f3fb92e88c170ad86a556addd980555b",
+    "src/evaluation/chatting_run.py": "1ef0eba49048f4c4166c8aab3bab4ad12673d5c898334a289a9fde7f701ec2f0",
+    "src/evaluation/chatting_scenarios.py": "2dd1f5cde62396d33999c461c007f45b16e0946e1f4ecca42539bcd4e8974f51",
+    "src/evaluation/chatting_scoring.py": "85f9d66fe26d7f9aa5e90dc9ddde8d19337229bcb03f1b703c4c64789f955cd0",
+    "src/generation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/generation/abstention.py": "7e4501dc9e7564d7df39d115a412e1f1746ddbe17065261e90884d8facd14476",
+    "src/generation/call_budget.py": "acb78ce0086f6501670eefa1db5d928500a29887ed4a9140d16015949bfa07c0",
+    "src/generation/chain.py": "212f37d4e032a4c3a355c5eaec85d6e4599963ed07a8d082605a3ae06c14adec",
+    "src/generation/citation.py": "496a4592606a9f28a53a5c6615b5dc88dbd7c5a471b4ca431ae566bcc5726f19",
+    "src/generation/conversation.py": "a35889cb47085b64248c50e0975f889e37302474f6470b77b4b3f20cf077ebb0",
+    "src/generation/evidence_routing.py": "9e425bb90c5f943866ee635604573340b199de23371bf8e83c22c62697f72100",
+    "src/generation/graph.py": "76e69c3cfac2deac15ef0c6e2a8ea16eaf087d96893a4b089ff065389bdb57a5",
+    "src/generation/llm.py": "d9a47d2be8154a33291cda72d9ce0a7676372e0adc6d459d055d6d4092166cf7",
+    "src/generation/models.py": "f1e5d0a63c8d94d7e373495f28a4988719a1b10c50d13bfd86de715bb078420c",
+    "src/generation/paragraph.py": "e095954a08d5191abe797c1bb5df820f90b4bac4999db67c7718e72fe18c8f83",
+    "src/generation/prompt.py": "b803e2ace66f5f9aca406f3aa1abe30fe5a7d4ce7b74c36525c86efb531f8476",
+    "src/generation/validation.py": "ae3416e2cadeeae80474e7a58079093e54420c73c8de9286b865480cff835f57",
+    "src/retrieval/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/retrieval/dense.py": "4182dc226f1e5d46d4b94fcd887d796ac09ea685d596f3a217c2537ebc5e96a3",
+    "src/retrieval/hybrid.py": "c82d7be47e95b3419a617a5aaeaf5f6d0a271fcd144a85b38fd53d00d0cb5812",
+    "src/retrieval/index.py": "227f3d11eb4bf8a7913b0d658af543331364f0cd997a9b825264914c02ed031a",
+    "src/retrieval/readiness.py": "86b55af4ce81135ff487001a6ba4b8985dff275805da47981927e29c2f4f8c86",
+    "src/retrieval/refs.py": "5c770deff1141f65509955c3d62c9da6f47c3591da84e7f7f567b669a7342639",
+    "src/retrieval/retriever.py": "6e01e43aeceaf93fc6795c1e3f920662daed035caa87587ae4e1b84d9dc57ebe",
+    "src/retrieval/service.py": "e5aeac45740cf806d9abc8292db5c9e6ace6fa5f4f2cc8e106950e8d5c297b59",
+    "src/retrieval/terms.py": "34354c085495148a535c15c409f2a5761808e2fbc106b25141874117f5836a6e"
+  },
+  "model": {
+    "available": true,
+    "model": "qwen3:8b-q4_K_M",
+    "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "size_bytes": 5225388164,
+    "family": "qwen3",
+    "quantization": "Q4_K_M",
+    "ollama_version": "0.33.0"
+  },
+  "rows": [
+    {
+      "case": "consultation",
+      "input": "전세 계약이 끝나가는데 보증금을 아직 돌려받지 못했어",
+      "message": {
+        "id": "5e587d9544634716bdb7eb56c9974403",
+        "role": "assistant",
+        "status": "answered",
+        "content": "검증 경계를 대체한 평가용 안내",
+        "sources": [],
+        "context_content": "",
+        "used_history": false,
+        "elapsed_seconds": 16.3,
+        "reason": "answered",
+        "action": "rag",
+        "intent": "question"
+      },
+      "dialogue": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "contract_type": {
+            "value": "전세",
+            "evidence": "전세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "아니요",
+            "evidence": "계약이 끝나가는데",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "deposit_returned": {
+            "value": "아니요",
+            "evidence": "보증금을 아직 돌려받지 못했어",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "전세 계약이 끝나가는데 보증금을 아직 돌려받지 못했어"
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "검증 경계를 대체한 평가용 안내",
+          "sources": [],
+          "turn": 1,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 아니요\n보증금 반환 여부: 아니요\n사용자 입력: 전세 계약이 끝나가는데 보증금을 아직 돌려받지 못했어"
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "query": [
+        "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 아니요\n보증금 반환 여부: 아니요\n사용자 입력: 전세 계약이 끝나가는데 보증금을 아직 돌려받지 못했어"
+      ],
+      "seconds": 16.334
+    },
+    {
+      "case": "consultation",
+      "input": "다음 달 말이고, 지난주에 문자로 갱신하지 않겠다고 알렸어요.",
+      "message": {
+        "id": "4818f919f8a14f5281e4c82d9be96604",
+        "role": "assistant",
+        "status": "clarify",
+        "content": "질문의 맥락을 확실히 이해하지 못했어요. 앞선 상담을 이어가는 질문인가요, 새로운 사람이나 계약에 관한 질문인가요? 아래에서 선택하거나 상황과 질문을 함께 다시 알려주세요.",
+        "sources": [],
+        "context_content": "",
+        "used_history": false,
+        "elapsed_seconds": 7.7,
+        "action": "clarify",
+        "intent": null,
+        "choices": [
+          {
+            "label": "이전 상담 이어가기",
+            "message": "이전 상담과 같은 사건입니다.\n다음 달 말이고, 지난주에 문자로 갱신하지 않겠다고 알렸어요."
+          },
+          {
+            "label": "새로운 상담",
+            "message": "새로운 사람 또는 계약에 관한 상담입니다.\n다음 달 말이고, 지난주에 문자로 갱신하지 않겠다고 알렸어요."
+          }
+        ],
+        "reason": "needs_information"
+      },
+      "dialogue": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "contract_type": {
+            "value": "전세",
+            "evidence": "전세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "아니요",
+            "evidence": "계약이 끝나가는데",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "deposit_returned": {
+            "value": "아니요",
+            "evidence": "보증금을 아직 돌려받지 못했어",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "전세 계약이 끝나가는데 보증금을 아직 돌려받지 못했어"
+          }
+        ],
+        "changes": [],
+        "pending": {
+          "field": "details",
+          "question": "질문의 맥락을 확실히 이해하지 못했어요. 앞선 상담을 이어가는 질문인가요, 새로운 사람이나 계약에 관한 질문인가요? 아래에서 선택하거나 상황과 질문을 함께 다시 알려주세요.",
+          "attempts": 1,
+          "choices": [
+            {
+              "label": "이전 상담 이어가기",
+              "message": "이전 상담과 같은 사건입니다.\n다음 달 말이고, 지난주에 문자로 갱신하지 않겠다고 알렸어요."
+            },
+            {
+              "label": "새로운 상담",
+              "message": "새로운 사람 또는 계약에 관한 상담입니다.\n다음 달 말이고, 지난주에 문자로 갱신하지 않겠다고 알렸어요."
+            }
+          ],
+          "recovery": {
+            "previous_pending": null,
+            "new_case_message": "새로운 사람 또는 계약에 관한 상담입니다.\n다음 달 말이고, 지난주에 문자로 갱신하지 않겠다고 알렸어요."
+          },
+          "message_id": "4818f919f8a14f5281e4c82d9be96604"
+        },
+        "active_document_id": null,
+        "last_answer": {
+          "content": "검증 경계를 대체한 평가용 안내",
+          "sources": [],
+          "turn": 1,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 아니요\n보증금 반환 여부: 아니요\n사용자 입력: 전세 계약이 끝나가는데 보증금을 아직 돌려받지 못했어"
+        },
+        "last_status": "clarify",
+        "clarification_counts": {}
+      },
+      "query": [],
+      "seconds": 7.747
+    },
+    {
+      "case": "consultation",
+      "input": "지금 상황을 짧게 정리해 주세요.",
+      "message": {
+        "id": "f2905dd11b70483e9dabf463a91e1f94",
+        "role": "assistant",
+        "status": "answered",
+        "content": "검증 경계를 대체한 평가용 안내",
+        "sources": [],
+        "context_content": "",
+        "used_history": true,
+        "elapsed_seconds": 9.9,
+        "reason": "answered",
+        "action": "rag",
+        "intent": "clarification_answer"
+      },
+      "dialogue": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 0,
+        "topic": "보증금반환",
+        "facts": {
+          "contract_type": {
+            "value": "전세",
+            "evidence": "전세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "아니요",
+            "evidence": "계약이 끝나가는데",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "deposit_returned": {
+            "value": "아니요",
+            "evidence": "보증금을 아직 돌려받지 못했어",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "전세 계약이 끝나가는데 보증금을 아직 돌려받지 못했어"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "지금 상황을 짧게 정리해 주세요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "검증 경계를 대체한 평가용 안내",
+          "sources": [],
+          "turn": 2,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 아니요\n보증금 반환 여부: 아니요\n사용자 입력: 지금 상황을 짧게 정리해 주세요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "query": [
+        "대화 주제: 보증금반환\n계약 유형: 전세\n계약 종료 여부: 아니요\n보증금 반환 여부: 아니요\n사용자 입력: 지금 상황을 짧게 정리해 주세요."
+      ],
+      "seconds": 9.854
+    },
+    {
+      "case": "general",
+      "input": "대항력이 무슨 뜻인지 설명해 주세요.",
+      "message": {
+        "id": "8619a3c4c0834adeb0f542eed116ddcd",
+        "role": "assistant",
+        "status": "answered",
+        "content": "검증 경계를 대체한 평가용 안내",
+        "sources": [],
+        "context_content": "",
+        "used_history": false,
+        "elapsed_seconds": 2.9,
+        "reason": "answered",
+        "action": "rag",
+        "intent": "explain"
+      },
+      "dialogue": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": null,
+        "facts": {},
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "대항력이 무슨 뜻인지 설명해 주세요."
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "검증 경계를 대체한 평가용 안내",
+          "sources": [],
+          "turn": 1,
+          "validation": "existing_pipeline_passed",
+          "query": "사용자 입력: 대항력이 무슨 뜻인지 설명해 주세요."
+        },
+        "last_status": "answered",
+        "clarification_counts": {}
+      },
+      "query": [
+        "사용자 입력: 대항력이 무슨 뜻인지 설명해 주세요."
+      ],
+      "seconds": 2.929
+    }
+  ],
+  "source_unchanged": true,
+  "checks": {
+    "initial_guidance_with_question": false,
+    "not_ended": true,
+    "date_bound": false,
+    "no_reask_supplied_fields": true,
+    "summary_no_interview": true,
+    "general_no_interview": true
+  }
+}

@@ -644,6 +644,25 @@ class RetrievalService:
         civil_index_path: Path | str = DEFAULT_CIVIL_INDEX,
     ) -> "RetrievalService":
         """앱에서 쓰는 방식. 벡터는 Chroma 에서 읽으므로 재임베딩이 없다."""
+        from src.retrieval.case_profile import configured_case_profile, load_case_profile
+
+        if cls is RetrievalService and configured_case_profile():
+            if (chunk_paths != (LAW_CHUNKS, CASE_CHUNKS, GUIDE_CHUNKS)
+                    or index_path != DEFAULT_INDEX or model != DEFAULT_MODEL
+                    or civil_index_path != DEFAULT_CIVIL_INDEX):
+                raise ValueError("판례 프로필과 별도 경로 인자를 동시에 지정할 수 없습니다.")
+            return load_case_profile(configured_case_profile())
+        return cls._from_index_without_case_profile(chunk_paths, index_path, model, civil_index_path)
+
+    @classmethod
+    def _from_index_without_case_profile(
+        cls,
+        chunk_paths: tuple[Path | str, ...] = (LAW_CHUNKS, CASE_CHUNKS, GUIDE_CHUNKS),
+        index_path: Path | str = DEFAULT_INDEX,
+        model: str = DEFAULT_MODEL,
+        civil_index_path: Path | str = DEFAULT_CIVIL_INDEX,
+    ) -> "RetrievalService":
+        """Load the existing integrated corpus without recursively selecting a case overlay."""
         from src.retrieval.dense import ChromaRetriever
 
         chunks = _load_index_chunks(chunk_paths)
@@ -666,6 +685,10 @@ class RetrievalService:
     @classmethod
     def from_local_chunks(cls, chunks, chunk_paths=(LAW_CHUNKS, CASE_CHUNKS, GUIDE_CHUNKS)):
         """Keep the activated corpus policy when embeddings are unavailable."""
+        from src.retrieval.case_profile import configured_case_profile
+
+        if configured_case_profile():
+            raise ValueError("고정 판례 프로필은 어휘 전용 검색으로 대체할 수 없습니다.")
         from src.retrieval.profile import build_profiled_service
 
         return build_profiled_service(chunks, chunk_paths)

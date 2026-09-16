@@ -7,7 +7,6 @@ for the caller to interpret. No evaluation identities are used here.
 import re
 from types import MappingProxyType
 
-from src.retrieval.context_policy import _current_request
 from src.retrieval.retriever import matches
 
 
@@ -24,13 +23,26 @@ _EXCLUDED = re.compile(
 )
 _COMPLETED = re.compile(r"(?:확인|조회|열람)(?:을|를)?\s*(?:했|하였|완료|마쳤)|확인해\s*(?:뒀|두었)")
 _REQUEST = re.compile(r"[?？]|방법|절차|어떻게|어디|궁금|알려\s*주|(?:확인|조회|열람)\s*$|(?:확인|조회|열람).{0,15}(?:할|하나|해야|해도|싶|가능|필요|해\s*주)")
+_CURRENT_INPUT = re.compile(r"(?:\A|\n)사용자 입력:[ \t]*")
+_LEGACY_CURRENT_QUESTION = re.compile(r"(?:\A|\n)사용자 질문:[ \t]*")
+
+
+def _current_tax_request(query: str) -> str:
+    """Extract one serialized current-input boundary without parsing it again."""
+    current = list(_CURRENT_INPUT.finditer(query))
+    if current:
+        return query[current[0].end():].strip() if len(current) == 1 else ""
+    legacy = list(_LEGACY_CURRENT_QUESTION.finditer(query))
+    if legacy:
+        return query[legacy[0].end():].strip() if len(legacy) == 1 else ""
+    if "이전 대화" in query:
+        return ""
+    return query
 
 
 def requested_tax_scopes(query: str) -> tuple[str, ...]:
     """Recognize the current lookup request; ignore quoted or excluded topics."""
-    if "이전 대화" in query and "사용자 질문:" not in query:
-        return ()
-    request = _QUOTED.sub(" ", _current_request(query))
+    request = _QUOTED.sub(" ", _current_tax_request(query))
     # A narrow specialization must not consume the entire evidence budget of
     # a separate, simultaneous procedure question.
     if re.search(r"전입|확정일자|임대차\s*신고|계약\s*신고|보증금.{0,12}(?:반환|돌려)"

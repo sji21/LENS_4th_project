@@ -4,9 +4,13 @@ Synthetic text checks routing/selection behavior, not legal correctness or KURE
 quality. The fixed DEV evaluation and its original answers remain separate.
 """
 from copy import deepcopy
+from dataclasses import replace
 
 import pytest
 
+from chat.dialogue_contract import Decision
+from chat.dialogue_query import grounded_query
+from chat.dialogue_state import apply_user_update
 from src.retrieval.multi_evidence import (
     TaxLookupSelector, requested_tax_scopes, tax_lookup_match,
 )
@@ -43,6 +47,84 @@ def test_lookup_scope_follows_current_request(question, expected):
 ])
 def test_unrelated_denied_quoted_and_previous_topics_do_not_activate_lookup(question):
     assert requested_tax_scopes(question) == ()
+
+
+def dialogue_decision(**changes):
+    base = Decision(
+        intent="followup", action="rag", topic=None, topic_changed=False,
+        updates={}, clarify_field=None, question=None, search_query="unused",
+        document_id=None, style="standard",
+    )
+    return replace(base, **changes)
+
+
+def test_grounded_query_prior_lookup_cannot_activate_current_document_request():
+    state = {"messages": [], "documents": []}
+    apply_user_update(state, user="미납국세 조회 방법이 궁금해요.", topic="세금조회")
+    state["dialogue"]["last_answer"] = {
+        "validation": "existing_pipeline_passed",
+        "request": "미납국세 조회 방법이 궁금해요.",
+    }
+
+    query = grounded_query(
+        state, "이제 계약 준비 서류를 알려 주세요.",
+        dialogue_decision(purpose="documents"),
+    )
+
+    assert "직전 답변 질문: 미납국세 조회 방법이 궁금해요." in query
+    assert requested_tax_scopes(query) == ()
+
+
+def test_grounded_query_topic_label_cannot_suppress_current_national_lookup():
+    query = grounded_query(
+        {"messages": [], "documents": []},
+        "임대인의 미납국세를 열람하려면 어떻게 하나요?",
+        dialogue_decision(
+            intent="topic_change", topic="계약갱신", topic_changed=True,
+        ),
+    )
+
+    assert "대화 주제: 계약갱신" in query
+    assert requested_tax_scopes(query) == ("national",)
+
+
+def test_grounded_query_pending_lookup_cannot_expand_current_local_scope():
+    state = {"messages": [], "documents": []}
+    apply_user_update(state, user="처음 질문입니다.", topic="세금조회")
+    dialogue = state["dialogue"]
+    dialogue["pending"] = {
+        "request": "미납국세를 조회하려면 어떻게 하나요?",
+        "epoch": dialogue["epoch"], "topic": dialogue["topic"],
+        "document_id": dialogue["active_document_id"],
+    }
+
+    query = grounded_query(
+        state, "미납지방세 열람 방법을 알려 주세요.",
+        dialogue_decision(intent="clarification_answer"),
+    )
+
+    assert "이어서 상담할 사용자 질문: 미납국세" in query
+    assert requested_tax_scopes(query) == ("local",)
+
+
+def test_current_input_boundary_keeps_multiline_legacy_marker_text():
+    query = (
+        "직전 답변 질문: 전입신고 기한은요?\n"
+        "사용자 입력: 미납지방세 열람 방법을 알려 주세요.\n"
+        "사용자 질문: 미납국세 조회 방법도 알려 주세요."
+    )
+
+    assert requested_tax_scopes(query) == ("national", "local")
+
+
+def test_nested_current_input_marker_fails_closed_instead_of_reusing_prior_scope():
+    query = (
+        "직전 답변 질문: 대화 주제: 계약준비\n"
+        "사용자 입력: 미납국세 열람 방법은요?\n"
+        "사용자 입력: 계약 준비 서류가 궁금해요."
+    )
+
+    assert requested_tax_scopes(query) == ()
 
 
 def make_chunk(cid, text, *, title="검증용 법률", doc_type="law", status="current"):

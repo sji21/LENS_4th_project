@@ -10,8 +10,31 @@
   let readinessTimer = null;
   let syncTimer = null;
   let lastRendered = "";
+  let replyingTo = null;
+  const submission = new ChatRequestIdentity(() => crypto.randomUUID());
   let estimatedSeconds = 30;
   const csrf = form.querySelector('[name="csrfmiddlewaretoken"]').value;
+
+  document.querySelectorAll("[data-room-row]").forEach((row) => {
+    const edit = row.querySelector("[data-room-edit]");
+    const renameForm = row.querySelector("[data-room-form]");
+    const roomLink = row.querySelector(".case-shortcut");
+    const cancel = row.querySelector("[data-room-cancel]");
+    if (!edit || !renameForm || !roomLink || !cancel) return;
+    edit.addEventListener("click", () => {
+      roomLink.hidden = true;
+      edit.hidden = true;
+      renameForm.hidden = false;
+      const title = renameForm.querySelector('input[name="title"]');
+      title.focus();
+      title.select();
+    });
+    cancel.addEventListener("click", () => {
+      renameForm.hidden = true;
+      roomLink.hidden = false;
+      edit.hidden = false;
+    });
+  });
 
   function element(tag, text, className) {
     const node = document.createElement(tag);
@@ -28,11 +51,27 @@
       const link = element("a", "새로고침"); link.href = window.location.pathname; box.append(link);
     }
   }
+  function toast(message, type = "success") {
+    const stack = $("toast-stack");
+    if (!stack) return;
+    const item = element("div", undefined, `app-toast ${type}`);
+    item.setAttribute("role", type === "error" ? "alert" : "status");
+    item.append(element("span", type === "error" ? "!" : "✓", "toast-icon"));
+    const copy = element("span", undefined, "toast-copy");
+    copy.append(element("strong", type === "error" ? "리포트 생성 실패" : "리포트 생성 완료"));
+    copy.append(element("small", message));
+    item.append(copy);
+    stack.replaceChildren(item);
+    window.setTimeout(() => {
+      item.classList.add("leaving");
+      window.setTimeout(() => item.remove(), 180);
+    }, 4200);
+  }
   function controls() {
     const locked = busy || externalBusy || !conversationId;
     $("send").disabled = locked || !input.value.trim();
     for (const id of ["attach", "new-chat", "upload-suggestion", "document-select"]) $(id).disabled = locked;
-    document.querySelectorAll("[data-question], .document-card button, .text-action").forEach((b) => { b.disabled = locked; });
+    document.querySelectorAll("[data-question], .document-card button, .clarification-panel button, .text-action").forEach((b) => { b.disabled = locked; });
     form.setAttribute("aria-busy", String(busy));
   }
   async function request(url, options = {}) {
@@ -48,9 +87,9 @@
     }
     return data;
   }
-  function post(url, body = {}) {
+  function post(url, body = {}, requestId = crypto.randomUUID()) {
     return request(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({
-      ...body, conversation_id: conversationId, request_id: crypto.randomUUID(),
+      ...body, conversation_id: conversationId, request_id: requestId,
     }) });
   }
   function safeLink(url, label) {
@@ -60,6 +99,13 @@
       const link = element("a", label); link.href = parsed.href;
       link.target = "_blank"; link.rel = "noopener noreferrer"; return link;
     } catch { return element("span", label); }
+  }
+  function formatAnswerSections(text) {
+    const value = String(text);
+    // Only split the explicit procedure labels, preserving all answer wording.
+    if (!["언제", "어떻게", "확인할 사항"].every((label) => value.includes(`${label}:`))) return value;
+    return value.replace(/[ \t\r\n]*(\*\*)?(언제|어떻게|확인할 사항):/g,
+      (match, bold, label, offset) => `${offset ? "\n\n" : ""}${bold || ""}${label}:`);
   }
   function markup(text, target) {
     // A deliberately small text-only Markdown subset; never inject model HTML.
@@ -127,7 +173,7 @@
     const body = element("div", undefined, "answer-body");
     const source = Array.from(String(text));
     const spans = annotations(message);
-    if (!spans.length) return markup(source.join(""), body);
+    if (!spans.length) return markup(message.role === "assistant" ? formatAnswerSections(source.join("")) : source.join(""), body);
     let cursor = 0;
     for (const span of spans) {
       if (span.start > cursor) markup(source.slice(cursor, span.start).join(""), body);
@@ -148,10 +194,16 @@
     if (message.role !== "user") row.append(element("span", "L", "avatar"));
     const bubble = element("div", undefined, "bubble");
     bubble.append(answerText(message.content, message.role === "assistant" ? message : {}));
+    if (message.role === "assistant" && message.followup_question) {
+      const followup = element("div", undefined, "followup-question");
+      followup.append(element("strong", "상황을 조금 더 알려주세요"), element("p", message.followup_question));
+      bubble.append(followup);
+    }
     if (message.role === "assistant") {
       const meta = element("div", undefined, "message-meta");
-      const labels = { answered: "근거 확인 답변", abstained: "답변 보류", refused: "범위 안내" };
-      meta.append(element("span", labels[message.status] || "안내", `answer-status ${message.status || ""}`));
+      const labels = { answered: "근거 확인 답변", abstained: "답변 보류", refused: "요청 안내", social: "대화", clarify: "확인 질문" };
+      const reasons = { no_evidence: "관련 근거 부족", validation_failed: "검증 결과 답변 보류", generation_failed: "답변 생성 실패", needs_information: "추가 정보 확인" };
+      meta.append(element("span", reasons[message.reason] || labels[message.status] || "안내", `answer-status ${message.status || ""}`));
       if (typeof message.elapsed_seconds === "number") meta.append(element("span", `${message.elapsed_seconds}초`));
       if (message.used_history) meta.append(element("span", "이전 대화 반영"));
       bubble.append(meta);
@@ -234,20 +286,45 @@
     }
     if (documents.some((doc) => doc.document_id === previous)) select.value = previous;
   }
+  function renderConversation(data) {
+    const context = data.conversation || {};
+    const pending = context.enabled ? context.pending : null;
+    const box = $("clarification"); box.replaceChildren(); box.hidden = !pending;
+    if (pending) {
+      box.append(element("strong", pending.question), element("p", "선택하거나 아래에 편하게 답해 주세요."));
+      const choices = element("div", undefined, "clarification-choices");
+      for (const choice of pending.choices || []) {
+        const button = element("button", choice.label); button.type = "button";
+        button.addEventListener("click", () => {
+          input.value = choice.message;
+          if (choice.document_id) $("document-select").value = choice.document_id;
+          replyingTo = pending.message_id; controls(); form.requestSubmit();
+        });
+        choices.append(button);
+      }
+      box.append(choices);
+    }
+    $("answer-actions").hidden = !(context.enabled && context.can_rephrase);
+    const active = data.documents.find((doc) => doc.document_id === context.active_document_id);
+    $("active-document").hidden = !active;
+    $("active-document").textContent = active ? `최근 확인 문서: ${active.filename}` : "";
+  }
   function render(data) {
+    if (conversationId !== data.conversation_id) submission.clear();
     const durations = (data.messages || []).filter(m => m.role === "assistant" && m.status === "answered" && Number.isFinite(m.elapsed_seconds) && m.elapsed_seconds > 0).slice(-5).map(m => m.elapsed_seconds).sort((a,b) => a-b);
     estimatedSeconds = durations.length ? Math.max(5, durations[Math.floor(durations.length / 2)]) : 30;
     conversationId = data.conversation_id;
     externalBusy = Boolean(data.busy);
     const signature = JSON.stringify([data.messages, data.documents]);
-    if (signature !== lastRendered) {
+    const changed = signature !== lastRendered;
+    if (changed) {
       $("messages").replaceChildren(...data.messages.map(renderMessage));
       $("welcome").hidden = data.messages.length > 0;
       renderDocuments(data.documents);
       lastRendered = signature;
-      scrollBottom();
     }
-    controls();
+    renderConversation(data); controls();
+    if (changed) requestAnimationFrame(scrollBottom);
     if (externalBusy) {
       notice("이 대화의 다른 요청을 처리하고 있어요. 완료되면 화면을 갱신합니다.");
       clearTimeout(syncTimer); syncTimer = setTimeout(syncState, 2500);
@@ -291,7 +368,7 @@
       clearInterval(timer); busy = false; $("pending").hidden = true; controls();
     }
   }
-  input.addEventListener("input", controls);
+  input.addEventListener("input", () => { replyingTo = null; controls(); });
   input.addEventListener("keydown", (event) => {
     if (event.key === "Enter" && !event.shiftKey && !event.isComposing) {
       event.preventDefault(); if (!$("send").disabled) form.requestSubmit();
@@ -300,18 +377,69 @@
   form.addEventListener("submit", (event) => {
     event.preventDefault(); const question = input.value.trim();
     if (!question) return;
-    action("근거를 확인하고 답변을 준비하고 있어요", async () => {
+    action("질문을 이해하고 필요한 내용을 확인하고 있어요", async () => {
       $("welcome").hidden = true;
       $("messages").append(renderMessage({ role: "user", content: question })); scrollBottom();
       lastRendered = "";
-      const data = await post(form.dataset.sendUrl, { message: question, document_id: $("document-select").value || null });
-      // Preserve text the user typed while waiting.
-      if (input.value.trim() === question) input.value = "";
-      render(data); input.focus();
+      const payload = { message: question, document_id: $("document-select").value || null, ...(replyingTo ? { reply_to: replyingTo } : {}) };
+      const requestId = submission.get({ conversation_id: conversationId, ...payload });
+      const submittedText = input.value;
+      const submittedReply = replyingTo;
+      input.value = ""; replyingTo = null;
+      let data;
+      try {
+        data = await post(form.dataset.sendUrl, payload, requestId);
+      } catch (error) {
+        // Keep a newer draft; restore the failed submission only into an untouched composer.
+        if (!input.value) { input.value = submittedText; replyingTo = submittedReply; }
+        throw error;
+      }
+      submission.clear();
+      render(data);
+      if (data.room_created && !input.value) { window.location.reload(); return; }
+      input.focus();
     }, true);
   });
+  const reportForm = $("report-form");
+  if (reportForm) reportForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const button = reportForm.querySelector("button");
+    const label = reportForm.querySelector(".report-button-label");
+    if (button.disabled) return;
+    button.disabled = true;
+    button.classList.add("loading");
+    label.textContent = "리포트 생성 중";
+    try {
+      const response = await fetch(reportForm.action, {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "X-CSRFToken": csrf },
+      });
+      if (!response.ok) throw new Error("리포트를 만들지 못했습니다.");
+      const blob = await response.blob();
+      if (blob.type !== "application/pdf") throw new Error("PDF 응답을 확인하지 못했습니다.");
+      const disposition = response.headers.get("Content-Disposition") || "";
+      const filenameMatch = disposition.match(/filename="?([^";]+)"?/i);
+      const filename = filenameMatch ? filenameMatch[1] : "LENS_report.pdf";
+      const downloadUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = filename;
+      document.body.append(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000);
+      toast("PDF가 다운로드되고 마이페이지에 저장됐습니다.");
+    } catch (error) {
+      toast(error.message || "잠시 후 다시 시도해 주세요.", "error");
+    } finally {
+      button.disabled = false;
+      button.classList.remove("loading");
+      label.textContent = "리포트 PDF";
+    }
+  });
   document.querySelectorAll("[data-question]").forEach((button) => button.addEventListener("click", () => {
-    input.value = button.dataset.question; controls(); input.focus();
+    input.value = button.dataset.question; replyingTo = null; controls(); input.focus();
   }));
   for (const id of ["attach", "upload-suggestion"]) $(id).addEventListener("click", () => $("file-input").click());
   $("file-input").addEventListener("change", () => {
@@ -333,17 +461,20 @@
       await syncState();
     });
   });
-  $("new-chat").addEventListener("click", () => $("reset-dialog").showModal());
-  $("cancel-reset").addEventListener("click", () => $("reset-dialog").close());
-  $("confirm-reset").addEventListener("click", () => {
-    $("reset-dialog").close(); action("새 대화를 준비하고 있어요", async () => {
-      render(await post(form.dataset.resetUrl)); input.value = ""; $("upload-progress").replaceChildren(); input.focus();
+  if ($("new-chat").dataset.createRoom !== "true") {
+    $("new-chat").addEventListener("click", () => $("reset-dialog").showModal());
+    $("cancel-reset").addEventListener("click", () => $("reset-dialog").close());
+    $("confirm-reset").addEventListener("click", () => {
+      $("reset-dialog").close(); action("새 대화를 준비하고 있어요", async () => {
+        render(await post(form.dataset.resetUrl)); submission.clear(); replyingTo = null; input.value = ""; $("upload-progress").replaceChildren(); input.focus();
+      });
     });
-  });
+  }
   $("cancel-delete").addEventListener("click", () => $("delete-dialog").close());
   $("confirm-delete").addEventListener("click", () => {
     $("delete-dialog").close(); action("문서를 삭제하고 있어요", async () => {
       render(await post(`${form.dataset.uploadUrl}${encodeURIComponent(selectedDelete)}/delete/`));
+      submission.clear(); replyingTo = null;
     });
   });
   async function checkReadiness() {

@@ -1,0 +1,16 @@
+[준비] KURE 모델 버전·파일 확인 완료
+
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]
+Loading weights:  93%|█████████▎| 363/391 [00:00<00:00, 3629.06it/s]
+Loading weights: 100%|██████████| 391/391 [00:00<00:00, 3758.64it/s]
+25/235 candidate searches
+50/235 candidate searches
+75/235 candidate searches
+100/235 candidate searches
+125/235 candidate searches
+150/235 candidate searches
+175/235 candidate searches
+200/235 candidate searches
+225/235 candidate searches
+Candidate hashes and all scores verified
+{'question_only': {'hits': 47, 'n': 75}, 'context_diagnostic': {'hits': 48, 'n': 75}}

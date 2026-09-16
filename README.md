@@ -212,10 +212,10 @@ RetrievalResult(laws, cases, guides)
 | 모델 | `qwen3:8b-q4_K_M` |
 | API | Ollama native `/api/chat` |
 | Temperature | `0.0` |
-| 일반 답변 길이 상한 | `256 tokens` |
+| 일반 답변 길이 상한 | `512 tokens` |
 | 문서 내용만 답하는 경우 | 최소 `384 tokens` |
 | 보조 판정 길이 상한 | `160 tokens` |
-| Context | `4096` |
+| Context | `8192` |
 | Thinking | 비활성화 |
 
 기본 실행 위치는 Local Ollama입니다. `.env`에 RunPod 주소를 설정하면 원격 Ollama를 먼저
@@ -293,7 +293,8 @@ SQLite·Chroma·생성 청크는 Git에 올리지 않으며 각 실행 환경에
 
 평가 절차와 한계는 [`docs/eval-audit.md`](docs/eval-audit.md), 최초 Holdout 절차는
 [`docs/eval-holdout.md`](docs/eval-holdout.md), 검색 재현 방법은
-[`docs/retrieval-handoff.md`](docs/retrieval-handoff.md)를 참고합니다.
+[`docs/retrieval-handoff.md`](docs/retrieval-handoff.md)를 참고합니다. PATCH-043 판례 전용 후보의 로컬 실행 코드와 필요한 SQLite·Chroma·모델 자료는
+[`docs/patch043-local-retriever.md`](docs/patch043-local-retriever.md)에 구분해 기록했습니다.
 
 ## 6. 설치부터 실행까지
 
@@ -504,6 +505,13 @@ python manage.py runserver 127.0.0.1:8000 --noreload
 
 회원가입 담당자의 연결 지점, API, 개인정보 보관·정리, 실행 제약은
 [`docs/django-web.md`](docs/django-web.md)를 참고하세요. 회원가입 화면은 아직 구현하지 않았습니다.
+
+### 대화형 챗봇 실험 경로
+
+`CHAT_CONVERSATION_ENABLED=true`로 대화 관리 계층을 활성화할 수 있습니다. 기본값은
+`false`입니다. 초기 전체 수용평가 실패 뒤 법률 적용 이전의 대화 계층을 보정하고 [35턴 공개 회귀 검사](docs/chatting-recovery.md)를 완료했습니다. 전체 법률 답변의 품질·지연 승인은 별도이며, 구조·실행·API 연결 지점·기존 경로 복귀 방법은
+[`docs/chatting-handoff.md`](docs/chatting-handoff.md)에 정리했습니다. 실제 모델 평가와
+고정 응답을 사용하는 UI 검증은 구분하며 검증 통과 전 main 반영을 권장하지 않습니다.
 
 ## 7. 테스트
 

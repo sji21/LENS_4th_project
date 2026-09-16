@@ -28,6 +28,9 @@
 /data/eval/patch046-improvement/** -text whitespace=cr-at-eol
 /data/eval/patch046-public-regression.json -text whitespace=cr-at-eol
 /data/eval/patch046-validation/** -text whitespace=cr-at-eol
+/data/eval/patch046-main-integration/** -text whitespace=cr-at-eol
+# Keep captured pytest traceback whitespace byte-exact.
+/data/eval/patch046-main-integration/initial-full-tests.log whitespace=cr-at-eol,-blank-at-eol
 
 # Preserve the generated review's hashed final blank line.
 /data/eval/patch042-gap-analysis/review.md whitespace=cr-at-eol,-blank-at-eof

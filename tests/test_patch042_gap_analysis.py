@@ -45,6 +45,34 @@ def analysis():
     return gap.check()
 
 
+@pytest.mark.parametrize("snapshot", [None, "changed historical source"])
+def test_historical_replay_rejects_missing_or_corrupt_source(tmp_path, monkeypatch, snapshot):
+    expected = gap.read(gap.DEFAULT_OUT / "manifest.json")["source_sha256"][gap.GENERATION_SOURCE]
+    current = gap.ROOT / gap.GENERATION_SOURCE
+    original_sha = gap.source_sha
+    monkeypatch.setattr(gap, "source_sha", lambda path: "0" * 64 if path == current else original_sha(path))
+    monkeypatch.setattr(gap, "HISTORICAL_SOURCES", tmp_path)
+    if snapshot is not None:
+        (tmp_path / (expected + ".py")).write_text(snapshot, encoding="utf-8")
+    with pytest.raises(ValueError, match="Historical generation source missing or changed"):
+        gap.check()
+
+
+def test_historical_source_does_not_hide_other_dependency_changes(monkeypatch):
+    original_sha = gap.dependency_sha
+    changed = gap.ROOT / "scripts/patch041_retrieval_eval.py"
+    monkeypatch.setattr(gap, "dependency_sha", lambda path: "0" * 64 if path == changed else original_sha(path))
+    with pytest.raises(ValueError, match="Analysis does not replay"):
+        gap.check()
+
+
+def test_new_analysis_records_current_generation_source():
+    result = gap.analyze()
+    assert result["verification"]["source_sha256"][gap.GENERATION_SOURCE] == gap.source_sha(
+        gap.ROOT / gap.GENERATION_SOURCE
+    )
+
+
 def test_exclusive_failure_labels_follow_question_and_context(analysis, independent_rows):
     missing = {
         mode: {qid for (qid, row_mode), row in independent_rows.items()

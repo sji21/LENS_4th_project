@@ -18,6 +18,17 @@
   box-sizing:border-box;
 }
 
+.followup-question {
+  margin-top:16px;
+  padding-top:12px;
+  border-top:1px solid var(--line);
+  color:var(--green-dark);
+}
+
+.followup-question p {
+  margin:6px 0 0;
+}
+
 body {
   margin:0;
   background:var(--paper);
@@ -112,6 +123,14 @@ button:focus-visible,a:focus-visible,select:focus-visible {
   font-weight:650;
 }
 
+.new-chat-form {
+  margin:0;
+}
+
+.new-chat-form .new-chat {
+  width:100%;
+}
+
 .new-chat span {
   font-size:20px;
 }
@@ -123,28 +142,65 @@ button:focus-visible,a:focus-visible,select:focus-visible {
   margin:0 12px 12px;
 }
 
-.nav-current {
+.case-shortcut {
   display:flex;
+  gap:10px;
   align-items:center;
-  gap:12px;
-  padding:13px;
+  margin-top:9px;
+  padding:11px 13px;
+  color:var(--green);
+  text-decoration:none;
+  border:1px solid #d7e2d7;
   border-radius:9px;
-  background:#e2ebe0;
-  font-size:14px;
-  font-weight:600;
+  background:#fff;
+  font-size:12px;
 }
 
-.nav-current>span:first-child {
-  font-size:22px;
+.current-case {
+  background:#fff;
+  border-color:#9fbfaf;
+  font-weight:650;
 }
 
-.nav-dot {
-  width:5px;
-  height:5px;
-  background:var(--green);
-  border-radius:50%;
-  margin-left:auto;
+.chat-room-list {
+  display:grid;
+  gap:7px;
+  max-height:170px;
+  overflow-y:auto;
+  margin-top:0;
+  padding-right:2px;
 }
+
+.chat-room-list .case-shortcut {
+  margin-top:0;
+  min-width:0;
+  padding-right:37px;
+}
+
+.chat-room-item { position:relative; min-width:0; }
+.chat-room-item .case-shortcut>span:nth-child(2) { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.room-rename-button { position:absolute; top:8px; right:7px; display:grid; width:27px; height:27px; padding:0; place-items:center; border:0; border-radius:7px; background:transparent; color:#7f9188; font-size:14px; cursor:pointer; }
+.room-rename-button:hover,.room-rename-button:focus-visible { background:#edf3ec; color:var(--green); }
+.room-rename-form { display:grid; grid-template-columns:minmax(0,1fr) auto auto; gap:4px; padding:5px; border:1px solid #9fbfaf; border-radius:9px; background:#fff; }
+.room-rename-form input { min-width:0; padding:7px; border:1px solid #d7e2d7; border-radius:6px; color:var(--ink); font-size:10px; }
+.room-rename-form button { padding:5px 6px; border:0; border-radius:5px; background:var(--mint); color:var(--green); font-size:9px; cursor:pointer; }
+.room-rename-form button:last-child { background:#f2f4f1; color:var(--muted); }
+.room-rename-form[hidden] { display:none !important; }
+.chat-room-empty { margin:2px 7px 0; color:var(--muted); font-size:9px; line-height:1.55; }
+
+.chat-room-list .case-shortcut>span:first-child {
+  flex:none;
+  font-size:8px;
+}
+
+.case-shortcut small {
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  font-size:9px;
+}
+
+.profile a { color:var(--green); }
 
 .documents-section {
   margin-top:34px;
@@ -217,6 +273,26 @@ button:focus-visible,a:focus-visible,select:focus-visible {
   font-size:12px;
 }
 
+.profile-link {
+  color:var(--ink);
+  text-decoration:none;
+  border-radius:10px;
+  padding:12px 8px 0;
+  margin-left:-8px;
+  margin-right:-8px;
+}
+
+.profile-link:hover,
+.profile-link:focus-visible {
+  background:#e8eee4;
+}
+
+.profile-arrow {
+  margin-left:auto;
+  color:var(--green);
+  font-size:20px;
+}
+
 .avatar {
   display:grid;
   place-items:center;
@@ -268,6 +344,17 @@ button:focus-visible,a:focus-visible,select:focus-visible {
   font-size:15px;
   margin:7px 0 0;
   font-weight:600;
+}
+
+.topbar-actions {
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:14px;
+}
+
+.topbar-actions form {
+  margin:0;
 }
 
 .readiness {
@@ -554,6 +641,115 @@ button:focus-visible,a:focus-visible,select:focus-visible {
 .composer-section {
   padding:12px 35px 18px;
   background:var(--paper);
+}
+
+.chat-report-button {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid #bfd0c4;
+  border-radius:10px;
+  padding:10px 14px;
+  background:#fff;
+  color:var(--green);
+  box-shadow:0 7px 20px rgba(35,60,57,.06);
+  font:inherit;
+  font-size:12px;
+  font-weight:650;
+  cursor:pointer;
+  text-decoration:none;
+  white-space:nowrap;
+}
+
+.chat-report-button:hover,
+.chat-report-button:focus-visible {
+  background:var(--green);
+  color:#fff;
+  border-color:var(--green);
+}
+
+.chat-report-button:disabled {
+  cursor:wait;
+  opacity:.72;
+}
+
+.chat-report-button.loading .report-button-icon {
+  width:13px;
+  height:13px;
+  border:2px solid #c8dbd2;
+  border-top-color:var(--green);
+  border-radius:50%;
+  color:transparent;
+  animation:spin .8s linear infinite;
+}
+
+.toast-stack {
+  position:fixed;
+  right:28px;
+  bottom:28px;
+  z-index:1200;
+  width:min(340px,calc(100vw - 32px));
+  pointer-events:none;
+}
+
+.app-toast {
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:13px 15px;
+  border:1px solid #cddfd4;
+  border-radius:13px;
+  background:rgba(255,255,255,.97);
+  color:var(--ink);
+  box-shadow:0 14px 38px rgba(35,60,57,.16);
+  animation:toast-in .2s ease-out;
+  backdrop-filter:blur(10px);
+}
+
+.app-toast.error {
+  border-color:#ead1d1;
+}
+
+.toast-icon {
+  display:grid;
+  width:27px;
+  height:27px;
+  flex:0 0 27px;
+  place-items:center;
+  border-radius:50%;
+  background:var(--green);
+  color:#fff;
+  font-size:13px;
+  font-weight:750;
+}
+
+.app-toast.error .toast-icon {
+  background:#a95656;
+}
+
+.toast-copy {
+  display:grid;
+  gap:3px;
+}
+
+.toast-copy strong {
+  font-size:11px;
+}
+
+.toast-copy small {
+  color:var(--muted);
+  font-size:9px;
+  line-height:1.45;
+}
+
+.app-toast.leaving {
+  opacity:0;
+  transform:translateY(5px);
+  transition:opacity .18s ease,transform .18s ease;
+}
+
+@keyframes toast-in {
+  from { opacity:0; transform:translateY(8px); }
 }
 
 .composer {
@@ -853,7 +1049,7 @@ dialog p {
     padding:8px 12px;
     font-size:12px;
   }
-  .section-label,.nav-current,.sidebar-bottom,.profile {
+  .section-label,.sidebar-bottom,.profile {
     display:none;
   }
   .documents-section {
@@ -878,6 +1074,17 @@ dialog p {
   .topbar {
     padding:16px 20px;
     gap:8px;
+    align-items:flex-start;
+  }
+  .topbar-actions {
+    flex-direction:column;
+    align-items:flex-end;
+    gap:6px;
+  }
+  .chat-report-button {
+    padding:7px 9px;
+    border-radius:8px;
+    font-size:9px;
   }
   .topbar .eyebrow {
     font-size:8px;
@@ -973,6 +1180,15 @@ dialog p {
   }
 }
 
+.clarification-panel { padding: 14px 16px; margin-bottom: 10px; border: 1px solid #bed5ce; border-radius: 14px; background: #f1f8f5; color: #24483c; }
+.clarification-panel p { margin: 6px 0 10px; font-size: 12px; }
+.clarification-choices, .answer-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.clarification-choices button, .answer-actions button { border: 1px solid #c8d6cf; border-radius: 18px; padding: 7px 12px; background: white; color: #315747; font-size: 12px; cursor: pointer; }
+.clarification-choices button:disabled, .answer-actions button:disabled { opacity: .5; cursor: wait; }
+.answer-actions { margin: 8px 0; }
+.answer-actions[hidden] { display: none; }
+.active-document { font-size: 12px; color: #526a60; margin: 6px 2px; }
+.answer-status.clarify { color: #216248; }
 /* 용어 풀이 · 근거 인용 · 쉽게 다시 설명 · 후속 질문 */
 .answer-body .cite,
 .answer-body .glossary-term {

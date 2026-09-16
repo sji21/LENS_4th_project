@@ -1,0 +1,28 @@
+{
+  "seconds": 26.25,
+  "result": {
+    "decision": {
+      "intent": "clarification_answer",
+      "action": "rag",
+      "topic": "계약갱신",
+      "topic_changed": false,
+      "updates": {
+        "end_date": {
+          "value": "2026년 12월 31일",
+          "evidence": "계약 만료일은 2026년 12월 31일이야"
+        }
+      },
+      "clarify_field": "landlord_notified",
+      "question": null,
+      "search_query": "대화 주제: 계약갱신\n계약 유형: 월세\n계약 종료일: 2026년 12월 31일\n이어서 상담할 사용자 질문: 지금 살고 싶은 월세집의 계약이 끝나가는데 계약 갱신은 어떻게 해?\n사용자 입력: 계약 만료일은 2026년 12월 31일이야.",
+      "document_id": null,
+      "style": "standard",
+      "purpose": "general"
+    },
+    "elapsed_seconds": 26.252,
+    "model_invocations": 1,
+    "output_tokens": 108,
+    "normalizations": []
+  },
+  "proposal": "{\"intent\": \"clarification_answer\", \"topic\": \"계약갱신\", \"purpose\": \"general\", \"action\": \"rag\", \"statements\": [{\"evidence\": \"계약 만료일은 2026년 12월 31일이야\", \"field\": \"end_date\", \"value\": \"2026년 12월 31일\"}], \"clarify_field\": \"landlord_notified\", \"document_id\": null, \"style\": \"standard\"}"
+}

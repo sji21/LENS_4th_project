@@ -1,0 +1,14 @@
+{
+  "capture/audit.json": "51408b166e108fed044b0b7e5255da7de42ad141fcd8c5128e5334515b748f0b",
+  "capture/manifest.json": "337e3cedcbc6df43eab38b3dae1a0e8aaf2dbc4a9c4013f68d3dbfe2c7291c06",
+  "capture/report.json": "a6dd20bc3bc3f90c54b008d36e6110026e67e1e78ee80eb14725a64fd5f4a1b2",
+  "capture/rows.json": "46602d065af4955450679fa84b5251564754924dbdadbab24f42c2f5b87a6ce1",
+  "capture.log": "265b345d83d13f88036a956438f44b32abe6ee2de725f33f44fc64f2314412ee",
+  "full-tests.log": "422378f8f3f933eaccf976ca51d466497dcea323e12c5a48158ad680e3b098da",
+  "historical-sources/9856654ada98a0781ba0d11121021a3b3af5ddcf405e1c06e4189bdf8b1a2062.py": "9856654ada98a0781ba0d11121021a3b3af5ddcf405e1c06e4189bdf8b1a2062",
+  "independent-verification.json": "be1031b6158454c2dbdac578ebba0ed5e2999bdcb4f823950ef26774e4f7ea02",
+  "independent_verification.py": "a4f3ff02c8b82ac8470dd5ae91b86ec844573aa131444aacbfc4a262041bd987",
+  "initial-full-tests.log": "70547958a1518ac8b0f5fdb3570b4c9c3b2c04e02365382a746af08dbc11827c",
+  "public-regression.json": "bab07383a1bd98ae31ce9ffebaab40690d087ed1d46ecda893bb6a0af05bb7b6",
+  "public-regression.log": "597afa8f90660f630ab38f56cd461eb5e4a62b5422c36805dcdadd4e5cf9f8d6"
+}

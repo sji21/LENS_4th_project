@@ -21,6 +21,8 @@ from scripts.patch042_trace_diagnosis import analyze as analyze_candidate_trace
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_RUN = ROOT / "data/eval/patch041-rebuilt/capture"
 DEFAULT_OUT = ROOT / "data/eval/patch042-gap-analysis"
+HISTORICAL_SOURCES = ROOT / "data/eval/patch046-main-integration/historical-sources"
+GENERATION_SOURCE = "src/generation/chain.py"
 P27_ROWS = ROOT / "data/eval/patch027-final-test/rows.json"
 P27_REPORT = ROOT / "data/eval/patch027-final-test/report.json"
 P27_AUDIT = ROOT / "data/eval/patch027-final-test/audit.json"
@@ -357,7 +359,7 @@ def historical_comparison(jobs: list[dict], current_rows: list[dict], questions:
     }
 
 
-def analyze(run: Path = DEFAULT_RUN) -> dict:
+def analyze(run: Path = DEFAULT_RUN, *, generation_source: Path | None = None) -> dict:
     run = Path(run).resolve()
     verified = check_patch041(run)
     rows = read(run / "rows.json")
@@ -441,6 +443,9 @@ def analyze(run: Path = DEFAULT_RUN) -> dict:
     if len(frequency) != 25:
         raise ValueError(f"Expected 25 unique missing articles, got {len(frequency)}")
     source_hashes = {path: dependency_sha(ROOT / path) for path in SOURCE_PATHS}
+    if generation_source is not None:
+        # Historical replay reads a verified snapshot; it never executes it.
+        source_hashes[GENERATION_SOURCE] = source_sha(generation_source)
     return {
         "schema": "patch042-gap-analysis-v1",
         "scope": (
@@ -656,7 +661,17 @@ def check(out: Path = DEFAULT_OUT, run: Path = DEFAULT_RUN) -> dict:
         raise ValueError("Output artifact set changed")
     if any(sha(out / name) != digest for name, digest in manifest["artifacts"].items()):
         raise ValueError("Output artifact hash mismatch")
-    replay = analyze(run)
+    expected_source = manifest["source_sha256"][GENERATION_SOURCE]
+    generation_source = ROOT / GENERATION_SOURCE
+    if source_sha(generation_source) != expected_source:
+        # Later main changes must not rewrite the source identity of an old
+        # report. Only an exact archived source can satisfy its original hash.
+        if len(expected_source) != 64 or any(c not in "0123456789abcdef" for c in expected_source):
+            raise ValueError("Invalid historical generation source hash")
+        generation_source = HISTORICAL_SOURCES / (expected_source + ".py")
+        if not generation_source.is_file() or source_sha(generation_source) != expected_source:
+            raise ValueError("Historical generation source missing or changed")
+    replay = analyze(run, generation_source=generation_source)
     if replay != read(out / "analysis.json"):
         raise ValueError("Analysis does not replay")
     expected = {"review.md": make_review(replay), **make_csv_artifacts(replay)}
