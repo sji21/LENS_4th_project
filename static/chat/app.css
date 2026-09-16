@@ -88,6 +88,20 @@ button:focus-visible,a:focus-visible,select:focus-visible {
   letter-spacing:1px;
 }
 
+.brand-new-chat-form {
+  margin:0;
+}
+
+.brand-new-chat-form .brand {
+  width:100%;
+  padding:0;
+  border:0;
+  background:transparent;
+  font-family:inherit;
+  text-align:left;
+  cursor:pointer;
+}
+
 .brand-mark {
   display:grid;
   place-items:center;
@@ -450,14 +464,14 @@ button:focus-visible,a:focus-visible,select:focus-visible {
 .suggestions {
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:36px;
+  gap:10px;
+  margin-top:28px;
 }
 
 .suggestions button {
   position:relative;
   text-align:left;
-  padding:20px 17px 22px;
+  padding:15px 14px 17px;
   background:var(--white);
   border:1px solid var(--line);
   border-radius:12px;
@@ -473,8 +487,8 @@ button:focus-visible,a:focus-visible,select:focus-visible {
 .suggestion-icon {
   display:block;
   color:var(--green);
-  font-size:21px;
-  margin-bottom:20px;
+  font-size:18px;
+  margin-bottom:14px;
 }
 
 .suggestions strong {
@@ -641,6 +655,16 @@ button:focus-visible,a:focus-visible,select:focus-visible {
 .composer-section {
   padding:12px 35px 18px;
   background:var(--paper);
+}
+
+.composer-report-row {
+  display:flex;
+  justify-content:flex-end;
+  margin:0 0 8px;
+}
+
+.composer-report-row form {
+  margin:0;
 }
 
 .chat-report-button {

@@ -192,10 +192,14 @@ def refresh_conversation_guidance(case, *, messages=None, llm=None, freshness_gu
     dialogue = conversation_messages(case, messages)
     if not dialogue:
         return {"checklist": 0, "calendar": 0, "updated": False}
+    reference_day = timezone.localdate()
     prompt = (
         "당신은 임대차 상담 후속 행동 정리기입니다. 아래 한 채팅방의 대화만 근거로 사용하세요. "
+        f"오늘 날짜는 {reference_day.isoformat()}이고 기준 연도는 {reference_day.year}년입니다. "
         "사용자가 확인하거나 실행해야 할 일을 checklist에 1~8개 작성하세요. "
         "체크리스트에 명시된 날짜나 기한이 있으면 해당 항목의 date에 YYYY-MM-DD를 넣고, 없으면 null을 넣으세요. "
+        "연도가 생략된 월·일은 기준 연도를 사용하세요. 기준 날짜와 '이틀 뒤', '3일 이내'처럼 계산 가능한 상대 기한이 함께 나오면 정확한 날짜로 계산하세요. "
+        f"예를 들어 '9월 3일로부터 이틀 뒤까지'는 {reference_day.year}-09-05입니다. "
         "날짜가 대화에서 명시되었거나 검증된 답변에서 명확히 계산된 일정만 calendar에 작성하세요. "
         "날짜를 추측하지 말고, 법률 판단이나 계약 안전 여부를 새로 만들지 마세요. "
         "각 항목의 code는 같은 의미면 재생성해도 유지되는 짧은 영문 snake_case로 작성하세요. "

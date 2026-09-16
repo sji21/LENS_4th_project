@@ -73,11 +73,14 @@ def signup(request):
         try:
             with transaction.atomic():
                 user = form.save()
-        except IntegrityError:
+        except IntegrityError as error:
             # The database constraint is the final guard when two requests race.
-            if User.objects.filter(email__iexact=form.cleaned_data["email"]).exists():
+            constraint_detail = str(error).lower()
+            if (User.objects.filter(email__iexact=form.cleaned_data["email"]).exists()
+                    or "email" in constraint_detail):
                 form.add_error("email", "이미 가입된 이메일입니다. 다른 이메일을 입력해 주세요.")
-            elif User.objects.filter(username__iexact=form.cleaned_data["username"]).exists():
+            elif (User.objects.filter(username__iexact=form.cleaned_data["username"]).exists()
+                    or "username" in constraint_detail):
                 form.add_error("username", "이미 사용 중인 아이디입니다. 다른 아이디를 입력해 주세요.")
             else:
                 form.add_error(None, "회원가입 처리 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.")

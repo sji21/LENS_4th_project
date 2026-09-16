@@ -3,7 +3,7 @@
 {% block content %}
 <div class="workspace">
   <aside class="sidebar" aria-label="상담 메뉴">
-    <a class="brand" href="{% url 'chat:home' %}" aria-label="LENS 홈"><span class="brand-mark">L</span><span>LENS<span class="brand-caption">Lease Evidence Navigation System</span></span></a>
+    <form class="brand-new-chat-form" method="post" action="{% url 'chat:start-new' %}">{% csrf_token %}<button class="brand" type="submit" aria-label="새 대화 시작"><span class="brand-mark">L</span><span>LENS<span class="brand-caption">Lease Evidence Navigation System</span></span></button></form>
     {% if user.is_authenticated %}
       <form class="new-chat-form" method="post" action="{% url 'cases:create' %}">{% csrf_token %}<input type="hidden" name="auto_title" value="1"><button class="new-chat" id="new-chat" data-create-room="true" type="submit"><span aria-hidden="true">＋</span> 새 대화</button></form>
     {% else %}
@@ -33,12 +33,9 @@
   </aside>
   <main class="main">
     <header class="topbar">
-      <div><span class="eyebrow">LENS ASSISTANT</span><h1>{% if contract_case %}{{ contract_case.title }} · {% endif %}임대차 상담</h1></div>
+      <div><span class="eyebrow">LENS ASSISTANT</span><h1>{% if contract_case %}{{ contract_case.title }}{% else %}새 대화{% endif %}</h1></div>
       <div class="topbar-actions">
         <div class="readiness"><span id="ready-dot" class="status-dot"></span><span id="readiness-text" role="status">검색 준비 상태 확인 중</span><button id="retry-ready" hidden type="button">다시 준비</button></div>
-        {% if user.is_authenticated and contract_case %}
-          <form id="report-form" method="post" action="{% url 'cases:create-report' contract_case.pk %}">{% csrf_token %}<button class="chat-report-button" type="submit" title="현재 채팅방의 대화로 PDF 리포트를 생성하고 마이페이지에 저장합니다."><span class="report-button-icon" aria-hidden="true">⇩</span><span class="report-button-label">리포트 PDF</span></button></form>
-        {% endif %}
       </div>
     </header>
     <div class="conversation-scroll" id="conversation-scroll">
@@ -63,6 +60,9 @@
       <div id="answer-actions" class="answer-actions" hidden><button type="button" data-question="방금 답변을 더 쉽게 설명해 주세요.">쉽게 설명</button><button type="button" data-question="방금 답변의 핵심만 짧게 요약해 주세요.">핵심만 요약</button></div>
       <p id="active-document" class="active-document" hidden></p>
       <div id="upload-progress" class="upload-progress" aria-live="polite"></div>
+      {% if user.is_authenticated and contract_case %}
+        <div class="composer-report-row"><form id="report-form" method="post" action="{% url 'cases:create-report' contract_case.pk %}">{% csrf_token %}<button class="chat-report-button" type="submit" title="현재 채팅방의 대화를 AI가 분석해 PDF 리포트로 만들고 마이페이지에 저장합니다."><span class="report-button-icon" aria-hidden="true">⇩</span><span class="report-button-label">리포트 PDF</span></button></form></div>
+      {% endif %}
       <form id="chat-form" class="composer" data-send-url="{% url 'chat:send' %}" data-state-url="{% url 'chat:state' %}" data-upload-url="{% url 'chat:upload' %}" data-reset-url="{% url 'chat:reset' %}" data-simplify-url="{% url 'chat:simplify' %}" data-readiness-url="{% url 'chat:readiness' %}" data-retry-url="{% url 'chat:retry-readiness' %}">
         {% csrf_token %}
         <label class="sr-only" for="question">주택임대차 질문</label>

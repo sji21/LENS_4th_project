@@ -104,6 +104,14 @@ def new_conversation(request):
     return conversation
 
 
+@require_POST
+def start_new(request):
+    """Open a fresh draft while preserving every saved chat room."""
+    request.session.pop("lens_case_id", None)
+    request.session.pop("lens_conversation_id", None)
+    return redirect("chat:home")
+
+
 @require_GET
 @never_cache
 @ensure_csrf_cookie

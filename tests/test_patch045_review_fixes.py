@@ -185,7 +185,7 @@ def test_member_draft_keeps_one_day_expiry_after_upload_request(client, user, mo
     client.force_login(user)
     client.get("/")
     conversation = Conversation.objects.get(user=user, case__isnull=True)
-    response = client.post("/api/documents/upload/", data={
+    response = client.post("/api/documents/", data={
         "conversation_id": str(conversation.pk),
         "request_id": "88888888-8888-8888-8888-888888888888",
         "file": SimpleUploadedFile("contract.pdf", b"%PDF-1.4", content_type="application/pdf"),
