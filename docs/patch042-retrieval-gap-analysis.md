@@ -193,4 +193,4 @@ python -X utf8 -m scripts.patch042_gap_analysis check
 python -X utf8 -m scripts.patch042_gap_analysis build --out tmp/patch042-new-analysis
 ```
 
-기록된 결과는 분석 단계다. 이번 패치의 커밋·푸시·PR은 아직 수행하지 않았다.
+이 문서는 개선 전 분석을 보존한다. 분석과 후속 구현은 PATCH-046 구현 커밋 `a8dc8de`에 포함됐다. 최신 검증·공유 상태는 [검색 개선 기록](patch046-retrieval-improvement.md)을 참고한다.

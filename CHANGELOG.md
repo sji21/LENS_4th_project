@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
-- PATCH-046 improves companion evidence retrieval for explicit unpaid-tax lookup requests within the existing fused TOP20 and general5/civil3 limits. Actual KURE evaluation improves complete evidence from 43/75 to 47/75 question-only and 48/75 with context, with no new required-evidence loss or extra model calls. All 78 published regression questions retain their rankings and metrics. Full tests: 1,796 passed, 3 skipped, 665 subtests. Gold, data, model, civil selection and generation are unchanged by this patch. Renumbers the unpublished local PATCH-042 work after a remote ID collision; frozen analysis paths are retained for integrity. (commit: pending)
+- PATCH-046 improves companion evidence retrieval for explicit unpaid-tax lookup requests within the existing fused TOP20 and general5/civil3 limits. Actual KURE evaluation improves complete evidence from 43/75 to 47/75 question-only and 48/75 with context, with no new required-evidence loss or extra model calls. All 78 published regression questions retain their rankings and metrics. Full tests: 1,796 passed, 3 skipped, 665 subtests. Gold, data, model, civil selection and generation are unchanged by this patch. Renumbers the unpublished local PATCH-042 work after a remote ID collision; frozen analysis paths are retained for integrity. (commit: a8dc8de)
 
 ## 2026-09-15
 
