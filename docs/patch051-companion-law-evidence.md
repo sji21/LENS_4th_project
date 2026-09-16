@@ -135,10 +135,20 @@ python -X utf8 -m scripts.patch051_companion_eval compare --before data/eval/pat
 - PATCH-051 관련 **130 passed**, 검색 서비스·DEV100 v2 **103 passed, 86 subtests passed**, 독립 반례 **36/36**을 확인했다. 제품 경계 테스트는 비활성 질문이 후보3만 조회하고 활성 질문은 기존 후보20에서 근거를 선택하는지 함께 검사한다.
 - 전체 `PYTHONUTF8=1` 검사는 **2,664 passed, 3 skipped, 678 subtests passed**(374.90초, 종료코드0)다. 생략은 기존 LangSmith 설정 부재2건·로컬 등기 PDF 미지정1건이다. 이번 리뷰 보완에서는 실제 KURE235입력·공개78문항을 재실행하거나 기존 평가 산출물을 수정하지 않았다.
 
-모델 없이 독립 재확인(기존 산출물을 덮어쓰지 않음):
+### 최종 문형 보완
+
+`확정일자 신청 방법과 임차인의 권리가 보호되는지도 알려 주세요.`처럼 절차와 권리 보호 여부를 함께 묻는 질문도 보호 효과로 처리하도록 결과 표현을 보완했다. 일반적인 `권리·보호` 단어를 질문 전체에서 허용하는 방식으로 되돌리지 않는다. 관련 긍정·부정 회귀 사례를 추가했고, 총괄과 독립 검증 에이전트가 변경 분기를 정적으로 검토했다.
+
+사용자 요청에 따라 이 후속 보완에서는 테스트와 실제 KURE 평가를 재실행하지 않는다. 위의 **2,664 passed**는 `c41d86f` 리뷰 보완 당시 기록이며 이번 최종 문형 변경의 실행 결과가 아니다. 기존 실측·검증 산출물의 해시도 당시 증거로 보존한다.
+
+### 기존 실측의 독립 재확인
+
+다음 명령은 **실측 소스가 담긴 `7b13047`의 별도 checkout**에서 사용한다. 현재 리뷰 수정본은 당시 캡처의 소스와 다르므로 현재 checkout에서 실행하면 `source changed since after capture` 검사에 걸린다. 이 해시 검사를 완화하거나 옛 검증 해시를 새 소스로 바꾸지 않는다. 현재 코드의 성능 검증에는 별도 재측정이 필요하다.
+
+모델 없이 당시 자료를 독립 재확인(기존 산출물을 덮어쓰지 않음):
 
 ```powershell
 python -X utf8 data/eval/patch051-companion/verify_independently.py --data-root C:/team_project/patch041-worktree/data
 ```
 
-브랜치 `fix/patch-051-companion-law-evidence`, 실측 기준 커밋 `42c71a1`. PR 준비 시 최신 main `25b6703`의 `LIST.md` 정리만 반영했고 제품·테스트·평가 소스는 검증 당시 해시와 동일하다. 구현 커밋과 완료 기록은 `LIST.md` 및 양쪽 CHANGELOG에서 관리한다. 운영 반영과 실제 LLM 답변 품질 평가는 별도다.
+브랜치 `fix/patch-051-companion-law-evidence`, 실측 기준 커밋 `42c71a1`. 최초 PR 준비 시 main `25b6703`의 `LIST.md` 정리만 반영했다. 이후 리뷰 변경의 소스는 최초 실측 해시와 구분한다. 구현 커밋과 상태는 `LIST.md` 및 양쪽 CHANGELOG에서 관리한다. 운영 반영과 실제 LLM 답변 품질 평가는 별도다.
