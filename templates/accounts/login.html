@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}로그인 · LENS{% endblock %}
+{% block head %}<link rel="stylesheet" href="{% static 'cases/app.css' %}">{% endblock %}
+{% block content %}
+<main class="auth-shell">
+  <section class="auth-card">
+    <a class="brand" href="{% url 'chat:home' %}"><span class="brand-mark">L</span><span>LENS</span></a>
+    <h1>내 계약 이어보기</h1>
+    <p>계약별 상담, 문서, 체크리스트와 일정을 안전하게 관리합니다.</p>
+    <form method="post" class="stack-form">{% csrf_token %}{{ form.as_p }}<button class="primary-button" type="submit">로그인</button></form>
+    <p class="auth-link">처음이신가요? <a href="{% url 'accounts:signup' %}">회원가입</a></p>
+  </section>
+</main>
+{% endblock %}

@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Added
 
+- PATCH-045 adds member-owned chat rooms while keeping chat as the post-login and return landing page. A blank landing or New Chat does not create a database room; the first successfully answered member question creates and names it, and the sidebar pencil action renames the same room everywhere. A data migration removes only empty legacy auto-created default rooms while preserving any room with chat, document, calendar, checklist, fact, or report data. My Page combines all room schedules in a real monthly calendar, room-colored checklist items, and versioned PDF folders per chat room. Reports are generated from the current conversation, downloaded immediately, retained for later member downloads, and announced in the chat UI. STT UI and processing are excluded. Related Django checks: 77 passed. Existing PATCH-044 citation validation files remain unchanged. (commit: pending)
+
 - PATCH-041 verifies the latest product retriever against a fresh source-built database on local CPU: all four channels match the adopted baseline on 235 inputs, and 78 public regression questions match the existing database under the same code. Required evidence remains 43/75 in both DEV100 v2 modes and 28/29 in CIV35; previous misses remain, with no new rebuild losses. Adds reproducible capture, integrity checks and provenance. Full tests: 1,576 passed, 3 skipped, 172 subtests passed. No retrieval tuning, corpus additions, or LLM assessment. (commit: 8a57092)
 
 ### Fixed (Bug Fixes)

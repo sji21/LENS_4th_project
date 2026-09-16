@@ -48,7 +48,7 @@ def public_state(conversation):
     }
 
 
-def add_document(state, filename, data, session_id):
+def add_document(state, filename, data, session_id, *, case=None, content_type=""):
     checksum = sha256(data).hexdigest()
     if any(d["checksum"] == checksum for d in state["documents"]):
         return "이미 추가된 문서입니다."
@@ -63,13 +63,21 @@ def add_document(state, filename, data, session_id):
     )
     if context.is_empty:
         raise ValueError("읽을 수 있는 문구가 없습니다. 더 선명한 파일을 첨부해 주세요.")
-    state["documents"].append({
+    document = {
         "document_id": document_id, "filename": filename,
         "kind": classification.kind, "label": LABELS[classification.kind],
         "confidence": classification.confidence, "page_count": classified.extraction.page_count,
         "checksum": checksum, "context": asdict(context),
         "analysis": classified.analysis.to_public_dict(),
-    })
+    }
+    state["documents"].append(document)
+    if case is not None:
+        from cases.services.attachments import record_document
+        attachment = record_document(
+            case, data=data, filename=filename, content_type=content_type,
+            document=document, extracted_text=classified.extraction.text,
+        )
+        document["attachment_id"] = str(attachment.pk)
     return "문서 분석을 완료했습니다."
 
 
@@ -172,3 +180,22 @@ def respond(state, question, document_id=None):
         {"id": uuid.uuid4().hex, "role": "user", "content": question}, message,
     ])
     return message
+
+
+def sync_persistent_messages(conversation):
+    """Mirror public conversation messages into normalized rows for case history."""
+    if conversation.case_id is None:
+        return
+    from .models import Message
+    for item in conversation.state.get("messages", []):
+        public_id = item.get("id")
+        if not public_id:
+            continue
+        Message.objects.update_or_create(
+            conversation=conversation, public_id=public_id,
+            defaults={
+                "role": item.get("role", ""), "content": item.get("content", ""),
+                "status": item.get("status", ""), "sources": item.get("sources", []),
+                "metadata": {k: v for k, v in item.items() if k not in {"id", "role", "content", "status", "sources", "context_content"}},
+            },
+        )
