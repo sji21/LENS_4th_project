@@ -15,6 +15,7 @@ from .dialogue_documents import select_document, document_question, retain_follo
 from .dialogue_clarification import short_answer_decision, prepare_clarification, answer_reason
 from .dialogue_state import apply_user_update, ensure_dialogue, record_answer
 from .dialogue_recovery import recovery_pending, resume_recovery
+from .dialogue_guides import with_dialogue_guides
 
 
 SOCIAL_TEXT = "안녕하세요. 주택 임대차와 관련해 궁금한 점을 편하게 말씀해 주세요."
@@ -118,6 +119,20 @@ def respond_conversational(state, question, document_id=None, *, legacy):
         elif decision.action != "refuse":
             decision = replace(decision, document_id=selected)
         decision, pending = prepare_clarification(draft, question, decision)
+        before = ensure_dialogue(draft)
+        previous_pending = before["pending"] or {}
+        acknowledge_details = (
+            decision.action == "rag" and decision.intent == "clarification_answer"
+            and decision.purpose == "general" and pending is not None
+            and previous_pending.get("mode") == "after_answer"
+            and previous_pending.get("field") in decision.updates
+            and previous_pending.get("field") != pending["field"]
+            and before.get("last_answer") is not None
+        )
+        # General guidance has already been delivered. A factual reply with
+        # another missing fact needs acknowledgment, not repeated legal prose.
+        if acknowledge_details:
+            decision = replace(decision, action="clarify")
         use_document = bool(selected) and not unresolved
         if decision.action == "rag":
             query = grounded_query(draft, question, decision, document_context=use_document)
@@ -140,7 +155,8 @@ def respond_conversational(state, question, document_id=None, *, legacy):
                 text = CORRECTION_TEXT if decision.intent == "correction" else SOCIAL_TEXT
                 message = _static_message(services, text, "social", started)
             elif decision.action == "clarify":
-                message = _static_message(services, pending["question"], "clarify", started)
+                text = ("알려주신 내용을 반영했어요.\n\n" if acknowledge_details else "") + pending["question"]
+                message = _static_message(services, text, "clarify", started)
                 message.update(choices=pending["choices"], reason="needs_information")
                 pending["message_id"] = message["id"]
                 dialogue["pending"] = pending
@@ -148,13 +164,16 @@ def respond_conversational(state, question, document_id=None, *, legacy):
             elif decision.action == "rag":
                 query = decision.search_query
                 response_style = "consult" if pending and decision.style == "standard" else decision.style
+                if decision.style == "standard" and decision.purpose in {"procedure", "timing", "eligibility", "definition", "documents", "source"}:
+                    response_style = "purpose_" + decision.purpose
                 active_id = dialogue["active_document_id"]
                 documents = draft["documents"]
                 if use_document:
                     evidences = services.find_evidences(query, documents, active_id)
                     answer = services.graph.answer_document_question(query, evidences, service=services.retrieval_loader().result(), response_style=response_style)
                 else:
-                    answer = services.graph.answer_question(query, service=services.retrieval_loader().result(), response_style=response_style)
+                    service = with_dialogue_guides(services.retrieval_loader().result(), decision)
+                    answer = services.graph.answer_question(query, service=service, response_style=response_style)
                 used_history = not decision.topic_changed and bool(previous["history"] or previous["facts"] or previous["active_document_id"])
                 message = services.answer_message(answer, started, used_history)
                 message["reason"] = answer_reason(answer)

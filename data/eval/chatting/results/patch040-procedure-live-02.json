@@ -1,0 +1,134 @@
+{
+  "mode": "real_planner_and_rag",
+  "files": {
+    "chat/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "chat/dialogue_clarification.py": "c9b6e160afb2f18cf9e490e64dc4e686c327c2c395ef338f3acd0e9e72604548",
+    "chat/dialogue_contract.py": "40473f8b99eef69f5165240148acc5fb1e4a6fbacd814b8bd7be5546a5f81070",
+    "chat/dialogue_documents.py": "f9b844cfebb884b8d64f9afe5270ecd33a6a1a174b0585912216c2d36315d20a",
+    "chat/dialogue_normalization.py": "c78881b57331499e4109de5550ab9b84da1aeaf1d3294bed9277d63af4f76273",
+    "chat/dialogue_planner.py": "abbe3483b47efeeb61f6f82e70e36fadefffc4d193ba12e689e7bd35c0d01566",
+    "chat/dialogue_query.py": "1b903c38afc1a72374911a0ce8ee8a6dddf6514e597d4c3c6eacd675b05517bd",
+    "chat/dialogue_recovery.py": "75e49cd993b11f4afe57b08fadb554bd00204771678e842c0c738d6c96f0498c",
+    "chat/dialogue_router.py": "bc883582876400e74f13534e51645048b34386344e68bbcae849d67665d5ac37",
+    "chat/dialogue_state.py": "2c572bc9b9186250119737c2139386ccc56d83921ced95cfdbd631494060d0cf",
+    "chat/models.py": "413609bf0ebf1a9450d621122f3f4a82cbdac75161c18f5aeae4c4da0ec420b1",
+    "chat/services.py": "b8c153cef9cff9d6c2e952a63caf6fdd4d7b06935e6a79f016e18830227aaea2",
+    "chat/uploads.py": "0ae80dc0708af8321171f412577c18b3e5a087216e866a7b4b22a1e21784c295",
+    "chat/urls.py": "19346b62a4ce16cb2e2154396c40008f3fade0221266e458050304ee18cab9c7",
+    "chat/views.py": "326bf6038c196b30c5e61ad5fd4fa96458f0fc6dd387a2b235336780878bc94a",
+    "data/chunks/base_sample.jsonl": "0a569cd52b5360cb7dad72c9ac497866031b1d9a116af7fd738885f25abdd35b",
+    "data/chunks/cases.jsonl": "f6190b01d00b0a6f4630ef8c8a2ceebe19ca5a443a9874d06ca2655a5e5efce9",
+    "data/chunks/chunks.jsonl": "c61cba0ef9969cc271ab665b4e237bbd468025dec6199f7ecff2b040fec1958a",
+    "data/chunks/civil.jsonl": "635a4b2f4c3a4cb4f54d0c081bb91a84d5f1f8dc8d0b26a7987e30130df5a10a",
+    "data/chunks/guides.jsonl": "5b67bf5cf59ded40e0dc0289716cb6843ce473bed3d518b17b98fa9a2e54ba93",
+    "data/eval/chatting/acceptance.json": "26eb3122cd56cbcd11f5e3e70d01751b761103e4f6058bc461826456a670bfaa",
+    "data/eval/chatting/dev.json": "bcd030f67235bf5c6437dfce4e8af59c851d0af826c5991016c48d7179463c42",
+    "src/evaluation/chatting_dialogue_run.py": "8c8bd0446ad41974dac52c1988d05d30e1705ec0bc614f48556db5b0002352e2",
+    "src/evaluation/chatting_plan_run.py": "40642dac4c6cd448c45adb209fe543aa7f64057dc39f9454be7abab541b63159",
+    "src/evaluation/chatting_provenance.py": "547278915c1ba10433cacda21a590d05f3fb92e88c170ad86a556addd980555b",
+    "src/evaluation/chatting_run.py": "1ef0eba49048f4c4166c8aab3bab4ad12673d5c898334a289a9fde7f701ec2f0",
+    "src/evaluation/chatting_scenarios.py": "2dd1f5cde62396d33999c461c007f45b16e0946e1f4ecca42539bcd4e8974f51",
+    "src/evaluation/chatting_scoring.py": "85f9d66fe26d7f9aa5e90dc9ddde8d19337229bcb03f1b703c4c64789f955cd0",
+    "src/generation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/generation/abstention.py": "7e4501dc9e7564d7df39d115a412e1f1746ddbe17065261e90884d8facd14476",
+    "src/generation/call_budget.py": "acb78ce0086f6501670eefa1db5d928500a29887ed4a9140d16015949bfa07c0",
+    "src/generation/chain.py": "212f37d4e032a4c3a355c5eaec85d6e4599963ed07a8d082605a3ae06c14adec",
+    "src/generation/citation.py": "496a4592606a9f28a53a5c6615b5dc88dbd7c5a471b4ca431ae566bcc5726f19",
+    "src/generation/conversation.py": "a35889cb47085b64248c50e0975f889e37302474f6470b77b4b3f20cf077ebb0",
+    "src/generation/evidence_routing.py": "9e425bb90c5f943866ee635604573340b199de23371bf8e83c22c62697f72100",
+    "src/generation/graph.py": "76e69c3cfac2deac15ef0c6e2a8ea16eaf087d96893a4b089ff065389bdb57a5",
+    "src/generation/llm.py": "d9a47d2be8154a33291cda72d9ce0a7676372e0adc6d459d055d6d4092166cf7",
+    "src/generation/models.py": "f1e5d0a63c8d94d7e373495f28a4988719a1b10c50d13bfd86de715bb078420c",
+    "src/generation/paragraph.py": "e095954a08d5191abe797c1bb5df820f90b4bac4999db67c7718e72fe18c8f83",
+    "src/generation/prompt.py": "ddb68dc5d56e5511c9aa9711c4a452626825c05a54de332b716a80da420c4066",
+    "src/generation/validation.py": "ae3416e2cadeeae80474e7a58079093e54420c73c8de9286b865480cff835f57",
+    "src/retrieval/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/retrieval/dense.py": "4182dc226f1e5d46d4b94fcd887d796ac09ea685d596f3a217c2537ebc5e96a3",
+    "src/retrieval/hybrid.py": "c82d7be47e95b3419a617a5aaeaf5f6d0a271fcd144a85b38fd53d00d0cb5812",
+    "src/retrieval/index.py": "227f3d11eb4bf8a7913b0d658af543331364f0cd997a9b825264914c02ed031a",
+    "src/retrieval/readiness.py": "86b55af4ce81135ff487001a6ba4b8985dff275805da47981927e29c2f4f8c86",
+    "src/retrieval/refs.py": "5c770deff1141f65509955c3d62c9da6f47c3591da84e7f7f567b669a7342639",
+    "src/retrieval/retriever.py": "6e01e43aeceaf93fc6795c1e3f920662daed035caa87587ae4e1b84d9dc57ebe",
+    "src/retrieval/service.py": "e5aeac45740cf806d9abc8292db5c9e6ace6fa5f4f2cc8e106950e8d5c297b59",
+    "src/retrieval/terms.py": "34354c085495148a535c15c409f2a5761808e2fbc106b25141874117f5836a6e"
+  },
+  "user": "지금 사는 월세집에서 계속 살고 싶은데 계약 갱신은 어떻게 해?",
+  "seconds": 42.99,
+  "proposal": "{\"intent\": \"question\", \"topic\": \"계약갱신\", \"purpose\": \"procedure\", \"action\": \"rag\", \"statements\": [{\"evidence\": \"월세집\", \"field\": \"property_type\", \"value\": \"주택\"}, {\"evidence\": \"월세\", \"field\": \"contract_type\", \"value\": \"월세\"}, {\"evidence\": \"계약 갱신\", \"field\": \"contract_ended\", \"value\": \"아니요\"}], \"clarify_field\": null, \"document_id\": null, \"style\": \"standard\"}",
+  "message": {
+    "id": "cdd9b034462d4e5699949b8a72679aed",
+    "role": "assistant",
+    "status": "answered",
+    "content": "주택임대차보호법 제6조에 따르면, **언제: 임대차기간이 끝나기 6개월 전부터 2개월 전까지** 임대인은 갱신거절을 통지하거나 계약조건을 변경해야 하며, 그렇지 않은 경우 **자동 갱신**됩니다. **어떻게: 임대인은 임차인에게 갱신거절 통지를 전달해야 하며**, 통지하지 않은 경우 자동으로 갱신됩니다. **확인할 사항: 임대인의 갱신거절 통지 여부 및 계약조건 변경 여부**를 확인해야 합니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+    "sources": [
+      {
+        "label": "주택임대차보호법 제6조의3(계약갱신 요구 등)",
+        "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의3",
+        "doc_type": "law",
+        "chunk_id": "law-주택임대차보호법-20260102#제6조의3#0"
+      },
+      {
+        "label": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+        "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조",
+        "doc_type": "decree",
+        "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0"
+      },
+      {
+        "label": "주택임대차보호법 제6조(계약의 갱신)",
+        "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조",
+        "doc_type": "law",
+        "chunk_id": "law-주택임대차보호법-20260102#제6조#0"
+      },
+      {
+        "label": "민법 제623조(임대인의 의무)",
+        "url": "https://www.law.go.kr/법령/민법/제623조",
+        "doc_type": "law",
+        "chunk_id": "law-민법-20260317#제623조#0"
+      },
+      {
+        "label": "민법 제627조(일부멸실 등과 감액청구, 해지권)",
+        "url": "https://www.law.go.kr/법령/민법/제627조",
+        "doc_type": "law",
+        "chunk_id": "law-민법-20260317#제627조#0"
+      },
+      {
+        "label": "민법 제640조(차임연체와 해지)",
+        "url": "https://www.law.go.kr/법령/민법/제640조",
+        "doc_type": "law",
+        "chunk_id": "law-민법-20260317#제640조#0"
+      }
+    ],
+    "used_history": false,
+    "elapsed_seconds": 43.0,
+    "reason": "answered",
+    "action": "rag",
+    "intent": "question"
+  },
+  "runtime": {
+    "path": "conversation"
+  },
+  "facts": {
+    "property_type": {
+      "value": "주택",
+      "evidence": "월세집",
+      "source_turn": 1,
+      "source": "user_statement",
+      "certainty": "reported"
+    },
+    "contract_type": {
+      "value": "월세",
+      "evidence": "월세",
+      "source_turn": 1,
+      "source": "user_statement",
+      "certainty": "reported"
+    },
+    "contract_ended": {
+      "value": "아니요",
+      "evidence": "계약 갱신",
+      "source_turn": 1,
+      "source": "user_statement",
+      "certainty": "reported"
+    }
+  },
+  "source_unchanged": true
+}

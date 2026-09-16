@@ -15,6 +15,15 @@ FACT_LABELS = {
 }
 DOCUMENT_LABELS = {"contract": "임대차계약서", "registry": "등기부등본"}
 QUERY_LIMIT = 2000
+PURPOSE_LABELS = {
+    "procedure": "진행 절차: 요청 시기, 전달 방법, 실행 순서, 확인 항목",
+    "timing": "시기와 기한 및 적용 조건",
+    "eligibility": "이번 질문에서 묻는 구체적인 행동이나 방법의 가능 여부와 조건",
+    "definition": "개념의 의미와 차이",
+    "documents": "필요한 서류와 준비 항목",
+    "source": "직전 설명의 근거와 출처",
+    "summary": "직전 설명의 요약 또는 쉬운 설명",
+}
 
 
 def grounded_query(state, user, decision, *, document_context=True):
@@ -46,6 +55,8 @@ def grounded_query(state, user, decision, *, document_context=True):
             parts.append(f"선택 문서: {label}")
     if dialogue["topic"]:
         parts.append(f"대화 주제: {dialogue['topic']}")
+    if decision.purpose in PURPOSE_LABELS:
+        parts.append(f"질문 목적: {PURPOSE_LABELS[decision.purpose]}")
     for field, label in FACT_LABELS.items():
         fact = dialogue["facts"].get(field)
         if field in FACT_FIELDS and fact and fact.get("source") == "user_statement":

@@ -47,12 +47,14 @@ def test_relative_date_answer_keeps_request_and_moves_to_the_next_question(runti
         "end_date": {"value": "다음 달 말", "evidence": "다음 달 말"},
     })
     message = call(state, runtime, "다음 달 말이에요.")
-    query = runtime.official.call_args.args[0]
-    assert USER in query and "계약 종료일: 다음 달 말" in query
+    assert message["action"] == "clarify"
+    assert "알려주신 내용을 반영했어요" in message["content"]
+    assert state["dialogue"]["facts"]["end_date"]["value"] == "다음 달 말"
+    runtime.official.assert_called_once()
     assert state["dialogue"]["facts"]["contract_ended"]["value"] == "아니요"
     assert state["dialogue"]["pending"]["field"] == "landlord_notified"
     assert state["dialogue"]["pending"]["request"] == USER
-    assert message["followup_question"] == "임대인에게 의사를 알리셨나요?"
+    assert "임대인에게 의사를 알리셨나요?" in message["content"]
     assert runtime.planner.call_count == 2
 
 
@@ -122,6 +124,20 @@ def test_graph_failure_does_not_commit_a_new_pending_question(runtime):
     with pytest.raises(RuntimeError):
         begin(state, runtime)
     assert state == before
+
+
+@pytest.mark.parametrize("prior_status,purpose", [("abstained", "general"), ("answered", "eligibility")])
+def test_date_reply_still_uses_rag_without_verified_guidance_or_with_a_new_question(runtime, prior_status, purpose):
+    state = services.initial_state()
+    runtime.official.return_value = Answer(question=USER, text="기존 응답", status=prior_status)
+    begin(state, runtime)
+    runtime.planner.return_value.decision = proposal(
+        intent="clarification_answer", purpose=purpose, clarify_field="landlord_notified",
+        updates={"end_date": {"value": "다음 달 말", "evidence": "다음 달 말"}},
+    )
+    message = call(state, runtime, "다음 달 말이에요. 지금 가능한가요?" if purpose == "eligibility" else "다음 달 말이에요.")
+    assert message["action"] == "rag"
+    assert runtime.official.call_count == 2
 
 
 @pytest.mark.parametrize("phrase", ["계약이 끝나가는데", "계약 만료 예정이에요", "아직 두 달 남았어요"])

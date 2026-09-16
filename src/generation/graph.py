@@ -337,9 +337,11 @@ def build_generation_graph(
             if llm is not None
             else chain_module.get_llm(
                 max_retries=0,
+                **({"extra_body": {"num_ctx": max(8192, chain_module.llm_module.LLM_NUM_CTX)}}
+                   if response_style is not None else {}),
                 **(
-                    {"max_tokens": max(384, chain_module.llm_module.LLM_MAX_TOKENS)}
-                    if document_only
+                    {"max_tokens": max(512 if response_style is not None else 384, chain_module.llm_module.LLM_MAX_TOKENS)}
+                    if document_only or response_style is not None
                     else {}
                 ),
             )

@@ -72,6 +72,20 @@ def short_answer_decision(state, user):
 
 def prepare_clarification(state, user, decision):
     """Return an executable decision and optional pending question, without writes."""
+    # A concrete procedure request can be answered generally before collecting
+    # dates. Never change ambiguous-document or explicit interview decisions.
+    if (decision.action == "rag" and decision.purpose == "procedure"
+            and decision.intent in {"question", "followup", "clarification_answer"}
+            and decision.clarify_field is None and decision.document_id is None):
+        trial = deepcopy(state)
+        dialogue = apply_user_update(trial, user=user, updates=decision.updates,
+                                    topic=decision.topic, topic_changed=decision.topic_changed)
+        personal = any(field in dialogue["facts"] for field in ("contract_type", "end_date", "contract_ended"))
+        if personal and decision.topic in {"계약갱신", "보증금반환"}:
+            for field in ("end_date", "landlord_notified"):
+                if field not in dialogue["facts"] and dialogue["clarification_counts"].get(field, 0) < MAX_ASKS:
+                    decision = replace(decision, clarify_field=field)
+                    break
     after_answer = decision.action == "rag" and decision.clarify_field in FACT_FIELDS and decision.intent not in {"explain", "greeting"}
     if decision.action != "clarify" and not after_answer:
         return decision, None

@@ -62,10 +62,17 @@
       link.target = "_blank"; link.rel = "noopener noreferrer"; return link;
     } catch { return element("span", label); }
   }
-  function answerText(text) {
+  function formatAnswerSections(text) {
+    const value = String(text);
+    // Only split the explicit procedure labels, preserving all answer wording.
+    if (!["언제", "어떻게", "확인할 사항"].every((label) => value.includes(`${label}:`))) return value;
+    return value.replace(/[ \t\r\n]*(\*\*)?(언제|어떻게|확인할 사항):/g,
+      (match, bold, label, offset) => `${offset ? "\n\n" : ""}${bold || ""}${label}:`);
+  }
+  function answerText(text, assistant = false) {
     const body = element("div", undefined, "answer-body");
     // A deliberately small text-only Markdown subset; never inject model HTML.
-    const parts = String(text).split(/(\*\*[^*\n]+\*\*|`[^`\n]+`)/g);
+    const parts = (assistant ? formatAnswerSections(text) : String(text)).split(/(\*\*[^*\n]+\*\*|`[^`\n]+`)/g);
     for (const part of parts) {
       if (part.startsWith("**") && part.endsWith("**")) body.append(element("strong", part.slice(2, -2)));
       else if (part.startsWith("`") && part.endsWith("`")) body.append(element("code", part.slice(1, -1)));
@@ -78,7 +85,7 @@
     row.setAttribute("aria-label", message.role === "user" ? "내 질문" : "LENS 답변");
     if (message.role !== "user") row.append(element("span", "L", "avatar"));
     const bubble = element("div", undefined, "bubble");
-    bubble.append(answerText(message.content));
+    bubble.append(answerText(message.content, message.role === "assistant"));
     if (message.role === "assistant" && message.followup_question) {
       const followup = element("div", undefined, "followup-question");
       followup.append(element("strong", "상황을 조금 더 알려주세요"), element("p", message.followup_question));
@@ -225,10 +232,18 @@
       lastRendered = "";
       const payload = { message: question, document_id: $("document-select").value || null, ...(replyingTo ? { reply_to: replyingTo } : {}) };
       const requestId = submission.get({ conversation_id: conversationId, ...payload });
-      const data = await post(form.dataset.sendUrl, payload, requestId);
+      const submittedText = input.value;
+      const submittedReply = replyingTo;
+      input.value = ""; replyingTo = null;
+      let data;
+      try {
+        data = await post(form.dataset.sendUrl, payload, requestId);
+      } catch (error) {
+        // Keep a newer draft; restore the failed submission only into an untouched composer.
+        if (!input.value) { input.value = submittedText; replyingTo = submittedReply; }
+        throw error;
+      }
       submission.clear();
-      // Preserve text the user typed while waiting.
-      if (input.value.trim() === question) { input.value = ""; replyingTo = null; }
       render(data); input.focus();
     });
   });

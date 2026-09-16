@@ -5,9 +5,25 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-16
+
+### Changed
+
+- PATCH-040 Provide general guidance before one missing-fact question for personal renewal/deposit procedures. Add attributed renewal guidance as a conversation-only retrieval supplement, preserving legal validation and existing indexes. Reserve 8,192 context and 512 output tokens for conversational generation to avoid dropping instructions. A factual reply after verified guidance is saved and acknowledged before the next missing-fact question; substantive follow-ups still use RAG. (commit: pending)
+
+## 2026-09-15
+
+### Fixed (Bug Fixes)
+
+- PATCH-040 Clear the composer when a question is sent, preserve a newer draft during the response, and restore failed submissions only into an empty composer. Nine JavaScript regressions pass. (commit: pending)
+
 ## 2026-09-14
 
 ### Fixed (Bug Fixes)
+
+- PATCH-040 Separate procedure answer labels into paragraphs in the chat display, including saved responses, and request blank lines in generated procedure answers. Version the script URL to refresh cached clients; verify the existing conversation in the browser. (commit: pending)
+
+- PATCH-040 Pass question purpose separately from topic into retrieval and answer instructions, distinguishing procedures, timing, specific permission, definitions, documents and sources. Keep legacy proposals compatible and preserve follow-up targets. Live answer quality remains under review; see docs/chatting-question-purpose.md. (commit: pending)
 
 - PATCH-038 Fix renewal-method follow-ups being mistaken for new contract facts and rejected despite preserved context. Keep fact validation strict; verify normal, recovery, and pending-question contexts with the local model. (commit: `876e19f`)
 

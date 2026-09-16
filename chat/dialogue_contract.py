@@ -16,6 +16,7 @@ BOOL_FIELDS = {"contract_ended", "deposit_returned", "living_in_property", "move
 FACT_FIELDS = BOOL_FIELDS | {"contract_type", "subject", "role", "property_type", "deposit", "monthly_rent", "end_date", "start_date", "notice_date"}
 CLARIFY_FIELDS = FACT_FIELDS | {"details", "document"}
 STYLES = {"standard", "simple", "brief"}
+PURPOSES = {"general", "procedure", "timing", "eligibility", "definition", "documents", "source", "summary"}
 KEYS = {"intent", "action", "topic", "topic_changed", "updates", "clarify_field", "question", "search_query", "document_id", "style"}
 ROLE_ALIASES = {"임대인": ("임대인", "집주인"), "임차인": ("임차인", "세입자"), "중개사": ("중개사", "중개인"), "대리인": ("대리인",)}
 PROPERTY_ALIASES = {name: (name,) for name in ("아파트", "빌라", "단독주택", "다가구주택", "다세대주택", "연립주택", "오피스텔", "상가", "기숙사", "고시원")}
@@ -40,6 +41,7 @@ class Decision:
     search_query: str
     document_id: str | None
     style: str
+    purpose: str = "general"
 
 
 def _unique_object(pairs):
@@ -242,8 +244,13 @@ def parse_decision(raw, *, state, user, updates_as_list=False, preserved_user=Fa
         raise
     except (ValueError, RecursionError):
         raise DecisionError("json") from None
-    if not isinstance(payload, dict) or set(payload) != KEYS:
+    if not isinstance(payload, dict):
         raise DecisionError("keys")
+    purpose = payload.pop("purpose", "general")
+    _enum(purpose, PURPOSES, "purpose")
+    if set(payload) != KEYS:
+        raise DecisionError("keys")
+    payload["purpose"] = purpose
     for field, choices in (("intent", INTENTS), ("action", ACTIONS), ("style", STYLES)):
         _enum(payload[field], choices, field)
     if type(payload["topic_changed"]) is not bool or payload["topic_changed"] != (payload["intent"] == "topic_change"):

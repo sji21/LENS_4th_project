@@ -1,0 +1,852 @@
+{
+  "mode": "real_planner_and_full_rag",
+  "files": {
+    "chat/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "chat/dialogue_clarification.py": "ba30a493ec05ecde96e23f6fdbadd144d637c2359ab586c484d83404ced62b9d",
+    "chat/dialogue_contract.py": "40473f8b99eef69f5165240148acc5fb1e4a6fbacd814b8bd7be5546a5f81070",
+    "chat/dialogue_documents.py": "f9b844cfebb884b8d64f9afe5270ecd33a6a1a174b0585912216c2d36315d20a",
+    "chat/dialogue_guides.py": "37a96d0ddb20122986634877cef0ba45b42e60a752f791bc1e2e9125a3d29bb4",
+    "chat/dialogue_normalization.py": "c78881b57331499e4109de5550ab9b84da1aeaf1d3294bed9277d63af4f76273",
+    "chat/dialogue_planner.py": "6b13c87e926431b5d976f00a2caf870bf1fc75416aada95548559c94b70a880f",
+    "chat/dialogue_query.py": "1b903c38afc1a72374911a0ce8ee8a6dddf6514e597d4c3c6eacd675b05517bd",
+    "chat/dialogue_recovery.py": "75e49cd993b11f4afe57b08fadb554bd00204771678e842c0c738d6c96f0498c",
+    "chat/dialogue_router.py": "4837487684a27d43d0aa975d672eb1d32ca7c1e32ee54d3b6b096678fa0439d2",
+    "chat/dialogue_state.py": "2c572bc9b9186250119737c2139386ccc56d83921ced95cfdbd631494060d0cf",
+    "chat/models.py": "413609bf0ebf1a9450d621122f3f4a82cbdac75161c18f5aeae4c4da0ec420b1",
+    "chat/services.py": "b8c153cef9cff9d6c2e952a63caf6fdd4d7b06935e6a79f016e18830227aaea2",
+    "chat/uploads.py": "0ae80dc0708af8321171f412577c18b3e5a087216e866a7b4b22a1e21784c295",
+    "chat/urls.py": "19346b62a4ce16cb2e2154396c40008f3fade0221266e458050304ee18cab9c7",
+    "chat/views.py": "326bf6038c196b30c5e61ad5fd4fa96458f0fc6dd387a2b235336780878bc94a",
+    "data/chunks/base_sample.jsonl": "0a569cd52b5360cb7dad72c9ac497866031b1d9a116af7fd738885f25abdd35b",
+    "data/chunks/cases.jsonl": "f6190b01d00b0a6f4630ef8c8a2ceebe19ca5a443a9874d06ca2655a5e5efce9",
+    "data/chunks/chunks.jsonl": "c61cba0ef9969cc271ab665b4e237bbd468025dec6199f7ecff2b040fec1958a",
+    "data/chunks/civil.jsonl": "635a4b2f4c3a4cb4f54d0c081bb91a84d5f1f8dc8d0b26a7987e30130df5a10a",
+    "data/chunks/guides.jsonl": "5b67bf5cf59ded40e0dc0289716cb6843ce473bed3d518b17b98fa9a2e54ba93",
+    "data/eval/chatting/acceptance.json": "26eb3122cd56cbcd11f5e3e70d01751b761103e4f6058bc461826456a670bfaa",
+    "data/eval/chatting/dev.json": "bcd030f67235bf5c6437dfce4e8af59c851d0af826c5991016c48d7179463c42",
+    "src/evaluation/chatting_dialogue_run.py": "8c8bd0446ad41974dac52c1988d05d30e1705ec0bc614f48556db5b0002352e2",
+    "src/evaluation/chatting_plan_run.py": "40642dac4c6cd448c45adb209fe543aa7f64057dc39f9454be7abab541b63159",
+    "src/evaluation/chatting_provenance.py": "547278915c1ba10433cacda21a590d05f3fb92e88c170ad86a556addd980555b",
+    "src/evaluation/chatting_run.py": "1ef0eba49048f4c4166c8aab3bab4ad12673d5c898334a289a9fde7f701ec2f0",
+    "src/evaluation/chatting_scenarios.py": "2dd1f5cde62396d33999c461c007f45b16e0946e1f4ecca42539bcd4e8974f51",
+    "src/evaluation/chatting_scoring.py": "85f9d66fe26d7f9aa5e90dc9ddde8d19337229bcb03f1b703c4c64789f955cd0",
+    "src/generation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/generation/abstention.py": "7e4501dc9e7564d7df39d115a412e1f1746ddbe17065261e90884d8facd14476",
+    "src/generation/call_budget.py": "acb78ce0086f6501670eefa1db5d928500a29887ed4a9140d16015949bfa07c0",
+    "src/generation/chain.py": "212f37d4e032a4c3a355c5eaec85d6e4599963ed07a8d082605a3ae06c14adec",
+    "src/generation/citation.py": "496a4592606a9f28a53a5c6615b5dc88dbd7c5a471b4ca431ae566bcc5726f19",
+    "src/generation/conversation.py": "a35889cb47085b64248c50e0975f889e37302474f6470b77b4b3f20cf077ebb0",
+    "src/generation/evidence_routing.py": "9e425bb90c5f943866ee635604573340b199de23371bf8e83c22c62697f72100",
+    "src/generation/graph.py": "972b62417dc834d7f120623e783d5867b1a5da0b57d1f2f420d729d3b72feac9",
+    "src/generation/llm.py": "d9a47d2be8154a33291cda72d9ce0a7676372e0adc6d459d055d6d4092166cf7",
+    "src/generation/models.py": "f1e5d0a63c8d94d7e373495f28a4988719a1b10c50d13bfd86de715bb078420c",
+    "src/generation/paragraph.py": "e095954a08d5191abe797c1bb5df820f90b4bac4999db67c7718e72fe18c8f83",
+    "src/generation/prompt.py": "6411e6dbba25faea26f9856393cb04f900cf2bc6b1805fdce4d52d9953c11ae7",
+    "src/generation/validation.py": "ae3416e2cadeeae80474e7a58079093e54420c73c8de9286b865480cff835f57",
+    "src/retrieval/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/retrieval/dense.py": "4182dc226f1e5d46d4b94fcd887d796ac09ea685d596f3a217c2537ebc5e96a3",
+    "src/retrieval/hybrid.py": "c82d7be47e95b3419a617a5aaeaf5f6d0a271fcd144a85b38fd53d00d0cb5812",
+    "src/retrieval/index.py": "227f3d11eb4bf8a7913b0d658af543331364f0cd997a9b825264914c02ed031a",
+    "src/retrieval/readiness.py": "86b55af4ce81135ff487001a6ba4b8985dff275805da47981927e29c2f4f8c86",
+    "src/retrieval/refs.py": "5c770deff1141f65509955c3d62c9da6f47c3591da84e7f7f567b669a7342639",
+    "src/retrieval/retriever.py": "6e01e43aeceaf93fc6795c1e3f920662daed035caa87587ae4e1b84d9dc57ebe",
+    "src/retrieval/service.py": "e5aeac45740cf806d9abc8292db5c9e6ace6fa5f4f2cc8e106950e8d5c297b59",
+    "src/retrieval/terms.py": "34354c085495148a535c15c409f2a5761808e2fbc106b25141874117f5836a6e",
+    "chat/renewal_guides.json": "04c3ca4796636bec5953c8e73d9c648267557526191860aecc2fe819e3a5d745"
+  },
+  "rows": [
+    {
+      "user": "지금 살고 싶은 월세집의 계약이 끝나가는데 계약 갱신은 어떻게 해?",
+      "seconds": 73.22,
+      "proposal": "{\"intent\": \"question\", \"topic\": \"계약갱신\", \"purpose\": \"procedure\", \"action\": \"rag\", \"statements\": [{\"evidence\": \"월세집\", \"field\": \"property_type\", \"value\": \"아파트\"}, {\"evidence\": \"월세\", \"field\": \"contract_type\", \"value\": \"월세\"}, {\"evidence\": \"계약이 끝나가는데\", \"field\": \"contract_ended\", \"value\": \"아니요\"}], \"clarify_field\": \"end_date\", \"document_id\": null, \"style\": \"standard\"}",
+      "message": {
+        "id": "4397c55297244b8e9ee35b3c728acb27",
+        "role": "assistant",
+        "status": "answered",
+        "content": "주택임대차보호법 제6조의3에 따르면  \n\n언제: 임대차계약이 끝나기 6개월 전부터 2개월 전까지 계약갱신을 요청할 수 있습니다.  \n어떻게: 구두, 문자메시지, 이메일 등으로 요청할 수 있으며, 분쟁에 대비하려면 내용증명이나 우편 등 의사전달을 입증할 수 있는 수단을 사용하는 것이 좋습니다.  \n확인할 사항: 임대인에게 정당한 거절사유가 없는지, 임차인의 계약갱신요구권이 행사되었는지 확인해야 합니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [
+          {
+            "label": "주택임대차보호법 제6조의3(계약갱신 요구 등)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의3",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제6조의3#0"
+          },
+          {
+            "label": "주택임대차보호법 제6조의2(묵시적 갱신의 경우 계약의 해지)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의2",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제6조의2#0"
+          },
+          {
+            "label": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조",
+            "doc_type": "decree",
+            "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0"
+          },
+          {
+            "label": "민법 제627조(일부멸실 등과 감액청구, 해지권)",
+            "url": "https://www.law.go.kr/법령/민법/제627조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제627조#0"
+          },
+          {
+            "label": "민법 제640조(차임연체와 해지)",
+            "url": "https://www.law.go.kr/법령/민법/제640조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제640조#0"
+          },
+          {
+            "label": "민법 제623조(임대인의 의무)",
+            "url": "https://www.law.go.kr/법령/민법/제623조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제623조#0"
+          },
+          {
+            "label": "문화체육관광부 안내",
+            "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148876914",
+            "doc_type": "guide",
+            "chunk_id": "dialogue-renewal-method-20200901"
+          },
+          {
+            "label": "법제처 안내",
+            "url": "https://www.easylaw.go.kr/CSP/CnpClsMain.laf?ccfNo=4&cciNo=4&cnpClsNo=1&csmSeq=629",
+            "doc_type": "guide",
+            "chunk_id": "dialogue-renewal-timing-20260916"
+          }
+        ],
+        "context_content": "주택임대차보호법 제6조의3에 따르면  \n\n언제: 임대차계약이 끝나기 6개월 전부터 2개월 전까지 계약갱신을 요청할 수 있습니다.  \n어떻게: 구두, 문자메시지, 이메일 등으로 요청할 수 있으며, 분쟁에 대비하려면 내용증명이나 우편 등 의사전달을 입증할 수 있는 수단을 사용하는 것이 좋습니다.  \n확인할 사항: 임대인에게 정당한 거절사유가 없는지, 임차인의 계약갱신요구권이 행사되었는지 확인해야 합니다.",
+        "used_history": false,
+        "elapsed_seconds": 73.2,
+        "reason": "answered",
+        "followup_question": "계약 종료일을 알려주시겠어요?",
+        "choices": [
+          {
+            "label": "모르겠어요",
+            "message": "모르겠어요"
+          }
+        ],
+        "action": "rag",
+        "intent": "question"
+      },
+      "answers": [
+        {
+          "question": "대화 주제: 계약갱신\n질문 목적: 진행 절차: 요청 시기, 전달 방법, 실행 순서, 확인 항목\n계약 유형: 월세\n계약 종료 여부: 아니요\n사용자 입력: 지금 살고 싶은 월세집의 계약이 끝나가는데 계약 갱신은 어떻게 해?",
+          "status": "answered",
+          "text": "주택임대차보호법 제6조의3에 따르면  \n\n언제: 임대차계약이 끝나기 6개월 전부터 2개월 전까지 계약갱신을 요청할 수 있습니다.  \n어떻게: 구두, 문자메시지, 이메일 등으로 요청할 수 있으며, 분쟁에 대비하려면 내용증명이나 우편 등 의사전달을 입증할 수 있는 수단을 사용하는 것이 좋습니다.  \n확인할 사항: 임대인에게 정당한 거절사유가 없는지, 임차인의 계약갱신요구권이 행사되었는지 확인해야 합니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "raw_text": "주택임대차보호법 제6조의3에 따르면  \n\n언제: 임대차계약이 끝나기 6개월 전부터 2개월 전까지 계약갱신을 요청할 수 있습니다.  \n어떻게: 구두, 문자메시지, 이메일 등으로 요청할 수 있으며, 분쟁에 대비하려면 내용증명이나 우편 등 의사전달을 입증할 수 있는 수단을 사용하는 것이 좋습니다.  \n확인할 사항: 임대인에게 정당한 거절사유가 없는지, 임차인의 계약갱신요구권이 행사되었는지 확인해야 합니다.",
+          "laws": [
+            {
+              "rank": 1,
+              "chunk_id": "law-주택임대차보호법-20260102#제6조의3#0",
+              "doc_type": "law",
+              "citation": "주택임대차보호법 제6조의3(계약갱신 요구 등)",
+              "text": "[주택임대차보호법 제6조의3(계약갱신 요구 등)]\n① 제6조에도 불구하고 임대인은 임차인이 제6조제1항 전단의 기간 이내에 계약갱신을 요구할 경우 정당한 사유 없이 거절하지 못한다. 다만, 다음 각 호의 어느 하나에 해당하는 경우에는 그러하지 아니하다.\n1. 임차인이 2기의 차임액에 해당하는 금액에 이르도록 차임을 연체한 사실이 있는 경우\n2. 임차인이 거짓이나 그 밖의 부정한 방법으로 임차한 경우\n3. 서로 합의하여 임대인이 임차인에게 상당한 보상을 제공한 경우\n4. 임차인이 임대인의 동의 없이 목적 주택의 전부 또는 일부를 전대(轉貸)한 경우\n5. 임차인이 임차한 주택의 전부 또는 일부를 고의나 중대한 과실로 파손한 경우\n6. 임차한 주택의 전부 또는 일부가 멸실되어 임대차의 목적을 달성하지 못할 경우\n7. 임대인이 다음 각 목의 어느 하나에 해당하는 사유로 목적 주택의 전부 또는 대부분을 철거하거나 재건축하기 위하여 목적 주택의 점유를 회복할 필요가 있는 경우\n가. 임대차계약 체결 당시 공사시기 및 소요기간 등을 포함한 철거 또는 재건축 계획을 임차인에게 구체적으로 고지하고 그 계획에 따르는 경우\n나. 건물이 노후ㆍ훼손 또는 일부 멸실되는 등 안전사고의 우려가 있는 경우\n다. 다른 법령에 따라 철거 또는 재건축이 이루어지는 경우\n8. 임대인(임대인의 직계존속ㆍ직계비속을 포함한다)이 목적 주택에 실제 거주하려는 경우\n9. 그 밖에 임차인이 임차인으로서의 의무를 현저히 위반하거나 임대차를 계속하기 어려운 중대한 사유가 있는 경우\n② 임차인은 제1항에 따른 계약갱신요구권을 1회에 한하여 행사할 수 있다. 이 경우 갱신되는 임대차의 존속기간은 2년으로 본다.\n③ 갱신되는 임대차는 전 임대차와 동일한 조건으로 다시 계약된 것으로 본다. 다만, 차임과 보증금은 제7조의 범위에서 증감할 수 있다.\n④ 제1항에 따라 갱신되는 임대차의 해지에 관하여는 제6조의2를 준용한다.\n⑤ 임대인이 제1항제8호의 사유로 갱신을 거절하였음에도 불구하고 갱신요구가 거절되지 아니하였더라면 갱신되었을 기간이 만료되기 전에 정당한 사유 없이 제3자에게 목적 주택을 임대한 경우 임대인은 갱신거절로 인하여 임차인이 입은 손해를 배상하여야 한다.\n⑥ 제5항에 따른 손해배상액은 거절 당시 당사자 간에 손해배상액의 예정에 관한 합의가 이루어지지 않는 한 다음 각 호의 금액 중 큰 금액으로 한다.\n1. 갱신거절 당시 월차임(차임 외에 보증금이 있는 경우에는 그 보증금을 제7조의2 각 호 중 낮은 비율에 따라 월 단위의 차임으로 전환한 금액을 포함한다. 이하 “환산월차임”이라 한다)의 3개월분에 해당하는 금액\n2. 임대인이 제3자에게 임대하여 얻은 환산월차임과 갱신거절 당시 환산월차임 간 차액의 2년분에 해당하는 금액\n3. 제1항제8호의 사유로 인한 갱신거절로 인하여 임차인이 입은 손해액",
+              "score": 0.3333,
+              "source_url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의3"
+            },
+            {
+              "rank": 2,
+              "chunk_id": "law-주택임대차보호법-20260102#제6조의2#0",
+              "doc_type": "law",
+              "citation": "주택임대차보호법 제6조의2(묵시적 갱신의 경우 계약의 해지)",
+              "text": "[주택임대차보호법 제6조의2(묵시적 갱신의 경우 계약의 해지)]\n① 제6조제1항에 따라 계약이 갱신된 경우 같은 조 제2항에도 불구하고 임차인은 언제든지 임대인에게 계약해지(契約解止)를 통지할 수 있다. \n② 제1항에 따른 해지는 임대인이 그 통지를 받은 날부터 3개월이 지나면 그 효력이 발생한다.",
+              "score": 0.2679,
+              "source_url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의2"
+            },
+            {
+              "rank": 3,
+              "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0",
+              "doc_type": "decree",
+              "citation": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+              "text": "[주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)]\n① 제5조제1호 또는 제5호에 해당하는 자는 법 제3조의6제3항에 따라 확정일자부여기관에 해당 임대차계약(제5조제5호에 해당하는 자의 경우에는 갱신요구가 거절되지 않았더라면 갱신되었을 기간 중에 존속하는 임대차계약을 말한다)에 관한 다음 각 호의 사항의 열람 또는 그 내용을 기록한 서면의 교부를 요청할 수 있다. \n1. 임대차목적물\n2. 임대인ㆍ임차인의 인적사항(제5조제5호에 해당하는 자는 임대인ㆍ임차인의 성명, 법인명 또는 단체명으로 한정한다)\n3. 확정일자 부여일\n4. 차임ㆍ보증금\n5. 임대차기간\n② 제5조제2호부터 제4호까지 또는 제6호의 어느 하나에 해당하는 자이거나 임대차계약을 체결하려는 자는 법 제3조의6제3항 또는 제4항에 따라 확정일자부여기관에 다음 각 호의 사항의 열람 또는 그 내용을 기록한 서면의 교부를 요청할 수 있다. \n1. 임대차목적물\n2. 확정일자 부여일\n3. 차임ㆍ보증금\n4. 임대차기간\n③ 제1항 및 제2항에서 규정한 사항 외에 정보제공 요청에 필요한 사항은 법무부령으로 정한다.\n[종전 제6조는 제13조로 이동 <2013. 12. 30.>]",
+              "score": 0.254,
+              "source_url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조"
+            }
+          ],
+          "cases": [],
+          "guides": [
+            {
+              "rank": 1,
+              "chunk_id": "dialogue-renewal-method-20200901",
+              "doc_type": "guide",
+              "citation": "문화체육관광부 안내",
+              "text": "계약갱신요구권 행사 방법은 구두·문자메시지·이메일도 가능하다. 분쟁에 대비하려면 내용증명이나 우편처럼 의사 전달을 입증할 기록이 남는 수단을 고려한다. 이 안내는 전달 수단에 관한 설명이며 개별 계약의 갱신 가능 여부를 확정하지 않는다.",
+              "score": 1.0,
+              "source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148876914"
+            },
+            {
+              "rank": 2,
+              "chunk_id": "dialogue-renewal-timing-20260916",
+              "doc_type": "guide",
+              "citation": "법제처 안내",
+              "text": "주택 임대차는 당사자 간 합의 또는 법에서 정한 요건에 따라 갱신될 수 있다. 2020년 12월 10일 이후 최초로 체결되거나 갱신된 임대차에서 임차인의 계약갱신요구권 행사 기간은 임대차 기간이 끝나기 6개월 전부터 2개월 전까지이다. 이 권리는 1회 행사할 수 있고 갱신 기간은 2년이다. 임대인에게 정당한 거절 사유가 있으면 갱신이 거절될 수 있다. 묵시적 갱신은 계약갱신요구권의 명확한 행사와 구분된다. 종료일, 이전 권리 행사 여부, 당사자가 주고받은 갱신·거절·조건 변경 통지를 확인해야 적용 가능한 방식을 구분할 수 있다.",
+              "score": 1.0,
+              "source_url": "https://www.easylaw.go.kr/CSP/CnpClsMain.laf?ccfNo=4&cciNo=4&cnpClsNo=1&csmSeq=629"
+            }
+          ],
+          "document_evidences": [],
+          "requires_official_citation": true,
+          "validation_mode": "semantic",
+          "civil_laws": [
+            {
+              "rank": 1,
+              "chunk_id": "law-민법-20260317#제627조#0",
+              "doc_type": "law",
+              "citation": "민법 제627조(일부멸실 등과 감액청구, 해지권)",
+              "text": "[민법 제627조(일부멸실 등과 감액청구, 해지권)]\n①임차물의 일부가 임차인의 과실없이 멸실 기타 사유로 인하여 사용, 수익할 수 없는 때에는 임차인은 그 부분의 비율에 의한 차임의 감액을 청구할 수 있다.\n②전항의 경우에 그 잔존부분으로 임차의 목적을 달성할 수 없는 때에는 임차인은 계약을 해지할 수 있다.",
+              "score": 0.3095,
+              "source_url": "https://www.law.go.kr/법령/민법/제627조"
+            },
+            {
+              "rank": 2,
+              "chunk_id": "law-민법-20260317#제640조#0",
+              "doc_type": "law",
+              "citation": "민법 제640조(차임연체와 해지)",
+              "text": "[민법 제640조(차임연체와 해지)]\n건물 기타 공작물의 임대차에는 임차인의 차임연체액이 2기의 차임액에 달하는 때에는 임대인은 계약을 해지할 수 있다.",
+              "score": 0.2576,
+              "source_url": "https://www.law.go.kr/법령/민법/제640조"
+            },
+            {
+              "rank": 3,
+              "chunk_id": "law-민법-20260317#제623조#0",
+              "doc_type": "law",
+              "citation": "민법 제623조(임대인의 의무)",
+              "text": "[민법 제623조(임대인의 의무)]\n임대인은 목적물을 임차인에게 인도하고 계약존속중 그 사용, 수익에 필요한 상태를 유지하게 할 의무를 부담한다.",
+              "score": 0.375,
+              "source_url": "https://www.law.go.kr/법령/민법/제623조"
+            }
+          ]
+        }
+      ],
+      "dialogue": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": "계약갱신",
+        "facts": {
+          "contract_type": {
+            "value": "월세",
+            "evidence": "월세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "아니요",
+            "evidence": "계약이 끝나가는데",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "지금 살고 싶은 월세집의 계약이 끝나가는데 계약 갱신은 어떻게 해?"
+          }
+        ],
+        "changes": [],
+        "pending": {
+          "field": "end_date",
+          "question": "계약 종료일을 알려주시겠어요?",
+          "attempts": 1,
+          "choices": [
+            {
+              "label": "모르겠어요",
+              "message": "모르겠어요"
+            }
+          ],
+          "request": "지금 살고 싶은 월세집의 계약이 끝나가는데 계약 갱신은 어떻게 해?",
+          "epoch": 0,
+          "topic": "계약갱신",
+          "document_id": null,
+          "mode": "after_answer",
+          "message_id": "4397c55297244b8e9ee35b3c728acb27"
+        },
+        "active_document_id": null,
+        "last_answer": {
+          "content": "주택임대차보호법 제6조의3에 따르면  \n\n언제: 임대차계약이 끝나기 6개월 전부터 2개월 전까지 계약갱신을 요청할 수 있습니다.  \n어떻게: 구두, 문자메시지, 이메일 등으로 요청할 수 있으며, 분쟁에 대비하려면 내용증명이나 우편 등 의사전달을 입증할 수 있는 수단을 사용하는 것이 좋습니다.  \n확인할 사항: 임대인에게 정당한 거절사유가 없는지, 임차인의 계약갱신요구권이 행사되었는지 확인해야 합니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "주택임대차보호법 제6조의3(계약갱신 요구 등)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의3",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제6조의3#0"
+            },
+            {
+              "label": "주택임대차보호법 제6조의2(묵시적 갱신의 경우 계약의 해지)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의2",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제6조의2#0"
+            },
+            {
+              "label": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조",
+              "doc_type": "decree",
+              "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0"
+            },
+            {
+              "label": "민법 제627조(일부멸실 등과 감액청구, 해지권)",
+              "url": "https://www.law.go.kr/법령/민법/제627조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제627조#0"
+            },
+            {
+              "label": "민법 제640조(차임연체와 해지)",
+              "url": "https://www.law.go.kr/법령/민법/제640조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제640조#0"
+            },
+            {
+              "label": "민법 제623조(임대인의 의무)",
+              "url": "https://www.law.go.kr/법령/민법/제623조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제623조#0"
+            },
+            {
+              "label": "문화체육관광부 안내",
+              "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148876914",
+              "doc_type": "guide",
+              "chunk_id": "dialogue-renewal-method-20200901"
+            },
+            {
+              "label": "법제처 안내",
+              "url": "https://www.easylaw.go.kr/CSP/CnpClsMain.laf?ccfNo=4&cciNo=4&cnpClsNo=1&csmSeq=629",
+              "doc_type": "guide",
+              "chunk_id": "dialogue-renewal-timing-20260916"
+            }
+          ],
+          "turn": 1,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 계약갱신\n질문 목적: 진행 절차: 요청 시기, 전달 방법, 실행 순서, 확인 항목\n계약 유형: 월세\n계약 종료 여부: 아니요\n사용자 입력: 지금 살고 싶은 월세집의 계약이 끝나가는데 계약 갱신은 어떻게 해?",
+          "request": "지금 살고 싶은 월세집의 계약이 끝나가는데 계약 갱신은 어떻게 해?"
+        },
+        "last_status": "answered",
+        "clarification_counts": {
+          "end_date": 1
+        }
+      }
+    },
+    {
+      "user": "계약 만료일은 2026년 12월 31일이야.",
+      "seconds": 77.74,
+      "proposal": "{\"intent\": \"clarification_answer\", \"topic\": \"계약갱신\", \"purpose\": \"general\", \"action\": \"rag\", \"statements\": [{\"evidence\": \"계약 만료일은 2026년 12월 31일이야\", \"field\": \"end_date\", \"value\": \"2026년 12월 31일\"}], \"clarify_field\": \"landlord_notified\", \"document_id\": null, \"style\": \"standard\"}",
+      "message": {
+        "id": "16c5648ab7414974af7e637df8705fb8",
+        "role": "assistant",
+        "status": "abstained",
+        "content": "생성된 답변이 검색 근거와 일치하는지 충분히 확인하지 못해 답변을 보류했습니다. 질문을 조금 더 구체적으로 바꿔 다시 물어봐 주세요.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [
+          {
+            "label": "주택임대차보호법 제6조의2(묵시적 갱신의 경우 계약의 해지)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의2",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제6조의2#0"
+          },
+          {
+            "label": "주택임대차보호법 제6조의3(계약갱신 요구 등)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의3",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제6조의3#0"
+          },
+          {
+            "label": "주택임대차보호법 제6조(계약의 갱신)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제6조#0"
+          },
+          {
+            "label": "민법 제640조(차임연체와 해지)",
+            "url": "https://www.law.go.kr/법령/민법/제640조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제640조#0"
+          },
+          {
+            "label": "민법 제627조(일부멸실 등과 감액청구, 해지권)",
+            "url": "https://www.law.go.kr/법령/민법/제627조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제627조#0"
+          },
+          {
+            "label": "민법 제626조(임차인의 상환청구권)",
+            "url": "https://www.law.go.kr/법령/민법/제626조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제626조#0"
+          },
+          {
+            "label": "문화체육관광부 안내",
+            "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148876914",
+            "doc_type": "guide",
+            "chunk_id": "dialogue-renewal-method-20200901"
+          },
+          {
+            "label": "법제처 안내",
+            "url": "https://www.easylaw.go.kr/CSP/CnpClsMain.laf?ccfNo=4&cciNo=4&cnpClsNo=1&csmSeq=629",
+            "doc_type": "guide",
+            "chunk_id": "dialogue-renewal-timing-20260916"
+          }
+        ],
+        "context_content": "",
+        "used_history": true,
+        "elapsed_seconds": 77.7,
+        "reason": "validation_failed",
+        "followup_question": "임대인에게 의사를 알리셨나요?",
+        "choices": [
+          {
+            "label": "예",
+            "message": "예"
+          },
+          {
+            "label": "아니요",
+            "message": "아니요"
+          },
+          {
+            "label": "모르겠어요",
+            "message": "모르겠어요"
+          }
+        ],
+        "action": "rag",
+        "intent": "clarification_answer"
+      },
+      "answers": [
+        {
+          "question": "대화 주제: 계약갱신\n계약 유형: 월세\n계약 종료일: 2026년 12월 31일\n계약 종료 여부: 아니요\n이어서 상담할 사용자 질문: 지금 살고 싶은 월세집의 계약이 끝나가는데 계약 갱신은 어떻게 해?\n사용자 입력: 계약 만료일은 2026년 12월 31일이야.",
+          "status": "abstained",
+          "text": "생성된 답변이 검색 근거와 일치하는지 충분히 확인하지 못해 답변을 보류했습니다. 질문을 조금 더 구체적으로 바꿔 다시 물어봐 주세요.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "raw_text": "",
+          "laws": [
+            {
+              "rank": 1,
+              "chunk_id": "law-주택임대차보호법-20260102#제6조의2#0",
+              "doc_type": "law",
+              "citation": "주택임대차보호법 제6조의2(묵시적 갱신의 경우 계약의 해지)",
+              "text": "[주택임대차보호법 제6조의2(묵시적 갱신의 경우 계약의 해지)]\n① 제6조제1항에 따라 계약이 갱신된 경우 같은 조 제2항에도 불구하고 임차인은 언제든지 임대인에게 계약해지(契約解止)를 통지할 수 있다. \n② 제1항에 따른 해지는 임대인이 그 통지를 받은 날부터 3개월이 지나면 그 효력이 발생한다.",
+              "score": 0.2917,
+              "source_url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의2"
+            },
+            {
+              "rank": 2,
+              "chunk_id": "law-주택임대차보호법-20260102#제6조의3#0",
+              "doc_type": "law",
+              "citation": "주택임대차보호법 제6조의3(계약갱신 요구 등)",
+              "text": "[주택임대차보호법 제6조의3(계약갱신 요구 등)]\n① 제6조에도 불구하고 임대인은 임차인이 제6조제1항 전단의 기간 이내에 계약갱신을 요구할 경우 정당한 사유 없이 거절하지 못한다. 다만, 다음 각 호의 어느 하나에 해당하는 경우에는 그러하지 아니하다.\n1. 임차인이 2기의 차임액에 해당하는 금액에 이르도록 차임을 연체한 사실이 있는 경우\n2. 임차인이 거짓이나 그 밖의 부정한 방법으로 임차한 경우\n3. 서로 합의하여 임대인이 임차인에게 상당한 보상을 제공한 경우\n4. 임차인이 임대인의 동의 없이 목적 주택의 전부 또는 일부를 전대(轉貸)한 경우\n5. 임차인이 임차한 주택의 전부 또는 일부를 고의나 중대한 과실로 파손한 경우\n6. 임차한 주택의 전부 또는 일부가 멸실되어 임대차의 목적을 달성하지 못할 경우\n7. 임대인이 다음 각 목의 어느 하나에 해당하는 사유로 목적 주택의 전부 또는 대부분을 철거하거나 재건축하기 위하여 목적 주택의 점유를 회복할 필요가 있는 경우\n가. 임대차계약 체결 당시 공사시기 및 소요기간 등을 포함한 철거 또는 재건축 계획을 임차인에게 구체적으로 고지하고 그 계획에 따르는 경우\n나. 건물이 노후ㆍ훼손 또는 일부 멸실되는 등 안전사고의 우려가 있는 경우\n다. 다른 법령에 따라 철거 또는 재건축이 이루어지는 경우\n8. 임대인(임대인의 직계존속ㆍ직계비속을 포함한다)이 목적 주택에 실제 거주하려는 경우\n9. 그 밖에 임차인이 임차인으로서의 의무를 현저히 위반하거나 임대차를 계속하기 어려운 중대한 사유가 있는 경우\n② 임차인은 제1항에 따른 계약갱신요구권을 1회에 한하여 행사할 수 있다. 이 경우 갱신되는 임대차의 존속기간은 2년으로 본다.\n③ 갱신되는 임대차는 전 임대차와 동일한 조건으로 다시 계약된 것으로 본다. 다만, 차임과 보증금은 제7조의 범위에서 증감할 수 있다.\n④ 제1항에 따라 갱신되는 임대차의 해지에 관하여는 제6조의2를 준용한다.\n⑤ 임대인이 제1항제8호의 사유로 갱신을 거절하였음에도 불구하고 갱신요구가 거절되지 아니하였더라면 갱신되었을 기간이 만료되기 전에 정당한 사유 없이 제3자에게 목적 주택을 임대한 경우 임대인은 갱신거절로 인하여 임차인이 입은 손해를 배상하여야 한다.\n⑥ 제5항에 따른 손해배상액은 거절 당시 당사자 간에 손해배상액의 예정에 관한 합의가 이루어지지 않는 한 다음 각 호의 금액 중 큰 금액으로 한다.\n1. 갱신거절 당시 월차임(차임 외에 보증금이 있는 경우에는 그 보증금을 제7조의2 각 호 중 낮은 비율에 따라 월 단위의 차임으로 전환한 금액을 포함한다. 이하 “환산월차임”이라 한다)의 3개월분에 해당하는 금액\n2. 임대인이 제3자에게 임대하여 얻은 환산월차임과 갱신거절 당시 환산월차임 간 차액의 2년분에 해당하는 금액\n3. 제1항제8호의 사유로 인한 갱신거절로 인하여 임차인이 입은 손해액",
+              "score": 0.2917,
+              "source_url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의3"
+            },
+            {
+              "rank": 3,
+              "chunk_id": "law-주택임대차보호법-20260102#제6조#0",
+              "doc_type": "law",
+              "citation": "주택임대차보호법 제6조(계약의 갱신)",
+              "text": "[주택임대차보호법 제6조(계약의 갱신)]\n① 임대인이 임대차기간이 끝나기 6개월 전부터 2개월 전까지의 기간에 임차인에게 갱신거절(更新拒絶)의 통지를 하지 아니하거나 계약조건을 변경하지 아니하면 갱신하지 아니한다는 뜻의 통지를 하지 아니한 경우에는 그 기간이 끝난 때에 전 임대차와 동일한 조건으로 다시 임대차한 것으로 본다. 임차인이 임대차기간이 끝나기 2개월 전까지 통지하지 아니한 경우에도 또한 같다. \n② 제1항의 경우 임대차의 존속기간은 2년으로 본다. \n③ 2기(期)의 차임액(借賃額)에 달하도록 연체하거나 그 밖에 임차인으로서의 의무를 현저히 위반한 임차인에 대하여는 제1항을 적용하지 아니한다.",
+              "score": 0.2429,
+              "source_url": "https://www.law.go.kr/법령/주택임대차보호법/제6조"
+            }
+          ],
+          "cases": [],
+          "guides": [
+            {
+              "rank": 1,
+              "chunk_id": "dialogue-renewal-method-20200901",
+              "doc_type": "guide",
+              "citation": "문화체육관광부 안내",
+              "text": "계약갱신요구권 행사 방법은 구두·문자메시지·이메일도 가능하다. 분쟁에 대비하려면 내용증명이나 우편처럼 의사 전달을 입증할 기록이 남는 수단을 고려한다. 이 안내는 전달 수단에 관한 설명이며 개별 계약의 갱신 가능 여부를 확정하지 않는다.",
+              "score": 1.0,
+              "source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148876914"
+            },
+            {
+              "rank": 2,
+              "chunk_id": "dialogue-renewal-timing-20260916",
+              "doc_type": "guide",
+              "citation": "법제처 안내",
+              "text": "주택 임대차는 당사자 간 합의 또는 법에서 정한 요건에 따라 갱신될 수 있다. 2020년 12월 10일 이후 최초로 체결되거나 갱신된 임대차에서 임차인의 계약갱신요구권 행사 기간은 임대차 기간이 끝나기 6개월 전부터 2개월 전까지이다. 이 권리는 1회 행사할 수 있고 갱신 기간은 2년이다. 임대인에게 정당한 거절 사유가 있으면 갱신이 거절될 수 있다. 묵시적 갱신은 계약갱신요구권의 명확한 행사와 구분된다. 종료일, 이전 권리 행사 여부, 당사자가 주고받은 갱신·거절·조건 변경 통지를 확인해야 적용 가능한 방식을 구분할 수 있다.",
+              "score": 1.0,
+              "source_url": "https://www.easylaw.go.kr/CSP/CnpClsMain.laf?ccfNo=4&cciNo=4&cnpClsNo=1&csmSeq=629"
+            }
+          ],
+          "document_evidences": [],
+          "requires_official_citation": true,
+          "validation_mode": "deterministic",
+          "civil_laws": [
+            {
+              "rank": 1,
+              "chunk_id": "law-민법-20260317#제640조#0",
+              "doc_type": "law",
+              "citation": "민법 제640조(차임연체와 해지)",
+              "text": "[민법 제640조(차임연체와 해지)]\n건물 기타 공작물의 임대차에는 임차인의 차임연체액이 2기의 차임액에 달하는 때에는 임대인은 계약을 해지할 수 있다.",
+              "score": 0.2917,
+              "source_url": "https://www.law.go.kr/법령/민법/제640조"
+            },
+            {
+              "rank": 2,
+              "chunk_id": "law-민법-20260317#제627조#0",
+              "doc_type": "law",
+              "citation": "민법 제627조(일부멸실 등과 감액청구, 해지권)",
+              "text": "[민법 제627조(일부멸실 등과 감액청구, 해지권)]\n①임차물의 일부가 임차인의 과실없이 멸실 기타 사유로 인하여 사용, 수익할 수 없는 때에는 임차인은 그 부분의 비율에 의한 차임의 감액을 청구할 수 있다.\n②전항의 경우에 그 잔존부분으로 임차의 목적을 달성할 수 없는 때에는 임차인은 계약을 해지할 수 있다.",
+              "score": 0.2679,
+              "source_url": "https://www.law.go.kr/법령/민법/제627조"
+            },
+            {
+              "rank": 3,
+              "chunk_id": "law-민법-20260317#제626조#0",
+              "doc_type": "law",
+              "citation": "민법 제626조(임차인의 상환청구권)",
+              "text": "[민법 제626조(임차인의 상환청구권)]\n①임차인이 임차물의 보존에 관한 필요비를 지출한 때에는 임대인에 대하여 그 상환을 청구할 수 있다.\n②임차인이 유익비를 지출한 경우에는 임대인은 임대차종료시에 그 가액의 증가가 현존한 때에 한하여 임차인의 지출한 금액이나 그 증가액을 상환하여야 한다. 이 경우에 법원은 임대인의 청구에 의하여 상당한 상환기간을 허여할 수 있다.",
+              "score": 0.43333333333333335,
+              "source_url": "https://www.law.go.kr/법령/민법/제626조"
+            }
+          ]
+        }
+      ],
+      "dialogue": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 0,
+        "topic": "계약갱신",
+        "facts": {
+          "contract_type": {
+            "value": "월세",
+            "evidence": "월세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "아니요",
+            "evidence": "계약이 끝나가는데",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "end_date": {
+            "value": "2026년 12월 31일",
+            "evidence": "계약 만료일은 2026년 12월 31일이야",
+            "source_turn": 2,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "지금 살고 싶은 월세집의 계약이 끝나가는데 계약 갱신은 어떻게 해?"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "계약 만료일은 2026년 12월 31일이야."
+          }
+        ],
+        "changes": [],
+        "pending": {
+          "field": "landlord_notified",
+          "question": "임대인에게 의사를 알리셨나요?",
+          "attempts": 1,
+          "choices": [
+            {
+              "label": "예",
+              "message": "예"
+            },
+            {
+              "label": "아니요",
+              "message": "아니요"
+            },
+            {
+              "label": "모르겠어요",
+              "message": "모르겠어요"
+            }
+          ],
+          "request": "지금 살고 싶은 월세집의 계약이 끝나가는데 계약 갱신은 어떻게 해?",
+          "epoch": 0,
+          "topic": "계약갱신",
+          "document_id": null,
+          "mode": "after_answer",
+          "message_id": "16c5648ab7414974af7e637df8705fb8"
+        },
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": "abstained",
+        "clarification_counts": {
+          "end_date": 1,
+          "landlord_notified": 1
+        }
+      }
+    },
+    {
+      "user": "그럼 문자로 갱신 요청해도 돼?",
+      "seconds": 54.16,
+      "proposal": "{\"intent\": \"followup\", \"topic\": \"계약갱신\", \"purpose\": \"eligibility\", \"action\": \"rag\", \"statements\": [], \"clarify_field\": null, \"document_id\": null, \"style\": \"standard\"}",
+      "message": {
+        "id": "350c279d980146a6868c9e3d5dcd4b53",
+        "role": "assistant",
+        "status": "answered",
+        "content": "주택임대차보호법 제6조의3에 따르면, 임차인은 계약갱신요구권을 행사할 수 있으며, 이는 문자로 갱신 요청하는 방법도 가능합니다. 문화체육관광부 안내에 따르면, 계약갱신요구권은 구두·문자메시지·이메일 등 다양한 수단으로 행사할 수 있으며, 분쟁에 대비하려면 의사 전달을 입증할 수 있는 수단을 고려하는 것이 좋습니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+        "sources": [
+          {
+            "label": "주택임대차보호법 제6조의3(계약갱신 요구 등)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의3",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제6조의3#0"
+          },
+          {
+            "label": "주택임대차보호법 제6조(계약의 갱신)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조",
+            "doc_type": "law",
+            "chunk_id": "law-주택임대차보호법-20260102#제6조#0"
+          },
+          {
+            "label": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+            "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조",
+            "doc_type": "decree",
+            "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0"
+          },
+          {
+            "label": "민법 제627조(일부멸실 등과 감액청구, 해지권)",
+            "url": "https://www.law.go.kr/법령/민법/제627조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제627조#0"
+          },
+          {
+            "label": "민법 제640조(차임연체와 해지)",
+            "url": "https://www.law.go.kr/법령/민법/제640조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제640조#0"
+          },
+          {
+            "label": "민법 제626조(임차인의 상환청구권)",
+            "url": "https://www.law.go.kr/법령/민법/제626조",
+            "doc_type": "law",
+            "chunk_id": "law-민법-20260317#제626조#0"
+          },
+          {
+            "label": "문화체육관광부 안내",
+            "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148876914",
+            "doc_type": "guide",
+            "chunk_id": "dialogue-renewal-method-20200901"
+          },
+          {
+            "label": "법제처 안내",
+            "url": "https://www.easylaw.go.kr/CSP/CnpClsMain.laf?ccfNo=4&cciNo=4&cnpClsNo=1&csmSeq=629",
+            "doc_type": "guide",
+            "chunk_id": "dialogue-renewal-timing-20260916"
+          }
+        ],
+        "context_content": "주택임대차보호법 제6조의3에 따르면, 임차인은 계약갱신요구권을 행사할 수 있으며, 이는 문자로 갱신 요청하는 방법도 가능합니다. 문화체육관광부 안내에 따르면, 계약갱신요구권은 구두·문자메시지·이메일 등 다양한 수단으로 행사할 수 있으며, 분쟁에 대비하려면 의사 전달을 입증할 수 있는 수단을 고려하는 것이 좋습니다.",
+        "used_history": true,
+        "elapsed_seconds": 54.2,
+        "reason": "answered",
+        "action": "rag",
+        "intent": "followup"
+      },
+      "answers": [
+        {
+          "question": "대화 주제: 계약갱신\n질문 목적: 이번 질문에서 묻는 구체적인 행동이나 방법의 가능 여부와 조건\n계약 유형: 월세\n계약 종료일: 2026년 12월 31일\n계약 종료 여부: 아니요\n사용자 입력: 그럼 문자로 갱신 요청해도 돼?",
+          "status": "answered",
+          "text": "주택임대차보호법 제6조의3에 따르면, 임차인은 계약갱신요구권을 행사할 수 있으며, 이는 문자로 갱신 요청하는 방법도 가능합니다. 문화체육관광부 안내에 따르면, 계약갱신요구권은 구두·문자메시지·이메일 등 다양한 수단으로 행사할 수 있으며, 분쟁에 대비하려면 의사 전달을 입증할 수 있는 수단을 고려하는 것이 좋습니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "raw_text": "주택임대차보호법 제6조의3에 따르면, 임차인은 계약갱신요구권을 행사할 수 있으며, 이는 문자로 갱신 요청하는 방법도 가능합니다. 문화체육관광부 안내에 따르면, 계약갱신요구권은 구두·문자메시지·이메일 등 다양한 수단으로 행사할 수 있으며, 분쟁에 대비하려면 의사 전달을 입증할 수 있는 수단을 고려하는 것이 좋습니다.",
+          "laws": [
+            {
+              "rank": 1,
+              "chunk_id": "law-주택임대차보호법-20260102#제6조의3#0",
+              "doc_type": "law",
+              "citation": "주택임대차보호법 제6조의3(계약갱신 요구 등)",
+              "text": "[주택임대차보호법 제6조의3(계약갱신 요구 등)]\n① 제6조에도 불구하고 임대인은 임차인이 제6조제1항 전단의 기간 이내에 계약갱신을 요구할 경우 정당한 사유 없이 거절하지 못한다. 다만, 다음 각 호의 어느 하나에 해당하는 경우에는 그러하지 아니하다.\n1. 임차인이 2기의 차임액에 해당하는 금액에 이르도록 차임을 연체한 사실이 있는 경우\n2. 임차인이 거짓이나 그 밖의 부정한 방법으로 임차한 경우\n3. 서로 합의하여 임대인이 임차인에게 상당한 보상을 제공한 경우\n4. 임차인이 임대인의 동의 없이 목적 주택의 전부 또는 일부를 전대(轉貸)한 경우\n5. 임차인이 임차한 주택의 전부 또는 일부를 고의나 중대한 과실로 파손한 경우\n6. 임차한 주택의 전부 또는 일부가 멸실되어 임대차의 목적을 달성하지 못할 경우\n7. 임대인이 다음 각 목의 어느 하나에 해당하는 사유로 목적 주택의 전부 또는 대부분을 철거하거나 재건축하기 위하여 목적 주택의 점유를 회복할 필요가 있는 경우\n가. 임대차계약 체결 당시 공사시기 및 소요기간 등을 포함한 철거 또는 재건축 계획을 임차인에게 구체적으로 고지하고 그 계획에 따르는 경우\n나. 건물이 노후ㆍ훼손 또는 일부 멸실되는 등 안전사고의 우려가 있는 경우\n다. 다른 법령에 따라 철거 또는 재건축이 이루어지는 경우\n8. 임대인(임대인의 직계존속ㆍ직계비속을 포함한다)이 목적 주택에 실제 거주하려는 경우\n9. 그 밖에 임차인이 임차인으로서의 의무를 현저히 위반하거나 임대차를 계속하기 어려운 중대한 사유가 있는 경우\n② 임차인은 제1항에 따른 계약갱신요구권을 1회에 한하여 행사할 수 있다. 이 경우 갱신되는 임대차의 존속기간은 2년으로 본다.\n③ 갱신되는 임대차는 전 임대차와 동일한 조건으로 다시 계약된 것으로 본다. 다만, 차임과 보증금은 제7조의 범위에서 증감할 수 있다.\n④ 제1항에 따라 갱신되는 임대차의 해지에 관하여는 제6조의2를 준용한다.\n⑤ 임대인이 제1항제8호의 사유로 갱신을 거절하였음에도 불구하고 갱신요구가 거절되지 아니하였더라면 갱신되었을 기간이 만료되기 전에 정당한 사유 없이 제3자에게 목적 주택을 임대한 경우 임대인은 갱신거절로 인하여 임차인이 입은 손해를 배상하여야 한다.\n⑥ 제5항에 따른 손해배상액은 거절 당시 당사자 간에 손해배상액의 예정에 관한 합의가 이루어지지 않는 한 다음 각 호의 금액 중 큰 금액으로 한다.\n1. 갱신거절 당시 월차임(차임 외에 보증금이 있는 경우에는 그 보증금을 제7조의2 각 호 중 낮은 비율에 따라 월 단위의 차임으로 전환한 금액을 포함한다. 이하 “환산월차임”이라 한다)의 3개월분에 해당하는 금액\n2. 임대인이 제3자에게 임대하여 얻은 환산월차임과 갱신거절 당시 환산월차임 간 차액의 2년분에 해당하는 금액\n3. 제1항제8호의 사유로 인한 갱신거절로 인하여 임차인이 입은 손해액",
+              "score": 0.3333,
+              "source_url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의3"
+            },
+            {
+              "rank": 2,
+              "chunk_id": "law-주택임대차보호법-20260102#제6조#0",
+              "doc_type": "law",
+              "citation": "주택임대차보호법 제6조(계약의 갱신)",
+              "text": "[주택임대차보호법 제6조(계약의 갱신)]\n① 임대인이 임대차기간이 끝나기 6개월 전부터 2개월 전까지의 기간에 임차인에게 갱신거절(更新拒絶)의 통지를 하지 아니하거나 계약조건을 변경하지 아니하면 갱신하지 아니한다는 뜻의 통지를 하지 아니한 경우에는 그 기간이 끝난 때에 전 임대차와 동일한 조건으로 다시 임대차한 것으로 본다. 임차인이 임대차기간이 끝나기 2개월 전까지 통지하지 아니한 경우에도 또한 같다. \n② 제1항의 경우 임대차의 존속기간은 2년으로 본다. \n③ 2기(期)의 차임액(借賃額)에 달하도록 연체하거나 그 밖에 임차인으로서의 의무를 현저히 위반한 임차인에 대하여는 제1항을 적용하지 아니한다.",
+              "score": 0.2361,
+              "source_url": "https://www.law.go.kr/법령/주택임대차보호법/제6조"
+            },
+            {
+              "rank": 3,
+              "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0",
+              "doc_type": "decree",
+              "citation": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+              "text": "[주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)]\n① 제5조제1호 또는 제5호에 해당하는 자는 법 제3조의6제3항에 따라 확정일자부여기관에 해당 임대차계약(제5조제5호에 해당하는 자의 경우에는 갱신요구가 거절되지 않았더라면 갱신되었을 기간 중에 존속하는 임대차계약을 말한다)에 관한 다음 각 호의 사항의 열람 또는 그 내용을 기록한 서면의 교부를 요청할 수 있다. \n1. 임대차목적물\n2. 임대인ㆍ임차인의 인적사항(제5조제5호에 해당하는 자는 임대인ㆍ임차인의 성명, 법인명 또는 단체명으로 한정한다)\n3. 확정일자 부여일\n4. 차임ㆍ보증금\n5. 임대차기간\n② 제5조제2호부터 제4호까지 또는 제6호의 어느 하나에 해당하는 자이거나 임대차계약을 체결하려는 자는 법 제3조의6제3항 또는 제4항에 따라 확정일자부여기관에 다음 각 호의 사항의 열람 또는 그 내용을 기록한 서면의 교부를 요청할 수 있다. \n1. 임대차목적물\n2. 확정일자 부여일\n3. 차임ㆍ보증금\n4. 임대차기간\n③ 제1항 및 제2항에서 규정한 사항 외에 정보제공 요청에 필요한 사항은 법무부령으로 정한다.\n[종전 제6조는 제13조로 이동 <2013. 12. 30.>]",
+              "score": 0.2361,
+              "source_url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조"
+            }
+          ],
+          "cases": [],
+          "guides": [
+            {
+              "rank": 1,
+              "chunk_id": "dialogue-renewal-method-20200901",
+              "doc_type": "guide",
+              "citation": "문화체육관광부 안내",
+              "text": "계약갱신요구권 행사 방법은 구두·문자메시지·이메일도 가능하다. 분쟁에 대비하려면 내용증명이나 우편처럼 의사 전달을 입증할 기록이 남는 수단을 고려한다. 이 안내는 전달 수단에 관한 설명이며 개별 계약의 갱신 가능 여부를 확정하지 않는다.",
+              "score": 1.0,
+              "source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148876914"
+            },
+            {
+              "rank": 2,
+              "chunk_id": "dialogue-renewal-timing-20260916",
+              "doc_type": "guide",
+              "citation": "법제처 안내",
+              "text": "주택 임대차는 당사자 간 합의 또는 법에서 정한 요건에 따라 갱신될 수 있다. 2020년 12월 10일 이후 최초로 체결되거나 갱신된 임대차에서 임차인의 계약갱신요구권 행사 기간은 임대차 기간이 끝나기 6개월 전부터 2개월 전까지이다. 이 권리는 1회 행사할 수 있고 갱신 기간은 2년이다. 임대인에게 정당한 거절 사유가 있으면 갱신이 거절될 수 있다. 묵시적 갱신은 계약갱신요구권의 명확한 행사와 구분된다. 종료일, 이전 권리 행사 여부, 당사자가 주고받은 갱신·거절·조건 변경 통지를 확인해야 적용 가능한 방식을 구분할 수 있다.",
+              "score": 1.0,
+              "source_url": "https://www.easylaw.go.kr/CSP/CnpClsMain.laf?ccfNo=4&cciNo=4&cnpClsNo=1&csmSeq=629"
+            }
+          ],
+          "document_evidences": [],
+          "requires_official_citation": true,
+          "validation_mode": "semantic",
+          "civil_laws": [
+            {
+              "rank": 1,
+              "chunk_id": "law-민법-20260317#제627조#0",
+              "doc_type": "law",
+              "citation": "민법 제627조(일부멸실 등과 감액청구, 해지권)",
+              "text": "[민법 제627조(일부멸실 등과 감액청구, 해지권)]\n①임차물의 일부가 임차인의 과실없이 멸실 기타 사유로 인하여 사용, 수익할 수 없는 때에는 임차인은 그 부분의 비율에 의한 차임의 감액을 청구할 수 있다.\n②전항의 경우에 그 잔존부분으로 임차의 목적을 달성할 수 없는 때에는 임차인은 계약을 해지할 수 있다.",
+              "score": 0.3095,
+              "source_url": "https://www.law.go.kr/법령/민법/제627조"
+            },
+            {
+              "rank": 2,
+              "chunk_id": "law-민법-20260317#제640조#0",
+              "doc_type": "law",
+              "citation": "민법 제640조(차임연체와 해지)",
+              "text": "[민법 제640조(차임연체와 해지)]\n건물 기타 공작물의 임대차에는 임차인의 차임연체액이 2기의 차임액에 달하는 때에는 임대인은 계약을 해지할 수 있다.",
+              "score": 0.2778,
+              "source_url": "https://www.law.go.kr/법령/민법/제640조"
+            },
+            {
+              "rank": 3,
+              "chunk_id": "law-민법-20260317#제626조#0",
+              "doc_type": "law",
+              "citation": "민법 제626조(임차인의 상환청구권)",
+              "text": "[민법 제626조(임차인의 상환청구권)]\n①임차인이 임차물의 보존에 관한 필요비를 지출한 때에는 임대인에 대하여 그 상환을 청구할 수 있다.\n②임차인이 유익비를 지출한 경우에는 임대인은 임대차종료시에 그 가액의 증가가 현존한 때에 한하여 임차인의 지출한 금액이나 그 증가액을 상환하여야 한다. 이 경우에 법원은 임대인의 청구에 의하여 상당한 상환기간을 허여할 수 있다.",
+              "score": 0.3968253968253968,
+              "source_url": "https://www.law.go.kr/법령/민법/제626조"
+            }
+          ]
+        }
+      ],
+      "dialogue": {
+        "version": 1,
+        "turn": 3,
+        "epoch": 0,
+        "topic": "계약갱신",
+        "facts": {
+          "contract_type": {
+            "value": "월세",
+            "evidence": "월세",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "contract_ended": {
+            "value": "아니요",
+            "evidence": "계약이 끝나가는데",
+            "source_turn": 1,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "end_date": {
+            "value": "2026년 12월 31일",
+            "evidence": "계약 만료일은 2026년 12월 31일이야",
+            "source_turn": 2,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "지금 살고 싶은 월세집의 계약이 끝나가는데 계약 갱신은 어떻게 해?"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "계약 만료일은 2026년 12월 31일이야."
+          },
+          {
+            "role": "user",
+            "turn": 3,
+            "content": "그럼 문자로 갱신 요청해도 돼?"
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": {
+          "content": "주택임대차보호법 제6조의3에 따르면, 임차인은 계약갱신요구권을 행사할 수 있으며, 이는 문자로 갱신 요청하는 방법도 가능합니다. 문화체육관광부 안내에 따르면, 계약갱신요구권은 구두·문자메시지·이메일 등 다양한 수단으로 행사할 수 있으며, 분쟁에 대비하려면 의사 전달을 입증할 수 있는 수단을 고려하는 것이 좋습니다.\n\n본 답변은 공식 법령·판례와 기관 안내 자료를 근거로 한 일반 정보이며 법률 자문이 아닙니다. 개별 사안은 대한법률구조공단(132) 등 공적 상담 창구에서 확인하세요.",
+          "sources": [
+            {
+              "label": "주택임대차보호법 제6조의3(계약갱신 요구 등)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조의3",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제6조의3#0"
+            },
+            {
+              "label": "주택임대차보호법 제6조(계약의 갱신)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법/제6조",
+              "doc_type": "law",
+              "chunk_id": "law-주택임대차보호법-20260102#제6조#0"
+            },
+            {
+              "label": "주택임대차보호법 시행령 제6조(요청할 수 있는 정보의 범위 및 제공방법)",
+              "url": "https://www.law.go.kr/법령/주택임대차보호법시행령/제6조",
+              "doc_type": "decree",
+              "chunk_id": "law-주택임대차보호법시행령-20260701#제6조#0"
+            },
+            {
+              "label": "민법 제627조(일부멸실 등과 감액청구, 해지권)",
+              "url": "https://www.law.go.kr/법령/민법/제627조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제627조#0"
+            },
+            {
+              "label": "민법 제640조(차임연체와 해지)",
+              "url": "https://www.law.go.kr/법령/민법/제640조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제640조#0"
+            },
+            {
+              "label": "민법 제626조(임차인의 상환청구권)",
+              "url": "https://www.law.go.kr/법령/민법/제626조",
+              "doc_type": "law",
+              "chunk_id": "law-민법-20260317#제626조#0"
+            },
+            {
+              "label": "문화체육관광부 안내",
+              "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148876914",
+              "doc_type": "guide",
+              "chunk_id": "dialogue-renewal-method-20200901"
+            },
+            {
+              "label": "법제처 안내",
+              "url": "https://www.easylaw.go.kr/CSP/CnpClsMain.laf?ccfNo=4&cciNo=4&cnpClsNo=1&csmSeq=629",
+              "doc_type": "guide",
+              "chunk_id": "dialogue-renewal-timing-20260916"
+            }
+          ],
+          "turn": 3,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 계약갱신\n질문 목적: 이번 질문에서 묻는 구체적인 행동이나 방법의 가능 여부와 조건\n계약 유형: 월세\n계약 종료일: 2026년 12월 31일\n계약 종료 여부: 아니요\n사용자 입력: 그럼 문자로 갱신 요청해도 돼?",
+          "request": "그럼 문자로 갱신 요청해도 돼?"
+        },
+        "last_status": "answered",
+        "clarification_counts": {
+          "end_date": 1,
+          "landlord_notified": 1
+        }
+      }
+    }
+  ],
+  "source_unchanged": true,
+  "checks": {
+    "first_answered": true,
+    "first_asks_end_date": true,
+    "all_answered": false
+  }
+}

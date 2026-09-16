@@ -254,15 +254,15 @@ def test_invalid_json_response_has_typed_contract_failure_and_no_retry():
     model.invoke.assert_called_once()
 
 
-def test_schema_requires_only_seven_model_fields_and_owned_document_ids():
+def test_schema_requires_purpose_and_owned_document_ids():
     schema = output_schema(["doc-a", "doc-b"])
 
     assert schema["type"] == "object"
     assert schema["additionalProperties"] is False
-    assert set(schema["required"]) == set(payload())
-    assert set(schema["properties"]) == set(payload())
+    assert set(schema["required"]) == set(payload()) | {"purpose"}
+    assert set(schema["properties"]) == set(payload()) | {"purpose"}
     assert set(schema["required"]) == {
-        "statements", "intent", "topic", "action", "clarify_field", "document_id", "style",
+        "statements", "intent", "topic", "purpose", "action", "clarify_field", "document_id", "style",
     }
     assert set(schema["properties"]["document_id"]["enum"]) == {None, "doc-a", "doc-b"}
     empty = output_schema([])
