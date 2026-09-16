@@ -14,6 +14,7 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.cidfonts import UnicodeCIDFont
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import HRFlowable, Paragraph, SimpleDocTemplate
+from django.utils import timezone
 
 
 GREEN = colors.HexColor("#24685C")
@@ -104,11 +105,12 @@ def render_report_pdf(report):
     case_title = str(report.case.title).strip()
     report_title = f"{case_title} 리포트" if case_title.endswith("상담") else f"{case_title} 상담 리포트"
     mode_label = "AI 요약" if report.generation_mode == "llm" else "기본 요약"
+    created_at = timezone.localtime(report.created_at)
     story = [
         Paragraph("LENS · LEASE EVIDENCE NAVIGATION SYSTEM", styles["kicker"]),
         Paragraph(_safe(report_title), styles["title"]),
         Paragraph(
-            f"버전 {report.version} · {report.created_at:%Y.%m.%d %H:%M} 생성 · {mode_label}",
+            f"버전 {report.version} · {created_at:%Y.%m.%d %H:%M} 생성 · {mode_label}",
             styles["meta"],
         ),
         HRFlowable(width="100%", thickness=.7, color=LINE, spaceAfter=5),

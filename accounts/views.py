@@ -5,6 +5,7 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.utils import timezone
+from django.db import transaction
 
 from .forms import SignUpForm
 
@@ -29,14 +30,18 @@ def claim_guest_conversation(request, user):
         for message in conversation.state.get("messages", [])
         if message.get("role") == "user" and message.get("content", "").strip()
     ]
-    case = None
-    if user_questions:
-        from cases.services.titles import title_from_question
-        case = ContractCase.objects.create(user=user, title=title_from_question(user_questions[0]))
-    conversation.user = user
-    conversation.case = case
-    conversation.expires_at = timezone.now() + timedelta(days=3650)
-    conversation.save(update_fields=("user", "case", "expires_at", "updated_at"))
+    with transaction.atomic():
+        case = None
+        if user_questions:
+            from cases.services.titles import title_from_question
+            case = ContractCase.objects.create(user=user, title=title_from_question(user_questions[0]))
+        conversation.user = user
+        conversation.case = case
+        conversation.expires_at = timezone.now() + (timedelta(days=3650) if case else timedelta(days=1))
+        conversation.save(update_fields=("user", "case", "expires_at", "updated_at"))
+        if case:
+            from cases.services.attachments import promote_pending_documents
+            promote_pending_documents(conversation, case)
     if case:
         request.session["lens_case_id"] = str(case.pk)
     else:
@@ -62,7 +67,7 @@ class ChatLoginView(LoginView):
 def signup(request):
     if request.user.is_authenticated:
         return redirect("chat:home")
-    form = SignUpForm(request.POST or None)
+    form = SignUpForm(request.POST if request.method == "POST" else None)
     if request.method == "POST" and form.is_valid():
         user = form.save()
         login(request, user)

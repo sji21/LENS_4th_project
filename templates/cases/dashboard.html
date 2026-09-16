@@ -42,6 +42,13 @@
           <div class="calendar-weekdays" aria-hidden="true"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div>
           <div id="calendar-grid" class="calendar-grid" role="grid" aria-label="전체 채팅방 월간 달력"></div>
           <div class="calendar-status"><span><i class="candidate-dot"></i>대화에서 찾음</span><span><i class="confirmed-dot"></i>확정</span></div>
+          <div class="calendar-review" aria-label="일정 후보 확인">
+            {% for row in calendar_events %}{% if row.event.status == 'candidate' %}
+              <div class="calendar-review-row"><span><i class="room-swatch room-color-{{ row.color_index }}"></i><strong>{{ row.event.title }}</strong><small>{{ row.event.starts_at|date:'Y.m.d' }} · {{ row.case.title }}</small></span>
+                <form method="post" action="{% url 'cases:update-event' row.case.pk row.event.pk %}">{% csrf_token %}<button name="action" value="confirm" type="submit">확정</button><button name="action" value="dismiss" type="submit">제외</button></form>
+              </div>
+            {% endif %}{% endfor %}
+          </div>
           <div id="calendar-events" hidden>
             {% for row in calendar_events %}<span data-calendar-event data-date="{{ row.event.starts_at|date:'Y-m-d' }}" data-time="{{ row.event.starts_at|date:'H:i' }}" data-status="{{ row.event.status }}" data-color="{{ row.color_index }}" data-room="{{ row.case.title }}" data-title="{{ row.event.title }}" data-description="{{ row.event.description }}"></span>{% endfor %}
           </div>

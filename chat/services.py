@@ -2,9 +2,9 @@
 from dataclasses import asdict
 from functools import lru_cache
 from hashlib import sha256
+import re
 import time
 import uuid
-import re
 
 from src.document_check.privacy import mask_sensitive_text
 from src.security.secret_filter import redact_secrets
@@ -38,21 +38,32 @@ def retrieval_loader():
 
 
 def initial_state():
-    return {"messages": [], "documents": [], "completed_requests": [], "dialogue": empty_dialogue()}
+    return {
+        "messages": [],
+        "documents": [],
+        "completed_requests": [],
+        "document_provenance_version": 1,
+        "dialogue": empty_dialogue(),
+    }
 
 
 def public_state(conversation):
     state = conversation.state
+    from copy import deepcopy
     from django.conf import settings
     from .dialogue_state import ensure_dialogue
-    from copy import deepcopy
+
     dialogue = ensure_dialogue(deepcopy(state))
     pending = dialogue["pending"]
     conversation_view = {
         "enabled": bool(getattr(settings, "CHAT_CONVERSATION_ENABLED", False)),
         "active_document_id": dialogue["active_document_id"],
         "can_rephrase": bool(dialogue["last_answer"]),
-        "pending": ({key: pending[key] for key in ("message_id", "question", "choices", "mode") if key in pending} if pending else None),
+        "pending": ({
+            key: pending[key]
+            for key in ("message_id", "question", "choices", "mode")
+            if key in pending
+        } if pending else None),
     }
     return {
         "conversation": conversation_view,
@@ -62,7 +73,7 @@ def public_state(conversation):
     }
 
 
-def add_document(state, filename, data, session_id, *, case=None, content_type=""):
+def add_document(state, filename, data, session_id, *, case=None, conversation=None, content_type=""):
     checksum = sha256(data).hexdigest()
     if any(d["checksum"] == checksum for d in state["documents"]):
         return "이미 추가된 문서입니다."
@@ -92,6 +103,12 @@ def add_document(state, filename, data, session_id, *, case=None, content_type="
             document=document, extracted_text=classified.extraction.text,
         )
         document["attachment_id"] = str(attachment.pk)
+    elif conversation is not None:
+        from cases.services.attachments import record_pending_document
+        record_pending_document(
+            conversation, data=data, filename=filename, content_type=content_type,
+            document_id=document_id,
+        )
     return "문서 분석을 완료했습니다."
 
 
@@ -178,7 +195,13 @@ def _respond_legacy(state, question, document_id=None):
         answer = graph.answer_question(resolved.standalone, service=retrieval_loader().result())
         used_history = resolved.used_history
     message = answer_message(answer, started, used_history)
-    append_exchange(state, question, message)
+    user_message = {"id": uuid.uuid4().hex, "role": "user", "content": question}
+    if use_document:
+        used_ids = [document_id] if document_id else [d["document_id"] for d in documents if d["kind"] == kind]
+        used_ids = [value for value in used_ids if value]
+        user_message["document_ids"] = used_ids
+        message["document_ids"] = used_ids
+    state["messages"].extend([user_message, message])
     return message
 
 
@@ -186,9 +209,11 @@ def answer_message(answer, started, used_history=False):
     # raw_text is never a fallback for an empty or rejected answer.
     content = safe_text((answer.text or "").strip()) or "답변 본문을 표시하지 못했습니다. 다시 질문해 주세요."
     if all(label in content for label in ("언제:", "어떻게:", "확인할 사항:")):
-        # Compute annotation offsets only after inserting display whitespace.
-        content = re.sub(r"\s*(\*\*)?(언제|어떻게|확인할 사항):",
-                         lambda m: ("\n\n" if m.start() else "") + (m[1] or "") + m[2] + ":", content)
+        content = re.sub(
+            r"\s*(\*\*)?(언제|어떻게|확인할 사항):",
+            lambda match: ("\n\n" if match.start() else "") + (match[1] or "") + match[2] + ":",
+            content,
+        )
     law_sources = answer.sources()
     for item in law_sources:
         item["url"] = item.get("url") or citation_url(item["label"], item["doc_type"])
@@ -204,18 +229,19 @@ def answer_message(answer, started, used_history=False):
 
 
 def append_exchange(state, question, message):
-    state["messages"].extend([
-        {"id": uuid.uuid4().hex, "role": "user", "content": question}, message,
-    ])
+    user_message = {"id": uuid.uuid4().hex, "role": "user", "content": question}
+    if message.get("document_ids"):
+        user_message["document_ids"] = list(message["document_ids"])
+    state["messages"].extend([user_message, message])
 
 
 def respond(state, question, document_id=None):
     from django.conf import settings
+
     if not getattr(settings, "CHAT_CONVERSATION_ENABLED", False):
         return _respond_legacy(state, question, document_id)
     from .dialogue_router import respond_conversational
     return respond_conversational(state, question, document_id, legacy=_respond_legacy)
-
 
 
 def sync_persistent_messages(conversation):

@@ -19,6 +19,10 @@ This file records the 4th project from its first change onward.
 
 - PATCH-050 Provide general guidance before one missing-fact question for personal renewal/deposit procedures. Add attributed renewal guidance as a conversation-only retrieval supplement, preserving legal validation and existing indexes. Reserve 8,192 context and 512 output tokens for conversational generation to avoid dropping instructions. A factual reply after verified guidance is saved and acknowledged before the next missing-fact question; substantive follow-ups still use RAG. (commit: `d649504`)
 
+### Fixed (Bug Fixes)
+
+- PATCH-052 fixes the PATCH-045 member-chat review findings while preserving PATCH-051 conversation and legal-evidence behavior. Member conversations, pending encrypted documents, completed checklist items, document provenance, and current guidance remain consistent during concurrent requests. Negative or uncertain mortgage statements are separated, report question/answer pairs stay aligned, report version conflicts are retried, calendar confirmation controls are available, and field-specific signup feedback clears when that field is edited. Focused Django tests: 153 passed. (commit: pending)
+
 ## 2026-09-15
 
 ### Added

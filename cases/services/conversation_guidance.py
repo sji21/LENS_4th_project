@@ -5,8 +5,12 @@ from hashlib import sha256
 import json
 import logging
 import re
+from concurrent.futures import ThreadPoolExecutor
+from collections import defaultdict
+from threading import Lock
 
-from django.db import transaction
+from django.db import close_old_connections, transaction
+from django.db.models import F
 from django.utils import timezone
 
 from cases.models import ChecklistItem, ScheduleEvent
@@ -15,6 +19,13 @@ from src.generation.llm import get_llm, strip_reasoning
 logger = logging.getLogger(__name__)
 MAX_MESSAGES = 30
 MAX_ITEMS = 8
+_GUIDANCE_EXECUTOR = ThreadPoolExecutor(max_workers=2, thread_name_prefix="lens-guidance")
+_GUIDANCE_LOCKS = defaultdict(Lock)
+
+
+def _messages_digest(messages):
+    payload = json.dumps(messages or [], ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return sha256(payload.encode("utf-8")).hexdigest()
 
 
 def conversation_messages(case, messages=None):
@@ -131,9 +142,9 @@ def _sync_checklist(case, items):
                 changed = True
         if changed:
             row.save()
-    case.checklist_items.filter(code__startswith="llm_").exclude(code__in=active_codes).delete()
-    # Remove the previous fixed-rule checklist after the first successful LLM refresh.
-    case.checklist_items.exclude(code__startswith="llm_").delete()
+    case.checklist_items.filter(
+        code__startswith="llm_", state=ChecklistItem.State.TODO,
+    ).exclude(code__in=active_codes).update(state=ChecklistItem.State.DISMISSED)
 
 
 @transaction.atomic
@@ -169,7 +180,14 @@ def _sync_calendar(case, items):
     case.schedule_events.filter(status=ScheduleEvent.Status.CANDIDATE).exclude(rule_code__startswith="llm_").delete()
 
 
-def refresh_conversation_guidance(case, *, messages=None, llm=None):
+@transaction.atomic
+def clear_generated_guidance(case):
+    """Remove guidance whose source can no longer be proven after document deletion."""
+    case.checklist_items.filter(code__startswith="llm_").delete()
+    case.schedule_events.filter(rule_code__startswith="llm_").delete()
+
+
+def refresh_conversation_guidance(case, *, messages=None, llm=None, freshness_guard=None):
     """Generate checklist and calendar candidates from one member-owned chat room."""
     dialogue = conversation_messages(case, messages)
     if not dialogue:
@@ -183,7 +201,7 @@ def refresh_conversation_guidance(case, *, messages=None, llm=None):
         "각 항목의 code는 같은 의미면 재생성해도 유지되는 짧은 영문 snake_case로 작성하세요. "
         "priority는 1~100이며 숫자가 작을수록 우선입니다. "
         "JSON 객체만 출력하세요. 형식: "
-        '{"checklist":[{"code":"registry_check","title":"...","description":"대화상 필요한 이유와 할 일","priority":10,"date":null}],' 
+        '{"checklist":[{"code":"registry_check","title":"...","description":"대화상 필요한 이유와 할 일","priority":10,"date":null}],'
         '"calendar":[{"code":"balance_registry_check","date":"YYYY-MM-DD","title":"...","description":"..."}]}\n'
         + json.dumps({"dialogue": dialogue}, ensure_ascii=False)
     )
@@ -192,10 +210,56 @@ def refresh_conversation_guidance(case, *, messages=None, llm=None):
         response = model.invoke(prompt)
         checklist, calendar = _parse_payload(getattr(response, "content", str(response)))
         calendar = _calendar_from_dated_checklists(checklist, calendar)
-        _sync_checklist(case, checklist)
-        _sync_calendar(case, calendar)
+        with _GUIDANCE_LOCKS[str(case.pk)], transaction.atomic():
+            from cases.models import ContractCase
+            locked_case = ContractCase.objects.select_for_update().get(pk=case.pk)
+            if freshness_guard is not None:
+                from chat.models import Conversation
+                conversation_id, expected_digest, expected_revision = freshness_guard
+                if locked_case.guidance_revision != expected_revision:
+                    return {"checklist": 0, "calendar": 0, "updated": False, "stale": True}
+                state = Conversation.objects.filter(pk=conversation_id).values_list("state", flat=True).first()
+                if state is None or _messages_digest(state.get("messages", [])) != expected_digest:
+                    return {"checklist": 0, "calendar": 0, "updated": False, "stale": True}
+            _sync_checklist(locked_case, checklist)
+            _sync_calendar(locked_case, calendar)
         return {"checklist": len(checklist), "calendar": len(calendar), "updated": True}
     except Exception as error:
         # A secondary personalization failure must not discard a verified chat answer.
         logger.warning("Conversation guidance refresh failed: %s", type(error).__name__)
         return {"checklist": case.checklist_items.count(), "calendar": case.schedule_events.count(), "updated": False}
+
+
+def _background_refresh(case_id, conversation_id, messages, expected_digest, expected_revision):
+    from cases.models import ContractCase
+    close_old_connections()
+    try:
+        case = ContractCase.objects.get(pk=case_id)
+        refresh_conversation_guidance(
+            case,
+            messages=messages,
+            freshness_guard=(conversation_id, expected_digest, expected_revision),
+        )
+    finally:
+        close_old_connections()
+
+
+def schedule_conversation_guidance(case, *, messages=None, conversation=None):
+    """Run the secondary LLM call after the chat transaction has committed."""
+    snapshot = json.loads(json.dumps(messages or [], ensure_ascii=False))
+    if conversation is None:
+        conversation = case.conversations.order_by("created_at").first()
+    if conversation is None:
+        return
+    expected_digest = _messages_digest(snapshot)
+    from cases.models import ContractCase
+    ContractCase.objects.filter(pk=case.pk).update(guidance_revision=F("guidance_revision") + 1)
+    expected_revision = ContractCase.objects.values_list("guidance_revision", flat=True).get(pk=case.pk)
+    transaction.on_commit(lambda: _GUIDANCE_EXECUTOR.submit(
+        _background_refresh,
+        case.pk,
+        conversation.pk,
+        snapshot,
+        expected_digest,
+        expected_revision,
+    ))

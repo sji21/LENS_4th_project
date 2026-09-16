@@ -14,6 +14,7 @@ class ContractCase(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="contract_cases")
     title = models.CharField(max_length=120)
     status = models.CharField(max_length=16, choices=Status.choices, default=Status.ACTIVE, db_index=True)
+    guidance_revision = models.PositiveBigIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
