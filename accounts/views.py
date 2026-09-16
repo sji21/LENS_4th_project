@@ -5,9 +5,10 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.utils import timezone
-from django.db import transaction
+from django.db import IntegrityError, transaction
 
 from .forms import SignUpForm
+from .models import User
 
 
 def claim_guest_conversation(request, user):
@@ -69,8 +70,19 @@ def signup(request):
         return redirect("chat:home")
     form = SignUpForm(request.POST if request.method == "POST" else None)
     if request.method == "POST" and form.is_valid():
-        user = form.save()
-        login(request, user)
-        claim_guest_conversation(request, user)
-        return redirect("chat:home")
+        try:
+            with transaction.atomic():
+                user = form.save()
+        except IntegrityError:
+            # The database constraint is the final guard when two requests race.
+            if User.objects.filter(email__iexact=form.cleaned_data["email"]).exists():
+                form.add_error("email", "이미 가입된 이메일입니다. 다른 이메일을 입력해 주세요.")
+            elif User.objects.filter(username__iexact=form.cleaned_data["username"]).exists():
+                form.add_error("username", "이미 사용 중인 아이디입니다. 다른 아이디를 입력해 주세요.")
+            else:
+                form.add_error(None, "회원가입 처리 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.")
+        else:
+            login(request, user)
+            claim_guest_conversation(request, user)
+            return redirect("chat:home")
     return render(request, "accounts/signup.html", {"form": form})

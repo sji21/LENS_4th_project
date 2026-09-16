@@ -9,10 +9,12 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ImproperlyConfigured
 from django.core.management import call_command
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.db import IntegrityError, transaction
 from django.utils import timezone
 
-from cases.models import Attachment, ChecklistItem, ContractCase, Report, ScheduleEvent
+from accounts.forms import SignUpForm
+from cases.models import Attachment, CaseFact, ChecklistItem, ContractCase, Report, ScheduleEvent
 from cases.services.attachments import (
     promote_pending_documents,
     record_document,
@@ -167,6 +169,49 @@ def test_done_and_fixed_checklist_items_are_preserved(case):
     assert ChecklistItem.objects.filter(pk=fixed.pk).exists()
 
 
+def test_dismissed_generated_checklist_items_are_not_counted_or_rendered(client, user, case):
+    ChecklistItem.objects.create(case=case, code="llm_old", title="이전 항목", state=ChecklistItem.State.DISMISSED)
+    client.force_login(user)
+    page = client.get("/cases/").content.decode()
+    assert "이전 항목" not in page
+
+
+def test_member_draft_keeps_one_day_expiry_after_upload_request(client, user, monkeypatch):
+    def fake_add_document(state, *_args, **_kwargs):
+        state["documents"].append({"document_id": "doc1", "kind": "contract"})
+        return "첨부됨"
+
+    monkeypatch.setattr("chat.services.add_document", fake_add_document)
+    client.force_login(user)
+    client.get("/")
+    conversation = Conversation.objects.get(user=user, case__isnull=True)
+    response = client.post("/api/documents/upload/", data={
+        "conversation_id": str(conversation.pk),
+        "request_id": "88888888-8888-8888-8888-888888888888",
+        "file": SimpleUploadedFile("contract.pdf", b"%PDF-1.4", content_type="application/pdf"),
+    })
+    assert response.status_code == 200
+    conversation.refresh_from_db()
+    assert timezone.now() + timedelta(hours=23) < conversation.expires_at < timezone.now() + timedelta(days=2)
+
+
+def test_signup_unique_constraint_race_returns_email_feedback(client, monkeypatch):
+    user_model = get_user_model()
+    original_save = SignUpForm.save
+
+    def racing_save(form, *args, **kwargs):
+        user_model.objects.create_user("race-winner", form.cleaned_data["email"], "Safe-password-123!")
+        return original_save(form, *args, **kwargs)
+
+    monkeypatch.setattr(SignUpForm, "save", racing_save)
+    response = client.post("/accounts/signup/", {
+        "username": "race-loser", "email": "race@example.com",
+        "password1": "Safe-password-123!", "password2": "Safe-password-123!",
+    })
+    assert response.status_code == 200
+    assert "이미 가입된 이메일입니다" in response.content.decode()
+
+
 @pytest.mark.parametrize("text, expected", [
     ("근저당은 없습니다.", False),
     ("근저당 말소가 완료됐습니다.", False),
@@ -318,6 +363,32 @@ def test_member_document_delete_removes_derived_messages(client, user, case, mon
     }), content_type="application/json")
     assert response.status_code == 200
     assert [message["id"] for message in response.json()["messages"]] == ["u2"]
+
+
+def test_member_document_delete_invalidates_removed_chat_facts(client, user, case, monkeypatch):
+    conversation = Conversation.objects.create(
+        user=user, case=case, expires_at=timezone.now() + timedelta(days=1),
+        state={"documents": [{"document_id": "doc1"}], "completed_requests": [],
+               "document_provenance_version": 1, "messages": [
+            {"id": "u1", "role": "user", "content": "문서 질문", "document_ids": ["doc1"]},
+        ]},
+    )
+    fact = CaseFact.objects.create(
+        case=case, key="deposit_amount", value_json=100, normalized_value="100",
+        source_type=CaseFact.SourceType.CHAT, source_ref="u1",
+    )
+    monkeypatch.setattr("cases.services.conversation_guidance.schedule_conversation_guidance", lambda *_args, **_kwargs: None)
+    client.force_login(user)
+    session = client.session
+    session["lens_conversation_id"] = str(conversation.pk)
+    session["lens_case_id"] = str(case.pk)
+    session.save()
+    response = client.post("/api/documents/doc1/delete/", data=json.dumps({
+        "conversation_id": str(conversation.pk), "request_id": "77777777-7777-7777-7777-777777777777",
+    }), content_type="application/json")
+    assert response.status_code == 200
+    fact.refresh_from_db()
+    assert fact.status == CaseFact.Status.INVALIDATED
 
 
 def test_mixed_legacy_document_delete_clears_unproven_history_and_guidance(client, user, case, monkeypatch):

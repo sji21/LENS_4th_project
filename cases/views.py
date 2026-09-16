@@ -49,7 +49,10 @@ def dashboard(request, case_id=None):
         "selected": selected,
         "rooms": rooms,
         "calendar_events": calendar_events,
-        "checklist_count": sum(case.checklist_items.count() for case in cases),
+        "checklist_count": sum(
+            case.checklist_items.exclude(state=ChecklistItem.State.DISMISSED).count()
+            for case in cases
+        ),
     })
 
 

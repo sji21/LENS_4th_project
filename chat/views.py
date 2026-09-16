@@ -185,8 +185,14 @@ def exclusive_conversation(request, payload):
             yield conversation, duplicate
             if not duplicate:
                 conversation.state["completed_requests"] = (conversation.state.get("completed_requests", []) + [request_id])[-32:]
-            expiry = (timezone.now() + timedelta(days=3650) if conversation.user_id
-                      else timezone.now() + timedelta(seconds=settings.CHAT_TTL_SECONDS))
+            # A member draft has no persistent case yet, so retain the one-day
+            # lifetime assigned at creation.  Only an actual room is long-lived.
+            if conversation.case_id:
+                expiry = timezone.now() + timedelta(days=3650)
+            elif conversation.user_id:
+                expiry = timezone.now() + timedelta(days=1)
+            else:
+                expiry = timezone.now() + timedelta(seconds=settings.CHAT_TTL_SECONDS)
             updated = Conversation.objects.filter(pk=conversation.pk, lease_token=token, busy_until__gt=timezone.now()).update(
                 state=conversation.state, expires_at=expiry,
             )
@@ -318,11 +324,18 @@ def delete_document(request, document_id):
                     message for message in messages
                     if document_id not in message.get("document_ids", [])
                 ] if provenance_complete else [])
+                removed_message_ids = [
+                    message.get("id") for message in messages
+                    if message.get("id") and message not in retained
+                ]
                 conversation.state["document_provenance_version"] = 1
                 conversation.state["messages"] = retained
                 Message.objects.filter(conversation=conversation).exclude(
                     public_id__in=[m.get("id") for m in retained if m.get("id")]
                 ).delete()
+                from cases.services.facts import invalidate_source
+                for message_id in removed_message_ids:
+                    invalidate_source(conversation.case, "chat", message_id)
                 clear_generated_guidance(conversation.case)
                 schedule_conversation_guidance(
                     conversation.case,
