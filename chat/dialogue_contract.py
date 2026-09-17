@@ -141,7 +141,7 @@ def _polarity_scope(field, evidence):
     if field == "landlord_notified":
         # A negative intention can be positively communicated: "갱신하지
         # 않겠다고 알렸어요". Check the notification, not its quoted content.
-        reported = re.search(r"(?:다고|라고)([^.!?\n]{0,20}(?:알리|알렸|알린|통지|통보|연락)[^.!?\n]*)", evidence)
+        reported = re.search(r"(?:다고|라고)([^.!?\n]{0,20}(?:알리|알렸|알린|알려|통지|통보|연락)[^.!?\n]*)", evidence)
         if reported:
             return reported.group(1)
     predicates = {
@@ -149,7 +149,7 @@ def _polarity_scope(field, evidence):
         "deposit_returned": r"받|반환",
         "living_in_property": r"살|거주",
         "moved_out": r"이사|퇴거|나가|나갔",
-        "landlord_notified": r"알리|알렸|알린|통지|통보|연락",
+        "landlord_notified": r"알리|알렸|알린|알려|통지|통보|연락",
     }
     # Split only past-tense 고 conjunctions; 살고/받고 있어요 stay intact.
     clauses = re.split(r"[,.;!?。\n]|는데|지만|으나|그리고|(?<=[았었했됐났렸])고(?=\s)", evidence)
@@ -192,13 +192,13 @@ def _check_meaning(field, value, evidence):
         short_positive = re.fullmatch(r"\s*(?:네|예|응|맞아|맞아요|맞습니다|그렇습니다)[.!?\s]*", evidence)
         short_negative = re.fullmatch(r"\s*(?:아니|아니요|아니오|아뇨|아닙니다)[.!?\s]*", evidence)
         if (field == "landlord_notified" and not short_positive and not short_negative
-                and not re.search(r"알리|알렸|알린|통지|통보|연락|전달|보냈|보내|말했|말하|요구|요청", scope)):
+                and not re.search(r"알리|알렸|알린|알려|통지|통보|연락|전달|보냈|보내|말했|말하|요구|요청", scope)):
             raise DecisionError("unstated_notification")
         if value == "예" and short_negative or value == "아니요" and short_positive:
             raise DecisionError("polarity")
         # Detect clear contradictions without claiming a complete Korean parser.
         # Negation of another fact in the same sentence does not negate this one.
-        if value == "예" and re.search(r"아니|않|못|모르|모름|미종료|미반환|안\s*(?:끝|받|살|나가|알렸)", scope):
+        if value == "예" and re.search(r"아니|않|못|모르|모름|미종료|미반환|안\s*(?:끝|받|살|나가|알렸|알려)", scope):
             raise DecisionError("polarity")
         if field == "contract_ended" and value == "예" and re.search(r"끝나\s*가|(?:종료|만료|만기).{0,6}예정|아직.{0,12}남", scope):
             raise DecisionError("polarity")

@@ -5,6 +5,12 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-17
+
+### Fixed (Bug Fixes)
+
+- PATCH-054 Continue missing-fact collection after a relative expiry answer even when the planner omits its next question. Prioritize the current substantive request over a preceding greeting. Recognize Korean inform-verb variants in notification statements while preserving negation checks. (commit: 8ed7546)
+
 ## 2026-09-16
 
 ### Added

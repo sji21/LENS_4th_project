@@ -74,7 +74,11 @@ def prepare_clarification(state, user, decision):
     """Return an executable decision and optional pending question, without writes."""
     # A concrete procedure request can be answered generally before collecting
     # dates. Never change ambiguous-document or explicit interview decisions.
-    if (decision.action == "rag" and decision.purpose == "procedure"
+    previous = ensure_dialogue(deepcopy(state))["pending"] or {}
+    answered_pending = (decision.intent == "clarification_answer" and decision.purpose == "general"
+                        and previous.get("mode") == "after_answer"
+                        and previous.get("field") in decision.updates)
+    if (decision.action == "rag" and (decision.purpose == "procedure" or answered_pending)
             and decision.intent in {"question", "followup", "clarification_answer"}
             and decision.clarify_field is None and decision.document_id is None):
         trial = deepcopy(state)

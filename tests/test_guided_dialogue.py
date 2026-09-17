@@ -181,3 +181,15 @@ def test_negative_notification_is_still_rejected_as_positive(phrase):
 def test_notification_channel_alone_is_not_a_reported_notification(value):
     with pytest.raises(DecisionError, match="unstated_notification"):
         _check_meaning("landlord_notified", value, "문자로")
+
+
+@pytest.mark.parametrize("phrase", ["아니 아직 알려주지 않았어", "아직 알려드리지 않았어요", "아직 안 알려줬어", "아직 못 알려줬어요"])
+def test_notification_negative_with_explanation_is_valid(phrase):
+    _check_meaning("landlord_notified", "아니요", phrase)
+    with pytest.raises(DecisionError, match="polarity"):
+        _check_meaning("landlord_notified", "예", phrase)
+
+
+@pytest.mark.parametrize("phrase", ["갱신하지 않겠다고 알려줬어요", "이사하지 않겠다고 알려드렸어요"])
+def test_negative_intention_can_be_reported_with_inform_variants(phrase):
+    _check_meaning("landlord_notified", "예", phrase)
