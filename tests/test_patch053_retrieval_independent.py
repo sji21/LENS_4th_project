@@ -234,3 +234,65 @@ def test_full_union_uses_one_existing_depth_search_per_member(k):
     assert actual == sorted(expected, key=lambda hit: (-hit[1], hit[0]))
     assert len(actual) == 2 * depth
     assert retriever._last == {"stale": ["must-not-enter"]}
+
+
+@pytest.mark.parametrize("question, expected", [
+    ("등록민간임대에서 재계약하면서 올린 임대료 인상 제한과 변경 신고에 필요한 서류를 알려주세요.",
+     {"private_report", "private_form"}),
+    ("등록민간임대에서 갱신한 뒤 임대료를 올렸습니다. 변경 신고에 필요한 서류는요?",
+     {"private_report", "private_form"}),
+    ("등록민간임대 재계약은 마쳤습니다. 임대료 인상 한도와 변경 신고 서식을 알려주세요.",
+     {"private_report", "private_form"}),
+    ("등록민간임대에서 재계약하면서 올린 임대료 한도만 알려주세요.", set()),
+    ("등록민간임대에서 재계약하면서 변경 신고 서류를 알려주세요.",
+     {"private_report", "private_form"}),
+    ("등록민간임대 계약 신고와 재계약 서류는 모두 제외하고 보증금 반환 절차만 알려주세요.", set()),
+    ("등록민간임대 계약 신고와 재계약 서류는 제외하고 보증금 반환 절차만 알려주세요.", set()),
+    ("등록민간임대 계약 신고, 재계약, 계약서 서식은 모두 묻지 않습니다. 반환 절차만 알려주세요.", set()),
+    ("등록민간임대의 계약 신고와 계약서 서류는 모두 제외하고 재계약 조건만 알려주세요.",
+     {"private_renewal"}),
+    ("등록민간임대 계약 신고와 재계약 서류는 모두 제외합니다. 다만 계약 신고 절차는 알려주세요.",
+     {"private_report"}),
+    ("등록민간임대의 신고 서류는 묻지 않습니다. 재계약 조건은 알려주세요.",
+     {"private_renewal"}),
+    ("등록민간임대의 계약 신고와 재계약 서류는 제외하지 말고 알려주세요.",
+     {"private_report", "private_renewal", "private_form"}),
+    ("전입신고 방법은 묻지 않습니다. 주민등록은 완료했습니다. 계약 해지 절차만 알려주세요.", set()),
+    ("주민등록은 완료했습니다. 전입신고 방법은 제외하고 계약 해지 절차만 알려주세요.", set()),
+    ("전입신고의 방법과 주민등록 절차는 모두 제외하고 보증금 반환 방법만 알려주세요.", set()),
+    ("전입신고 방법은 묻지 않습니다. 주민등록 기한만 알려주세요.", {"residence_procedure"}),
+    ("주민등록은 완료했습니다. 다른 집으로 이사할 때 전입신고를 다시 하려면 어디로 가나요?",
+     {"residence_procedure"}),
+    ("전입신고는 안 마쳤습니다. 주민등록 신청은 어디서 하나요?", {"residence_procedure"}),
+    ("등록민간임대 집이면 임대차 신고나 재계약할 때 일반 집이랑 다른 서류나 절차가 더 있나요?",
+     {"private_report", "private_renewal", "private_form"}),
+    ("등록민간임대에서 재계약 조건과 변경 신고에 필요한 서류를 알려주세요.",
+     {"private_report", "private_renewal", "private_form"}),
+    ("등록민간임대의 재계약과 계약 신고에 필요한 서류는요?",
+     {"private_report", "private_renewal", "private_form"}),
+    ("등록민간임대의 재계약 및 변경 신고 절차와 서류를 알려주세요.",
+     {"private_report", "private_renewal", "private_form"}),
+    ("등록민간임대 재계약 조건은 알려주세요, 계약 신고와 서류는 모두 제외합니다.",
+     {"private_renewal"}),
+])
+def test_review_reported_requests_keep_negation_and_background_in_their_own_scope(question, expected):
+    assert set(requested_law_intents(question)) == expected
+
+
+def test_review_background_renewal_cannot_evict_existing_rent_evidence(independent_intent_pool):
+    chunks, _ = independent_intent_pool
+    chunks[0] = _chunk("top", "제91조", "① 임대료 증액청구는 정해진 제한을 따른다.",
+                       title="검증민간임대법", article_title="임대료의 제한")
+    ranked = [(cid, score) for cid, score in (
+        ("top", 1.0), ("report", .9), ("form", .8), ("renewal", .7))]
+    question = "등록민간임대에서 재계약하면서 올린 임대료 인상 제한과 변경 신고에 필요한 서류를 알려주세요."
+    assert LawIntentSelector(chunks).select(question, ranked, 3) == ranked[:3]
+
+
+@pytest.mark.parametrize("question", [
+    "등록민간임대 계약 신고와 재계약 서류는 모두 제외하고 보증금 반환 절차만 알려주세요.",
+    "전입신고 방법은 묻지 않습니다. 주민등록은 완료했습니다. 계약 해지 절차만 알려주세요.",
+])
+def test_review_excluded_requests_leave_existing_three_hits_untouched(independent_intent_pool, question):
+    chunks, ranked = independent_intent_pool
+    assert LawIntentSelector(chunks).select(question, ranked, 3) == ranked[:3]

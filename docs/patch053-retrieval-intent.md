@@ -65,9 +65,34 @@ DEV-096의 필수 근거는 민간임대45·46·47이다. 두 모드 모두 K3�
 
 최종 전체 검사: `python -X utf8 -m pytest -q` → **2,726 passed, 3 skipped, 678 subtests passed** (443.68초). 생략은 LangSmith 미설정2건과 로컬 등기 PDF 미지정1건이다. 출력은 `full-tests.log`, 최종 소스·시험·산출물 해시는 `validation.json`에 보존한다. 사용자 승인 후 구현 커밋 `93a49e5`를 만들었으며 메인 작업 트리는 변경하지 않았다.
 
+## 620e1c6 리뷰 후 보완
+
+공개313입력의 기존 근거 손실0은 모든 문형에서 손실이 없다는 보장이 아니다. 병합 전 리뷰에서 다음 두 오류가 확인돼 수정했다.
+
+- 배경으로 말한 “재계약하면서”가 같은 질문의 신고·서류 요청과 결합하면서 재계약 의도로 승격됐다. 임대료·변경 신고·서류 질문에서 기존 임대료44조가45조로 교체됐다.
+- 다음 주제 단어에서 부정 범위를 잘라 “계약 신고와 재계약 서류는 모두 제외”의 앞쪽 주제를 포함시켰다. 별도 문장의 완료된 주민등록을 긍정 요청으로 읽고, 앞 문장의 제외된 전입신고 방법까지 다시 활성화하는 문제도 있었다.
+
+제보 문항, 나열·부정·재긍정·완료 표현과 정상 복합 요청을 공개 개발 회귀로 추가했다. 변경 전 재현 기록과 수정 후 실측은 `data/eval/patch053-review/`에 별도로 보관한다. 기존 `patch053-retrieval` 자료는 수정 전 평가 시점의 기록으로 유지한다.
+
+재계약 의도는 해당 언급에 이어진 요청 표현에 연결한다. 다른 신고 주제나 임대료 인상 설명에서 가져온 요청 단어는 재계약 요청으로 사용하지 않는다. 함께 나열한 주제에는 공동 부정을 적용하되 독립적인 요청과 다른 문장의 부정을 합치지 않는다. 전입 절차의 요청·부정·완료 판정도 같은 절에서 확인한다.
+
+공식 청크와 실제 BM25로 제보 문항을 비교한 결과(`reported-cases.json`):
+
+| 제보 | 수정 전 의도 | 수정 후 의도 | 일반K3 변화 |
+| --- | --- | --- | --- |
+| 재계약하면서 올린 임대료·변경 신고 서류 | 재계약·신고·서식 | 신고·서식 | 민간임대46·47·45 → 44·46·47 |
+| 계약 신고와 재계약 서류 모두 제외 | 재계약·신고 | 없음 | 강제로 넣었던45를 제외하고 원래 BM25 상위3건 복원 |
+| 전입신고 방법 제외·주민등록 완료 | 전입 절차 | 없음 | 강제로 넣었던 주민등록16을 제외하고 원래 BM25 상위3건 복원 |
+
+여기서 “의도 없음”은 새 선택기를 적용하지 않는다는 뜻이다. 원래 검색 근거가 질문의 모든 요구를 충족한다는 판정은 아니다. 이 세 문항은 BM25 재현이며, 기존313입력의 KURE 하이브리드 회귀와 구분한다. 고정313입력의 수정 전후 의도 판정은 전부 동일했다(`gate-comparison.json`).
+
+수정 소스를 고정한 새 실제 KURE313입력×K3/K5에서 네 채널의 근거·순위·본문 해시는 이전 PATCH-053과 모두 동일했다. KURE957회·일반backend1303회·민법backend770회도 동일하다. `comparison.json`은 직전 PATCH-053 대비 변경0·손실0, `comparison-vs-main.json`은 기준 main 대비 기존16쌍의 개선·손실0을 보존한다. DEV-096의45·46·47 동시 확보와 질문43/75·51/75, 문맥41/75·50/75의 완전 확보 결과를 유지한다.
+
+독립 감사는 이전 PATCH-053 대비626비교·반환 근거15,164개의 무결성과 main 대비 개선16쌍·손실0을 재집계했다. 제보3건은 별도 실제 BM25로 재실행해 수정 후 의도와 원래K3 보존을 확인했다. 최종 전체 검사: **2,757 passed, 3 skipped, 678 subtests passed** (387.42초). 생략 사유는 이전과 같은 LangSmith2건·등기 PDF1건이다. 리뷰에서 추가한31개 검사를 포함하며 실제 생성 답변 품질은 평가하지 않았다. 결과는 리뷰 디렉터리의 `independent-verification.json`, `full-tests.log`, `validation.json`에 남긴다.
+
 ## 재현
 
-저장소 루트와 준비된 가상환경에서 실행한다. `--data`는 동일한 재구축 DB·인덱스 경로이며 출력은 항상 새 디렉터리를 사용한다. 사례 파일은 기존 고정78회귀와 같은 해시여야 한다.
+저장소 루트와 준비된 가상환경에서 실행한다. `--data`는 동일한 재구축 DB·인덱스 경로이며 출력은 항상 새 디렉터리를 사용한다. 사례 파일은 기존 고정78회귀와 같은 해시여야 한다. 아래 초기 수집·소스 감사 명령은 구현 커밋 `93a49e5`의 checkout 기준이다. P2 수정 후 소스 감사에는 그 아래 리뷰 경로를 사용한다.
 
 ```powershell
 python -X utf8 -m scripts.patch051_companion_eval capture --data C:/team_project/patch041-worktree/data --out data/eval/patch053-retrieval/after --case-dev C:/team_project/4th_project/tmp/patch003-case-dev-input.jsonl --case-external C:/team_project/3rd_project/3rd_project_team4/data/eval/case26_external_8.jsonl
@@ -76,6 +101,13 @@ python -X utf8 data/eval/patch053-retrieval/audit-replay.py --before data/eval/p
 ```
 
 기존 paired 평가기를 재사용하되 새 의도 선택 설정을 스냅샷에 추가했다. 비교 보고서는 원래 필수 근거 판정을 유지하며 채널별 Hit@K, 완전→불완전 및 개별 목표 손실, 소스 차이를 함께 기록한다.
+
+P2 수정 후 저장된 결과의 재집계·소스 감사(모델 호출 없음):
+
+```powershell
+python -X utf8 -m scripts.patch053_retrieval_report --before data/eval/patch053-retrieval/after --after data/eval/patch053-review/after --out tmp/patch053-review-comparison-replay.json
+python -X utf8 data/eval/patch053-retrieval/audit-replay.py --before data/eval/patch053-retrieval/after --after data/eval/patch053-review/after --report data/eval/patch053-review/comparison.json --out tmp/patch053-review-independent-replay.json --source-root . --corpus C:/team_project/patch041-worktree/data/chunks/chunks.jsonl C:/team_project/patch041-worktree/data/chunks/civil.jsonl C:/team_project/patch041-worktree/data/chunks/cases.jsonl C:/team_project/patch041-worktree/data/chunks/guides.jsonl
+```
 
 ## 경계와 한계
 

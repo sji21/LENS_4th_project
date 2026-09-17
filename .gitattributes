@@ -34,6 +34,8 @@
 /data/eval/patch051-companion/*/rows.json -diff
 /data/eval/patch053-retrieval/** -text whitespace=cr-at-eol
 /data/eval/patch053-retrieval/*/rows.json -diff
+/data/eval/patch053-review/** -text whitespace=cr-at-eol
+/data/eval/patch053-review/*/rows.json -diff
 # Keep captured pytest traceback whitespace byte-exact.
 /data/eval/patch046-main-integration/initial-full-tests.log whitespace=cr-at-eol,-blank-at-eol
 

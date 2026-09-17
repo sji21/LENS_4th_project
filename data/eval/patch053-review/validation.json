@@ -1,0 +1,40 @@
+{
+  "patch": "PATCH-053 P2 review",
+  "baseline_commit": "620e1c6",
+  "created_at": "2026-09-17T02:31:40.952773+00:00",
+  "review_commit": "pending",
+  "scope": "Request gate only; background renewal and coordinated exclusions",
+  "tests": {
+    "command": "python -X utf8 -m pytest -q",
+    "passed": 2757,
+    "skipped": 3,
+    "subtests_passed": 678,
+    "seconds": 387.42
+  },
+  "sources_match_actual_capture": true,
+  "generation_performed": false,
+  "note": "Published development/regression inputs; no independent holdout or real generated-answer quality claim.",
+  "sha256": {
+    ".gitattributes": "8d7a09d662f5ba09283da21c9baef1c58bb615ca56eb5fee15ee6a1dadedf7e1",
+    "CHANGELOG.md": "b799bbe908bcc749f7c0932852d13a0198372964d1b64f52341a7842dda828f6",
+    "CHANGELOG_Kr.md": "e30b142cfcf1dda840df37e585c08948e7d04c060912b9c199de0abd5f33d02d",
+    "data/eval/patch053-review/after/audit.json": "cd001c002a549160f4f8a264fe57b1ed1bb9a5675b3d186e5f0bc4a6bf7a5b44",
+    "data/eval/patch053-review/after/manifest.json": "827c054a3f35779cacc3ea591d77c428d5dda34df0197f1df86aaf04aef2bdec",
+    "data/eval/patch053-review/after/rows.json": "8d9ebfe4453de58cb5f3c666aa4b7b87b9c4a68817ea1c1aa3657634d84c7d9e",
+    "data/eval/patch053-review/after/target-trace.json": "55b94fc1de5fc3a22e2d3b0fa30b790094acae87e20319d8830cf130501671d4",
+    "data/eval/patch053-review/comparison-vs-main.json": "b83ebba72980740bf83916e4a4ec776a70db7150c934298dea3bfd5cd4ee2184",
+    "data/eval/patch053-review/comparison.json": "fa4a4dbf715dabb23a70b373dd9f25474ce0692b22eabc3e453c65d0fbcde942",
+    "data/eval/patch053-review/details.json": "ae6e32caab9b1e6c0c9a7e317cabfdf5ce2c4ba4b6d2d5b7c98c34573cdd7692",
+    "data/eval/patch053-review/full-tests.log": "034580e1973842155cdb5c9c18e2c80527450e6634ca086f57d62d0e3c0b1fcb",
+    "data/eval/patch053-review/gate-comparison.json": "2c0ef8f2725e3dc29bb1bebd8d51172086d3d7265f34a83d7745734f2b812e6e",
+    "data/eval/patch053-review/independent-verification.json": "d29318a27616926bca1c07d9116738163ab12676d22af099e3d9b5d5973e56d7",
+    "data/eval/patch053-review/reported-cases.json": "fdf3d2560381f89b662360eb9f2abbc367e50ffbb52164915133beedd2e381ef",
+    "data/eval/patch053-review/reproduction.txt": "43bf23d60ae87f8db38214b7377ff82f20d6f5c13c80102a9d52b4d28382683a",
+    "data/eval/patch053-review/targeted-tests.txt": "1ffd40a0150e4b5de003ea6b40cc1ba78619cfc9f2de61396f01a153cf52dabe",
+    "docs/patch053-retrieval-intent.md": "934b4e7fdfd1d4f4cef0bff397356b8c2ea866e2fd542576dedc315685818e0b",
+    "LIST.md": "c05bbc2c6bd7ea526859a5230ebe9c1d155b13c40ab8710b9cf2d0959b271ef7",
+    "src/retrieval/retrieval_intent.py": "85e7d59579db79cfa485f9d67a284f065a0248d8b742a600e8115a5a2c7a77fc",
+    "tests/test_patch053_retrieval_independent.py": "e4ccf3be2353ee43196b79ba8536b67c8d3bb6e702bd5a955c9d2fc0242d7b98",
+    "tests/test_patch053_retrieval_intent.py": "8d9220a9b7e8c3cf3c61416646d793f35bd0760beca1c9a44b0c0245d85f5a4e"
+  }
+}

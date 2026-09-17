@@ -67,6 +67,18 @@ def test_a_background_event_does_not_become_a_separate_requested_topic(query):
     assert requested_law_intents(query) == ()
 
 
+@pytest.mark.parametrize("query, expected", [
+    ("등록민간임대에서 재계약하면서 올린 임대료 인상 제한과 변경 신고에 필요한 서류를 알려주세요.",
+     {"private_report", "private_form"}),
+    ("등록민간임대 계약 신고와 재계약 서류는 모두 제외하고 보증금 반환 절차만 알려주세요.", set()),
+    ("전입신고 방법은 묻지 않습니다. 주민등록은 완료했습니다. 계약 해지 절차만 알려주세요.", set()),
+    ("등록민간임대 재계약 조건은 알려주세요, 계약 신고와 서류는 모두 제외합니다.",
+     {"private_renewal"}),
+])
+def test_review_reported_intent_scope_regressions(query, expected):
+    assert set(requested_law_intents(query)) == expected
+
+
 @pytest.mark.parametrize("k", [0, 1, 2])
 def test_small_budgets_preserve_original_ranking(k):
     chunks = [chunk("first", "다른 규정", "① 계약한다."), residence()]
@@ -74,15 +86,13 @@ def test_small_budgets_preserve_original_ranking(k):
     assert LawIntentSelector(chunks).select("전입신고는 언제 하나요?", ranked, k) == ranked[:k]
 
 
-def test_official_private_lease_bodies_reach_native_generation_request(monkeypatch):
-    """Use real lexical retrieval and serialization, with only HTTP mocked."""
+@pytest.fixture
+def official_lease_corpus():
     import hashlib
     import json
     from pathlib import Path
 
-    from test_patch051_generation_delivery import _capture_native_requests, _official_snapshot_chunks
-    from src.generation import graph, llm
-    from src.retrieval.expanded import ExpandedLawRetrievalService
+    from test_patch051_generation_delivery import _official_snapshot_chunks
 
     root = Path(__file__).resolve().parents[1] / "data/eval/patch027-full"
     path = root / "capture/new-chunks.json"
@@ -90,6 +100,16 @@ def test_official_private_lease_bodies_reach_native_generation_request(monkeypat
     assert hashlib.sha256(path.read_bytes()).hexdigest() == manifest["capture/new-chunks.json"]
     corpus = {c["metadata"]["article_id"]: c for c in _official_snapshot_chunks()}
     corpus.update({c["metadata"]["article_id"]: c for c in json.loads(path.read_text(encoding="utf-8"))})
+    return corpus
+
+
+def test_official_private_lease_bodies_reach_native_generation_request(monkeypatch, official_lease_corpus):
+    """Use real lexical retrieval and serialization, with only HTTP mocked."""
+    from test_patch051_generation_delivery import _capture_native_requests
+    from src.generation import graph, llm
+    from src.retrieval.expanded import ExpandedLawRetrievalService
+
+    corpus = official_lease_corpus
     chunks = list(corpus.values())
     service = ExpandedLawRetrievalService(chunks)
     payloads = _capture_native_requests(monkeypatch)
@@ -110,3 +130,17 @@ def test_official_private_lease_bodies_reach_native_generation_request(monkeypat
     assert "재계약을 거절할 수 없다" in human
     assert "신고 또는 변경신고를 하여야 한다" in human
     assert "표준임대차계약서를 사용하여야 한다" in human
+
+
+def test_actual_bm25_retains_rent_rule_when_renewal_is_background(official_lease_corpus):
+    from src.retrieval.expanded import ExpandedLawRetrievalService
+    from src.retrieval.service import route_law_corpus
+
+    service = ExpandedLawRetrievalService(list(official_lease_corpus.values()))
+    query = "등록민간임대에서 재계약하면서 올린 임대료 인상 제한과 변경 신고에 필요한 서류를 알려주세요."
+    corpus = route_law_corpus(query)
+    before = service._context_law.search(query, 3, corpus.where())
+    actual = service._search_one(corpus, query, 3)
+    expected = {"민간임대주택에 관한 특별법-제" + str(number) + "조" for number in (44, 46, 47)}
+    assert {service._chunks[cid]["metadata"]["article_id"] for cid, _ in before} == expected
+    assert [(e.chunk_id, e.score) for e in actual] == [(cid, round(score, 4)) for cid, score in before]

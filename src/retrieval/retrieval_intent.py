@@ -50,15 +50,52 @@ def _request_and_facts(query):
     return request, facts
 
 
+def _intent_clauses(request):
+    # Keep a coordinated list together, including commas, until its own
+    # request/exclusion ends. A later affirmative request starts a new scope.
+    request = re.sub(r"제외하지\s*말고", "포함해서", request)
+    return re.split(r"(?<=[.!?\n;])|(?<=제외하고)|(?<=않고)|(?<=않으며)"
+                    r"|(?<=말고)|(?<=하지만)|(?<=알려주고)", request)
+
+
+def _topic_tail(tail, *, forms=True):
+    """Keep a shared list predicate, but stop before a separate topic."""
+    end = 0
+    topics = rf"{_RENEWAL}|{_REPORT}|{_RESIDENCE}" + ("|" + _FORM if forms else "")
+    for topic in re.finditer(topics, tail):
+        join = tail[end:topic.start()]
+        if not re.fullmatch(r"\s*(?:(?:의\s*)?(?:조건|절차|방법|요건)?\s*(?:와|과|및|나|이나|랑|하고|[,·])\s*)*", join):
+            return tail[:topic.start()]
+        end = topic.end()
+    return tail
+
+
 def _requested(pattern, request):
-    """Exclude a named topic without discarding other simultaneous topics."""
-    for match in re.finditer(pattern, request):
-        tail = request[match.end():]
-        # Stop at another requested subject so its negation does not negate
-        # this topic. The upper bound only limits the exclusion phrase.
-        tail = re.split(rf"[.!?\n;,]|{_RENEWAL}|{_REPORT}|{_FORM}|{_RESIDENCE}", tail, 1)[0]
-        if not re.search(_EXCLUDED, tail[:28]):
-            return True
+    """Exclude a named topic or an explicitly excluded coordinated list."""
+    for clause in _intent_clauses(request):
+        for match in re.finditer(pattern, clause):
+            tail = clause[match.end():]
+            if pattern == _PRIVATE:
+                tail = re.split(rf"[.!?\n;,]|{_RENEWAL}|{_REPORT}|{_FORM}|{_RESIDENCE}", tail, 1)[0]
+            else:
+                tail = _topic_tail(tail, forms=pattern not in (_RENEWAL, _REPORT))
+            if not re.search(_EXCLUDED, tail):
+                return True
+    return False
+
+
+def _renewal_requested(request):
+    for clause in _intent_clauses(request):
+        if not _requested(_RENEWAL, clause):
+            continue
+        for match in re.finditer(_RENEWAL, clause):
+            # Filing vocabulary in another topic must not turn a background
+            # renewal/rent-change event into a request about renewal rights.
+            tail = _topic_tail(clause[match.end():], forms=False)
+            tail = re.split(r"임대료|보증금|월세|차임|인상|증액", tail, 1)[0]
+            if (re.search(r"조건|절차|거절|권리|요건|어떻게|알려|서류|서식", tail)
+                    or re.fullmatch(r"\s*(?:은|는)?(?:요)?[?？.]?\s*", tail)):
+                return True
     return False
 
 
@@ -72,10 +109,7 @@ def requested_law_intents(query: str) -> tuple[str, ...]:
     if re.search(r"공공\s*임대|국민\s*임대|행복\s*주택|일반\s*(?:주택|집|임대)", request) and not re.search(_PRIVATE, request):
         private = False
     if private:
-        renewal_question = (re.search(r"조건|절차|거절|권리|요건|어떻게|알려|서류|서식", request)
-                            or re.search(_REPORT, request)
-                            or re.search(rf"(?:{_RENEWAL})(?:은|는)?(?:요)?[?？]?\s*$", request))
-        if _requested(_RENEWAL, request) and renewal_question:
+        if _renewal_requested(request):
             intents.append("private_renewal")
         if _requested(_REPORT, request):
             intents.append("private_report")
@@ -84,8 +118,8 @@ def requested_law_intents(query: str) -> tuple[str, ...]:
     if _requested(_RESIDENCE, request):
         # '효력이 언제 생기나요' asks about a right, not filing time. A
         # completed registration followed by another task is not a request.
-        for clause in re.split(r"[.!?\n;]", request):
-            if not re.search(_RESIDENCE, clause):
+        for clause in _intent_clauses(request):
+            if not _requested(_RESIDENCE, clause):
                 continue
             completed = re.search(rf"(?:{_RESIDENCE}).{{0,10}}(?:했|마쳤|완료)", clause)
             if completed and not re.search(r"안\s*했|못\s*했|하지\s*(?:않|못)", completed[0]):
@@ -96,7 +130,9 @@ def requested_law_intents(query: str) -> tuple[str, ...]:
                 break
         # A following sentence can ask who/when about the named procedures.
         if ("residence_procedure" not in intents
-                and re.search(rf"(?:{_RESIDENCE}).{{0,15}}(?:같|차이)", request)
+                and any(_requested(_RESIDENCE, clause)
+                        and re.search(rf"(?:{_RESIDENCE}).{{0,15}}(?:같|차이)", clause)
+                        for clause in _intent_clauses(request))
                 and re.search(r"누가|언제|절차", request)):
             intents.append("residence_procedure")
     return tuple(intents)

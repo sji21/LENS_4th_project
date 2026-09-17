@@ -1,0 +1,7 @@
+{
+  "baseline": "620e1c6",
+  "input_count": 313,
+  "differences": [],
+  "current_source_sha256": "85e7d59579db79cfa485f9d67a284f065a0248d8b742a600e8115a5a2c7a77fc",
+  "note": "Request gate comparison only; actual KURE retrieval is evaluated separately."
+}
