@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}회원가입 · LENS{% endblock %}
-{% block head %}<link rel="stylesheet" href="{% static 'cases/app.css' %}?v=20260916-2">{% endblock %}
+{% block head %}<link rel="stylesheet" href="{% static 'cases/app.css' %}?v=20260917-account">{% endblock %}
 {% block content %}
 <main class="auth-shell">
   <section class="auth-card">
@@ -33,6 +33,7 @@
         {{ form.password2 }}
         {% for error in form.password2.errors %}<p class="field-error" role="alert">{{ error }}</p>{% endfor %}
         <p class="field-help">확인을 위해 같은 비밀번호를 다시 입력해 주세요.</p>
+        <p class="field-error password-match-error" data-password-match-error hidden role="alert">비밀번호와 비밀번호 확인이 일치하지 않습니다.</p>
       </div>
       {% for error in form.non_field_errors %}<p class="field-error form-wide-error" role="alert">{{ error }}</p>{% endfor %}
       <button class="primary-button" type="submit">회원가입</button>
@@ -51,5 +52,5 @@
   </section>
 </div>
 {% endif %}
-<script src="{% static 'accounts/signup.js' %}?v=20260916-2" defer></script>
+<script src="{% static 'accounts/signup.js' %}?v=20260917-account" defer></script>
 {% endblock %}

@@ -271,7 +271,7 @@ def test_signup_unique_constraint_race_returns_email_feedback(client, monkeypatc
 
     monkeypatch.setattr(SignUpForm, "save", racing_save)
     response = client.post("/accounts/signup/", {
-        "username": "race-loser", "email": "race@example.com",
+        "first_name": "경쟁 사용자", "email": "race@example.com",
         "password1": "Safe-password-123!", "password2": "Safe-password-123!",
     })
     assert response.status_code == 200
@@ -552,26 +552,26 @@ def test_old_guidance_revision_is_discarded_even_when_messages_match(case):
     assert not case.checklist_items.filter(code="llm_old").exists()
 
 
-def test_signup_duplicate_username_shows_reason_popup(client, user):
+def test_signup_duplicate_email_shows_reason_popup(client, user):
     response = client.post("/accounts/signup/", {
-        "username": user.username.upper(), "email": "another@example.com",
+        "first_name": "같은 이름", "email": user.email.upper(),
         "password1": "Safe-password-123!", "password2": "Safe-password-123!",
     })
     page = response.content.decode()
     assert response.status_code == 200
     assert 'role="alertdialog"' in page
-    assert "이미 사용 중인 아이디입니다" in page
+    assert "이미 가입된 이메일입니다" in page
 
 
 def test_signup_invalid_and_duplicate_email_show_exact_reason(client, user):
     invalid = client.post("/accounts/signup/", {
-        "username": "new-user-a", "email": "wrong-email",
+        "first_name": "새 사용자", "email": "wrong-email",
         "password1": "Safe-password-123!", "password2": "Safe-password-123!",
     }).content.decode()
     assert "이메일 형식이 올바르지 않습니다" in invalid
 
     duplicate = client.post("/accounts/signup/", {
-        "username": "new-user-b", "email": user.email.upper(),
+        "first_name": "새 사용자", "email": user.email.upper(),
         "password1": "Safe-password-123!", "password2": "Safe-password-123!",
     }).content.decode()
     assert "이미 가입된 이메일입니다" in duplicate
@@ -579,13 +579,13 @@ def test_signup_invalid_and_duplicate_email_show_exact_reason(client, user):
 
 def test_signup_password_feedback_is_shown_in_popup(client):
     mismatch = client.post("/accounts/signup/", {
-        "username": "new-user-c", "email": "new-c@example.com",
+        "first_name": "새 사용자", "email": "new-c@example.com",
         "password1": "Safe-password-123!", "password2": "Different-password-123!",
     }).content.decode()
     assert "비밀번호와 비밀번호 확인이 일치하지 않습니다" in mismatch
 
     too_short = client.post("/accounts/signup/", {
-        "username": "new-user-d", "email": "new-d@example.com",
+        "first_name": "새 사용자", "email": "new-d@example.com",
         "password1": "a1!", "password2": "a1!",
     }).content.decode()
     assert 'id="signup-error-popup"' in too_short
@@ -595,21 +595,19 @@ def test_signup_password_feedback_is_shown_in_popup(client):
 def test_signup_error_popup_assets_and_accessibility(client):
     response = client.post("/accounts/signup/", {})
     page = response.content.decode()
-    assert "/static/accounts/signup.js?v=20260916-2" in page
+    assert "/static/accounts/signup.js?v=20260917-account" in page
     assert 'aria-modal="true"' in page
     assert 'aria-labelledby="signup-error-title"' in page
 
 
 def test_signup_field_error_is_below_its_input_and_rules_are_compact(client, user):
     page = client.post("/accounts/signup/", {
-        "username": user.username, "email": "wrong-email",
+        "first_name": "이름", "email": "wrong-email",
         "password1": "a1!", "password2": "different",
     }).content.decode()
-    username_input = page.index('name="username"')
-    username_error = page.index("이미 사용 중인 아이디입니다")
     email_input = page.index('name="email"')
     email_error = page.index("이메일 형식이 올바르지 않습니다")
-    assert username_input < username_error < email_input < email_error
+    assert email_input < email_error
     assert 'class="password-rules"' in page
     assert "8자 이상" in page
 

@@ -16,6 +16,7 @@
           <div class="chat-room-item" data-room-row>
             <a class="case-shortcut {% if contract_case.pk == room.pk %}current-case{% endif %}" href="{% url 'cases:open-chat' room.pk %}"><span aria-hidden="true">{% if contract_case.pk == room.pk %}●{% else %}○{% endif %}</span><span>{{ room.title }}<small>{% if contract_case.pk == room.pk %}현재 채팅방{% else %}대화 열기{% endif %}</small></span></a>
             <button class="room-rename-button" type="button" data-room-edit aria-label="{{ room.title }} 이름 수정" title="채팅방 이름 수정">✎</button>
+            <form class="room-delete-form" method="post" action="{% url 'cases:delete' room.pk %}" onsubmit="return confirm('채팅방과 관련 문서, 일정, 체크리스트, 리포트를 모두 삭제할까요?');">{% csrf_token %}<input type="hidden" name="next" value="chat"><button class="room-delete-button" type="submit" aria-label="{{ room.title }} 채팅방 삭제" title="채팅방 삭제">×</button></form>
             <form class="room-rename-form" data-room-form method="post" action="{% url 'cases:rename' room.pk %}" hidden>{% csrf_token %}<label class="sr-only" for="chat-room-title-{{ forloop.counter }}">채팅방 이름</label><input id="chat-room-title-{{ forloop.counter }}" name="title" value="{{ room.title }}" maxlength="120" required><input type="hidden" name="next" value="chat"><button type="submit">저장</button><button type="button" data-room-cancel>취소</button></form>
           </div>
         {% empty %}<p class="chat-room-empty">첫 질문을 보내면 채팅방이 여기에 저장됩니다.</p>{% endfor %}
@@ -29,7 +30,7 @@
       <p class="storage-note">최대 5개 · PDF, JPG, PNG<br>{% if user.is_authenticated %}암호화되어 현재 계약에 저장됩니다.{% else %}문서는 현재 대화에서만 사용됩니다.{% endif %}</p>
     </section>
     <div class="sidebar-bottom"><span class="privacy-icon" aria-hidden="true">⌑</span><div>나의 문서, 나의 대화<p>{% if user.is_authenticated %}계약별로 저장되며 원본 파일은 암호화됩니다.{% else %}미사용 1시간 후 세션이 만료됩니다.{% endif %}</p></div></div>
-    {% if user.is_authenticated %}<a class="profile profile-link" href="{% url 'cases:dashboard' %}" aria-label="나의 프로필과 마이페이지 열기"><span class="avatar guest">{{ user.get_username|first|upper }}</span><div>{{ user.get_username }}<small>나의 프로필</small></div><span class="profile-arrow" aria-hidden="true">›</span></a>{% else %}<div class="profile"><span class="avatar guest">G</span><div>게스트<small><a href="{% url 'accounts:login' %}">로그인</a> · <a href="{% url 'accounts:signup' %}">회원가입</a></small></div></div>{% endif %}
+    {% if user.is_authenticated %}<a class="profile profile-link" href="{% url 'cases:dashboard' %}" aria-label="나의 프로필과 마이페이지 열기"><span class="avatar guest">{% if user.first_name %}{{ user.first_name|first|upper }}{% else %}{{ user.get_username|first|upper }}{% endif %}</span><div>{% if user.first_name %}{{ user.first_name }}{% else %}{{ user.get_username }}{% endif %}<small>나의 프로필</small></div><span class="profile-arrow" aria-hidden="true">›</span></a>{% else %}<div class="profile"><span class="avatar guest">G</span><div>게스트<small><a href="{% url 'accounts:login' %}">로그인</a> · <a href="{% url 'accounts:signup' %}">회원가입</a></small></div></div>{% endif %}
   </aside>
   <main class="main">
     <header class="topbar">
