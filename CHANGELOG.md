@@ -7,7 +7,13 @@ This file records the 4th project from its first change onward.
 
 ## 2026-09-17
 
+### Changed
+
+- PATCH-053 retains distinct private-rental renewal, reporting and contract-form evidence and residence-registration procedures within the existing law3/law5 budgets. Selects body-verified provisions from the complete existing BM25/KURE member union without increasing member depth or model calls. Actual paired retrieval on 235 fixed inputs plus 78 published regression inputs recovers DEV-096 Articles 45/46/47 in both modes and budgets. DEV complete evidence improves 40→43/75 at law3 and 47→51/75 at law5 for questions, and 39→41/75 and 48→50/75 with context; no previously retrieved required target is lost. Civil, case and guide results and all 78 public regressions remain identical. Official-body request tests verify delivery to the generation HTTP payload; real generated-answer quality and latency remain unmeasured. Review fixes bind renewal requests to their own clause or coordinated list, apply exclusions across listed topics, and check residence requests and completion within the same clause. Actual BM25 preserves rent Article 44 for the reported compound question; a fresh paired KURE run preserves all 313 inputs and four channels. Full review tests: 2,757 passed, 3 skipped, 678 subtests. After merging main bd6c0c8 (PATCH-052/054), 2,810 tests pass with 3 skips and 678 subtests; retrieval source hashes remain identical, so fixed-input KURE is not rerun. See `docs/patch053-retrieval-intent.md` for denominators, remaining misses and verification. (commit: 93a49e5; review: 67382c2; integration: 75c2915)
+
 ### Fixed (Bug Fixes)
+
+- PATCH-053 / PR #37 binds document requests to their own lease procedure and residence-procedure predicates to their own topic. Registration paperwork no longer forces standard lease-form evidence, and a background mention of unfinished registration no longer borrows a contract-termination request. Both reported cases retain their original BM25 top three. All 313 fixed request gates and downstream retrieval logic remain unchanged, so prior KURE measurements are retained without a new model run. Verification totals 2,841 passes, 3 skips and 678 subtests across the full run and a targeted rerun of 42 Git-ownership-blocked items. Validation: `data/eval/patch053-review/pr37/`. This review fix, tests and records are included in one commit at the user's request.
 
 - PATCH-054 Continue missing-fact collection after a relative expiry answer even when the planner omits its next question. Prioritize the current substantive request over a preceding greeting. Recognize Korean inform-verb variants in notification statements while preserving negation checks. (commit: 8ed7546)
 

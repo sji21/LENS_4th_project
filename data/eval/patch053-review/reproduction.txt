@@ -1,0 +1,23 @@
+P2 independent regression reproduction (shared development tests, no holdout claim)
+
+Working directory: C:\team_project\patch053-worktree
+Command:
+C:\team_project\4th_project\.venv\Scripts\python.exe -m pytest tests/test_patch053_retrieval_independent.py -q --basetemp tmp/patch053-review-verify-initial --tb=line
+
+Observed result: 15 failed, 50 passed in 1.65s
+Exit code: 1
+Tool output chunk: 6f2e5b
+
+All three reported defects reproduce in request detection and synthetic
+candidate selection. Adjacent failures include completed/background renewal,
+comma-separated global exclusion, re-affirmation after global exclusion,
+"do not exclude", and joint residence-procedure exclusions.
+
+Passing protections include all original 44 regressions, DEV-096 positive
+compound request, explicit renewal conditions plus reporting documents, current
+residence re-affirmation, and a new move after previously completed registration.
+
+The test fixture's existing first hit was subsequently clarified to an explicit
+synthetic rent-limit provision; that fixture text edit was not part of this
+initial execution. Final corrected-source verification remains to be performed.
+No model, vector index, external API, Git write, or product edit was performed.

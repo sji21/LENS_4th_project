@@ -1,0 +1,50 @@
+Excerpt of the initial full-suite log; repeated tracebacks omitted.
+Environment cause: Git rejected this worktree as dubious ownership for the test process.
+The raw local log remains at tmp/patch053-pr37-full-tests.log.
+
+=========================== short test summary info ===========================
+SKIPPED [2] tests\test_langsmith_connection.py:23: LANGSMITH_TRACING이 활성화되어 있지 않습니다.
+SKIPPED [1] tests\test_registry_integration.py:29: REGISTRY_SAMPLE_PDF를 지정하면 로컬 등기 PDF 통합 테스트를 실행합니다.
+ERROR tests/test_patch027_final_test.py::test_final_capture_replays_gains_losses_and_consumed_budget
+ERROR tests/test_patch027_final_test.py::test_rehashed_report_or_evidence_tampering_is_rejected[report.json]
+ERROR tests/test_patch027_final_test.py::test_rehashed_report_or_evidence_tampering_is_rejected[rows.json]
+ERROR tests/test_patch027_loss_analysis.py::test_frozen_losses_are_deduplicated_and_traceable
+ERROR tests/test_patch027_loss_analysis.py::test_counterfactual_reports_both_recovery_and_new_loss
+ERROR tests/test_patch027_loss_analysis.py::test_modified_analysis_is_rejected[False]
+ERROR tests/test_patch027_loss_analysis.py::test_modified_analysis_is_rejected[True]
+FAILED tests/test_chatting_plan_run.py::test_complete_capture_contains_every_turn_and_only_simulates_accepted_state
+FAILED tests/test_chatting_plan_run.py::test_only_dev_is_loaded_and_expected_labels_never_reach_inference
+FAILED tests/test_chatting_plan_run.py::test_source_change_keeps_full_rows_but_prevents_completion
+FAILED tests/test_chatting_plan_run.py::test_changed_or_unavailable_final_model_identity_prevents_completion[after0]
+FAILED tests/test_chatting_plan_run.py::test_changed_or_unavailable_final_model_identity_prevents_completion[after1]
+FAILED tests/test_chatting_plan_run.py::test_invalid_decision_preserves_state_and_prevents_completion[not json]
+FAILED tests/test_chatting_plan_run.py::test_invalid_decision_preserves_state_and_prevents_completion[{"intent": "question", "action": "unsupported", "topic": "\ubcf4\uc99d\uae08\ubc18\ud658", "clarify_field": "deposit_returned", "document_id": null, "style": "standard", "statements": [{"field": "contract_type", "value": "\uc6d4\uc138", "evidence": "\uc6d4\uc138"}, {"field": "contract_ended", "value": "\uc544\ub2c8\uc694", "evidence": "\ub05d\ub098\uc9c0 \uc54a\uc558\uc5b4\uc694"}]}]
+FAILED tests/test_chatting_plan_run.py::test_invalid_decision_preserves_state_and_prevents_completion[None]
+FAILED tests/test_chatting_plan_run.py::test_planning_error_without_http_failure_is_still_incomplete
+FAILED tests/test_chatting_plan_run.py::test_instrumented_http_failures_prevent_completion_even_with_valid_decisions[failed_model_calls]
+FAILED tests/test_chatting_plan_run.py::test_instrumented_http_failures_prevent_completion_even_with_valid_decisions[connection_failures]
+FAILED tests/test_chatting_plan_run.py::test_second_model_failure_cannot_reuse_the_previous_raw_proposal
+FAILED tests/test_chatting_plan_run.py::test_failure_before_second_inference_does_not_reuse_the_previous_proposal
+FAILED tests/test_chatting_plan_run.py::test_separate_cases_do_not_inherit_previous_simulated_user_facts
+FAILED tests/test_chatting_plan_run.py::test_rejected_later_wire_update_cannot_partially_commit_earlier_valid_fact
+FAILED tests/test_chatting_plan_run.py::test_raw_model_errors_remain_visible_after_source_preserving_normalization
+FAILED tests/test_chatting_run.py::test_capture_preserves_public_results_and_source_provenance[False]
+FAILED tests/test_chatting_run.py::test_capture_preserves_public_results_and_source_provenance[True]
+FAILED tests/test_chatting_run.py::test_lexical_fallback_does_not_become_a_hybrid_baseline
+FAILED tests/test_patch027_context_tuning.py::test_corrected_frozen_capture_replays_with_live_evidence
+FAILED tests/test_patch027_context_tuning.py::test_complete_replay_rejects_forged_edge_with_refreshed_manifest
+FAILED tests/test_patch027_context_tuning.py::test_complete_replay_rejects_wrong_live_body_with_refreshed_manifest
+FAILED tests/test_patch027_context_tuning.py::test_finalist_cannot_be_changed_after_measurement
+FAILED tests/test_patch027_context_tuning.py::test_execution_source_is_checked_against_capture_commit_not_later_checkout
+FAILED tests/test_patch027_product.py::test_published_preflight_and_adopted_results_replay_with_backup_receipt
+FAILED tests/test_patch027_product.py::test_rehashed_rollout_capture_tampering_is_rejected[evidence]
+FAILED tests/test_patch027_product.py::test_rehashed_rollout_capture_tampering_is_rejected[profile]
+FAILED tests/test_patch027_product.py::test_rehashed_rollout_capture_tampering_is_rejected[source]
+FAILED tests/test_patch027_product.py::test_rehashed_rollout_capture_tampering_is_rejected[missing]
+FAILED tests/test_patch027_tuning.py::test_frozen_results_replay_with_improvement_and_remaining_regressions
+FAILED tests/test_patch027_tuning.py::test_semantic_corruption_rejected_after_refreshing_hashes[missing_input]
+FAILED tests/test_patch027_tuning.py::test_semantic_corruption_rejected_after_refreshing_hashes[expansion]
+FAILED tests/test_patch027_tuning.py::test_semantic_corruption_rejected_after_refreshing_hashes[wrong_channel]
+FAILED tests/test_patch027_tuning.py::test_semantic_corruption_rejected_after_refreshing_hashes[source]
+FAILED tests/test_patch027_tuning.py::test_semantic_corruption_rejected_after_refreshing_hashes[score]
+35 failed, 2799 passed, 3 skipped, 7 errors, 678 subtests passed in 199.67s (0:03:19)

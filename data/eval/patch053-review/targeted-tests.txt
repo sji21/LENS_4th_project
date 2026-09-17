@@ -1,0 +1,33 @@
+PATCH-053 P2 independent final targeted regression record
+
+Working directory: C:\team_project\patch053-worktree
+Command:
+C:\team_project\4th_project\.venv\Scripts\python.exe -m pytest tests/test_patch053_retrieval_independent.py tests/test_patch053_retrieval_intent.py tests/test_patch051_adversarial.py tests/test_patch046_multi_evidence.py tests/test_patch046_dialogue_integration.py tests/test_patch046_review_regressions.py tests/test_civil_result_channel.py -q --basetemp tmp/patch053-review-verify-final --tb=short
+
+Observed stdout:
+........................................................................ [ 31%]
+........................................................................ [ 62%]
+........................................................................ [ 93%]
+................                                                         [100%]
+232 passed in 1.77s
+
+Observed exit code: 0
+Tool output chunk: df37e7
+Tool wall time: 3.8393965 seconds
+
+70 independent regressions, 14 development regressions, and 148 preexisting
+companion/tax/dialogue/civil-channel regressions passed. The original 44
+independent checks remain and 26 P2 background/negation/current-request checks
+were added. Three reported defects were reproduced before the fixes; positive
+compound-order inversion and topic-local affirmative/exclusion regressions
+discovered during review were also fixed and rechecked.
+
+Synthetic fixed candidates prove an incidental renewal cannot evict the
+existing rent-limit evidence at K3, and excluded topics cannot replace any of
+the original three hits. The development native-payload test uses official
+snapshot SHA checks, real lexical product search, and mocked HTTP only.
+
+This is a shared development regression result, not independent holdout
+performance or generated-answer correctness. No KURE, index access, external
+generation API, product-source edit, or Git write was performed by verifier.
+The root agent owns the full suite and the new frozen retrieval comparison.

@@ -1,0 +1,15 @@
+{
+  "main_commit": "bd6c0c8",
+  "previous_patch_head": "49979ff",
+  "retrieval_capture": "data/eval/patch053-review/after",
+  "capture_source_files_checked": 190,
+  "capture_source_differences": [],
+  "scope": "Retrieval/generation/scripts/settings source identities remain unchanged. Chat entry routing is reviewed separately; fixed-input retrieval identity does not establish unchanged service answer rate.",
+  "merge_conflicts": [
+    "LIST.md",
+    "CHANGELOG.md",
+    "CHANGELOG_Kr.md"
+  ],
+  "resolution": "Preserved PATCH-051 completed state, PATCH-053 work and both main PATCH-052/PATCH-054 records.",
+  "teammate_product_differences_from_main": []
+}
