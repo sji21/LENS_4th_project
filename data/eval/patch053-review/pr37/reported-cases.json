@@ -1,0 +1,52 @@
+{
+  "baseline_commit": "0b202fa",
+  "corpus": "C:\\team_project\\patch041-worktree\\data\\chunks\\chunks.jsonl",
+  "corpus_sha256": "8784c57ca4f2ba4ece469cf8f773e225bec0d8d0a1c54563e0e4b22add8ce324",
+  "retrieval": "actual BM25 only; no KURE, LLM, HTTP or DB/index writes",
+  "rows": [
+    {
+      "query": "등록민간임대주택에서 전입신고에 필요한 서류를 알려주세요.",
+      "before_intents": [
+        "private_form"
+      ],
+      "after_intents": [],
+      "raw_k3": [
+        "부동산 거래신고 등에 관한 법률-제6조의5",
+        "민간임대주택에 관한 특별법-제44조",
+        "주택임대차보호법-제3조"
+      ],
+      "before_k3": [
+        "부동산 거래신고 등에 관한 법률-제6조의5",
+        "민간임대주택에 관한 특별법-제44조",
+        "민간임대주택에 관한 특별법-제47조"
+      ],
+      "after_k3": [
+        "부동산 거래신고 등에 관한 법률-제6조의5",
+        "민간임대주택에 관한 특별법-제44조",
+        "주택임대차보호법-제3조"
+      ]
+    },
+    {
+      "query": "전입신고를 하지 않았는데 계약을 해지할 수 있나요?",
+      "before_intents": [
+        "residence_procedure"
+      ],
+      "after_intents": [],
+      "raw_k3": [
+        "주택임대차보호법-제3조",
+        "부동산 거래신고 등에 관한 법률-제6조의5",
+        "주택임대차보호법 시행령-제4조"
+      ],
+      "before_k3": [
+        "주택임대차보호법-제3조",
+        "부동산 거래신고 등에 관한 법률-제6조의5",
+        "주민등록법-제16조"
+      ],
+      "after_k3": [
+        "주택임대차보호법-제3조",
+        "부동산 거래신고 등에 관한 법률-제6조의5",
+        "주택임대차보호법 시행령-제4조"
+      ]
+    }
+  ]
+}

@@ -23,6 +23,10 @@ _RESIDENCE = r"전입\s*신고|주민\s*등록|주소.{0,8}(?:옮|이전)"
 _RENEWAL = r"재계약|갱신|계약\s*연장"
 _REPORT = r"(?:임대차|계약)\s*신고|변경\s*신고"
 _FORM = r"서류|서식|양식|계약서"
+_LEASE_ACTION = r"(?:임대차\s*)?계약(?!서|\s*(?:신고|연장))|보증금"
+_LEASE_PAPERWORK = (r"(?<!재)(?:임대차\s*)?계약(?=(?:을|를)?\s*(?:체결|작성)"
+                    r"|(?:할|하는)\s*때|(?:에|의)?\s*(?:필요한\s*)?(?:서류|서식|양식))")
+_TOPIC_JOIN = r"\s*(?:(?:의\s*)?(?:조건|절차|방법|요건)?\s*(?:와|과|및|나|이나|랑|하고|[,·])\s*)*"
 _PROCEDURE = r"언제|며칠|기한|절차|어디|방법|신청|접수|가능|못\s*하|할\s*수|뒤에\s*하"
 _EXCLUDED = r"묻지|관계\s*없|제외|말고|아니라|아닌|아니고|아닙|원하지|필요\s*없"
 
@@ -61,10 +65,10 @@ def _intent_clauses(request):
 def _topic_tail(tail, *, forms=True):
     """Keep a shared list predicate, but stop before a separate topic."""
     end = 0
-    topics = rf"{_RENEWAL}|{_REPORT}|{_RESIDENCE}" + ("|" + _FORM if forms else "")
+    topics = rf"{_RENEWAL}|{_REPORT}|{_RESIDENCE}|{_LEASE_ACTION}" + ("|" + _FORM if forms else "")
     for topic in re.finditer(topics, tail):
         join = tail[end:topic.start()]
-        if not re.fullmatch(r"\s*(?:(?:의\s*)?(?:조건|절차|방법|요건)?\s*(?:와|과|및|나|이나|랑|하고|[,·])\s*)*", join):
+        if not re.fullmatch(_TOPIC_JOIN, join):
             return tail[:topic.start()]
         end = topic.end()
     return tail
@@ -99,6 +103,29 @@ def _renewal_requested(request):
     return False
 
 
+def _private_form_requested(request):
+    """Require documents owned by a lease topic, not just a property type."""
+    for clause in _intent_clauses(request):
+        if not _requested(_FORM, clause):
+            continue
+        for topic in (_REPORT, _RENEWAL, _LEASE_PAPERWORK):
+            active = _renewal_requested(clause) if topic == _RENEWAL else _requested(topic, clause)
+            if not active:
+                continue
+            for match in re.finditer(topic, clause):
+                if _requested(_FORM, _topic_tail(clause[match.end():], forms=False)):
+                    return True
+        # A named lease contract form is itself an explicit topic. A contract
+        # mentioned as a registration attachment is not that topic.
+        for form in re.finditer(r"(?:임대차\s*)?계약서", clause):
+            residents = list(re.finditer(_RESIDENCE, clause[:form.start()]))
+            if residents and not re.fullmatch(_TOPIC_JOIN, clause[residents[-1].end():form.start()]):
+                continue
+            if _requested(_FORM, clause[form.start():]):
+                return True
+    return False
+
+
 def requested_law_intents(query: str) -> tuple[str, ...]:
     request, facts = _request_and_facts(query)
     if not request or re.search(r"상가|점포|가게|사무실|권리금|환산\s*보증금", request):
@@ -113,7 +140,7 @@ def requested_law_intents(query: str) -> tuple[str, ...]:
             intents.append("private_renewal")
         if _requested(_REPORT, request):
             intents.append("private_report")
-        if _requested(_FORM, request):
+        if _private_form_requested(request):
             intents.append("private_form")
     if _requested(_RESIDENCE, request):
         # '효력이 언제 생기나요' asks about a right, not filing time. A
@@ -124,7 +151,9 @@ def requested_law_intents(query: str) -> tuple[str, ...]:
             completed = re.search(rf"(?:{_RESIDENCE}).{{0,10}}(?:했|마쳤|완료)", clause)
             if completed and not re.search(r"안\s*했|못\s*했|하지\s*(?:않|못)", completed[0]):
                 continue
-            procedure = re.search(_PROCEDURE, clause)
+            tails = [_topic_tail(clause[match.end():], forms=False)
+                     for match in re.finditer(_RESIDENCE, clause)]
+            procedure = any(re.search(_PROCEDURE, tail) for tail in tails)
             if procedure and not re.search(r"(?:효력|대항력|우선\s*변제).{0,12}언제|언제.{0,12}(?:효력|대항력|우선\s*변제)", clause):
                 intents.append("residence_procedure")
                 break

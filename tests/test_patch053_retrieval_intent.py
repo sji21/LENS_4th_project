@@ -79,6 +79,28 @@ def test_review_reported_intent_scope_regressions(query, expected):
     assert set(requested_law_intents(query)) == expected
 
 
+def test_registration_documents_do_not_request_private_lease_form():
+    query = "등록민간임대주택에서 전입신고에 필요한 서류를 알려주세요."
+    assert "private_form" not in requested_law_intents(query)
+
+
+def test_unfinished_registration_does_not_own_contract_termination_predicate():
+    query = "전입신고를 하지 않았는데 계약을 해지할 수 있나요?"
+    assert requested_law_intents(query) == ()
+
+
+@pytest.mark.parametrize("query, expected", [
+    ("등록민간임대 계약에 필요한 서류를 알려주세요.", {"private_form"}),
+    ("등록민간임대 계약할 때 사용할 양식을 알려주세요.", {"private_form"}),
+    ("등록민간임대 계약을 체결하려는데 필요한 서류는요?", {"private_form"}),
+    ("등록민간임대 계약 해지에 필요한 서류를 알려주세요.", set()),
+    ("등록민간임대 보증금 반환에 필요한 서류를 알려주세요.", set()),
+    ("등록민간임대에서 전입신고에 필요한 계약서 서식을 알려주세요.", set()),
+])
+def test_lease_formation_paperwork_has_its_own_topic(query, expected):
+    assert set(requested_law_intents(query)) == expected
+
+
 @pytest.mark.parametrize("k", [0, 1, 2])
 def test_small_budgets_preserve_original_ranking(k):
     chunks = [chunk("first", "다른 규정", "① 계약한다."), residence()]
@@ -144,3 +166,19 @@ def test_actual_bm25_retains_rent_rule_when_renewal_is_background(official_lease
     expected = {"민간임대주택에 관한 특별법-제" + str(number) + "조" for number in (44, 46, 47)}
     assert {service._chunks[cid]["metadata"]["article_id"] for cid, _ in before} == expected
     assert [(e.chunk_id, e.score) for e in actual] == [(cid, round(score, 4)) for cid, score in before]
+
+
+@pytest.mark.parametrize("query", [
+    "등록민간임대주택에서 전입신고에 필요한 서류를 알려주세요.",
+    "전입신고를 하지 않았는데 계약을 해지할 수 있나요?",
+])
+def test_actual_bm25_keeps_existing_evidence_for_unrelated_predicates(official_lease_corpus, query):
+    from src.retrieval.expanded import ExpandedLawRetrievalService
+    from src.retrieval.service import route_law_corpus
+
+    service = ExpandedLawRetrievalService(list(official_lease_corpus.values()))
+    corpus = route_law_corpus(query)
+    original = service._context_law.search(query, 3, corpus.where())
+    selected = service._search_one(corpus, query, 3)
+    assert requested_law_intents(query) == ()
+    assert [(e.chunk_id, e.score) for e in selected] == [(cid, round(score, 4)) for cid, score in original]

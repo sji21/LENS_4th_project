@@ -13,6 +13,8 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
+- PATCH-053 / PR #37 binds document requests to their own lease procedure and residence-procedure predicates to their own topic. Registration paperwork no longer forces standard lease-form evidence, and a background mention of unfinished registration no longer borrows a contract-termination request. Both reported cases retain their original BM25 top three. All 313 fixed request gates and downstream retrieval logic remain unchanged, so prior KURE measurements are retained without a new model run. Verification totals 2,841 passes, 3 skips and 678 subtests across the full run and a targeted rerun of 42 Git-ownership-blocked items. Validation: `data/eval/patch053-review/pr37/`. This review fix, tests and records are included in one commit at the user's request.
+
 - PATCH-054 Continue missing-fact collection after a relative expiry answer even when the planner omits its next question. Prioritize the current substantive request over a preceding greeting. Recognize Korean inform-verb variants in notification statements while preserving negation checks. (commit: 8ed7546)
 
 ## 2026-09-16

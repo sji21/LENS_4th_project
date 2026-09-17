@@ -296,3 +296,50 @@ def test_review_background_renewal_cannot_evict_existing_rent_evidence(independe
 def test_review_excluded_requests_leave_existing_three_hits_untouched(independent_intent_pool, question):
     chunks, ranked = independent_intent_pool
     assert LawIntentSelector(chunks).select(question, ranked, 3) == ranked[:3]
+
+
+@pytest.mark.parametrize("question", [
+    "등록민간임대주택에서 전입신고에 필요한 서류를 알려주세요.",
+    "등록민간임대주택에서 주민등록 신청 방법과 필요한 서류는요?",
+    "등록민간임대주택에서 확정일자를 발급받을 때 필요한 서류는요?",
+    "등록민간임대주택에서 미납국세 열람 신청 서류를 알려주세요.",
+    "등록민간임대주택의 계약서 양식은 제외하고 전입신고 신청 서류만 알려주세요.",
+    '예문은 "등록민간임대 계약서 양식은요?"입니다. 등록민간임대주택에서 전입신고 서류만 알려주세요.',
+])
+def test_pr37_private_property_does_not_own_every_document_request(question):
+    assert "private_form" not in requested_law_intents(question)
+
+
+@pytest.mark.parametrize("question, expected", [
+    ("등록민간임대주택의 임대차계약서 양식은요?", {"private_form"}),
+    ("등록민간임대주택의 계약 신고에 필요한 서류는요?", {"private_report", "private_form"}),
+    ("등록민간임대주택의 재계약에 필요한 서류는요?", {"private_renewal", "private_form"}),
+    ("등록민간임대주택에서 전입신고 서류는 제외하고 임대차계약서 서식을 알려주세요.", {"private_form"}),
+    ("등록민간임대주택의 계약 신고와 전입신고의 절차 및 서류를 알려주세요.",
+     {"private_report", "private_form", "residence_procedure"}),
+    ("등록민간임대주택의 임대차계약서 양식과 전입신고 방법을 알려주세요.",
+     {"private_form", "residence_procedure"}),
+    ("전입신고를 하지 않았는데 계약을 해지할 수 있나요?", set()),
+    ("주민등록을 아직 못 했는데 보증금 반환을 청구할 수 있나요?", set()),
+    ("전입신고를 하지 않았는데 계약 해지 신청은 어디서 하나요?", set()),
+    ("전입신고를 하지 않았는데 지금 신청할 수 있나요?", {"residence_procedure"}),
+    ("전입신고를 아직 못 했는데 어디서 신청하나요?", {"residence_procedure"}),
+    ("계약 해지는 묻지 않고 전입신고를 지금 할 수 있는지 알려주세요.", {"residence_procedure"}),
+    ('예문은 "계약을 해지할 수 있나요?"입니다. 전입신고는 어디서 신청하나요?', {"residence_procedure"}),
+])
+def test_pr37_request_predicate_stays_with_its_own_subject(question, expected):
+    assert set(requested_law_intents(question)) == expected
+
+
+def test_pr37_registration_documents_do_not_insert_private_contract_form(independent_intent_pool):
+    chunks, _ = independent_intent_pool
+    chunks[0] = _chunk("top", "제91조", "① 주택의 인도와 주민등록을 마치면 제삼자에 대하여 효력이 생긴다.")
+    ranked = [("resident", 1.0), ("second", .9), ("top", .8), ("form", .7)]
+    query = "등록민간임대주택에서 전입신고에 필요한 서류를 알려주세요."
+    assert LawIntentSelector(chunks).select(query, ranked, 3) == ranked[:3]
+
+
+def test_pr37_nonregistration_request_does_not_evict_third_hit(independent_intent_pool):
+    chunks, ranked = independent_intent_pool
+    query = "전입신고를 하지 않았는데 계약을 해지할 수 있나요?"
+    assert LawIntentSelector(chunks).select(query, ranked, 3) == ranked[:3]
