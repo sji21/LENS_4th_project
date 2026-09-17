@@ -21,7 +21,11 @@ from cases.services.attachments import (
     record_pending_document,
     storage_rollback_guard,
 )
-from cases.services.conversation_guidance import _messages_digest, refresh_conversation_guidance
+from cases.services.conversation_guidance import (
+    _messages_digest,
+    clear_generated_guidance,
+    refresh_conversation_guidance,
+)
 from cases.services.facts import extract_rule_facts
 from cases.services.reports import _fallback, generate_report
 from chat.models import Conversation, PendingDocument
@@ -169,6 +173,68 @@ def test_done_and_fixed_checklist_items_are_preserved(case):
     assert ChecklistItem.objects.filter(pk=fixed.pk).exists()
 
 
+def test_generated_checklist_item_reappears_after_automatic_dismissal(case):
+    item = ChecklistItem.objects.create(
+        case=case,
+        code="llm_registry_check",
+        title="등기부 확인",
+        state=ChecklistItem.State.DISMISSED,
+    )
+    fake = SimpleNamespace(invoke=lambda _prompt: SimpleNamespace(content=json.dumps({
+        "checklist": [{
+            "code": "registry_check",
+            "title": "등기부 확인",
+            "description": "다시 확인",
+            "priority": 10,
+        }],
+        "calendar": [],
+    }, ensure_ascii=False)))
+
+    refresh_conversation_guidance(case, messages=[{"role": "user", "content": "등기부를 확인할게요"}], llm=fake)
+
+    item.refresh_from_db()
+    assert item.state == ChecklistItem.State.TODO
+
+
+def test_document_guidance_cleanup_preserves_user_decisions(case):
+    done = ChecklistItem.objects.create(
+        case=case, code="llm_done", title="완료한 일", state=ChecklistItem.State.DONE,
+    )
+    todo = ChecklistItem.objects.create(
+        case=case, code="llm_todo", title="임시 할 일", state=ChecklistItem.State.TODO,
+    )
+    confirmed = ScheduleEvent.objects.create(
+        case=case,
+        starts_at=timezone.now(),
+        title="확정 일정",
+        rule_code="llm_confirmed",
+        status=ScheduleEvent.Status.CONFIRMED,
+        user_confirmed=True,
+    )
+    dismissed = ScheduleEvent.objects.create(
+        case=case,
+        starts_at=timezone.now() + timedelta(days=1),
+        title="제외 일정",
+        rule_code="llm_dismissed",
+        status=ScheduleEvent.Status.DISMISSED,
+    )
+    candidate = ScheduleEvent.objects.create(
+        case=case,
+        starts_at=timezone.now() + timedelta(days=2),
+        title="후보 일정",
+        rule_code="llm_candidate",
+        status=ScheduleEvent.Status.CANDIDATE,
+    )
+
+    clear_generated_guidance(case)
+
+    assert ChecklistItem.objects.filter(pk=done.pk).exists()
+    assert not ChecklistItem.objects.filter(pk=todo.pk).exists()
+    assert ScheduleEvent.objects.filter(pk=confirmed.pk).exists()
+    assert ScheduleEvent.objects.filter(pk=dismissed.pk).exists()
+    assert not ScheduleEvent.objects.filter(pk=candidate.pk).exists()
+
+
 def test_dismissed_generated_checklist_items_are_not_counted_or_rendered(client, user, case):
     ChecklistItem.objects.create(case=case, code="llm_old", title="이전 항목", state=ChecklistItem.State.DISMISSED)
     client.force_login(user)
@@ -226,6 +292,17 @@ def test_signup_unique_constraint_race_returns_email_feedback(client, monkeypatc
 def test_mortgage_negation_and_uncertainty(text, expected):
     values = [value for key, value, *_ in extract_rule_facts(text) if key == "mortgage_present"]
     assert (values[0] if values else None) is expected
+
+
+@pytest.mark.parametrize("text", [
+    "근저당 말소 예정은 없습니다.",
+    "근저당을 없애기로 하지 않았습니다.",
+    "저당권 해지 약속은 없어요.",
+])
+def test_negated_mortgage_removal_is_not_saved_as_a_promise(text):
+    keys = [key for key, *_ in extract_rule_facts(text)]
+    assert "mortgage_removal_promise" not in keys
+    assert "mortgage_present" in keys
 
 
 def test_report_fallback_keeps_question_answer_alignment():
@@ -423,8 +500,10 @@ def test_mixed_legacy_document_delete_clears_unproven_history_and_guidance(clien
     }), content_type="application/json")
     assert response.status_code == 200
     assert response.json()["messages"] == []
-    assert not case.checklist_items.filter(code__startswith="llm_").exists()
-    assert not case.schedule_events.filter(rule_code__startswith="llm_").exists()
+    assert case.checklist_items.filter(code="llm_document", state=ChecklistItem.State.DONE).exists()
+    assert case.schedule_events.filter(
+        rule_code="llm_document", status=ScheduleEvent.Status.CONFIRMED,
+    ).exists()
 
 
 def test_stale_guidance_result_is_discarded(case):

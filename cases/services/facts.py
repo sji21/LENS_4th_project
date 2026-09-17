@@ -77,6 +77,15 @@ def extract_rule_facts(text):
     if mortgage_sentence:
         if re.search(r"(있는지|없는지|여부|모르|확인.{0,6}(필요|못)|불명)", mortgage_sentence):
             pass
+        elif re.search(
+            r"((?:말소|해지).{0,12}(?:예정|약속|계획|조건).{0,10}(?:없|않)|"
+            r"(?:말소|해지).{0,12}(?:하기로|예정).{0,10}(?:하지\s*않|안\s*했|없)|"
+            r"없애기로.{0,10}(?:하지\s*않|안\s*했|없))",
+            mortgage_sentence,
+        ):
+            # A denied future removal is not a removal promise. The mention
+            # still supports that a mortgage currently exists.
+            facts.append(("mortgage_present", True, 0.72, mortgage_sentence.strip()))
         elif re.search(r"(말소.{0,8}(예정|약속|조건)|없애|해지.{0,8}(예정|약속))", mortgage_sentence):
             facts.append(("mortgage_removal_promise", "말소 예정", 0.8, mortgage_sentence.strip()))
             facts.append(("mortgage_present", True, 0.72, mortgage_sentence.strip()))

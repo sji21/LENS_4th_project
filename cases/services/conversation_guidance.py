@@ -140,6 +140,11 @@ def _sync_checklist(case, items):
             if getattr(row, field) != value:
                 setattr(row, field, value)
                 changed = True
+        # DISMISSED is used when an LLM item temporarily disappears. If the
+        # same stable item returns, show it again without overwriting DONE.
+        if row.state == ChecklistItem.State.DISMISSED:
+            row.state = ChecklistItem.State.TODO
+            changed = True
         if changed:
             row.save()
     case.checklist_items.filter(
@@ -183,8 +188,16 @@ def _sync_calendar(case, items):
 @transaction.atomic
 def clear_generated_guidance(case):
     """Remove guidance whose source can no longer be proven after document deletion."""
-    case.checklist_items.filter(code__startswith="llm_").delete()
-    case.schedule_events.filter(rule_code__startswith="llm_").delete()
+    # A document refresh may invalidate tentative guidance, but must not erase
+    # work the user already completed or calendar decisions they confirmed or
+    # dismissed. A later refresh can reconcile the remaining tentative rows.
+    case.checklist_items.filter(code__startswith="llm_").exclude(
+        state=ChecklistItem.State.DONE,
+    ).delete()
+    case.schedule_events.filter(
+        rule_code__startswith="llm_",
+        status=ScheduleEvent.Status.CANDIDATE,
+    ).delete()
 
 
 def refresh_conversation_guidance(case, *, messages=None, llm=None, freshness_guard=None):
