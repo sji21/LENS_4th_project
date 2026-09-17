@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/sji21/LENS_4th_project/schemas/case-corpus-release-v1.schema.json",
+  "title": "LENS data_dev_v2 Git corpus release",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "version", "case_count", "chunk_count", "fallback_allowed", "files", "index", "embedding_model", "retrieval_policy", "provenance"],
+  "properties": {
+    "schema": {"const": "lens-knowledge-corpus-release-v1"},
+    "version": {"type": "string", "minLength": 1},
+    "case_count": {"const": 8377}, "chunk_count": {"const": 8516}, "fallback_allowed": {"const": false},
+    "files": {
+      "type": "object", "additionalProperties": false,
+      "required": ["database/knowledge.sqlite3", "chunks/laws.jsonl", "chunks/cases.jsonl", "chunks/guides.jsonl"],
+      "properties": {
+        "database/knowledge.sqlite3": {"$ref": "#/$defs/sha256"},
+        "chunks/laws.jsonl": {"$ref": "#/$defs/sha256"},
+        "chunks/cases.jsonl": {"$ref": "#/$defs/sha256"},
+        "chunks/guides.jsonl": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "index": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "document_count", "logical_sha256", "files"],
+      "properties": {
+        "path": {"const": "index/chroma_kurev1_1024"}, "document_count": {"const": 8516},
+        "logical_sha256": {"$ref": "#/$defs/sha256"}, "files": {"$ref": "#/$defs/fileHashes"}
+      }
+    },
+    "embedding_model": {
+      "type": "object", "additionalProperties": false,
+      "required": ["model_id", "revision", "dimension", "files"],
+      "properties": {
+        "model_id": {"const": "nlpai-lab/KURE-v1"},
+        "revision": {"const": "8b418a58414668e75532ed045c22d9ca018ae2b2"}, "dimension": {"const": 1024},
+        "files": {
+          "allOf": [{"$ref": "#/$defs/fileHashes"}], "minProperties": 9, "maxProperties": 9,
+          "required": ["config.json", "config_sentence_transformers.json", "model.safetensors", "modules.json", "sentence_bert_config.json", "special_tokens_map.json", "tokenizer.json", "tokenizer_config.json", "1_Pooling/config.json"]
+        }
+      }
+    },
+    "retrieval_policy": {
+      "type": "object", "additionalProperties": false,
+      "required": ["candidate_depth", "return_k", "rerank_policy", "case_query_expansion", "case_rrf_k", "case_bm25_weight", "case_dense_weight", "case_field_policy"],
+      "properties": {
+        "candidate_depth": {"const": 80}, "return_k": {"const": 20},
+        "rerank_policy": {"const": "band_3pct"}, "case_query_expansion": {"const": "civil_terms"},
+        "case_rrf_k": {"const": 60}, "case_bm25_weight": {"const": 2}, "case_dense_weight": {"const": 1},
+        "case_field_policy": {"const": "tax_source_guard"}
+      }
+    },
+    "provenance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["dataset", "source_profile_sha256", "model_audit_sha256"],
+      "properties": {
+        "dataset": {"const": "data_dev_v2"}, "source_profile_sha256": {"$ref": "#/$defs/sha256"},
+        "model_audit_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "fileHashes": {
+      "type": "object", "minProperties": 1,
+      "propertyNames": {"pattern": "^(?!.*\\.\\.)(?!/)[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*$"},
+      "additionalProperties": {"$ref": "#/$defs/sha256"}
+    }
+  }
+}

@@ -9,6 +9,37 @@ from src.ingestion import server_build as build, server_sources as sources
 REAL_PIPELINE = build.embedding_pipeline
 
 
+def test_base_smoke_verification_does_not_attach_case_overlay(tmp_path, monkeypatch):
+    from src.retrieval import retriever, dense, profile, service
+    from src.retrieval.index import clean_metadata
+    row = chunk()
+    rows = {"ids": [row["chunk_id"]], "documents": [row["text"]],
+            "metadatas": [clean_metadata(row["metadata"])]}
+    empty = {"ids": [], "documents": [], "metadatas": []}
+    for rel in build.INDEXES:
+        path = tmp_path / rel / "chroma.sqlite3"
+        path.parent.mkdir(parents=True)
+        path.touch()
+    monkeypatch.setattr(retriever, "load_chunks", lambda path: [row] if path == tmp_path / build.CHUNKS[0] else [])
+    monkeypatch.setattr(build, "check_duplicates", lambda path: {"laws": 178, "civil_laws": 26, "cases": 26, "guides": 6})
+    monkeypatch.setattr(dense, "ChromaRetriever", lambda backend, path: SimpleNamespace(
+        collection=SimpleNamespace(get=lambda **kw: rows if path == tmp_path / build.INDEXES[0] else empty)))
+    monkeypatch.setattr(profile, "read_profile", lambda *a, **kw: {"index_hashes": ["hash", "hash"]})
+    monkeypatch.setattr(build, "index_hash", lambda index: "hash")
+    calls = []
+    result = SimpleNamespace(laws=[1], civil_laws=[1], cases=[1], guides=[1])
+    def base(**kwargs):
+        calls.append(kwargs)
+        return SimpleNamespace(search=lambda question: result)
+    def overlay(**kwargs):
+        raise AssertionError("base validation must not attach the released overlay")
+    monkeypatch.setattr(service.RetrievalService, "_from_index_without_case_profile", base)
+    monkeypatch.setattr(service.RetrievalService, "from_index", overlay)
+    build.verify(tmp_path, smoke=True)
+    assert len(calls) == 1
+    assert calls[0]["index_path"] == tmp_path / build.INDEXES[0]
+
+
 def test_sources_produce_complete_unique_corpus_without_database():
     laws, cases, guides = sources.source_records()
     assert len(laws) == 204 and len(cases) == 26 and len(guides) == 2
@@ -300,6 +331,14 @@ def test_installed_version_change_forces_reembedding(owned_build, monkeypatch, p
     assert build.prepare()["state"] == "ready"
     assert ("build", None) in calls
     assert build.read(data / build.BUILD)["embedding_pipeline"]["packages"][package] == "2.0"
+
+
+def test_base_prepare_checks_pinned_snapshot_without_main_ref(owned_build, monkeypatch):
+    import setup_data
+    calls = []
+    monkeypatch.setattr(setup_data, "prepare_model", lambda **kwargs: calls.append(kwargs))
+    assert build.prepare()["state"] == "unchanged"
+    assert calls == [{"check": True, "pinned_only": True}]
 
 
 def test_missing_dependency_version_is_not_recorded_as_compatible(monkeypatch):

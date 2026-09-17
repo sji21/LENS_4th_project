@@ -9,6 +9,8 @@ import setup_data as setup
 @pytest.fixture
 def preparation(tmp_path, monkeypatch):
     monkeypatch.setattr(setup, "ROOT", tmp_path)
+    monkeypatch.setattr(setup, "DEFAULT_CASE_RELEASE", tmp_path / "data/case_corpus/release.json")
+    monkeypatch.setattr(setup, "DEFAULT_CASE_PROFILE", tmp_path / "data/case_corpus/runtime-profile.json")
     directory = tmp_path / ".venv"
     directory.mkdir()
     (directory / "pyvenv.cfg").touch()
@@ -71,6 +73,43 @@ def test_default_setup_builds_from_sources_without_zip(preparation):
     assert calls[-1] == [str(python), "-X", "utf8", "-m", "src.ingestion.server_build"]
 
 
+def test_validation_bundle_does_not_autodiscover_case_release(preparation):
+    _, calls = preparation
+    setup.DEFAULT_CASE_RELEASE.parent.mkdir(parents=True)
+    setup.DEFAULT_CASE_RELEASE.write_text('{}', encoding='utf-8')
+    assert setup.main(["--validation-bundle"]) == 0
+    assert not any("--case-release" in cmd or "src.ingestion.case_release" in cmd
+                   or "src.ingestion.knowledge_release" in cmd for cmd in calls)
+
+
+def test_case_release_is_verified_after_base_build_and_writes_runtime_profile(preparation, tmp_path):
+    python, calls = preparation
+    release = tmp_path / "shared cases/release.json"
+    assert setup.main(["--case-release", str(release)]) == 0
+    assert calls[-2] == [str(python), "-X", "utf8", "-m", "src.ingestion.server_build"]
+    assert calls[-1] == [
+        str(python), "-X", "utf8", "-m", "src.ingestion.case_release",
+        "--release", str(release.resolve()), "--profile-output", str(setup.DEFAULT_CASE_PROFILE),
+    ]
+
+
+def test_case_release_check_is_read_only_and_checks_actual_index(preparation, tmp_path):
+    python, calls = preparation
+    release = tmp_path / "shared cases/release.json"
+    assert setup.main(["--check", "--case-release", str(release)]) == 0
+    assert calls[-1] == [
+        str(python), "-X", "utf8", "-m", "src.ingestion.case_release",
+        "--release", str(release.resolve()),
+    ]
+    assert not any("--profile-output" in call for call in calls)
+
+
+def test_prepare_only_does_not_read_or_write_case_release(preparation, tmp_path):
+    _, calls = preparation
+    assert setup.main(["--prepare-only", "--case-release", str(tmp_path / "release.json")]) == 0
+    assert not any("src.ingestion.case_release" in call for call in calls)
+
+
 def test_source_requires_explicit_validation_mode(preparation):
     with pytest.raises(SystemExit):
         setup.main(["--source", "data"])
@@ -83,7 +122,7 @@ def test_missing_environment_check_is_read_only(preparation, monkeypatch, tmp_pa
 
 
 def test_wrong_python_version_is_rejected(preparation, monkeypatch):
-    monkeypatch.setattr(setup.sys, "version_info", (3, 12))
+    monkeypatch.setattr(setup.sys, "version_info", (3, 10))
     assert setup.main([]) == 1
     assert preparation[1] == []
 
@@ -198,3 +237,20 @@ def test_missing_model_check_never_downloads(model_cache):
     with pytest.raises(ValueError, match="파일이 없습니다"):
         setup.prepare_model(check=True)
     assert downloads == []
+
+
+def test_pinned_base_snapshot_preserves_different_main_ref(model_cache):
+    cache, downloads = model_cache
+    ref = cache / "refs/main"
+    ref.parent.mkdir(parents=True)
+    ref.write_text("case-corpus-revision")
+    setup.prepare_model(pinned_only=True)
+    setup.prepare_model(check=True, pinned_only=True)
+    assert ref.read_text() == "case-corpus-revision"
+    assert len(downloads) == 1
+
+
+def test_python312_requires_matching_environment_interpreter(preparation,monkeypatch):
+    monkeypatch.setattr(setup.sys,"version_info",(3,12))
+    assert setup.main(["--prepare-only"])==0
+    assert "== (3, 12)" in preparation[1][0][-1]
