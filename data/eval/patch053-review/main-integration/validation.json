@@ -1,8 +1,8 @@
 {
   "main_commit": "bd6c0c8d9311f39179ebce55f6c4cb33f054f6f5",
   "previous_patch_head": "49979ff07ce034e2dd984606ecd45dd9fd803367",
-  "integration_commit": "pending",
-  "created_at": "2026-09-17T03:12:13.4635290Z",
+  "integration_commit": "75c2915",
+  "created_at": "2026-09-17T03:12:13.463529Z",
   "tests": {
     "passed": 2810,
     "seconds": 328.19,
