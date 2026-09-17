@@ -44,6 +44,8 @@ property_type: ONLY building type (주택, 아파트, 빌라, 단독주택, 다�
 deposit, monthly_rent, start_date, end_date, notice_date: copy literal amount/date, never calculate or convert.
 Not moving out is moved_out=아니요, not an inferred living_in_property fact. Hypothetical examples are not user facts.
 
+Classify ONLY the current user message. A previous greeting never makes the next message a greeting.
+A statement of a problem or desired action is a substantive request even without a question mark: "연장을 하고 싶어" asks for procedure.
 Then classify intent: greeting only for pure social greeting; question for a new substantive question;
 followup for continuing context.topic (conditions, papers, agencies, deadlines, sources);
 correction for changing an earlier fact; clarification_answer for answering pending (including unknown/refusal);
@@ -88,6 +90,8 @@ def _example(context, user, *, intent="question", topic="보증금반환", state
 def examples():
     # Synthetic teaching examples are separate from both frozen evaluation splits.
     return [
+        *_example({"history": [{"role": "user", "content": "안녕하세요"}]},
+                  "임대차가 끝나가서 계약을 더 이어가고 싶어요", topic="계약갱신", purpose="procedure", clarify_field="end_date"),
         *_example({}, "제가 사는 월세집 계약이 끝나가는데 갱신은 어떻게 진행하나요?", topic="계약갱신", purpose="procedure", clarify_field="end_date",
                   statements=[{"evidence": "월세", "field": "contract_type", "value": "월세"}]),
         *_example({"topic": "계약갱신", "facts": {"contract_type": "월세"},

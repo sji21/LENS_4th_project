@@ -84,3 +84,17 @@ def test_procedure_spacing_is_applied_before_annotation_offsets():
     assert '\n\n확인할 사항:' in message['content']
     span = message['citations'][0]
     assert message['content'][span['start']:span['end']] == '주택임대차보호법 제6조의3'
+
+
+@pytest.mark.parametrize('duration', ['2달 남았어', '세 달 정도 남았어요'])
+def test_date_reply_without_model_selected_question_continues_interview(runtime, duration):
+    state = services.initial_state()
+    runtime.planner.return_value.decision = renewal()
+    call(state, runtime, USER)
+    runtime.planner.return_value.decision = replace(renewal(), intent='clarification_answer', purpose='general',
+        updates={'end_date': {'value': duration, 'evidence': duration}}, clarify_field=None)
+    message = call(state, runtime, duration)
+    assert message['action'] == 'clarify'
+    assert state['dialogue']['facts']['end_date']['value'] == duration
+    assert state['dialogue']['pending']['field'] == 'landlord_notified'
+    runtime.official.assert_called_once()
