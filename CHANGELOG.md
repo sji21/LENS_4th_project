@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
-- PATCH-054 Continue missing-fact collection after a relative expiry answer even when the planner omits its next question. Prioritize the current substantive request over a preceding greeting. Recognize Korean inform-verb variants in notification statements while preserving negation checks. (commit: pending)
+- PATCH-054 Continue missing-fact collection after a relative expiry answer even when the planner omits its next question. Prioritize the current substantive request over a preceding greeting. Recognize Korean inform-verb variants in notification statements while preserving negation checks. (commit: 8ed7546)
 
 ## 2026-09-16
 
