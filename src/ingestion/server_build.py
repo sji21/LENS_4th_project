@@ -159,7 +159,9 @@ def verify(data, smoke=False):
         raise ValueError("검색 인덱스 문서 누락")
     if smoke:
         from src.retrieval.service import RetrievalService
-        service = RetrievalService.from_index(chunk_paths=paths, index_path=data / INDEXES[0], civil_index_path=data / INDEXES[1])
+        # This validates only the staged base build. The released case overlay
+        # is verified separately, including when setup is run a second time.
+        service = RetrievalService._from_index_without_case_profile(chunk_paths=paths, index_path=data / INDEXES[0], civil_index_path=data / INDEXES[1])
         results = [service.search(q) for q in ("전세 계약 갱신", "집주인이 보일러 수리를 거부해요", "보증금 반환 판례", "전세보증금 반환보증")]
         if not all(any(getattr(r, name) for r in results) for name in ("laws", "civil_laws", "cases", "guides")):
             raise ValueError("기본 검색 연결 확인 실패")
@@ -172,7 +174,7 @@ def worker(action, data, previous=None):
     if action == "inspect":
         return verify(data)
     from setup_data import prepare_model
-    prepare_model(check=True)
+    prepare_model(check=True, pinned_only=True)
     records = source_records()
     counts = load_databases(records, data)
     from src.retrieval.retriever import load_chunks
@@ -181,7 +183,8 @@ def worker(action, data, previous=None):
     cached = []
     def backend():
         if not cached:
-            cached.append(SentenceTransformerEmbedding(MODEL))
+            revision = next(iter({Path(name).parts[1] for name in model_identity()}))
+            cached.append(SentenceTransformerEmbedding(MODEL, revision=revision))
         return cached[0]
     indexing = []
     for civil, name in enumerate(INDEXES):
@@ -270,7 +273,7 @@ def prepare(data_root=None, rebuild=False):
     with installation_lock(data_root=target):
         print("[1/3] DB 체크 — 원천 자료·현재 구축 상태 확인", flush=True)
         from setup_data import prepare_model
-        prepare_model(check=True)
+        prepare_model(check=True, pinned_only=True)
         records = source_records()
         expected = {"version": 1, "source_fingerprint": fingerprint(records), "recipe": recipe(),
                     "model": MODEL, "model_identity": model_identity(),

@@ -13,6 +13,7 @@ from src.retrieval.service import RetrievalService, CASE, _to_evidence
 from src.retrieval.case_rerank import rerank_cases
 
 PROFILE_ENV = "LENS_CASE_RETRIEVAL_PROFILE"
+DEFAULT_PROFILE = Path(__file__).resolve().parents[2] / "data/case_corpus/runtime-profile.json"
 FILES = ("database/knowledge.sqlite3", "chunks/laws.jsonl", "chunks/cases.jsonl", "chunks/guides.jsonl")
 CHUNKS = FILES[1:]
 TAX_SOURCES = ("국세법령정보시스템", "지방세법령정보시스템")
@@ -33,7 +34,10 @@ def case_query_filter(where, question, policy):
 
 
 def configured_case_profile():
-    return os.getenv(PROFILE_ENV, "").strip()
+    configured = os.getenv(PROFILE_ENV, "").strip()
+    if configured:
+        return configured
+    return str(DEFAULT_PROFILE) if DEFAULT_PROFILE.is_file() else ""
 
 
 def file_hash(path):
@@ -87,23 +91,42 @@ def read_case_profile(path):
     for name, expected in profile["files"].items():
         if file_hash(root/name) != expected:
             raise ValueError("판례 프로필의 파일 해시가 다릅니다: " + name)
+    if "index_files" in profile:
+        index_root = (root/"index/chroma_kurev1_1024").resolve()
+        if not profile["index_files"]:
+            raise ValueError("판례 인덱스 물리 해시 목록이 비어 있습니다.")
+        actual={p.relative_to(index_root).as_posix() for p in index_root.rglob("*") if p.is_file()}
+        if actual!=set(profile["index_files"]):
+            raise ValueError("판례 인덱스 물리 파일 목록이 다릅니다.")
+        for name, expected in profile["index_files"].items():
+            if Path(name).is_absolute() or ".." in Path(name).parts:
+                raise ValueError("판례 인덱스 파일은 상대 경로여야 합니다.")
+            target=(index_root/name).resolve()
+            if not target.is_relative_to(index_root) or file_hash(target)!=expected:
+                raise ValueError("판례 인덱스 물리 파일 해시가 다릅니다: " + name)
     return profile
 
 
 class CaseCorpusRetrievalService(RetrievalService):
-    def __init__(self, chunks, dense, profile):
+    def __init__(self, chunks, dense, profile, base_service=None):
         from src.retrieval.terms import expand, expand_civil
 
         case = replace(CASE,
             query_expander=expand_civil if profile.get("case_query_expansion") == "civil_terms" else expand,
             bm25_weight=profile.get("case_bm25_weight", 1),
             dense_weight=profile.get("case_dense_weight", 1))
+        self.base_service = base_service
         super().__init__(chunks, dense, case=case)
         self.case_profile = profile
+        self.base_service = base_service
         self._request_trace = local()
         retriever = self._retrievers.get(self.corpora[1].name)
         if retriever is not None:
             retriever.rrf_k = profile.get("case_rrf_k", 60)
+
+    def _warn_if_civil_missing(self, civil, civil_chunks):
+        if self.base_service is None:
+            RetrievalService._warn_if_civil_missing(civil, civil_chunks)
 
     def _search_one(self, corpus, question, k):
         if corpus.name != self.corpora[1].name:
@@ -125,6 +148,12 @@ class CaseCorpusRetrievalService(RetrievalService):
 
     def search(self, question, k_law=5, k_case=None, k_guide=2, *, k_civil=None):
         self._request_trace.case = {}
+        if self.base_service is not None:
+            result = self.base_service.search(question, k_law=k_law, k_case=0, k_guide=k_guide, k_civil=k_civil)
+            if not question or not question.strip():
+                return result
+            return replace(result, cases=self._search_one(self.corpora[1], question,
+                self.case_profile["return_k"] if k_case is None else k_case))
         return super().search(question,k_law,
                               self.case_profile["return_k"] if k_case is None else k_case,
                               k_guide,k_civil=k_civil)
@@ -137,18 +166,18 @@ class CaseCorpusRetrievalService(RetrievalService):
         channels = {}
         for channel in ("cases", "laws", "civil_laws", "guides"):
             channels[channel] = [dict(asdict(e),
-                canonical_case_key=self._chunks[e.chunk_id]["metadata"].get("canonical_case_key"))
+                canonical_case_key=self._chunks.get(e.chunk_id, {}).get("metadata", {}).get("canonical_case_key"))
                 for e in getattr(result, channel)]
         return {"schema":"lens-retrieval-evidence-v1","profile_version":self.case_profile["version"],
                 "question":result.question,"channels":channels,"generation_status":"not_requested"}
 
 
-def load_case_profile(path):
+def load_case_profile(path, *, attach_base=True):
     header = json.loads(Path(path).read_text(encoding="utf-8-sig"))
     if header.get("schema") == "lens-case-internal-v1":
         from src.retrieval.case_internal_profile import load_internal_case_profile
         # Keep the product law/civil/guide channels when overlaying a new case index.
-        base_service = RetrievalService._from_index_without_case_profile()
+        base_service = RetrievalService._from_index_without_case_profile() if attach_base else None
         return load_internal_case_profile(path, base_service=base_service)
     from src.retrieval.dense import SentenceTransformerEmbedding, ChromaRetriever
     from src.retrieval.retriever import load_chunks
@@ -160,9 +189,13 @@ def load_case_profile(path):
             or sum(c["metadata"].get("doc_type")=="case" for c in chunks) != profile["case_count"]):
         raise ValueError("판례 프로필의 청크 수가 다릅니다.")
     backend = SentenceTransformerEmbedding(profile["model_id"], revision=profile["model_revision"])
-    dense = ChromaRetriever(backend, root/"index/chroma_kurev1_1024")
+    from src.retrieval.portable_index import native_index_path
+    dense = ChromaRetriever(backend, native_index_path(root/"index/chroma_kurev1_1024",
+                                                     immutable="index_files" in profile))
     if index_content_hash(dense.collection) != profile["index_content_sha256"]:
         raise ValueError("판례 프로필의 실제 인덱스가 다릅니다.")
     if set(dense.collection.get(include=[])["ids"]) != {c["chunk_id"] for c in chunks}:
         raise ValueError("판례 인덱스와 검색 청크의 ID가 다릅니다.")
-    return CaseCorpusRetrievalService(chunks,dense,profile)
+    base_service = (RetrievalService._from_index_without_case_profile()
+                    if attach_base and profile.get("preserve_base_channels") is True else None)
+    return CaseCorpusRetrievalService(chunks,dense,profile,base_service=base_service)

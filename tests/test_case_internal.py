@@ -151,6 +151,33 @@ def test_profile_default_k_and_explicit_top2_are_separate():
     assert len(service.search('임대차 보증금',k_law=0,k_case=2,k_guide=0,k_civil=0).cases)==2
 
 
+def test_internal_case_evidence_reaches_the_llm_prompt_unchanged():
+    from langchain_core.messages import AIMessage
+    from langchain_core.runnables import RunnableLambda
+    from src.generation.chain import build_qa_chain
+    from src.generation.prompt import format_context
+    from src.retrieval.case_internal_profile import AppliedCaseInternalService
+
+    original = chunk('case-sealed', 'sealed-key', '배포 판례의 고유한 본문')
+    backend = CaseInternalRetriever([original], Dense([('case-sealed', 1)]), CaseInternalPolicy(rerank='pure_rrf'))
+    service = AppliedCaseInternalService(backend, {'version': 'sealed-test'})
+    result = service.search('보증금 반환 판례', k_law=0, k_case=2, k_guide=0, k_civil=0)
+    captured = []
+
+    def generate(prompt):
+        captured.extend(message.content for message in prompt.to_messages())
+        return AIMessage(content='판례 근거를 확인했습니다.')
+
+    answer = build_qa_chain(RunnableLambda(generate)).invoke({
+        'context': format_context(result),
+        'question': '보증금 반환 판례',
+    })
+    prompt_text = '\n'.join(captured)
+    assert answer == '판례 근거를 확인했습니다.'
+    assert '## 관련 판례' in prompt_text
+    assert '배포 판례의 고유한 본문' in prompt_text
+
+
 def test_continuous_official_body_preserves_conditions_and_single_case_identity():
     full='보증금을 반환한다. 다만 동시이행 조건과 예외를 확인한다.'
     parts=[]
