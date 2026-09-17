@@ -189,6 +189,8 @@ def respond_conversational(state, question, document_id=None, *, legacy):
                 raise RuntimeError("Invalid conversation action")
 
         message.update(action="refuse" if message["status"] == "refused" else decision.action, intent=decision.intent)
+        if use_document and selected:
+            message["document_ids"] = [selected]
         if message["status"] in {"answered", "abstained", "refused"}:
             query = None
             request = None

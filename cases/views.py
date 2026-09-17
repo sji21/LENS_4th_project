@@ -18,8 +18,11 @@ def dashboard(request, case_id=None):
         "schedule_events", "checklist_items", "reports",
     ))
     if case_id:
-        owned_case(request, case_id)
-    current_id = request.session.get("lens_case_id")
+        selected_case = owned_case(request, case_id)
+        current_id = str(selected_case.pk)
+        request.session["lens_case_id"] = current_id
+    else:
+        current_id = request.session.get("lens_case_id")
     selected = next((case for case in cases if str(case.pk) == current_id), None)
     if selected is None and cases:
         selected = cases[0]
@@ -46,7 +49,10 @@ def dashboard(request, case_id=None):
         "selected": selected,
         "rooms": rooms,
         "calendar_events": calendar_events,
-        "checklist_count": sum(case.checklist_items.count() for case in cases),
+        "checklist_count": sum(
+            case.checklist_items.exclude(state=ChecklistItem.State.DISMISSED).count()
+            for case in cases
+        ),
     })
 
 

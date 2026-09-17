@@ -8,6 +8,7 @@ from pathlib import Path
 
 from django.conf import settings
 from django.core.exceptions import RequestDataTooBig, TooManyFilesSent
+from django.db import transaction
 from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
@@ -65,7 +66,9 @@ def current_conversation(request):
         raise ApiError("세션이 없습니다. 페이지를 새로고침해 주세요.", 410)
     query = Conversation.objects.filter(pk=chat_id)
     if request.user.is_authenticated:
-        query = query.filter(user=request.user).filter(Q(case__isnull=True) | Q(case__user=request.user))
+        query = query.filter(user=request.user).filter(
+            Q(case__user=request.user) | Q(case__isnull=True, expires_at__gt=timezone.now())
+        )
     else:
         query = query.filter(user__isnull=True, expires_at__gt=timezone.now())
     conversation = query.first()
@@ -91,14 +94,22 @@ def new_conversation(request):
             if existing:
                 request.session["lens_conversation_id"] = str(existing.pk)
                 return existing
-        else:
-            # Empty drafts are navigation state, not chat rooms. Keep only the current draft.
-            Conversation.objects.filter(user=request.user, case__isnull=True).delete()
-        kwargs.update(user=request.user, case=case, expires_at=timezone.now() + timedelta(days=3650))
+        kwargs.update(
+            user=request.user, case=case,
+            expires_at=timezone.now() + timedelta(days=3650) if case else timezone.now() + timedelta(days=1),
+        )
     conversation = Conversation.objects.create(**kwargs)
     request.session["lens_conversation_id"] = str(conversation.pk)
     request.session.set_expiry(settings.SESSION_COOKIE_AGE)
     return conversation
+
+
+@require_POST
+def start_new(request):
+    """Open a fresh draft while preserving every saved chat room."""
+    request.session.pop("lens_case_id", None)
+    request.session.pop("lens_conversation_id", None)
+    return redirect("chat:home")
 
 
 @require_GET
@@ -174,17 +185,38 @@ def exclusive_conversation(request, payload):
         raise ApiError("이 대화의 다른 요청을 처리 중입니다. 완료 후 다시 시도해 주세요.", 409)
     conversation.refresh_from_db()
     duplicate = request_id in conversation.state.get("completed_requests", [])
+    successor = None
+    successor_busy_until = None
     try:
-        with heartbeat(conversation.pk, token):
+        from cases.services.attachments import storage_rollback_guard
+        with heartbeat(conversation.pk, token), storage_rollback_guard(), transaction.atomic():
             yield conversation, duplicate
-        if not duplicate:
-            conversation.state["completed_requests"] = (conversation.state.get("completed_requests", []) + [request_id])[-32:]
-        updated = Conversation.objects.filter(pk=conversation.pk, lease_token=token, busy_until__gt=timezone.now()).update(
-            state=conversation.state, expires_at=timezone.now() + timedelta(seconds=settings.CHAT_TTL_SECONDS),
-        )
-        if not updated:
-            raise ApiError("요청 처리 시간이 초과되었습니다. 대화를 새로고침해 주세요.", 409)
+            if not duplicate:
+                conversation.state["completed_requests"] = (conversation.state.get("completed_requests", []) + [request_id])[-32:]
+            # A member draft has no persistent case yet, so retain the one-day
+            # lifetime assigned at creation.  Only an actual room is long-lived.
+            if conversation.case_id:
+                expiry = timezone.now() + timedelta(days=3650)
+            elif conversation.user_id:
+                expiry = timezone.now() + timedelta(days=1)
+            else:
+                expiry = timezone.now() + timedelta(seconds=settings.CHAT_TTL_SECONDS)
+            updated = Conversation.objects.filter(pk=conversation.pk, lease_token=token, busy_until__gt=timezone.now()).update(
+                state=conversation.state, expires_at=expiry,
+            )
+            if not updated:
+                owner = Conversation.objects.filter(pk=conversation.pk).values("lease_token", "busy_until").first()
+                if owner and owner["lease_token"] not in {None, token}:
+                    successor = owner["lease_token"]
+                    successor_busy_until = owner["busy_until"]
+                raise ApiError("요청 처리 시간이 초과되었습니다. 대화를 새로고침해 주세요.", 409)
         request.session.set_expiry(settings.SESSION_COOKIE_AGE)
+    except ApiError:
+        if successor:
+            Conversation.objects.filter(pk=conversation.pk).update(
+                lease_token=successor, busy_until=successor_busy_until,
+            )
+        raise
     finally:
         Conversation.objects.filter(pk=conversation.pk, lease_token=token).update(busy_until=timezone.now(), lease_token=None)
 
@@ -220,22 +252,26 @@ def send_message(request):
                     title=title_from_question(question),
                 )
                 conversation.save(update_fields=("case", "updated_at"))
+                from cases.services.attachments import promote_pending_documents
+                promote_pending_documents(conversation, conversation.case)
                 request.session["lens_case_id"] = str(conversation.case_id)
                 room_created = True
             if conversation.case_id:
                 from cases.models import CaseFact
-                from cases.services.conversation_guidance import refresh_conversation_guidance
+                from cases.services.conversation_guidance import schedule_conversation_guidance
                 from cases.services.facts import record_text_facts
                 user_message = conversation.state["messages"][-2]
                 record_text_facts(
                     conversation.case, question, source_type=CaseFact.SourceType.CHAT,
                     source_ref=user_message["id"], source_label="사용자 채팅",
                 )
-                refresh_conversation_guidance(
+                schedule_conversation_guidance(
                     conversation.case,
                     messages=conversation.state["messages"],
+                    conversation=conversation,
                 )
                 services.sync_persistent_messages(conversation)
+                conversation.case.save(update_fields=("updated_at",))
     response = services.public_state(conversation)
     response["room_created"] = room_created
     return JsonResponse(response)
@@ -265,7 +301,8 @@ def upload_document(request):
                 data = upload.read()
                 notice = services.add_document(
                     conversation.state, filename, data, str(conversation.pk),
-                    case=conversation.case, content_type=upload.content_type or "",
+                    case=conversation.case, conversation=conversation,
+                    content_type=upload.content_type or "",
                 )
             except ValueError as error:
                 # Only adapter-owned fixed messages are returned; parser exceptions stay private.
@@ -287,10 +324,38 @@ def delete_document(request, document_id):
             invalidate_document(conversation.state, document_id)
             if conversation.case_id:
                 from cases.services.attachments import delete_document_attachment
+                from cases.services.conversation_guidance import clear_generated_guidance, schedule_conversation_guidance
                 delete_document_attachment(conversation.case, document_id)
+                messages = conversation.state["messages"]
+                provenance_complete = conversation.state.get("document_provenance_version") == 1
+                retained = ([
+                    message for message in messages
+                    if document_id not in message.get("document_ids", [])
+                ] if provenance_complete else [])
+                removed_message_ids = [
+                    message.get("id") for message in messages
+                    if message.get("id") and message not in retained
+                ]
+                conversation.state["document_provenance_version"] = 1
+                conversation.state["messages"] = retained
+                Message.objects.filter(conversation=conversation).exclude(
+                    public_id__in=[m.get("id") for m in retained if m.get("id")]
+                ).delete()
+                from cases.services.facts import invalidate_source
+                for message_id in removed_message_ids:
+                    invalidate_source(conversation.case, "chat", message_id)
+                clear_generated_guidance(conversation.case)
+                schedule_conversation_guidance(
+                    conversation.case,
+                    messages=retained,
+                    conversation=conversation,
+                )
             else:
                 # Guest sessions cannot preserve provenance separately.
                 conversation.state["messages"] = []
+                pending = conversation.pending_documents.filter(document_id=document_id).first()
+                if pending:
+                    pending.delete()
     return JsonResponse(services.public_state(conversation))
 
 
@@ -316,6 +381,7 @@ def reset(request):
         if not duplicate:
             if conversation.case_id:
                 conversation.state["messages"] = []
+                conversation.state["document_provenance_version"] = 1
                 conversation.state["dialogue"] = services.empty_dialogue()
                 Message.objects.filter(conversation=conversation).delete()
             else:

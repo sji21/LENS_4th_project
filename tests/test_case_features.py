@@ -1,6 +1,7 @@
 import importlib
 import json
 import uuid
+from datetime import date
 from types import SimpleNamespace
 
 import pytest
@@ -73,6 +74,33 @@ def test_new_chat_button_opens_draft_without_creating_room(client, user, case):
     assert response.status_code == 302 and response.url == "/"
     assert ContractCase.objects.filter(user=user).count() == 1
     assert client.session.get("lens_case_id") is None
+
+
+def test_logo_opens_fresh_draft_and_preserves_saved_room(client, user, case):
+    client.force_login(user)
+    session = client.session
+    session["lens_case_id"] = str(case.pk)
+    session.save()
+    page = client.get("/").content.decode()
+    assert 'class="brand-new-chat-form"' in page
+    assert 'action="/new/"' in page
+    response = client.post("/new/", follow=True)
+    assert response.status_code == 200
+    assert ContractCase.objects.filter(pk=case.pk, user=user).exists()
+    assert client.session.get("lens_case_id") is None
+    draft = Conversation.objects.get(pk=client.session["lens_conversation_id"])
+    assert draft.user == user and draft.case is None
+
+
+def test_chat_header_and_report_action_positions(client, user, case):
+    client.force_login(user)
+    session = client.session
+    session["lens_case_id"] = str(case.pk)
+    session.save()
+    page = client.get("/").content.decode()
+    assert f"<h1>{case.title}</h1>" in page
+    assert "· 임대차 상담" not in page
+    assert page.index('class="composer-section"') < page.index('id="report-form"') < page.index('id="chat-form"')
 
 
 def test_workspace_is_only_the_chat_room_history(client, user, case):
@@ -252,6 +280,35 @@ def test_chat_room_llm_drives_checklist_and_candidate_calendar(case):
     item = ChecklistItem.objects.get(case=case, code="llm_guarantee_check")
     assert result["updated"] and item.state == ChecklistItem.State.TODO
     assert ScheduleEvent.objects.filter(case=case, rule_code="llm_balance_day", status="candidate").exists()
+
+
+def test_relative_deadline_prompt_uses_reference_date_and_saves_llm_result(case, monkeypatch):
+    captured = {}
+    payload = {
+        "checklist": [{
+            "code": "registry_check", "title": "등기 확인", "description": "이틀 뒤 확인",
+            "priority": 10, "date": "2026-09-05",
+        }],
+        "calendar": [{
+            "code": "registry_deadline", "date": "2026-09-05", "title": "등기 확인 기한",
+            "description": "9월 3일로부터 이틀 뒤",
+        }],
+    }
+
+    def invoke(prompt):
+        captured["prompt"] = prompt
+        return SimpleNamespace(content=json.dumps(payload, ensure_ascii=False))
+
+    monkeypatch.setattr("cases.services.conversation_guidance.timezone.localdate", lambda: date(2026, 9, 16))
+    result = refresh_conversation_guidance(
+        case,
+        messages=[{"id": "u1", "role": "user", "content": "9월 3일이고 이틀 뒤까지 등기를 확인해야 해."}],
+        llm=SimpleNamespace(invoke=invoke),
+    )
+    assert "오늘 날짜는 2026-09-16" in captured["prompt"]
+    assert "2026-09-05" in captured["prompt"]
+    assert result["updated"]
+    assert ScheduleEvent.objects.filter(case=case, starts_at__date="2026-09-05").exists()
 
 
 def test_dated_checklist_is_also_added_to_calendar(case):

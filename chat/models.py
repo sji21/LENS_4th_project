@@ -33,6 +33,20 @@ class Message(models.Model):
         constraints = [models.UniqueConstraint(fields=("conversation", "public_id"), name="unique_conversation_message")]
 
 
+class PendingDocument(models.Model):
+    """Encrypted upload retained until a draft becomes a member-owned case."""
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    conversation = models.ForeignKey(Conversation, on_delete=models.CASCADE, related_name="pending_documents")
+    document_id = models.CharField(max_length=32, unique=True)
+    original_name = models.CharField(max_length=180)
+    content_type = models.CharField(max_length=120, blank=True)
+    size = models.PositiveBigIntegerField()
+    sha256 = models.CharField(max_length=64, db_index=True)
+    storage_key = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
 class LawWatch(models.Model):
     title = models.CharField(max_length=250, unique=True)
     metadata = models.JSONField(default=dict)

@@ -2,8 +2,9 @@ from __future__ import annotations
 
 import json
 import re
+import time
 
-from django.db import transaction
+from django.db import IntegrityError, OperationalError, connection, transaction
 from django.db.models import Max
 
 from cases.models import CaseFact, Report
@@ -41,9 +42,19 @@ def _source_snapshot(case, conversations):
 
 def _fallback(snapshot):
     confirmed = [f for f in snapshot["facts"] if f["status"] == CaseFact.Status.ACTIVE]
-    questions = [m["content"][:500] for m in snapshot["dialogue"] if m["role"] == "user"]
-    answers = [m["content"][:500] for m in snapshot["dialogue"] if m["role"] == "assistant"]
-    pairs = [f"질문: {question} / 확인한 내용: {answers[index]}" for index, question in enumerate(questions) if index < len(answers)]
+    questions, pairs = [], []
+    pending_question = None
+    for message in snapshot["dialogue"]:
+        if message["role"] == "user":
+            if pending_question:
+                pairs.append(f"질문: {pending_question} / 확인한 내용: 답변이 확인되지 않았습니다.")
+            pending_question = message["content"][:500]
+            questions.append(pending_question)
+        elif pending_question:
+            pairs.append(f"질문: {pending_question} / 확인한 내용: {message['content'][:500]}")
+            pending_question = None
+    if pending_question:
+        pairs.append(f"질문: {pending_question} / 확인한 내용: 답변이 확인되지 않았습니다.")
     unresolved = [
         f"출처 간 값 확인 필요: {f['key']}"
         for f in snapshot["facts"] if f["status"] == CaseFact.Status.CONFLICT
@@ -87,8 +98,8 @@ def build_report_content(snapshot, llm=None):
     return _parse_json(getattr(response, "content", str(response)))
 
 
-@transaction.atomic
 def generate_report(case, *, llm=None):
+    from cases.models import ContractCase
     conversations = list(case.conversations.order_by("created_at"))
     snapshot = _source_snapshot(case, conversations)
     mode = "llm"
@@ -97,5 +108,22 @@ def generate_report(case, *, llm=None):
     except Exception:
         content = _fallback(snapshot)
         mode = "template_fallback"
-    version = (case.reports.aggregate(value=Max("version"))["value"] or 0) + 1
-    return Report.objects.create(case=case, version=version, content_json=content, source_snapshot=snapshot, generation_mode=mode)
+    for attempt in range(5):
+        try:
+            with transaction.atomic():
+                locked_case = ContractCase.objects.select_for_update().get(pk=case.pk)
+                version = (locked_case.reports.aggregate(value=Max("version"))["value"] or 0) + 1
+                return Report.objects.create(
+                    case=locked_case,
+                    version=version,
+                    content_json=content,
+                    source_snapshot=snapshot,
+                    generation_mode=mode,
+                )
+        except IntegrityError:
+            if attempt == 4:
+                raise
+        except OperationalError as error:
+            if connection.vendor != "sqlite" or "locked" not in str(error).lower() or attempt == 4:
+                raise
+        time.sleep(0.04 * (attempt + 1))

@@ -1,0 +1,307 @@
+{
+  "mode": "real_planner_fixed_legal_answer",
+  "rows": [
+    {
+      "user": "안녕",
+      "message": {
+        "id": "7c75487c513b4f92978bc4c2176c17e5",
+        "role": "assistant",
+        "status": "social",
+        "content": "안녕하세요. 주택 임대차와 관련해 궁금한 점을 편하게 말씀해 주세요.",
+        "sources": [],
+        "context_content": "",
+        "used_history": false,
+        "elapsed_seconds": 16.3,
+        "glossary": [],
+        "citations": [],
+        "followups": [],
+        "simplified": "",
+        "action": "social",
+        "intent": "greeting"
+      },
+      "plan": {
+        "decision": {
+          "intent": "greeting",
+          "action": "social",
+          "topic": null,
+          "topic_changed": false,
+          "updates": {},
+          "clarify_field": null,
+          "question": null,
+          "search_query": "",
+          "document_id": null,
+          "style": "standard",
+          "purpose": "general"
+        },
+        "elapsed_seconds": 16.302,
+        "model_invocations": 1,
+        "output_tokens": 48,
+        "normalizations": []
+      },
+      "dialogue": {
+        "version": 1,
+        "turn": 1,
+        "epoch": 0,
+        "topic": null,
+        "facts": {},
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "안녕"
+          }
+        ],
+        "changes": [],
+        "pending": null,
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": "social",
+        "clarification_counts": {}
+      }
+    },
+    {
+      "user": "임대차 계약이 곧 만료될거라 연장을 하고 싶어",
+      "message": {
+        "id": "83fcc43dda7e4ccbb76d38e9ae4a613e",
+        "role": "assistant",
+        "status": "answered",
+        "content": "고정된 검증 응답 대역",
+        "sources": [],
+        "context_content": "고정된 검증 응답 대역",
+        "used_history": true,
+        "elapsed_seconds": 6.7,
+        "glossary": [],
+        "citations": [],
+        "followups": [],
+        "simplified": "",
+        "reason": "answered",
+        "followup_question": "계약 종료일을 알려주시겠어요?",
+        "choices": [
+          {
+            "label": "모르겠어요",
+            "message": "모르겠어요"
+          }
+        ],
+        "action": "rag",
+        "intent": "question"
+      },
+      "plan": {
+        "decision": {
+          "intent": "question",
+          "action": "rag",
+          "topic": "계약갱신",
+          "topic_changed": false,
+          "updates": {
+            "contract_ended": {
+              "value": "아니요",
+              "evidence": "계약이 곧 만료될거라"
+            }
+          },
+          "clarify_field": "end_date",
+          "question": null,
+          "search_query": "대화 주제: 계약갱신\n질문 목적: 진행 절차: 요청 시기, 전달 방법, 실행 순서, 확인 항목\n계약 종료 여부: 아니요\n사용자 입력: 임대차 계약이 곧 만료될거라 연장을 하고 싶어",
+          "document_id": null,
+          "style": "standard",
+          "purpose": "procedure"
+        },
+        "elapsed_seconds": 6.684,
+        "model_invocations": 1,
+        "output_tokens": 108,
+        "normalizations": [
+          {
+            "field": "contract_type",
+            "reason": "unstated_contract_type_removed"
+          }
+        ]
+      },
+      "dialogue": {
+        "version": 1,
+        "turn": 2,
+        "epoch": 0,
+        "topic": "계약갱신",
+        "facts": {
+          "contract_ended": {
+            "value": "아니요",
+            "evidence": "계약이 곧 만료될거라",
+            "source_turn": 2,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "안녕"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "임대차 계약이 곧 만료될거라 연장을 하고 싶어"
+          }
+        ],
+        "changes": [],
+        "pending": {
+          "field": "end_date",
+          "question": "계약 종료일을 알려주시겠어요?",
+          "attempts": 1,
+          "choices": [
+            {
+              "label": "모르겠어요",
+              "message": "모르겠어요"
+            }
+          ],
+          "request": "임대차 계약이 곧 만료될거라 연장을 하고 싶어",
+          "epoch": 0,
+          "topic": "계약갱신",
+          "document_id": null,
+          "mode": "after_answer",
+          "message_id": "83fcc43dda7e4ccbb76d38e9ae4a613e"
+        },
+        "active_document_id": null,
+        "last_answer": {
+          "content": "고정된 검증 응답 대역",
+          "sources": [],
+          "turn": 2,
+          "validation": "existing_pipeline_passed",
+          "query": "대화 주제: 계약갱신\n질문 목적: 진행 절차: 요청 시기, 전달 방법, 실행 순서, 확인 항목\n계약 종료 여부: 아니요\n사용자 입력: 임대차 계약이 곧 만료될거라 연장을 하고 싶어",
+          "request": "임대차 계약이 곧 만료될거라 연장을 하고 싶어"
+        },
+        "last_status": "answered",
+        "clarification_counts": {
+          "end_date": 1
+        }
+      }
+    },
+    {
+      "user": "2달 남았어",
+      "message": {
+        "id": "e9fb685ad72a4cabbc27c0541d8030c3",
+        "role": "assistant",
+        "status": "clarify",
+        "content": "알려주신 내용을 반영했어요.\n\n임대인에게 의사를 알리셨나요?",
+        "sources": [],
+        "context_content": "",
+        "used_history": false,
+        "elapsed_seconds": 6.2,
+        "glossary": [],
+        "citations": [],
+        "followups": [],
+        "simplified": "",
+        "choices": [
+          {
+            "label": "예",
+            "message": "예"
+          },
+          {
+            "label": "아니요",
+            "message": "아니요"
+          },
+          {
+            "label": "모르겠어요",
+            "message": "모르겠어요"
+          }
+        ],
+        "reason": "needs_information",
+        "action": "clarify",
+        "intent": "clarification_answer"
+      },
+      "plan": {
+        "decision": {
+          "intent": "clarification_answer",
+          "action": "rag",
+          "topic": "계약갱신",
+          "topic_changed": false,
+          "updates": {
+            "end_date": {
+              "value": "2달 남았어",
+              "evidence": "2달 남았어"
+            }
+          },
+          "clarify_field": null,
+          "question": null,
+          "search_query": "대화 주제: 계약갱신\n계약 종료일: 2달 남았어\n계약 종료 여부: 아니요\n이어서 상담할 사용자 질문: 임대차 계약이 곧 만료될거라 연장을 하고 싶어\n사용자 입력: 2달 남았어",
+          "document_id": null,
+          "style": "standard",
+          "purpose": "general"
+        },
+        "elapsed_seconds": 6.239,
+        "model_invocations": 1,
+        "output_tokens": 80,
+        "normalizations": []
+      },
+      "dialogue": {
+        "version": 1,
+        "turn": 3,
+        "epoch": 0,
+        "topic": "계약갱신",
+        "facts": {
+          "contract_ended": {
+            "value": "아니요",
+            "evidence": "계약이 곧 만료될거라",
+            "source_turn": 2,
+            "source": "user_statement",
+            "certainty": "reported"
+          },
+          "end_date": {
+            "value": "2달 남았어",
+            "evidence": "2달 남았어",
+            "source_turn": 3,
+            "source": "user_statement",
+            "certainty": "reported"
+          }
+        },
+        "history": [
+          {
+            "role": "user",
+            "turn": 1,
+            "content": "안녕"
+          },
+          {
+            "role": "user",
+            "turn": 2,
+            "content": "임대차 계약이 곧 만료될거라 연장을 하고 싶어"
+          },
+          {
+            "role": "user",
+            "turn": 3,
+            "content": "2달 남았어"
+          }
+        ],
+        "changes": [],
+        "pending": {
+          "field": "landlord_notified",
+          "question": "임대인에게 의사를 알리셨나요?",
+          "attempts": 1,
+          "choices": [
+            {
+              "label": "예",
+              "message": "예"
+            },
+            {
+              "label": "아니요",
+              "message": "아니요"
+            },
+            {
+              "label": "모르겠어요",
+              "message": "모르겠어요"
+            }
+          ],
+          "request": "임대차 계약이 곧 만료될거라 연장을 하고 싶어",
+          "epoch": 0,
+          "topic": "계약갱신",
+          "document_id": null,
+          "mode": "after_answer",
+          "message_id": "e9fb685ad72a4cabbc27c0541d8030c3"
+        },
+        "active_document_id": null,
+        "last_answer": null,
+        "last_status": "clarify",
+        "clarification_counts": {
+          "end_date": 1,
+          "landlord_notified": 1
+        }
+      }
+    }
+  ]
+}
