@@ -1,0 +1,1126 @@
+{
+  "schema": "patch051-paired-budgets-v1",
+  "created_at": "2026-09-17T01:27:20.242661+00:00",
+  "head": "4491b761c3d5e29a655313b7cbb78a56d03aa7d7",
+  "status": "",
+  "generation_performed": false,
+  "profile": {
+    "version": 1,
+    "policy": "expanded-laws-record-v1",
+    "model": "nlpai-lab/KURE-v1",
+    "civil_ids": [
+      "민법-제105조",
+      "민법-제111조",
+      "민법-제113조",
+      "민법-제114조",
+      "민법-제118조",
+      "민법-제147조",
+      "민법-제186조",
+      "민법-제187조",
+      "민법-제265조",
+      "민법-제357조",
+      "민법-제390조",
+      "민법-제393조",
+      "민법-제470조",
+      "민법-제536조",
+      "민법-제543조",
+      "민법-제548조",
+      "민법-제615조",
+      "민법-제623조",
+      "민법-제626조",
+      "민법-제627조",
+      "민법-제629조",
+      "민법-제632조",
+      "민법-제634조",
+      "민법-제636조",
+      "민법-제640조",
+      "민법-제654조"
+    ],
+    "files": {
+      "database/knowledge.sqlite3": "0729e2a2ae793085fa9dd08c1cef749f5cbd8e142188b58395fe2786c03b4c35",
+      "chunks/civil.jsonl": "d2adac18e6f4eb1a85a3829f13628470930f55b7dcd7ee1a2502402344ea2b0c",
+      "chunks/chunks.jsonl": "8784c57ca4f2ba4ece469cf8f773e225bec0d8d0a1c54563e0e4b22add8ce324",
+      "chunks/guides.jsonl": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
+      "chunks/cases.jsonl": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
+      "database/civil.sqlite3": "2b59c85b1b149d0edbde7484cbccc2769457e22c808342f6f5f30eb5518e5b5e"
+    },
+    "index_hashes": [
+      "c585bccfe3f152d7aef5de1053ae256513b3945b0ef770cc79a8fefb4fb6e297",
+      "8ba204f34f23a294036511fb2c338c75a92269cea03bba290508b726c3b6735d"
+    ]
+  },
+  "device": "cpu",
+  "before": {
+    "sources": {
+      "requirements.txt": "c2d15e18a1b7894c6601cc53f7daf05a1ac6d519c669cd3e5b10943cdd34b954",
+      "scripts/build_project_plan_pdf.py": "fb2c53ec746893a56aa8416ddbf240aa542637f2063a61b3d2a515c3ac36601a",
+      "scripts/case_internal_application_audit.py": "fd32cc03c159af8a05962bd28d8669fc61344e3efbbf0ed18e12d91ba3497bfb",
+      "scripts/case_internal_application_run.py": "a3a9e8a668d7b18e121c5e032445870d90f1f063d86d3f0fce2179cfad8d32df",
+      "scripts/case_internal_baseline_report.py": "1e2422268cf0984d17d458434d7f929424c0a65a1e365b6050edcbf418069441",
+      "scripts/case_internal_body_compare.py": "6906209517d07eafbd1ae00bb01992299512b31bddfbb02e0dde42a910352d82",
+      "scripts/case_internal_build_profile.py": "eb44683ed0acb57e6165545d2c65e78337e5d1eb7a45859c88a361b5173e4389",
+      "scripts/case_internal_candidates.py": "c4c6862340e4368f39f6843982f7a25b1056f60694d3e0ff8aea6ca6d970f116",
+      "scripts/case_internal_compare.py": "dece31a85cd9d2aeb760d12233acc6de696232fc9ab7f44eb322e475e73fe87a",
+      "scripts/case_internal_corpus.py": "ec570f55299bd7fe8b8dfc8c2cb476416a8fcff8cc99694b6f01eca307808e3a",
+      "scripts/case_internal_cross_encoder.py": "e6285b8c28f2cd8a87ad2b84d475667c9cb11ddf3f6a577470ed55f8d7b2b422",
+      "scripts/case_internal_db_link.py": "6b6edafb3b070854adeedc44467fe8afb87ef7e6c15e0350d67c958ddaedec06",
+      "scripts/case_internal_embed_resume.py": "1efad33e66a3113a777da230c700264df3f8df9b23f864a958376b9bb7d5a891",
+      "scripts/case_internal_final_score.py": "92acd8fd7acd49002784a996aa0115a6a6619108500ccf2b7789a0132d2ac8b0",
+      "scripts/case_internal_freeze.py": "50ffc5c673cb4b356c1f99cf56d898437c1c7a600d275fa6e46806aed4073db5",
+      "scripts/case_internal_fresh_eval_gate.py": "fefd4c3f1a9878e8beb132654ba74ea9790334744f69f679858e480583a4e066",
+      "scripts/case_internal_index_audit.py": "1e1d1950e72cfb2f258da4b9e0be322286f92968f91bd6b1ef06a7c056210b49",
+      "scripts/case_internal_lexical_compare.py": "881da3d97c1c9d0adf10f605e15dcef271f07c7503184bc9aa94eea740090f77",
+      "scripts/case_internal_metadata_link.py": "7dcc971c6b08af287dd7b78c515ab5ee2127088dd52c552da8ff9e0d912d9dcc",
+      "scripts/case_internal_prepare_run.py": "f3633b19cdc88d0ef7d947b505f14ef464dc6823a29a1668f63808158b7777ba",
+      "scripts/case_internal_query.py": "910caed23b4ac2b7b5f870fc41e1ce941a0df1b4dbfbf9f0066f4487d2d86b89",
+      "scripts/case_internal_run.py": "14d194e945c234fdde4897fef9b9a9189eeab862fc605f2edc873530ab377038",
+      "scripts/case_internal_select_policy.py": "c76dc92cf72c389ba1f95633d45e43ebd43d50805c61bd46fbef74f2da1ca029",
+      "scripts/case_internal_verify.py": "ace51089d970780ca9fdbfe3d1e11c9a67450b0343903b048bc1ba6e9f505601",
+      "scripts/compare_case_embedding_models.py": "bb0e2022f1c4c065b32b5ea5767b5a2fa04613de0d9c33545556bae70b778293",
+      "scripts/compare_case_embedding_models_hf_api.py": "09f160ff83814c3de8ae28ed62f259eae953c8e5929f5db05c83c81a7e089a0e",
+      "scripts/compare_case_holdout_retrievers.py": "0be5de38a945ed76dee74e109ded3b020998cfa689f3f55571f934490cd17a8d",
+      "scripts/dev100_diagnostics/capture.py": "d3e8f827394bf0a10e8e0674a48f664ddfa76d15efd4ccbd473c9d27709ed7a2",
+      "scripts/dev100_diagnostics/repair_public_regression.py": "8ac35e8d92dfd4024cddd29214cc438ea062500149d7cdbc94d4c2f756fe7365",
+      "scripts/dev100_diagnostics/repair_regression.py": "e5380c32b6b781681a5cb97eb4e70d31687c3951b5cf832e844cb18ec7daa4a8",
+      "scripts/dev100_diagnostics/report.py": "dfe648d41c94cabc24fc3747e059422a19cdc6477eca5e3c0ab70e5e39765748",
+      "scripts/dev100_v2/report.py": "54a78f58028b15ad1cc53ca6ec1a6560a6c757bb4fd7131acd3288fc890e44b6",
+      "scripts/evaluate_case_holdout.py": "9d34f2c238a1bbfdde94deb39fec14b267847cd673bd32b9ddf27f501e62a573",
+      "scripts/evaluate_case_only_retriever.py": "815b9e9735de22a51d32e6221b4e03c060a565ee10853bf1ab521eeeefd21111",
+      "scripts/evaluate_civil_regression.py": "7b4dc1c91bb62e3214b79f937e902ac33ea53944345c3528d146403f7f1af633",
+      "scripts/evaluate_guided_dialogue.py": "22f45d3862a5c88d2630a0c4c4c447b599751ca0938a99a868e8077ffa929de3",
+      "scripts/evaluate_renewal_guidance.py": "d430db78490314bd6019e3c91ad64fe58e00a71b4f3edbd35d4cb4e1b154b01f",
+      "scripts/init_databases.py": "0ff630361e52d1ac016737e65e0934fb206c6d20fde8db2baa8bf4c31bde3211",
+      "scripts/load_case_only_demo_corpus.py": "2355178e4937f980d69cdef2ab6249717c95b62df76ddeff0a40ef276ea86566",
+      "scripts/manage_retrieval_data.py": "f73c211097812cbc32db64ba9de65c4ffdc8f2c0d3bfdbcc96569cdbc78eb633",
+      "scripts/patch015_baseline.py": "de0230cb9ee5ace1c13ce9162804b461c59642dfdf5387d80ee0c7f923aa9518",
+      "scripts/patch015_report.py": "5ddcc591574089227061baca912769ae264dfba96eeddae00d7db1f931f37371",
+      "scripts/patch016_candidates.py": "08156e3a7285d1d9ab7b70f0c30feb6e3632d510e4a387534d859713f61d0422",
+      "scripts/patch017_selection.py": "97cdeddffb6f90b6ebc27dd38687c930376b1419f265a4ef6bc74b5b235e0976",
+      "scripts/patch018_separate.py": "a11e6760336125eaa1e816a94e75d0526174e86a3dac28e3a2f14cd086c0835c",
+      "scripts/patch020_budget.py": "23d614d380b365cd0a59eb2b4e8b58c1dafae86a7cdca22b1408b32b45739052",
+      "scripts/patch021_verify.py": "72cffc023a80b6d2687e43afc5fa050f55367ab0140c074e68475dcbf8d2d05f",
+      "scripts/patch023_report.py": "f6837eb71a9bfb307e6ed1aaf312620edbf6cb177d56507de80456c4135e2072",
+      "scripts/patch024_expand.py": "889ccb5477a20670189691e0fdd3580219f8633473375d559312d9b1408151ff",
+      "scripts/patch024_report.py": "c7684f73674cbb3a7553158f2e01b52fb8f6ce799852e7c8e049c8dec9d3ab08",
+      "scripts/patch025_ranking.py": "f9554fd836222ede7defd478b52f94e9794c59d8886f526251f2e2c54abf02a9",
+      "scripts/patch027_context_live.py": "deb335fd72dfc973116c33ec5b4ef443f3ca24a63f4511083bda7c27cfcc9655",
+      "scripts/patch027_context_tuning.py": "d146d0d6a4b3984e0db92cfb3a1e8bfae6ea54451f284cbbe7182810757784fb",
+      "scripts/patch027_expand.py": "7a2c60771fdbec2a15155f5cee492d7a9d57ce51448b771fb89fa4a7ffc0b9d0",
+      "scripts/patch027_expansion_report.py": "74035777036c7b8d855ae470495a3b9b7a87bb4cc81be3eafe4a4bd080f32ec5",
+      "scripts/patch027_final_policy.py": "bbf79d743a6c720154ab713fe990b0fe5993db3bbecea733fe0bd7b6124003ce",
+      "scripts/patch027_final_test.py": "23e6057d0a50fba47fa30626979d513314a68c71f6babf9a658b587967b000fc",
+      "scripts/patch027_full_eval.py": "8a595ac7f5651133e0259a879f2f7d79f136a2c5656fe56c6bf69aee2646d3a0",
+      "scripts/patch027_full_ranking.py": "53ecf9f809a440d58813f5b875f4c7987c51e20a26b00f1e58dea59ca322f7dc",
+      "scripts/patch027_full_report.py": "1f70e1e015387fe92d82255a4cb51d2e2b5ba38b8a8fd2123d6111b72ce3314d",
+      "scripts/patch027_full_sources.py": "3360b45a5f01ddbf994411aa73aeaaec785ec5891de86b69f2ba196c32eb5c65",
+      "scripts/patch027_loss_analysis.py": "f5cf2e64844d8c0b83558e4d26cc23ba736c72c61803768e28cf6cff208d2c6a",
+      "scripts/patch027_partition.py": "bb77fafbc7fdb41d586fe8c37298bdff21f55038b86a886f2ee3192203a8bb75",
+      "scripts/patch027_paths.py": "711acceca110fd0f7f1fdc444d711b0470e7a672560e4312fdf5dfcdb969776e",
+      "scripts/patch027_report.py": "3fa5a06a02ba79fea9eaabb1aee60efa14498104f5445992b4e0484ad3d09dd3",
+      "scripts/patch027_rollout.py": "49011f0b4a9d9889add9bdf83c4f81e464770d102f36eeee1c9e055ada04c749",
+      "scripts/patch027_sources.py": "4a710e9c8b04e8adf2c21a5ee8ad155255719a20cba0d69584642756ceaa8cb8",
+      "scripts/patch027_subsets.py": "ce7a8987cca5c2f25e2ddbb0a12bac21e015f5250cd6bebdbccf5ba5f95898b7",
+      "scripts/patch027_tuning.py": "8eade82568cdd33f45df5cdfd74e9a0249eea7c6a5153782b9ee8a4ebc3d1009",
+      "scripts/patch027_verify.py": "5943e4594821364d2580f725004ea1621d4d9e4921e8e41a5cf0b41acb371326",
+      "scripts/patch041_public_regression.py": "7acb50f8e13bbccf77046309ffbd5a3a53cd49171d174a601d991b22f373cfb7",
+      "scripts/patch041_retrieval_eval.py": "958fa3e8377b2c44410c24e846ff08ba713a8d5cbd8c3876fa09f696fe7c45d5",
+      "scripts/patch041_settings_contract.py": "f2ed899feadd87185eb9bb7941654cb645dc5bf593b4af66e0de971be95e4075",
+      "scripts/patch042_candidate_trace.py": "dee297512c5ddd60973e16c788a4c543e8c06936307848780c79f39b93916b83",
+      "scripts/patch042_gap_analysis.py": "9d86142978385bda30a74da72208e5654ea09b56e425cc64484cd6ce04b94163",
+      "scripts/patch042_stratified_analysis.py": "afbfc2d86cd1acb8014d8dc5470e6bcff71a117f54affea132400ba07cb65ea1",
+      "scripts/patch042_trace_diagnosis.py": "40f8906b0e4e58b25445501f5fe92db5ccd4814c59b0c67001569e290c2bf4b8",
+      "scripts/patch046_improvement_eval.py": "f6ee99ef3334c8becf8de1f71e258c1470529d907d7ce1b2643cc04ba5d61432",
+      "scripts/patch051_companion_eval.py": "427e840990c6590281f87ffd7dd5233f8dd76492d1288fa7bcef067d1d1dc89a",
+      "scripts/reload_base_index_civil_safe.py": "c12919648658e4eec9b2d9e625bbdefa4533d16422a3e7e2e246cdf8367c1200",
+      "scripts/report_chatting_run.py": "234f274dc21ec4b834f77b0711ec3f2fc68290469a4fbf9dc62195d5ef5516d2",
+      "scripts/verify_project.py": "70f0fb361e3aeea13087ce0c526b99f26dc4cf91a6a9d80d50cacb5633dfff18",
+      "setup_data.py": "ec73d9fb57294770d539ebc6334dee65c018a5997dd99e80499e08304df486cd",
+      "src/contract_check/__init__.py": "651018c3eecb6e004aead84ec87aa6c6b1bc6f53d538f4af9147b0fcec3c3278",
+      "src/contract_check/models.py": "bf73914978b17a805b8337ff375b5bc4367d4eb56016d8aefc44454e3d98503d",
+      "src/contract_check/rules.py": "33547dfe31c59be4b3034e998429fcb640f1a5a721e09cce7e2e78b322c87c70",
+      "src/contract_check/service.py": "0c28f52bd3628637af2c0bc7828f3795cb6707dc8c7c068f0b00685247f54e36",
+      "src/database/__init__.py": "0f151ed6a0ea4a214cfb71e9048e9aafbd154aa098a53ecfaefc4c057b1f463d",
+      "src/database/config.py": "a7c01f4f77ce4dd83454a0919dbf936749c7203ab34447fa276881289aa39919",
+      "src/database/relational.py": "3715d14d2e12e375d8d53356e9ec2ba35852b5afc6e4308edb4f01ba65ee2c0a",
+      "src/database/vector.py": "ea65b183aa6206a9e52889db722d066d6f1423f1755c0e9dbaa0c40079636bcb",
+      "src/document_check/__init__.py": "29f545ade772469a9ed8d7d4840d50c7739907128309a90cdccd6620d627a4ac",
+      "src/document_check/analysis_models.py": "fa147e34c060a61383b218fde1124991fef28e6e4f29ab682f92ae655fa09320",
+      "src/document_check/document_kind.py": "b50ea8e7113ae0bd46559dde1690b69170f3c221a80a3294e211b04e4226e4ff",
+      "src/document_check/extraction.py": "a0ac4c3939ece0c997b204b0c084a4354d93d0a0717c9bab56fd883a5415c832",
+      "src/document_check/extraction_models.py": "ccdba9c3b84a98c317b7e1a5af2fe037693742548c2259f3a062c3d5a227d861",
+      "src/document_check/models.py": "6d8347066b14d9ebf318e6871e52f1a54f0aad0746ca6f1f4ad0227fc9bbcd91",
+      "src/document_check/privacy.py": "2bbe2f2f0469d599df1fcb4a4e25c3fb946483d023c15438f05081dee84b9b75",
+      "src/document_check/rag_handoff.py": "38b3b3b3e04eec1972a05efebf73af48b9c1a65732b3179856bdf885c2e85de6",
+      "src/document_check/risk_rules.py": "7e5bc2bc2fdcca7886cd7a3c11a8b15f964fc4709507c5ea8a0819dae99f3169",
+      "src/document_check/service.py": "246671c36a4cc0b86bd49bd4e136a5dafd1e415939e95d1ab9e7b0a2a3da14e2",
+      "src/document_check/session_retrieval.py": "1f6e7677284c9ec601e13a46887d0b8d203f80c775e578f72f8b560913bc6bed",
+      "src/document_check/upload_analysis.py": "7c00cfa7bf4720c867d9f2e88d9cd8da3ef1c1c935075c77bd0cc4cb65ef4f67",
+      "src/environment.py": "4f2dea3b61ddf68afe822b92ff43672752efb14317175d4d16b2a4e1930ea932",
+      "src/evaluation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/evaluation/audit_eval.py": "11c8be118ffe0d375d884c5e35d9d286cca9a3c89d32eb2b229c263a0ed660f6",
+      "src/evaluation/baseline.py": "5026eab59cda0cc23e96b509df1dc61e763ac229188f2b05ee160fbbee87bd29",
+      "src/evaluation/benchmark_retrievers.py": "4762e31c99aa6ec2dbe3c428061a4b61356dfaef92d84127d4baa69d58e62a46",
+      "src/evaluation/case_holdout.py": "5f65fc222f67ca684f35829fd5a4bd19bea6b00cbb7156e234493030756909b6",
+      "src/evaluation/case_internal.py": "66d8e61d622965d10f8d07433cbabbc93684596148b86bba19718c22abf9ee05",
+      "src/evaluation/case_only.py": "7a40aa2c90ddcc202fed109980707bdd0cab2aa7b54a8ed81e3a76ea5af95bc4",
+      "src/evaluation/chatting_dialogue_run.py": "8c8bd0446ad41974dac52c1988d05d30e1705ec0bc614f48556db5b0002352e2",
+      "src/evaluation/chatting_plan_run.py": "40642dac4c6cd448c45adb209fe543aa7f64057dc39f9454be7abab541b63159",
+      "src/evaluation/chatting_provenance.py": "547278915c1ba10433cacda21a590d05f3fb92e88c170ad86a556addd980555b",
+      "src/evaluation/chatting_run.py": "1ef0eba49048f4c4166c8aab3bab4ad12673d5c898334a289a9fde7f701ec2f0",
+      "src/evaluation/chatting_scenarios.py": "2dd1f5cde62396d33999c461c007f45b16e0946e1f4ecca42539bcd4e8974f51",
+      "src/evaluation/chatting_scoring.py": "85f9d66fe26d7f9aa5e90dc9ddde8d19337229bcb03f1b703c4c64789f955cd0",
+      "src/evaluation/compare.py": "0f7536df9e9c8834c87e3ea2a6e0a9975cdc2e504386fdf765f0f03b60d7f481",
+      "src/evaluation/compare_embeddings.py": "af3e60cba5e110ffcedd3429dac36ba9e4efb3e36aa994b6c118844313f0d5e3",
+      "src/evaluation/compare_hybrid.py": "f9c0780c99bcd7a20abef0412761f6ce733ad9624aeb8ebd2c9aab75bb37132e",
+      "src/evaluation/compare_law_top3.py": "bc801c255453e0283ab7dbdc44fb19fb4b688a99d58d361d2761877911e253f6",
+      "src/evaluation/metrics.py": "fd6207584993676efe2430bfdcdc49c86182bbde5bbb638fc2e6929c8e3edcc3",
+      "src/evaluation/run_eval.py": "0167633ddf486ca8994fa9dd5de579fb034d4b02b3bd94ead35403bea6fb8b64",
+      "src/evaluation/run_generation_eval.py": "fb5315ed7b5b2f1e3220595ce8734ba0364f4b98c36272056e9672b6c232d44c",
+      "src/evaluation/sweep.py": "7ae6643f964f5b36d99f0984a23b7e28862bec0637d022193b2b6eeadd41c001",
+      "src/generation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/generation/abstention.py": "7e4501dc9e7564d7df39d115a412e1f1746ddbe17065261e90884d8facd14476",
+      "src/generation/call_budget.py": "acb78ce0086f6501670eefa1db5d928500a29887ed4a9140d16015949bfa07c0",
+      "src/generation/chain.py": "a0ee704b76b73b45eaf65e736bc32c117cee2836530fc1e73bd26fa76bdbeb8a",
+      "src/generation/citation.py": "e1b1f6d969ef517fa2b9c012eeb35d4037655b90ebb3ffc8665a3e766ae08631",
+      "src/generation/conversation.py": "a35889cb47085b64248c50e0975f889e37302474f6470b77b4b3f20cf077ebb0",
+      "src/generation/evidence_highlight.py": "d5b6794830482664966725088eda52ec79b70f32a22f234d54c3f6ff81a1adb6",
+      "src/generation/evidence_routing.py": "9e425bb90c5f943866ee635604573340b199de23371bf8e83c22c62697f72100",
+      "src/generation/followup.py": "12945aeeef16cc833ef049804efc7b26e40ac6f00cd144b92a0e8ab086ea4b7a",
+      "src/generation/glossary.py": "7dbe57a57941c13a7ca68ec7508acfacf5a8a95faad663d09dd001d3ebc8afbb",
+      "src/generation/graph.py": "5de6549e4d6e6eab0cef46788d2490034cdbbaf0fd1f63730c2e27936cf4124a",
+      "src/generation/llm.py": "485e20321a2fc51d6411b4d89bd17a785aed88ba40c8cb0bb6e20d2bd5f8ae03",
+      "src/generation/models.py": "f1e5d0a63c8d94d7e373495f28a4988719a1b10c50d13bfd86de715bb078420c",
+      "src/generation/paragraph.py": "11083c18d7ffb0abf09fda16a497e6b929072da602f6242e40d69a74ac88b596",
+      "src/generation/prompt.py": "6411e6dbba25faea26f9856393cb04f900cf2bc6b1805fdce4d52d9953c11ae7",
+      "src/generation/simplify.py": "6adbaac996c571aeb68afaa8d6ff8532ad5acca283442171fad5523cb2421b29",
+      "src/generation/source_links.py": "cbe4de569e7637419c2b507b6c229b1b06aa7e0ad72e913b519b4621e52510b8",
+      "src/generation/validation.py": "7879ac22ea21c1c38376302c8cdacf4278413ba602255b2cba7f012ae9db05e1",
+      "src/ingestion/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/ingestion/build_mock.py": "ca3466746f3a3c2ede9420e37906c8491ead55dff688b42404948987f9ddf237",
+      "src/ingestion/build_verified_case_source.py": "f7dcc4e989632ccc30f31f86d701b44724236403e908c4e06aa6a7e4fa79e997",
+      "src/ingestion/chunk.py": "274698fe1e6acc34aa62d33935c337068f73b8cfd99ca8adf6f0600cfdab970a",
+      "src/ingestion/export_case_review_queue.py": "402cffe24b611c6157378a101c101f1cdf6adec583dc34e83eadb093a49a375f",
+      "src/ingestion/fetch_guides.py": "101306590ce7340f1506262a3ce4df2357f5579dfef202f2af0e48ad7b6adc22",
+      "src/ingestion/fetch_law.py": "ec4da71fb1d81087aac1a54fdd21027b520993f9ce1388b3c424ab4c742c636f",
+      "src/ingestion/fetch_law_mock.py": "6a41aa6d4e0581ca8fb39fcc40a99746840ccbef0c55e528cac26ad6eb719285",
+      "src/ingestion/fetch_minbeop.py": "329ecde173c806295181d204f4762fafb4e886730d32b0f5acfea37d36665736",
+      "src/ingestion/law_structure.py": "8cea77f7f5a8c3bbecdf836a92069cccba28656d567a8781ac19b35471d53b7c",
+      "src/ingestion/load_cases.py": "1e9f4d53e6daaefb116abde1612ecbad6ef771b134316493259b295b7920cea7",
+      "src/ingestion/load_guides.py": "78e07b0b4ea5ce5a7de26e8d2e2cadac0205f2ce1b91455b675bf3cfdaf02915",
+      "src/ingestion/load_laws.py": "5454e28bb6c19a3ca51c3b223911be810ce7ed38bf4fae7cdc33a9c8a8141767",
+      "src/ingestion/merge_chunks.py": "0bc1953953df8f58db7bc439d0767a2f0a25c40ace1f2ebec5ecdbe88e2f3ad8",
+      "src/ingestion/parse_cases.py": "bb379d09f3ed2cba95ff41fa86384dc6dda4aef4b2e34c357566ee15ea000d56",
+      "src/ingestion/parse_law.py": "e641d31a36a13b7a3d0362721fecaad67a7d4c7412f9cbffb4ac122f61bfbed6",
+      "src/ingestion/parse_pdf.py": "9cd079bc7e625c887e27c656d1762c12046b6d850dfe69a7f078173e9616c567",
+      "src/ingestion/refetch_case_details.py": "bd807ee63919c57779da4c2d9f3b07770d57f1607a38f7ba4809d02d5819615c",
+      "src/ingestion/resolve_case_ids.py": "13af28e2dcb55c2d60296b9eab97542ce6cb87caeac328301242f7587608f8eb",
+      "src/ingestion/server_build.py": "82838eb29d8529dab595545e1e60048d7a0c4efc6ffd1b17b3440d7bb304aebf",
+      "src/ingestion/server_sources.py": "0397cc3301c120f10517fcc82e9f1eb3f359b8530faf0d1be8ae76f171d54912",
+      "src/ingestion/validate_chunks.py": "3475b17b6eb93bdbf77877173993c10533e23036425e25027a293327610e9e03",
+      "src/retrieval/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/retrieval/case_internal.py": "e1d12932799f8417a4aa13a08e7faa5765a4f206d1b9afa5a04cec4be33bd9b8",
+      "src/retrieval/case_internal_profile.py": "9cb0c5aceb05d697a968234ba25d04f60827f4eeaac9ef8083cd2c9cae4ba5df",
+      "src/retrieval/case_profile.py": "178304676ad73f8c2a18b4d4933b9bb41ce6e746d58bcfd65d4fbbf636a8ca91",
+      "src/retrieval/case_rerank.py": "6a96a5d11b232c76053a8a137fccabb66acb9bb238d98ebbb70e30d510236ee5",
+      "src/retrieval/companion_evidence.py": "5dd89920b9f677d44475593abc555ce89e3b4a0c0fcca3e6c5acd19029bbebdd",
+      "src/retrieval/context_policy.py": "ddd2c531c49b15dc19b073e7877692605a8ddc50e89bf648b46ae85113532cca",
+      "src/retrieval/dense.py": "fe6f9e8a1679097289076db992748d1602cc9562377c562874271f3863238b27",
+      "src/retrieval/expanded.py": "ffc3b9bfbfb8d04fe3acadd4db66118465c3f8014f6568991173ab9e6cc1d461",
+      "src/retrieval/hybrid.py": "c82d7be47e95b3419a617a5aaeaf5f6d0a271fcd144a85b38fd53d00d0cb5812",
+      "src/retrieval/index.py": "227f3d11eb4bf8a7913b0d658af543331364f0cd997a9b825264914c02ed031a",
+      "src/retrieval/multi_evidence.py": "504a2b9efddc7a87badcfb7042cb7103d1347b41621dd457cd6e601e6b5bea9c",
+      "src/retrieval/partitioned.py": "22fa64c966a155424f9e14b1399fed912b1a6bd730fc255bc11c161e40da587b",
+      "src/retrieval/profile.py": "cf084ca2f6d39515632b04cd651e0d1155fccdfcf6bae2fd802f9a29baadb63a",
+      "src/retrieval/readiness.py": "86b55af4ce81135ff487001a6ba4b8985dff275805da47981927e29c2f4f8c86",
+      "src/retrieval/refs.py": "5c770deff1141f65509955c3d62c9da6f47c3591da84e7f7f567b669a7342639",
+      "src/retrieval/retriever.py": "6e01e43aeceaf93fc6795c1e3f920662daed035caa87587ae4e1b84d9dc57ebe",
+      "src/retrieval/service.py": "ff8ccaff4578ce1b0a5806c8665012f8e4c13c7589325aae2266b90bdfab9009",
+      "src/retrieval/terms.py": "34354c085495148a535c15c409f2a5761808e2fbc106b25141874117f5836a6e",
+      "src/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/security/prompt_injection.py": "fba1e4fa6d2ec68258fff02d5426c8b7670c05702243c2f58f9fdf073343c974",
+      "src/security/secret_filter.py": "504e83a39acc0558796e31f40716cf81cf374769b6fb548421423319dd3ff855",
+      "src/security/text_normalization.py": "ac34c895c6edd0b58de66ae52d1c4c02eaae47f6d6af9952d292b73d2f84697a"
+    },
+    "criteria": {
+      "data/eval/civil-review2/.gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+      "data/eval/civil-review2/manifest.json": "8e0c95c8e3e69b0420c5d54c0e284db31942479b08fe0c06a5a9a48043664362",
+      "data/eval/civil-review2/README.md": "e22c183e8a94778c63a02eaaa1d2cf36f7360ea3f13ed014d21683e31a256077",
+      "data/eval/civil-review2/retrieval-plan.json": "0d4da52e5636d7e26b3a01d841a15bf474eaf0214974ea108a306b44317408ca",
+      "data/eval/civil-review2/retrieval-targets.md": "55be7749a18445c35e60e3db48ac6b20139fc1ed797bd260da48c965dd135a00",
+      "data/eval/civil-review2/review/00_검토결과_안내.md": "e5b17a42b169339a9d67b71d32fdf5f4863d43eed3605ad0ca4b7f04ac0c2075",
+      "data/eval/civil-review2/review/01_최종정답_근거통합본.md": "ae54f7ef11bf2328cef0f4ac92217bad1e384bd2430e5e6cc2fe4641c4e779ce",
+      "data/eval/civil-review2/review/02_리뷰1대비_변경표.md": "241712bcab6df62c23b8b241b7a65e8e9bde71b88843b411469bfc704236ec3d",
+      "data/eval/civil-review2/review/03_미확인_판단보류목록.md": "08a0359495304b990137e07f3c7d8a3c5e6239916e92cef5f1d0410fc46698e3",
+      "data/eval/civil-review2/review/04_실제검색_원문확인기록.md": "d44bdc6dfea321399bd89baea092a35812299126f0d8cadab6053302d0d86822",
+      "data/eval/civil-review2/review/civil-selection-review2.json": "320b85ddeaec714867d22fd1fb4340864b3f568f7d19395cbd71bfbf4e0e7664",
+      "data/eval/dev100-v2/.gitattributes": "c70938aced3b7f1e0ddc7d45151e4c341d43cfccb7cb546fde9c48823af60109",
+      "data/eval/dev100-v2/changes-v1-v2.json": "aa0faa0ee6bf72c854e27a7fef42cf4aeaa4be3a2a66760aa52efa3b76a91e26",
+      "data/eval/dev100-v2/diagnostic-plan.json": "925b6dd195e7b7553ab5389317260576d69a5553cfd8bc0ff93309f1e8eb5d10",
+      "data/eval/dev100-v2/expected/article-diagnostics.json": "4927b4d23504d110fbdee27050cf13d41a5f96d3e695396b9354bca6170f2f1d",
+      "data/eval/dev100-v2/expected/missing-primary-articles.json": "cf5693937889e4456a693b357f41910df9075263a1265fd163783599ebe87f0a",
+      "data/eval/dev100-v2/expected/summary.json": "d6a18f99f5f6584c9f23958d549dd555a8b4c830b863a00ca40ac5d30dd21188",
+      "data/eval/dev100-v2/manifest.json": "b16eeff53de21b3ffd3ddd10e07c01210b0a2f8cab18413ce0fadf58bfdc92d8",
+      "data/eval/dev100-v2/questions.json": "efc9c97d06a5a56bdaa7c0b71ebd44e99819f9033202baee5f7823f025f60a6b",
+      "data/eval/dev100-v2/raw/01_최종정답_근거통합본.md": "6b01914ada71a229b3ab2067f6b9902324e0baa7302041fea9d8ad8b0f126f41",
+      "data/eval/dev100-v2/raw/02_리뷰1대비_변경표.md": "55d2dafd36347bc5df5ed4f4fbde29f94a1ffe4756fd0437b9f39e0d4b61372f",
+      "data/eval/dev100-v2/raw/03_미확인_판단보류목록.md": "7ec8349955beb5cd06848631a39b9663a353acfbd38bba4047d27e599673bf7d",
+      "data/eval/dev100-v2/raw/04_실제검색_원문확인기록.md": "67a01b06702f751134a05ebcd1f6de93956297c22d57954e4ffbcf970fd55dab",
+      "data/eval/dev100-v2/raw/05_리뷰2_최소보완_명제별근거표.md": "9bf0057e1e31b6e235912662b131367a74bb49dc4fababe756e3491ce598ac8e",
+      "data/eval/dev100-v2/raw/06_최소보완_검색확인기록.md": "674f17babf9cc40d0e680fd56ee6ea328a5f646c7cf228ecb4ab0bcc544564a3",
+      "data/eval/dev100-v2/raw/검토진행.md": "b2341e28e203160a9d0bdb9c1d095d181cf433f45ce16e843b36bd78e462626e",
+      "data/eval/dev100-v2/README.md": "f42fe65d5372c6f09a77880625cf39b1ecfd43c93e190128965f11eb3b969308",
+      "data/eval/dev100-v2/reference-run.json": "d668a92a791e96de134f090b972fc7d58e8aa24044141475f9125ef5a7fbe6eb",
+      "data/eval/dev100-v2/requirements.json": "8df87ff1e6112273add2402a94a9986502cb5f1dca6bf03117c5a1a9a88ac597",
+      "data/eval/dev100-v2/source-registry.json": "972370640759cd61446b0b3dd379760fe618fa49f6cd982fc55efa1d0afb9bd9",
+      "data/eval/dev100-v2/supplement-claims.json": "1bc467fad8ce90d610398a3edbb7da6280444fad6323db736749c380ad74e9d4",
+      "data/eval/patch015-baseline/capture/results.json": "3834e7c0e8d5f1eb5c2f60bfd6f3106cf1a765fe8f18c535dac444af91029f4c"
+    },
+    "data": {
+      "chunks/cases.jsonl": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
+      "chunks/chunks.jsonl": "8784c57ca4f2ba4ece469cf8f773e225bec0d8d0a1c54563e0e4b22add8ce324",
+      "chunks/civil.jsonl": "d2adac18e6f4eb1a85a3829f13628470930f55b7dcd7ee1a2502402344ea2b0c",
+      "chunks/guides.jsonl": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
+      "database/civil.sqlite3": "2b59c85b1b149d0edbde7484cbccc2769457e22c808342f6f5f30eb5518e5b5e",
+      "database/knowledge.sqlite3": "0729e2a2ae793085fa9dd08c1cef749f5cbd8e142188b58395fe2786c03b4c35",
+      "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/data_level0.bin": "fc5cd1567a5ad3356e3cc32c1762616d7315644b27f37f410b3c2c98be0fc644",
+      "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+      "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/length.bin": "c8831a1e0bac08ff9d5bfeff828d0fd43036b1cc639c54075e381b91d7d4ec27",
+      "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "index/chroma_civil_kurev1_1024/chroma.sqlite3": "c3cfb6102c4be01e0e211cb8631afde791135816996ffb4ed182c1321281597e",
+      "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/data_level0.bin": "63f73d52433ab675038a39dcfa21336457989b9ea99cb091d78c622ae38ed5ca",
+      "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+      "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/length.bin": "0a9e62f1cada960c1fb5aaa2293b071174130593edf340733bf0481db7cd99b5",
+      "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "index/chroma_kurev1_1024/chroma.sqlite3": "f06f5ba2183605c29d7abb612a34f5bc40f23153016b349eadf79f7bebab4bf8",
+      "index/retrieval-profile.json": "30af1f372e52b995ae3a11c8f1f2d50bfe44f4a4f09628c463b7270672c80616"
+    },
+    "payload": {
+      "chunks/cases.jsonl": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
+      "chunks/chunks.jsonl": "8784c57ca4f2ba4ece469cf8f773e225bec0d8d0a1c54563e0e4b22add8ce324",
+      "chunks/civil.jsonl": "d2adac18e6f4eb1a85a3829f13628470930f55b7dcd7ee1a2502402344ea2b0c",
+      "chunks/guides.jsonl": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
+      "database/civil.sqlite3": "2b59c85b1b149d0edbde7484cbccc2769457e22c808342f6f5f30eb5518e5b5e",
+      "database/knowledge.sqlite3": "0729e2a2ae793085fa9dd08c1cef749f5cbd8e142188b58395fe2786c03b4c35",
+      "index/retrieval-profile.json": "30af1f372e52b995ae3a11c8f1f2d50bfe44f4a4f09628c463b7270672c80616"
+    },
+    "model": {
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/config.json": "852d42e020c7f989c2acaf30fc683b7f768e8c6d1ab17166e835442162bd825d",
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/config_sentence_transformers.json": "8c73684c2160f2209f3706d6cbe0e933287fe6945d9546042be4c105cdb5252e",
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/model.safetensors": "c18156e80caf8ff45eb84a24a853130c3bca03087ccb41b051f86e7556bae02c",
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/modules.json": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/README.md": "39e4b634e81d17d98067dd5ffbedafe2f17ca29e292d1ac9ef000d9b9a24f36f",
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/sentence_bert_config.json": "eb9b44b13c0f52a3b3685c3b1cbdea1ba8b04bea123b98f61610048940776eb1",
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/special_tokens_map.json": "8c785abebea9ae3257b61681b4e6fd8365ceafde980c21970d001e834cf10835",
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/tokenizer.json": "fb3c3b93c46fd5a8634e262e1b7de7da11a18b527aa2282b312952b692781dfd",
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/tokenizer_config.json": "b87c8703482b0300d3da30e201519aa641f6a450f5eb5bf1e624afbf70c74d80",
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/1_Pooling/config.json": "13e69897522ee8255104483ed9f219465d1be3936654a54a318758738052789e"
+    },
+    "logical_indices": [
+      "c585bccfe3f152d7aef5de1053ae256513b3945b0ef770cc79a8fefb4fb6e297",
+      "8ba204f34f23a294036511fb2c338c75a92269cea03bba290508b726c3b6735d"
+    ],
+    "settings": {
+      "search_k": {
+        "k_law": 5,
+        "k_case": 5,
+        "k_guide": 2,
+        "k_civil": 3
+      },
+      "corpora": {
+        "law": {
+          "name": "법령",
+          "doc_types": [
+            "law",
+            "decree",
+            "rule"
+          ],
+          "bm25_b": 0.75,
+          "expand_weight": 1.0,
+          "bm25_weight": 1.0,
+          "dense_weight": 1.0,
+          "rrf_k": 5,
+          "query_expander": "src.retrieval.context_policy.final_law_terms",
+          "exclude_titles": [],
+          "status": "current",
+          "include_ids": [],
+          "retriever": {
+            "rrf_k": 5,
+            "depth": 20,
+            "bm25": {
+              "kind": "partitioned_raw_score_pool",
+              "score_weight": 1.0,
+              "procedure_titles": [
+                "주민등록법",
+                "국세징수법",
+                "국세징수법 시행령",
+                "지방세징수법",
+                "지방세징수법 시행령"
+              ],
+              "partitions": {
+                "core": {
+                  "k1": 1.5,
+                  "b": 0.75,
+                  "char_ngram": 2
+                },
+                "procedure": {
+                  "k1": 1.5,
+                  "b": 0.75,
+                  "char_ngram": 2
+                }
+              }
+            },
+            "members": [
+              {
+                "name": "bm25_context",
+                "weight": 1,
+                "expand_weight": 1.0
+              },
+              {
+                "name": "dense_context",
+                "weight": 1,
+                "expand_weight": 0.0
+              }
+            ]
+          }
+        },
+        "case": {
+          "name": "판례",
+          "doc_types": [
+            "case"
+          ],
+          "bm25_b": 0.75,
+          "expand_weight": 1.0,
+          "bm25_weight": 1.0,
+          "dense_weight": 1.0,
+          "rrf_k": 60,
+          "query_expander": "src.retrieval.terms.expand",
+          "exclude_titles": [],
+          "status": "current",
+          "include_ids": [],
+          "retriever": {
+            "rrf_k": 60,
+            "depth": 20,
+            "bm25": {
+              "k1": 1.5,
+              "b": 0.75,
+              "char_ngram": 2
+            }
+          }
+        },
+        "guide": {
+          "name": "안내",
+          "doc_types": [
+            "guide"
+          ],
+          "bm25_b": 0.75,
+          "expand_weight": 1.0,
+          "bm25_weight": 1.0,
+          "dense_weight": 1.0,
+          "rrf_k": 60,
+          "query_expander": "src.retrieval.terms.expand",
+          "exclude_titles": [],
+          "status": "current",
+          "include_ids": [],
+          "retriever": {
+            "rrf_k": 60,
+            "depth": 20,
+            "bm25": {
+              "k1": 1.5,
+              "b": 0.75,
+              "char_ngram": 2
+            }
+          }
+        },
+        "civil": {
+          "name": "민법",
+          "doc_types": [
+            "law",
+            "decree",
+            "rule"
+          ],
+          "bm25_b": 0.75,
+          "expand_weight": 1.0,
+          "bm25_weight": 1.0,
+          "dense_weight": 1.0,
+          "rrf_k": 5,
+          "query_expander": "src.retrieval.expanded.civil_terms",
+          "exclude_titles": [],
+          "status": "current",
+          "include_ids": [
+            "민법-제105조",
+            "민법-제111조",
+            "민법-제113조",
+            "민법-제114조",
+            "민법-제118조",
+            "민법-제147조",
+            "민법-제186조",
+            "민법-제187조",
+            "민법-제265조",
+            "민법-제357조",
+            "민법-제390조",
+            "민법-제393조",
+            "민법-제470조",
+            "민법-제536조",
+            "민법-제543조",
+            "민법-제548조",
+            "민법-제615조",
+            "민법-제623조",
+            "민법-제626조",
+            "민법-제627조",
+            "민법-제629조",
+            "민법-제632조",
+            "민법-제634조",
+            "민법-제636조",
+            "민법-제640조",
+            "민법-제654조"
+          ],
+          "retriever": {
+            "rrf_k": 5,
+            "depth": 26,
+            "bm25": {
+              "k1": 1.5,
+              "b": 0.75,
+              "char_ngram": 2
+            },
+            "members": [
+              {
+                "name": "bm25_context",
+                "weight": 1,
+                "expand_weight": 1.0
+              },
+              {
+                "name": "dense_context",
+                "weight": 1,
+                "expand_weight": 0.0
+              }
+            ]
+          },
+          "seed_retriever": {
+            "rrf_k": 5,
+            "depth": 20,
+            "bm25": {
+              "k1": 1.5,
+              "b": 0.75,
+              "char_ngram": 2
+            }
+          }
+        }
+      },
+      "civil_selection": {
+        "policy": "expanded-laws-record-v1",
+        "method": "same-edition reference pair or topic-seeded RRF with dense tail",
+        "request_embedding_cache": true
+      },
+      "profile": "expanded-laws-record-v1"
+    },
+    "tax_selection": {
+      "name": "explicit-unpaid-tax-lookup-v1",
+      "supplement": false,
+      "candidate_depth": 20,
+      "preserve_unmatched_query": true
+    },
+    "companion_selection": {
+      "name": "housing-protection-companion-v1",
+      "candidate_depth": 20,
+      "supplement": false,
+      "preserve_first": true,
+      "minimum_budget": 3
+    },
+    "public_inputs": {
+      "legacy_dev": "9e5ab5154b88fd66b5bd597f22c26cf4f633e0451efc7aa863469289f199103d",
+      "legacy_holdout": "62bfaa804e42bd436d2dcfda37ae38190c64dcd87f93c33e5d17296dac2964cf",
+      "civil_public": "abfa66775f5d75ddc683ddb647cc4dafd8acf7861be1113052c3668620ce71d7",
+      "case_dev13": "65b9f15a432087065a71a026d5b7bdb196fc25aa253b34dbd3ef700241672316",
+      "case_external8": "28ff1e459b2e30b60da5160ff5f6d831eeb0113396dd0e8d9791cea37a3c8889"
+    }
+  },
+  "after": {
+    "sources": {
+      "requirements.txt": "c2d15e18a1b7894c6601cc53f7daf05a1ac6d519c669cd3e5b10943cdd34b954",
+      "scripts/build_project_plan_pdf.py": "fb2c53ec746893a56aa8416ddbf240aa542637f2063a61b3d2a515c3ac36601a",
+      "scripts/case_internal_application_audit.py": "fd32cc03c159af8a05962bd28d8669fc61344e3efbbf0ed18e12d91ba3497bfb",
+      "scripts/case_internal_application_run.py": "a3a9e8a668d7b18e121c5e032445870d90f1f063d86d3f0fce2179cfad8d32df",
+      "scripts/case_internal_baseline_report.py": "1e2422268cf0984d17d458434d7f929424c0a65a1e365b6050edcbf418069441",
+      "scripts/case_internal_body_compare.py": "6906209517d07eafbd1ae00bb01992299512b31bddfbb02e0dde42a910352d82",
+      "scripts/case_internal_build_profile.py": "eb44683ed0acb57e6165545d2c65e78337e5d1eb7a45859c88a361b5173e4389",
+      "scripts/case_internal_candidates.py": "c4c6862340e4368f39f6843982f7a25b1056f60694d3e0ff8aea6ca6d970f116",
+      "scripts/case_internal_compare.py": "dece31a85cd9d2aeb760d12233acc6de696232fc9ab7f44eb322e475e73fe87a",
+      "scripts/case_internal_corpus.py": "ec570f55299bd7fe8b8dfc8c2cb476416a8fcff8cc99694b6f01eca307808e3a",
+      "scripts/case_internal_cross_encoder.py": "e6285b8c28f2cd8a87ad2b84d475667c9cb11ddf3f6a577470ed55f8d7b2b422",
+      "scripts/case_internal_db_link.py": "6b6edafb3b070854adeedc44467fe8afb87ef7e6c15e0350d67c958ddaedec06",
+      "scripts/case_internal_embed_resume.py": "1efad33e66a3113a777da230c700264df3f8df9b23f864a958376b9bb7d5a891",
+      "scripts/case_internal_final_score.py": "92acd8fd7acd49002784a996aa0115a6a6619108500ccf2b7789a0132d2ac8b0",
+      "scripts/case_internal_freeze.py": "50ffc5c673cb4b356c1f99cf56d898437c1c7a600d275fa6e46806aed4073db5",
+      "scripts/case_internal_fresh_eval_gate.py": "fefd4c3f1a9878e8beb132654ba74ea9790334744f69f679858e480583a4e066",
+      "scripts/case_internal_index_audit.py": "1e1d1950e72cfb2f258da4b9e0be322286f92968f91bd6b1ef06a7c056210b49",
+      "scripts/case_internal_lexical_compare.py": "881da3d97c1c9d0adf10f605e15dcef271f07c7503184bc9aa94eea740090f77",
+      "scripts/case_internal_metadata_link.py": "7dcc971c6b08af287dd7b78c515ab5ee2127088dd52c552da8ff9e0d912d9dcc",
+      "scripts/case_internal_prepare_run.py": "f3633b19cdc88d0ef7d947b505f14ef464dc6823a29a1668f63808158b7777ba",
+      "scripts/case_internal_query.py": "910caed23b4ac2b7b5f870fc41e1ce941a0df1b4dbfbf9f0066f4487d2d86b89",
+      "scripts/case_internal_run.py": "14d194e945c234fdde4897fef9b9a9189eeab862fc605f2edc873530ab377038",
+      "scripts/case_internal_select_policy.py": "c76dc92cf72c389ba1f95633d45e43ebd43d50805c61bd46fbef74f2da1ca029",
+      "scripts/case_internal_verify.py": "ace51089d970780ca9fdbfe3d1e11c9a67450b0343903b048bc1ba6e9f505601",
+      "scripts/compare_case_embedding_models.py": "bb0e2022f1c4c065b32b5ea5767b5a2fa04613de0d9c33545556bae70b778293",
+      "scripts/compare_case_embedding_models_hf_api.py": "09f160ff83814c3de8ae28ed62f259eae953c8e5929f5db05c83c81a7e089a0e",
+      "scripts/compare_case_holdout_retrievers.py": "0be5de38a945ed76dee74e109ded3b020998cfa689f3f55571f934490cd17a8d",
+      "scripts/dev100_diagnostics/capture.py": "d3e8f827394bf0a10e8e0674a48f664ddfa76d15efd4ccbd473c9d27709ed7a2",
+      "scripts/dev100_diagnostics/repair_public_regression.py": "8ac35e8d92dfd4024cddd29214cc438ea062500149d7cdbc94d4c2f756fe7365",
+      "scripts/dev100_diagnostics/repair_regression.py": "e5380c32b6b781681a5cb97eb4e70d31687c3951b5cf832e844cb18ec7daa4a8",
+      "scripts/dev100_diagnostics/report.py": "dfe648d41c94cabc24fc3747e059422a19cdc6477eca5e3c0ab70e5e39765748",
+      "scripts/dev100_v2/report.py": "54a78f58028b15ad1cc53ca6ec1a6560a6c757bb4fd7131acd3288fc890e44b6",
+      "scripts/evaluate_case_holdout.py": "9d34f2c238a1bbfdde94deb39fec14b267847cd673bd32b9ddf27f501e62a573",
+      "scripts/evaluate_case_only_retriever.py": "815b9e9735de22a51d32e6221b4e03c060a565ee10853bf1ab521eeeefd21111",
+      "scripts/evaluate_civil_regression.py": "7b4dc1c91bb62e3214b79f937e902ac33ea53944345c3528d146403f7f1af633",
+      "scripts/evaluate_guided_dialogue.py": "22f45d3862a5c88d2630a0c4c4c447b599751ca0938a99a868e8077ffa929de3",
+      "scripts/evaluate_renewal_guidance.py": "d430db78490314bd6019e3c91ad64fe58e00a71b4f3edbd35d4cb4e1b154b01f",
+      "scripts/init_databases.py": "0ff630361e52d1ac016737e65e0934fb206c6d20fde8db2baa8bf4c31bde3211",
+      "scripts/load_case_only_demo_corpus.py": "2355178e4937f980d69cdef2ab6249717c95b62df76ddeff0a40ef276ea86566",
+      "scripts/manage_retrieval_data.py": "f73c211097812cbc32db64ba9de65c4ffdc8f2c0d3bfdbcc96569cdbc78eb633",
+      "scripts/patch015_baseline.py": "de0230cb9ee5ace1c13ce9162804b461c59642dfdf5387d80ee0c7f923aa9518",
+      "scripts/patch015_report.py": "5ddcc591574089227061baca912769ae264dfba96eeddae00d7db1f931f37371",
+      "scripts/patch016_candidates.py": "08156e3a7285d1d9ab7b70f0c30feb6e3632d510e4a387534d859713f61d0422",
+      "scripts/patch017_selection.py": "97cdeddffb6f90b6ebc27dd38687c930376b1419f265a4ef6bc74b5b235e0976",
+      "scripts/patch018_separate.py": "a11e6760336125eaa1e816a94e75d0526174e86a3dac28e3a2f14cd086c0835c",
+      "scripts/patch020_budget.py": "23d614d380b365cd0a59eb2b4e8b58c1dafae86a7cdca22b1408b32b45739052",
+      "scripts/patch021_verify.py": "72cffc023a80b6d2687e43afc5fa050f55367ab0140c074e68475dcbf8d2d05f",
+      "scripts/patch023_report.py": "f6837eb71a9bfb307e6ed1aaf312620edbf6cb177d56507de80456c4135e2072",
+      "scripts/patch024_expand.py": "889ccb5477a20670189691e0fdd3580219f8633473375d559312d9b1408151ff",
+      "scripts/patch024_report.py": "c7684f73674cbb3a7553158f2e01b52fb8f6ce799852e7c8e049c8dec9d3ab08",
+      "scripts/patch025_ranking.py": "f9554fd836222ede7defd478b52f94e9794c59d8886f526251f2e2c54abf02a9",
+      "scripts/patch027_context_live.py": "deb335fd72dfc973116c33ec5b4ef443f3ca24a63f4511083bda7c27cfcc9655",
+      "scripts/patch027_context_tuning.py": "d146d0d6a4b3984e0db92cfb3a1e8bfae6ea54451f284cbbe7182810757784fb",
+      "scripts/patch027_expand.py": "7a2c60771fdbec2a15155f5cee492d7a9d57ce51448b771fb89fa4a7ffc0b9d0",
+      "scripts/patch027_expansion_report.py": "74035777036c7b8d855ae470495a3b9b7a87bb4cc81be3eafe4a4bd080f32ec5",
+      "scripts/patch027_final_policy.py": "bbf79d743a6c720154ab713fe990b0fe5993db3bbecea733fe0bd7b6124003ce",
+      "scripts/patch027_final_test.py": "23e6057d0a50fba47fa30626979d513314a68c71f6babf9a658b587967b000fc",
+      "scripts/patch027_full_eval.py": "8a595ac7f5651133e0259a879f2f7d79f136a2c5656fe56c6bf69aee2646d3a0",
+      "scripts/patch027_full_ranking.py": "53ecf9f809a440d58813f5b875f4c7987c51e20a26b00f1e58dea59ca322f7dc",
+      "scripts/patch027_full_report.py": "1f70e1e015387fe92d82255a4cb51d2e2b5ba38b8a8fd2123d6111b72ce3314d",
+      "scripts/patch027_full_sources.py": "3360b45a5f01ddbf994411aa73aeaaec785ec5891de86b69f2ba196c32eb5c65",
+      "scripts/patch027_loss_analysis.py": "f5cf2e64844d8c0b83558e4d26cc23ba736c72c61803768e28cf6cff208d2c6a",
+      "scripts/patch027_partition.py": "bb77fafbc7fdb41d586fe8c37298bdff21f55038b86a886f2ee3192203a8bb75",
+      "scripts/patch027_paths.py": "711acceca110fd0f7f1fdc444d711b0470e7a672560e4312fdf5dfcdb969776e",
+      "scripts/patch027_report.py": "3fa5a06a02ba79fea9eaabb1aee60efa14498104f5445992b4e0484ad3d09dd3",
+      "scripts/patch027_rollout.py": "49011f0b4a9d9889add9bdf83c4f81e464770d102f36eeee1c9e055ada04c749",
+      "scripts/patch027_sources.py": "4a710e9c8b04e8adf2c21a5ee8ad155255719a20cba0d69584642756ceaa8cb8",
+      "scripts/patch027_subsets.py": "ce7a8987cca5c2f25e2ddbb0a12bac21e015f5250cd6bebdbccf5ba5f95898b7",
+      "scripts/patch027_tuning.py": "8eade82568cdd33f45df5cdfd74e9a0249eea7c6a5153782b9ee8a4ebc3d1009",
+      "scripts/patch027_verify.py": "5943e4594821364d2580f725004ea1621d4d9e4921e8e41a5cf0b41acb371326",
+      "scripts/patch041_public_regression.py": "7acb50f8e13bbccf77046309ffbd5a3a53cd49171d174a601d991b22f373cfb7",
+      "scripts/patch041_retrieval_eval.py": "958fa3e8377b2c44410c24e846ff08ba713a8d5cbd8c3876fa09f696fe7c45d5",
+      "scripts/patch041_settings_contract.py": "f2ed899feadd87185eb9bb7941654cb645dc5bf593b4af66e0de971be95e4075",
+      "scripts/patch042_candidate_trace.py": "dee297512c5ddd60973e16c788a4c543e8c06936307848780c79f39b93916b83",
+      "scripts/patch042_gap_analysis.py": "9d86142978385bda30a74da72208e5654ea09b56e425cc64484cd6ce04b94163",
+      "scripts/patch042_stratified_analysis.py": "afbfc2d86cd1acb8014d8dc5470e6bcff71a117f54affea132400ba07cb65ea1",
+      "scripts/patch042_trace_diagnosis.py": "40f8906b0e4e58b25445501f5fe92db5ccd4814c59b0c67001569e290c2bf4b8",
+      "scripts/patch046_improvement_eval.py": "f6ee99ef3334c8becf8de1f71e258c1470529d907d7ce1b2643cc04ba5d61432",
+      "scripts/patch051_companion_eval.py": "427e840990c6590281f87ffd7dd5233f8dd76492d1288fa7bcef067d1d1dc89a",
+      "scripts/reload_base_index_civil_safe.py": "c12919648658e4eec9b2d9e625bbdefa4533d16422a3e7e2e246cdf8367c1200",
+      "scripts/report_chatting_run.py": "234f274dc21ec4b834f77b0711ec3f2fc68290469a4fbf9dc62195d5ef5516d2",
+      "scripts/verify_project.py": "70f0fb361e3aeea13087ce0c526b99f26dc4cf91a6a9d80d50cacb5633dfff18",
+      "setup_data.py": "ec73d9fb57294770d539ebc6334dee65c018a5997dd99e80499e08304df486cd",
+      "src/contract_check/__init__.py": "651018c3eecb6e004aead84ec87aa6c6b1bc6f53d538f4af9147b0fcec3c3278",
+      "src/contract_check/models.py": "bf73914978b17a805b8337ff375b5bc4367d4eb56016d8aefc44454e3d98503d",
+      "src/contract_check/rules.py": "33547dfe31c59be4b3034e998429fcb640f1a5a721e09cce7e2e78b322c87c70",
+      "src/contract_check/service.py": "0c28f52bd3628637af2c0bc7828f3795cb6707dc8c7c068f0b00685247f54e36",
+      "src/database/__init__.py": "0f151ed6a0ea4a214cfb71e9048e9aafbd154aa098a53ecfaefc4c057b1f463d",
+      "src/database/config.py": "a7c01f4f77ce4dd83454a0919dbf936749c7203ab34447fa276881289aa39919",
+      "src/database/relational.py": "3715d14d2e12e375d8d53356e9ec2ba35852b5afc6e4308edb4f01ba65ee2c0a",
+      "src/database/vector.py": "ea65b183aa6206a9e52889db722d066d6f1423f1755c0e9dbaa0c40079636bcb",
+      "src/document_check/__init__.py": "29f545ade772469a9ed8d7d4840d50c7739907128309a90cdccd6620d627a4ac",
+      "src/document_check/analysis_models.py": "fa147e34c060a61383b218fde1124991fef28e6e4f29ab682f92ae655fa09320",
+      "src/document_check/document_kind.py": "b50ea8e7113ae0bd46559dde1690b69170f3c221a80a3294e211b04e4226e4ff",
+      "src/document_check/extraction.py": "a0ac4c3939ece0c997b204b0c084a4354d93d0a0717c9bab56fd883a5415c832",
+      "src/document_check/extraction_models.py": "ccdba9c3b84a98c317b7e1a5af2fe037693742548c2259f3a062c3d5a227d861",
+      "src/document_check/models.py": "6d8347066b14d9ebf318e6871e52f1a54f0aad0746ca6f1f4ad0227fc9bbcd91",
+      "src/document_check/privacy.py": "2bbe2f2f0469d599df1fcb4a4e25c3fb946483d023c15438f05081dee84b9b75",
+      "src/document_check/rag_handoff.py": "38b3b3b3e04eec1972a05efebf73af48b9c1a65732b3179856bdf885c2e85de6",
+      "src/document_check/risk_rules.py": "7e5bc2bc2fdcca7886cd7a3c11a8b15f964fc4709507c5ea8a0819dae99f3169",
+      "src/document_check/service.py": "246671c36a4cc0b86bd49bd4e136a5dafd1e415939e95d1ab9e7b0a2a3da14e2",
+      "src/document_check/session_retrieval.py": "1f6e7677284c9ec601e13a46887d0b8d203f80c775e578f72f8b560913bc6bed",
+      "src/document_check/upload_analysis.py": "7c00cfa7bf4720c867d9f2e88d9cd8da3ef1c1c935075c77bd0cc4cb65ef4f67",
+      "src/environment.py": "4f2dea3b61ddf68afe822b92ff43672752efb14317175d4d16b2a4e1930ea932",
+      "src/evaluation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/evaluation/audit_eval.py": "11c8be118ffe0d375d884c5e35d9d286cca9a3c89d32eb2b229c263a0ed660f6",
+      "src/evaluation/baseline.py": "5026eab59cda0cc23e96b509df1dc61e763ac229188f2b05ee160fbbee87bd29",
+      "src/evaluation/benchmark_retrievers.py": "4762e31c99aa6ec2dbe3c428061a4b61356dfaef92d84127d4baa69d58e62a46",
+      "src/evaluation/case_holdout.py": "5f65fc222f67ca684f35829fd5a4bd19bea6b00cbb7156e234493030756909b6",
+      "src/evaluation/case_internal.py": "66d8e61d622965d10f8d07433cbabbc93684596148b86bba19718c22abf9ee05",
+      "src/evaluation/case_only.py": "7a40aa2c90ddcc202fed109980707bdd0cab2aa7b54a8ed81e3a76ea5af95bc4",
+      "src/evaluation/chatting_dialogue_run.py": "8c8bd0446ad41974dac52c1988d05d30e1705ec0bc614f48556db5b0002352e2",
+      "src/evaluation/chatting_plan_run.py": "40642dac4c6cd448c45adb209fe543aa7f64057dc39f9454be7abab541b63159",
+      "src/evaluation/chatting_provenance.py": "547278915c1ba10433cacda21a590d05f3fb92e88c170ad86a556addd980555b",
+      "src/evaluation/chatting_run.py": "1ef0eba49048f4c4166c8aab3bab4ad12673d5c898334a289a9fde7f701ec2f0",
+      "src/evaluation/chatting_scenarios.py": "2dd1f5cde62396d33999c461c007f45b16e0946e1f4ecca42539bcd4e8974f51",
+      "src/evaluation/chatting_scoring.py": "85f9d66fe26d7f9aa5e90dc9ddde8d19337229bcb03f1b703c4c64789f955cd0",
+      "src/evaluation/compare.py": "0f7536df9e9c8834c87e3ea2a6e0a9975cdc2e504386fdf765f0f03b60d7f481",
+      "src/evaluation/compare_embeddings.py": "af3e60cba5e110ffcedd3429dac36ba9e4efb3e36aa994b6c118844313f0d5e3",
+      "src/evaluation/compare_hybrid.py": "f9c0780c99bcd7a20abef0412761f6ce733ad9624aeb8ebd2c9aab75bb37132e",
+      "src/evaluation/compare_law_top3.py": "bc801c255453e0283ab7dbdc44fb19fb4b688a99d58d361d2761877911e253f6",
+      "src/evaluation/metrics.py": "fd6207584993676efe2430bfdcdc49c86182bbde5bbb638fc2e6929c8e3edcc3",
+      "src/evaluation/run_eval.py": "0167633ddf486ca8994fa9dd5de579fb034d4b02b3bd94ead35403bea6fb8b64",
+      "src/evaluation/run_generation_eval.py": "fb5315ed7b5b2f1e3220595ce8734ba0364f4b98c36272056e9672b6c232d44c",
+      "src/evaluation/sweep.py": "7ae6643f964f5b36d99f0984a23b7e28862bec0637d022193b2b6eeadd41c001",
+      "src/generation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/generation/abstention.py": "7e4501dc9e7564d7df39d115a412e1f1746ddbe17065261e90884d8facd14476",
+      "src/generation/call_budget.py": "acb78ce0086f6501670eefa1db5d928500a29887ed4a9140d16015949bfa07c0",
+      "src/generation/chain.py": "a0ee704b76b73b45eaf65e736bc32c117cee2836530fc1e73bd26fa76bdbeb8a",
+      "src/generation/citation.py": "e1b1f6d969ef517fa2b9c012eeb35d4037655b90ebb3ffc8665a3e766ae08631",
+      "src/generation/conversation.py": "a35889cb47085b64248c50e0975f889e37302474f6470b77b4b3f20cf077ebb0",
+      "src/generation/evidence_highlight.py": "d5b6794830482664966725088eda52ec79b70f32a22f234d54c3f6ff81a1adb6",
+      "src/generation/evidence_routing.py": "9e425bb90c5f943866ee635604573340b199de23371bf8e83c22c62697f72100",
+      "src/generation/followup.py": "12945aeeef16cc833ef049804efc7b26e40ac6f00cd144b92a0e8ab086ea4b7a",
+      "src/generation/glossary.py": "7dbe57a57941c13a7ca68ec7508acfacf5a8a95faad663d09dd001d3ebc8afbb",
+      "src/generation/graph.py": "5de6549e4d6e6eab0cef46788d2490034cdbbaf0fd1f63730c2e27936cf4124a",
+      "src/generation/llm.py": "485e20321a2fc51d6411b4d89bd17a785aed88ba40c8cb0bb6e20d2bd5f8ae03",
+      "src/generation/models.py": "f1e5d0a63c8d94d7e373495f28a4988719a1b10c50d13bfd86de715bb078420c",
+      "src/generation/paragraph.py": "11083c18d7ffb0abf09fda16a497e6b929072da602f6242e40d69a74ac88b596",
+      "src/generation/prompt.py": "6411e6dbba25faea26f9856393cb04f900cf2bc6b1805fdce4d52d9953c11ae7",
+      "src/generation/simplify.py": "6adbaac996c571aeb68afaa8d6ff8532ad5acca283442171fad5523cb2421b29",
+      "src/generation/source_links.py": "cbe4de569e7637419c2b507b6c229b1b06aa7e0ad72e913b519b4621e52510b8",
+      "src/generation/validation.py": "7879ac22ea21c1c38376302c8cdacf4278413ba602255b2cba7f012ae9db05e1",
+      "src/ingestion/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/ingestion/build_mock.py": "ca3466746f3a3c2ede9420e37906c8491ead55dff688b42404948987f9ddf237",
+      "src/ingestion/build_verified_case_source.py": "f7dcc4e989632ccc30f31f86d701b44724236403e908c4e06aa6a7e4fa79e997",
+      "src/ingestion/chunk.py": "274698fe1e6acc34aa62d33935c337068f73b8cfd99ca8adf6f0600cfdab970a",
+      "src/ingestion/export_case_review_queue.py": "402cffe24b611c6157378a101c101f1cdf6adec583dc34e83eadb093a49a375f",
+      "src/ingestion/fetch_guides.py": "101306590ce7340f1506262a3ce4df2357f5579dfef202f2af0e48ad7b6adc22",
+      "src/ingestion/fetch_law.py": "ec4da71fb1d81087aac1a54fdd21027b520993f9ce1388b3c424ab4c742c636f",
+      "src/ingestion/fetch_law_mock.py": "6a41aa6d4e0581ca8fb39fcc40a99746840ccbef0c55e528cac26ad6eb719285",
+      "src/ingestion/fetch_minbeop.py": "329ecde173c806295181d204f4762fafb4e886730d32b0f5acfea37d36665736",
+      "src/ingestion/law_structure.py": "8cea77f7f5a8c3bbecdf836a92069cccba28656d567a8781ac19b35471d53b7c",
+      "src/ingestion/load_cases.py": "1e9f4d53e6daaefb116abde1612ecbad6ef771b134316493259b295b7920cea7",
+      "src/ingestion/load_guides.py": "78e07b0b4ea5ce5a7de26e8d2e2cadac0205f2ce1b91455b675bf3cfdaf02915",
+      "src/ingestion/load_laws.py": "5454e28bb6c19a3ca51c3b223911be810ce7ed38bf4fae7cdc33a9c8a8141767",
+      "src/ingestion/merge_chunks.py": "0bc1953953df8f58db7bc439d0767a2f0a25c40ace1f2ebec5ecdbe88e2f3ad8",
+      "src/ingestion/parse_cases.py": "bb379d09f3ed2cba95ff41fa86384dc6dda4aef4b2e34c357566ee15ea000d56",
+      "src/ingestion/parse_law.py": "e641d31a36a13b7a3d0362721fecaad67a7d4c7412f9cbffb4ac122f61bfbed6",
+      "src/ingestion/parse_pdf.py": "9cd079bc7e625c887e27c656d1762c12046b6d850dfe69a7f078173e9616c567",
+      "src/ingestion/refetch_case_details.py": "bd807ee63919c57779da4c2d9f3b07770d57f1607a38f7ba4809d02d5819615c",
+      "src/ingestion/resolve_case_ids.py": "13af28e2dcb55c2d60296b9eab97542ce6cb87caeac328301242f7587608f8eb",
+      "src/ingestion/server_build.py": "82838eb29d8529dab595545e1e60048d7a0c4efc6ffd1b17b3440d7bb304aebf",
+      "src/ingestion/server_sources.py": "0397cc3301c120f10517fcc82e9f1eb3f359b8530faf0d1be8ae76f171d54912",
+      "src/ingestion/validate_chunks.py": "3475b17b6eb93bdbf77877173993c10533e23036425e25027a293327610e9e03",
+      "src/retrieval/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/retrieval/case_internal.py": "e1d12932799f8417a4aa13a08e7faa5765a4f206d1b9afa5a04cec4be33bd9b8",
+      "src/retrieval/case_internal_profile.py": "9cb0c5aceb05d697a968234ba25d04f60827f4eeaac9ef8083cd2c9cae4ba5df",
+      "src/retrieval/case_profile.py": "178304676ad73f8c2a18b4d4933b9bb41ce6e746d58bcfd65d4fbbf636a8ca91",
+      "src/retrieval/case_rerank.py": "6a96a5d11b232c76053a8a137fccabb66acb9bb238d98ebbb70e30d510236ee5",
+      "src/retrieval/companion_evidence.py": "5dd89920b9f677d44475593abc555ce89e3b4a0c0fcca3e6c5acd19029bbebdd",
+      "src/retrieval/context_policy.py": "ddd2c531c49b15dc19b073e7877692605a8ddc50e89bf648b46ae85113532cca",
+      "src/retrieval/dense.py": "fe6f9e8a1679097289076db992748d1602cc9562377c562874271f3863238b27",
+      "src/retrieval/expanded.py": "ffc3b9bfbfb8d04fe3acadd4db66118465c3f8014f6568991173ab9e6cc1d461",
+      "src/retrieval/hybrid.py": "c82d7be47e95b3419a617a5aaeaf5f6d0a271fcd144a85b38fd53d00d0cb5812",
+      "src/retrieval/index.py": "227f3d11eb4bf8a7913b0d658af543331364f0cd997a9b825264914c02ed031a",
+      "src/retrieval/multi_evidence.py": "504a2b9efddc7a87badcfb7042cb7103d1347b41621dd457cd6e601e6b5bea9c",
+      "src/retrieval/partitioned.py": "22fa64c966a155424f9e14b1399fed912b1a6bd730fc255bc11c161e40da587b",
+      "src/retrieval/profile.py": "cf084ca2f6d39515632b04cd651e0d1155fccdfcf6bae2fd802f9a29baadb63a",
+      "src/retrieval/readiness.py": "86b55af4ce81135ff487001a6ba4b8985dff275805da47981927e29c2f4f8c86",
+      "src/retrieval/refs.py": "5c770deff1141f65509955c3d62c9da6f47c3591da84e7f7f567b669a7342639",
+      "src/retrieval/retriever.py": "6e01e43aeceaf93fc6795c1e3f920662daed035caa87587ae4e1b84d9dc57ebe",
+      "src/retrieval/service.py": "ff8ccaff4578ce1b0a5806c8665012f8e4c13c7589325aae2266b90bdfab9009",
+      "src/retrieval/terms.py": "34354c085495148a535c15c409f2a5761808e2fbc106b25141874117f5836a6e",
+      "src/security/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/security/prompt_injection.py": "fba1e4fa6d2ec68258fff02d5426c8b7670c05702243c2f58f9fdf073343c974",
+      "src/security/secret_filter.py": "504e83a39acc0558796e31f40716cf81cf374769b6fb548421423319dd3ff855",
+      "src/security/text_normalization.py": "ac34c895c6edd0b58de66ae52d1c4c02eaae47f6d6af9952d292b73d2f84697a"
+    },
+    "criteria": {
+      "data/eval/civil-review2/.gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+      "data/eval/civil-review2/manifest.json": "8e0c95c8e3e69b0420c5d54c0e284db31942479b08fe0c06a5a9a48043664362",
+      "data/eval/civil-review2/README.md": "e22c183e8a94778c63a02eaaa1d2cf36f7360ea3f13ed014d21683e31a256077",
+      "data/eval/civil-review2/retrieval-plan.json": "0d4da52e5636d7e26b3a01d841a15bf474eaf0214974ea108a306b44317408ca",
+      "data/eval/civil-review2/retrieval-targets.md": "55be7749a18445c35e60e3db48ac6b20139fc1ed797bd260da48c965dd135a00",
+      "data/eval/civil-review2/review/00_검토결과_안내.md": "e5b17a42b169339a9d67b71d32fdf5f4863d43eed3605ad0ca4b7f04ac0c2075",
+      "data/eval/civil-review2/review/01_최종정답_근거통합본.md": "ae54f7ef11bf2328cef0f4ac92217bad1e384bd2430e5e6cc2fe4641c4e779ce",
+      "data/eval/civil-review2/review/02_리뷰1대비_변경표.md": "241712bcab6df62c23b8b241b7a65e8e9bde71b88843b411469bfc704236ec3d",
+      "data/eval/civil-review2/review/03_미확인_판단보류목록.md": "08a0359495304b990137e07f3c7d8a3c5e6239916e92cef5f1d0410fc46698e3",
+      "data/eval/civil-review2/review/04_실제검색_원문확인기록.md": "d44bdc6dfea321399bd89baea092a35812299126f0d8cadab6053302d0d86822",
+      "data/eval/civil-review2/review/civil-selection-review2.json": "320b85ddeaec714867d22fd1fb4340864b3f568f7d19395cbd71bfbf4e0e7664",
+      "data/eval/dev100-v2/.gitattributes": "c70938aced3b7f1e0ddc7d45151e4c341d43cfccb7cb546fde9c48823af60109",
+      "data/eval/dev100-v2/changes-v1-v2.json": "aa0faa0ee6bf72c854e27a7fef42cf4aeaa4be3a2a66760aa52efa3b76a91e26",
+      "data/eval/dev100-v2/diagnostic-plan.json": "925b6dd195e7b7553ab5389317260576d69a5553cfd8bc0ff93309f1e8eb5d10",
+      "data/eval/dev100-v2/expected/article-diagnostics.json": "4927b4d23504d110fbdee27050cf13d41a5f96d3e695396b9354bca6170f2f1d",
+      "data/eval/dev100-v2/expected/missing-primary-articles.json": "cf5693937889e4456a693b357f41910df9075263a1265fd163783599ebe87f0a",
+      "data/eval/dev100-v2/expected/summary.json": "d6a18f99f5f6584c9f23958d549dd555a8b4c830b863a00ca40ac5d30dd21188",
+      "data/eval/dev100-v2/manifest.json": "b16eeff53de21b3ffd3ddd10e07c01210b0a2f8cab18413ce0fadf58bfdc92d8",
+      "data/eval/dev100-v2/questions.json": "efc9c97d06a5a56bdaa7c0b71ebd44e99819f9033202baee5f7823f025f60a6b",
+      "data/eval/dev100-v2/raw/01_최종정답_근거통합본.md": "6b01914ada71a229b3ab2067f6b9902324e0baa7302041fea9d8ad8b0f126f41",
+      "data/eval/dev100-v2/raw/02_리뷰1대비_변경표.md": "55d2dafd36347bc5df5ed4f4fbde29f94a1ffe4756fd0437b9f39e0d4b61372f",
+      "data/eval/dev100-v2/raw/03_미확인_판단보류목록.md": "7ec8349955beb5cd06848631a39b9663a353acfbd38bba4047d27e599673bf7d",
+      "data/eval/dev100-v2/raw/04_실제검색_원문확인기록.md": "67a01b06702f751134a05ebcd1f6de93956297c22d57954e4ffbcf970fd55dab",
+      "data/eval/dev100-v2/raw/05_리뷰2_최소보완_명제별근거표.md": "9bf0057e1e31b6e235912662b131367a74bb49dc4fababe756e3491ce598ac8e",
+      "data/eval/dev100-v2/raw/06_최소보완_검색확인기록.md": "674f17babf9cc40d0e680fd56ee6ea328a5f646c7cf228ecb4ab0bcc544564a3",
+      "data/eval/dev100-v2/raw/검토진행.md": "b2341e28e203160a9d0bdb9c1d095d181cf433f45ce16e843b36bd78e462626e",
+      "data/eval/dev100-v2/README.md": "f42fe65d5372c6f09a77880625cf39b1ecfd43c93e190128965f11eb3b969308",
+      "data/eval/dev100-v2/reference-run.json": "d668a92a791e96de134f090b972fc7d58e8aa24044141475f9125ef5a7fbe6eb",
+      "data/eval/dev100-v2/requirements.json": "8df87ff1e6112273add2402a94a9986502cb5f1dca6bf03117c5a1a9a88ac597",
+      "data/eval/dev100-v2/source-registry.json": "972370640759cd61446b0b3dd379760fe618fa49f6cd982fc55efa1d0afb9bd9",
+      "data/eval/dev100-v2/supplement-claims.json": "1bc467fad8ce90d610398a3edbb7da6280444fad6323db736749c380ad74e9d4",
+      "data/eval/patch015-baseline/capture/results.json": "3834e7c0e8d5f1eb5c2f60bfd6f3106cf1a765fe8f18c535dac444af91029f4c"
+    },
+    "data": {
+      "chunks/cases.jsonl": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
+      "chunks/chunks.jsonl": "8784c57ca4f2ba4ece469cf8f773e225bec0d8d0a1c54563e0e4b22add8ce324",
+      "chunks/civil.jsonl": "d2adac18e6f4eb1a85a3829f13628470930f55b7dcd7ee1a2502402344ea2b0c",
+      "chunks/guides.jsonl": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
+      "database/civil.sqlite3": "2b59c85b1b149d0edbde7484cbccc2769457e22c808342f6f5f30eb5518e5b5e",
+      "database/knowledge.sqlite3": "0729e2a2ae793085fa9dd08c1cef749f5cbd8e142188b58395fe2786c03b4c35",
+      "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/data_level0.bin": "fc5cd1567a5ad3356e3cc32c1762616d7315644b27f37f410b3c2c98be0fc644",
+      "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+      "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/length.bin": "c8831a1e0bac08ff9d5bfeff828d0fd43036b1cc639c54075e381b91d7d4ec27",
+      "index/chroma_civil_kurev1_1024/2d5451c7-adf5-466e-a6b8-08ad5c546e23/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "index/chroma_civil_kurev1_1024/chroma.sqlite3": "c3cfb6102c4be01e0e211cb8631afde791135816996ffb4ed182c1321281597e",
+      "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/data_level0.bin": "63f73d52433ab675038a39dcfa21336457989b9ea99cb091d78c622ae38ed5ca",
+      "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+      "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/length.bin": "0a9e62f1cada960c1fb5aaa2293b071174130593edf340733bf0481db7cd99b5",
+      "index/chroma_kurev1_1024/cf6d05f5-ce9e-4287-a4ea-a2bbbbf772d9/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "index/chroma_kurev1_1024/chroma.sqlite3": "f06f5ba2183605c29d7abb612a34f5bc40f23153016b349eadf79f7bebab4bf8",
+      "index/retrieval-profile.json": "30af1f372e52b995ae3a11c8f1f2d50bfe44f4a4f09628c463b7270672c80616"
+    },
+    "payload": {
+      "chunks/cases.jsonl": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
+      "chunks/chunks.jsonl": "8784c57ca4f2ba4ece469cf8f773e225bec0d8d0a1c54563e0e4b22add8ce324",
+      "chunks/civil.jsonl": "d2adac18e6f4eb1a85a3829f13628470930f55b7dcd7ee1a2502402344ea2b0c",
+      "chunks/guides.jsonl": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
+      "database/civil.sqlite3": "2b59c85b1b149d0edbde7484cbccc2769457e22c808342f6f5f30eb5518e5b5e",
+      "database/knowledge.sqlite3": "0729e2a2ae793085fa9dd08c1cef749f5cbd8e142188b58395fe2786c03b4c35",
+      "index/retrieval-profile.json": "30af1f372e52b995ae3a11c8f1f2d50bfe44f4a4f09628c463b7270672c80616"
+    },
+    "model": {
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/config.json": "852d42e020c7f989c2acaf30fc683b7f768e8c6d1ab17166e835442162bd825d",
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/config_sentence_transformers.json": "8c73684c2160f2209f3706d6cbe0e933287fe6945d9546042be4c105cdb5252e",
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/model.safetensors": "c18156e80caf8ff45eb84a24a853130c3bca03087ccb41b051f86e7556bae02c",
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/modules.json": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/README.md": "39e4b634e81d17d98067dd5ffbedafe2f17ca29e292d1ac9ef000d9b9a24f36f",
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/sentence_bert_config.json": "eb9b44b13c0f52a3b3685c3b1cbdea1ba8b04bea123b98f61610048940776eb1",
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/special_tokens_map.json": "8c785abebea9ae3257b61681b4e6fd8365ceafde980c21970d001e834cf10835",
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/tokenizer.json": "fb3c3b93c46fd5a8634e262e1b7de7da11a18b527aa2282b312952b692781dfd",
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/tokenizer_config.json": "b87c8703482b0300d3da30e201519aa641f6a450f5eb5bf1e624afbf70c74d80",
+      "snapshots/4ed4540949c70b7da2c74004a915e1f2d5e46e4f/1_Pooling/config.json": "13e69897522ee8255104483ed9f219465d1be3936654a54a318758738052789e"
+    },
+    "logical_indices": [
+      "c585bccfe3f152d7aef5de1053ae256513b3945b0ef770cc79a8fefb4fb6e297",
+      "8ba204f34f23a294036511fb2c338c75a92269cea03bba290508b726c3b6735d"
+    ],
+    "settings": {
+      "search_k": {
+        "k_law": 5,
+        "k_case": 5,
+        "k_guide": 2,
+        "k_civil": 3
+      },
+      "corpora": {
+        "law": {
+          "name": "법령",
+          "doc_types": [
+            "law",
+            "decree",
+            "rule"
+          ],
+          "bm25_b": 0.75,
+          "expand_weight": 1.0,
+          "bm25_weight": 1.0,
+          "dense_weight": 1.0,
+          "rrf_k": 5,
+          "query_expander": "src.retrieval.context_policy.final_law_terms",
+          "exclude_titles": [],
+          "status": "current",
+          "include_ids": [],
+          "retriever": {
+            "rrf_k": 5,
+            "depth": 20,
+            "bm25": {
+              "kind": "partitioned_raw_score_pool",
+              "score_weight": 1.0,
+              "procedure_titles": [
+                "주민등록법",
+                "국세징수법",
+                "국세징수법 시행령",
+                "지방세징수법",
+                "지방세징수법 시행령"
+              ],
+              "partitions": {
+                "core": {
+                  "k1": 1.5,
+                  "b": 0.75,
+                  "char_ngram": 2
+                },
+                "procedure": {
+                  "k1": 1.5,
+                  "b": 0.75,
+                  "char_ngram": 2
+                }
+              }
+            },
+            "members": [
+              {
+                "name": "bm25_context",
+                "weight": 1,
+                "expand_weight": 1.0
+              },
+              {
+                "name": "dense_context",
+                "weight": 1,
+                "expand_weight": 0.0
+              }
+            ]
+          }
+        },
+        "case": {
+          "name": "판례",
+          "doc_types": [
+            "case"
+          ],
+          "bm25_b": 0.75,
+          "expand_weight": 1.0,
+          "bm25_weight": 1.0,
+          "dense_weight": 1.0,
+          "rrf_k": 60,
+          "query_expander": "src.retrieval.terms.expand",
+          "exclude_titles": [],
+          "status": "current",
+          "include_ids": [],
+          "retriever": {
+            "rrf_k": 60,
+            "depth": 20,
+            "bm25": {
+              "k1": 1.5,
+              "b": 0.75,
+              "char_ngram": 2
+            }
+          }
+        },
+        "guide": {
+          "name": "안내",
+          "doc_types": [
+            "guide"
+          ],
+          "bm25_b": 0.75,
+          "expand_weight": 1.0,
+          "bm25_weight": 1.0,
+          "dense_weight": 1.0,
+          "rrf_k": 60,
+          "query_expander": "src.retrieval.terms.expand",
+          "exclude_titles": [],
+          "status": "current",
+          "include_ids": [],
+          "retriever": {
+            "rrf_k": 60,
+            "depth": 20,
+            "bm25": {
+              "k1": 1.5,
+              "b": 0.75,
+              "char_ngram": 2
+            }
+          }
+        },
+        "civil": {
+          "name": "민법",
+          "doc_types": [
+            "law",
+            "decree",
+            "rule"
+          ],
+          "bm25_b": 0.75,
+          "expand_weight": 1.0,
+          "bm25_weight": 1.0,
+          "dense_weight": 1.0,
+          "rrf_k": 5,
+          "query_expander": "src.retrieval.expanded.civil_terms",
+          "exclude_titles": [],
+          "status": "current",
+          "include_ids": [
+            "민법-제105조",
+            "민법-제111조",
+            "민법-제113조",
+            "민법-제114조",
+            "민법-제118조",
+            "민법-제147조",
+            "민법-제186조",
+            "민법-제187조",
+            "민법-제265조",
+            "민법-제357조",
+            "민법-제390조",
+            "민법-제393조",
+            "민법-제470조",
+            "민법-제536조",
+            "민법-제543조",
+            "민법-제548조",
+            "민법-제615조",
+            "민법-제623조",
+            "민법-제626조",
+            "민법-제627조",
+            "민법-제629조",
+            "민법-제632조",
+            "민법-제634조",
+            "민법-제636조",
+            "민법-제640조",
+            "민법-제654조"
+          ],
+          "retriever": {
+            "rrf_k": 5,
+            "depth": 26,
+            "bm25": {
+              "k1": 1.5,
+              "b": 0.75,
+              "char_ngram": 2
+            },
+            "members": [
+              {
+                "name": "bm25_context",
+                "weight": 1,
+                "expand_weight": 1.0
+              },
+              {
+                "name": "dense_context",
+                "weight": 1,
+                "expand_weight": 0.0
+              }
+            ]
+          },
+          "seed_retriever": {
+            "rrf_k": 5,
+            "depth": 20,
+            "bm25": {
+              "k1": 1.5,
+              "b": 0.75,
+              "char_ngram": 2
+            }
+          }
+        }
+      },
+      "civil_selection": {
+        "policy": "expanded-laws-record-v1",
+        "method": "same-edition reference pair or topic-seeded RRF with dense tail",
+        "request_embedding_cache": true
+      },
+      "profile": "expanded-laws-record-v1"
+    },
+    "tax_selection": {
+      "name": "explicit-unpaid-tax-lookup-v1",
+      "supplement": false,
+      "candidate_depth": 20,
+      "preserve_unmatched_query": true
+    },
+    "companion_selection": {
+      "name": "housing-protection-companion-v1",
+      "candidate_depth": 20,
+      "supplement": false,
+      "preserve_first": true,
+      "minimum_budget": 3
+    },
+    "public_inputs": {
+      "legacy_dev": "9e5ab5154b88fd66b5bd597f22c26cf4f633e0451efc7aa863469289f199103d",
+      "legacy_holdout": "62bfaa804e42bd436d2dcfda37ae38190c64dcd87f93c33e5d17296dac2964cf",
+      "civil_public": "abfa66775f5d75ddc683ddb647cc4dafd8acf7861be1113052c3668620ce71d7",
+      "case_dev13": "65b9f15a432087065a71a026d5b7bdb196fc25aa253b34dbd3ef700241672316",
+      "case_external8": "28ff1e459b2e30b60da5160ff5f6d831eeb0113396dd0e8d9791cea37a3c8889"
+    }
+  },
+  "model_usage": {
+    "actual_kure_calls": 957,
+    "general_backend_requests": 1303,
+    "civil_backend_requests": 770
+  },
+  "public_inputs": {
+    "legacy_dev": {
+      "path": "C:\\team_project\\4th_project\\data\\eval\\dev.jsonl",
+      "sha256": "9e5ab5154b88fd66b5bd597f22c26cf4f633e0451efc7aa863469289f199103d"
+    },
+    "legacy_holdout": {
+      "path": "C:\\team_project\\4th_project\\data\\eval\\holdout.jsonl",
+      "sha256": "62bfaa804e42bd436d2dcfda37ae38190c64dcd87f93c33e5d17296dac2964cf"
+    },
+    "civil_public": {
+      "path": "C:\\team_project\\4th_project\\data\\eval\\minbeop_review_holdout_20260901.jsonl",
+      "sha256": "abfa66775f5d75ddc683ddb647cc4dafd8acf7861be1113052c3668620ce71d7"
+    },
+    "case_dev13": {
+      "path": "C:\\team_project\\4th_project\\tmp\\patch003-case-dev-input.jsonl",
+      "sha256": "65b9f15a432087065a71a026d5b7bdb196fc25aa253b34dbd3ef700241672316"
+    },
+    "case_external8": {
+      "path": "C:\\team_project\\3rd_project\\3rd_project_team4\\data\\eval\\case26_external_8.jsonl",
+      "sha256": "28ff1e459b2e30b60da5160ff5f6d831eeb0113396dd0e8d9791cea37a3c8889"
+    }
+  },
+  "exclusions": {
+    "legacy_dev": [
+      {
+        "qid": "dev-017",
+        "reason": "guide gold excluded",
+        "excluded_gold": [
+          "guide-국세청-미납국세열람"
+        ]
+      },
+      {
+        "qid": "dev-023",
+        "reason": "guide gold excluded",
+        "excluded_gold": [
+          "guide-HUG-전세보증금반환보증"
+        ]
+      },
+      {
+        "qid": "dev-026",
+        "reason": "no law gold",
+        "excluded_gold": []
+      },
+      {
+        "qid": "dev-027",
+        "reason": "no law gold",
+        "excluded_gold": []
+      }
+    ],
+    "legacy_holdout": [
+      {
+        "qid": "holdout-006",
+        "reason": "no law gold",
+        "excluded_gold": []
+      },
+      {
+        "qid": "holdout-009",
+        "reason": "no law gold",
+        "excluded_gold": []
+      }
+    ],
+    "civil_public": [
+      {
+        "qid": "civil-review-016",
+        "reason": "no law gold",
+        "excluded_gold": []
+      },
+      {
+        "qid": "civil-review-017",
+        "reason": "no law gold",
+        "excluded_gold": []
+      },
+      {
+        "qid": "civil-review-018",
+        "reason": "no law gold",
+        "excluded_gold": []
+      },
+      {
+        "qid": "civil-review-019",
+        "reason": "no law gold",
+        "excluded_gold": []
+      },
+      {
+        "qid": "civil-review-020",
+        "reason": "no law gold",
+        "excluded_gold": []
+      }
+    ],
+    "case_dev13": [],
+    "case_external8": []
+  },
+  "budgets": {
+    "laws": [
+      3,
+      5
+    ],
+    "civil_laws": 3,
+    "cases": 5,
+    "guides": 2
+  }
+}

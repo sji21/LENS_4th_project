@@ -1,0 +1,211 @@
+{
+  "note": "Evidence body characters, not full prompt size or model tokens; retrieval case5 budget. No latency measurement.",
+  "target_recall": {
+    "question_only:law-budget3": {
+      "targets": 121,
+      "before": 74,
+      "after": 79
+    },
+    "question_only:law-budget5": {
+      "targets": 121,
+      "before": 87,
+      "after": 92
+    },
+    "context_diagnostic:law-budget3": {
+      "targets": 121,
+      "before": 73,
+      "after": 76
+    },
+    "context_diagnostic:law-budget5": {
+      "targets": 121,
+      "before": 88,
+      "after": 91
+    },
+    "required_law:law-budget3": {
+      "targets": 32,
+      "before": 31,
+      "after": 31
+    },
+    "required_law:law-budget5": {
+      "targets": 32,
+      "before": 31,
+      "after": 31
+    },
+    "legacy_dev:law-budget3": {
+      "targets": 29,
+      "before": 28,
+      "after": 28
+    },
+    "legacy_dev:law-budget5": {
+      "targets": 29,
+      "before": 29,
+      "after": 29
+    },
+    "legacy_holdout:law-budget3": {
+      "targets": 27,
+      "before": 21,
+      "after": 21
+    },
+    "legacy_holdout:law-budget5": {
+      "targets": 27,
+      "before": 22,
+      "after": 22
+    },
+    "civil_public:law-budget3": {
+      "targets": 18,
+      "before": 11,
+      "after": 11
+    },
+    "civil_public:law-budget5": {
+      "targets": 18,
+      "before": 14,
+      "after": 14
+    },
+    "case_dev13:law-budget3": {
+      "targets": 60,
+      "before": 32,
+      "after": 32
+    },
+    "case_dev13:law-budget5": {
+      "targets": 60,
+      "before": 32,
+      "after": 32
+    },
+    "case_external8:law-budget3": {
+      "targets": 23,
+      "before": 17,
+      "after": 17
+    },
+    "case_external8:law-budget5": {
+      "targets": 23,
+      "before": 17,
+      "after": 17
+    }
+  },
+  "changed_input_evidence_sizes": [
+    {
+      "qid": "DEV-005",
+      "mode": "question_only",
+      "law_budget": 3,
+      "before_evidence_chars": 2367,
+      "after_evidence_chars": 2809
+    },
+    {
+      "qid": "DEV-005",
+      "mode": "question_only",
+      "law_budget": 5,
+      "before_evidence_chars": 3470,
+      "after_evidence_chars": 3684
+    },
+    {
+      "qid": "DEV-005",
+      "mode": "context_diagnostic",
+      "law_budget": 3,
+      "before_evidence_chars": 2024,
+      "after_evidence_chars": 2238
+    },
+    {
+      "qid": "DEV-005",
+      "mode": "context_diagnostic",
+      "law_budget": 5,
+      "before_evidence_chars": 3334,
+      "after_evidence_chars": 3391
+    },
+    {
+      "qid": "DEV-033",
+      "mode": "question_only",
+      "law_budget": 3,
+      "before_evidence_chars": 2837,
+      "after_evidence_chars": 2728
+    },
+    {
+      "qid": "DEV-033",
+      "mode": "question_only",
+      "law_budget": 5,
+      "before_evidence_chars": 4823,
+      "after_evidence_chars": 5115
+    },
+    {
+      "qid": "DEV-038",
+      "mode": "question_only",
+      "law_budget": 3,
+      "before_evidence_chars": 3683,
+      "after_evidence_chars": 3853
+    },
+    {
+      "qid": "DEV-038",
+      "mode": "question_only",
+      "law_budget": 5,
+      "before_evidence_chars": 4977,
+      "after_evidence_chars": 5050
+    },
+    {
+      "qid": "DEV-046",
+      "mode": "question_only",
+      "law_budget": 3,
+      "before_evidence_chars": 3691,
+      "after_evidence_chars": 2695
+    },
+    {
+      "qid": "DEV-046",
+      "mode": "question_only",
+      "law_budget": 5,
+      "before_evidence_chars": 4624,
+      "after_evidence_chars": 4681
+    },
+    {
+      "qid": "DEV-046",
+      "mode": "context_diagnostic",
+      "law_budget": 3,
+      "before_evidence_chars": 3682,
+      "after_evidence_chars": 2686
+    },
+    {
+      "qid": "DEV-046",
+      "mode": "context_diagnostic",
+      "law_budget": 5,
+      "before_evidence_chars": 4665,
+      "after_evidence_chars": 4722
+    },
+    {
+      "qid": "DEV-096",
+      "mode": "question_only",
+      "law_budget": 3,
+      "before_evidence_chars": 2574,
+      "after_evidence_chars": 2383
+    },
+    {
+      "qid": "DEV-096",
+      "mode": "question_only",
+      "law_budget": 5,
+      "before_evidence_chars": 4939,
+      "after_evidence_chars": 3582
+    },
+    {
+      "qid": "DEV-096",
+      "mode": "context_diagnostic",
+      "law_budget": 3,
+      "before_evidence_chars": 2556,
+      "after_evidence_chars": 2365
+    },
+    {
+      "qid": "DEV-096",
+      "mode": "context_diagnostic",
+      "law_budget": 5,
+      "before_evidence_chars": 3871,
+      "after_evidence_chars": 3564
+    }
+  ],
+  "model_usage": {
+    "before": {
+      "actual_kure_calls": 957,
+      "general_backend_requests": 1303,
+      "civil_backend_requests": 770
+    },
+    "after": {
+      "actual_kure_calls": 957,
+      "general_backend_requests": 1303,
+      "civil_backend_requests": 770
+    }
+  }
+}

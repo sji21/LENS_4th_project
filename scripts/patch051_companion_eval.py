@@ -55,6 +55,7 @@ def capture(data, out, case_dev, case_external):
         "settings": snapshot_settings(settings(service)),
         "tax_selection": dict(service.selection_config),
         "companion_selection": dict(getattr(service, "companion_selection_config", {})),
+        "intent_selection": dict(getattr(service, "intent_selection_config", {})),
         "public_inputs": {g: base.sha(Path(i["path"])) for g, i in inputs.items()},
     }
     before = snapshot()

@@ -1,0 +1,51 @@
+{
+  "patch": "PATCH-053",
+  "base": "4491b761c3d5e29a655313b7cbb78a56d03aa7d7",
+  "branch": "feat/patch-053-retrieval-intent",
+  "created_at": "2026-09-17T01:57:55.4963821Z",
+  "status": "implemented and verified; commit and push authorized",
+  "tests": {
+    "command": "python -X utf8 -m pytest -q",
+    "passed": 2726,
+    "skipped": 3,
+    "subtests_passed": 678,
+    "seconds": 443.68,
+    "skips": [
+      "LangSmith tracing disabled (2)",
+      "Registry sample PDF not supplied (1)"
+    ]
+  },
+  "capture_source_drift": false,
+  "generation_performed": false,
+  "evaluation": "313 fixed development/published regression inputs, separate actual K3/K5 calls; no independent holdout",
+  "required_target_losses": 0,
+  "git_writes": "Pre-commit snapshot; user authorized commit and push; no PR created",
+  "sha256": {
+    "CHANGELOG.md": "37d7adc1886735a19361c3f985385fdb7b9453f29df9809e3a1b01a8b741134a",
+    "CHANGELOG_Kr.md": "2865cd11de85593fe1bf565215d30462cb089a4f9f2c95d1e6607d5f1e5e6b79",
+    "data/eval/patch053-retrieval/after/audit.json": "f20590abf167a25f2a5fc922c0da58f2e1b2e5b6d62c98d155076d18d4bef5bc",
+    "data/eval/patch053-retrieval/after/manifest.json": "4a816d472e5138058c6b8810e8d2056dd9bffdb77757deb84f2569d8a18ad99a",
+    "data/eval/patch053-retrieval/after/rows.json": "8d9ebfe4453de58cb5f3c666aa4b7b87b9c4a68817ea1c1aa3657634d84c7d9e",
+    "data/eval/patch053-retrieval/after/target-trace.json": "55b94fc1de5fc3a22e2d3b0fa30b790094acae87e20319d8830cf130501671d4",
+    "data/eval/patch053-retrieval/audit-replay.py": "c5b75c4af274de608afb11c4de720f300dc234d51d1b27e3fb8944226454b779",
+    "data/eval/patch053-retrieval/baseline-summary.json": "55e7aec303ae180dc9553430cbccc13dd09da3b8b51364bdb8fe75dba3714e09",
+    "data/eval/patch053-retrieval/before/audit.json": "17733a81b87053feb297074e7144776089fa1c6d678eafe361dececb62783255",
+    "data/eval/patch053-retrieval/before/manifest.json": "7672c850e48b1804922cd0d3eb6cdae63d31f587ce8d8fa38bd58fab06e13c65",
+    "data/eval/patch053-retrieval/before/rows.json": "7e212da1afec7be88ae41dd7ce1329e5862ac87b34c30dce7f2f4efcb09f15a8",
+    "data/eval/patch053-retrieval/before/target-trace.json": "55b94fc1de5fc3a22e2d3b0fa30b790094acae87e20319d8830cf130501671d4",
+    "data/eval/patch053-retrieval/comparison.json": "b83ebba72980740bf83916e4a4ec776a70db7150c934298dea3bfd5cd4ee2184",
+    "data/eval/patch053-retrieval/details.json": "fc92f133b6bf175e68e5d862f25db03eeb1e7e501c258346c5e4acd699f11018",
+    "data/eval/patch053-retrieval/dev096-candidate-trace.json": "a043e90320dc965bcef4b6fc8f76482b00bd407f2b356a98106ea4e83b467abe",
+    "data/eval/patch053-retrieval/full-tests.log": "8c40f3d317088d65f337fcbd45538f0872d21690438b775a66e77e3bfa8bdbf0",
+    "data/eval/patch053-retrieval/independent-verification.json": "9b81c8e144de7ad2c61292b1ba27134c7f79b4d2d0ff1e2faf9719400f709df0",
+    "docs/patch053-retrieval-intent.md": "d29d5c2a4dc0b88749cd54361263b4115dc78d7fd742662216e97c2d0c58e907",
+    "LIST.md": "73715acc0bff2f75d04092839c547ef0c92e7cfcbc48956008ed3d3e6670b666",
+    "scripts/patch051_companion_eval.py": "916fa9d2c29a2e7c5bb36ffe4c005c8f70bf9d9ef9c6b9939b38c83972cbfb80",
+    "scripts/patch053_retrieval_report.py": "e552a4bcadc6fde16685d2539c13cc4d6ca28eee530011b78e33e0ca7b9b01ab",
+    "src/retrieval/expanded.py": "ab9561334b9973f9c1a2616f33c0ff4cdbd7127a74a9f270571959a5a6a96f93",
+    "src/retrieval/retrieval_intent.py": "1a5731e1a5ab1fc0a9f47955a0ed8a019991f382b27c221a4a5fb347fc32d7a5",
+    "tests/test_patch053_retrieval_independent.py": "5ef90afa70e0c1465f0b721f5f93d808b3cd1a063b14f0630424007cc09d3ce5",
+    "tests/test_patch053_retrieval_intent.py": "4120cbb28f320b23f841cde98ac085f937498c0043ee5c8c4e65cb165fcfedbe",
+    ".gitattributes": "bbafec470eef6a889ab8bba8e03b24d15050e81140ba4e02bec99fad050065a4"
+  }
+}
