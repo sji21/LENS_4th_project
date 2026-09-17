@@ -1,8 +1,8 @@
 {
   "patch": "PATCH-053 P2 review",
   "baseline_commit": "620e1c6",
-  "created_at": "2026-09-17T02:31:40.952773+00:00",
-  "review_commit": "pending",
+  "created_at": "2026-09-17T02:32:36.2174502Z",
+  "review_commit": "67382c2",
   "scope": "Request gate only; background renewal and coordinated exclusions",
   "tests": {
     "command": "python -X utf8 -m pytest -q",
@@ -16,8 +16,8 @@
   "note": "Published development/regression inputs; no independent holdout or real generated-answer quality claim.",
   "sha256": {
     ".gitattributes": "8d7a09d662f5ba09283da21c9baef1c58bb615ca56eb5fee15ee6a1dadedf7e1",
-    "CHANGELOG.md": "b799bbe908bcc749f7c0932852d13a0198372964d1b64f52341a7842dda828f6",
-    "CHANGELOG_Kr.md": "e30b142cfcf1dda840df37e585c08948e7d04c060912b9c199de0abd5f33d02d",
+    "CHANGELOG.md": "5eb9f823240a2b316336e2f9d4f21286845bb470d19c66df929355e17a601d50",
+    "CHANGELOG_Kr.md": "99942cab77f82e9794f713f1d2b7bc6127150ba8ca0e872380ca16d958a1539b",
     "data/eval/patch053-review/after/audit.json": "cd001c002a549160f4f8a264fe57b1ed1bb9a5675b3d186e5f0bc4a6bf7a5b44",
     "data/eval/patch053-review/after/manifest.json": "827c054a3f35779cacc3ea591d77c428d5dda34df0197f1df86aaf04aef2bdec",
     "data/eval/patch053-review/after/rows.json": "8d9ebfe4453de58cb5f3c666aa4b7b87b9c4a68817ea1c1aa3657634d84c7d9e",
@@ -31,8 +31,8 @@
     "data/eval/patch053-review/reported-cases.json": "fdf3d2560381f89b662360eb9f2abbc367e50ffbb52164915133beedd2e381ef",
     "data/eval/patch053-review/reproduction.txt": "43bf23d60ae87f8db38214b7377ff82f20d6f5c13c80102a9d52b4d28382683a",
     "data/eval/patch053-review/targeted-tests.txt": "1ffd40a0150e4b5de003ea6b40cc1ba78619cfc9f2de61396f01a153cf52dabe",
-    "docs/patch053-retrieval-intent.md": "934b4e7fdfd1d4f4cef0bff397356b8c2ea866e2fd542576dedc315685818e0b",
-    "LIST.md": "c05bbc2c6bd7ea526859a5230ebe9c1d155b13c40ab8710b9cf2d0959b271ef7",
+    "docs/patch053-retrieval-intent.md": "d514bbff7a12d9078d6451778033956eb65a563290a16afd9db8301b8aaf7906",
+    "LIST.md": "de7279b888a0eedde2b871c068b651bc0002e9f2f4d6cc575b05804acd0ce38f",
     "src/retrieval/retrieval_intent.py": "85e7d59579db79cfa485f9d67a284f065a0248d8b742a600e8115a5a2c7a77fc",
     "tests/test_patch053_retrieval_independent.py": "e4ccf3be2353ee43196b79ba8536b67c8d3bb6e702bd5a955c9d2fc0242d7b98",
     "tests/test_patch053_retrieval_intent.py": "8d9220a9b7e8c3cf3c61416646d793f35bd0760beca1c9a44b0c0245d85f5a4e"
