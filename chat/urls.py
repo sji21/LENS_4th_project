@@ -4,6 +4,7 @@ from . import views
 app_name = "chat"
 urlpatterns = [
     path("", views.home, name="home"),
+    path("new/", views.start_new, name="start-new"),
     path("api/state/", views.state, name="state"),
     path("api/readiness/", views.readiness, name="readiness"),
     path("api/readiness/retry/", views.retry_readiness, name="retry-readiness"),
