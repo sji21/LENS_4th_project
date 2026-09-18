@@ -1,0 +1,303 @@
+{
+  "schema_version": 1,
+  "dataset_id": "holdout-v2-ho30-20260918",
+  "status": "gold_frozen_unevaluated",
+  "legal_reference_date": "2026-09-18",
+  "code_baseline_at_receipt": "f4f7797d6a7985b73898b0af011e872e4bad0106",
+  "gold_file": "review/05_최종기준_구조화.json",
+  "input_file": "questions.jsonl",
+  "input_policy": "Question only; no gold, fabricated context or review history in retrieval/model input.",
+  "retrieval_scoring": {
+    "identity": "Exact law name and article number including branch number; case identity by court and case number; form identity by regulation and form number.",
+    "article_unit": "One law/article is one target even when multiple paragraphs are relevant. Paragraph-content sufficiency is a separate check, not another hit.",
+    "required_logic": "allOf; no OR alternatives are supplied",
+    "conditional_and_supporting": "Excluded from the fixed base retrieval denominator. Extra generated claims require separate conditional-evidence review.",
+    "deduplication": "Set union by source identity, never concatenate counts for required and conditional sources.",
+    "law_component_complete": "All required_statutes retrieved; denominator 30. This alone is not full evidence completeness for the 3 mixed-source items.",
+    "strata": {
+      "statute_only": 27,
+      "mixed_source": 3
+    },
+    "full_evidence_complete": "All required_statutes AND required_other_sources retrieved; denominator 30. Unavailable document types are missing, not automatic passes or post-hoc exclusions.",
+    "required_article_occurrences": 44,
+    "required_other_source_occurrences": 4,
+    "unsupported_or_missing": "Report corpus/document-type gaps without changing gold to fit the corpus. No performance evaluation has been run."
+  },
+  "answer_scoring": {
+    "status": "No automatic semantic grader implemented in this patch.",
+    "rules": "Use final answer together with facts_conditions_exceptions, avoid and scoring_impact. review1 is historical, not active gold. A long model answer is not a list of mandatory claims.",
+    "HO-009": "Accept a conditional court-order answer with confirmation of registration type as specified in scoring_impact. Do not require the optional Civil Act registration route or A3_4 unless that extra route is asserted. A3_3 is counted once.",
+    "HO-019": "Conditional C625 is evaluated only for the additional claim described in conditional.when; it is not required for the base retrieval question.",
+    "boundary": "Legal answer quality, citation grounding and abstention are separate from retrieval metrics."
+  },
+  "before_first_run": [
+    "Commit the run protocol before executing questions: code commit, DB/chunk/index/model hashes and revisions, BM25/KURE settings, channel budgets, filtering and actual model-delivery boundary.",
+    "Define per-channel Hit@1/3/5 and full-required-evidence metrics, their denominators and handling of channels with fewer returned items. Do not pool separate channel ranks without an explicit protocol.",
+    "Archive actual returned IDs and text, and distinguish returned evidence from evidence actually passed to generation.",
+    "If generation is evaluated, freeze its prompt/model/settings and claim-level grading procedure before viewing outputs.",
+    "Record any changes since the receipt baseline. Do not tune the candidate using these questions before the first measurement."
+  ],
+  "items": [
+    {
+      "id": "HO-001",
+      "required_statutes_all_of": [
+        "A3"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-002",
+      "required_statutes_all_of": [
+        "A3",
+        "A3_2"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-003",
+      "required_statutes_all_of": [
+        "A3_6",
+        "B5"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-004",
+      "required_statutes_all_of": [
+        "A3",
+        "A3_2"
+      ],
+      "required_other_sources_all_of": [
+        "P90",
+        "P2010"
+      ],
+      "stratum": "mixed_source"
+    },
+    {
+      "id": "HO-005",
+      "required_statutes_all_of": [
+        "A3_2",
+        "D148"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-006",
+      "required_statutes_all_of": [
+        "A3_3"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-007",
+      "required_statutes_all_of": [
+        "A3_2"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-008",
+      "required_statutes_all_of": [
+        "C536"
+      ],
+      "required_other_sources_all_of": [
+        "P2017"
+      ],
+      "stratum": "mixed_source"
+    },
+    {
+      "id": "HO-009",
+      "required_statutes_all_of": [
+        "A3_3"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-010",
+      "required_statutes_all_of": [
+        "A14",
+        "A26",
+        "A27"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-011",
+      "required_statutes_all_of": [
+        "A4"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-012",
+      "required_statutes_all_of": [
+        "A7"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-013",
+      "required_statutes_all_of": [
+        "C640"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-014",
+      "required_statutes_all_of": [
+        "A6",
+        "A6_2"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-015",
+      "required_statutes_all_of": [
+        "A6",
+        "A6_3",
+        "A7"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-016",
+      "required_statutes_all_of": [
+        "C623"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-017",
+      "required_statutes_all_of": [
+        "C626"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-018",
+      "required_statutes_all_of": [
+        "C634"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-019",
+      "required_statutes_all_of": [
+        "C624"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-020",
+      "required_statutes_all_of": [
+        "C627"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-021",
+      "required_statutes_all_of": [
+        "C114"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-022",
+      "required_statutes_all_of": [
+        "C618"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-023",
+      "required_statutes_all_of": [
+        "A3"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-024",
+      "required_statutes_all_of": [
+        "C633"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-025",
+      "required_statutes_all_of": [
+        "C131",
+        "C134"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-026",
+      "required_statutes_all_of": [
+        "G48_4",
+        "H42"
+      ],
+      "required_other_sources_all_of": [
+        "Iform4"
+      ],
+      "stratum": "mixed_source"
+    },
+    {
+      "id": "HO-027",
+      "required_statutes_all_of": [
+        "E46"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-028",
+      "required_statutes_all_of": [
+        "F40"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-029",
+      "required_statutes_all_of": [
+        "G49_4",
+        "G49_3",
+        "H48"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    },
+    {
+      "id": "HO-030",
+      "required_statutes_all_of": [
+        "E47",
+        "E48"
+      ],
+      "required_other_sources_all_of": [],
+      "stratum": "statute_only"
+    }
+  ]
+}
