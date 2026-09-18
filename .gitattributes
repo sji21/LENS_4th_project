@@ -45,3 +45,6 @@
 
 # Preserve the generated review's hashed final blank line.
 /data/eval/patch042-gap-analysis/review.md whitespace=cr-at-eol,-blank-at-eof
+
+# Preserve received HO30 review and freeze hashes byte-for-byte.
+/data/eval/holdout-v2-ho30-20260918/** -text whitespace=cr-at-eol

@@ -5,6 +5,12 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-18
+
+### Added
+
+- PATCH-056 freezes the received HO30 review (6 byte-preserved files), question-only input and evidence-scoring contract with SHA-256 hashes. Separates 27 statute-only and 3 mixed-source items, conditional evidence and HO-009 optional explanation; preserves original answers. Structural consistency and package integrity are checked; no LENS retrieval, generation, corpus coverage check or tuning is performed. AI-reviewed public pre-evaluation material, not a private blind benchmark or a full independent recheck of all legal sources. (commit: pending)
+
 ## 2026-09-17
 
 ### Added

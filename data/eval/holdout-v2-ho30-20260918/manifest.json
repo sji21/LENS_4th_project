@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "received_on": "2026-09-18",
+  "original_archive": "review.zip",
+  "original_archive_sha256": "64e9d9723d5094f3f7c443ddf11128b639b59d519aac1ff6f5c2295cd769d815",
+  "receipt_code_baseline": "f4f7797d6a7985b73898b0af011e872e4bad0106",
+  "files": {
+    "evaluation-contract.json": {
+      "sha256": "3e42a28d254e5f0e47b7b47dcdb40c4959e26bd4529e76a833570bcf0a4b14ef",
+      "bytes": 8809
+    },
+    "questions.jsonl": {
+      "sha256": "9253c1d92449378b1ab54a69b94414509ac3e48d7056cc1bcae7052906d3d5d2",
+      "bytes": 5327
+    },
+    "README.md": {
+      "sha256": "7489b464b37e6cc262460df4f3002822dbbb868f73c1159f0dcb123834396009",
+      "bytes": 5276
+    },
+    "review/00_검토진행.md": {
+      "sha256": "a3f3c20f69da0e618c4725d269f3ab33494a5c9b55ad7183d6e3ea743d3add84",
+      "bytes": 1379
+    },
+    "review/01_최종정답_근거_통합본.md": {
+      "sha256": "55ce7689310f75d18ea9129df13ba16fdb50c00133db009ee470be6f57d5806a",
+      "bytes": 82644
+    },
+    "review/02_리뷰1대비_변경표.md": {
+      "sha256": "052d519d1d28ff65dfcbafa2993f4aba94f7d3e36c821c80345369edd03c5633",
+      "bytes": 39081
+    },
+    "review/03_미확인_판단보류_목록.md": {
+      "sha256": "7cc61d61075b9dc1c2d63c5b729b30d520a001734efabf4c2ab958d404a2dd1d",
+      "bytes": 8417
+    },
+    "review/04_실제검색_원문확인_기록.md": {
+      "sha256": "2ba8f79ebae8ce9474e5e2ea62ea9e63428382d885ff7113647236ad0f65be43",
+      "bytes": 40072
+    },
+    "review/05_최종기준_구조화.json": {
+      "sha256": "71e5608fa4148e5c91baa807965d2bb595f18060ea504615081779f192749bb1",
+      "bytes": 102780
+    }
+  }
+}
