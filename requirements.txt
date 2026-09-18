@@ -4,7 +4,8 @@ langsmith
 langchain-openai>=1.6,<2
 langchain-chroma
 langchain-core
-chromadb
+chromadb==1.5.9
+numpy==1.26.4
 sentence-transformers
 openai
 Django>=5.2.13,<5.3

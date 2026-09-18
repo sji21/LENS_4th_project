@@ -172,7 +172,7 @@ def worker(action, data, previous=None):
     if action == "inspect":
         return verify(data)
     from setup_data import prepare_model
-    prepare_model(check=True)
+    prepare_model(check=True, pinned_only=True)
     records = source_records()
     counts = load_databases(records, data)
     from src.retrieval.retriever import load_chunks
@@ -181,7 +181,8 @@ def worker(action, data, previous=None):
     cached = []
     def backend():
         if not cached:
-            cached.append(SentenceTransformerEmbedding(MODEL))
+            revision = next(iter({Path(name).parts[1] for name in model_identity()}))
+            cached.append(SentenceTransformerEmbedding(MODEL, revision=revision))
         return cached[0]
     indexing = []
     for civil, name in enumerate(INDEXES):

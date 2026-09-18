@@ -146,12 +146,18 @@ def fallback_chunk_paths() -> tuple:
 
 def _build_service() -> RetrievalService:
     from src.retrieval.case_profile import configured_case_profile
+    from src.retrieval.service import CaseCorpusSetupError
 
-    if configured_case_profile():
+    from src.retrieval.mysql_release import RELEASE_ENV
+    import os
+    if configured_case_profile() or os.getenv(RELEASE_ENV, "").strip():
         # A sealed case corpus must fail visibly rather than load another dataset.
         return RetrievalService.from_index()
     try:
         return RetrievalService.from_index()
+    except CaseCorpusSetupError:
+        # Missing installation of the Git corpus is not a BM25 fallback event.
+        raise
     except Exception as error:
         # 인덱스 없음·패키지 미설치·메모리 부족·검색팀 코드의 버그까지 함께
         # 삼키는 자리라, 트레이스백이 없으면 원인을 되짚을 수 없다.

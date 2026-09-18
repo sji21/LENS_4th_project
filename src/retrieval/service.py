@@ -46,6 +46,12 @@ from src.retrieval.terms import expand, expand_civil, expand_law
 logger = logging.getLogger(__name__)
 
 DEFAULT_MODEL = "nlpai-lab/KURE-v1"
+
+
+class CaseCorpusSetupError(ValueError):
+    """The shipped case corpus must be installed, never replaced with the seed."""
+
+
 DEFAULT_INDEX = Path("data/index/chroma_kurev1_1024")
 DEFAULT_CIVIL_INDEX = Path("data/index/chroma_civil_kurev1_1024")
 LAW_CHUNKS = Path("data/chunks/chunks.jsonl")
@@ -644,14 +650,27 @@ class RetrievalService:
         civil_index_path: Path | str = DEFAULT_CIVIL_INDEX,
     ) -> "RetrievalService":
         """앱에서 쓰는 방식. 벡터는 Chroma 에서 읽으므로 재임베딩이 없다."""
-        from src.retrieval.case_profile import configured_case_profile, load_case_profile
+        from src.retrieval.case_profile import configured_case_profile, load_case_profile, DEFAULT_PROFILE
 
-        if cls is RetrievalService and configured_case_profile():
-            if (chunk_paths != (LAW_CHUNKS, CASE_CHUNKS, GUIDE_CHUNKS)
-                    or index_path != DEFAULT_INDEX or model != DEFAULT_MODEL
-                    or civil_index_path != DEFAULT_CIVIL_INDEX):
+        default_paths = (chunk_paths == (LAW_CHUNKS, CASE_CHUNKS, GUIDE_CHUNKS)
+                         and index_path == DEFAULT_INDEX and model == DEFAULT_MODEL
+                         and civil_index_path == DEFAULT_CIVIL_INDEX)
+        from src.retrieval.mysql_release import RELEASE_ENV, load_service
+        import os
+        mysql_release = os.getenv(RELEASE_ENV, "").strip() if cls is RetrievalService else ""
+        if mysql_release:
+            if not default_paths or os.getenv("LENS_CASE_RETRIEVAL_PROFILE", "").strip():
+                raise ValueError("MySQL 검색 배포와 별도 경로·판례 프로필을 동시에 지정할 수 없습니다.")
+            return load_service(mysql_release)
+        profile = configured_case_profile() if cls is RetrievalService else ""
+        if profile:
+            if not default_paths:
                 raise ValueError("판례 프로필과 별도 경로 인자를 동시에 지정할 수 없습니다.")
-            return load_case_profile(configured_case_profile())
+            return load_case_profile(profile)
+        if (cls is RetrievalService and default_paths
+                and DEFAULT_PROFILE.with_name("release.json").is_file()):
+            raise CaseCorpusSetupError("Git 판례 코퍼스의 runtime-profile.json이 없습니다. "
+                             "setup_data.py로 설치·검증 후 실행하세요. 기존 26건으로 대체하지 않습니다.")
         return cls._from_index_without_case_profile(chunk_paths, index_path, model, civil_index_path)
 
     @classmethod
@@ -666,7 +685,16 @@ class RetrievalService:
         from src.retrieval.dense import ChromaRetriever
 
         chunks = _load_index_chunks(chunk_paths)
-        backend = SentenceTransformerEmbedding(model)
+        revision = None
+        if model == DEFAULT_MODEL:
+            import json
+            audit_path = Path(__file__).resolve().parents[2] / "data/eval/patch027-full/capture/audit.json"
+            identity = json.loads(audit_path.read_text(encoding="utf-8"))["model_files"]
+            revisions = {Path(name).parts[1] for name in identity}
+            if len(revisions) != 1:
+                raise ValueError("기본 KURE 모델 revision이 불명확합니다.")
+            revision = revisions.pop()
+        backend = SentenceTransformerEmbedding(model, revision=revision)
         dense = ChromaRetriever(backend, index_path)
         if dense.collection.get(where={"title": CIVIL_TITLE}, include=[])["ids"]:
             raise ValueError("기본 인덱스에 민법이 섞여 있습니다. 기존 기본 인덱스를 복구하고 민법을 별도 색인하세요.")

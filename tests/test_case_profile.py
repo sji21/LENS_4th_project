@@ -93,6 +93,60 @@ def test_explicit_paths_cannot_override_enabled_profile(monkeypatch):
         RetrievalService.from_index(chunk_paths=())
 
 
+def test_installed_default_profile_is_discovered_without_environment(monkeypatch, tmp_path):
+    import src.retrieval.case_profile as module
+    profile = tmp_path / "runtime-profile.json"
+    profile.write_text("{}", encoding="utf-8")
+    monkeypatch.delenv("LENS_CASE_RETRIEVAL_PROFILE", raising=False)
+    monkeypatch.setattr(module, "DEFAULT_PROFILE", profile)
+    assert module.configured_case_profile() == str(profile)
+
+
+def test_environment_profile_overrides_installed_default(monkeypatch, tmp_path):
+    import src.retrieval.case_profile as module
+    profile = tmp_path / "runtime-profile.json"
+    profile.write_text("{}", encoding="utf-8")
+    monkeypatch.setattr(module, "DEFAULT_PROFILE", profile)
+    monkeypatch.setenv("LENS_CASE_RETRIEVAL_PROFILE", "explicit-profile.json")
+    assert module.configured_case_profile() == "explicit-profile.json"
+
+
+def test_pulled_release_without_runtime_profile_refuses_seed_fallback(monkeypatch):
+    # Exercise the case installation boundary independently of a developer's
+    # explicitly activated MySQL release in their local .env.
+    monkeypatch.setenv("LENS_MYSQL_RELEASE", "")
+    import src.retrieval.case_profile as module
+    class MissingProfile:
+        def is_file(self):return False
+        def with_name(self, name):
+            assert name == "release.json"
+            return PresentRelease()
+    class PresentRelease:
+        def is_file(self):return True
+    monkeypatch.delenv("LENS_CASE_RETRIEVAL_PROFILE", raising=False)
+    monkeypatch.setattr(module, "DEFAULT_PROFILE", MissingProfile())
+    def forbidden(*args, **kwargs):
+        raise AssertionError("기본 시드 서비스로 돌아가면 안 됩니다")
+    monkeypatch.setattr(RetrievalService, "_from_index_without_case_profile", forbidden)
+    with pytest.raises(ValueError, match="setup_data.py"):
+        RetrievalService.from_index()
+
+
+def test_generation_factory_propagates_case_installation_error(monkeypatch):
+    from src.generation import chain
+    from src.retrieval.service import CaseCorpusSetupError
+    import src.retrieval.case_profile as module
+    monkeypatch.setattr(module, "configured_case_profile", lambda: "")
+    def missing(*args, **kwargs):
+        raise CaseCorpusSetupError("setup_data.py로 설치하세요")
+    def forbidden(*args, **kwargs):
+        raise AssertionError("시드 fallback으로 돌아가면 안 됩니다")
+    monkeypatch.setattr(RetrievalService, "from_index", missing)
+    monkeypatch.setattr(chain, "fallback_chunk_paths", forbidden)
+    with pytest.raises(CaseCorpusSetupError, match="setup_data.py"):
+        chain._build_service()
+
+
 def test_tax_guard_filters_both_members_before_refilling_and_keeps_explicit_tax():
     from src.retrieval.retriever import matches
     chunks = [chunk(i) for i in range(1, 122)]

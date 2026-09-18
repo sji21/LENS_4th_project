@@ -1,0 +1,308 @@
+{
+  "date": "2026-09-18",
+  "scope": "MySQL migration and JSONL export; retrieval indexes and actual LLM are not verified",
+  "shared_database": "Lens_knowledge",
+  "mysql_version": "8.4.11",
+  "schema_version": 1,
+  "ddl_sha256": "22c8b5282bb6b18f34bb6ac4cc059ad0befd2ebad8b2cd522c8584b9e5db1ccf",
+  "code_sha256": {
+    "src/database/mysql.py": "50631b0d697f8716512f1d4b21923ca401664cf9ba686c0e77e1a078e3113b08",
+    "src/database/mysql_schema.py": "2ff60be04e4018825a71d8004ba919cc9b188cb1479f33273d8e17f01548fa25",
+    "src/ingestion/mysql_transfer.py": "3bbaf460b1eb0774ab5b9c8b36bb1af75d4905626d3c8a1df146ad28c8a6828a",
+    "requirements-mysql.txt": "337d1e09a7161b903447b2425ae1161a93876e562c65815c9ee7d8092fc76cf1",
+    "tests/test_mysql_transfer.py": "b1ae6b5f18a463a74a965fe14e661f7b4f049aa02717f33312f98aaef80add6d"
+  },
+  "corpora": {
+    "base": {
+      "snapshot_id": "32a38460d9804874282f03b0b79cdf6a42849d2611451d341e776ba3cda2a854",
+      "version": "server-v1-20260918",
+      "tables": {
+        "case_law_citations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cases": {
+          "count": 26,
+          "sha256": "a4c301baa7df08f860e9d43e3a4e1f018aad83bbb5bde9b3310b109d95ac6798"
+        },
+        "chunks": {
+          "count": 236,
+          "sha256": "5a9880290f16d0d7079fb4954ed0662a137681823cacdd498a3e352997d16e3e"
+        },
+        "documents": {
+          "count": 57,
+          "sha256": "d37f2a281c96f9b21de1cc1d42c301e7fa7c2c8748dd8ad68bde63c3044cc7f2"
+        },
+        "evaluation_evidence": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "evaluation_questions": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "guide_law_references": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "guides": {
+          "count": 2,
+          "sha256": "30945963b75c7508214910acef3316ea0f9fc214f8af2ab651f4138ccebd301b"
+        },
+        "law_article_sources": {
+          "count": 204,
+          "sha256": "cef0bd568ba475f05b0896fac41462d57220af7197eedf19b4f853b9ab684089"
+        },
+        "law_article_units": {
+          "count": 1220,
+          "sha256": "518ccdb48b1c6c7ca1f848b86884651a9032df72349f71a64961db283a523213"
+        },
+        "law_articles": {
+          "count": 204,
+          "sha256": "5a9ee170f35a2eea95338fe2cd58654a7417a17848bb816bd7f25120bbecd9b8"
+        },
+        "law_source_snapshots": {
+          "count": 5,
+          "sha256": "5b466ac26f605be50348f540e41c4f9b2cdb14f51e9278fb816b885303da2dc4"
+        },
+        "law_versions": {
+          "count": 29,
+          "sha256": "a62a04032d116154963aec5b0783381bb7f50796c73042713b935a7b79b2d445"
+        },
+        "laws": {
+          "count": 29,
+          "sha256": "88fa2a611b60fd6398c5596407f33e10d3edcb54b222937a4666d9f5f2480873"
+        },
+        "risk_rule_keywords": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "risk_rules": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "rule_evidence": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "schema_migrations": {
+          "count": 3,
+          "sha256": "dc42dc8bf3dc72e4b220002e9c01355ef4be6cd0805a84add5ea61d7e85183db"
+        }
+      },
+      "streams": {
+        "cases": {
+          "count": 26,
+          "semantic_sha256": "b1ccda506fef087f14bc35d7971010608227d649599dde71e1b298ad3a668883",
+          "shared_file_sha256": "313e0d147d34596f83534742afe0474d6f1664b913f3d779b9d57a8e528bc900"
+        },
+        "guides": {
+          "count": 6,
+          "semantic_sha256": "2d90aa017359a40152afb47d7c5b00961603a5e6e0df5c9c883243a8fdb28b0a",
+          "shared_file_sha256": "b53875865177a6c49b67b423ac0b6aa60b5add90db09523f9b785934d3f02ffe"
+        },
+        "laws": {
+          "count": 204,
+          "semantic_sha256": "54c314ebb4d6125cb47a94f71dc23da676d0d94b94095aa224076c4d8f443145",
+          "shared_file_sha256": "7ab21513a07d8b70aa8f4a956478d7dc18ffe46cb4a70071fff8ea612f617a71"
+        }
+      }
+    },
+    "civil": {
+      "snapshot_id": "8b7450f623745147ea75365e15d39278fa4f4c14bb8af0b6ef7f8acb20fc51f5",
+      "version": "server-v1-20260918",
+      "tables": {
+        "case_law_citations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cases": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "chunks": {
+          "count": 26,
+          "sha256": "3b031a69f18bce7702fae7291c31f383954ac2a6ddb59968bfaeb40d17863cef"
+        },
+        "documents": {
+          "count": 1,
+          "sha256": "ba961e892a30d376f7c37794489a602278978f9e27329aef9e836b52a2233cb2"
+        },
+        "evaluation_evidence": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "evaluation_questions": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "guide_law_references": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "guides": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "law_article_sources": {
+          "count": 26,
+          "sha256": "42e67d475cc6846e62dd8887c448d9d71463c49cb99dd702a3d94118b399038b"
+        },
+        "law_article_units": {
+          "count": 66,
+          "sha256": "bb7965ab6a0dd7547a56a6065f6bf81dc367c3be2e54d463d099ba8ce55ff8e2"
+        },
+        "law_articles": {
+          "count": 26,
+          "sha256": "868b1c17d11c39e19865b7351a8dfd79ab7a4af2bea3f602789ca257d7ca9261"
+        },
+        "law_source_snapshots": {
+          "count": 1,
+          "sha256": "959c19c4a79d44a39db780dab2c190950b6b49c938927c4c1cf92a31c913b23a"
+        },
+        "law_versions": {
+          "count": 1,
+          "sha256": "fa01a751ef7ba6a00634a1aabb38b21c517e4d17de1021a95df6bf0374b945d6"
+        },
+        "laws": {
+          "count": 1,
+          "sha256": "1b203a9355b1a992903ab3eca773c3dac8d54d4e0fca577a5e58df76904355a4"
+        },
+        "risk_rule_keywords": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "risk_rules": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "rule_evidence": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "schema_migrations": {
+          "count": 3,
+          "sha256": "dc42dc8bf3dc72e4b220002e9c01355ef4be6cd0805a84add5ea61d7e85183db"
+        }
+      },
+      "streams": {
+        "civil": {
+          "count": 26,
+          "semantic_sha256": "468ca05f53cdc045b140f0ae68e6244da0890b63055607b6b38dc2be16cdb0d7",
+          "shared_file_sha256": "636180f5df5f377a8490c9cc8f9187f56206c1e68fe48ca87bd520289c7156d7"
+        }
+      }
+    },
+    "cases": {
+      "snapshot_id": "bb0244db08f107fac78bba53ebe3f931107c52dd12b899c4718cc9f52b0054a2",
+      "version": "data-dev-v2-20260915",
+      "tables": {
+        "case_aliases": {
+          "count": 8586,
+          "sha256": "aee3bc2d8573f72f6807c4767cbe6a2dd6a6d3ffef4502c34da1013dc0b0ae30"
+        },
+        "case_law_citations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "case_observations": {
+          "count": 8586,
+          "sha256": "eb0aacecbb1ad160e9c8ce8008f95fa212fa2405a2ad2f0ed488ca7e5f07b530"
+        },
+        "case_versions": {
+          "count": 8559,
+          "sha256": "8b9886dbdedf2f3c88767707eb8a29f90a2999ed9c18c97dabf2e5356b5a8bf5"
+        },
+        "cases": {
+          "count": 8377,
+          "sha256": "0c508919b1e80827ac2d06fe6eed74628ac2a59823f457ce3776c925d7f9131c"
+        },
+        "chunks": {
+          "count": 8516,
+          "sha256": "c91ee506739c06a27a2af3dfffe49ac672ebcbd51939762abe0a1a1b8c60c2ef"
+        },
+        "documents": {
+          "count": 8383,
+          "sha256": "c95559deb544f5c8267ccd19267e2f6941f438c4b586ca7bacfd21bd839527f4"
+        },
+        "evaluation_evidence": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "evaluation_questions": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "guide_law_references": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "guides": {
+          "count": 2,
+          "sha256": "c8a2ece82d8d1358bee378abd2c1597121c91b042737452a5299888865daaeea"
+        },
+        "law_articles": {
+          "count": 133,
+          "sha256": "a94acd211f9fbb9ae11be3f14f46489f62f7d7a12661dfd85e17e0695d28f8c9"
+        },
+        "law_versions": {
+          "count": 4,
+          "sha256": "7eb8494471be9208588c5c0747a093519321b54f84abbac662f660887f51ec51"
+        },
+        "laws": {
+          "count": 4,
+          "sha256": "52e9f696966dffd84550ffa18c809e0ec75052811a4debdeb2bf851548484f9b"
+        },
+        "risk_rule_keywords": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "risk_rules": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "rule_evidence": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "schema_migrations": {
+          "count": 3,
+          "sha256": "38443748f68d1e877139187947ab98702b16b98987254a2c85f0e141d6780497"
+        }
+      },
+      "streams": {
+        "cases": {
+          "count": 8377,
+          "semantic_sha256": "321f9df896a68e7d83cc3c0e453e202296a13eb762ef52199a67b63f64c34980",
+          "shared_file_sha256": "4253730831cd19897ff546669626cfc1bfdf3f166eb9c7d08811588ea6906431"
+        },
+        "guides": {
+          "count": 6,
+          "semantic_sha256": "299312b8545569212c10df37761b0911bdcd9af182209dc9caad866093fa149c",
+          "shared_file_sha256": "6de7ea9f8876c65a88baee60d063f48fd001ff0a6b1cf265e69a2a42acec8d7b"
+        },
+        "laws": {
+          "count": 133,
+          "semantic_sha256": "5b7141053fba73d3a16ddd16a944f8a68352d0c95151e1fdd153e7082bfbf2f3",
+          "shared_file_sha256": "835a92169a97e99b4b0011b7259fda996ee430fbd269a21db71611a53597cce5"
+        }
+      }
+    }
+  },
+  "validation": {
+    "all_mysql_source_columns_and_rows_matched": true,
+    "jsonl_metadata_and_order_matched": true,
+    "original_jsonl_compared_independently": true,
+    "shared_and_local_export_bytes_matched": true,
+    "selected_tests_passed": 109,
+    "subtests_passed": 86,
+    "new_mysql_test_file_passed": 7
+  },
+  "remaining": [
+    "new raw-record ingestion/update workflow",
+    "BM25 and Chroma activation from MySQL release",
+    "retrieval quality regression",
+    "actual LLM and app integration",
+    "independent teammate installation"
+  ]
+}

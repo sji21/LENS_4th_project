@@ -260,7 +260,10 @@ README에서는 평가자가 전체 구조를 이해하는 데 필요한 관계�
 | `risk_rules` ↔ 공식 근거 | `rule_evidence`로 문서 위험 규칙의 법령·판례·안내 근거를 연결 |
 | SQLite `chunks.chunk_id` ↔ Chroma 문서 ID | 원문 관계 정보와 검색 벡터를 같은 청크 ID로 추적 |
 
-SQLite·Chroma·생성 청크는 Git에 올리지 않으며 각 실행 환경에서 다시 만듭니다. 같은
+기본 설치의 SQLite·Chroma·생성 청크는 각 실행 환경에서 다시 만듭니다. 후속 판례
+배포는 예외로 `data/case_corpus`의 **data_dev_v2 8,377건 DB·청크·인덱스**를 Git LFS로
+전달하고, 설치 시 검증한 판례 프로필을 활성화합니다. 원격 업로드·pull 확인 전에는
+배포 완료가 아닙니다. [판례 Git 배포 문서](docs/case-git-release.md)를 참고하세요. 같은
 자료를 다시 적재해도 중복 행을 계속 추가하지 않고 해당 자료 유형의 현재 입력 상태로
 맞춥니다. 법령만 다시 색인할 때 판례·안내를 지우지 않도록 삭제 범위도 자료 유형별로
 제한합니다.
@@ -642,3 +645,19 @@ PDF 파일명은 기존 제출 경로와 회귀 테스트 호환성을 위해 �
 
 완료된 기반과 실제 남은 조건은 [`LIST.md`](LIST.md)의 「검색 파트 후속 과제」와
 [`docs/retrieval-handoff.md`](docs/retrieval-handoff.md) 6절에 구분해 기록했습니다.
+
+## 12. MySQL 지식 데이터 이전
+
+법령·판례·기관 안내 원문, 청크, 판례 이력을 공용 MySQL에 코퍼스 버전별로
+저장하고 기존 JSONL 없이 검색 청크를 내보내는 도구를 추가했습니다.
+`requirements-mysql.txt`와 별도 MySQL 접속 설정을 사용하며, 회원·대화 DB와는
+독립적입니다. [MySQL 실행 안내](docs/mysql-data.md)에 초기화·이전·검증·내보내기·
+출처 추적 명령을 정리했습니다.
+
+MySQL 청크로 BM25·Chroma 검색 배포본을 생성·검증·활성화하고 기존 앱 검색기에
+연결할 수 있습니다. [팀 검색 실행 안내](docs/mysql-search.md)에 명령을 정리했습니다.
+89개 질문의 이전 전후 검색 결과가 일치했고 원본 DB 없는 설치 폴더에서도 검색과
+모의 LLM 입력 전달을 확인했습니다. [원문 갱신 안내](docs/mysql-ingest.md)의 문서
+추가·교체·삭제·재청킹과 벡터 재사용, 배포 갱신·되돌리기도 검증했습니다.
+실제 LLM 및 다른 팀원 PC 검증은
+[실행 계획](docs/planning/mysql-retrieval-execution-plan.md)의 남은 항목입니다.
