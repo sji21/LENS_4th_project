@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "scope": "PR37 P1 independent bounded regressions and static final review",
+  "source": "src/retrieval/retrieval_intent.py",
+  "source_normalized_sha256": "c4fa0430ec814a0fa86f5bcbc6d731eb7e9faf791d591d1dc3f9cdaabf8b2bd6",
+  "cwd": "C:/team_project/patch053-worktree",
+  "command": "C:/team_project/4th_project/.venv/Scripts/python.exe -m pytest tests/test_patch053_retrieval_independent.py tests/test_patch053_retrieval_intent.py tests/test_patch051_adversarial.py tests/test_patch046_multi_evidence.py tests/test_patch046_dialogue_integration.py tests/test_patch046_review_regressions.py tests/test_civil_result_channel.py -q --basetemp tmp/patch053-pr37-verify-final --tb=short",
+  "execution": {
+    "exit_code": 0,
+    "tool_output_chunk": "b93dfe",
+    "result": "262 passed in 2.03s",
+    "independent_tests": 91,
+    "developer_tests": 23,
+    "existing_regressions": 148
+  },
+  "findings": [
+    "Both P1 reports reproduced before correction, including synthetic K3 eviction.",
+    "Private-property type alone no longer owns residence, date or tax document requests.",
+    "Uncompleted registration does not own termination or deposit-return predicates.",
+    "Explicit private lease documents and registration requests remain enabled.",
+    "A positive contract-form plus registration list found during review is preserved.",
+    "Existing DEV096-style compounds, subject-local exclusions, re-affirmation, quotations, payload contracts and original regressions pass."
+  ],
+  "fixed_capture": {
+    "rows_sha256": "8d9ebfe4453de58cb5f3c666aa4b7b87b9c4a68817ea1c1aa3657634d84c7d9e",
+    "rows_manifest_independently_checked": true,
+    "root_gate_audit_reviewed": true,
+    "kure_rerun_needed": false,
+    "reason": "313 gate outputs match the prior real capture, only the gate source changed, and candidate union, body matching, selector, context facts and policy configuration remain unchanged."
+  },
+  "limitations": [
+    "Shared development regressions, not an unseen holdout.",
+    "Gate equivalence preserves prior fixed-input evidence; it is not a fresh retrieval measurement or a guarantee for unseen wording.",
+    "No generated-answer quality claim. Root owns the full-suite run."
+  ],
+  "verifier_actions": {
+    "product_edits": false,
+    "git_writes": false,
+    "kure_or_operational_index_access": false,
+    "external_api_calls": false
+  }
+}

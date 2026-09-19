@@ -209,9 +209,10 @@ class ChromaRetriever:
         collection_name: str = "knowledge_chunks",
     ) -> None:
         import chromadb
+        from src.retrieval.portable_index import native_index_path
 
         self.backend = backend
-        self.path = Path(path)
+        self.path = native_index_path(path)
         client = chromadb.PersistentClient(path=str(self.path))
         self.collection = client.get_collection(name=collection_name)
 

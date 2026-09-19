@@ -99,8 +99,11 @@ def test_guidance_followup_round_trip(browser, calls, settings):
     })
     response = post(browser, "다음 달 말이에요.", reply_to=pending["message_id"])
     assert response.status_code == 200
-    assert "계약 종료일: 다음 달 말" in calls.official.call_args.args[0]
-    assert current(browser)["conversation"]["pending"] is None
+    calls.official.assert_called_once()
+    assert response.json()["messages"][-1]["action"] == "clarify"
+    assert current(browser)["conversation"]["pending"]["question"] == "임대인에게 의사를 알리셨나요?"
+    stored = Conversation.objects.get(pk=current(browser)["conversation_id"]).state
+    assert stored["dialogue"]["facts"]["end_date"]["value"] == "다음 달 말"
 
 
 def owned_document(client):

@@ -1,0 +1,1368 @@
+{
+  "scope": "Published development/regression, not independent holdout or LLM quality",
+  "groups": {
+    "question_only:law3+civil3": {
+      "n": 75,
+      "before_any": 57,
+      "after_any": 58,
+      "before_all": 40,
+      "after_all": 43
+    },
+    "question_only:law5+civil3": {
+      "n": 75,
+      "before_any": 58,
+      "after_any": 59,
+      "before_all": 47,
+      "after_all": 51
+    },
+    "context_diagnostic:law3+civil3": {
+      "n": 75,
+      "before_any": 55,
+      "after_any": 57,
+      "before_all": 39,
+      "after_all": 41
+    },
+    "context_diagnostic:law5+civil3": {
+      "n": 75,
+      "before_any": 60,
+      "after_any": 61,
+      "before_all": 48,
+      "after_all": 50
+    },
+    "required_law:law3+civil3": {
+      "n": 29,
+      "before_any": 29,
+      "after_any": 29,
+      "before_all": 28,
+      "after_all": 28
+    },
+    "required_law:law5+civil3": {
+      "n": 29,
+      "before_any": 29,
+      "after_any": 29,
+      "before_all": 28,
+      "after_all": 28
+    },
+    "legacy_dev:law3": {
+      "n": 24,
+      "before_any": 23,
+      "after_any": 23,
+      "before_all": 23,
+      "after_all": 23
+    },
+    "legacy_dev:law5": {
+      "n": 24,
+      "before_any": 24,
+      "after_any": 24,
+      "before_all": 24,
+      "after_all": 24
+    },
+    "legacy_holdout:law3": {
+      "n": 18,
+      "before_any": 17,
+      "after_any": 17,
+      "before_all": 12,
+      "after_all": 12
+    },
+    "legacy_holdout:law5": {
+      "n": 18,
+      "before_any": 18,
+      "after_any": 18,
+      "before_all": 13,
+      "after_all": 13
+    },
+    "civil_public:law3+civil3": {
+      "n": 15,
+      "before_any": 11,
+      "after_any": 11,
+      "before_all": 9,
+      "after_all": 9
+    },
+    "civil_public:law5+civil3": {
+      "n": 15,
+      "before_any": 13,
+      "after_any": 13,
+      "before_all": 12,
+      "after_all": 12
+    },
+    "case_dev13:law3+case5": {
+      "n": 13,
+      "before_any": 13,
+      "after_any": 13,
+      "before_all": 5,
+      "after_all": 5
+    },
+    "case_dev13:law5+case5": {
+      "n": 13,
+      "before_any": 13,
+      "after_any": 13,
+      "before_all": 5,
+      "after_all": 5
+    },
+    "case_external8:law3+case5": {
+      "n": 8,
+      "before_any": 8,
+      "after_any": 8,
+      "before_all": 4,
+      "after_all": 4
+    },
+    "case_external8:law5+case5": {
+      "n": 8,
+      "before_any": 8,
+      "after_any": 8,
+      "before_all": 4,
+      "after_all": 4
+    }
+  },
+  "changes": [
+    {
+      "qid": "DEV-005",
+      "mode": "question_only",
+      "k": 3,
+      "targets": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조",
+        "주택임대차보호법-제3조",
+        "민법-제357조",
+        "민법-제623조",
+        "민법-제634조"
+      ],
+      "after": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "주민등록법-제16조",
+        "민법-제357조",
+        "민법-제623조",
+        "민법-제634조"
+      ],
+      "before_all": false,
+      "after_all": false
+    },
+    {
+      "qid": "DEV-005",
+      "mode": "question_only",
+      "k": 5,
+      "targets": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조",
+        "주택임대차보호법-제3조",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조",
+        "주택임대차보호법-제3조의6",
+        "민법-제357조",
+        "민법-제623조",
+        "민법-제634조"
+      ],
+      "after": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의6",
+        "주민등록법-제16조",
+        "민법-제357조",
+        "민법-제623조",
+        "민법-제634조"
+      ],
+      "before_all": false,
+      "after_all": true
+    },
+    {
+      "qid": "DEV-005",
+      "mode": "context_diagnostic",
+      "k": 3,
+      "targets": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조",
+        "민법-제634조",
+        "민법-제623조",
+        "민법-제636조"
+      ],
+      "after": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조",
+        "주민등록법-제16조",
+        "민법-제634조",
+        "민법-제623조",
+        "민법-제636조"
+      ],
+      "before_all": false,
+      "after_all": false
+    },
+    {
+      "qid": "DEV-005",
+      "mode": "context_diagnostic",
+      "k": 5,
+      "targets": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조",
+        "주택임대차보호법-제3조",
+        "민법-제634조",
+        "민법-제623조",
+        "민법-제636조"
+      ],
+      "after": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제7조",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제9조",
+        "주택임대차보호법-제3조",
+        "주민등록법-제16조",
+        "민법-제634조",
+        "민법-제623조",
+        "민법-제636조"
+      ],
+      "before_all": false,
+      "after_all": false
+    },
+    {
+      "qid": "DEV-033",
+      "mode": "question_only",
+      "k": 3,
+      "targets": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "민간임대주택에관한특별법-제46조",
+        "민법-제636조",
+        "민법-제105조",
+        "민법-제629조"
+      ],
+      "after": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "주민등록법-제16조",
+        "민법-제636조",
+        "민법-제105조",
+        "민법-제629조"
+      ],
+      "before_all": false,
+      "after_all": true
+    },
+    {
+      "qid": "DEV-033",
+      "mode": "question_only",
+      "k": 5,
+      "targets": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "민간임대주택에관한특별법-제46조",
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "주택임대차보호법-제3조의4",
+        "민법-제636조",
+        "민법-제105조",
+        "민법-제629조"
+      ],
+      "after": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "민간임대주택에관한특별법-제46조",
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "주민등록법-제16조",
+        "민법-제636조",
+        "민법-제105조",
+        "민법-제629조"
+      ],
+      "before_all": false,
+      "after_all": true
+    },
+    {
+      "qid": "DEV-038",
+      "mode": "question_only",
+      "k": 3,
+      "targets": [
+        "부동산거래신고등에관한법률-제6조의2",
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "부동산거래신고등에관한법률-제6조의2",
+        "민법-제636조",
+        "민법-제634조",
+        "민법-제640조"
+      ],
+      "after": [
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "부동산거래신고등에관한법률-제6조의2",
+        "주민등록법-제16조",
+        "민법-제636조",
+        "민법-제634조",
+        "민법-제640조"
+      ],
+      "before_all": false,
+      "after_all": false
+    },
+    {
+      "qid": "DEV-038",
+      "mode": "question_only",
+      "k": 5,
+      "targets": [
+        "부동산거래신고등에관한법률-제6조의2",
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "부동산거래신고등에관한법률-제6조의2",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법시행령-제4조",
+        "민법-제636조",
+        "민법-제634조",
+        "민법-제640조"
+      ],
+      "after": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "부동산거래신고등에관한법률-제6조의2",
+        "주택임대차보호법-제3조",
+        "주민등록법-제16조",
+        "민법-제636조",
+        "민법-제634조",
+        "민법-제640조"
+      ],
+      "before_all": false,
+      "after_all": false
+    },
+    {
+      "qid": "DEV-046",
+      "mode": "question_only",
+      "k": 3,
+      "targets": [
+        "주민등록법-제16조"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "민법-제640조",
+        "민법-제629조",
+        "민법-제654조"
+      ],
+      "after": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "주민등록법-제16조",
+        "민법-제640조",
+        "민법-제629조",
+        "민법-제654조"
+      ],
+      "before_all": false,
+      "after_all": true
+    },
+    {
+      "qid": "DEV-046",
+      "mode": "question_only",
+      "k": 5,
+      "targets": [
+        "주민등록법-제16조"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "주택임대차보호법-제3조의4",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조",
+        "민법-제640조",
+        "민법-제629조",
+        "민법-제654조"
+      ],
+      "after": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "주택임대차보호법-제3조의4",
+        "주민등록법-제16조",
+        "민법-제640조",
+        "민법-제629조",
+        "민법-제654조"
+      ],
+      "before_all": false,
+      "after_all": true
+    },
+    {
+      "qid": "DEV-046",
+      "mode": "context_diagnostic",
+      "k": 3,
+      "targets": [
+        "주민등록법-제16조"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "민법-제629조",
+        "민법-제623조",
+        "민법-제654조"
+      ],
+      "after": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "주민등록법-제16조",
+        "민법-제629조",
+        "민법-제623조",
+        "민법-제654조"
+      ],
+      "before_all": false,
+      "after_all": true
+    },
+    {
+      "qid": "DEV-046",
+      "mode": "context_diagnostic",
+      "k": 5,
+      "targets": [
+        "주민등록법-제16조"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제6조",
+        "민법-제629조",
+        "민법-제623조",
+        "민법-제654조"
+      ],
+      "after": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "주택임대차보호법-제3조",
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "주택임대차계약증서의확정일자부여및정보제공에관한규칙-제12조",
+        "주민등록법-제16조",
+        "민법-제629조",
+        "민법-제623조",
+        "민법-제654조"
+      ],
+      "before_all": false,
+      "after_all": true
+    },
+    {
+      "qid": "DEV-096",
+      "mode": "question_only",
+      "k": 3,
+      "targets": [
+        "민간임대주택에관한특별법-제45조",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조",
+        "민법-제636조",
+        "민법-제640조",
+        "민법-제634조"
+      ],
+      "after": [
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조",
+        "민간임대주택에관한특별법-제45조",
+        "민법-제636조",
+        "민법-제640조",
+        "민법-제634조"
+      ],
+      "before_all": false,
+      "after_all": true
+    },
+    {
+      "qid": "DEV-096",
+      "mode": "question_only",
+      "k": 5,
+      "targets": [
+        "민간임대주택에관한특별법-제45조",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조",
+        "민간임대주택에관한특별법-제44조",
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "민법-제636조",
+        "민법-제640조",
+        "민법-제634조"
+      ],
+      "after": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조",
+        "민간임대주택에관한특별법-제44조",
+        "민간임대주택에관한특별법-제45조",
+        "민법-제636조",
+        "민법-제640조",
+        "민법-제634조"
+      ],
+      "before_all": false,
+      "after_all": true
+    },
+    {
+      "qid": "DEV-096",
+      "mode": "context_diagnostic",
+      "k": 3,
+      "targets": [
+        "민간임대주택에관한특별법-제45조",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조",
+        "민법-제636조",
+        "민법-제623조",
+        "민법-제634조"
+      ],
+      "after": [
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조",
+        "민간임대주택에관한특별법-제45조",
+        "민법-제636조",
+        "민법-제623조",
+        "민법-제634조"
+      ],
+      "before_all": false,
+      "after_all": true
+    },
+    {
+      "qid": "DEV-096",
+      "mode": "context_diagnostic",
+      "k": 5,
+      "targets": [
+        "민간임대주택에관한특별법-제45조",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조",
+        "민간임대주택에관한특별법-제44조",
+        "공공주택특별법-제49조의2",
+        "민법-제636조",
+        "민법-제623조",
+        "민법-제634조"
+      ],
+      "after": [
+        "부동산거래신고등에관한법률-제6조의5",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조",
+        "민간임대주택에관한특별법-제44조",
+        "민간임대주택에관한특별법-제45조",
+        "민법-제636조",
+        "민법-제623조",
+        "민법-제634조"
+      ],
+      "before_all": false,
+      "after_all": true
+    }
+  ],
+  "required_target_losses": [],
+  "channel_hit_metrics": {
+    "question_only:law-budget3:civil_laws:hit@1": {
+      "n": 32,
+      "before": 18,
+      "after": 18
+    },
+    "question_only:law-budget3:civil_laws:hit@3": {
+      "n": 32,
+      "before": 23,
+      "after": 23
+    },
+    "question_only:law-budget5:civil_laws:hit@1": {
+      "n": 32,
+      "before": 18,
+      "after": 18
+    },
+    "question_only:law-budget5:civil_laws:hit@3": {
+      "n": 32,
+      "before": 23,
+      "after": 23
+    },
+    "context_diagnostic:law-budget3:civil_laws:hit@1": {
+      "n": 32,
+      "before": 14,
+      "after": 14
+    },
+    "context_diagnostic:law-budget3:civil_laws:hit@3": {
+      "n": 32,
+      "before": 21,
+      "after": 21
+    },
+    "context_diagnostic:law-budget5:civil_laws:hit@1": {
+      "n": 32,
+      "before": 14,
+      "after": 14
+    },
+    "context_diagnostic:law-budget5:civil_laws:hit@3": {
+      "n": 32,
+      "before": 21,
+      "after": 21
+    },
+    "question_only:law-budget3:laws:hit@1": {
+      "n": 47,
+      "before": 18,
+      "after": 20
+    },
+    "question_only:law-budget3:laws:hit@3": {
+      "n": 47,
+      "before": 34,
+      "after": 35
+    },
+    "question_only:law-budget5:laws:hit@1": {
+      "n": 47,
+      "before": 18,
+      "after": 18
+    },
+    "question_only:law-budget5:laws:hit@3": {
+      "n": 47,
+      "before": 34,
+      "after": 34
+    },
+    "question_only:law-budget5:laws:hit@5": {
+      "n": 47,
+      "before": 36,
+      "after": 37
+    },
+    "context_diagnostic:law-budget3:laws:hit@1": {
+      "n": 47,
+      "before": 17,
+      "after": 18
+    },
+    "context_diagnostic:law-budget3:laws:hit@3": {
+      "n": 47,
+      "before": 35,
+      "after": 37
+    },
+    "context_diagnostic:law-budget5:laws:hit@1": {
+      "n": 47,
+      "before": 17,
+      "after": 17
+    },
+    "context_diagnostic:law-budget5:laws:hit@3": {
+      "n": 47,
+      "before": 35,
+      "after": 35
+    },
+    "context_diagnostic:law-budget5:laws:hit@5": {
+      "n": 47,
+      "before": 40,
+      "after": 41
+    },
+    "required_law:law-budget3:civil_laws:hit@1": {
+      "n": 29,
+      "before": 22,
+      "after": 22
+    },
+    "required_law:law-budget3:civil_laws:hit@3": {
+      "n": 29,
+      "before": 29,
+      "after": 29
+    },
+    "required_law:law-budget5:civil_laws:hit@1": {
+      "n": 29,
+      "before": 22,
+      "after": 22
+    },
+    "required_law:law-budget5:civil_laws:hit@3": {
+      "n": 29,
+      "before": 29,
+      "after": 29
+    },
+    "required_law:law-budget3:laws:hit@1": {
+      "n": 1,
+      "before": 1,
+      "after": 1
+    },
+    "required_law:law-budget3:laws:hit@3": {
+      "n": 1,
+      "before": 1,
+      "after": 1
+    },
+    "required_law:law-budget5:laws:hit@1": {
+      "n": 1,
+      "before": 1,
+      "after": 1
+    },
+    "required_law:law-budget5:laws:hit@3": {
+      "n": 1,
+      "before": 1,
+      "after": 1
+    },
+    "required_law:law-budget5:laws:hit@5": {
+      "n": 1,
+      "before": 1,
+      "after": 1
+    },
+    "legacy_dev:law-budget3:laws:hit@1": {
+      "n": 24,
+      "before": 18,
+      "after": 18
+    },
+    "legacy_dev:law-budget3:laws:hit@3": {
+      "n": 24,
+      "before": 23,
+      "after": 23
+    },
+    "legacy_dev:law-budget5:laws:hit@1": {
+      "n": 24,
+      "before": 18,
+      "after": 18
+    },
+    "legacy_dev:law-budget5:laws:hit@3": {
+      "n": 24,
+      "before": 23,
+      "after": 23
+    },
+    "legacy_dev:law-budget5:laws:hit@5": {
+      "n": 24,
+      "before": 24,
+      "after": 24
+    },
+    "legacy_holdout:law-budget3:laws:hit@1": {
+      "n": 18,
+      "before": 13,
+      "after": 13
+    },
+    "legacy_holdout:law-budget3:laws:hit@3": {
+      "n": 18,
+      "before": 17,
+      "after": 17
+    },
+    "legacy_holdout:law-budget5:laws:hit@1": {
+      "n": 18,
+      "before": 13,
+      "after": 13
+    },
+    "legacy_holdout:law-budget5:laws:hit@3": {
+      "n": 18,
+      "before": 17,
+      "after": 17
+    },
+    "legacy_holdout:law-budget5:laws:hit@5": {
+      "n": 18,
+      "before": 18,
+      "after": 18
+    },
+    "civil_public:law-budget3:laws:hit@1": {
+      "n": 8,
+      "before": 3,
+      "after": 3
+    },
+    "civil_public:law-budget3:laws:hit@3": {
+      "n": 8,
+      "before": 4,
+      "after": 4
+    },
+    "civil_public:law-budget5:laws:hit@1": {
+      "n": 8,
+      "before": 3,
+      "after": 3
+    },
+    "civil_public:law-budget5:laws:hit@3": {
+      "n": 8,
+      "before": 4,
+      "after": 4
+    },
+    "civil_public:law-budget5:laws:hit@5": {
+      "n": 8,
+      "before": 6,
+      "after": 6
+    },
+    "civil_public:law-budget3:civil_laws:hit@1": {
+      "n": 7,
+      "before": 7,
+      "after": 7
+    },
+    "civil_public:law-budget3:civil_laws:hit@3": {
+      "n": 7,
+      "before": 7,
+      "after": 7
+    },
+    "civil_public:law-budget5:civil_laws:hit@1": {
+      "n": 7,
+      "before": 7,
+      "after": 7
+    },
+    "civil_public:law-budget5:civil_laws:hit@3": {
+      "n": 7,
+      "before": 7,
+      "after": 7
+    },
+    "case_dev13:law-budget3:cases:hit@1": {
+      "n": 13,
+      "before": 12,
+      "after": 12
+    },
+    "case_dev13:law-budget3:cases:hit@3": {
+      "n": 13,
+      "before": 12,
+      "after": 12
+    },
+    "case_dev13:law-budget3:cases:hit@5": {
+      "n": 13,
+      "before": 13,
+      "after": 13
+    },
+    "case_dev13:law-budget5:cases:hit@1": {
+      "n": 13,
+      "before": 12,
+      "after": 12
+    },
+    "case_dev13:law-budget5:cases:hit@3": {
+      "n": 13,
+      "before": 12,
+      "after": 12
+    },
+    "case_dev13:law-budget5:cases:hit@5": {
+      "n": 13,
+      "before": 13,
+      "after": 13
+    },
+    "case_external8:law-budget3:cases:hit@1": {
+      "n": 8,
+      "before": 6,
+      "after": 6
+    },
+    "case_external8:law-budget3:cases:hit@3": {
+      "n": 8,
+      "before": 8,
+      "after": 8
+    },
+    "case_external8:law-budget3:cases:hit@5": {
+      "n": 8,
+      "before": 8,
+      "after": 8
+    },
+    "case_external8:law-budget5:cases:hit@1": {
+      "n": 8,
+      "before": 6,
+      "after": 6
+    },
+    "case_external8:law-budget5:cases:hit@3": {
+      "n": 8,
+      "before": 8,
+      "after": 8
+    },
+    "case_external8:law-budget5:cases:hit@5": {
+      "n": 8,
+      "before": 8,
+      "after": 8
+    }
+  },
+  "channel_result_changes": {
+    "laws": 16
+  },
+  "complete_to_incomplete": [],
+  "target_changes": [
+    {
+      "qid": "DEV-005",
+      "mode": "question_only",
+      "group": "question_only",
+      "budget": 3,
+      "targets": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "before": [
+        "주택임대차보호법-제3조"
+      ],
+      "after": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조"
+      ],
+      "gained": [
+        "주민등록법-제16조"
+      ],
+      "lost": [],
+      "before_complete": false,
+      "after_complete": false,
+      "counts": {
+        "laws": 3,
+        "civil_laws": 3,
+        "cases": 5,
+        "guides": 0
+      }
+    },
+    {
+      "qid": "DEV-005",
+      "mode": "question_only",
+      "group": "question_only",
+      "budget": 5,
+      "targets": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "before": [
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "after": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "gained": [
+        "주민등록법-제16조"
+      ],
+      "lost": [],
+      "before_complete": false,
+      "after_complete": true,
+      "counts": {
+        "laws": 5,
+        "civil_laws": 3,
+        "cases": 5,
+        "guides": 0
+      }
+    },
+    {
+      "qid": "DEV-005",
+      "mode": "context_diagnostic",
+      "group": "context_diagnostic",
+      "budget": 3,
+      "targets": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "before": [],
+      "after": [
+        "주민등록법-제16조"
+      ],
+      "gained": [
+        "주민등록법-제16조"
+      ],
+      "lost": [],
+      "before_complete": false,
+      "after_complete": false,
+      "counts": {
+        "laws": 3,
+        "civil_laws": 3,
+        "cases": 5,
+        "guides": 0
+      }
+    },
+    {
+      "qid": "DEV-005",
+      "mode": "context_diagnostic",
+      "group": "context_diagnostic",
+      "budget": 5,
+      "targets": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "before": [
+        "주택임대차보호법-제3조"
+      ],
+      "after": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조"
+      ],
+      "gained": [
+        "주민등록법-제16조"
+      ],
+      "lost": [],
+      "before_complete": false,
+      "after_complete": false,
+      "counts": {
+        "laws": 5,
+        "civil_laws": 3,
+        "cases": 5,
+        "guides": 0
+      }
+    },
+    {
+      "qid": "DEV-033",
+      "mode": "question_only",
+      "group": "question_only",
+      "budget": 3,
+      "targets": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조"
+      ],
+      "before": [
+        "주택임대차보호법-제3조"
+      ],
+      "after": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조"
+      ],
+      "gained": [
+        "주민등록법-제16조"
+      ],
+      "lost": [],
+      "before_complete": false,
+      "after_complete": true,
+      "counts": {
+        "laws": 3,
+        "civil_laws": 3,
+        "cases": 5,
+        "guides": 0
+      }
+    },
+    {
+      "qid": "DEV-033",
+      "mode": "question_only",
+      "group": "question_only",
+      "budget": 5,
+      "targets": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조"
+      ],
+      "before": [
+        "주택임대차보호법-제3조"
+      ],
+      "after": [
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조"
+      ],
+      "gained": [
+        "주민등록법-제16조"
+      ],
+      "lost": [],
+      "before_complete": false,
+      "after_complete": true,
+      "counts": {
+        "laws": 5,
+        "civil_laws": 3,
+        "cases": 5,
+        "guides": 0
+      }
+    },
+    {
+      "qid": "DEV-038",
+      "mode": "question_only",
+      "group": "question_only",
+      "budget": 3,
+      "targets": [
+        "부동산거래신고등에관한법률-제6조의2",
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의2",
+        "부동산거래신고등에관한법률시행규칙-제6조의2"
+      ],
+      "after": [
+        "부동산거래신고등에관한법률-제6조의2",
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "주민등록법-제16조"
+      ],
+      "gained": [
+        "주민등록법-제16조"
+      ],
+      "lost": [],
+      "before_complete": false,
+      "after_complete": false,
+      "counts": {
+        "laws": 3,
+        "civil_laws": 3,
+        "cases": 5,
+        "guides": 0
+      }
+    },
+    {
+      "qid": "DEV-038",
+      "mode": "question_only",
+      "group": "question_only",
+      "budget": 5,
+      "targets": [
+        "부동산거래신고등에관한법률-제6조의2",
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "주민등록법-제16조",
+        "주택임대차보호법-제3조의6"
+      ],
+      "before": [
+        "부동산거래신고등에관한법률-제6조의2",
+        "부동산거래신고등에관한법률시행규칙-제6조의2"
+      ],
+      "after": [
+        "부동산거래신고등에관한법률-제6조의2",
+        "부동산거래신고등에관한법률시행규칙-제6조의2",
+        "주민등록법-제16조"
+      ],
+      "gained": [
+        "주민등록법-제16조"
+      ],
+      "lost": [],
+      "before_complete": false,
+      "after_complete": false,
+      "counts": {
+        "laws": 5,
+        "civil_laws": 3,
+        "cases": 5,
+        "guides": 0
+      }
+    },
+    {
+      "qid": "DEV-046",
+      "mode": "question_only",
+      "group": "question_only",
+      "budget": 3,
+      "targets": [
+        "주민등록법-제16조"
+      ],
+      "before": [],
+      "after": [
+        "주민등록법-제16조"
+      ],
+      "gained": [
+        "주민등록법-제16조"
+      ],
+      "lost": [],
+      "before_complete": false,
+      "after_complete": true,
+      "counts": {
+        "laws": 3,
+        "civil_laws": 3,
+        "cases": 5,
+        "guides": 0
+      }
+    },
+    {
+      "qid": "DEV-046",
+      "mode": "question_only",
+      "group": "question_only",
+      "budget": 5,
+      "targets": [
+        "주민등록법-제16조"
+      ],
+      "before": [],
+      "after": [
+        "주민등록법-제16조"
+      ],
+      "gained": [
+        "주민등록법-제16조"
+      ],
+      "lost": [],
+      "before_complete": false,
+      "after_complete": true,
+      "counts": {
+        "laws": 5,
+        "civil_laws": 3,
+        "cases": 5,
+        "guides": 0
+      }
+    },
+    {
+      "qid": "DEV-046",
+      "mode": "context_diagnostic",
+      "group": "context_diagnostic",
+      "budget": 3,
+      "targets": [
+        "주민등록법-제16조"
+      ],
+      "before": [],
+      "after": [
+        "주민등록법-제16조"
+      ],
+      "gained": [
+        "주민등록법-제16조"
+      ],
+      "lost": [],
+      "before_complete": false,
+      "after_complete": true,
+      "counts": {
+        "laws": 3,
+        "civil_laws": 3,
+        "cases": 5,
+        "guides": 0
+      }
+    },
+    {
+      "qid": "DEV-046",
+      "mode": "context_diagnostic",
+      "group": "context_diagnostic",
+      "budget": 5,
+      "targets": [
+        "주민등록법-제16조"
+      ],
+      "before": [],
+      "after": [
+        "주민등록법-제16조"
+      ],
+      "gained": [
+        "주민등록법-제16조"
+      ],
+      "lost": [],
+      "before_complete": false,
+      "after_complete": true,
+      "counts": {
+        "laws": 5,
+        "civil_laws": 3,
+        "cases": 5,
+        "guides": 0
+      }
+    },
+    {
+      "qid": "DEV-096",
+      "mode": "question_only",
+      "group": "question_only",
+      "budget": 3,
+      "targets": [
+        "민간임대주택에관한특별법-제45조",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조"
+      ],
+      "before": [
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조"
+      ],
+      "after": [
+        "민간임대주택에관한특별법-제45조",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조"
+      ],
+      "gained": [
+        "민간임대주택에관한특별법-제45조"
+      ],
+      "lost": [],
+      "before_complete": false,
+      "after_complete": true,
+      "counts": {
+        "laws": 3,
+        "civil_laws": 3,
+        "cases": 5,
+        "guides": 0
+      }
+    },
+    {
+      "qid": "DEV-096",
+      "mode": "question_only",
+      "group": "question_only",
+      "budget": 5,
+      "targets": [
+        "민간임대주택에관한특별법-제45조",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조"
+      ],
+      "before": [
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조"
+      ],
+      "after": [
+        "민간임대주택에관한특별법-제45조",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조"
+      ],
+      "gained": [
+        "민간임대주택에관한특별법-제45조"
+      ],
+      "lost": [],
+      "before_complete": false,
+      "after_complete": true,
+      "counts": {
+        "laws": 5,
+        "civil_laws": 3,
+        "cases": 5,
+        "guides": 0
+      }
+    },
+    {
+      "qid": "DEV-096",
+      "mode": "context_diagnostic",
+      "group": "context_diagnostic",
+      "budget": 3,
+      "targets": [
+        "민간임대주택에관한특별법-제45조",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조"
+      ],
+      "before": [
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조"
+      ],
+      "after": [
+        "민간임대주택에관한특별법-제45조",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조"
+      ],
+      "gained": [
+        "민간임대주택에관한특별법-제45조"
+      ],
+      "lost": [],
+      "before_complete": false,
+      "after_complete": true,
+      "counts": {
+        "laws": 3,
+        "civil_laws": 3,
+        "cases": 5,
+        "guides": 0
+      }
+    },
+    {
+      "qid": "DEV-096",
+      "mode": "context_diagnostic",
+      "group": "context_diagnostic",
+      "budget": 5,
+      "targets": [
+        "민간임대주택에관한특별법-제45조",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조"
+      ],
+      "before": [
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조"
+      ],
+      "after": [
+        "민간임대주택에관한특별법-제45조",
+        "민간임대주택에관한특별법-제46조",
+        "민간임대주택에관한특별법-제47조"
+      ],
+      "gained": [
+        "민간임대주택에관한특별법-제45조"
+      ],
+      "lost": [],
+      "before_complete": false,
+      "after_complete": true,
+      "counts": {
+        "laws": 5,
+        "civil_laws": 3,
+        "cases": 5,
+        "guides": 0
+      }
+    }
+  ],
+  "changed_sources": [
+    "scripts/patch051_companion_eval.py",
+    "scripts/patch053_retrieval_report.py",
+    "src/retrieval/expanded.py",
+    "src/retrieval/retrieval_intent.py"
+  ],
+  "note": "Channel Hit@K counts any fixed target in that channel; all-required uses each original scope. Published development/regression only. No generated-answer quality measurement."
+}

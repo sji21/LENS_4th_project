@@ -14,6 +14,9 @@ from src.retrieval.companion_evidence import (
 from src.retrieval.multi_evidence import POLICY_CONFIG, TaxLookupSelector, requested_tax_scopes
 from src.retrieval.partitioned import PartitionedBM25Retriever
 from src.retrieval.retriever import BM25Retriever
+from src.retrieval.retrieval_intent import (
+    INTENT_POLICY_CONFIG, LawIntentSelector, existing_member_union, requested_law_intents,
+)
 from src.retrieval.service import CIVIL, LAW, PROCEDURE_TITLES, RetrievalService, _to_evidence
 
 POLICY = "expanded-laws-record-v1"
@@ -58,6 +61,8 @@ class ExpandedLawRetrievalService(RetrievalService):
         self.selection_config = POLICY_CONFIG
         self._lease_protection_selector = LeaseProtectionSelector(laws)
         self.companion_selection_config = COMPANION_POLICY_CONFIG
+        self._law_intent_selector = LawIntentSelector(laws)
+        self.intent_selection_config = INTENT_POLICY_CONFIG
         lexical = lambda part: BM25Retriever(part, b=LAW.bm25_b, query_expander=final_law_terms)
         law_bm25 = PartitionedBM25Retriever({
             "core": lexical([c for c in laws if c["metadata"].get("title") not in PROCEDURE_TITLES]),
@@ -97,6 +102,9 @@ class ExpandedLawRetrievalService(RetrievalService):
         elif k >= COMPANION_POLICY_CONFIG["minimum_budget"] and requests_lease_protection(question):
             hits = self._context_law.search(question, max(k, COMPANION_POLICY_CONFIG["candidate_depth"]), corpus.where())
             hits = self._lease_protection_selector.select(question, hits, k, corpus.where())
+        elif k >= INTENT_POLICY_CONFIG["minimum_budget"] and requested_law_intents(question):
+            hits = existing_member_union(self._context_law, question, k, corpus.where())
+            hits = self._law_intent_selector.select(question, hits, k, corpus.where())
         else:
             hits = self._context_law.search(question, k, corpus.where())
         return [_to_evidence(i, self._chunks[cid], score) for i, (cid, score) in enumerate(hits, 1)]

@@ -599,7 +599,7 @@ class CivilCorpusWarningTests(unittest.TestCase):
              patch.object(service_module, "SentenceTransformerEmbedding"), \
              patch("src.retrieval.dense.ChromaRetriever", return_value=dense):
             with self.assertRaisesRegex(ValueError, "기본 인덱스"):
-                RetrievalService.from_index()
+                RetrievalService._from_index_without_case_profile()
 
     def test_from_index_requires_civil_index_when_chunks_exist(self):
         from unittest.mock import Mock
@@ -610,7 +610,7 @@ class CivilCorpusWarningTests(unittest.TestCase):
              patch("src.retrieval.dense.ChromaRetriever", return_value=dense), \
              patch.object(Path, "is_file", return_value=False):
             with self.assertRaisesRegex(ValueError, "별도 민법 인덱스"):
-                RetrievalService.from_index()
+                RetrievalService._from_index_without_case_profile()
 
     def test_missing_civil_chunks_are_reported(self):
         with self.assertLogs("src.retrieval.service", level="WARNING") as captured:

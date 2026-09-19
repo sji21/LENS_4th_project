@@ -2,6 +2,7 @@ import unittest
 
 from src.generation.models import Answer
 from src.generation.validation import (
+    SEMANTIC_JUDGE_SYSTEM,
     SemanticJudgement,
     _extract_values,
     audit_answer,
@@ -37,6 +38,16 @@ def issue_kinds(answer: Answer, semantic_judge=None) -> set[str]:
 
 
 class ValidationTests(unittest.TestCase):
+    def test_semantic_judge_checks_claim_binding_and_cross_source_inference(self):
+        prompt = SEMANTIC_JUDGE_SYSTEM
+
+        self.assertIn("개별 주장", prompt)
+        self.assertIn("각 주장마다 직접 근거", prompt)
+        self.assertIn("연결 관계 자체가 검색 근거에 명시", prompt)
+        self.assertIn("다른 법령이나", prompt)
+        self.assertIn("조건·예외·주체·시점·법적 효과", prompt)
+        self.assertIn("유효성, 무효, 책임 또는 권리 발생", prompt)
+
     def test_long_registry_identifier_is_not_treated_as_money(self):
         text = "문서관리번호 23660070500023666102000001000202"
 
@@ -101,6 +112,29 @@ class ValidationTests(unittest.TestCase):
         )
 
         self.assertIn("condition", issue_kinds(answer))
+
+    def test_rejects_claim_bound_to_a_different_retrieved_article(self):
+        opposability = evidence(
+            "law-3", "주택임대차보호법 제3조",
+            "임차인이 주택의 인도와 주민등록을 마치면 그 다음 날부터 제삼자에게 효력이 생긴다.",
+        )
+        priority = evidence(
+            "law-3-2", "주택임대차보호법 제3조의2",
+            "확정일자를 갖춘 임차인은 후순위권리자보다 우선하여 보증금을 변제받을 권리가 있다.",
+        )
+        answer = Answer(
+            question="확정일자는 왜 필요한가요?",
+            status="answered",
+            text="",
+            raw_text=(
+                "주택임대차보호법 제3조에 따르면 확정일자를 갖추면 "
+                "후순위권리자보다 우선하여 보증금을 변제받을 수 있습니다."
+            ),
+            laws=(opposability, priority),
+        )
+
+        issues = audit_answer(answer).issues
+        self.assertIn("wrong_citation_binding", {issue.code for issue in issues})
 
     def test_rejects_registration_requirement_when_evidence_says_without_it(self):
         ev = evidence(
@@ -556,6 +590,19 @@ class ValidationTests(unittest.TestCase):
 
 
 class ConditionalSemanticValidationTests(unittest.TestCase):
+    def test_multiple_delivered_evidences_always_require_semantic_validation(self):
+        first = evidence("law-1", "첫째 법 제1조", "첫 번째 근거")
+        second = evidence("law-2", "둘째 법 제2조", "두 번째 근거")
+        answer = Answer(
+            question="개념을 설명해 주세요.",
+            status="answered",
+            text="",
+            raw_text="첫째 법 제1조에 따른 설명입니다.",
+            laws=(first, second),
+        )
+
+        self.assertTrue(requires_semantic_validation(answer))
+
     def test_simple_single_law_explanation_uses_deterministic_validation(self):
         ev = evidence(
             "law-3",

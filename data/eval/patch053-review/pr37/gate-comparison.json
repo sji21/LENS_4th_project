@@ -1,0 +1,22 @@
+{
+  "baseline_commit": "0b202fa73ea7a765bff9cc5e24328bde893ccfd5",
+  "previous_actual_capture": "data/eval/patch053-review/after",
+  "capture_rows_sha256": "8d9ebfe4453de58cb5f3c666aa4b7b87b9c4a68817ea1c1aa3657634d84c7d9e",
+  "source_sha256": "c4fa0430ec814a0fa86f5bcbc6d731eb7e9faf791d591d1dc3f9cdaabf8b2bd6",
+  "input_count": 313,
+  "differences": [],
+  "changed_module_nodes": [
+    "_LEASE_ACTION",
+    "_LEASE_PAPERWORK",
+    "_TOPIC_JOIN",
+    "_private_form_requested",
+    "_topic_tail",
+    "requested_law_intents"
+  ],
+  "captured_source_count": 190,
+  "changed_sources_since_actual_capture": [
+    "src/retrieval/retrieval_intent.py"
+  ],
+  "kure_rerun": false,
+  "note": "Fixed-input gate equivalence plus unchanged downstream source is not a fresh retrieval measurement or a guarantee for unseen wording."
+}

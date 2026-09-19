@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "dataset_id": "holdout-v2-ho30-20260918",
+  "purpose": "First frozen Qwen3.8-27B generation measurement",
+  "input_policy": "questions.jsonl only; gold and review files are never read by the runner",
+  "model": {
+    "tag": "qwen3.8:27b",
+    "temperature": 0.0,
+    "think": false,
+    "max_tokens": 512,
+    "context_tokens": 8192
+  },
+  "retrieval": {
+    "law_budget": 3,
+    "case_budget": 2,
+    "guide_budget": 2,
+    "rank_policy": "Keep law, case, Civil Act and guide channels separate. Never pool channel ranks.",
+    "delivery_boundary": "Every evidence passed to generation is archived separately from every retrieval call result."
+  },
+  "retrieval_metrics": {
+    "per_channel_hit_at": [1, 3, 5],
+    "short_channel_rule": "A channel returning fewer than k items is scored using the items actually returned; a missing required identity is a miss.",
+    "law_component_complete": "All required statutes for an item are present; denominator 30.",
+    "full_evidence_complete": "All required statutes and required other sources are present; denominator 30.",
+    "strata": ["statute_only", "mixed_source"]
+  },
+  "answer_metrics": {
+    "separate_statuses": ["answered", "abstained", "refused", "generation_error"],
+    "claim_grading": "Grade each material claim against a directly supporting evidence passage. A cross-source legal effect requires evidence that states the connection itself.",
+    "failure_labels": [
+      "unsupported_claim",
+      "unsupported_cross_source_inference",
+      "scope_expansion",
+      "condition_or_exception_loss",
+      "unsupported_contract_verdict",
+      "missing_required_answer",
+      "wrong_citation_binding"
+    ],
+    "automatic_semantic_score": false
+  },
+  "tuning_policy": "Do not change model, prompt, retrieval or grading after viewing this first run and report the same HO30 as an independent holdout."
+}

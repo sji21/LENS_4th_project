@@ -1,0 +1,114 @@
+{
+  "mode": "real_planner_fixed_legal_answer",
+  "user": "아니 아직 알려주지 않았어",
+  "plan": [
+    {
+      "decision": {
+        "intent": "clarification_answer",
+        "action": "rag",
+        "topic": "계약갱신",
+        "topic_changed": false,
+        "updates": {
+          "landlord_notified": {
+            "value": "아니요",
+            "evidence": "아니 아직 알려주지 않았어"
+          }
+        },
+        "clarify_field": null,
+        "question": null,
+        "search_query": "대화 주제: 계약갱신\n계약 종료일: 2달 남았어\n계약 종료 여부: 아니요\n임대인 통지 여부: 아니요\n이어서 상담할 사용자 질문: 임대차 계약이 곧 만료될거라 연장을 하고 싶어\n사용자 입력: 아니 아직 알려주지 않았어",
+        "document_id": null,
+        "style": "standard",
+        "purpose": "general"
+      },
+      "elapsed_seconds": 5.872,
+      "model_invocations": 1,
+      "output_tokens": 83,
+      "normalizations": []
+    }
+  ],
+  "message": {
+    "id": "03716c8379cc4d5e99be75fd6a4bc998",
+    "role": "assistant",
+    "status": "answered",
+    "content": "고정 법률 답변 대역",
+    "sources": [],
+    "context_content": "",
+    "used_history": true,
+    "elapsed_seconds": 5.9,
+    "glossary": [],
+    "citations": [],
+    "followups": [],
+    "simplified": "",
+    "reason": "answered",
+    "action": "rag",
+    "intent": "clarification_answer"
+  },
+  "dialogue": {
+    "version": 1,
+    "turn": 4,
+    "epoch": 0,
+    "topic": "계약갱신",
+    "facts": {
+      "contract_ended": {
+        "value": "아니요",
+        "evidence": "계약이 곧 만료될거라",
+        "source_turn": 2,
+        "source": "user_statement",
+        "certainty": "reported"
+      },
+      "end_date": {
+        "value": "2달 남았어",
+        "evidence": "2달 남았어",
+        "source_turn": 3,
+        "source": "user_statement",
+        "certainty": "reported"
+      },
+      "landlord_notified": {
+        "value": "아니요",
+        "evidence": "아니 아직 알려주지 않았어",
+        "source_turn": 4,
+        "source": "user_statement",
+        "certainty": "reported"
+      }
+    },
+    "history": [
+      {
+        "role": "user",
+        "turn": 1,
+        "content": "안녕"
+      },
+      {
+        "role": "user",
+        "turn": 2,
+        "content": "임대차 계약이 곧 만료될거라 연장을 하고 싶어"
+      },
+      {
+        "role": "user",
+        "turn": 3,
+        "content": "2달 남았어"
+      },
+      {
+        "role": "user",
+        "turn": 4,
+        "content": "아니 아직 알려주지 않았어"
+      }
+    ],
+    "changes": [],
+    "pending": null,
+    "active_document_id": null,
+    "last_answer": {
+      "content": "고정 법률 답변 대역",
+      "sources": [],
+      "turn": 4,
+      "validation": "existing_pipeline_passed",
+      "query": "대화 주제: 계약갱신\n계약 종료일: 2달 남았어\n계약 종료 여부: 아니요\n임대인 통지 여부: 아니요\n이어서 상담할 사용자 질문: 임대차 계약이 곧 만료될거라 연장을 하고 싶어\n사용자 입력: 아니 아직 알려주지 않았어",
+      "request": "임대차 계약이 곧 만료될거라 연장을 하고 싶어"
+    },
+    "last_status": "answered",
+    "clarification_counts": {
+      "end_date": 1,
+      "landlord_notified": 1
+    }
+  }
+}

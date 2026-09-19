@@ -134,13 +134,18 @@ def test_product_factory_and_generation_fallback_use_activated_profile(payload, 
         path.mkdir(parents=True, exist_ok=True)
         (path / "chroma.sqlite3").write_bytes(b"synthetic index")
     backend = SimpleNamespace(name=profile["model"], embed=lambda texts: [[1]])
-    monkeypatch.setattr(service_module, "SentenceTransformerEmbedding", lambda _: backend)
+    revisions = []
+    def fake_embedding(model, *, revision=None):
+        revisions.append(revision)
+        return backend
+    monkeypatch.setattr(service_module, "SentenceTransformerEmbedding", fake_embedding)
     def fake_dense(backend, path):
         return SimpleNamespace(backend=backend, path=path, collection=SimpleNamespace(get=lambda **kw: {"ids": []}))
     monkeypatch.setattr(dense_module, "ChromaRetriever", fake_dense)
     monkeypatch.setattr(profiles, "index_hash", lambda r: profile["index_hashes"][indexes.index(r.path)])
     built = RetrievalService.from_index(paths, indexes[0], civil_index_path=indexes[1])
     assert isinstance(built, ExpandedLawRetrievalService)
+    assert revisions == ["4ed4540949c70b7da2c74004a915e1f2d5e46e4f"]
     def unavailable(*args, **kwargs):
         raise OSError("embedding unavailable")
     monkeypatch.setattr(RetrievalService, "from_index", unavailable)

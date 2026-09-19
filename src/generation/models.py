@@ -53,6 +53,10 @@ class Answer:
     # 최종 답변이 어디까지 검증됐는지 평가·운영 로그에서 확인하기 위한 값.
     validation_mode: ValidationMode = "not_applicable"
     civil_laws: tuple[Evidence, ...] = ()
+    # Evaluation and logs must distinguish a model error from a validation
+    # rejection without exposing the generated text itself.
+    validation_codes: tuple[str, ...] = ()
+    repair_attempts: int = 0
 
     @property
     def evidences(self) -> tuple[Evidence, ...]:

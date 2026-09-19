@@ -44,13 +44,10 @@ def dashboard(request, case_id=None):
             "color_index": color_index,
         } for event in visible_events)
 
-    report_rooms = [room for room in rooms if room["case"].reports.all()]
-
     return render(request, "cases/dashboard.html", {
         "cases": cases,
         "selected": selected,
         "rooms": rooms,
-        "report_rooms": report_rooms,
         "calendar_events": calendar_events,
         "checklist_count": sum(
             case.checklist_items.exclude(state=ChecklistItem.State.DISMISSED).count()
@@ -110,13 +107,7 @@ def delete_case(request, case_id):
     if request.session.get("lens_case_id") == str(case.pk):
         request.session.pop("lens_case_id", None)
         request.session.pop("lens_conversation_id", None)
-    # DB cascade만으로는 암호화한 첨부 원본 파일이 파일 시스템에 남을 수 있다.
-    from .services.storage import delete_encrypted
-    for storage_key in case.attachments.values_list("storage_key", flat=True):
-        delete_encrypted(storage_key)
     case.delete()
-    if request.POST.get("next") == "chat":
-        return redirect("chat:home")
     return redirect("cases:dashboard")
 
 

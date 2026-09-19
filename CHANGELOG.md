@@ -5,6 +5,28 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-18
+
+### Added
+
+- PATCH-056 freezes the received HO30 review (6 byte-preserved files), question-only input and evidence-scoring contract with SHA-256 hashes. Separates 27 statute-only and 3 mixed-source items, conditional evidence and HO-009 optional explanation; preserves original answers. Structural consistency and package integrity are checked; no LENS retrieval, generation, corpus coverage check or tuning is performed. AI-reviewed public pre-evaluation material, not a private blind benchmark or a full independent recheck of all legal sources. (commit: 96c555b)
+
+## 2026-09-17
+
+### Added
+
+- PATCH-055 shares the data_dev_v2 corpus of 8,377 cases as Git LFS SQLite, JSONL and Chroma files, with a manifest, schema and real sample validating hashes, DB/chunk identity and pinned model revisions. `setup_data.py` activates the case profile while retaining the existing law, Civil Act and guide channels; missing setup fails explicitly rather than silently using the 26-case seed or lexical fallback. Corrects the base-build pinned revision and profile-verification boundaries, and documents team installation, retrieval, Qwen smoke commands and the full test inventory. RunPod checks confirm real retrieval, Qwen 8B output, Django HTTP 200 and repeated setup with zero re-embedding. Full suite: 2,828 passed, 3 failed, 3 errors, 4 skipped, 678 subtests passed; the failures/errors also reproduce on unchanged GitHub main. The user explicitly approved committing and pushing with these failures disclosed. This does not establish legal-answer quality, an independent evaluation pass, or completed remote LFS pull verification. (commit: 19cbfc4)
+
+### Changed
+
+- PATCH-053 retains distinct private-rental renewal, reporting and contract-form evidence and residence-registration procedures within the existing law3/law5 budgets. Selects body-verified provisions from the complete existing BM25/KURE member union without increasing member depth or model calls. Actual paired retrieval on 235 fixed inputs plus 78 published regression inputs recovers DEV-096 Articles 45/46/47 in both modes and budgets. DEV complete evidence improves 40→43/75 at law3 and 47→51/75 at law5 for questions, and 39→41/75 and 48→50/75 with context; no previously retrieved required target is lost. Civil, case and guide results and all 78 public regressions remain identical. Official-body request tests verify delivery to the generation HTTP payload; real generated-answer quality and latency remain unmeasured. Review fixes bind renewal requests to their own clause or coordinated list, apply exclusions across listed topics, and check residence requests and completion within the same clause. Actual BM25 preserves rent Article 44 for the reported compound question; a fresh paired KURE run preserves all 313 inputs and four channels. Full review tests: 2,757 passed, 3 skipped, 678 subtests. After merging main bd6c0c8 (PATCH-052/054), 2,810 tests pass with 3 skips and 678 subtests; retrieval source hashes remain identical, so fixed-input KURE is not rerun. See `docs/patch053-retrieval-intent.md` for denominators, remaining misses and verification. (commit: 93a49e5; review: 67382c2; integration: 75c2915)
+
+### Fixed (Bug Fixes)
+
+- PATCH-053 / PR #37 binds document requests to their own lease procedure and residence-procedure predicates to their own topic. Registration paperwork no longer forces standard lease-form evidence, and a background mention of unfinished registration no longer borrows a contract-termination request. Both reported cases retain their original BM25 top three. All 313 fixed request gates and downstream retrieval logic remain unchanged, so prior KURE measurements are retained without a new model run. Verification totals 2,841 passes, 3 skips and 678 subtests across the full run and a targeted rerun of 42 Git-ownership-blocked items. Validation: `data/eval/patch053-review/pr37/`. This review fix, tests and records are included in one commit at the user's request.
+
+- PATCH-054 Continue missing-fact collection after a relative expiry answer even when the planner omits its next question. Prioritize the current substantive request over a preceding greeting. Recognize Korean inform-verb variants in notification statements while preserving negation checks. (commit: 8ed7546)
+
 ## 2026-09-16
 
 ### Added

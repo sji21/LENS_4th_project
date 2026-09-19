@@ -334,7 +334,14 @@ def retrieval_semantically_equal(before, after):
 
 
 def _read_json(url, timeout):
-    request = urllib.request.Request(url, headers={"Accept": "application/json"}, method="GET")
+    # RunPod HTTP proxy rejects urllib's default Python user agent with 403.
+    # This is a read-only Ollama metadata request; use an explicit application
+    # identity just like the production Ollama client does.
+    request = urllib.request.Request(
+        url,
+        headers={"Accept": "application/json", "User-Agent": "LENS-Evaluation/1.0"},
+        method="GET",
+    )
     with urllib.request.urlopen(request, timeout=timeout) as response:
         body = response.read(4 * 1024 * 1024 + 1)
     if len(body) > 4 * 1024 * 1024:

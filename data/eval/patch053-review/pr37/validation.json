@@ -1,0 +1,54 @@
+{
+  "patch": "PATCH-053 PR37 P1 review",
+  "baseline_commit": "0b202fa73ea7a765bff9cc5e24328bde893ccfd5",
+  "created_at": "2026-09-17T03:37:05.622617+00:00",
+  "commit_record": "One commit contains source, tests and these records; no self-hash synchronization commit.",
+  "tests": {
+    "full_command": "python -X utf8 -m pytest -q",
+    "initial": {
+      "failed": 35,
+      "passed": 2799,
+      "skipped": 3,
+      "errors": 7,
+      "subtests_passed": 678,
+      "seconds": 199.67
+    },
+    "targeted_command": "python -X utf8 -m pytest -q --lf --lfnf=none",
+    "targeted_environment": {
+      "GIT_CONFIG_COUNT": "1",
+      "GIT_CONFIG_KEY_0": "safe.directory",
+      "GIT_CONFIG_VALUE_0": "C:/team_project/patch053-worktree"
+    },
+    "targeted": {
+      "passed": 42,
+      "seconds": 142.26
+    },
+    "final_passed_across_runs": 2841,
+    "remaining_failures": 0,
+    "single_clean_full_run": false,
+    "product_changes_between_runs": false,
+    "initial_raw_log_sha256": "2a0f13865a42a693b0000c30b184cf8a370561b66477fe1a6ec795deb439a4c4"
+  },
+  "kure_rerun": false,
+  "generation_performed": false,
+  "fixed_inputs_with_equal_gates": 313,
+  "limitation": "Previous real retrieval is retained based on fixed-input gate equivalence and unchanged downstream code; no new KURE measurement or unseen-holdout/answer-quality claim.",
+  "normalized_text_sha256": {
+    "src/retrieval/retrieval_intent.py": "c4fa0430ec814a0fa86f5bcbc6d731eb7e9faf791d591d1dc3f9cdaabf8b2bd6",
+    "tests/test_patch053_retrieval_intent.py": "245c5e3973892dee4a7e21557c776a27a765b5e45c8dd88a3572fc5cd3ee2d50",
+    "tests/test_patch053_retrieval_independent.py": "2017ad5cacee9dc7482f5f1fc2a1d883f7aaca31cd296b64c943b68e2e0f20a9",
+    "docs/patch053-retrieval-intent.md": "cb90c966a0dd9854fa034a9296a8aafe0dc781a56170faafb12b3dc37a7d7fbd",
+    "LIST.md": "4397537711e7fe4d5b88310351f40ff571189d0ccff1a0b781ab8b35034bdaff",
+    "CHANGELOG.md": "da20e877c0b840f323b0eb593a1b5a1bb61ed34f0e4a25614b9821d270e2933b",
+    "CHANGELOG_Kr.md": "ff3d9371da463fdd8ca4c2a42a98197cbc1729da01ba1a357601f9917b9b8b99"
+  },
+  "artifact_sha256": {
+    "environment-recheck.log": "54fcdd1a5b2d1c6b4f1deea8394608e47fa15169bd90255eab0fe3ee5da649f5",
+    "gate-comparison.json": "d2bd01ae06ac81741a3fb413646e0f943baf8dbdda3366f0fa2fffbed9b4c565",
+    "independent-verification.json": "82e46b2b850e247fcfbcd6459c49b49bb7f90838a51e38af7b82941253f1d7f4",
+    "initial-full-tests-summary.log": "08f4bea9711f8b27e71424dc71ef694f5529068284e2eadead65b8cb9bbcbb10",
+    "reported-cases.json": "cba1dc5b027c9fa9a692a2d74001b015b333d9354692887ef1dd7456c292d15f",
+    "reported-cases.py": "feef18e7ec337ea35ce20d5c22f23905bf9a60f7571ef5db8b66abd630947434",
+    "request-gate-audit.py": "97004533ea27858019412881d9126045102316e2817c53c8e445c0b83e9302e8"
+  }
+}

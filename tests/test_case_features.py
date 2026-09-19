@@ -10,7 +10,7 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.test import Client
 
-from cases.models import CaseFact, ChecklistItem, ContractCase, Report, ScheduleEvent
+from cases.models import CaseFact, ChecklistItem, ContractCase, ScheduleEvent
 from cases.services.conversation_guidance import refresh_conversation_guidance
 from cases.services.facts import invalidate_source, record_fact
 from cases.services.reports import generate_report
@@ -41,7 +41,7 @@ def test_case_dashboard_requires_login_and_enforces_owner(client, user, case):
     assert "owner@example.com" in page
     assert page.index("전체 대화 일정") < page.index("전체 체크리스트")
     assert "채팅방별 표시" in page
-    assert "채팅방별 리포트 파일" not in page
+    assert "채팅방별 리포트 파일" in page
     assert "<h2>달력 일정</h2>" not in page
     assert "상담 녹음 분석" not in page
     assert "cases/mypage.js" in page
@@ -49,7 +49,7 @@ def test_case_dashboard_requires_login_and_enforces_owner(client, user, case):
     assert f'action="/cases/{case.pk}/rename/"' in page
     assert "채팅방 이름 수정" in page
     assert "현재 대화 리포트 생성" not in page
-    assert "해당 채팅방 폴더에 버전별로 저장됩니다" not in page
+    assert "해당 채팅방 폴더에 버전별로 저장됩니다" in page
     other = get_user_model().objects.create_user("other", password="safe-password-123")
     client.force_login(other)
     assert client.get(f"/cases/{case.pk}/").status_code == 404
@@ -115,8 +115,6 @@ def test_mypage_combines_room_calendars_and_report_folders(client, user, case):
     other = ContractCase.objects.create(user=user, title="용산구 상담")
     ScheduleEvent.objects.create(case=case, starts_at="2026-10-10T09:00:00+09:00", rule_code="first", title="잔금일")
     ScheduleEvent.objects.create(case=other, starts_at="2026-10-12T10:00:00+09:00", rule_code="second", title="입주일")
-    Report.objects.create(case=case, version=1, content_json={}, source_snapshot={})
-    Report.objects.create(case=other, version=1, content_json={}, source_snapshot={})
     client.force_login(user)
     page = client.get("/cases/").content.decode()
     assert 'data-room="마포구 A아파트"' in page
@@ -159,12 +157,12 @@ def test_guest_hides_report_action_and_member_session_is_persistent(client):
 
 def test_signup_redirects_to_chat_without_creating_first_room(client):
     response = client.post("/accounts/signup/", {
-        "first_name": "새 회원", "email": "new@example.com",
+        "username": "new-member", "email": "new@example.com",
         "password1": "safe-password-123", "password2": "safe-password-123",
     })
     assert response.status_code == 302 and response.url == "/"
     landing = client.get("/")
-    user = get_user_model().objects.get(username="new@example.com")
+    user = get_user_model().objects.get(username="new-member")
     assert landing.status_code == 200
     assert not ContractCase.objects.filter(user=user).exists()
     assert Conversation.objects.get(user=user).case is None
@@ -173,7 +171,7 @@ def test_signup_redirects_to_chat_without_creating_first_room(client):
 def test_login_always_redirects_to_chat_even_with_mypage_next(client, user):
     response = client.post(
         "/accounts/login/?next=/cases/",
-        {"username": user.email, "password": "safe-password-123"},
+        {"username": user.username, "password": "safe-password-123"},
     )
     assert response.status_code == 302
     assert response.url == "/"
@@ -184,7 +182,7 @@ def test_login_claims_empty_guest_draft_without_creating_or_selecting_room(clien
     guest_id = client.session["lens_conversation_id"]
     response = client.post(
         "/accounts/login/",
-        {"username": user.email, "password": "safe-password-123"},
+        {"username": user.username, "password": "safe-password-123"},
     )
     conversation = Conversation.objects.get(pk=guest_id)
     assert response.status_code == 302 and response.url == "/"
