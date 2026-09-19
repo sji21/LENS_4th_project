@@ -1,0 +1,219 @@
+{
+  "checked_at_utc": "2026-09-19T14:29:37.061496+00:00",
+  "scope": "live SELECT connection, source rows, chunk metadata, representative provenance",
+  "database_writes": false,
+  "connected": true,
+  "corpora": {
+    "base": {
+      "snapshot_id": "9299e776b907315b271f426c1477d5715ef87968451deaab138986b8dc7ab6f9",
+      "present": true,
+      "all_rows_and_streams_verified": true,
+      "matches_delivered_manifest": true,
+      "table_counts": {
+        "laws": 29,
+        "cases": 26,
+        "chunks": 236,
+        "guides": 2,
+        "documents": 57,
+        "risk_rules": 0,
+        "case_aliases": 0,
+        "law_articles": 204,
+        "law_versions": 29,
+        "case_versions": 0,
+        "rule_evidence": 0,
+        "case_observations": 0,
+        "law_article_units": 1220,
+        "schema_migrations": 3,
+        "case_law_citations": 0,
+        "risk_rule_keywords": 0,
+        "evaluation_evidence": 0,
+        "law_article_sources": 204,
+        "evaluation_questions": 0,
+        "guide_law_references": 0,
+        "law_source_snapshots": 5
+      },
+      "stream_counts": {
+        "laws": 204,
+        "cases": 26,
+        "guides": 6
+      },
+      "sample_queries": [
+        {
+          "stream": "laws",
+          "chunk_id": "law-공공주택특별법-20260908#제49조의2#0",
+          "content_matches": true,
+          "document_found": true,
+          "source_tables_found": [
+            "law_article_sources",
+            "law_articles",
+            "law_versions"
+          ]
+        },
+        {
+          "stream": "cases",
+          "chunk_id": "case:CASE-2025DA210305#0",
+          "content_matches": true,
+          "document_found": true,
+          "source_tables_found": [
+            "cases"
+          ]
+        },
+        {
+          "stream": "guides",
+          "chunk_id": "guide-국세청-미납국세열람#0",
+          "content_matches": true,
+          "document_found": true,
+          "source_tables_found": [
+            "guides"
+          ]
+        }
+      ]
+    },
+    "cases": {
+      "snapshot_id": "bb0244db08f107fac78bba53ebe3f931107c52dd12b899c4718cc9f52b0054a2",
+      "present": true,
+      "all_rows_and_streams_verified": true,
+      "matches_delivered_manifest": true,
+      "table_counts": {
+        "laws": 4,
+        "cases": 8377,
+        "chunks": 8516,
+        "guides": 2,
+        "documents": 8383,
+        "risk_rules": 0,
+        "case_aliases": 8586,
+        "law_articles": 133,
+        "law_versions": 4,
+        "case_versions": 8559,
+        "rule_evidence": 0,
+        "case_observations": 8586,
+        "schema_migrations": 3,
+        "case_law_citations": 0,
+        "risk_rule_keywords": 0,
+        "evaluation_evidence": 0,
+        "evaluation_questions": 0,
+        "guide_law_references": 0
+      },
+      "stream_counts": {
+        "laws": 133,
+        "cases": 8377,
+        "guides": 6
+      },
+      "sample_queries": [
+        {
+          "stream": "laws",
+          "chunk_id": "law-상가건물임대차보호법-20260512#제1조#0",
+          "content_matches": true,
+          "document_found": true,
+          "source_tables_found": [
+            "law_articles",
+            "law_versions"
+          ]
+        },
+        {
+          "stream": "cases",
+          "chunk_id": "case:623719#0",
+          "content_matches": true,
+          "document_found": true,
+          "source_tables_found": [
+            "cases"
+          ]
+        },
+        {
+          "stream": "guides",
+          "chunk_id": "guide-HUG-전세보증금반환보증#0",
+          "content_matches": true,
+          "document_found": true,
+          "source_tables_found": [
+            "guides"
+          ]
+        }
+      ]
+    },
+    "civil": {
+      "snapshot_id": "8b7450f623745147ea75365e15d39278fa4f4c14bb8af0b6ef7f8acb20fc51f5",
+      "present": true,
+      "all_rows_and_streams_verified": true,
+      "matches_delivered_manifest": true,
+      "table_counts": {
+        "laws": 1,
+        "cases": 0,
+        "chunks": 26,
+        "guides": 0,
+        "documents": 1,
+        "risk_rules": 0,
+        "law_articles": 26,
+        "law_versions": 1,
+        "rule_evidence": 0,
+        "law_article_units": 66,
+        "schema_migrations": 3,
+        "case_law_citations": 0,
+        "risk_rule_keywords": 0,
+        "evaluation_evidence": 0,
+        "law_article_sources": 26,
+        "evaluation_questions": 0,
+        "guide_law_references": 0,
+        "law_source_snapshots": 1
+      },
+      "stream_counts": {
+        "civil": 26
+      },
+      "sample_queries": [
+        {
+          "stream": "civil",
+          "chunk_id": "law-민법-20260317#제105조#0",
+          "content_matches": true,
+          "document_found": true,
+          "source_tables_found": [
+            "law_article_sources",
+            "law_articles",
+            "law_source_snapshots",
+            "law_versions"
+          ]
+        }
+      ]
+    }
+  },
+  "mysql_version": "8.4.11",
+  "database": "Lens_knowledge",
+  "available_snapshots": [
+    {
+      "_snapshot_id": "9299e776b907315b271f426c1477d5715ef87968451deaab138986b8dc7ab6f9",
+      "corpus_id": "base",
+      "version": "server-rechunk-v2-20260918"
+    },
+    {
+      "_snapshot_id": "32a38460d9804874282f03b0b79cdf6a42849d2611451d341e776ba3cda2a854",
+      "corpus_id": "base",
+      "version": "server-v1-20260918"
+    },
+    {
+      "_snapshot_id": "7619092db8a1afb8893971aaa493537d86206594a004aeb9be7dfea1f0f99de8",
+      "corpus_id": "base",
+      "version": "server-v1-rechunk-20260918"
+    },
+    {
+      "_snapshot_id": "bb0244db08f107fac78bba53ebe3f931107c52dd12b899c4718cc9f52b0054a2",
+      "corpus_id": "cases",
+      "version": "data-dev-v2-20260915"
+    },
+    {
+      "_snapshot_id": "8b7450f623745147ea75365e15d39278fa4f4c14bb8af0b6ef7f8acb20fc51f5",
+      "corpus_id": "civil",
+      "version": "server-v1-20260918"
+    }
+  ],
+  "verified": true,
+  "tested_source_commit": "ca16e0d0f62fbc2dc5ba6be450c94246d29f2898",
+  "configuration": {
+    "port": 33064,
+    "env_names_adapted_in_memory": true,
+    "original_env_modified": false,
+    "secrets_included": false
+  },
+  "verification_module_blobs": {
+    "src/database/mysql.py": "50fbe7d89fa78ee8d1afa63deda70058053282ab",
+    "src/database/mysql_schema.py": "57ef49af3fb4eafe83511b01f7913bac26de4c60",
+    "src/ingestion/mysql_transfer.py": "62aaf459a6547be4a9d014b0ac1933ff210c19a8"
+  }
+}

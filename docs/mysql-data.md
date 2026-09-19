@@ -14,6 +14,8 @@ MySQL 배포본에서 BM25·Chroma를 생성·검증·활성화하는 앱 연결
 
 아직 미완료: 실제 LLM 연결 및 다른 팀원 PC에서의 재현. 기존 판례 평가 20문항 중 8문항은 정답 ID가 현재 코퍼스에 없어 현재 코퍼스용 평가 자료 보완이 필요하다. JSONL 내보내기만 성공한 배포본에는 `index_status: not_built`가 기록되며 검색 배포본 생성이 성공하면 별도 `release.json`에 `ready`가 기록된다. 전체 실행 계획은 [실행 계획서](planning/mysql-retrieval-execution-plan.md)를 따른다.
 
+2026-09-19 재확인에서도 세 스냅샷 전체 행·스트림 해시와 유형별 원문 조회가 통과했다. [실제 DB 재검증](mysql-live-verification.md)에 이번 실행 범위와 접속 설정 주의점을 기록한다.
+
 ## 설치 및 설정
 
 ```powershell
@@ -36,6 +38,8 @@ LENS_MYSQL_SSL_CA=
 ```powershell
 python -m src.ingestion.mysql_transfer --env-file tmp/mysql-shared.env init
 ```
+
+이번 공용 서버의 확인된 포트는 `33064`, DB명은 대소문자를 포함해 `Lens_knowledge`다. 위 예시의 기본값을 그대로 사용하지 말고 공유받은 설정을 적용한다. `MYSQL_HOST`·`MYSQL_UESR` 등 다른 이름은 인식하지 않으므로 `LENS_MYSQL_*` 키를 사용한다.
 
 DB명은 서버 관리자가 만든 이름을 사용한다. 프로그램은 서버나 DB 자체를 만들지 않고 지정한 DB 안에 `knowledge_` 접두어의 테이블을 생성한다. 초기화 계정은 해당 DB의 스키마 생성 권한, 이전 계정은 INSERT/SELECT 권한, 내보내기·검증·추적 계정은 SELECT 권한이 필요하다. 앱 실행 계정에 스키마 변경 권한을 공유하지 않는다.
 

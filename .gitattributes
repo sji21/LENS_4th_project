@@ -19,6 +19,10 @@
 /data/eval/patch027-final-test/report.json -diff
 /data/eval/patch027-rollout/** -text
 /data/eval/patch027-rollout/*/rows.json -diff
+# Git-distributed data_dev_v2 corpus. Manifests stay reviewable JSON.
+/data/case_corpus/database/*.sqlite3 filter=lfs diff=lfs merge=lfs -text
+/data/case_corpus/chunks/*.jsonl filter=lfs diff=lfs merge=lfs -text
+/data/case_corpus/index/** filter=lfs diff=lfs merge=lfs -text
 # Preserve local PATCH-042 analysis and PATCH-046 validation bytes across checkouts.
 /data/eval/patch042-candidate-trace/** -text whitespace=cr-at-eol
 /data/eval/patch042-gap-analysis/** -text whitespace=cr-at-eol
@@ -46,3 +50,5 @@
 /data/case_corpus/database/*.sqlite3 filter=lfs diff=lfs merge=lfs -text
 /data/case_corpus/chunks/*.jsonl filter=lfs diff=lfs merge=lfs -text
 /data/case_corpus/index/** filter=lfs diff=lfs merge=lfs -text
+# Preserve received HO30 review and freeze hashes byte-for-byte.
+/data/eval/holdout-v2-ho30-20260918/** -text whitespace=cr-at-eol

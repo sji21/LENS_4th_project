@@ -2,6 +2,8 @@
 
 MySQL은 원문·청크·버전을 관리한다. 앱 검색은 같은 MySQL 스냅샷에서 내보낸 JSONL과 Chroma를 함께 검증한 배포본을 읽는다. BM25는 배포본의 JSONL로 메모리에 구성한다. 검색할 때 기존 SQLite 원본이나 MySQL 접속 비밀번호가 필요하지 않다.
 
+기존 `LENS-MySQL-search-shared-v3.zip`은 생성 당시 코드의 바이트 해시를 고정한다. Git 체크아웃의 LF/CRLF 차이나 이후 코드 변경으로 검증이 실패할 수 있으므로, 최종 PR 코드와 배포본의 호환성을 별도로 확인하고 필요하면 같은 코드에서 재생성한다. 이번 공용 DB 재검증 통과가 기존 ZIP의 새 코드 호환성이나 다른 PC 실행까지 보장하지는 않는다.
+
 ## 담당자: 배포본 생성
 
 먼저 `mysql_transfer export`로 기본·민법·판례 스냅샷을 각각 `EXPORT_ROOT/base`, `EXPORT_ROOT/civil`, `EXPORT_ROOT/cases`에 내보낸다. 각 폴더에는 `manifest.json`과 JSONL이 있어야 한다. [적재·내보내기 명령](mysql-data.md)을 참고한다.

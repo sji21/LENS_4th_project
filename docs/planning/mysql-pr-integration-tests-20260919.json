@@ -1,0 +1,436 @@
+{
+  "date": "2026-09-19",
+  "python": "3.12.14",
+  "main_integrated": "fc87c38627b5be530e5252804b531b887ec7f39a",
+  "tests": 81,
+  "passed": 72,
+  "skipped": 9,
+  "failures": 0,
+  "errors": 0,
+  "elapsed_seconds": "19.118",
+  "live_database_mutations": false,
+  "full_project_suite": false,
+  "command": "python -m pytest -q tests/test_mysql_transfer.py tests/test_mysql_ingest.py tests/test_mysql_search.py tests/test_case_profile.py tests/test_server_build.py -p no:cacheprovider --basetemp=<new-workspace-temporary-directory>",
+  "environment": {
+    "LENS_RUN_MYSQL_TESTS": "0"
+  },
+  "packages": {
+    "pytest": "9.1.1",
+    "SQLAlchemy": "2.0.54",
+    "PyMySQL": "1.1.2",
+    "Django": "5.2.17",
+    "chromadb": "1.5.9",
+    "numpy": "1.26.4",
+    "sentence-transformers": "6.1.0",
+    "torch": "2.14.0",
+    "transformers": "5.17.0",
+    "langchain-core": "1.6.3"
+  },
+  "cases": [
+    {
+      "module": "tests.test_mysql_transfer",
+      "test": "test_schema_hash_is_stable_across_processes",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_mysql_transfer",
+      "test": "test_source_rejects_missing_or_changed_chunks",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_mysql_transfer",
+      "test": "test_source_rejects_unmapped_history_table",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_mysql_transfer",
+      "test": "test_mysql_roundtrip_without_source_and_idempotent_import",
+      "status": "skipped"
+    },
+    {
+      "module": "tests.test_mysql_transfer",
+      "test": "test_mysql_corpus_isolation_and_version_immutability",
+      "status": "skipped"
+    },
+    {
+      "module": "tests.test_mysql_transfer",
+      "test": "test_mysql_rolls_back_late_import_failure",
+      "status": "skipped"
+    },
+    {
+      "module": "tests.test_mysql_transfer",
+      "test": "test_mysql_enforces_scoped_foreign_keys_and_detects_tampering",
+      "status": "skipped"
+    },
+    {
+      "module": "tests.test_mysql_ingest",
+      "test": "test_new_and_shortened_guide_chunks_preserve_other_documents",
+      "status": "skipped"
+    },
+    {
+      "module": "tests.test_mysql_ingest",
+      "test": "test_case_replacement_appends_history_and_rejects_silent_metadata_loss",
+      "status": "skipped"
+    },
+    {
+      "module": "tests.test_mysql_ingest",
+      "test": "test_delete_is_scoped_and_invalid_late_edit_does_not_publish",
+      "status": "skipped"
+    },
+    {
+      "module": "tests.test_mysql_ingest",
+      "test": "test_change_plan_rejects_ambiguous_deletion_and_duplicate_targets",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_mysql_ingest",
+      "test": "test_law_rechunking_updates_article_structure_and_removes_stale_chunks",
+      "status": "skipped"
+    },
+    {
+      "module": "tests.test_mysql_ingest",
+      "test": "test_case_deletion_keeps_prior_history_queryable",
+      "status": "skipped"
+    },
+    {
+      "module": "tests.test_mysql_search",
+      "test": "test_snapshot_selection_preserves_channels_and_rejects_mixed_civil",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_mysql_search",
+      "test": "test_corruption_is_rejected_before_search[exports/base/laws.jsonl]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_mysql_search",
+      "test": "test_corruption_is_rejected_before_search[indexes/cases/index.bin]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_mysql_search",
+      "test": "test_corruption_is_rejected_before_search[exports/civil/manifest.json]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_mysql_search",
+      "test": "test_incomplete_or_changed_policy_release_is_rejected",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_mysql_search",
+      "test": "test_activation_verifies_before_atomic_pointer_replacement",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_mysql_search",
+      "test": "test_explicit_mysql_release_never_falls_back_to_another_corpus",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_mysql_search",
+      "test": "test_same_ids_with_changed_index_text_or_metadata_are_rejected",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_mysql_search",
+      "test": "test_versioned_evidence_reaches_existing_generation_chain",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_mysql_search",
+      "test": "test_reused_index_embedding_provenance_is_validated",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_mysql_search",
+      "test": "test_runtime_package_drift_is_rejected",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_mysql_search",
+      "test": "test_dependency_bootstrap_does_not_require_already_matching_runtime",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_mysql_search",
+      "test": "test_incremental_index_update_reuses_only_identical_text_vectors",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_mysql_search",
+      "test": "test_model_token_limit_is_checked_before_silent_truncation",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_mysql_search",
+      "test": "test_incremental_update_with_real_chroma",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_case_profile",
+      "test": "test_live_k_uses_same_candidate_pool_and_preserves_unrounded_rrf",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_case_profile",
+      "test": "test_court_preference_cannot_cross_rrf_band",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_case_profile",
+      "test": "test_opt_in_profile_does_not_fallback_in_actual_service_factory",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_case_profile",
+      "test": "test_profile_refuses_swapped_db_before_model_loading",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_case_profile",
+      "test": "test_revision_is_forwarded_on_both_cache_paths",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_case_profile",
+      "test": "test_explicit_paths_cannot_override_enabled_profile",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_case_profile",
+      "test": "test_installed_default_profile_is_discovered_without_environment",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_case_profile",
+      "test": "test_environment_profile_overrides_installed_default",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_case_profile",
+      "test": "test_pulled_release_without_runtime_profile_refuses_seed_fallback",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_case_profile",
+      "test": "test_generation_factory_propagates_case_installation_error",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_case_profile",
+      "test": "test_tax_guard_filters_both_members_before_refilling_and_keeps_explicit_tax",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_base_smoke_verification_does_not_attach_case_overlay",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_sources_produce_complete_unique_corpus_without_database",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_source_url_pins_version_article_and_branch",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_source_url_rejects_mixed_article_reference",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_source_manifest_cannot_drop_required_files",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_source_tampering_fails_before_parse",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_repeat_and_metadata_update_reuse_vectors",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_changed_text_embeds_only_changed_rows_and_removes_stale",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_install_failure_restores_previous_data_and_preserves_web_db[ValueError-verify]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_install_failure_restores_previous_data_and_preserves_web_db[ValueError-receipt]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_install_failure_restores_previous_data_and_preserves_web_db[KeyboardInterrupt-verify]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_install_failure_restores_previous_data_and_preserves_web_db[KeyboardInterrupt-receipt]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_interrupt_at_original_rename_restores_source_db[before]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_interrupt_at_original_rename_restores_source_db[after]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_partial_existing_data_requires_explicit_rebuild",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_owned_unchanged_build_is_skipped",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_rebuild_reuses_vectors_only_with_matching_pipeline[same]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_rebuild_reuses_vectors_only_with_matching_pipeline[changed]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_rebuild_reuses_vectors_only_with_matching_pipeline[missing]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_schema_only_change_triggers_rebuild_and_keeps_compatible_vectors",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_damaged_owned_data_requires_explicit_recovery[False-missing]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_damaged_owned_data_requires_explicit_recovery[False-manifest]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_damaged_owned_data_requires_explicit_recovery[False-inspect]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_damaged_owned_data_requires_explicit_recovery[True-missing]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_damaged_owned_data_requires_explicit_recovery[True-manifest]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_damaged_owned_data_requires_explicit_recovery[True-inspect]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_failed_recovery_preserves_damaged_original[build]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_failed_recovery_preserves_damaged_original[verify]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_schema_and_embedding_inputs_are_fingerprinted",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_installed_version_change_forces_reembedding[torch]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_installed_version_change_forces_reembedding[chromadb]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_installed_version_change_forces_reembedding[sentence-transformers]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_installed_version_change_forces_reembedding[transformers]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_installed_version_change_forces_reembedding[tokenizers]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_base_prepare_checks_pinned_snapshot_without_main_ref",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_missing_dependency_version_is_not_recorded_as_compatible",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_django_command_calls_builder_without_llm",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_failed_inspection_log_survives_temporary_snapshot_cleanup",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_worker_stdout_and_stderr_reach_console_and_log",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_worker_progress_is_flushed_before_worker_finishes",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_interrupted_output_stops_worker_before_releasing_control[KeyboardInterrupt]",
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_server_build",
+      "test": "test_interrupted_output_stops_worker_before_releasing_control[OSError]",
+      "status": "passed"
+    }
+  ]
+}

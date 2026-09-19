@@ -5,7 +5,23 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-19
+
+### Added
+
+- PATCH-057 adds versioned shared MySQL storage for legal sources, chunks and case history, transactional source updates, verified JSONL exports and an opt-in BM25/Chroma release path. On 2026-09-19, live MySQL 8.4.11 read-only verification passed for all three delivered snapshots, including 8,377 cases, full row/stream hashes and seven provenance queries. Integrates main fc87c38 while preserving PATCH-055 installation fixes and PATCH-056 sealed evaluation files. Records PR #38 as merged in LIST; PATCH-057 remains under review. Real LLM, another teammate PC and the final full suite are not verified by this run. See docs/mysql-live-verification.md. (implementation: ca16e0d)
+
+## 2026-09-18
+
+### Added
+
+- PATCH-056 freezes the received HO30 review (6 byte-preserved files), question-only input and evidence-scoring contract with SHA-256 hashes. Separates 27 statute-only and 3 mixed-source items, conditional evidence and HO-009 optional explanation; preserves original answers. Structural consistency and package integrity are checked; no LENS retrieval, generation, corpus coverage check or tuning is performed. AI-reviewed public pre-evaluation material, not a private blind benchmark or a full independent recheck of all legal sources. (commit: 96c555b)
+
 ## 2026-09-17
+
+### Added
+
+- PATCH-055 shares the data_dev_v2 corpus of 8,377 cases as Git LFS SQLite, JSONL and Chroma files, with a manifest, schema and real sample validating hashes, DB/chunk identity and pinned model revisions. `setup_data.py` activates the case profile while retaining the existing law, Civil Act and guide channels; missing setup fails explicitly rather than silently using the 26-case seed or lexical fallback. Corrects the base-build pinned revision and profile-verification boundaries, and documents team installation, retrieval, Qwen smoke commands and the full test inventory. RunPod checks confirm real retrieval, Qwen 8B output, Django HTTP 200 and repeated setup with zero re-embedding. Full suite: 2,828 passed, 3 failed, 3 errors, 4 skipped, 678 subtests passed; the failures/errors also reproduce on unchanged GitHub main. The user explicitly approved committing and pushing with these failures disclosed. This does not establish legal-answer quality, an independent evaluation pass, or completed remote LFS pull verification. (commit: 19cbfc4)
 
 ### Changed
 
