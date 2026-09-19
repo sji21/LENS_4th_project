@@ -1,0 +1,3164 @@
+{
+  "date": "2026-09-18",
+  "scope": "new-source ingestion, re-chunking, incremental index refresh and rollback",
+  "tests": {
+    "mysql_and_retrieval": 130,
+    "subtests": 86,
+    "existing_ingestion": 68
+  },
+  "code_sha256": {
+    "src/ingestion/mysql_ingest.py": "956edc8498ed3e7e9d4292394a26133e1144a14f33638021f7b47e46a9e3cdd9",
+    "src/ingestion/mysql_search.py": "1013f91409bd42f0dfa3ad138e850e31097c0f86e2fd4344be58bcbe9eaa5738",
+    "src/database/relational.py": "c687e47cce9b9c22e16dbc4cb2036a8a5700ad390f32ceb529ee3f7f5da7ca60",
+    "tests/test_mysql_ingest.py": "0da1d6529618cf4dab3ee11d5eddf6de453532709c68efc55a23cc94203ab1f9",
+    "tests/test_mysql_search.py": "5d0cbd42bd02519b0032232a4d383b4d75d17a3ce09562ca31a8395f0a933868"
+  },
+  "shared_ingestion": {
+    "results": [
+      {
+        "snapshot_id": "9299e776b907315b271f426c1477d5715ef87968451deaab138986b8dc7ab6f9",
+        "created": true
+      },
+      {
+        "snapshot_id": "9299e776b907315b271f426c1477d5715ef87968451deaab138986b8dc7ab6f9",
+        "created": false
+      }
+    ],
+    "parent_snapshot": "32a38460d9804874282f03b0b79cdf6a42849d2611451d341e776ba3cda2a854",
+    "version": "server-rechunk-v2-20260918",
+    "same_input_replay_verified": true
+  },
+  "activation": {
+    "previous_release_id": "671389f456ac88761def4a39a577a851513ec9257978e3cb94a4b7122a15da23",
+    "new_release_id": "7e0ef225ce5053562d805a0dd8a6facea4e80bb07d2d66d17fb58169c9e49f40",
+    "upgrade_verified": true,
+    "incomplete_release_preserved_active_pointer": true,
+    "rollback_verified": true,
+    "local_app_pointer_updated": true
+  },
+  "final_release_identity": {
+    "regression_reference_release_id": "82a81cffa0fe2304a1bb04a74a951984549ebf9af306b50a02d5a3beea1471e0",
+    "final_release_id": "7e0ef225ce5053562d805a0dd8a6facea4e80bb07d2d66d17fb58169c9e49f40",
+    "all_chunk_rows_and_order_identical": true,
+    "all_logical_indexes_identical": true,
+    "retrieval_code_and_packages_identical": true
+  },
+  "fresh_app_and_source_trace": {
+    "release_id": "7e0ef225ce5053562d805a0dd8a6facea4e80bb07d2d66d17fb58169c9e49f40",
+    "fresh_app_process_verified": true,
+    "channel_counts": {
+      "cases": 2,
+      "laws": 5,
+      "civil_laws": 3,
+      "guides": 1
+    },
+    "shared_mysql_traces": [
+      {
+        "channel": "cases",
+        "snapshot_id": "bb0244db08f107fac78bba53ebe3f931107c52dd12b899c4718cc9f52b0054a2",
+        "chunk_id": "case:622247#0",
+        "text_and_url_match": true
+      },
+      {
+        "channel": "cases",
+        "snapshot_id": "bb0244db08f107fac78bba53ebe3f931107c52dd12b899c4718cc9f52b0054a2",
+        "chunk_id": "case:75928#0",
+        "text_and_url_match": true
+      },
+      {
+        "channel": "laws",
+        "snapshot_id": "9299e776b907315b271f426c1477d5715ef87968451deaab138986b8dc7ab6f9",
+        "chunk_id": "law-주택임대차보호법-20260102#제10조의2#0",
+        "text_and_url_match": true
+      },
+      {
+        "channel": "laws",
+        "snapshot_id": "9299e776b907315b271f426c1477d5715ef87968451deaab138986b8dc7ab6f9",
+        "chunk_id": "law-주택임대차보호법-20260102#제13조#0",
+        "text_and_url_match": true
+      },
+      {
+        "channel": "laws",
+        "snapshot_id": "9299e776b907315b271f426c1477d5715ef87968451deaab138986b8dc7ab6f9",
+        "chunk_id": "law-주택임대차보호법-20260102#제3조의2#0",
+        "text_and_url_match": true
+      },
+      {
+        "channel": "laws",
+        "snapshot_id": "9299e776b907315b271f426c1477d5715ef87968451deaab138986b8dc7ab6f9",
+        "chunk_id": "law-주택임대차보호법-20260102#제12조#0",
+        "text_and_url_match": true
+      },
+      {
+        "channel": "laws",
+        "snapshot_id": "9299e776b907315b271f426c1477d5715ef87968451deaab138986b8dc7ab6f9",
+        "chunk_id": "law-주택임대차보호법-20260102#제3조의3#0",
+        "text_and_url_match": true
+      },
+      {
+        "channel": "civil_laws",
+        "snapshot_id": "8b7450f623745147ea75365e15d39278fa4f4c14bb8af0b6ef7f8acb20fc51f5",
+        "chunk_id": "law-민법-20260317#제626조#0",
+        "text_and_url_match": true
+      },
+      {
+        "channel": "civil_laws",
+        "snapshot_id": "8b7450f623745147ea75365e15d39278fa4f4c14bb8af0b6ef7f8acb20fc51f5",
+        "chunk_id": "law-민법-20260317#제536조#0",
+        "text_and_url_match": true
+      },
+      {
+        "channel": "civil_laws",
+        "snapshot_id": "8b7450f623745147ea75365e15d39278fa4f4c14bb8af0b6ef7f8acb20fc51f5",
+        "chunk_id": "law-민법-20260317#제390조#0",
+        "text_and_url_match": true
+      },
+      {
+        "channel": "guides",
+        "snapshot_id": "9299e776b907315b271f426c1477d5715ef87968451deaab138986b8dc7ab6f9",
+        "chunk_id": "guide-HUG-전세보증금반환보증#0",
+        "text_and_url_match": true
+      }
+    ],
+    "actual_llm_verified": false
+  },
+  "regression": {
+    "schema": "lens-mysql-search-regression-v1",
+    "release_id": "82a81cffa0fe2304a1bb04a74a951984549ebf9af306b50a02d5a3beea1471e0",
+    "scope": "original-JSONL-vs-MySQL-exports-with-identical-verified-indexes",
+    "runtime_versions": {
+      "chromadb": "1.5.9",
+      "numpy": "1.26.4",
+      "sentence-transformers": "6.0.1",
+      "torch": "2.14.0",
+      "transformers": "5.17.0",
+      "tokenizers": "0.23.2"
+    },
+    "inputs": {
+      "tmp\\mysql-baseline\\base\\chunks\\chunks.jsonl": "8784c57ca4f2ba4ece469cf8f773e225bec0d8d0a1c54563e0e4b22add8ce324",
+      "tmp\\mysql-baseline\\base\\chunks\\cases.jsonl": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
+      "tmp\\mysql-baseline\\base\\chunks\\guides.jsonl": "af164031a3fde6a0520b1cf7023ad591d023cbf50db42a73f81784498d69a317",
+      "data\\case_corpus\\chunks\\laws.jsonl": "5817d0edc2a864c9af9cf62332e83dcd52c47720d7b55874038a964ea28caa5b",
+      "data\\case_corpus\\chunks\\cases.jsonl": "353c0473208ea11dc060e9d5267a1a275c5e0c462c253b4f18c4e2b6cc351054",
+      "data\\case_corpus\\chunks\\guides.jsonl": "9f79634cb2d2de8b742bf06cf049f1257f00a09b804b79480f20e13284c236ca",
+      "data\\eval\\dev.jsonl": "9e5ab5154b88fd66b5bd597f22c26cf4f633e0451efc7aa863469289f199103d",
+      "data\\eval\\holdout.jsonl": "62bfaa804e42bd436d2dcfda37ae38190c64dcd87f93c33e5d17296dac2964cf",
+      "data\\eval\\case_holdout_current_20.jsonl": "aaf518f87d98a05e0aee7d9220bb46f3a1ba930c8fb1e6e4afeaf0956e55c947",
+      "data\\eval\\minbeop_review_holdout_20260901.jsonl": "abfa66775f5d75ddc683ddb647cc4dafd8acf7861be1113052c3668620ce71d7"
+    },
+    "questions": 89,
+    "identical_results": 89,
+    "queries_with_channel_results": {
+      "laws": 89,
+      "civil_laws": 89,
+      "cases": 89,
+      "guides": 4
+    },
+    "gold_questions": 78,
+    "gold_questions_with_any_hit": 65,
+    "gold_questions_with_all_hits": 58,
+    "gold_questions_with_missing_corpus_evidence": 8,
+    "parity_pass": true,
+    "llm_verified": false,
+    "application_quality_verified": false,
+    "results": [
+      {
+        "qid": "dev-001",
+        "dataset": "dev.jsonl",
+        "question": "전입신고만 하고 확정일자를 안 받으면 어떻게 되나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제9조#0",
+            "law-주택임대차보호법-20260102#제3조의6#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제357조#0",
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제636조#0"
+          ],
+          "cases": [
+            "case:185576#0",
+            "case:195245#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조",
+          "주택임대차보호법-제3조의2"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조",
+          "주택임대차보호법-제3조의2"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-002",
+        "dataset": "dev.jsonl",
+        "question": "대항력은 언제부터 생기나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법시행령-20260701#제2조#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제3조의5#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제3조의4#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제147조#0",
+            "law-민법-20260317#제548조#0",
+            "law-민법-20260317#제111조#0"
+          ],
+          "cases": [
+            "case:195245#0",
+            "case:196036#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-003",
+        "dataset": "dev.jsonl",
+        "question": "전세 사는 중에 집주인이 바뀌면 보증금은 어떻게 되나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-민간임대주택에관한특별법시행규칙-20251219#제18조#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제12조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제640조#0"
+          ],
+          "cases": [
+            "case:81841#0",
+            "case:198221#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-004",
+        "dataset": "dev.jsonl",
+        "question": "경매로 넘어갔을 때 다른 채권자보다 먼저 보증금을 받으려면 뭐가 필요한가요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-민사집행법-20260201#제83조#0",
+            "law-주택임대차보호법시행령-20260701#제10조#0",
+            "law-민사소송법-20250712#제462조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제536조#0",
+            "law-민법-20260317#제623조#0",
+            "law-민법-20260317#제187조#0"
+          ],
+          "cases": [
+            "case:195162#0",
+            "case:195329#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조의2"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조의2"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-005",
+        "dataset": "dev.jsonl",
+        "question": "보증금을 못 받았는데 이사를 가야 합니다. 어떻게 해야 하나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제12조#0",
+            "law-상법-20260723#제389조#0",
+            "law-민간임대주택에관한특별법시행규칙-20251219#제18조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제536조#0",
+            "law-민법-20260317#제390조#0",
+            "law-민법-20260317#제187조#0"
+          ],
+          "cases": [
+            "case:76035#0",
+            "case:199772#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조의3"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조의3"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-006",
+        "dataset": "dev.jsonl",
+        "question": "임차권등기명령은 언제 신청할 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제6조#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-민간임대주택에관한특별법-20260102#제5조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제186조#0",
+            "law-민법-20260317#제187조#0",
+            "law-민법-20260317#제634조#0"
+          ],
+          "cases": [
+            "case:193863#0",
+            "case:599787#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조의3"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조의3"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-007",
+        "dataset": "dev.jsonl",
+        "question": "임차권등기에 든 비용은 누가 부담하나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제12조#0",
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0",
+            "law-부동산등기법-20250131#제91조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제186조#0",
+            "law-민법-20260317#제187조#0",
+            "law-민법-20260317#제626조#0"
+          ],
+          "cases": [
+            "case:193797#0",
+            "case:95917#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조의3"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조의3"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-008",
+        "dataset": "dev.jsonl",
+        "question": "계약서에 1년으로 적었는데 그대로 1년만 살아야 하나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-공공주택특별법-20260908#제49조의2#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제7조#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제4조#0",
+            "law-민간임대주택에관한특별법-20260102#제47조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제640조#0",
+            "law-민법-20260317#제548조#0"
+          ],
+          "cases": [
+            "case:81923#0",
+            "case:203653#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제4조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제4조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-009",
+        "dataset": "dev.jsonl",
+        "question": "계약기간이 끝났는데 보증금을 못 받으면 임대차가 종료되나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제4조#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-민간임대주택에관한특별법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제3조의5#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제640조#0",
+            "law-민법-20260317#제626조#0"
+          ],
+          "cases": [
+            "case:211709#0",
+            "case:81841#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제4조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제4조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-010",
+        "dataset": "dev.jsonl",
+        "question": "아무 통지 없이 계약이 자동 연장되면 기간은 얼마가 되나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제6조의2#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제4조#0",
+            "law-주택임대차보호법-20260102#제23조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제640조#0"
+          ],
+          "cases": [
+            "case:203653#0",
+            "case:81923#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제6조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제6조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-011",
+        "dataset": "dev.jsonl",
+        "question": "묵시적 갱신이 된 뒤에 중간에 나가고 싶으면 어떻게 하나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조의2#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-민간임대주택에관한특별법시행령-20260226#제35조#0",
+            "law-민사집행법-20260201#제83조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제390조#0",
+            "law-민법-20260317#제627조#0",
+            "law-민법-20260317#제548조#0"
+          ],
+          "cases": [
+            "case:154908#0",
+            "case:211719#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제6조의2"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제6조의2"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-012",
+        "dataset": "dev.jsonl",
+        "question": "계약갱신요구권은 몇 번까지 쓸 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제6조의2#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법시행령-20260701#제6조#0",
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제536조#0",
+            "law-민법-20260317#제640조#0"
+          ],
+          "cases": [
+            "case:239217#0",
+            "case:219821#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제6조의3"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제6조의3"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-013",
+        "dataset": "dev.jsonl",
+        "question": "집주인이 본인이 들어와 산다고 하면 갱신을 거절할 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-공공주택특별법-20260908#제49조의3#0",
+            "law-민간임대주택에관한특별법-20260102#제45조#0",
+            "law-공공주택특별법시행령-20260908#제47조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제536조#0"
+          ],
+          "cases": [
+            "case:83816#0",
+            "case:200720#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제6조의3"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제6조의3"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-014",
+        "dataset": "dev.jsonl",
+        "question": "보증금을 올려달라고 하는데 상한이 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제7조#0",
+            "law-주택임대차보호법시행령-20260701#제8조#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법시행령-20260701#제10조#0",
+            "law-부동산거래신고등에관한법률시행령-20260529#제4조의3#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제187조#0",
+            "law-민법-20260317#제627조#0",
+            "law-민법-20260317#제357조#0"
+          ],
+          "cases": [
+            "case:107186#0",
+            "case:194234#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제7조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제7조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-015",
+        "dataset": "dev.jsonl",
+        "question": "전세를 반전세로 돌릴 때 월세는 어떻게 계산되나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제7조의2#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법시행령-20260701#제9조#0",
+            "law-주택임대차보호법-20260102#제12조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제640조#0",
+            "law-민법-20260317#제627조#0",
+            "law-민법-20260317#제626조#0"
+          ],
+          "cases": [
+            "case:120816#0",
+            "case:149345#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제7조의2",
+          "주택임대차보호법 시행령-제9조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법 시행령-제9조",
+          "주택임대차보호법-제7조의2"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-016",
+        "dataset": "dev.jsonl",
+        "question": "상한을 넘겨서 올려준 보증금은 돌려받을 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법-20260102#제7조#0",
+            "law-주택임대차보호법시행령-20260701#제8조#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-민간임대주택에관한특별법-20260102#제44조의2#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제548조#0",
+            "law-민법-20260317#제357조#0",
+            "law-민법-20260317#제626조#0"
+          ],
+          "cases": [
+            "case:107186#0",
+            "case:194367#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제10조의2"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제10조의2"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-017",
+        "dataset": "dev.jsonl",
+        "question": "계약 전에 집주인이 세금을 안 낸 게 있는지 확인할 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-국세징수법시행령-20260227#제97조#0",
+            "law-주택임대차보호법-20260102#제3조의7#0",
+            "law-지방세징수법-20260205#제6조#0",
+            "law-국세징수법-20260602#제109조#0",
+            "law-지방세징수법시행령-20260205#제8조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제640조#0"
+          ],
+          "cases": [
+            "case:69938#0",
+            "case:198976#0"
+          ],
+          "guides": [
+            "guide-국세청-미납국세열람#0"
+          ]
+        },
+        "gold": [
+          "주택임대차보호법-제3조의7",
+          "guide-국세청-미납국세열람"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조의7"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-018",
+        "dataset": "dev.jsonl",
+        "question": "확정일자는 어디서 받나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조의6#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제7조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제3조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제11조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제6조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제357조#0",
+            "law-민법-20260317#제548조#0",
+            "law-민법-20260317#제147조#0"
+          ],
+          "cases": [
+            "case:154412#0",
+            "case:117574#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조의6"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조의6"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-019",
+        "dataset": "dev.jsonl",
+        "question": "임차인에게 불리한 특약을 계약서에 넣으면 효력이 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제10조#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-공공주택특별법-20260908#제49조의2#0",
+            "law-주택임대차보호법-20260102#제6조의2#0",
+            "law-민간임대주택에관한특별법-20260102#제45조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제105조#0",
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제627조#0"
+          ],
+          "cases": [
+            "case:114992#0",
+            "case:150882#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제10조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제10조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-020",
+        "dataset": "dev.jsonl",
+        "question": "등기를 안 한 전세계약도 주택임대차보호법의 보호를 받나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제12조#0",
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제187조#0",
+            "law-민법-20260317#제186조#0",
+            "law-민법-20260317#제636조#0"
+          ],
+          "cases": [
+            "case:85674#0",
+            "case:198740#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제12조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제12조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-021",
+        "dataset": "dev.jsonl",
+        "question": "임대인과 분쟁이 생겼을 때 소송 말고 조정을 신청할 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제21조#0",
+            "law-주택임대차보호법-20260102#제14조#0",
+            "law-주택임대차보호법-20260102#제25조#0",
+            "law-주택임대차보호법-20260102#제24조#0",
+            "law-주택임대차보호법시행령-20260701#제30조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제627조#0"
+          ],
+          "cases": [
+            "case:194234#0",
+            "case:200010#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제21조",
+          "주택임대차보호법-제14조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제14조",
+          "주택임대차보호법-제21조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-022",
+        "dataset": "dev.jsonl",
+        "question": "제3조의2 우선변제권과 제8조 최우선변제는 어떻게 다른가요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법시행령-20260701#제11조#0",
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-주택임대차보호법시행령-20260701#제10조#0",
+            "law-주택임대차보호법-20260102#제3조의3#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제470조#0",
+            "law-민법-20260317#제543조#0",
+            "law-민법-20260317#제536조#0"
+          ],
+          "cases": [
+            "case:85136#0",
+            "case:196792#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조의2",
+          "주택임대차보호법-제8조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조의2",
+          "주택임대차보호법-제8조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-023",
+        "dataset": "dev.jsonl",
+        "question": "전세보증금반환보증은 어떤 제도인가요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제12조#0",
+            "law-주택임대차보호법-20260102#제13조#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법-20260102#제8조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제615조#0",
+            "law-민법-20260317#제654조#0",
+            "law-민법-20260317#제548조#0"
+          ],
+          "cases": [
+            "case:99987#0",
+            "case:75928#0"
+          ],
+          "guides": [
+            "guide-HUG-전세보증금반환보증#0"
+          ]
+        },
+        "gold": [
+          "guide-HUG-전세보증금반환보증"
+        ],
+        "gold_hits": [],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-024",
+        "dataset": "dev.jsonl",
+        "question": "소액임차인 최우선변제 금액은 지역별로 얼마인가요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법시행령-20260701#제11조#0",
+            "law-주택임대차보호법시행령-20260701#제10조#0",
+            "law-주택임대차보호법시행령-20260701#제33조#0",
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-주택임대차보호법-20260102#제3조의2#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제627조#0",
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제640조#0"
+          ],
+          "cases": [
+            "case:120731#0",
+            "case:148876#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법 시행령-제10조",
+          "주택임대차보호법 시행령-제11조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법 시행령-제10조",
+          "주택임대차보호법 시행령-제11조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-025",
+        "dataset": "dev.jsonl",
+        "question": "월차임 전환율의 구체적인 퍼센트는 몇 프로인가요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법시행령-20260701#제9조#0",
+            "law-주택임대차보호법-20260102#제7조의2#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-민간임대주택에관한특별법시행규칙-20251219#제18조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제640조#0",
+            "law-민법-20260317#제627조#0",
+            "law-민법-20260317#제548조#0"
+          ],
+          "cases": [
+            "case:148240#0",
+            "case:143913#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법 시행령-제9조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법 시행령-제9조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-026",
+        "dataset": "dev.jsonl",
+        "question": "이 집 계약해도 안전할까요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제12조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0",
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0",
+            "law-부동산거래신고등에관한법률시행령-20260529#제4조의3#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제357조#0",
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제640조#0"
+          ],
+          "cases": [
+            "case:75184#0",
+            "case:193798#0"
+          ],
+          "guides": []
+        },
+        "gold": [],
+        "gold_hits": [],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "dev-027",
+        "dataset": "dev.jsonl",
+        "question": "이 아파트 시세가 얼마인가요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법시행령-20260701#제28조#0",
+            "law-주택임대차보호법-20260102#제12조#0",
+            "law-민간임대주택에관한특별법-20260102#제6조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제9조#0",
+            "law-주택임대차보호법시행령-20260701#제10조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제357조#0",
+            "law-민법-20260317#제640조#0"
+          ],
+          "cases": [
+            "case:106804#0",
+            "case:172085#0"
+          ],
+          "guides": []
+        },
+        "gold": [],
+        "gold_hits": [],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-001",
+        "dataset": "holdout.jsonl",
+        "question": "계약이 끝났는데 집주인이 보증금을 안 돌려주면 어떻게 해야 하나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법-20260102#제6조의2#0",
+            "law-주택임대차보호법-20260102#제4조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제640조#0"
+          ],
+          "cases": [
+            "case:129655#0",
+            "case:81841#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조의2",
+          "주택임대차보호법-제3조의3"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조의2"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-002",
+        "dataset": "holdout.jsonl",
+        "question": "전입신고만 하면 보증금을 보호받을 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제3조의4#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제357조#0",
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제626조#0"
+          ],
+          "cases": [
+            "case:185576#0",
+            "case:195245#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조",
+          "주택임대차보호법-제3조의2"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조",
+          "주택임대차보호법-제3조의2"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-003",
+        "dataset": "holdout.jsonl",
+        "question": "확정일자는 어디에서 받을 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조의6#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제7조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제6조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제11조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제3조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제357조#0",
+            "law-민법-20260317#제118조#0",
+            "law-민법-20260317#제147조#0"
+          ],
+          "cases": [
+            "case:154412#0",
+            "case:117574#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조의6"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조의6"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-004",
+        "dataset": "holdout.jsonl",
+        "question": "전입신고와 확정일자는 계약한 날 바로 받아야 하나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0",
+            "law-주택임대차보호법-20260102#제3조의6#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법시행령-20260701#제4조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제7조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제548조#0",
+            "law-민법-20260317#제357조#0",
+            "law-민법-20260317#제636조#0"
+          ],
+          "cases": [
+            "case:85387#0",
+            "case:195245#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조",
+          "주택임대차보호법-제3조의2"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-005",
+        "dataset": "holdout.jsonl",
+        "question": "집주인이 바뀌면 전세 계약서를 새로 써야 하나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-공공주택특별법-20260908#제49조의2#0",
+            "law-주택임대차보호법-20260102#제3조의7#0",
+            "law-민간임대주택에관한특별법-20260102#제46조#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제623조#0",
+            "law-민법-20260317#제636조#0"
+          ],
+          "cases": [
+            "case:194767#0",
+            "case:184232#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-006",
+        "dataset": "holdout.jsonl",
+        "question": "계약 기간이 남아 있는데 세입자가 먼저 나가려면 어떻게 해야 하나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제4조#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-공공주택특별법시행규칙-20260824#제25조#0",
+            "law-공공주택특별법시행령-20260908#제47조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제640조#0",
+            "law-민법-20260317#제626조#0"
+          ],
+          "cases": [
+            "case:211785#0",
+            "case:197481#0"
+          ],
+          "guides": []
+        },
+        "gold": [],
+        "gold_hits": [],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-007",
+        "dataset": "holdout.jsonl",
+        "question": "계약을 다시 연장하고 싶다고 집주인에게 언제까지 말해야 하나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제6조의2#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-공공주택특별법-20260908#제49조의2#0",
+            "law-민간임대주택에관한특별법-20260102#제46조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제640조#0",
+            "law-민법-20260317#제636조#0"
+          ],
+          "cases": [
+            "case:239217#0",
+            "case:238197#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제6조",
+          "주택임대차보호법-제6조의3"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제6조",
+          "주택임대차보호법-제6조의3"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-008",
+        "dataset": "holdout.jsonl",
+        "question": "집주인이 전세를 월세로 바꾸자고 하면 꼭 동의해야 하나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제7조의2#0",
+            "law-민간임대주택에관한특별법시행규칙-20251219#제18조#0",
+            "law-주택임대차보호법-20260102#제3조의7#0",
+            "law-주택임대차보호법-20260102#제10조의2#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제640조#0",
+            "law-민법-20260317#제634조#0"
+          ],
+          "cases": [
+            "case:199734#0",
+            "case:149345#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제7조의2",
+          "주택임대차보호법 시행령-제9조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제7조의2"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-009",
+        "dataset": "holdout.jsonl",
+        "question": "살고 있는 집이 경매로 넘어갔는지 어디에서 확인할 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조의5#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제6조#0",
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0",
+            "law-민사집행법-20260201#제83조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제187조#0",
+            "law-민법-20260317#제470조#0",
+            "law-민법-20260317#제634조#0"
+          ],
+          "cases": [
+            "case:195296#0",
+            "case:184689#0"
+          ],
+          "guides": []
+        },
+        "gold": [],
+        "gold_hits": [],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-010",
+        "dataset": "holdout.jsonl",
+        "question": "보증금을 못 받은 채 이사해야 할 때 임차권등기는 어떻게 신청하나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제12조#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-민간임대주택에관한특별법-20260102#제5조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제187조#0",
+            "law-민법-20260317#제536조#0",
+            "law-민법-20260317#제186조#0"
+          ],
+          "cases": [
+            "case:193797#0",
+            "case:69647#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조의3"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조의3"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-011",
+        "dataset": "holdout.jsonl",
+        "question": "계약이 자동으로 연장된 뒤 세입자가 나가겠다고 하면 언제 계약이 끝나나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조의2#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-공공주택특별법시행령-20260908#제47조#0",
+            "law-민간임대주택에관한특별법-20260102#제46조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제640조#0",
+            "law-민법-20260317#제627조#0",
+            "law-민법-20260317#제629조#0"
+          ],
+          "cases": [
+            "case:198207#0",
+            "case:239217#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제6조의2"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제6조의2"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-012",
+        "dataset": "holdout.jsonl",
+        "question": "계약갱신요구권을 한 번 쓰면 다음 계약 때는 다시 쓸 수 없나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제6조의2#0",
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0",
+            "law-주택임대차보호법-20260102#제7조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제640조#0",
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제548조#0"
+          ],
+          "cases": [
+            "case:239217#0",
+            "case:226829#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제6조의3"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제6조의3"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-013",
+        "dataset": "holdout.jsonl",
+        "question": "집주인이 직접 살겠다는 이유로 계약 연장을 거절할 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-민간임대주택에관한특별법시행령-20260226#제35조#0",
+            "law-민간임대주택에관한특별법-20260102#제45조#0",
+            "law-공공주택특별법-20260908#제49조의3#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제536조#0",
+            "law-민법-20260317#제636조#0"
+          ],
+          "cases": [
+            "case:238197#0",
+            "case:226829#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제6조의3"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제6조의3"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-014",
+        "dataset": "holdout.jsonl",
+        "question": "전세보증금을 월세로 바꿀 때 월세 금액에 법적인 제한이 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제7조의2#0",
+            "law-주택임대차보호법시행령-20260701#제10조#0",
+            "law-민간임대주택에관한특별법시행규칙-20251219#제18조#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법-20260102#제6조의3#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제640조#0",
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제626조#0"
+          ],
+          "cases": [
+            "case:278724#0",
+            "case:81207#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제7조의2",
+          "주택임대차보호법 시행령-제9조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제7조의2"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-015",
+        "dataset": "holdout.jsonl",
+        "question": "집이 경매로 팔리면 세입자는 보증금을 어떤 순서로 돌려받나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법-20260102#제3조의5#0",
+            "law-주택임대차보호법시행령-20260701#제10조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제548조#0",
+            "law-민법-20260317#제634조#0"
+          ],
+          "cases": [
+            "case:195329#0",
+            "case:196921#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조의2",
+          "주택임대차보호법-제8조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조의2",
+          "주택임대차보호법-제8조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-016",
+        "dataset": "holdout.jsonl",
+        "question": "임차권등기를 신청한 뒤 등기가 끝나기 전에 이사해도 되나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-공공주택특별법시행규칙-20260824#제25조#0",
+            "law-주택임대차보호법-20260102#제3조의2#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제186조#0",
+            "law-민법-20260317#제187조#0",
+            "law-민법-20260317#제629조#0"
+          ],
+          "cases": [
+            "case:599787#0",
+            "case:193863#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조의3"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조의3"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-017",
+        "dataset": "holdout.jsonl",
+        "question": "보증금이 적은 세입자는 경매 때 다른 채권자보다 먼저 일부를 받을 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-주택임대차보호법시행령-20260701#제11조#0",
+            "law-주택임대차보호법-20260102#제3조의5#0",
+            "law-주택임대차보호법-20260102#제7조의2#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제627조#0",
+            "law-민법-20260317#제536조#0",
+            "law-민법-20260317#제357조#0"
+          ],
+          "cases": [
+            "case:192109#0",
+            "case:195162#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제8조",
+          "주택임대차보호법 시행령-제10조",
+          "주택임대차보호법 시행령-제11조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법 시행령-제11조",
+          "주택임대차보호법-제8조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-018",
+        "dataset": "holdout.jsonl",
+        "question": "전입신고를 했다가 잠시 다른 곳으로 옮기면 보증금 보호 효력이 사라지나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0",
+            "law-주택임대차보호법-20260102#제3조의2#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제186조#0",
+            "law-민법-20260317#제470조#0",
+            "law-민법-20260317#제357조#0"
+          ],
+          "cases": [
+            "case:195245#0",
+            "case:69867#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-019",
+        "dataset": "holdout.jsonl",
+        "question": "집주인이 실제로 살겠다며 내보낸 뒤 다른 사람에게 세를 놓으면 손해배상을 청구할 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-공공주택특별법-20260908#제49조의3#0",
+            "law-민간임대주택에관한특별법-20260102#제44조의2#0",
+            "law-공공주택특별법시행규칙-20260824#제25조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제390조#0",
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제627조#0"
+          ],
+          "cases": [
+            "case:120587#0",
+            "case:209131#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제6조의3"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제6조의3"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "holdout-020",
+        "dataset": "holdout.jsonl",
+        "question": "계약 당시 집에 빚이 없었는데 나중에 집주인이 담보대출을 받으면 보증금 순위는 어떻게 되나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법시행령-20260701#제10조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제10조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제357조#0",
+            "law-민법-20260317#제536조#0",
+            "law-민법-20260317#제636조#0"
+          ],
+          "cases": [
+            "case:148876#0",
+            "case:616251#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조의2"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조의2"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "case-holdout-001",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "임차인의 관리 소홀로 임차주택에 불이 나 건물이 소실됐지만 임대인이 보험금을 받은 경우, 임대인이 임차인에게 다시 손해배상을 청구할 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제10조의2#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제627조#0"
+          ],
+          "cases": [
+            "case:76754#0",
+            "case:75829#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "75829"
+        ],
+        "gold_hits": [
+          "75829"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "case-holdout-002",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "제3자가 임차인 몰래 퇴거신고를 했다가 대출 절차 후 주민등록을 원상복구한 경우, 임차인은 대항력을 잃나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-주택임대차보호법-20260102#제3조의2#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제615조#0",
+            "law-민법-20260317#제654조#0",
+            "law-민법-20260317#제629조#0"
+          ],
+          "cases": [
+            "case:605771#0",
+            "case:195245#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "118615"
+        ],
+        "gold_hits": [],
+        "gold_missing_from_corpus": [
+          "118615"
+        ]
+      },
+      {
+        "qid": "case-holdout-003",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "아파트 분양 뒤 일정 기간 임차권 양도가 금지돼 있어도, 당사자 사이의 임차권 양도계약까지 무효가 되나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제10조#0",
+            "law-민간임대주택에관한특별법-20260102#제6조#0",
+            "law-공공주택특별법시행령-20260908#제47조#0",
+            "law-공공주택특별법-20260908#제49조의3#0",
+            "law-주택임대차보호법-20260102#제3조의5#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제536조#0"
+          ],
+          "cases": [
+            "case:200867#0",
+            "case:201827#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "201827"
+        ],
+        "gold_hits": [
+          "201827"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "case-holdout-004",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "주택 소유권을 채권 담보 목적으로만 넘겨받은 양도담보권자도 임대인의 지위를 승계한 양수인인가요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제9조#0",
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-주택임대차보호법시행령-20260701#제5조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제186조#0",
+            "law-민법-20260317#제623조#0",
+            "law-민법-20260317#제187조#0"
+          ],
+          "cases": [
+            "case:200844#0",
+            "case:81422#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "200844"
+        ],
+        "gold_hits": [
+          "200844"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "case-holdout-005",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "일반 주택임대차에서 임대인은 임차인의 안전이나 도난 방지까지 보호할 의무가 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제3조의7#0",
+            "law-주택임대차보호법-20260102#제9조#0",
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-민간임대주택에관한특별법-20260102#제6조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제623조#0",
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제634조#0"
+          ],
+          "cases": [
+            "case:117855#0",
+            "case:199772#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "117855"
+        ],
+        "gold_hits": [
+          "117855"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "case-holdout-006",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "여러 임차인이 같은 사람을 임대인이라고 주장하며 각자 보증금 반환을 청구할 때 선정당사자를 세울 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법-20260102#제13조#0",
+            "law-민간임대주택에관한특별법-20260102#제44조의2#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제3조의3#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제627조#0"
+          ],
+          "cases": [
+            "case:194367#0",
+            "case:191297#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "192145"
+        ],
+        "gold_hits": [],
+        "gold_missing_from_corpus": [
+          "192145"
+        ]
+      },
+      {
+        "qid": "case-holdout-007",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "전입신고 당시 실제 건물 지번과 주소가 일치했는데 이후 토지 분할로 지번이 바뀐 경우에도 주민등록 공시는 유효한가요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0",
+            "law-주민등록법-20250722#제16조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제9조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제632조#0",
+            "law-민법-20260317#제186조#0"
+          ],
+          "cases": [
+            "case:125302#0",
+            "case:103765#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "190337"
+        ],
+        "gold_hits": [],
+        "gold_missing_from_corpus": [
+          "190337"
+        ]
+      },
+      {
+        "qid": "case-holdout-008",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "전입신고 후 토지 분할로 지번이 바뀌었는데, 경매개시결정 등기 뒤에야 주민등록 주소를 새 지번으로 고쳤다면 경락인에게 대항할 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-민사집행법-20260201#제83조#0",
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0",
+            "law-주민등록법-20250722#제16조#0",
+            "law-주택임대차보호법-20260102#제3조의4#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제623조#0",
+            "law-민법-20260317#제186조#0",
+            "law-민법-20260317#제187조#0"
+          ],
+          "cases": [
+            "case:205138#0",
+            "case:106804#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "190669"
+        ],
+        "gold_hits": [],
+        "gold_missing_from_corpus": [
+          "190669"
+        ]
+      },
+      {
+        "qid": "case-holdout-009",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "건물에 양도담보가 설정된 뒤 대항요건을 갖춘 임차인이 있으면, 양도담보권자는 담보 실행으로 임차인에게 명도를 청구할 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-민간임대주택에관한특별법-20260102#제6조#0",
+            "law-공공주택특별법시행규칙-20260824#제25조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제627조#0"
+          ],
+          "cases": [
+            "case:191129#0",
+            "case:94591#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "191129"
+        ],
+        "gold_hits": [
+          "191129"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "case-holdout-010",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "임차주택이 매매되어 소유자가 바뀐 뒤, 임차인은 이전 임대인과 새 소유자 중 누구에게 보증금 반환을 청구할 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-민간임대주택에관한특별법-20260102#제44조의2#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제8조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제186조#0",
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제634조#0"
+          ],
+          "cases": [
+            "case:233877#0",
+            "case:194367#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "71381"
+        ],
+        "gold_hits": [],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "case-holdout-011",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "임차인이 이사하면서 임대인에게 알리지 않았다면, 목적물 명도의 이행제공을 했다고 보아 보증금 반환 지체책임을 물을 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법시행령-20260701#제6조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제536조#0",
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제626조#0"
+          ],
+          "cases": [
+            "case:622971#0",
+            "case:203263#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "81316"
+        ],
+        "gold_hits": [],
+        "gold_missing_from_corpus": [
+          "81316"
+        ]
+      },
+      {
+        "qid": "case-holdout-012",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "기존 채권을 우선변제받으려고 실제 거주 의사 없이 주택임대차 형식과 전입신고만 갖춘 경우에도 대항력이 인정되나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제470조#0",
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제536조#0"
+          ],
+          "cases": [
+            "case:185576#0",
+            "case:195245#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "81330"
+        ],
+        "gold_hits": [],
+        "gold_missing_from_corpus": [
+          "81330"
+        ]
+      },
+      {
+        "qid": "case-holdout-013",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "대항력 있는 임대차가 끝났지만 보증금을 받지 못한 상태에서 주택이 양도되면, 새 소유자는 보증금 반환의무를 승계하나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-민간임대주택에관한특별법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제3조의5#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제186조#0",
+            "law-민법-20260317#제187조#0",
+            "law-민법-20260317#제626조#0"
+          ],
+          "cases": [
+            "case:81841#0",
+            "case:218441#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "81841"
+        ],
+        "gold_hits": [
+          "81841"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "case-holdout-014",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "임대인의 소유권 취득 계약이 나중에 해제됐더라도, 그 전에 인도와 주민등록을 마친 임차인은 소유권을 회복한 사람에게 대항할 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-주민등록법-20250722#제16조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제186조#0",
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제640조#0"
+          ],
+          "cases": [
+            "case:194464#0",
+            "case:197433#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "194464"
+        ],
+        "gold_hits": [
+          "194464"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "case-holdout-015",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "임대차가 끝나기 전 임차인이 월세를 연체하면, 임대인의 별도 의사표시 없이 보증금에서 연체차임이 자동으로 공제되나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법-20260102#제7조의2#0",
+            "law-주택임대차보호법-20260102#제7조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제640조#0",
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제626조#0"
+          ],
+          "cases": [
+            "case:605337#0",
+            "case:183674#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "168106"
+        ],
+        "gold_hits": [],
+        "gold_missing_from_corpus": [
+          "168106"
+        ]
+      },
+      {
+        "qid": "case-holdout-016",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "재외국민이 한 국내거소신고를 주택임대차보호법상 주민등록으로 보아 대항력을 인정할 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-주택임대차보호법시행령-20260701#제2조#0",
+            "law-주민등록법-20250722#제16조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제640조#0",
+            "law-민법-20260317#제654조#0"
+          ],
+          "cases": [
+            "case:84945#0",
+            "case:103765#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "187509"
+        ],
+        "gold_hits": [],
+        "gold_missing_from_corpus": [
+          "187509"
+        ]
+      },
+      {
+        "qid": "case-holdout-017",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "저당 부동산이 압류된 뒤 발생하는 차임채권에도 저당권의 효력이 미치나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-민사집행법-20260201#제83조#0",
+            "law-주택임대차보호법-20260102#제10조#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제3조의5#0",
+            "law-주택임대차보호법-20260102#제27조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제357조#0",
+            "law-민법-20260317#제186조#0",
+            "law-민법-20260317#제470조#0"
+          ],
+          "cases": [
+            "case:183073#0",
+            "case:70826#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "183073"
+        ],
+        "gold_hits": [
+          "183073"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "case-holdout-018",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "선순위 근저당권이 있어 곧 경매될 것을 알면서 소액보증금 임대차를 꾸며 최우선변제를 노린 임차인도 보호받나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법시행령-20260701#제11조#0",
+            "law-주택임대차보호법시행령-20260701#제10조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제10조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제536조#0",
+            "law-민법-20260317#제357조#0",
+            "law-민법-20260317#제636조#0"
+          ],
+          "cases": [
+            "case:184312#0",
+            "case:192109#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "184312"
+        ],
+        "gold_hits": [
+          "184312"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "case-holdout-019",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "임차인이 집 열쇠나 출입수단을 넘겨받아 사실상 지배하고 있다면, 물리적으로 계속 머물지 않아도 주택 인도와 점유가 인정될 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제9조#0",
+            "law-주택임대차보호법-20260102#제4조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제3조의4#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제623조#0"
+          ],
+          "cases": [
+            "case:197374#0",
+            "case:203150#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "185576"
+        ],
+        "gold_hits": [],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "case-holdout-020",
+        "dataset": "case_holdout_current_20.jsonl",
+        "question": "외국인이 외국인등록과 체류지 변경신고를 하면 주택임대차보호법상 주민등록과 전입신고를 한 것과 같은 효과가 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0",
+            "law-주택임대차보호법-20260102#제3조의4#0",
+            "law-민간임대주택에관한특별법-20260102#제5조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제186조#0",
+            "law-민법-20260317#제640조#0"
+          ],
+          "cases": [
+            "case:207117#0",
+            "case:119724#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "207117"
+        ],
+        "gold_hits": [
+          "207117"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-001",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "계약 기간이 끝나서 이사 날짜까지 잡아놨는데 집주인이 아직 보증금을 안 줍니다. 이럴 땐 어떻게 해야 하나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제4조#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제3조의3#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제536조#0",
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제626조#0"
+          ],
+          "cases": [
+            "case:103297#0",
+            "case:94545#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조의2",
+          "주택임대차보호법-제3조의3"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조의2",
+          "주택임대차보호법-제3조의3"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-002",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "이사하고 주민센터에 가서 계약서에 도장 하나 받아두라던데, 그거 안 받아두면 나중에 불리해지나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제7조#0",
+            "law-공공주택특별법-20260908#제49조의2#0",
+            "law-주택임대차보호법-20260102#제30조#0",
+            "law-주택임대차보호법-20260102#제3조의6#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제2조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제623조#0",
+            "law-민법-20260317#제187조#0"
+          ],
+          "cases": [
+            "case:194767#0",
+            "case:185576#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조의2"
+        ],
+        "gold_hits": [],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-003",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "살던 집이 팔렸다고 새 주인이라는 분한테 연락이 왔어요. 계약 기간이 아직 남았는데 짐 빼야 하나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제4조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제3조의7#0",
+            "law-주택임대차보호법-20260102#제6조의2#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제634조#0"
+          ],
+          "cases": [
+            "case:81841#0",
+            "case:195362#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조"
+        ],
+        "gold_hits": [],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-004",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "2년이 다 돼 가는데 집주인도 저도 아무 말을 안 했어요. 그냥 계속 살아도 되는 건가요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제4조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제9조#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제6조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제623조#0",
+            "law-민법-20260317#제636조#0"
+          ],
+          "cases": [
+            "case:238197#0",
+            "case:82955#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제6조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제6조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-005",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "집주인이 다음 달부터 월세를 20만 원 올려달라고 합니다. 이 정도까지 요구해도 되는 건가요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제7조#0",
+            "law-주택임대차보호법시행령-20260701#제8조#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-민간임대주택에관한특별법-20260102#제44조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제640조#0",
+            "law-민법-20260317#제629조#0"
+          ],
+          "cases": [
+            "case:194234#0",
+            "case:71338#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제7조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제7조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-006",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "보증금을 아직 못 받았는데 직장 때문에 먼저 이사를 가야 하는 상황입니다. 그냥 짐 빼고 나가면 돈 받는 데 문제가 생길까요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법-20260102#제12조#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-상법-20260723#제389조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제536조#0",
+            "law-민법-20260317#제187조#0",
+            "law-민법-20260317#제629조#0"
+          ],
+          "cases": [
+            "case:199772#0",
+            "case:76035#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제3조의3"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제3조의3"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-007",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "제가 들어오기 전부터 은행 빚이 잡혀 있던 집인데 결국 경매로 넘어갔습니다. 이런 경우에도 보증금 중 일부라도 건질 방법이 있을까요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제7조의2#0",
+            "law-주택임대차보호법-20260102#제3조의5#0",
+            "law-민간임대주택에관한특별법-20260102#제6조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제357조#0",
+            "law-민법-20260317#제627조#0",
+            "law-민법-20260317#제187조#0"
+          ],
+          "cases": [
+            "case:183073#0",
+            "case:210231#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제8조",
+          "주택임대차보호법 시행령-제10조",
+          "주택임대차보호법 시행령-제11조"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제8조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-008",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "한겨울에 보일러가 멈춰서 온수도 안 나와요. 이건 집주인이 고쳐주는 게 맞죠?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제10조#0",
+            "law-공공주택특별법시행령-20260908#제47조#0",
+            "law-주택임대차보호법시행령-20260701#제5조#0",
+            "law-주택임대차보호법-20260102#제31조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제623조#0",
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제629조#0"
+          ],
+          "cases": [
+            "case:161662#0",
+            "case:600955#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "민법-제623조"
+        ],
+        "gold_hits": [
+          "민법-제623조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-009",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "안방 벽에 금이 좀 갔는데 당장 사는 데 불편하진 않아요. 그래도 집주인한테 꼭 말해야 하나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-공인중개사법시행령-20260828#제21조#0",
+            "law-주택임대차보호법-20260102#제8조#0",
+            "law-주택임대차보호법-20260102#제28조#0",
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제629조#0"
+          ],
+          "cases": [
+            "case:103297#0",
+            "case:174940#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "민법-제634조"
+        ],
+        "gold_hits": [
+          "민법-제634조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-010",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "사정이 생겨 월세가 두 달 밀렸는데, 집주인이 이걸로 다음 계약 연장은 안 해주겠다고 합니다. 이런 이유로 연장을 거절할 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-민간임대주택에관한특별법-20260102#제45조#0",
+            "law-주택임대차보호법-20260102#제23조#0",
+            "law-민간임대주택에관한특별법-20260102#제5조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제640조#0",
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제627조#0"
+          ],
+          "cases": [
+            "case:93966#0",
+            "case:238197#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "주택임대차보호법-제6조의3"
+        ],
+        "gold_hits": [
+          "주택임대차보호법-제6조의3"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-011",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "싱크대 배수가 완전히 막혀서 급한 김에 제 돈으로 사람 불러 고쳤습니다. 나중에 집주인한테 그 비용을 받을 수 있을까요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-민간임대주택에관한특별법-20260102#제44조의2#0",
+            "law-주택임대차보호법시행령-20260701#제33조#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-공공주택특별법시행령-20260908#제47조#0",
+            "law-주택임대차보호법-20260102#제10조의2#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제623조#0",
+            "law-민법-20260317#제640조#0"
+          ],
+          "cases": [
+            "case:75373#0",
+            "case:165781#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "민법-제626조"
+        ],
+        "gold_hits": [
+          "민법-제626조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-012",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "위층 누수 때문에 작은방을 두 달째 못 쓰고 있어요. 그동안 낸 월세를 좀 깎아달라고 해도 되나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법-20260102#제7조의2#0",
+            "law-주택임대차보호법-20260102#제7조#0",
+            "law-주택임대차보호법시행령-20260701#제8조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제627조#0",
+            "law-민법-20260317#제640조#0",
+            "law-민법-20260317#제626조#0"
+          ],
+          "cases": [
+            "case:105274#0",
+            "case:71338#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "민법-제627조"
+        ],
+        "gold_hits": [
+          "민법-제627조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-013",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "계약서에 \"집 안 수리는 세입자가 알아서 한다\"는 문구가 들어가 있는데요, 그럼 뭐가 고장 나든 전부 제가 부담해야 하는 건가요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제12조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-민간임대주택에관한특별법-20260102#제47조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제7조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제623조#0",
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제629조#0"
+          ],
+          "cases": [
+            "case:161662#0",
+            "case:199673#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "민법-제623조"
+        ],
+        "gold_hits": [
+          "민법-제623조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-014",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "지금 사는 투룸에 친구를 들여서 방 하나만 쓰게 하고 돈을 조금 받으려고 하는데, 집주인한테 말 안 하고 이렇게 해도 괜찮을까요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-민간임대주택에관한특별법시행규칙-20251219#제18조#0",
+            "law-주택임대차보호법-20260102#제3조의6#0",
+            "law-주택임대차보호법-20260102#제28조#0",
+            "law-주택임대차보호법-20260102#제11조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제632조#0",
+            "law-민법-20260317#제634조#0"
+          ],
+          "cases": [
+            "case:80398#0",
+            "case:115068#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "민법-제629조"
+        ],
+        "gold_hits": [
+          "민법-제629조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-015",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "윗집 누수로 곰팡이가 번져서 도저히 생활이 안 될 정도인데, 계약 기간이 1년이나 남았어도 중간에 나갈 수 있나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제4조#0",
+            "law-공공주택특별법시행령-20260908#제47조#0",
+            "law-민간임대주택에관한특별법시행령-20260226#제35조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제627조#0",
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제640조#0"
+          ],
+          "cases": [
+            "case:105274#0",
+            "case:242117#0"
+          ],
+          "guides": []
+        },
+        "gold": [
+          "민법-제627조"
+        ],
+        "gold_hits": [
+          "민법-제627조"
+        ],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-016",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "등기부등본 떼서 사진으로 보내드릴 테니 이 집 계약해도 안전한지 좀 봐주실 수 있을까요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제12조#0",
+            "law-공인중개사법-20260828#제25조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제6조#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법-20260102#제3조의4#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제186조#0",
+            "law-민법-20260317#제187조#0",
+            "law-민법-20260317#제629조#0"
+          ],
+          "cases": [
+            "case:205112#0",
+            "case:201145#0"
+          ],
+          "guides": []
+        },
+        "gold": [],
+        "gold_hits": [],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-017",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "마음에 드는 집인데 집주인이 대출을 꽤 받아놨다고 하네요. 그럼 여긴 계약하면 안 되는 집인 건가요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-부동산거래신고등에관한법률시행령-20260529#제4조의3#0",
+            "law-민간임대주택에관한특별법시행규칙-20251219#제18조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제9조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제629조#0",
+            "law-민법-20260317#제357조#0",
+            "law-민법-20260317#제640조#0"
+          ],
+          "cases": [
+            "case:230203#0",
+            "case:117769#0"
+          ],
+          "guides": []
+        },
+        "gold": [],
+        "gold_hits": [],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-018",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "지금 전세로 들어가는 게 나을까요, 아니면 1년쯤 기다렸다 가는 게 이득일까요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제12조#0",
+            "law-공공주택특별법시행규칙-20260824#제25조#0",
+            "law-주택임대차보호법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제3조#0",
+            "law-주택임대차보호법-20260102#제15조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제187조#0",
+            "law-민법-20260317#제636조#0"
+          ],
+          "cases": [
+            "case:184770#0",
+            "case:98978#0"
+          ],
+          "guides": []
+        },
+        "gold": [],
+        "gold_hits": [],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-019",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "회사에서 퇴직금을 안 준다는데 어디에 신고해야 하나요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제3조의6#0",
+            "law-주택임대차보호법-20260102#제3조의3#0",
+            "law-주택임대차보호법시행령-20260701#제4조#0",
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0",
+            "law-부동산거래신고등에관한법률-20240517#제6조의5#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제357조#0",
+            "law-민법-20260317#제390조#0"
+          ],
+          "cases": [
+            "case:166720#0",
+            "case:215659#0"
+          ],
+          "guides": []
+        },
+        "gold": [],
+        "gold_hits": [],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "civil-review-020",
+        "dataset": "minbeop_review_holdout_20260901.jsonl",
+        "question": "아파트 주차장에서 차 문을 긁혔는데 상대방이 연락을 계속 피합니다. 어떻게 대응하는 게 좋을까요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-민간임대주택에관한특별법-20260102#제6조#0",
+            "law-주택임대차보호법-20260102#제21조#0",
+            "law-주택임대차보호법-20260102#제6조의3#0",
+            "law-부동산거래신고등에관한법률시행규칙-20260210#제6조의2#0",
+            "law-주택임대차보호법-20260102#제23조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제536조#0",
+            "law-민법-20260317#제636조#0",
+            "law-민법-20260317#제640조#0"
+          ],
+          "cases": [
+            "case:194195#0",
+            "case:144221#0"
+          ],
+          "guides": []
+        },
+        "gold": [],
+        "gold_hits": [],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "guide-smoke-hug",
+        "dataset": "guide-smoke",
+        "question": "HUG 전세보증금 반환보증 이행 청구 절차는?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-주택임대차보호법-20260102#제10조의2#0",
+            "law-주택임대차보호법-20260102#제13조#0",
+            "law-주택임대차보호법-20260102#제3조의2#0",
+            "law-주택임대차보호법-20260102#제12조#0",
+            "law-주택임대차보호법-20260102#제3조의3#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제536조#0",
+            "law-민법-20260317#제390조#0"
+          ],
+          "cases": [
+            "case:622247#0",
+            "case:75928#0"
+          ],
+          "guides": [
+            "guide-HUG-전세보증금반환보증#0"
+          ]
+        },
+        "gold": [],
+        "gold_hits": [],
+        "gold_missing_from_corpus": []
+      },
+      {
+        "qid": "guide-smoke-tax",
+        "dataset": "guide-smoke",
+        "question": "임대인의 미납국세를 열람하려면 어떤 서류가 필요한가요?",
+        "identical": true,
+        "ids": {
+          "laws": [
+            "law-국세징수법시행령-20260227#제97조#0",
+            "law-주택임대차보호법-20260102#제3조의7#0",
+            "law-국세징수법-20260602#제109조#0",
+            "law-주택임대차계약증서의확정일자부여및정보제공에관한규칙-20210610#제12조#0",
+            "law-지방세징수법시행령-20260205#제8조#0"
+          ],
+          "civil_laws": [
+            "law-민법-20260317#제626조#0",
+            "law-민법-20260317#제634조#0",
+            "law-민법-20260317#제640조#0"
+          ],
+          "cases": [
+            "case:104821#0",
+            "case:205826#0"
+          ],
+          "guides": [
+            "guide-국세청-미납국세열람#0"
+          ]
+        },
+        "gold": [],
+        "gold_hits": [],
+        "gold_missing_from_corpus": []
+      }
+    ]
+  },
+  "final_release": {
+    "case_policy": {
+      "candidate_depth": 80,
+      "case_bm25_weight": 2,
+      "case_dense_weight": 1,
+      "case_field_policy": "tax_source_guard",
+      "case_query_expansion": "civil_terms",
+      "case_rrf_k": 60,
+      "rerank_policy": "band_3pct",
+      "return_k": 20
+    },
+    "code_files": {
+      "src/retrieval/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/retrieval/case_internal.py": "ec0ae9eb9204ec83373c3184fe24b94414a1a9167f06f583132f9cb06d7850b1",
+      "src/retrieval/case_internal_profile.py": "f6d81f0ae653e9320a9002dcf98fbfa88d81c7e99f674add6ec60811dad8fbca",
+      "src/retrieval/case_profile.py": "758e92c2d4cb416183509652897003680958b88a02caf81e56486b6f4d36cf45",
+      "src/retrieval/case_rerank.py": "aba0d6770eeb21fdfd487c3ffa7d4eff5e070346c2f3c33f46619f2b1fb8eb1d",
+      "src/retrieval/companion_evidence.py": "cadad31cc11a5511575b95b148c9007ee9cef85b174cea514d7b6ba8e9e83971",
+      "src/retrieval/context_policy.py": "59b9db79512533ea18fa014c8a02d4fc704a3b06448e28a1a2e72a1e4b7e9a9c",
+      "src/retrieval/dense.py": "1d451629f1036e8b494e10fffb39f33d04af2514cfdef9077a430f21a93fd5c0",
+      "src/retrieval/expanded.py": "4e70693cb637eaa986d7212ed7afde3c1ace621d197fec3820f4eaea97920a03",
+      "src/retrieval/hybrid.py": "71ded64a0b55df7c235650017e1a1d6ac6c2903bfa4bf8b9f54d199dab28ffcc",
+      "src/retrieval/index.py": "dd4fd669cbdec1213ed6f6e787f0474a49320d833727d6f95441e806df190d14",
+      "src/retrieval/multi_evidence.py": "0f8dcb4d140d00ce81505bc01aca7ec87b90a98fa8b8a98e3c973c48f26c0ec3",
+      "src/retrieval/mysql_release.py": "def1b2a3805475fe3a6433fcac3e78eae07da933180caf9f5c338f904d367cce",
+      "src/retrieval/partitioned.py": "1b15d7ccc10f955e13eadb1977ff9d03f8427315e30bb4272fcaa97f7c3823f3",
+      "src/retrieval/portable_index.py": "914ef24faad798f50e550917f7f5007ddc45157cf27f4b67a983065dfc9ddc77",
+      "src/retrieval/profile.py": "9234bf8a1c5be0c1d3e8abb4f4e187c57ca4cc9fb4046d56d6cc58b0d7aef065",
+      "src/retrieval/readiness.py": "e2220f8b623697d5ddecdc54e47c5fc3ebdff1c3a1d1842821e352f5937ce95f",
+      "src/retrieval/refs.py": "e2ce58238e57aa6469fcc047a81db241529c6f81d777ea8d3fbbb5aef79ad215",
+      "src/retrieval/retrieval_intent.py": "639795915ac08a7b32d503dbe4be399bdc27243169fb1236385e5364b4860a83",
+      "src/retrieval/retriever.py": "64e2cbefbc61515a2c8c223cd5289ac624617327eeca3bd7e401cc96f13bae51",
+      "src/retrieval/service.py": "7e66a6732f777e2f2ebfbd996b34c1b80d3cd69a6daff8e27312ef7755bc88be",
+      "src/retrieval/terms.py": "71d31ab7bf767233a048ca7acac7b855654ab1a9c4e31d60328bcab2a86cfd31"
+    },
+    "fallback_allowed": false,
+    "files": {
+      "exports/base/cases.jsonl": "313e0d147d34596f83534742afe0474d6f1664b913f3d779b9d57a8e528bc900",
+      "exports/base/guides.jsonl": "7db2e417303a2cb637c762309d28453880c6283f11e5b6350d04a94cac9775f2",
+      "exports/base/laws.jsonl": "7ab21513a07d8b70aa8f4a956478d7dc18ffe46cb4a70071fff8ea612f617a71",
+      "exports/base/manifest.json": "49dfeb9f553bdbf2fa05290a1593947678acd77a51974016b6f3a07f9c2f4a6e",
+      "exports/cases/cases.jsonl": "4253730831cd19897ff546669626cfc1bfdf3f166eb9c7d08811588ea6906431",
+      "exports/cases/guides.jsonl": "6de7ea9f8876c65a88baee60d063f48fd001ff0a6b1cf265e69a2a42acec8d7b",
+      "exports/cases/laws.jsonl": "835a92169a97e99b4b0011b7259fda996ee430fbd269a21db71611a53597cce5",
+      "exports/cases/manifest.json": "f4efba78d9c5b406cfb415f2f4104f236d626d532574e5bf75d0f5549c8026e6",
+      "exports/civil/civil.jsonl": "636180f5df5f377a8490c9cc8f9187f56206c1e68fe48ca87bd520289c7156d7",
+      "exports/civil/manifest.json": "56e6fe427c92f012d014f8ea9f33283f1fec5cebfd2f20993a994bd34fb5b050",
+      "indexes/base/6b11f1ef-0d94-4ec3-a006-efa07d5901db/data_level0.bin": "e88e695e74c12b754cf58516e4e69040d48cb1ad85c99013f4370cadad18b4fe",
+      "indexes/base/6b11f1ef-0d94-4ec3-a006-efa07d5901db/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+      "indexes/base/6b11f1ef-0d94-4ec3-a006-efa07d5901db/length.bin": "cec04f2b966c9de6ffa01d44700d27b36bd9fb0496d4345acaadf581790f3641",
+      "indexes/base/6b11f1ef-0d94-4ec3-a006-efa07d5901db/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "indexes/base/chroma.sqlite3": "53d9267d83c3e671149d99f38d7e9f53a07264d860939f4cf1a71daa3b66e28e",
+      "indexes/cases/a557366c-ace6-42ff-b9ba-2d19a92b6451/data_level0.bin": "d0b8d26732272fcaa4295865593370a49f710d1405d621dc6d27e2c8cad39c5a",
+      "indexes/cases/a557366c-ace6-42ff-b9ba-2d19a92b6451/header.bin": "10ace07bad58f086856ba171503d1f11c25430076db977cb46d7f21dcc23f711",
+      "indexes/cases/a557366c-ace6-42ff-b9ba-2d19a92b6451/index_metadata.pickle": "88c9ca5e53ebba5d7c3a46d4c5da4efe0e0dc7c89e8af91d975062138119149c",
+      "indexes/cases/a557366c-ace6-42ff-b9ba-2d19a92b6451/length.bin": "613176a1da87914b0c8d4962bf7104a7c3d068c80ff8c1b4727c49bc42734d2c",
+      "indexes/cases/a557366c-ace6-42ff-b9ba-2d19a92b6451/link_lists.bin": "baab1df04774e870da7c70fa935b64849c839bef7a30b9eb6343cc0ff84d8098",
+      "indexes/cases/chroma.sqlite3": "b9047e7d67f1cd80735e6b0d32dbdd1f5b842142b79d19057f767c9c85d6fa76",
+      "indexes/civil/646e7ca7-871f-451f-bd99-3a55f4fe7330/data_level0.bin": "6037975a8ac77f0d6cda9cc93b682eae199229ebc94b7b8370bd48e7765c35c9",
+      "indexes/civil/646e7ca7-871f-451f-bd99-3a55f4fe7330/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+      "indexes/civil/646e7ca7-871f-451f-bd99-3a55f4fe7330/length.bin": "82264c5208186571be221a94716fef3dacc517dd97edeb0823bc28f8eb082e91",
+      "indexes/civil/646e7ca7-871f-451f-bd99-3a55f4fe7330/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "indexes/civil/chroma.sqlite3": "1d235e39a7017d25a64c8db6fd4dce775a7c749422a1519e1d88e961f5c7c204"
+    },
+    "index_status": "ready",
+    "indexes": {
+      "base": {
+        "count": 210,
+        "logical_sha256": "e0b60432c989e0e35a26d0a7271555e5bc8bcf6d7cc7dbe9e6cd08a41d675598",
+        "path": "indexes/base",
+        "token_audit": {
+          "checked": 210,
+          "limit": 8192,
+          "maximum": 1529
+        },
+        "update": {
+          "embedded": 0,
+          "removed": 0,
+          "reused": 210,
+          "upserted": 0
+        }
+      },
+      "cases": {
+        "count": 8516,
+        "logical_sha256": "d0e145cd183596332b267ec8a1d5d6536f0f07e4bd7ba08c0c66aea888e0b570",
+        "path": "indexes/cases",
+        "token_audit": {
+          "checked": 8516,
+          "limit": 8192,
+          "maximum": 3819
+        },
+        "update": {
+          "embedded": 0,
+          "removed": 0,
+          "reused": 8516,
+          "upserted": 0
+        }
+      },
+      "civil": {
+        "count": 26,
+        "logical_sha256": "6898c1bcb17bc615f4c98d83dd2ef0225389915b29c6da47d0ce6fd625b9d633",
+        "path": "indexes/civil",
+        "token_audit": {
+          "checked": 26,
+          "limit": 8192,
+          "maximum": 130
+        },
+        "update": {
+          "embedded": 0,
+          "removed": 0,
+          "reused": 26,
+          "upserted": 0
+        }
+      }
+    },
+    "law_policy": "expanded-laws-record-v1",
+    "model": {
+      "dimension": 1024,
+      "files": {
+        "1_Pooling/config.json": "13e69897522ee8255104483ed9f219465d1be3936654a54a318758738052789e",
+        "config.json": "852d42e020c7f989c2acaf30fc683b7f768e8c6d1ab17166e835442162bd825d",
+        "config_sentence_transformers.json": "8c73684c2160f2209f3706d6cbe0e933287fe6945d9546042be4c105cdb5252e",
+        "model.safetensors": "c18156e80caf8ff45eb84a24a853130c3bca03087ccb41b051f86e7556bae02c",
+        "modules.json": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+        "sentence_bert_config.json": "eb9b44b13c0f52a3b3685c3b1cbdea1ba8b04bea123b98f61610048940776eb1",
+        "special_tokens_map.json": "8c785abebea9ae3257b61681b4e6fd8365ceafde980c21970d001e834cf10835",
+        "tokenizer.json": "fb3c3b93c46fd5a8634e262e1b7de7da11a18b527aa2282b312952b692781dfd",
+        "tokenizer_config.json": "b87c8703482b0300d3da30e201519aa641f6a450f5eb5bf1e624afbf70c74d80"
+      },
+      "model_id": "nlpai-lab/KURE-v1",
+      "revision": "8b418a58414668e75532ed045c22d9ca018ae2b2"
+    },
+    "provenance": {
+      "previous_manifest_sha256": "8861bca4096966a3e7a036d7264d36d8c925015cb1949fac9808ac970ce30440",
+      "previous_release_id": "82a81cffa0fe2304a1bb04a74a951984549ebf9af306b50a02d5a3beea1471e0"
+    },
+    "release_id": "7e0ef225ce5053562d805a0dd8a6facea4e80bb07d2d66d17fb58169c9e49f40",
+    "runtime_versions": {
+      "chromadb": "1.5.9",
+      "numpy": "1.26.4",
+      "sentence-transformers": "6.0.1",
+      "tokenizers": "0.23.2",
+      "torch": "2.14.0",
+      "transformers": "5.17.0"
+    },
+    "schema": "lens-mysql-search-v1",
+    "snapshots": {
+      "base": "9299e776b907315b271f426c1477d5715ef87968451deaab138986b8dc7ab6f9",
+      "cases": "bb0244db08f107fac78bba53ebe3f931107c52dd12b899c4718cc9f52b0054a2",
+      "civil": "8b7450f623745147ea75365e15d39278fa4f4c14bb8af0b6ef7f8acb20fc51f5"
+    }
+  },
+  "remaining": [
+    "Actual LLM server is unavailable; user requested search connection first.",
+    "A different teammate PC has not been verified.",
+    "Eight gold case IDs in the legacy case evaluation are absent from the current corpus; migration parity is not a legal answer quality certification."
+  ],
+  "team_package_rehearsal": {
+    "release": "shared-v3",
+    "separate_folder": true,
+    "same_pc_and_python": true,
+    "fresh_virtualenv_verified": false,
+    "other_team_pc_verified": false,
+    "original_source_databases_present": false,
+    "mysql_credentials_in_package": false,
+    "cli_evidence_equals_app_evidence": true
+  }
+}

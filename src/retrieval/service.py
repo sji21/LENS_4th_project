@@ -655,6 +655,13 @@ class RetrievalService:
         default_paths = (chunk_paths == (LAW_CHUNKS, CASE_CHUNKS, GUIDE_CHUNKS)
                          and index_path == DEFAULT_INDEX and model == DEFAULT_MODEL
                          and civil_index_path == DEFAULT_CIVIL_INDEX)
+        from src.retrieval.mysql_release import RELEASE_ENV, load_service
+        import os
+        mysql_release = os.getenv(RELEASE_ENV, "").strip() if cls is RetrievalService else ""
+        if mysql_release:
+            if not default_paths or os.getenv("LENS_CASE_RETRIEVAL_PROFILE", "").strip():
+                raise ValueError("MySQL 검색 배포와 별도 경로·판례 프로필을 동시에 지정할 수 없습니다.")
+            return load_service(mysql_release)
         profile = configured_case_profile() if cls is RetrievalService else ""
         if profile:
             if not default_paths:

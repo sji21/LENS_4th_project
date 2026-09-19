@@ -645,3 +645,23 @@ PDF 파일명은 기존 제출 경로와 회귀 테스트 호환성을 위해 �
 
 완료된 기반과 실제 남은 조건은 [`LIST.md`](LIST.md)의 「검색 파트 후속 과제」와
 [`docs/retrieval-handoff.md`](docs/retrieval-handoff.md) 6절에 구분해 기록했습니다.
+
+## 12. MySQL 지식 데이터 이전
+
+PATCH-057 — 2026-09-19 공용 MySQL의 기본·민법·판례 스냅샷 전체 해시와
+유형별 원문 조회를 확인했습니다. 판례는 8,377건입니다.
+[실제 DB 검증 및 PR 범위](docs/mysql-live-verification.md)를 참고하세요.
+
+법령·판례·기관 안내 원문, 청크, 판례 이력을 공용 MySQL에 코퍼스 버전별로
+저장하고 기존 JSONL 없이 검색 청크를 내보내는 도구를 추가했습니다.
+`requirements-mysql.txt`와 별도 MySQL 접속 설정을 사용하며, 회원·대화 DB와는
+독립적입니다. [MySQL 실행 안내](docs/mysql-data.md)에 초기화·이전·검증·내보내기·
+출처 추적 명령을 정리했습니다.
+
+MySQL 청크로 BM25·Chroma 검색 배포본을 생성·검증·활성화하고 기존 앱 검색기에
+연결할 수 있습니다. [팀 검색 실행 안내](docs/mysql-search.md)에 명령을 정리했습니다.
+89개 질문의 이전 전후 검색 결과가 일치했고 원본 DB 없는 설치 폴더에서도 검색과
+모의 LLM 입력 전달을 확인했습니다. [원문 갱신 안내](docs/mysql-ingest.md)의 문서
+추가·교체·삭제·재청킹과 벡터 재사용, 배포 갱신·되돌리기도 검증했습니다.
+실제 LLM 및 다른 팀원 PC 검증은
+[실행 계획](docs/planning/mysql-retrieval-execution-plan.md)의 남은 항목입니다.

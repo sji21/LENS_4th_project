@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import sqlite3
+from contextlib import closing
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -34,7 +35,7 @@ def initialize_relational_database(path: Path) -> DatabaseSummary:
     database_path.parent.mkdir(parents=True, exist_ok=True)
     schema = SCHEMA_PATH.read_text(encoding="utf-8")
 
-    with connect_database(database_path) as connection:
+    with closing(connect_database(database_path)) as connection, connection:
         connection.executescript(schema)
         _migrate_case_number_uniqueness(connection)
         # v3 adds side tables only; existing rows and retrieval chunks stay intact.

@@ -1,0 +1,4 @@
+-r requirements.txt
+SQLAlchemy>=2.0.54,<2.1
+# Compatible with the project's cryptography<46 constraint.
+PyMySQL[rsa]==1.1.2
