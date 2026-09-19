@@ -5,6 +5,12 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-19
+
+### Added
+
+- PATCH-057 adds versioned shared MySQL storage for legal sources, chunks and case history, transactional source updates, verified JSONL exports and an opt-in BM25/Chroma release path. On 2026-09-19, live MySQL 8.4.11 read-only verification passed for all three delivered snapshots, including 8,377 cases, full row/stream hashes and seven provenance queries. Integrates main fc87c38 while preserving PATCH-055 installation fixes and PATCH-056 sealed evaluation files. Records PR #38 as merged in LIST; PATCH-057 remains under review. Real LLM, another teammate PC and the final full suite are not verified by this run. See docs/mysql-live-verification.md. (implementation: ca16e0d)
+
 ## 2026-09-18
 
 ### Added

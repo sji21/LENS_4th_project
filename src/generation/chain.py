@@ -148,7 +148,9 @@ def _build_service() -> RetrievalService:
     from src.retrieval.case_profile import configured_case_profile
     from src.retrieval.service import CaseCorpusSetupError
 
-    if configured_case_profile():
+    from src.retrieval.mysql_release import RELEASE_ENV
+    import os
+    if configured_case_profile() or os.getenv(RELEASE_ENV, "").strip():
         # A sealed case corpus must fail visibly rather than load another dataset.
         return RetrievalService.from_index()
     try:
