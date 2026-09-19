@@ -842,6 +842,10 @@ class RuntimeSafetyIntegrationTests(unittest.TestCase):
 
         self.assertEqual("abstained", answer.status)
         self.assertEqual("", answer.raw_text)
+        self.assertEqual(
+            ("unsupported_cross_source_inference",),
+            answer.validation_codes,
+        )
 
     def test_inconsistent_semantic_json_fails_closed(self) -> None:
         main = "주택임대차보호법 제3조에 따르면 대항력은 그 다음 날부터 생깁니다."

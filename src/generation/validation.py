@@ -60,6 +60,7 @@ class SemanticJudgement:
 
     supported: bool
     detail: str = ""
+    failure_codes: tuple[str, ...] = ()
 
 
 SemanticJudge = Callable[
@@ -775,10 +776,10 @@ def _safety_verdict_issues(answer: Answer) -> list[ValidationIssue]:
     return []
 
 
-def _semantic_issue(
+def _semantic_issues(
     answer: Answer,
     semantic_judge: SemanticJudge,
-) -> ValidationIssue | None:
+) -> tuple[ValidationIssue, ...]:
     try:
         result = semantic_judge(
             answer.question,
@@ -786,11 +787,11 @@ def _semantic_issue(
             answer.evidences,
         )
     except Exception:
-        return ValidationIssue(
+        return (ValidationIssue(
             kind="semantic",
             text="",
             detail="semantic judge가 답변을 검증하지 못했습니다.",
-        )
+        ),)
 
     judgement = (
         result
@@ -798,15 +799,18 @@ def _semantic_issue(
         else SemanticJudgement(supported=bool(result))
     )
     if judgement.supported:
-        return None
+        return ()
 
-    return ValidationIssue(
-        kind="semantic",
-        text=answer.raw_text,
-        detail=(
-            judgement.detail
-            or "답변의 의미가 검색 근거와 일치한다고 확인되지 않았습니다."
-        ),
+    detail = judgement.detail or "답변의 의미가 검색 근거와 일치한다고 확인되지 않았습니다."
+    codes = judgement.failure_codes or ("",)
+    return tuple(
+        ValidationIssue(
+            kind="semantic",
+            code=code,
+            text=answer.raw_text,
+            detail=detail,
+        )
+        for code in dict.fromkeys(codes)
     )
 
 
@@ -865,9 +869,7 @@ def audit_answer(
 
     # 명확한 코드 오류가 있으면 LLM을 다시 부를 이유가 없다.
     if not issues and semantic_judge is not None:
-        semantic = _semantic_issue(answer, semantic_judge)
-        if semantic is not None:
-            issues.append(semantic)
+        issues.extend(_semantic_issues(answer, semantic_judge))
 
     return ValidationReport(issues=tuple(issues))
 

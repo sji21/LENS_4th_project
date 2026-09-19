@@ -515,6 +515,34 @@ class ValidationTests(unittest.TestCase):
         self.assertIn("semantic", {issue.kind for issue in report.issues})
         self.assertEqual(len(calls), 1)
 
+    def test_semantic_judge_preserves_machine_readable_failure_codes(self):
+        ev = evidence(
+            "law-3",
+            "주택임대차보호법 제3조",
+            "[주택임대차보호법 제3조]\\n대항력에 관한 내용",
+        )
+        answer = Answer(
+            question="질문",
+            status="answered",
+            text="",
+            raw_text="주택임대차보호법 제3조에 따르면 그렇습니다.",
+            laws=(ev,),
+        )
+
+        report = audit_answer(
+            answer,
+            semantic_judge=lambda *_: SemanticJudgement(
+                supported=False,
+                detail="서로 다른 근거의 관계를 만들었습니다.",
+                failure_codes=("unsupported_cross_source_inference", "scope_expansion"),
+            ),
+        )
+
+        self.assertEqual(
+            [issue.code for issue in report.issues],
+            ["unsupported_cross_source_inference", "scope_expansion"],
+        )
+
     def test_semantic_judge_can_accept_answer(self):
         ev = evidence(
             "law-3",

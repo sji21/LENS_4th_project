@@ -5,6 +5,12 @@
 [3차 프로젝트 변경 이력](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG_Kr.md)에 있습니다.
 이 파일은 4차 프로젝트의 첫 변경부터 기록합니다.
 
+## 2026-09-20
+
+### 버그 수정 (Fixed)
+
+- PATCH-058은 제품 Retriever와 검색 예산을 변경하지 않고 HO30 Qwen3.8 27B 생성 실행의 재현성을 보완합니다. 실행기는 temperature·출력 토큰·문맥의 고정값 변경을 거부하고, 재개·완료 시 최초 기록한 Ollama 모델 식별 정보와 다시 대조합니다. 또한 semantic judge의 구조화 실패 코드를 보류 답변과 JSONL에 보존하여 근거 없는 법령 간 연결을 정확히 감사할 수 있게 합니다. (commit: pending)
+
 ## 2026-09-18
 
 ### 추가

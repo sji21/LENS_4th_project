@@ -408,6 +408,7 @@ def _semantic_judge(llm):
         if not output.strip():
             raise ValueError("semantic judge가 빈 결과를 반환했습니다.")
 
+        codes: list[str] = []
         try:
             payload = json.loads(output)
         except json.JSONDecodeError:
@@ -444,11 +445,10 @@ def _semantic_judge(llm):
                 raise ValueError("PASS 결과에는 failure_codes가 없어야 합니다.")
             if label == "FAIL" and not codes:
                 raise ValueError("FAIL 결과에는 failure_codes가 필요합니다.")
-            if codes:
-                detail = f"{', '.join(codes)}: {detail.strip()}".strip()
         return SemanticJudgement(
             supported=label == "PASS",
             detail=detail,
+            failure_codes=tuple(codes),
         )
 
     return judge

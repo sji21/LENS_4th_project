@@ -5,6 +5,12 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-20
+
+### Fixed (Bug Fixes)
+
+- PATCH-058 keeps the production retriever and its budgets unchanged while hardening the frozen HO30 Qwen3.8 27B generation run. The runner now rejects altered temperature, output-token and context settings; verifies the recorded Ollama model identity before resume and completion; and keeps structured semantic failure codes in abstention and JSONL records so unsupported cross-source legal inferences can be audited precisely. (commit: pending)
+
 ## 2026-09-18
 
 ### Added

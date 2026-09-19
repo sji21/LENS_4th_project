@@ -54,6 +54,11 @@ DATA_ROOTS = (
     ROOT / "data/index",
     ROOT / "data/case_corpus",
 )
+FROZEN_GENERATION_SETTINGS = {
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "context_tokens": 8192,
+}
 
 
 def _now() -> str:
@@ -142,6 +147,35 @@ def _completed(path: Path) -> set[str]:
     return ids
 
 
+def _assert_frozen_protocol() -> None:
+    """Reject runs whose generation settings differ from the HO30 contract."""
+    if llm_module.LLM_MODEL != "qwen3.8:27b":
+        raise RuntimeError(f"HO30 27B 프로토콜과 다른 모델입니다: {llm_module.LLM_MODEL}")
+    if not llm_module.THINK_OFF:
+        raise RuntimeError("HO30 27B 프로토콜은 think=False만 허용합니다.")
+    actual = {
+        "temperature": llm_module.LLM_TEMPERATURE,
+        "max_tokens": llm_module.LLM_MAX_TOKENS,
+        "context_tokens": llm_module.LLM_NUM_CTX,
+    }
+    if actual != FROZEN_GENERATION_SETTINGS:
+        raise RuntimeError(
+            "HO30 27B 고정 생성 설정(temperature=0.0·max_tokens=512·context=8192)이 변경됐습니다."
+        )
+    if (DEFAULT_K_LAW, DEFAULT_K_CASE, DEFAULT_K_GUIDE) != (3, 2, 2):
+        raise RuntimeError("고정 검색 예산(법령3·판례2·안내2)이 변경됐습니다.")
+
+
+def _capture_required_model_identity(*, expected: dict[str, object] | None = None) -> dict[str, object]:
+    """Read the mutable Ollama tag and reject unavailable or retagged models."""
+    identity = capture_ollama_identity(llm_module.LLM_MODEL, timeout=30)
+    if not identity.get("available"):
+        raise RuntimeError("Ollama에서 27B 모델 digest를 확인하지 못했습니다.")
+    if expected is not None and identity != expected:
+        raise RuntimeError("체크포인트 이후 Ollama 모델 digest 또는 모델 식별 정보가 변경됐습니다.")
+    return identity
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True, help="새 실행 결과 폴더")
@@ -152,12 +186,7 @@ def main() -> None:
 
     questions = _load_questions()
     git = _git_identity()
-    if llm_module.LLM_MODEL != "qwen3.8:27b":
-        raise RuntimeError(f"HO30 27B 프로토콜과 다른 모델입니다: {llm_module.LLM_MODEL}")
-    if not llm_module.THINK_OFF:
-        raise RuntimeError("HO30 27B 프로토콜은 think=False만 허용합니다.")
-    if (DEFAULT_K_LAW, DEFAULT_K_CASE, DEFAULT_K_GUIDE) != (3, 2, 2):
-        raise RuntimeError("고정 검색 예산(법령3·판례2·안내2)이 변경됐습니다.")
+    _assert_frozen_protocol()
 
     output = args.output.resolve()
     manifest_path = output / "manifest.json"
@@ -170,6 +199,7 @@ def main() -> None:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         if manifest["git"] != git or manifest["artifacts"] != _artifact_hashes():
             raise RuntimeError("체크포인트 이후 코드·데이터·프로토콜이 변경되어 재개할 수 없습니다.")
+        _capture_required_model_identity(expected=manifest["model_identity"])
     else:
         ready, _ = llm_module.probe(timeout=5)
         if not ready:
@@ -177,9 +207,7 @@ def main() -> None:
         # RunPod HTTP proxy의 cold TLS/proxy 연결은 5초를 넘길 수 있다.
         # 생성 전 메타데이터 조회는 모델 호출이 아니므로 충분한 연결
         # 시간을 주고 digest만 엄격히 검증한다.
-        model_identity = capture_ollama_identity(llm_module.LLM_MODEL, timeout=30)
-        if not model_identity.get("available"):
-            raise RuntimeError("Ollama에서 27B 모델 digest를 확인하지 못했습니다.")
+        model_identity = _capture_required_model_identity()
         manifest = {
             "schema_version": 1,
             "complete": False,
@@ -251,6 +279,13 @@ def main() -> None:
             done.add(row["id"])
 
     if len(done) == 30:
+        try:
+            _capture_required_model_identity(expected=manifest["model_identity"])
+        except RuntimeError:
+            manifest["model_unchanged"] = False
+            _json_dump(manifest_path, manifest)
+            raise
+        manifest["model_unchanged"] = True
         manifest["complete"] = True
         manifest["completed_at"] = _now()
         manifest["result_count"] = 30

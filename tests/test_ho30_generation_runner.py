@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import pytest
+
 from scripts import run_ho30_generation as runner
 from src.retrieval.service import Evidence, RetrievalResult
 
@@ -33,3 +35,31 @@ def test_capturing_service_archives_returned_text_and_ids():
     assert service.calls[0]["laws"][0]["chunk_id"] == "law-1"
     assert service.calls[0]["laws"][0]["text"] == "본문"
     assert service.calls[0]["budgets"] == {"k_law": 3, "k_case": 2, "k_guide": 2}
+
+
+@pytest.mark.parametrize(
+    ("name", "value"),
+    [
+        ("LLM_TEMPERATURE", 0.1),
+        ("LLM_MAX_TOKENS", 256),
+        ("LLM_NUM_CTX", 4096),
+    ],
+)
+def test_runner_rejects_non_frozen_generation_settings(monkeypatch, name, value):
+    monkeypatch.setattr(runner.llm_module, name, value)
+
+    with pytest.raises(RuntimeError, match="고정 생성 설정"):
+        runner._assert_frozen_protocol()
+
+
+def test_runner_rejects_changed_model_identity(monkeypatch):
+    monkeypatch.setattr(
+        runner,
+        "capture_ollama_identity",
+        lambda *_args, **_kwargs: {"available": True, "model": "qwen3.8:27b", "digest": "changed"},
+    )
+
+    with pytest.raises(RuntimeError, match="모델 digest"):
+        runner._capture_required_model_identity(
+            expected={"available": True, "model": "qwen3.8:27b", "digest": "original"}
+        )
