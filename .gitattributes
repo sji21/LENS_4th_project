@@ -48,3 +48,6 @@
 
 # Preserve received HO30 review and freeze hashes byte-for-byte.
 /data/eval/holdout-v2-ho30-20260918/** -text whitespace=cr-at-eol
+
+# Preserve pre-run identities and measured PATCH-057 outputs.
+/data/eval/patch057-comprehensive/** -text whitespace=cr-at-eol

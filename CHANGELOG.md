@@ -5,6 +5,12 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-19
+
+### Added
+
+- PATCH-057 adds a retrieval-only evaluation runner and pre-run protocol for HO30, reviewed DEV/civil inputs and public regression sets. Preserves required-source denominators, separates actual law3/law5 requests and conditional case delivery, and records corpus/model/environment identities. Git LFS case8377 integrity, rebuilt law178/civil26 data and CUDA KURE loading are verified. No generated answers or retrieval tuning; evaluation results are not yet claimed. (commit: pending)
+
 ## 2026-09-18
 
 ### Added
