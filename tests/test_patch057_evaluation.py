@@ -176,6 +176,37 @@ def test_score_rejects_empty_capture_manifest(tmp_path):
         raise AssertionError("empty manifest was accepted")
 
 
+def test_base_data_clone_is_complete_byte_exact_and_isolated(tmp_path):
+    from src.retrieval.profile import FILES, INDEXES, PROFILE
+
+    source = tmp_path / "source"
+    expected_paths = []
+    for number, name in enumerate(sorted(FILES | {PROFILE}), 1):
+        path = source / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(f"file-{number}".encode())
+        expected_paths.append(path)
+    for number, name in enumerate(INDEXES, 1):
+        path = source / name / "native" / "data_level0.bin"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(f"index-{number}".encode())
+        expected_paths.append(path)
+    frozen = {str(path.resolve()): {"sha256": evaluation.sha(path)} for path in expected_paths}
+
+    clone, receipt = evaluation.clone_base_data(source, tmp_path / "ascii-temp", frozen)
+
+    assert set(receipt["files"]) == {path.relative_to(source).as_posix() for path in expected_paths}
+    for path in expected_paths:
+        copied = clone / path.relative_to(source)
+        assert evaluation.sha(copied) == evaluation.sha(path)
+    changed = clone / INDEXES[0] / "native" / "data_level0.bin"
+    original = source / INDEXES[0] / "native" / "data_level0.bin"
+    original_hash = evaluation.sha(original)
+    changed.write_bytes(b"native reader changed clone")
+    assert evaluation.sha(original) == original_hash
+    assert evaluation.sha(changed) != original_hash
+
+
 def test_expected_total_includes_legacy20_and_unscored_civil_five():
     assert evaluation.EXPECTED["jobs"] == 368
     assert sum(evaluation.EXPECTED["public_scored"].values()) == 98

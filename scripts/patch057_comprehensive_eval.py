@@ -19,8 +19,10 @@ import json
 import os
 from pathlib import Path
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 from time import perf_counter
 from urllib.parse import parse_qs, urlparse
 
@@ -131,6 +133,43 @@ def split_law_targets(values: list[str], available: set[str]) -> dict[str, list[
 
 def all_files(root: Path) -> list[Path]:
     return sorted(path for path in Path(root).rglob("*") if path.is_file())
+
+
+def clone_base_data(source: Path, temp_root: Path, frozen_sources: dict) -> tuple[Path, dict]:
+    """Copy the complete profiled base data before native Chroma opens it.
+
+    Chroma may update native HNSW files while loading.  The committed source is
+    evidence, so only a byte-identical disposable clone may be opened.
+    """
+    from src.retrieval.profile import FILES, INDEXES, PROFILE
+
+    source = Path(source).resolve()
+    temp_root = Path(temp_root).resolve()
+    temp_root.mkdir(parents=True, exist_ok=True)
+    clone = Path(tempfile.mkdtemp(prefix="patch057-base-", dir=temp_root)) / "data"
+    relative_files = sorted(FILES | {PROFILE})
+    for name in relative_files:
+        origin, copied = source / name, clone / name
+        copied.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(origin, copied)
+    for name in INDEXES:
+        shutil.copytree(source / name, clone / name)
+    source_paths = [source / name for name in relative_files]
+    for name in INDEXES:
+        source_paths.extend(all_files(source / name))
+    hashes = {}
+    for origin in source_paths:
+        key = str(origin.resolve())
+        frozen = frozen_sources.get(key)
+        if not frozen or sha(origin) != frozen["sha256"]:
+            raise ValueError("Base source differs before clone: " + key)
+        relative = origin.relative_to(source)
+        copied = clone / relative
+        copied_hash = sha(copied)
+        if copied_hash != frozen["sha256"]:
+            raise ValueError("Base clone differs: " + relative.as_posix())
+        hashes[relative.as_posix()] = copied_hash
+    return clone, {"root": str(clone), "files": hashes}
 
 
 def base_chunks(data_root: Path) -> list[dict]:
@@ -594,7 +633,8 @@ def load_service(protocol: dict):
     from src.retrieval.case_profile import load_case_profile
     from src.retrieval.service import RetrievalService
 
-    data_root = Path(protocol["paths"]["base_data"])
+    source_root = Path(protocol["paths"]["base_data"])
+    data_root, clone = clone_base_data(source_root, native_temp, protocol["source_files"])
     base_profile = read(data_root / "index/retrieval-profile.json")
     base = RetrievalService._from_index_without_case_profile(
         chunk_paths=tuple(data_root / name for name in BASE_CHUNKS),
@@ -624,6 +664,7 @@ def load_service(protocol: dict):
         if not any(name.endswith("dense") or name == "dense_context" for name in names):
             raise ValueError("KURE member missing: " + corpus.name)
     return service, {"devices": devices, "base_profile": base_profile,
+                     "base_clone": clone,
                      "base_logical_indices": base_indices}
 
 

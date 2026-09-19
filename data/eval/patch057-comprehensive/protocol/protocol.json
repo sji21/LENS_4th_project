@@ -1,10 +1,10 @@
 {
   "schema": "patch057-comprehensive-retrieval-v1",
   "status": "prepared_no_queries_run",
-  "created_at": "2026-09-19T03:27:25.199451+00:00",
+  "created_at": "2026-09-19T03:32:45.140912+00:00",
   "generation_performed": false,
   "retrieval_performed": false,
-  "prepared_from_commit": "fc87c38627b5be530e5252804b531b887ec7f39a",
+  "prepared_from_commit": "95d0744238ff264caa7710da3a042346791c4a94",
   "paths": {
     "base_data": "C:\\team_project\\patch057-worktree\\data",
     "case_profile": "C:\\team_project\\patch057-worktree\\data\\case_corpus\\runtime-profile.json",
@@ -223,6 +223,11 @@
       "bytes": 835,
       "required_at_capture": true
     },
+    "C:\\team_project\\patch057-worktree\\data\\eval\\patch057-comprehensive\\evaluator-clone-tests.log": {
+      "sha256": "3d180919ff1604233b24321ce88a71a813a36b4858299fcbcd710a658ea8679d",
+      "bytes": 101,
+      "required_at_capture": true
+    },
     "C:\\team_project\\patch057-worktree\\data\\eval\\patch057-comprehensive\\evaluator-tests.log": {
       "sha256": "7931af017e16e6c29086f9fa955db2ed26c77ed06589d20e337308b338b784e2",
       "bytes": 101,
@@ -231,6 +236,11 @@
     "C:\\team_project\\patch057-worktree\\data\\eval\\patch057-comprehensive\\lfs-file-verification.json": {
       "sha256": "3a4fcb66451a6fe812220f4a29764f61ce8f86691df730d522ee5ccafc91786c",
       "bytes": 2120,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch057-worktree\\data\\eval\\patch057-comprehensive\\prequery-index-mutation.log": {
+      "sha256": "d7a243a78f94fcea526b941dba0b4a54137a2eb529a3798c4c0841ff84627bf7",
+      "bytes": 3262,
       "required_at_capture": true
     },
     "C:\\team_project\\patch057-worktree\\data\\eval\\patch057-comprehensive\\requirements-frozen.txt": {
@@ -249,7 +259,7 @@
       "required_at_capture": true
     },
     "C:\\team_project\\patch057-worktree\\data\\index\\chroma_civil_kurev1_1024\\6a18c4fb-5c23-49a7-8a2d-780a883d5a06\\data_level0.bin": {
-      "sha256": "d37a9bc087c98a9ea9a1a5cb3f5909e6d47f55c0bac8a307b6d92e1daa100d48",
+      "sha256": "3cb54fd409ee42d2cc06d51fd0334c75969c01306bbdca02fb43130e725d21c0",
       "bytes": 423600,
       "required_at_capture": true
     },
@@ -259,7 +269,7 @@
       "required_at_capture": true
     },
     "C:\\team_project\\patch057-worktree\\data\\index\\chroma_civil_kurev1_1024\\6a18c4fb-5c23-49a7-8a2d-780a883d5a06\\length.bin": {
-      "sha256": "34a73ab9b874ba0f2c4415d715577e5cec45ba24a33922ce781c73f3309b8fe2",
+      "sha256": "dbf34cbe03f7ccc7c0c062d8e0db0c0be919e48399c278289ad0fa8b7c87947b",
       "bytes": 400,
       "required_at_capture": true
     },
@@ -269,17 +279,17 @@
       "required_at_capture": true
     },
     "C:\\team_project\\patch057-worktree\\data\\index\\chroma_civil_kurev1_1024\\chroma.sqlite3": {
-      "sha256": "5246b4931f261bf330bc15642f117c4a6d9d1754a3dc002f62aac648fc8335b0",
+      "sha256": "1504f604b83aa2ba05e9fe90c3646d135d734aca76cbfa99cf606f15b5f4dc3a",
       "bytes": 421888,
       "required_at_capture": true
     },
     "C:\\team_project\\patch057-worktree\\data\\index\\chroma_kurev1_1024\\chroma.sqlite3": {
-      "sha256": "21d36812cb293de547969e3456802978f5d4cf533c9b9d87f85f5d390d00afe2",
+      "sha256": "b580f13e77fced898fbd22e28978ed465682af53d39f842d9264eafe2135d53e",
       "bytes": 3162112,
       "required_at_capture": true
     },
     "C:\\team_project\\patch057-worktree\\data\\index\\chroma_kurev1_1024\\fc786fc0-9754-49cc-b044-1bb987336cae\\data_level0.bin": {
-      "sha256": "7d5ac63c1b3f5b9761f4e5b36e7c8c756821e77dd81328407f154b5a9c4bac25",
+      "sha256": "ab235e94c76a31e56d3baae46ddfa89b0c506aaebc64cdcd3fc2f88f4fd0a4cb",
       "bytes": 423600,
       "required_at_capture": true
     },
@@ -289,7 +299,7 @@
       "required_at_capture": true
     },
     "C:\\team_project\\patch057-worktree\\data\\index\\chroma_kurev1_1024\\fc786fc0-9754-49cc-b044-1bb987336cae\\length.bin": {
-      "sha256": "25659aadd990e548c2d764a4eb5599e06603f1e9efc9129adddcabaf977b4190",
+      "sha256": "246d4f4509d77cb944408140f0fef8af45d875126f405eba9d1380df23d8cf2b",
       "bytes": 400,
       "required_at_capture": true
     },
@@ -314,8 +324,8 @@
       "required_at_capture": true
     },
     "C:\\team_project\\patch057-worktree\\scripts\\patch057_comprehensive_eval.py": {
-      "sha256": "2cbcce573d972530a69254f604883cf9b1393515ccefec71686ba92ec7a6e917",
-      "bytes": 46250,
+      "sha256": "38f17faabf7518f213758701434be6477c613eaa050e95e4c9b9754dc8bedcf6",
+      "bytes": 48061,
       "required_at_capture": true
     },
     "C:\\team_project\\patch057-worktree\\src\\evaluation\\baseline.py": {
