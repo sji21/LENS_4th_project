@@ -9,8 +9,6 @@ data/index/
 /data/case_internal/runtime-profile.json.tmp
 /data/case_corpus/runtime-profile.json
 /data/case_corpus/runtime-profile.json.tmp
-/data/mysql-search/
-/data/models/
 
 # 환경 변수 · 비밀정보
 .env

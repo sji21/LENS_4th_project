@@ -14,6 +14,9 @@ from src.generation import llm as llm_module
 
 
 class GetLlmTests(unittest.TestCase):
+    def test_default_model_is_qwen3_8_27b(self) -> None:
+        self.assertEqual("qwen3.8:27b", llm_module.DEFAULT_LLM_MODEL)
+
     def test_fake_responses_returns_fake_model(self) -> None:
         model = llm_module.get_llm(fake_responses=["안녕하세요"])
 

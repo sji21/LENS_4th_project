@@ -5,11 +5,11 @@
 [3차 프로젝트 변경 이력](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG_Kr.md)에 있습니다.
 이 파일은 4차 프로젝트의 첫 변경부터 기록합니다.
 
-## 2026-09-19
+## 2026-09-20
 
-### 추가
+### 버그 수정 (Fixed)
 
-- PATCH-057 법령·안내·판례 원문·청크·판례 이력의 공용 MySQL 버전 저장, 트랜잭션 기반 원문 갱신, 검증된 JSONL 내보내기와 선택형 BM25·Chroma 배포 연결을 추가합니다. 2026-09-19 실제 MySQL 8.4.11에서 세 배포 스냅샷의 전체 행·스트림 해시와 7개 유형별 원문 조회가 통과했고 판례 8,377건을 확인했습니다. 최신 main fc87c38의 PATCH-055 설치 보완·PATCH-056 봉인 자료를 보존합니다. LIST의 PR #38 병합 상태를 정정하고 PATCH-057은 리뷰 중으로 기록합니다. 이번 확인은 실제 LLM·다른 팀원 PC·최종 전체 테스트 검증을 포함하지 않습니다. 상세: docs/mysql-live-verification.md. (implementation: ca16e0d)
+- PATCH-058은 제품 Retriever와 검색 예산을 변경하지 않고 HO30 Qwen3.8 27B 생성 실행의 재현성을 보완합니다. 실행기는 temperature·출력 토큰·문맥의 고정값 변경을 거부하고, 재개·완료 시 최초 기록한 Ollama 모델 식별 정보와 다시 대조합니다. 또한 semantic judge의 구조화 실패 코드를 보류 답변과 JSONL에 보존하여 근거 없는 법령 간 연결을 정확히 감사할 수 있게 합니다. (commit: pending)
 
 ## 2026-09-18
 

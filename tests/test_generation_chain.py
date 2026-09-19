@@ -632,6 +632,20 @@ class StubService:
 
 
 class RuntimeSafetyIntegrationTests(unittest.TestCase):
+    def test_validation_repair_rechecks_one_grounded_revision(self) -> None:
+        initial = "주택임대차보호법 제3조의2에 따르면 주민등록을 마친 그 다음 날부터 효력이 생깁니다."
+        repaired = "주택임대차보호법 제3조에 따르면 주민등록을 마친 그 다음 날부터 효력이 생깁니다."
+        answer = answer_question(
+            QUESTION,
+            service=self._stub_with_law(),
+            llm=get_llm(fake_responses=[initial, repaired, "PASS"]),
+            repair_validation=True,
+        )
+
+        self.assertEqual("answered", answer.status)
+        self.assertEqual(1, answer.repair_attempts)
+        self.assertIn("그 다음 날부터", answer.raw_text)
+
     """PATCH-023 B 모듈이 실제 answer_question 흐름에서 호출되는지 확인한다."""
 
     def _stub_with_law(self):
@@ -801,6 +815,48 @@ class RuntimeSafetyIntegrationTests(unittest.TestCase):
         self.assertEqual(main, answer.raw_text)
         self.assertIn(main, answer.text)
         self.assertEqual("semantic", answer.validation_mode)
+
+    def test_semantic_json_pass_returns_the_main_final_body(self) -> None:
+        main = "주택임대차보호법 제3조에 따르면 대항력은 그 다음 날부터 생깁니다."
+        judgement = '{"verdict":"PASS","failure_codes":[],"reason":"모든 주장이 직접 근거와 일치합니다."}'
+        answer = answer_question(
+            QUESTION,
+            service=self._stub_with_law(),
+            llm=runtime_llm(main, semantic_label=judgement),
+        )
+
+        self.assertEqual("answered", answer.status)
+        self.assertEqual(main, answer.raw_text)
+
+    def test_semantic_json_cross_source_failure_is_abstained(self) -> None:
+        main = "주택임대차보호법 제3조에 따르면 대항력은 그 다음 날부터 생깁니다."
+        judgement = (
+            '{"verdict":"FAIL","failure_codes":["unsupported_cross_source_inference"],'
+            '"reason":"근거 사이의 연결 관계가 제시되지 않았습니다."}'
+        )
+        answer = answer_question(
+            QUESTION,
+            service=self._stub_with_law(),
+            llm=runtime_llm(main, semantic_label=judgement),
+        )
+
+        self.assertEqual("abstained", answer.status)
+        self.assertEqual("", answer.raw_text)
+        self.assertEqual(
+            ("unsupported_cross_source_inference",),
+            answer.validation_codes,
+        )
+
+    def test_inconsistent_semantic_json_fails_closed(self) -> None:
+        main = "주택임대차보호법 제3조에 따르면 대항력은 그 다음 날부터 생깁니다."
+        invalid = '{"verdict":"PASS","failure_codes":["unsupported_claim"],"reason":"모순"}'
+        answer = answer_question(
+            QUESTION,
+            service=self._stub_with_law(),
+            llm=runtime_llm(main, semantic_label=invalid),
+        )
+
+        self.assertEqual("abstained", answer.status)
 
     def test_law_only_answer_uses_semantic_judge(self) -> None:
         main = "주택임대차보호법 제3조에 따르면 대항력은 그 다음 날부터 생깁니다."

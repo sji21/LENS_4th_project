@@ -351,7 +351,6 @@ def build_generation_graph(
             if document_only
             else chain_module.build_qa_chain(main_llm, **({"response_style": response_style} if response_style is not None else {}))
         )
-
         try:
             raw_text = qa_chain.invoke(
                 {
@@ -390,6 +389,8 @@ def build_generation_graph(
         state: GenerationGraphState,
     ) -> GenerationGraphState:
         question = state["safe_question"]
+        # 계획 생성 자체가 실패한 경우에는 선택 결과가 없으므로 원래 검색 결과를
+        # 출처로 보존한다.
         result = state["retrieval_result"]
 
         return {

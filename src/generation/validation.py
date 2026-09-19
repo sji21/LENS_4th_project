@@ -15,6 +15,7 @@ import unicodedata
 from typing import Callable, Literal
 
 from src.generation.citation import audit_citations, answer_citation_scan_text
+from src.generation.claim_binding import binding_issues
 from src.generation.models import Answer
 from src.generation.paragraph import claim_identity, evidence_paragraphs, paragraph_group
 from src.retrieval.service import Evidence
@@ -38,6 +39,7 @@ class ValidationIssue:
     text: str
     detail: str
     evidence_chunk_ids: tuple[str, ...] = ()
+    code: str = ""
 
 
 @dataclass(frozen=True)
@@ -58,6 +60,7 @@ class SemanticJudgement:
 
     supported: bool
     detail: str = ""
+    failure_codes: tuple[str, ...] = ()
 
 
 SemanticJudge = Callable[
@@ -71,16 +74,25 @@ SEMANTIC_JUDGE_SYSTEM = """당신은 LENS의 답변 검증기입니다.
 사용자 질문, 검색 근거, 생성 답변을 비교해 답변을 사용자에게 보내도 되는지
 판정하십시오. 다음 중 하나라도 해당하면 FAIL입니다.
 - 답변의 핵심 결론이 검색 근거로 뒷받침되지 않음
+- 답변의 개별 주장 중 하나라도 그 주장을 직접 뒷받침하는 검색 근거가 없음
 - 질문의 핵심 요구에 답하지 않거나 조건을 빠뜨려 의미가 달라짐
 - 검색 근거의 시점·전후관계, 부정·예외, 주체를 바꾸어 의미가 달라짐
   (예: "그 다음 날부터"를 "당일부터"라고 바꿈)
 - 법령·판례·기관 안내의 성격을 뒤섞음
+- 서로 다른 근거를 결합해 어느 근거에도 없는 요건·효과·무효·책임·권리 발생 관계를 만듦
+- `이 법`, `이 조`, `전조`, `제○조에 따른`처럼 적용 범위가 제한된 표현을 다른 법령이나
+  다른 조문에 확장함
 - 특정 계약의 안전·위험 여부를 최종 판정함
 
 검색 근거에 없는 법 지식을 새로 보태지 마십시오. 결정론적 출처·숫자 검증은
 이미 앞 단계에서 수행됐으므로 의미와 질문 적합성에 집중하십시오.
-검색 결과에 포함됐더라도 모든 문서를 답변에 사용할 필요는 없습니다. 질문에 직접
-답하는 근거 하나 이상이 답변을 뒷받침하고 답변이 다른 근거와 모순되지 않으면 PASS입니다.
+검색 결과에 포함됐더라도 모든 문서를 답변에 사용할 필요는 없습니다. 그러나 근거 하나가
+답변 일부를 뒷받침한다는 이유만으로 답변 전체를 PASS로 판정하지 마십시오. 답변을 독립된
+주장 단위로 나누고, 각 주장마다 직접 근거가 있는지 확인하십시오. 두 근거를 연결한 결론은
+그 연결 관계 자체가 검색 근거에 명시되어 있을 때만 PASS입니다. 각 근거가 별개의 내용을
+말할 뿐 연결 관계를 설명하지 않으면, 모델의 연결 추론은 FAIL입니다.
+조건·예외·주체·시점·법적 효과가 병렬로 열거된 경우에는 답변이 이를 합치거나 일부를
+일반 요건처럼 바꾸지 않았는지 확인하십시오.
 특히 보증금의 대상·요건을 정한 조문과 실제 우선변제 금액을 정한 조문처럼 서로 다른
 역할의 자료가 함께 검색된 경우, 질문이 묻는 한쪽을 정확히 답했다는 이유만으로
 다른 쪽을 설명하지 않았다고 FAIL로 판정하지 마십시오.
@@ -92,7 +104,23 @@ SEMANTIC_JUDGE_SYSTEM = """당신은 LENS의 답변 검증기입니다.
   계약이 안전하다거나 위험하다고 최종 단정한 경우에만 FAIL하십시오.
 - 질문과 무관한 공식 검색 결과를 답변에서 사용하지 않은 것은 실패 사유가 아닙니다.
 
-출력은 첫 줄에 PASS 또는 FAIL만 쓰십시오. 이유 설명이나 다른 문장은 쓰지 마십시오."""
+근거가 부족한데도 계약·특약의 유효성, 무효, 책임 또는 권리 발생을 확정하면 FAIL입니다.
+근거 부족을 밝히고 추가 확인이 필요하다고 제한한 답변은 그 제한 자체를 이유로 FAIL하지
+마십시오.
+
+다음 JSON 객체 하나만 출력하십시오. Markdown 코드 블록은 쓰지 마십시오.
+`verdict`는 `PASS` 또는 `FAIL`, `failure_codes`는 아래 값의 배열, `reason`은 짧은
+한국어 설명입니다. PASS이면 `failure_codes`는 빈 배열이어야 합니다.
+
+- `unsupported_claim`
+- `unsupported_cross_source_inference`
+- `scope_expansion`
+- `condition_or_exception_loss`
+- `unsupported_contract_verdict`
+- `missing_required_answer`
+- `wrong_citation_binding`
+
+예시 형식: {{"verdict":"FAIL","failure_codes":["unsupported_claim"],"reason":"직접 근거가 없는 결론입니다."}}"""
 
 
 DOCUMENT_SEMANTIC_JUDGE_SYSTEM = """당신은 업로드 문서 답변 검증기입니다.
@@ -184,6 +212,11 @@ def requires_semantic_validation(answer: Answer) -> bool:
     """
 
     if answer.cases or answer.guides:
+        return True
+
+    # 답변에 둘 이상의 근거가 전달됐다면 모델이 실제 문장에서 하나만 인용했더라도
+    # 근거 사이의 관계를 임의로 만들 위험이 있으므로 의미 검증을 생략하지 않는다.
+    if len(answer.evidences) > 1:
         return True
 
     citation_audit = audit_citations(answer)
@@ -743,10 +776,10 @@ def _safety_verdict_issues(answer: Answer) -> list[ValidationIssue]:
     return []
 
 
-def _semantic_issue(
+def _semantic_issues(
     answer: Answer,
     semantic_judge: SemanticJudge,
-) -> ValidationIssue | None:
+) -> tuple[ValidationIssue, ...]:
     try:
         result = semantic_judge(
             answer.question,
@@ -754,11 +787,11 @@ def _semantic_issue(
             answer.evidences,
         )
     except Exception:
-        return ValidationIssue(
+        return (ValidationIssue(
             kind="semantic",
             text="",
             detail="semantic judge가 답변을 검증하지 못했습니다.",
-        )
+        ),)
 
     judgement = (
         result
@@ -766,15 +799,18 @@ def _semantic_issue(
         else SemanticJudgement(supported=bool(result))
     )
     if judgement.supported:
-        return None
+        return ()
 
-    return ValidationIssue(
-        kind="semantic",
-        text=answer.raw_text,
-        detail=(
-            judgement.detail
-            or "답변의 의미가 검색 근거와 일치한다고 확인되지 않았습니다."
-        ),
+    detail = judgement.detail or "답변의 의미가 검색 근거와 일치한다고 확인되지 않았습니다."
+    codes = judgement.failure_codes or ("",)
+    return tuple(
+        ValidationIssue(
+            kind="semantic",
+            code=code,
+            text=answer.raw_text,
+            detail=detail,
+        )
+        for code in dict.fromkeys(codes)
     )
 
 
@@ -813,6 +849,17 @@ def audit_answer(
         for mention in citation.unsupported
     )
 
+    issues.extend(
+        ValidationIssue(
+            kind="citation",
+            code="wrong_citation_binding",
+            text=item.sentence,
+            detail="인용한 조문보다 다른 검색 조문이 이 문장의 주장을 명확히 뒷받침합니다.",
+            evidence_chunk_ids=item.supporting_chunk_ids,
+        )
+        for item in binding_issues(answer)
+    )
+
     issues.extend(_safety_verdict_issues(answer))
     issues.extend(_quote_issues(answer))
     issues.extend(_value_issues(answer))
@@ -822,9 +869,7 @@ def audit_answer(
 
     # 명확한 코드 오류가 있으면 LLM을 다시 부를 이유가 없다.
     if not issues and semantic_judge is not None:
-        semantic = _semantic_issue(answer, semantic_judge)
-        if semantic is not None:
-            issues.append(semantic)
+        issues.extend(_semantic_issues(answer, semantic_judge))
 
     return ValidationReport(issues=tuple(issues))
 

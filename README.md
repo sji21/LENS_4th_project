@@ -37,7 +37,7 @@ Django와 HTML·CSS·JavaScript로 동작합니다. 아래 평가 결과는 별�
 | 해결하려는 문제 | 법령·판례·기관 안내가 흩어져 있고 일반 사용자가 계약 문구와 법률 근거를 연결하기 어려움 |
 | 주요 기능 | 임대차 상담, 공식 근거 검색, 계약서·등기 OCR, 위험 신호·작성 항목 확인 |
 | 검색 방식 | BM25 키워드 검색 + KURE-v1 의미 검색 + RRF 순위 결합 |
-| 답변 모델 | Qwen3-8B Q4 · Ollama |
+| 답변 모델 | Qwen3.8-27B · Ollama · 추론 비활성화 |
 | 웹 | Django 5.2 LTS + HTML·CSS·JavaScript |
 | 저장소 | SQLite 원문·관계 정보 + Chroma 검색 인덱스 |
 | 답변 원칙 | 검색 근거 사용, 출처 표시, 검증 실패 시 답변 보류, 안전 여부 확정 금지 |
@@ -119,7 +119,7 @@ Django와 HTML·CSS·JavaScript로 동작합니다. 아래 평가 결과는 별�
                                + 세션 문서 근거
                                       │
                                       ▼
-                         Qwen3-8B 근거 기반 답변 생성
+                         Qwen3.8-27B 근거 기반 답변 생성
                                       │
                                       ▼
                     출력 정리 → 출처·숫자·조건 검증 → 의미 검증
@@ -182,7 +182,7 @@ RetrievalResult(laws, cases, guides)
                      ↓
             LangChain Prompt 구성
                      ↓
-        Qwen3-8B가 답변 본문 1회 생성
+        Qwen3.8-27B가 답변 본문 1회 생성
                      ↓
      reasoning·임의 URL·잘린 문장 정리
                      ↓
@@ -209,7 +209,7 @@ RetrievalResult(laws, cases, guides)
 
 | 설정 | 현재 값 |
 | --- | --- |
-| 모델 | `qwen3:8b-q4_K_M` |
+| 모델 | `qwen3.8:27b` |
 | API | Ollama native `/api/chat` |
 | Temperature | `0.0` |
 | 일반 답변 길이 상한 | `512 tokens` |
@@ -340,7 +340,7 @@ Python 환경 준비
 ### 6.1 요구 환경
 
 - Python 3.11
-- Ollama와 `qwen3:8b-q4_K_M`
+- Ollama와 `qwen3.8:27b`
 - 스캔 PDF·이미지 OCR 사용 시 Tesseract와 한국어 언어 데이터
 - 기관 안내 원문을 처음 수집할 때 인터넷 연결
 
@@ -397,7 +397,7 @@ python -c "from django.core.management.utils import get_random_secret_key; print
 ### 6.3 Ollama 준비
 
 ```bash
-ollama pull qwen3:8b-q4_K_M
+ollama pull qwen3.8:27b
 ollama serve
 ```
 
@@ -405,7 +405,7 @@ RunPod를 사용할 때만 `.env`의 주소를 바꿉니다.
 
 ```dotenv
 JEONSEON_LLM_BASE_URL=https://YOUR_POD_ID-11434.proxy.runpod.net/v1
-JEONSEON_LLM_MODEL=qwen3:8b-q4_K_M
+JEONSEON_LLM_MODEL=qwen3.8:27b
 ```
 
 ### 6.4 수동 초기 데이터 생성 (기존 기준선 재생성용)
