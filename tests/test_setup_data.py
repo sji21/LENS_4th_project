@@ -179,7 +179,7 @@ def test_unrelated_existing_directory_is_preserved(preparation, tmp_path, check)
     args = ["--venv-dir", str(directory)] + (["--check"] if check else [])
     assert setup.main(args) == 1
     assert calls == []
-    assert (directory / "keep.txt").read_text() == "keep"
+    assert (directory / "keep.txt").read_text(encoding="utf-8") == "keep"
 
 
 @pytest.fixture
@@ -209,7 +209,7 @@ def test_model_download_uses_reviewed_revision_then_check_is_offline(model_cache
     cache, downloads = model_cache
     setup.prepare_model()
     assert downloads[0][1]["revision"] == "reviewed-version"
-    assert (cache / "refs/main").read_text() == "reviewed-version"
+    assert (cache / "refs/main").read_text(encoding="utf-8") == "reviewed-version"
     setup.prepare_model(check=True)
     assert len(downloads) == 1
 
@@ -221,7 +221,7 @@ def test_different_model_ref_is_preserved_and_no_download(model_cache):
     ref.write_text("different")
     with pytest.raises(ValueError, match="자동 교체하지"):
         setup.prepare_model()
-    assert ref.read_text() == "different" and downloads == []
+    assert ref.read_text(encoding="utf-8") == "different" and downloads == []
 
 
 def test_corrupt_model_fails_hash_check(model_cache):
@@ -246,7 +246,7 @@ def test_pinned_base_snapshot_preserves_different_main_ref(model_cache):
     ref.write_text("case-corpus-revision")
     setup.prepare_model(pinned_only=True)
     setup.prepare_model(check=True, pinned_only=True)
-    assert ref.read_text() == "case-corpus-revision"
+    assert ref.read_text(encoding="utf-8") == "case-corpus-revision"
     assert len(downloads) == 1
 
 

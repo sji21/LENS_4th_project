@@ -117,7 +117,7 @@ def test_policy_with_the_other_civil_scope_is_rejected(tmp_path, civil_ids, law_
                              POLICY if civil_ids == CIVIL_IDS else LEGACY_POLICY)
     with pytest.raises(ValueError, match="정책과 민법 조문"):
         runtime.channel_rows(data, law_policy)
-    release = json.loads(path.read_text())
+    release = json.loads(path.read_text(encoding="utf-8"))
     release["law_policy"] = law_policy
     seal(path, release)
     with pytest.raises(ValueError, match="정책과 민법 조문"):
@@ -158,7 +158,7 @@ def test_builder_records_the_policy_matching_its_civil_export(
     (case_index / "index.bin").write_bytes(b"case-index")
     case_release = case_root / "release.json"
     case_release.write_text("{}")
-    audit = json.loads((runtime.ROOT / "data/eval/patch027-full/capture/audit.json").read_text())
+    audit = json.loads((runtime.ROOT / "data/eval/patch027-full/capture/audit.json").read_text(encoding="utf-8"))
     model_files = {"/".join(Path(name).parts[2:]): value
                    for name, value in audit["model_files"].items()}
     model = {"model_id": "nlpai-lab/KURE-v1", "revision": "a" * 40,
@@ -186,7 +186,7 @@ def test_builder_records_the_policy_matching_its_civil_export(
     monkeypatch.setattr(dense, "ChromaRetriever", Dense)
     monkeypatch.setattr(index, "build_index", build_index)
     builder.build_worker(staging, tmp_path / "model", case_release=case_release)
-    result = json.loads((staging / "worker-result.json").read_text())
+    result = json.loads((staging / "worker-result.json").read_text(encoding="utf-8"))
     assert result["law_policy"] == law_policy
     for channel in runtime.STREAMS:
         assert result["indexes"][channel]["vector_reference"] == f"references/{channel}.f32"
@@ -205,7 +205,7 @@ def test_corruption_is_rejected_before_search(bundle, file):
 
 def test_incomplete_or_changed_policy_release_is_rejected(bundle):
     path, _ = bundle
-    release = json.loads(path.read_text())
+    release = json.loads(path.read_text(encoding="utf-8"))
     del release["files"]["indexes/cases/index.bin"]
     seal(path, release)
     with pytest.raises(ValueError, match="목록"):
@@ -218,7 +218,7 @@ def test_incomplete_or_changed_policy_release_is_rejected(bundle):
 
 def test_vector_reference_must_be_listed_at_its_fixed_path(bundle):
     path, _ = bundle
-    release = json.loads(path.read_text())
+    release = json.loads(path.read_text(encoding="utf-8"))
     reference = path.parent / "references" / "cases.f32"
     reference.parent.mkdir()
     reference.write_bytes(b"vectors")
@@ -335,7 +335,7 @@ def test_activation_verifies_before_atomic_pointer_replacement(bundle, tmp_path,
     monkeypatch.setattr(builder, "verify_release", broken)
     with pytest.raises(ValueError, match="vectors"):
         builder.activate(path, pointer)
-    assert pointer.read_text() == "previous version"
+    assert pointer.read_text(encoding="utf-8") == "previous version"
     monkeypatch.setattr(builder, "verify_release", lambda path: {"verified": True})
     builder.activate(path, pointer)
     assert runtime.resolve_release(pointer) == path.resolve()
@@ -473,12 +473,12 @@ def test_dependency_bootstrap_does_not_require_already_matching_runtime(bundle, 
     # A fresh virtual environment has only pip; bootstrap must not need packaging.
     monkeypatch.setitem(sys.modules, "packaging", None)
     monkeypatch.setitem(sys.modules, "packaging.version", None)
-    expected = json.loads(path.read_text())["runtime_versions"]
+    expected = json.loads(path.read_text(encoding="utf-8"))["runtime_versions"]
     monkeypatch.setattr(runtime, "runtime_versions", lambda: {"chromadb": "different"})
     pins = builder.dependency_requirements(path)
     for package, version in expected.items():
         assert package + "==" + version + "\n" in pins
-    release = json.loads(path.read_text())
+    release = json.loads(path.read_text(encoding="utf-8"))
     release["runtime_versions"]["torch"] = "2.14.0\n--extra-index-url https://example.org"
     seal(path, release)
     with pytest.raises(ValueError):

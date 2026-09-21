@@ -86,7 +86,7 @@ def test_existing_output_is_preserved(tmp_path):
     report.write_text("frozen", encoding="utf-8")
     with pytest.raises(SystemExit):
         main(["--kind", "law", "--eval-set", "missing.jsonl", "--out", str(report)])
-    assert report.read_text() == "frozen"
+    assert report.read_text(encoding="utf-8") == "frozen"
 
 
 def test_missing_input_does_not_publish_report(tmp_path):

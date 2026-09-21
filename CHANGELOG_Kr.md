@@ -9,12 +9,15 @@
 
 ### 변경
 
+- PATCH-061 README와 MySQL 검색 안내에서 기존 clone의 검색 코드 재체크아웃을 필수로 표시하고, Windows 테스트는 UTF-8 모드로 실행하도록 안내하며, r2 배포본의 Linux x64(RunPod) 확인 결과를 기록합니다. (commit: 1cfaace)
+
 - PATCH-060 같은 MySQL 검색 배포본을 Windows·macOS(Apple Silicon)·Linux에서 검증할 수 있습니다. `src/retrieval/*.py`를 항상 LF로 체크아웃하고, 배포본에 빌드 당시 벡터와 벡터를 제외한 ID·본문·메타데이터 해시를 함께 담아, 본문·메타데이터 값의 타입·임베딩 출처 필드까지 빌드 당시와 정확히 같을 때만 CPU별 마지막 비트 차이를 `1e-6` 이내에서 허용합니다. PATCH-060 이전에 만든 배포본은 다시 생성해야 합니다. (commit: 445baa7, cc0c6ce)
 
 - PATCH-059 제도 이름이 없는 질문에서는 공공임대·등록민간임대 전용 법령을 일반 법령 채널에서 제외하고, 국세·지방세를 함께 요청하면 세목마다 한 자리를 보장합니다. 봉인된 368입력에서 필수 근거 완전 확보가 170/195 → 182/204(law3/law5), HO30 회귀셋이 30문항 중 14/17 → 20/24로 바뀝니다. law3 6입력·law5 4입력은 여전히 기존 근거를 한 건씩 잃으며 목록은 `docs/patch058-retrieval-coverage.md`에 있습니다. (commit: 903dc1d)
 
 ### 버그 수정 (Fixed)
 
+- PATCH-061 `.env`를 팀 배포본 기본값으로 설정한 PC에서도 테스트가 실패하지 않고, 테스트 파일이 UTF-8로 명시해 읽습니다. RunPod Linux x64에서 알려진 PATCH-042 기록 불일치 외 전체 테스트가 통과합니다. (commit: 1cfaace)
 - PATCH-060 리뷰 보완 후 관련 검사31개와 재빌드 r2 배포본이 같은 ZIP으로 Windows x64와 Apple Silicon(arm64)에서 설치·검증·검색을 통과했습니다. Linux는 미확인입니다. PATCH-059는 PR #42 병합 완료로 기록합니다. (commit: cc0c6ce, 18a5b9e)
 - PATCH-060 README 6.0에서 팀 배포본 ZIP을 기본 검색 데이터 준비 방법으로, 로컬 `setup_data.py` 구축을 대안으로 안내해 둘 중 하나만 설치하게 합니다. `.env.example`에 팀 배포본 기본값을 넣고 담당자 전용 MySQL 접속 설정을 분리했습니다. 기존 .env는 보존하며 ZIP 설치 후 Django 환경설정을 확인하고 배포본 제약 없는 패키지 재설치를 피하도록 안내합니다. (commit: 18a5b9e)
 
