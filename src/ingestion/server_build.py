@@ -22,6 +22,7 @@ from scripts.patch027_rollout import child
 BUILD = "index/server-build.json"
 SCOPES = tuple(sorted(FILES)) + INDEXES + (PROFILE, BUILD, "parsed/server-build")
 MODEL = "nlpai-lab/KURE-v1"
+EXPECTED_COUNTS = {"laws": 185, "civil_laws": 31, "cases": 28, "guides": 10}
 
 
 def write(path, value):
@@ -95,7 +96,7 @@ def load_databases(records, data):
                 export_case_chunks(db, data / "chunks/cases.jsonl")
                 export_guide_chunks(db, data / "chunks/guides.jsonl")
     counts = check_duplicates(data)
-    if counts != {"laws": 178, "civil_laws": 26, "cases": 26, "guides": 6}:
+    if counts != EXPECTED_COUNTS:
         raise ValueError(f"재구축 건수 불일치: {counts}")
     return counts
 
@@ -136,7 +137,7 @@ def verify(data, smoke=False):
     paths = tuple(data / rel for rel in CHUNKS)
     chunks = [c for path in paths for c in load_chunks(path)]
     counts = check_duplicates(data)
-    if counts != {"laws": 178, "civil_laws": 26, "cases": 26, "guides": 6}:
+    if counts != EXPECTED_COUNTS:
         raise ValueError("승인 검색 자료 건수 불일치")
     if any(not (data / rel / "chroma.sqlite3").is_file() for rel in INDEXES):
         raise ValueError("검색 인덱스 누락")

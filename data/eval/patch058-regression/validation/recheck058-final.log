@@ -1,0 +1,397 @@
+F....................................................................... [ 26%]
+........................................................................ [ 53%]
+........................................................FFEEE........... [ 80%]
+....................................................                     [100%]
+=================================== ERRORS ====================================
+_ ERROR at setup of test_exclusive_failure_labels_follow_question_and_context _
+
+    @pytest.fixture(scope="module")
+    def analysis():
+>       return gap.check()
+               ^^^^^^^^^^^
+
+tests\test_patch042_gap_analysis.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\patch042_gap_analysis.py:674: in check
+    replay = analyze(run, generation_source=generation_source)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\patch042_gap_analysis.py:364: in analyze
+    verified = check_patch041(run)
+               ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+run = WindowsPath('C:/team_project/patch058-worktree/data/eval/patch041-rebuilt/capture')
+
+    def check(run: Path) -> dict:
+        """Verify artifact integrity and recompute every score without model calls."""
+        run = Path(run).resolve()
+        manifest = read(run / "manifest.json")
+        if set(manifest) != set(ARTIFACTS) or any(sha(run / name) != digest
+                                                   for name, digest in manifest.items()):
+            raise ValueError("Artifact manifest mismatch")
+        audit, rows, saved_report = read(run / "audit.json"), read(run / "rows.json"), read(run / "report.json")
+        data_before, data_after = audit.get("data_hashes_before"), audit.get("data_hashes_after")
+        source_before = audit.get("product_source_hashes_before")
+        source_after = audit.get("product_source_hashes_after")
+        logical_before = audit.get("logical_index_hashes_before")
+        logical_after = audit.get("logical_index_hashes_after")
+        criteria_before = audit.get("criteria_hashes_before")
+        criteria_after = audit.get("criteria_hashes_after")
+        reference_before = audit.get("reference_hashes_before")
+        reference_after = audit.get("reference_hashes_after")
+        evaluator_before = audit.get("evaluator_source_hashes_before")
+        evaluator_after = audit.get("evaluator_source_hashes_after")
+        validate_settings(audit.get("settings_before"))
+        validate_settings(audit.get("settings_after"))
+        validate_settings(audit.get("settings"))
+        if (audit.get("schema") != "patch041-retrieval-eval-v1" or audit.get("inputs") != 235
+                or audit.get("generation_performed") is not False
+                or audit.get("product_source_clean") is not True
+                or audit.get("channel_limits") != CHANNEL_LIMITS
+                or audit.get("profile", {}).get("policy") != POLICY
+                or not isinstance(data_before, dict) or not data_before or data_before != data_after
+                or not isinstance(source_before, dict) or not source_before or source_before != source_after
+                or not isinstance(logical_before, list) or len(logical_before) != 2
+                or logical_before != logical_after
+                or not isinstance(audit.get("payload_hashes_before"), dict)
+                or not audit["payload_hashes_before"]
+                or audit["payload_hashes_before"] != audit.get("payload_hashes_after")
+                or not isinstance(audit.get("model_hashes_before"), dict)
+                or not audit["model_hashes_before"]
+                or audit["model_hashes_before"] != audit.get("model_hashes_after")
+                or not isinstance(criteria_before, dict) or not criteria_before
+                or criteria_before != criteria_after
+                or not isinstance(reference_before, dict) or not reference_before
+                or reference_before != reference_after
+                or not isinstance(evaluator_before, dict) or not evaluator_before
+                or evaluator_before != evaluator_after):
+            raise ValueError("Invalid capture audit")
+        usage = audit.get("model_usage", {})
+        if (usage.get("actual_kure_calls", 0) <= 0 or usage.get("general_backend_requests", 0) <= 0
+                or usage.get("civil_backend_requests", 0) <= 0
+                or any(type(row.get("model_calls")) is not int or row["model_calls"] <= 0 for row in rows)
+                or usage["actual_kure_calls"] != sum(row["model_calls"] for row in rows)):
+            raise ValueError("Invalid KURE call audit")
+        if criteria_after != criteria_hashes():
+            raise ValueError("Reviewed evaluation inputs changed")
+        if reference_after != reference_hashes():
+            raise ValueError("Finalist reference changed")
+        if evaluator_after != evaluator_source_hashes():
+>           raise ValueError("Evaluator source changed")
+E           ValueError: Evaluator source changed
+
+scripts\patch041_retrieval_eval.py:559: ValueError
+_ ERROR at setup of test_return_capacity_and_consumption_capacity_are_distinct _
+
+    @pytest.fixture(scope="module")
+    def analysis():
+>       return gap.check()
+               ^^^^^^^^^^^
+
+tests\test_patch042_gap_analysis.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\patch042_gap_analysis.py:674: in check
+    replay = analyze(run, generation_source=generation_source)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\patch042_gap_analysis.py:364: in analyze
+    verified = check_patch041(run)
+               ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+run = WindowsPath('C:/team_project/patch058-worktree/data/eval/patch041-rebuilt/capture')
+
+    def check(run: Path) -> dict:
+        """Verify artifact integrity and recompute every score without model calls."""
+        run = Path(run).resolve()
+        manifest = read(run / "manifest.json")
+        if set(manifest) != set(ARTIFACTS) or any(sha(run / name) != digest
+                                                   for name, digest in manifest.items()):
+            raise ValueError("Artifact manifest mismatch")
+        audit, rows, saved_report = read(run / "audit.json"), read(run / "rows.json"), read(run / "report.json")
+        data_before, data_after = audit.get("data_hashes_before"), audit.get("data_hashes_after")
+        source_before = audit.get("product_source_hashes_before")
+        source_after = audit.get("product_source_hashes_after")
+        logical_before = audit.get("logical_index_hashes_before")
+        logical_after = audit.get("logical_index_hashes_after")
+        criteria_before = audit.get("criteria_hashes_before")
+        criteria_after = audit.get("criteria_hashes_after")
+        reference_before = audit.get("reference_hashes_before")
+        reference_after = audit.get("reference_hashes_after")
+        evaluator_before = audit.get("evaluator_source_hashes_before")
+        evaluator_after = audit.get("evaluator_source_hashes_after")
+        validate_settings(audit.get("settings_before"))
+        validate_settings(audit.get("settings_after"))
+        validate_settings(audit.get("settings"))
+        if (audit.get("schema") != "patch041-retrieval-eval-v1" or audit.get("inputs") != 235
+                or audit.get("generation_performed") is not False
+                or audit.get("product_source_clean") is not True
+                or audit.get("channel_limits") != CHANNEL_LIMITS
+                or audit.get("profile", {}).get("policy") != POLICY
+                or not isinstance(data_before, dict) or not data_before or data_before != data_after
+                or not isinstance(source_before, dict) or not source_before or source_before != source_after
+                or not isinstance(logical_before, list) or len(logical_before) != 2
+                or logical_before != logical_after
+                or not isinstance(audit.get("payload_hashes_before"), dict)
+                or not audit["payload_hashes_before"]
+                or audit["payload_hashes_before"] != audit.get("payload_hashes_after")
+                or not isinstance(audit.get("model_hashes_before"), dict)
+                or not audit["model_hashes_before"]
+                or audit["model_hashes_before"] != audit.get("model_hashes_after")
+                or not isinstance(criteria_before, dict) or not criteria_before
+                or criteria_before != criteria_after
+                or not isinstance(reference_before, dict) or not reference_before
+                or reference_before != reference_after
+                or not isinstance(evaluator_before, dict) or not evaluator_before
+                or evaluator_before != evaluator_after):
+            raise ValueError("Invalid capture audit")
+        usage = audit.get("model_usage", {})
+        if (usage.get("actual_kure_calls", 0) <= 0 or usage.get("general_backend_requests", 0) <= 0
+                or usage.get("civil_backend_requests", 0) <= 0
+                or any(type(row.get("model_calls")) is not int or row["model_calls"] <= 0 for row in rows)
+                or usage["actual_kure_calls"] != sum(row["model_calls"] for row in rows)):
+            raise ValueError("Invalid KURE call audit")
+        if criteria_after != criteria_hashes():
+            raise ValueError("Reviewed evaluation inputs changed")
+        if reference_after != reference_hashes():
+            raise ValueError("Finalist reference changed")
+        if evaluator_after != evaluator_source_hashes():
+>           raise ValueError("Evaluator source changed")
+E           ValueError: Evaluator source changed
+
+scripts\patch041_retrieval_eval.py:559: ValueError
+_ ERROR at setup of test_missing_trace_covers_exact_dev_targets_without_civil_review _
+
+    @pytest.fixture(scope="module")
+    def analysis():
+>       return gap.check()
+               ^^^^^^^^^^^
+
+tests\test_patch042_gap_analysis.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\patch042_gap_analysis.py:674: in check
+    replay = analyze(run, generation_source=generation_source)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\patch042_gap_analysis.py:364: in analyze
+    verified = check_patch041(run)
+               ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+run = WindowsPath('C:/team_project/patch058-worktree/data/eval/patch041-rebuilt/capture')
+
+    def check(run: Path) -> dict:
+        """Verify artifact integrity and recompute every score without model calls."""
+        run = Path(run).resolve()
+        manifest = read(run / "manifest.json")
+        if set(manifest) != set(ARTIFACTS) or any(sha(run / name) != digest
+                                                   for name, digest in manifest.items()):
+            raise ValueError("Artifact manifest mismatch")
+        audit, rows, saved_report = read(run / "audit.json"), read(run / "rows.json"), read(run / "report.json")
+        data_before, data_after = audit.get("data_hashes_before"), audit.get("data_hashes_after")
+        source_before = audit.get("product_source_hashes_before")
+        source_after = audit.get("product_source_hashes_after")
+        logical_before = audit.get("logical_index_hashes_before")
+        logical_after = audit.get("logical_index_hashes_after")
+        criteria_before = audit.get("criteria_hashes_before")
+        criteria_after = audit.get("criteria_hashes_after")
+        reference_before = audit.get("reference_hashes_before")
+        reference_after = audit.get("reference_hashes_after")
+        evaluator_before = audit.get("evaluator_source_hashes_before")
+        evaluator_after = audit.get("evaluator_source_hashes_after")
+        validate_settings(audit.get("settings_before"))
+        validate_settings(audit.get("settings_after"))
+        validate_settings(audit.get("settings"))
+        if (audit.get("schema") != "patch041-retrieval-eval-v1" or audit.get("inputs") != 235
+                or audit.get("generation_performed") is not False
+                or audit.get("product_source_clean") is not True
+                or audit.get("channel_limits") != CHANNEL_LIMITS
+                or audit.get("profile", {}).get("policy") != POLICY
+                or not isinstance(data_before, dict) or not data_before or data_before != data_after
+                or not isinstance(source_before, dict) or not source_before or source_before != source_after
+                or not isinstance(logical_before, list) or len(logical_before) != 2
+                or logical_before != logical_after
+                or not isinstance(audit.get("payload_hashes_before"), dict)
+                or not audit["payload_hashes_before"]
+                or audit["payload_hashes_before"] != audit.get("payload_hashes_after")
+                or not isinstance(audit.get("model_hashes_before"), dict)
+                or not audit["model_hashes_before"]
+                or audit["model_hashes_before"] != audit.get("model_hashes_after")
+                or not isinstance(criteria_before, dict) or not criteria_before
+                or criteria_before != criteria_after
+                or not isinstance(reference_before, dict) or not reference_before
+                or reference_before != reference_after
+                or not isinstance(evaluator_before, dict) or not evaluator_before
+                or evaluator_before != evaluator_after):
+            raise ValueError("Invalid capture audit")
+        usage = audit.get("model_usage", {})
+        if (usage.get("actual_kure_calls", 0) <= 0 or usage.get("general_backend_requests", 0) <= 0
+                or usage.get("civil_backend_requests", 0) <= 0
+                or any(type(row.get("model_calls")) is not int or row["model_calls"] <= 0 for row in rows)
+                or usage["actual_kure_calls"] != sum(row["model_calls"] for row in rows)):
+            raise ValueError("Invalid KURE call audit")
+        if criteria_after != criteria_hashes():
+            raise ValueError("Reviewed evaluation inputs changed")
+        if reference_after != reference_hashes():
+            raise ValueError("Finalist reference changed")
+        if evaluator_after != evaluator_source_hashes():
+>           raise ValueError("Evaluator source changed")
+E           ValueError: Evaluator source changed
+
+scripts\patch041_retrieval_eval.py:559: ValueError
+================================== FAILURES ===================================
+________________________ test_published_results_replay ________________________
+
+    def test_published_results_replay():
+>       report = verify()
+                 ^^^^^^^^
+
+tests\test_patch024_report.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+bundle = WindowsPath('C:/team_project/patch058-worktree/data/eval/patch024-expansion')
+
+    def verify(bundle=BUNDLE):
+        manifest = read(bundle/'manifest.json')
+        required = {'audit.json', 'results.json', 'report.json', 'adoption.json',
+                    'operating-verification.json', 'provenance.json', 'new-chunks.jsonl',
+                    'operating-verifier.py'}
+        if set(manifest['files']) != required:
+            raise ValueError('Incomplete evidence bundle')
+        baseline = {'data/eval/patch023-baseline/report.json',
+                    'data/eval/patch023-baseline/capture/results.json',
+                    'data/eval/patch015-baseline/capture/inventory.json',
+                    'data/eval/patch015-baseline/capture/results.json'}
+        if set(manifest['baseline_files']) != baseline:
+            raise ValueError('Incomplete baseline evidence')
+        for rel, digest in manifest['files'].items():
+            if sha(bundle/rel) != digest:
+                raise ValueError(f'Evidence changed: {rel}')
+        for rel, digest in manifest['baseline_files'].items():
+            if hashlib.sha256((ROOT/rel).read_bytes().replace(b'\r\n', b'\n')).hexdigest() != digest:
+                raise ValueError(f'Baseline changed: {rel}')
+        prior = read(ROOT/'data/eval/patch023-baseline/report.json')['details']
+        inventory = read(ROOT/'data/eval/patch015-baseline/capture/inventory.json')
+        available = {r['article_anchor'] for r in inventory} | {'민법-제105조', '민법-제114조', '민법-제357조'}
+        rows = read(bundle/'results.json')
+        expected_keys = {(r['qid'], r['mode']) for r in prior}
+        if len(rows) != 235 or {(r['qid'], r['mode']) for r in rows} != expected_keys:
+            raise ValueError('Incomplete or duplicate inputs')
+        old = {(r['qid'], r['mode']): r for r in prior}
+        previous = {(r['qid'], r['mode']):r for r in read(ROOT/'data/eval/patch023-baseline/capture/results.json')}
+        details = []
+        for r in rows:
+            if any(r[k] != previous[r['qid'], r['mode']][k] for k in ('laws', 'cases', 'guides')):
+                raise ValueError('Other channel changed')
+            target = old[r['qid'], r['mode']]
+            d = diagnose(target['targets'], available, r['laws'], r['civil_laws'], target['category']=='historical_review')
+            oldhit = set(target['targets']) & set(target['channels']['general'] + target['channels']['civil'])
+            d.update(qid=r['qid'], mode=r['mode'], track=target['track'],
+                     lost_prior_required=sorted(oldhit-set(r['laws']+r['civil_laws'])))
+            details.append(d)
+        groups = {m:summarize([r for r in details if r['track']=='dev100' and r['mode']==m])
+                  for m in ('question_only', 'context_diagnostic')}
+        groups.update({t:summarize([r for r in details if r['track']==t])
+                       for t in ('required_law','scope_provisional','diagnostic_only')})
+        losses = [{'qid':r['qid'],'mode':r['mode'],'lost':r['lost_prior_required']} for r in details if r['lost_prior_required']]
+        result = {'groups':groups,'losses':losses,'details':details}
+        if result != read(bundle/'report.json'):
+>           raise ValueError('Report does not match frozen targets and results')
+E           ValueError: Report does not match frozen targets and results
+
+scripts\patch024_report.py:54: ValueError
+________ test_historical_source_does_not_hide_other_dependency_changes ________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000162506FD6D0>
+
+    def test_historical_source_does_not_hide_other_dependency_changes(monkeypatch):
+        original_sha = gap.dependency_sha
+        changed = gap.ROOT / "scripts/patch041_retrieval_eval.py"
+        monkeypatch.setattr(gap, "dependency_sha", lambda path: "0" * 64 if path == changed else original_sha(path))
+>       with pytest.raises(ValueError, match="Analysis does not replay"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'Analysis does not replay'
+E         Actual message: 'Evaluator source changed'
+
+tests\test_patch042_gap_analysis.py:65: AssertionError
+_____________ test_new_analysis_records_current_generation_source _____________
+
+    def test_new_analysis_records_current_generation_source():
+>       result = gap.analyze()
+                 ^^^^^^^^^^^^^
+
+tests\test_patch042_gap_analysis.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scripts\patch042_gap_analysis.py:364: in analyze
+    verified = check_patch041(run)
+               ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+run = WindowsPath('C:/team_project/patch058-worktree/data/eval/patch041-rebuilt/capture')
+
+    def check(run: Path) -> dict:
+        """Verify artifact integrity and recompute every score without model calls."""
+        run = Path(run).resolve()
+        manifest = read(run / "manifest.json")
+        if set(manifest) != set(ARTIFACTS) or any(sha(run / name) != digest
+                                                   for name, digest in manifest.items()):
+            raise ValueError("Artifact manifest mismatch")
+        audit, rows, saved_report = read(run / "audit.json"), read(run / "rows.json"), read(run / "report.json")
+        data_before, data_after = audit.get("data_hashes_before"), audit.get("data_hashes_after")
+        source_before = audit.get("product_source_hashes_before")
+        source_after = audit.get("product_source_hashes_after")
+        logical_before = audit.get("logical_index_hashes_before")
+        logical_after = audit.get("logical_index_hashes_after")
+        criteria_before = audit.get("criteria_hashes_before")
+        criteria_after = audit.get("criteria_hashes_after")
+        reference_before = audit.get("reference_hashes_before")
+        reference_after = audit.get("reference_hashes_after")
+        evaluator_before = audit.get("evaluator_source_hashes_before")
+        evaluator_after = audit.get("evaluator_source_hashes_after")
+        validate_settings(audit.get("settings_before"))
+        validate_settings(audit.get("settings_after"))
+        validate_settings(audit.get("settings"))
+        if (audit.get("schema") != "patch041-retrieval-eval-v1" or audit.get("inputs") != 235
+                or audit.get("generation_performed") is not False
+                or audit.get("product_source_clean") is not True
+                or audit.get("channel_limits") != CHANNEL_LIMITS
+                or audit.get("profile", {}).get("policy") != POLICY
+                or not isinstance(data_before, dict) or not data_before or data_before != data_after
+                or not isinstance(source_before, dict) or not source_before or source_before != source_after
+                or not isinstance(logical_before, list) or len(logical_before) != 2
+                or logical_before != logical_after
+                or not isinstance(audit.get("payload_hashes_before"), dict)
+                or not audit["payload_hashes_before"]
+                or audit["payload_hashes_before"] != audit.get("payload_hashes_after")
+                or not isinstance(audit.get("model_hashes_before"), dict)
+                or not audit["model_hashes_before"]
+                or audit["model_hashes_before"] != audit.get("model_hashes_after")
+                or not isinstance(criteria_before, dict) or not criteria_before
+                or criteria_before != criteria_after
+                or not isinstance(reference_before, dict) or not reference_before
+                or reference_before != reference_after
+                or not isinstance(evaluator_before, dict) or not evaluator_before
+                or evaluator_before != evaluator_after):
+            raise ValueError("Invalid capture audit")
+        usage = audit.get("model_usage", {})
+        if (usage.get("actual_kure_calls", 0) <= 0 or usage.get("general_backend_requests", 0) <= 0
+                or usage.get("civil_backend_requests", 0) <= 0
+                or any(type(row.get("model_calls")) is not int or row["model_calls"] <= 0 for row in rows)
+                or usage["actual_kure_calls"] != sum(row["model_calls"] for row in rows)):
+            raise ValueError("Invalid KURE call audit")
+        if criteria_after != criteria_hashes():
+            raise ValueError("Reviewed evaluation inputs changed")
+        if reference_after != reference_hashes():
+            raise ValueError("Finalist reference changed")
+        if evaluator_after != evaluator_source_hashes():
+>           raise ValueError("Evaluator source changed")
+E           ValueError: Evaluator source changed
+
+scripts\patch041_retrieval_eval.py:559: ValueError
+=========================== short test summary info ===========================
+ERROR tests/test_patch042_gap_analysis.py::test_exclusive_failure_labels_follow_question_and_context
+ERROR tests/test_patch042_gap_analysis.py::test_return_capacity_and_consumption_capacity_are_distinct
+ERROR tests/test_patch042_gap_analysis.py::test_missing_trace_covers_exact_dev_targets_without_civil_review
+FAILED tests/test_patch024_report.py::test_published_results_replay - ValueEr...
+FAILED tests/test_patch042_gap_analysis.py::test_historical_source_does_not_hide_other_dependency_changes
+FAILED tests/test_patch042_gap_analysis.py::test_new_analysis_records_current_generation_source
+3 failed, 262 passed, 3 errors in 88.71s (0:01:28)

@@ -131,6 +131,14 @@ def requested_law_intents(query: str) -> tuple[str, ...]:
     if not request or re.search(r"상가|점포|가게|사무실|권리금|환산\s*보증금", request):
         return ()
     intents = []
+    from src.retrieval.context_policy import requests_date_record
+    if requests_date_record(request) and _requested(r"확정\s*일자", request):
+        intents.extend(("date_information_right", "date_information_eligibility"))
+    if _requested(r"분쟁\s*조정|조정서|조정안", request):
+        if re.search(r"대상|신청할\s*수|신청\s*가능|어떤\s*분쟁", request):
+            intents.append("mediation_scope")
+        if _requested(r"강제\s*집행|집행력|집행권원", request):
+            intents.extend(("mediation_agreement", "mediation_execution"))
     scope = request + "\n" + facts
     private = _requested(_PRIVATE, scope)
     if re.search(r"공공\s*임대|국민\s*임대|행복\s*주택|일반\s*(?:주택|집|임대)", request) and not re.search(_PRIVATE, request):
@@ -180,14 +188,16 @@ def existing_member_union(retriever, query, k, where):
 def _verified_body(chunk):
     meta = chunk["metadata"]
     title, article = meta.get("title"), meta.get("article_no")
-    if (meta.get("doc_type") != "law" or meta.get("status") != "current"
+    if (meta.get("doc_type") not in ("law", "decree", "rule") or meta.get("status") != "current"
             or not title or not article or not meta.get("version") or not meta.get("effective_date")
             or meta.get("article_id") != title + "-" + article):
         return ""
     header = re.match(r"\[" + re.escape(title + " " + article) + r"(?:\([^\[\]]*\))?\]", chunk["text"])
     if not header:
         return ""
-    body = chunk["text"][header.end():].strip()
+    from src.generation.paragraph import _HISTORY
+    body = "\n".join(line for line in chunk["text"][header.end():].splitlines()
+                     if not _HISTORY.fullmatch(line.strip())).strip()
     if re.search(r"(?m)^\s*\[", body):
         return ""
     return re.sub(r"\s", "", _QUOTED.sub(" ", body))
@@ -198,7 +208,18 @@ def _body_intents(chunk):
     if not body:
         return frozenset()
     found = set()
-    private = "민간임대" in chunk["metadata"]["title"]
+    if all(term in body for term in ("확정일자부여기관", "정보의제공을요청할수있다")):
+        found.add("date_information_right")
+    if all(term in body for term in ("정보제공을요청할수있는", "이해관계", "임대인ㆍ임차인")):
+        found.add("date_information_eligibility")
+    if all(term in body for term in ("조정위원회는", "심의ㆍ조정한다", "반환에관한분쟁")):
+        found.add("mediation_scope")
+    if all(term in body for term in ("강제집행을승낙하는", "내용을조정서에기재하여야한다")):
+        found.add("mediation_agreement")
+    if all(term in body for term in ("강제집행을승낙하는", "집행권원과같은효력")):
+        found.add("mediation_execution")
+    private = (chunk["metadata"].get("doc_type") == "law"
+               and "민간임대" in chunk["metadata"]["title"])
     # Require an operative predicate, not a list mentioning another article.
     statement = r"(?:^|[①-⑳㉑-㉟㊱-㊿])"
     if private and re.search(statement + r"임대사업자는[^.]*재계약을거절할수없다\.", body):

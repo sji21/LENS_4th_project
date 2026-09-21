@@ -1,0 +1,13 @@
+{"qid":"case26-dev-001","question":"전입신고만 하고 확정일자를 안 받으면 어떻게 되나요?","gold_case_ids":["CASE-2009DA101275","CASE-2015DA254507","CASE-97DA22393","CASE-98CHU40"]}
+{"qid":"case26-dev-002","question":"대항력은 언제부터 생기나요?","gold_case_ids":["CASE-2000DA24184","CASE-2000DA44799","CASE-2004DA69741","CASE-2015DA254507","CASE-2024DA326398","CASE-2025DA210305","CASE-2025DA213466","CASE-95DA30338","CASE-96DA17653","CASE-97DA43468","CASE-98DA32939","CASE-99DA59306"]}
+{"qid":"case26-dev-003","question":"전세 사는 중에 집주인이 바뀌면 보증금은 어떻게 되나요?","gold_case_ids":["CASE-2011DA49523","CASE-2021DA238650","CASE-93DA39676","CASE-96DA17653","CASE-98DA32939","CASE-99DA59306"]}
+{"qid":"case26-dev-004","question":"경매로 넘어갔을 때 다른 채권자보다 먼저 보증금을 받으려면 뭐가 필요한가요?","gold_case_ids":["CASE-2000DA61466","CASE-2004DA69741","CASE-2007DA17475","CASE-2009DA101275","CASE-2009DA40790","CASE-2025DA210305","CASE-2025DA213466","CASE-93DA39676","CASE-94DA37646","CASE-95DA44597","CASE-97DA22393","CASE-98DA32939","CASE-99DA59306"]}
+{"qid":"case26-dev-005","question":"보증금을 못 받았는데 이사를 가야 합니다. 어떻게 해야 하나요?","gold_case_ids":["CASE-2024DA326398","CASE-93DA39676","CASE-94DA37646","CASE-97DA43468"]}
+{"qid":"case26-dev-006","question":"임차권등기명령은 언제 신청할 수 있나요?","gold_case_ids":["CASE-2024DA326398","CASE-97DA43468"]}
+{"qid":"case26-dev-009","question":"계약기간이 끝났는데 보증금을 못 받으면 임대차가 종료되나요?","gold_case_ids":["CASE-2024DA326398","CASE-94DA37646"]}
+{"qid":"case26-dev-010","question":"아무 통지 없이 계약이 자동 연장되면 기간은 얼마가 되나요?","gold_case_ids":["CASE-2020DA202371"]}
+{"qid":"case26-dev-012","question":"계약갱신요구권은 몇 번까지 쓸 수 있나요?","gold_case_ids":["CASE-2020DA202371","CASE-2021DA266631","CASE-2022DA279795"]}
+{"qid":"case26-dev-013","question":"집주인이 본인이 들어와 산다고 하면 갱신을 거절할 수 있나요?","gold_case_ids":["CASE-2021DA266631","CASE-2022DA279795"]}
+{"qid":"case26-dev-018","question":"확정일자는 어디서 받나요?","gold_case_ids":["CASE-97DA22393","CASE-98CHU40"]}
+{"qid":"case26-dev-020","question":"등기를 안 한 전세계약도 주택임대차보호법의 보호를 받나요?","gold_case_ids":["CASE-2000DA24184"]}
+{"qid":"case26-dev-022","question":"제3조의2 우선변제권과 제8조 최우선변제는 어떻게 다른가요?","gold_case_ids":["CASE-2000DA61466","CASE-2004DA69741","CASE-2007DA17475","CASE-2009DA101275","CASE-2009DA40790","CASE-93DA39676","CASE-95DA44597","CASE-97DA22393"]}

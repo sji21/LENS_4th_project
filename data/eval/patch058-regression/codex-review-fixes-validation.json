@@ -1,0 +1,52 @@
+{
+  "date": "2026-09-21",
+  "patch": "PATCH-059",
+  "scope": "Targeted review fixes; not a retrieval recapture or full-suite run",
+  "tests": [
+    {
+      "files": [
+        "tests/test_law_structure.py"
+      ],
+      "passed": 25,
+      "seconds": 1.1,
+      "executor": "primary"
+    },
+    {
+      "files": [
+        "tests/test_generation_evidence_routing.py",
+        "tests/test_coverage_sources058.py",
+        "tests/test_server_build.py",
+        "tests/test_case_profile.py"
+      ],
+      "passed": 68,
+      "seconds": 4.55,
+      "executor": "primary"
+    },
+    {
+      "files": [
+        "tests/test_mysql_search.py",
+        "tests/test_selection058.py"
+      ],
+      "passed": 69,
+      "executor": "development-agent",
+      "seconds": 11.77
+    }
+  ],
+  "source_records": {
+    "current_count": 216,
+    "saved_count": 216,
+    "identical": true,
+    "changes": []
+  },
+  "independent_code_review": {
+    "parser": "no additional blocking finding",
+    "mysql_policy": "previous 26-article compatibility finding resolved; no additional confirmed finding"
+  },
+  "limitations": [
+    "No live MySQL access or writes",
+    "No model download or embedding rebuild",
+    "No new sealed retrieval measurement",
+    "Previous full-suite failures and errors remain unresolved by this targeted verification",
+    "Old release ZIPs still require matching code hashes"
+  ]
+}

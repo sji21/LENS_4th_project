@@ -1,0 +1,21 @@
+{
+  "changes": [
+    {
+      "path": "src/retrieval/case_profile.py",
+      "captured_sha256": "7d692bac41124adbca14fc2275cffaa116067f348814fadc11d32bf6829918ef",
+      "current_sha256": "35a81e4b0ac4125e85a0073dabcf1317f9bb1288d59a8e4eb62116ed6fb98196",
+      "captured_source": "capture-v2-source\\src\\retrieval\\case_profile.py",
+      "reverse_change_matches_captured_hash": true
+    },
+    {
+      "path": "scripts/patch041_retrieval_eval.py",
+      "captured_sha256": "1ad9f07a48e92e086f17b2e5bc4b61bc91d06d05425a881ffd0443e37969155c",
+      "current_sha256": "dfba2dc52397e39269240b7e81248c4b8f199d02d379798780c4259ded1339ff",
+      "captured_source": "capture-v2-source\\scripts\\patch041_retrieval_eval.py",
+      "reverse_change_matches_captured_hash": true
+    }
+  ],
+  "retrieval_recaptured": false,
+  "reason": "Optional missing-_chunks adapter compatibility and historical POLICY alias only; actual captured services have _chunks. Ranking path unchanged, reviewed independently.",
+  "checks": "48 targeted compatibility tests plus final recheck log"
+}

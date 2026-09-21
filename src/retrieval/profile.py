@@ -4,7 +4,8 @@ import json
 import re
 from pathlib import Path
 
-from src.retrieval.expanded import CIVIL_IDS, POLICY, ExpandedLawRetrievalService
+from src.retrieval.expanded import (CIVIL_IDS, POLICY, LEGACY_CIVIL_IDS, LEGACY_POLICY,
+                                    ExpandedLawRetrievalService)
 from src.retrieval.retriever import load_chunks
 
 PROFILE = "index/retrieval-profile.json"
@@ -38,8 +39,8 @@ def read_profile(data_root, chunks, chunk_paths, *, index_paths=None, model=None
     try:
         profile = json.loads(path.read_text(encoding="utf-8"))
         if (set(profile) != {"version", "policy", "model", "civil_ids", "files", "index_hashes"}
-                or type(profile["version"]) is not int or profile["version"] != 1 or profile["policy"] != POLICY
-                or profile["civil_ids"] != list(CIVIL_IDS)
+                or type(profile["version"]) is not int or profile["version"] != 1 or profile["policy"] not in (POLICY, LEGACY_POLICY)
+                or profile["civil_ids"] != list(CIVIL_IDS if profile["policy"] == POLICY else LEGACY_CIVIL_IDS)
                 or profile["model"] != "nlpai-lab/KURE-v1"
                 or (model is not None and model != profile["model"])
                 or set(profile["files"]) != FILES or not isinstance(profile["index_hashes"], list)
@@ -56,7 +57,7 @@ def read_profile(data_root, chunks, chunk_paths, *, index_paths=None, model=None
         if chunks != expected or len({c["chunk_id"] for c in chunks}) != len(chunks):
             raise RetrievalProfileError("실제 로딩한 청크가 프로필과 다릅니다.")
         civil = [c["metadata"].get("article_id") for c in chunks if c["metadata"].get("title") == "민법"]
-        if set(civil) != set(CIVIL_IDS) or len(civil) != len(CIVIL_IDS):
+        if set(civil) != set(profile["civil_ids"]) or len(civil) != len(profile["civil_ids"]):
             raise RetrievalProfileError("확대 프로필에 필요한 민법 조문이 일치하지 않습니다.")
     except (OSError, KeyError, TypeError, json.JSONDecodeError) as error:
         raise RetrievalProfileError("검색 프로필을 읽거나 검증할 수 없습니다.") from error
@@ -80,4 +81,5 @@ def build_profiled_service(chunks, chunk_paths, dense=None, civil_dense=None, *,
     if index_paths is not None:
         if dense is None or civil_dense is None or [index_hash(r) for r in (dense, civil_dense)] != profile["index_hashes"]:
             raise RetrievalProfileError("프로필과 실제 인덱스가 다릅니다.")
-    return ExpandedLawRetrievalService(chunks, dense, civil_dense)
+    return ExpandedLawRetrievalService(chunks, dense, civil_dense,
+                                       civil_ids=tuple(profile["civil_ids"]), policy=profile["policy"])

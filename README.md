@@ -317,6 +317,8 @@ Python 3.11을 설치하고 저장소 루트에서 실행하세요.
 
 이미 준비된 환경에서는 `python manage.py prepare_retrieval`로 같은 작업을 실행합니다. 다른 방식으로 만든 기존 DB를 전환하려면 `--rebuild`가 필요합니다. 환경만 준비하려면 `setup_data.py --prepare-only`, 다운로드 없는 환경 점검은 `--check`를 사용합니다.
 
+PATCH-058의 구축 대상은 **일반 법령185·민법31조문(합계216), 안내·공식 서식3문서**입니다. 판례 설치를 완료하면 기존8,377건에 공식 보완2건을 합쳐 검색합니다. 코드 갱신 후 위 구축 명령을 다시 실행해야 새 자료가 반영됩니다. 최초 평가와 개선 후 회귀 결과·남은 근거 손실은 [PATCH-058 기록](docs/patch058-retrieval-coverage.md)을 참고하세요.
+
 [서버 설치·원천 자료·Django·RunPod 실행 안내](docs/server-data-setup.md)를 먼저 확인하세요. RunPod에서는 프로젝트·DB와 `HF_HOME=/workspace/huggingface` 모델 캐시를 영구 볼륨에 두고, 가상환경은 쓰기 가능한 내부 디스크(`/opt/lens-venv` 예시)에 설치합니다. 이후 `source /opt/lens-venv/bin/activate`를 사용하고, setup 재실행에도 같은 `--venv-dir`를 지정합니다. 컨테이너 교체로 내부 디스크가 사라지면 패키지는 재설치해야 합니다. 기본 Windows·Mac `.venv` 동작은 유지합니다. **Mac·RunPod 설치 확인을 완료했습니다. 이전 RunPod에서는 DB 구축·적용·기본 검색을 확인했고, 2026-09-15 새 Pod에서는 README 가상환경의 CUDA 연산·KURE GPU 임베딩을 확인했습니다. 현재 확인한 Pod에는 추가 CUDA 수정이 필요하지 않습니다. 과거 경고의 원인은 미확정이며 새 Pod의 DB 구축·검색·LLM 평가는 미실시입니다.** [GPU 실측 환경과 범위](docs/patch040-runpod-gpu-verification.md)를 참고하세요.
 
 입력은 검토한 원천 스냅샷이며 최신 법령 자동 수집·채택 기능은 아닙니다. 설치 확인은 무결성·중복·기본 검색 검사이고 전체235문항 평가나 LLM 평가는 별도입니다. **기존 ZIP 방식은 [평가 DB 재현·복원 전용](docs/local-retrieval-data.md)으로 유지합니다.**
@@ -410,7 +412,7 @@ JEONSEON_LLM_MODEL=qwen3:8b-q4_K_M
 
 ### 6.4 수동 초기 데이터 생성 (기존 기준선 재생성용)
 
-아래는 기존 3차 자료의 재생성 절차이며, 현재 확대 204조문 묶음을 완성하는 명령이 아닙니다.
+아래는 기존 3차 자료의 재생성 절차이며, 현재 확대216조문 묶음을 완성하는 명령이 아닙니다.
 팀원 설치에는 위 원천 기반 간편 구축 경로를 사용하세요. 현재 DB가 있는 폴더에서
 아래 명령을 실행하면 데이터·인덱스가 바뀔 수 있으므로 별도 작업 폴더에서 재생성합니다.
 
@@ -645,3 +647,23 @@ PDF 파일명은 기존 제출 경로와 회귀 테스트 호환성을 위해 �
 
 완료된 기반과 실제 남은 조건은 [`LIST.md`](LIST.md)의 「검색 파트 후속 과제」와
 [`docs/retrieval-handoff.md`](docs/retrieval-handoff.md) 6절에 구분해 기록했습니다.
+
+## 12. MySQL 지식 데이터 이전
+
+PATCH-057 — 2026-09-19 공용 MySQL의 기본·민법·판례 스냅샷 전체 해시와
+유형별 원문 조회를 확인했습니다. 판례는 8,377건입니다.
+[실제 DB 검증 및 PR 범위](docs/mysql-live-verification.md)를 참고하세요.
+
+법령·판례·기관 안내 원문, 청크, 판례 이력을 공용 MySQL에 코퍼스 버전별로
+저장하고 기존 JSONL 없이 검색 청크를 내보내는 도구를 추가했습니다.
+`requirements-mysql.txt`와 별도 MySQL 접속 설정을 사용하며, 회원·대화 DB와는
+독립적입니다. [MySQL 실행 안내](docs/mysql-data.md)에 초기화·이전·검증·내보내기·
+출처 추적 명령을 정리했습니다.
+
+MySQL 청크로 BM25·Chroma 검색 배포본을 생성·검증·활성화하고 기존 앱 검색기에
+연결할 수 있습니다. [팀 검색 실행 안내](docs/mysql-search.md)에 명령을 정리했습니다.
+89개 질문의 이전 전후 검색 결과가 일치했고 원본 DB 없는 설치 폴더에서도 검색과
+모의 LLM 입력 전달을 확인했습니다. [원문 갱신 안내](docs/mysql-ingest.md)의 문서
+추가·교체·삭제·재청킹과 벡터 재사용, 배포 갱신·되돌리기도 검증했습니다.
+실제 LLM 및 다른 팀원 PC 검증은
+[실행 계획](docs/planning/mysql-retrieval-execution-plan.md)의 남은 항목입니다.

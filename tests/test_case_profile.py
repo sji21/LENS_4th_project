@@ -112,6 +112,9 @@ def test_environment_profile_overrides_installed_default(monkeypatch, tmp_path):
 
 
 def test_pulled_release_without_runtime_profile_refuses_seed_fallback(monkeypatch):
+    # Exercise the case installation boundary independently of a developer's
+    # explicitly activated MySQL release in their local .env.
+    monkeypatch.setenv("LENS_MYSQL_RELEASE", "")
     import src.retrieval.case_profile as module
     class MissingProfile:
         def is_file(self):return False

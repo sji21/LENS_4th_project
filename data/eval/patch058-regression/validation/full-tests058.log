@@ -1,0 +1,27 @@
+
+=================================== ERRORS ====================================
+_____________ ERROR collecting tests/test_registry_integration.py _____________
+ImportError while importing test module 'C:\team_project\patch058-worktree\tests\test_registry_integration.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\송지섭\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_registry_integration.py:9: in <module>
+    from streamlit.testing.v1 import AppTest
+E   ModuleNotFoundError: No module named 'streamlit'
+________________ ERROR collecting tests/test_streamlit_app.py _________________
+ImportError while importing test module 'C:\team_project\patch058-worktree\tests\test_streamlit_app.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\송지섭\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_streamlit_app.py:10: in <module>
+    from streamlit.testing.v1 import AppTest
+E   ModuleNotFoundError: No module named 'streamlit'
+=========================== short test summary info ===========================
+ERROR tests/test_registry_integration.py
+ERROR tests/test_streamlit_app.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!
+2 errors in 4.94s

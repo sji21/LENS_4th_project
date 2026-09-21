@@ -1,0 +1,111 @@
+{
+  "schema": "patch058-retrieval-regression-v1",
+  "created_at": "2026-09-21T01:03:22.599070+00:00",
+  "protocol_commit": "107ff176023aea42038275311a57398209cf5d3c529fd4e29d856b99027a4b91",
+  "protocol_manifest_sha256": "107ff176023aea42038275311a57398209cf5d3c529fd4e29d856b99027a4b91",
+  "generation_performed": false,
+  "queries": 368,
+  "environment": {
+    "devices": {
+      "base": "cuda:0",
+      "case": "cuda:0"
+    },
+    "base_profile": {
+      "version": 1,
+      "policy": "expanded-laws-record-v2",
+      "model": "nlpai-lab/KURE-v1",
+      "civil_ids": [
+        "민법-제105조",
+        "민법-제111조",
+        "민법-제113조",
+        "민법-제114조",
+        "민법-제118조",
+        "민법-제131조",
+        "민법-제134조",
+        "민법-제147조",
+        "민법-제186조",
+        "민법-제187조",
+        "민법-제265조",
+        "민법-제357조",
+        "민법-제390조",
+        "민법-제393조",
+        "민법-제470조",
+        "민법-제536조",
+        "민법-제543조",
+        "민법-제548조",
+        "민법-제615조",
+        "민법-제618조",
+        "민법-제623조",
+        "민법-제624조",
+        "민법-제626조",
+        "민법-제627조",
+        "민법-제629조",
+        "민법-제632조",
+        "민법-제633조",
+        "민법-제634조",
+        "민법-제636조",
+        "민법-제640조",
+        "민법-제654조"
+      ],
+      "files": {
+        "chunks/civil.jsonl": "f060b82b6233aaae20e16fe5e2996bd20b24e3b98a4a65d10d20f655b9913b6b",
+        "database/civil.sqlite3": "40f4ea697c4c20f08e3787969c24d2ca27ea90a16d99a713f6481108acf2383d",
+        "chunks/guides.jsonl": "9700a2196aa5c71634eba9cfee3423f00f40c53f86a03def1f5c870f9e5af742",
+        "chunks/cases.jsonl": "00b3565a637f9ba453f538e44495d36c7057d79a09f290d0dd5565d2b7136a33",
+        "database/knowledge.sqlite3": "34c198f7f9475aa5be59d4d556af22d6c57e310060d64232dc58fd59ff41c2fc",
+        "chunks/chunks.jsonl": "1c8ed4814ed5caf04654b058146105f9a18f2a893bdc3765afce7bb21ab415ab"
+      },
+      "index_hashes": [
+        "f190e42fb084becb2b05b98fcca289de38c09dd3176f1eba60c7e07c39cddc40",
+        "2daf1024b42e177b437889bc11fb12ed1e87d23c6da5194b78e2fc0fd46b2a5d"
+      ]
+    },
+    "base_clone": {
+      "root": "C:\\team_project\\patch058-worktree\\tmp\\native\\patch057-base-0_cqci74\\data",
+      "files": {
+        "chunks/cases.jsonl": "00b3565a637f9ba453f538e44495d36c7057d79a09f290d0dd5565d2b7136a33",
+        "chunks/chunks.jsonl": "1c8ed4814ed5caf04654b058146105f9a18f2a893bdc3765afce7bb21ab415ab",
+        "chunks/civil.jsonl": "f060b82b6233aaae20e16fe5e2996bd20b24e3b98a4a65d10d20f655b9913b6b",
+        "chunks/guides.jsonl": "9700a2196aa5c71634eba9cfee3423f00f40c53f86a03def1f5c870f9e5af742",
+        "database/civil.sqlite3": "40f4ea697c4c20f08e3787969c24d2ca27ea90a16d99a713f6481108acf2383d",
+        "database/knowledge.sqlite3": "34c198f7f9475aa5be59d4d556af22d6c57e310060d64232dc58fd59ff41c2fc",
+        "index/retrieval-profile.json": "6e6e2e7d59ff2a30ef65017652ea2a214cc9da0e1e344e1038127e5b31cdf832",
+        "index/chroma_kurev1_1024/2218c632-fb6f-46a3-bf1b-641c6563c225/data_level0.bin": "220f9a115181dd14ac1d1a150e71534b4282ceb31cff760f486f523f5fb15b28",
+        "index/chroma_kurev1_1024/2218c632-fb6f-46a3-bf1b-641c6563c225/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+        "index/chroma_kurev1_1024/2218c632-fb6f-46a3-bf1b-641c6563c225/length.bin": "2536f65300eaafe152cb68a46ee42619fc7ae6ce3418c92dc056adfc979f44bd",
+        "index/chroma_kurev1_1024/2218c632-fb6f-46a3-bf1b-641c6563c225/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "index/chroma_kurev1_1024/chroma.sqlite3": "e7920d397d660fe43dad85287937cfc9991a8c4ee3764919d707b0b4e75f10da",
+        "index/chroma_civil_kurev1_1024/94b2ab4b-412d-4fb9-af95-fb513133e1ba/data_level0.bin": "88cb0ef3c24f040f6c6f6ba8e0e7597d90df513741604e0ad15504dd2f5927d5",
+        "index/chroma_civil_kurev1_1024/94b2ab4b-412d-4fb9-af95-fb513133e1ba/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+        "index/chroma_civil_kurev1_1024/94b2ab4b-412d-4fb9-af95-fb513133e1ba/length.bin": "dd225b6e77f860da38e00b8d56bca3f82ec19a90813e4c28d911fae58c86c848",
+        "index/chroma_civil_kurev1_1024/94b2ab4b-412d-4fb9-af95-fb513133e1ba/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "index/chroma_civil_kurev1_1024/chroma.sqlite3": "85d81532dba357a99cff2aeb5c32ed7686d485f21c8c7b09960dbb403376624d"
+      }
+    },
+    "base_logical_indices": [
+      "f190e42fb084becb2b05b98fcca289de38c09dd3176f1eba60c7e07c39cddc40",
+      "2daf1024b42e177b437889bc11fb12ed1e87d23c6da5194b78e2fc0fd46b2a5d"
+    ],
+    "supplement_cases": 2,
+    "case_supplement_manifest": [
+      {
+        "chunk_id": "case:197934#0",
+        "canonical_case_key": "1d0119f700fdda7214a2e482180ce33d6f6273c83632ad690a9568c5f157cbcc",
+        "text_sha256": "68165f80414683bd060866c65dd4233c14abe7ca8ec6e3408a98abe3e2b295e6",
+        "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=197934",
+        "model_id": "nlpai-lab/KURE-v1",
+        "model_revision": "8b418a58414668e75532ed045c22d9ca018ae2b2"
+      },
+      {
+        "chunk_id": "case:167313#0",
+        "canonical_case_key": "570b0ac08ae2fdf420f272136df2d0b2bf27d8e65f1f4bbaa68fac81fbeeed6b",
+        "text_sha256": "11bac23006cf95f39f116c2094fc48de3724d403a70de0c48f220f7c34dcc6e7",
+        "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=167313",
+        "model_id": "nlpai-lab/KURE-v1",
+        "model_revision": "8b418a58414668e75532ed045c22d9ca018ae2b2"
+      }
+    ]
+  },
+  "candidate_trace_text": "Candidate text is referenced by frozen chunk ID and text_sha256; final returned evidence includes full text.",
+  "git_status": "M  .env.example\n M .gitattributes\n M .gitignore\n M CHANGELOG.md\n M CHANGELOG_Kr.md\n M LIST.md\n M README.md\n M data/case_corpus/chunks/cases.jsonl\n M data/case_corpus/chunks/guides.jsonl\n M data/case_corpus/chunks/laws.jsonl\n M data/case_corpus/database/knowledge.sqlite3\n M data/case_corpus/index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/data_level0.bin\n M data/case_corpus/index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/header.bin\n M data/case_corpus/index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/index_metadata.pickle\n M data/case_corpus/index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/length.bin\n M data/case_corpus/index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/link_lists.bin\n M data/case_corpus/index/chroma_kurev1_1024/chroma.sqlite3\nA  docs/mysql-data.md\nA  docs/mysql-ingest.md\nA  docs/mysql-live-verification.md\nA  docs/mysql-search.md\nA  docs/planning/mysql-clean-install-validation.json\nA  docs/planning/mysql-live-verification-20260919.json\nA  docs/planning/mysql-pr-integration-tests-20260919.json\nA  docs/planning/mysql-retrieval-execution-plan.md\nA  docs/planning/mysql-search-validation.json\nA  docs/planning/mysql-transfer-validation.json\nA  docs/planning/mysql-update-validation.json\n M docs/server-data-setup.md\nA  requirements-mysql.txt\nA  scripts/evaluate_mysql_search.py\n M scripts/patch027_rollout.py\n M scripts/patch041_retrieval_eval.py\nA  src/database/mysql.py\nA  src/database/mysql_schema.py\nM  src/database/relational.py\nM  src/generation/chain.py\n M src/generation/evidence_routing.py\n M src/ingestion/fetch_law_mock.py\n M src/ingestion/load_cases.py\nA  src/ingestion/mysql_ingest.py\nA  src/ingestion/mysql_search.py\nA  src/ingestion/mysql_transfer.py\n M src/ingestion/server_build.py\n M src/ingestion/server_sources.py\n M src/retrieval/case_profile.py\n M src/retrieval/companion_evidence.py\n M src/retrieval/context_policy.py\n M src/retrieval/expanded.py\n M src/retrieval/multi_evidence.py\nA  src/retrieval/mysql_release.py\n M src/retrieval/profile.py\n M src/retrieval/retrieval_intent.py\n M src/retrieval/service.py\nM  tests/test_case_profile.py\n M tests/test_generation_evidence_routing.py\n M tests/test_law_structure.py\nA  tests/test_mysql_ingest.py\nAM tests/test_mysql_search.py\nA  tests/test_mysql_transfer.py\n M tests/test_patch027_product.py\n M tests/test_patch046_multi_evidence.py\n M tests/test_patch051_companion_evidence.py\n M tests/test_retrieval_service.py\n M tests/test_server_build.py\nA  \"\\352\\263\\265\\354\\234\\240\\354\\225\\210\\353\\202\\264.md\"\n?? data/eval/patch058-regression/\n?? data/sources/retrieval-supplements-v1/\n?? data/sources/supplement-v1/\n?? docs/patch058-retrieval-coverage.md\n?? scripts/patch058_loss_detail.py\n?? scripts/patch058_regression_eval.py\n?? scripts/patch058_report.py\n?? src/ingestion/coverage_sources.py\n?? src/ingestion/retrieval_supplements.py\n?? tests/test_coverage_sources058.py\n?? tests/test_patch058_regression_eval.py\n?? tests/test_selection058.py\n?? tests/test_supplement_sources058.py\n"
+}

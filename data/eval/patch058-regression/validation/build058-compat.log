@@ -1,0 +1,32 @@
+[1/3] DB 체크 — 원천 자료·현재 구축 상태 확인
+[준비] KURE 모델 버전·파일 확인 완료
+[inspect] 상세 로그: C:\team_project\patch058-worktree\tmp\server-build\inspect-t0h970kb\inspect.log
+[2/3] 원천 파싱 → SQLite 저장 → 변경 청크 임베딩·인덱스 구축
+[build] 상세 로그: C:\team_project\patch058-worktree\tmp\server-build\196b4e5b44f1415ba00523f836782574\build.log
+[준비] KURE 모델 버전·파일 확인 완료
+
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]
+Loading weights:   8%|▊         | 33/391 [00:00<00:01, 217.03it/s]
+Loading weights:  16%|█▋        | 64/391 [00:00<00:01, 231.52it/s]
+Loading weights:  23%|██▎       | 88/391 [00:00<00:01, 170.31it/s]
+Loading weights:  28%|██▊       | 108/391 [00:00<00:01, 176.78it/s]
+Loading weights:  33%|███▎      | 129/391 [00:00<00:01, 185.06it/s]
+Loading weights:  39%|███▉      | 153/391 [00:00<00:01, 196.92it/s]
+Loading weights:  45%|████▍     | 174/391 [00:00<00:01, 172.03it/s]
+Loading weights:  49%|████▉     | 193/391 [00:01<00:01, 116.03it/s]
+Loading weights:  53%|█████▎    | 208/391 [00:01<00:01, 122.60it/s]
+Loading weights: 100%|██████████| 391/391 [00:01<00:00, 289.18it/s]
+[3/3] 기본 검색 확인 후 적용·확인
+[verify] 상세 로그: C:\team_project\patch058-worktree\tmp\server-build\196b4e5b44f1415ba00523f836782574\verify.log
+
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]
+Loading weights:   2%|▏         | 8/391 [00:00<00:07, 54.71it/s]
+Loading weights:   7%|▋         | 28/391 [00:00<00:03, 106.91it/s]
+Loading weights:  10%|▉         | 39/391 [00:00<00:04, 86.32it/s] 
+Loading weights:  15%|█▍        | 57/391 [00:00<00:02, 113.87it/s]
+Loading weights:  22%|██▏       | 85/391 [00:00<00:01, 163.28it/s]
+Loading weights:  26%|██▋       | 103/391 [00:00<00:02, 140.36it/s]
+Loading weights:  30%|███       | 119/391 [00:00<00:01, 145.39it/s]
+Loading weights:  35%|███▍      | 135/391 [00:01<00:02, 109.92it/s]
+Loading weights: 100%|██████████| 391/391 [00:01<00:00, 334.88it/s]
+완료: {'counts': {'laws': 185, 'civil_laws': 31, 'cases': 28, 'guides': 10}, 'indexing': [{'embedded': 0, 'reused': 223, 'removed': 0}, {'embedded': 0, 'reused': 31, 'removed': 0}]} · 기록/백업: C:\team_project\patch058-worktree\tmp\server-build\196b4e5b44f1415ba00523f836782574

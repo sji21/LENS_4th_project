@@ -85,7 +85,7 @@ def civil_concepts(query: str) -> list[str]:
         found.append("의사표시 도달 효력발생시기")
     if _service_concept(query):
         found.append("의사표시 공시송달 상대방 소재")
-    if re.search(r"보증금", query) and re.search(r"이사|퇴거|비우|인도|짐", query):
+    if re.search(r"보증금", query) and re.search(r"이사|퇴거|비우|인도|짐|(?:열쇠|키|출입수단).{0,12}(?:넘|반납|돌려)", query):
         found.append("쌍무계약 동시이행의 항변권 채무이행 거절")
     return list(dict.fromkeys(found))
 
@@ -255,7 +255,8 @@ def requests_date_record(query: str) -> bool:
     previous_date_record = False
     for clause in filter(str.strip, re.split(r"[.!?\n;]", request)):
         explicit = bool(re.search(
-            r"확정일자(?:의|를|는|가)?\s*(?:부여\s*)?(?:기록|내역|여부|받았는지|유무)", clause,
+            r"확정\s*일자(?:의|를|는|가)?\s*"
+            r"(?:(?:부여(?:된|받은)?|받은|받았던)\s*)?(?:기록|내역|여부|받았는지|유무)", clause,
         ))
         reference = previous_date_record and re.search(r"(?:예전|그때|당시)(?:의)?\s*(?:기록|내역)", clause)
         if ((explicit or reference) and re.search(r"확인|조회|열람|찾", clause)
@@ -270,6 +271,7 @@ def final_law_concepts(query: str) -> list[str]:
     if requests_date_record(query):
         terms = [term for term in terms if term != EFFECT]
         terms.append(RECORDS)
+        terms.append("정보제공 요청 이해관계인 임차인 범위")
     return list(dict.fromkeys(terms))
 
 

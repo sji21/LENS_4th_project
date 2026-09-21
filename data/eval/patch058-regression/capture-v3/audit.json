@@ -1,0 +1,111 @@
+{
+  "schema": "patch058-retrieval-regression-v1",
+  "created_at": "2026-09-20T15:29:45.166655+00:00",
+  "protocol_commit": "2f3b9f330df03e88ee5484d8e3c73993e9706e7ad34857646ea69895cecb231f",
+  "protocol_manifest_sha256": "2f3b9f330df03e88ee5484d8e3c73993e9706e7ad34857646ea69895cecb231f",
+  "generation_performed": false,
+  "queries": 368,
+  "environment": {
+    "devices": {
+      "base": "cuda:0",
+      "case": "cuda:0"
+    },
+    "base_profile": {
+      "version": 1,
+      "policy": "expanded-laws-record-v2",
+      "model": "nlpai-lab/KURE-v1",
+      "civil_ids": [
+        "민법-제105조",
+        "민법-제111조",
+        "민법-제113조",
+        "민법-제114조",
+        "민법-제118조",
+        "민법-제131조",
+        "민법-제134조",
+        "민법-제147조",
+        "민법-제186조",
+        "민법-제187조",
+        "민법-제265조",
+        "민법-제357조",
+        "민법-제390조",
+        "민법-제393조",
+        "민법-제470조",
+        "민법-제536조",
+        "민법-제543조",
+        "민법-제548조",
+        "민법-제615조",
+        "민법-제618조",
+        "민법-제623조",
+        "민법-제624조",
+        "민법-제626조",
+        "민법-제627조",
+        "민법-제629조",
+        "민법-제632조",
+        "민법-제633조",
+        "민법-제634조",
+        "민법-제636조",
+        "민법-제640조",
+        "민법-제654조"
+      ],
+      "files": {
+        "database/civil.sqlite3": "38ab0294c69178ea2189f569c5596257900b1b2d4add55dcd031a4192d0887ea",
+        "chunks/chunks.jsonl": "dd5c1d67b412673a3197b6a79255e60b50d5f3e17ac5ad60b813b29b3ae9aa81",
+        "chunks/cases.jsonl": "00b3565a637f9ba453f538e44495d36c7057d79a09f290d0dd5565d2b7136a33",
+        "database/knowledge.sqlite3": "08a33bfa44f4756b169d845ce22c91c77a1aab75b66b6f8eab1f2acb655b01ba",
+        "chunks/guides.jsonl": "9700a2196aa5c71634eba9cfee3423f00f40c53f86a03def1f5c870f9e5af742",
+        "chunks/civil.jsonl": "f060b82b6233aaae20e16fe5e2996bd20b24e3b98a4a65d10d20f655b9913b6b"
+      },
+      "index_hashes": [
+        "556d4e149dcfd1176feaf8898bea9bf04b62a5a41a86bae0ae826d98e0c093db",
+        "2daf1024b42e177b437889bc11fb12ed1e87d23c6da5194b78e2fc0fd46b2a5d"
+      ]
+    },
+    "base_clone": {
+      "root": "C:\\team_project\\patch058-worktree\\tmp\\native\\patch057-base-iv14bpta\\data",
+      "files": {
+        "chunks/cases.jsonl": "00b3565a637f9ba453f538e44495d36c7057d79a09f290d0dd5565d2b7136a33",
+        "chunks/chunks.jsonl": "dd5c1d67b412673a3197b6a79255e60b50d5f3e17ac5ad60b813b29b3ae9aa81",
+        "chunks/civil.jsonl": "f060b82b6233aaae20e16fe5e2996bd20b24e3b98a4a65d10d20f655b9913b6b",
+        "chunks/guides.jsonl": "9700a2196aa5c71634eba9cfee3423f00f40c53f86a03def1f5c870f9e5af742",
+        "database/civil.sqlite3": "38ab0294c69178ea2189f569c5596257900b1b2d4add55dcd031a4192d0887ea",
+        "database/knowledge.sqlite3": "08a33bfa44f4756b169d845ce22c91c77a1aab75b66b6f8eab1f2acb655b01ba",
+        "index/retrieval-profile.json": "7ef76301ae1bda6bbbabacaa8eddfb4276b3af4bd4b2e8411230d53ff349d91b",
+        "index/chroma_kurev1_1024/2218c632-fb6f-46a3-bf1b-641c6563c225/data_level0.bin": "98cf539228e5b766176a9c583af5ee83c9b4b916241c112aee8cf7aa4528645e",
+        "index/chroma_kurev1_1024/2218c632-fb6f-46a3-bf1b-641c6563c225/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+        "index/chroma_kurev1_1024/2218c632-fb6f-46a3-bf1b-641c6563c225/length.bin": "7301dc58bb13b903c1244511813082e9961fe97907307ed35a2715fa4995a922",
+        "index/chroma_kurev1_1024/2218c632-fb6f-46a3-bf1b-641c6563c225/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "index/chroma_kurev1_1024/chroma.sqlite3": "142d10ed3bc61cfb846e46d65211730c18656a7a03d93170b14779970987e040",
+        "index/chroma_civil_kurev1_1024/94b2ab4b-412d-4fb9-af95-fb513133e1ba/data_level0.bin": "69be1f6fe15c2c9ed072459ac2dcfd5e16f07458874d237e19a8c75604d18c49",
+        "index/chroma_civil_kurev1_1024/94b2ab4b-412d-4fb9-af95-fb513133e1ba/header.bin": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+        "index/chroma_civil_kurev1_1024/94b2ab4b-412d-4fb9-af95-fb513133e1ba/length.bin": "a5114ffbdccb9b5d33eafca5364d3097ce5e3470bcaaf5f3795a3047da546cbf",
+        "index/chroma_civil_kurev1_1024/94b2ab4b-412d-4fb9-af95-fb513133e1ba/link_lists.bin": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "index/chroma_civil_kurev1_1024/chroma.sqlite3": "b5071b4654d80f6e13011fe119192887fdc5fbc107bb772b86edc963c473d434"
+      }
+    },
+    "base_logical_indices": [
+      "556d4e149dcfd1176feaf8898bea9bf04b62a5a41a86bae0ae826d98e0c093db",
+      "2daf1024b42e177b437889bc11fb12ed1e87d23c6da5194b78e2fc0fd46b2a5d"
+    ],
+    "supplement_cases": 2,
+    "case_supplement_manifest": [
+      {
+        "chunk_id": "case:197934#0",
+        "canonical_case_key": "1d0119f700fdda7214a2e482180ce33d6f6273c83632ad690a9568c5f157cbcc",
+        "text_sha256": "68165f80414683bd060866c65dd4233c14abe7ca8ec6e3408a98abe3e2b295e6",
+        "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=197934",
+        "model_id": "nlpai-lab/KURE-v1",
+        "model_revision": "8b418a58414668e75532ed045c22d9ca018ae2b2"
+      },
+      {
+        "chunk_id": "case:167313#0",
+        "canonical_case_key": "570b0ac08ae2fdf420f272136df2d0b2bf27d8e65f1f4bbaa68fac81fbeeed6b",
+        "text_sha256": "11bac23006cf95f39f116c2094fc48de3724d403a70de0c48f220f7c34dcc6e7",
+        "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=167313",
+        "model_id": "nlpai-lab/KURE-v1",
+        "model_revision": "8b418a58414668e75532ed045c22d9ca018ae2b2"
+      }
+    ]
+  },
+  "candidate_trace_text": "Candidate text is referenced by frozen chunk ID and text_sha256; final returned evidence includes full text.",
+  "git_status": " M .gitattributes\n M .gitignore\n M CHANGELOG.md\n M CHANGELOG_Kr.md\n M LIST.md\n M README.md\n M data/case_corpus/chunks/cases.jsonl\n M data/case_corpus/chunks/guides.jsonl\n M data/case_corpus/chunks/laws.jsonl\n M data/case_corpus/database/knowledge.sqlite3\n M data/case_corpus/index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/data_level0.bin\n M data/case_corpus/index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/header.bin\n M data/case_corpus/index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/index_metadata.pickle\n M data/case_corpus/index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/length.bin\n M data/case_corpus/index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/link_lists.bin\n M data/case_corpus/index/chroma_kurev1_1024/chroma.sqlite3\n M docs/server-data-setup.md\n M scripts/patch027_rollout.py\n M scripts/patch041_retrieval_eval.py\n M src/generation/evidence_routing.py\n M src/ingestion/load_cases.py\n M src/ingestion/server_build.py\n M src/ingestion/server_sources.py\n M src/retrieval/case_profile.py\n M src/retrieval/companion_evidence.py\n M src/retrieval/context_policy.py\n M src/retrieval/expanded.py\n M src/retrieval/multi_evidence.py\n M src/retrieval/profile.py\n M src/retrieval/retrieval_intent.py\n M src/retrieval/service.py\n M tests/test_patch027_product.py\n M tests/test_patch046_multi_evidence.py\n M tests/test_retrieval_service.py\n M tests/test_server_build.py\n?? data/eval/patch058-regression/\n?? data/sources/retrieval-supplements-v1/\n?? data/sources/supplement-v1/\n?? docs/patch058-retrieval-coverage.md\n?? scripts/patch058_regression_eval.py\n?? scripts/patch058_report.py\n?? src/ingestion/coverage_sources.py\n?? src/ingestion/retrieval_supplements.py\n?? tests/test_coverage_sources058.py\n?? tests/test_patch058_regression_eval.py\n?? tests/test_selection058.py\n?? tests/test_supplement_sources058.py\n"
+}

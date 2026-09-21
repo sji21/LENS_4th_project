@@ -1,0 +1,1298 @@
+{
+  "schema": "patch058-retrieval-regression-v1",
+  "status": "prepared_no_queries_run",
+  "created_at": "2026-09-20T16:01:06.979636+00:00",
+  "generation_performed": false,
+  "retrieval_performed": false,
+  "prepared_from_commit": "8f7c00a047707fc62cd443e17dfee51a254d01d3",
+  "paths": {
+    "base_data": "C:\\team_project\\patch058-worktree\\data",
+    "case_profile": "C:\\team_project\\patch058-worktree\\data\\case_corpus\\runtime-profile.json",
+    "case_dev": "C:\\team_project\\patch057-worktree\\data\\eval\\patch057-comprehensive\\protocol\\inputs\\case-dev13.jsonl",
+    "case_external": "C:\\team_project\\patch057-worktree\\data\\eval\\patch057-comprehensive\\protocol\\inputs\\case-external8.jsonl",
+    "legacy_case_chunks": "C:\\team_project\\patch057-worktree\\data\\chunks\\cases.jsonl"
+  },
+  "source_files": {
+    "C:\\Users\\송지섭\\.cache\\huggingface\\hub\\models--nlpai-lab--KURE-v1\\snapshots\\8b418a58414668e75532ed045c22d9ca018ae2b2\\1_Pooling\\config.json": {
+      "sha256": "13e69897522ee8255104483ed9f219465d1be3936654a54a318758738052789e",
+      "bytes": 297,
+      "required_at_capture": true
+    },
+    "C:\\Users\\송지섭\\.cache\\huggingface\\hub\\models--nlpai-lab--KURE-v1\\snapshots\\8b418a58414668e75532ed045c22d9ca018ae2b2\\config.json": {
+      "sha256": "852d42e020c7f989c2acaf30fc683b7f768e8c6d1ab17166e835442162bd825d",
+      "bytes": 807,
+      "required_at_capture": true
+    },
+    "C:\\Users\\송지섭\\.cache\\huggingface\\hub\\models--nlpai-lab--KURE-v1\\snapshots\\8b418a58414668e75532ed045c22d9ca018ae2b2\\config_sentence_transformers.json": {
+      "sha256": "8c73684c2160f2209f3706d6cbe0e933287fe6945d9546042be4c105cdb5252e",
+      "bytes": 220,
+      "required_at_capture": true
+    },
+    "C:\\Users\\송지섭\\.cache\\huggingface\\hub\\models--nlpai-lab--KURE-v1\\snapshots\\8b418a58414668e75532ed045c22d9ca018ae2b2\\model.safetensors": {
+      "sha256": "c18156e80caf8ff45eb84a24a853130c3bca03087ccb41b051f86e7556bae02c",
+      "bytes": 2271064456,
+      "required_at_capture": true
+    },
+    "C:\\Users\\송지섭\\.cache\\huggingface\\hub\\models--nlpai-lab--KURE-v1\\snapshots\\8b418a58414668e75532ed045c22d9ca018ae2b2\\modules.json": {
+      "sha256": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+      "bytes": 349,
+      "required_at_capture": true
+    },
+    "C:\\Users\\송지섭\\.cache\\huggingface\\hub\\models--nlpai-lab--KURE-v1\\snapshots\\8b418a58414668e75532ed045c22d9ca018ae2b2\\sentence_bert_config.json": {
+      "sha256": "eb9b44b13c0f52a3b3685c3b1cbdea1ba8b04bea123b98f61610048940776eb1",
+      "bytes": 54,
+      "required_at_capture": true
+    },
+    "C:\\Users\\송지섭\\.cache\\huggingface\\hub\\models--nlpai-lab--KURE-v1\\snapshots\\8b418a58414668e75532ed045c22d9ca018ae2b2\\special_tokens_map.json": {
+      "sha256": "8c785abebea9ae3257b61681b4e6fd8365ceafde980c21970d001e834cf10835",
+      "bytes": 964,
+      "required_at_capture": true
+    },
+    "C:\\Users\\송지섭\\.cache\\huggingface\\hub\\models--nlpai-lab--KURE-v1\\snapshots\\8b418a58414668e75532ed045c22d9ca018ae2b2\\tokenizer.json": {
+      "sha256": "fb3c3b93c46fd5a8634e262e1b7de7da11a18b527aa2282b312952b692781dfd",
+      "bytes": 17083053,
+      "required_at_capture": true
+    },
+    "C:\\Users\\송지섭\\.cache\\huggingface\\hub\\models--nlpai-lab--KURE-v1\\snapshots\\8b418a58414668e75532ed045c22d9ca018ae2b2\\tokenizer_config.json": {
+      "sha256": "b87c8703482b0300d3da30e201519aa641f6a450f5eb5bf1e624afbf70c74d80",
+      "bytes": 1203,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch057-worktree\\data\\chunks\\cases.jsonl": {
+      "sha256": "b1b57c989d0299845a09b8e07eb29024d8f778303658c71fb656dc06a5a8d134",
+      "bytes": 24142,
+      "required_at_capture": false
+    },
+    "C:\\team_project\\patch057-worktree\\data\\eval\\patch057-comprehensive\\protocol\\inputs\\case-dev13.jsonl": {
+      "sha256": "65b9f15a432087065a71a026d5b7bdb196fc25aa253b34dbd3ef700241672316",
+      "bytes": 2798,
+      "required_at_capture": false
+    },
+    "C:\\team_project\\patch057-worktree\\data\\eval\\patch057-comprehensive\\protocol\\inputs\\case-external8.jsonl": {
+      "sha256": "28ff1e459b2e30b60da5160ff5f6d831eeb0113396dd0e8d9791cea37a3c8889",
+      "bytes": 2613,
+      "required_at_capture": false
+    },
+    "C:\\team_project\\patch058-worktree\\data\\case_corpus\\chunks\\cases.jsonl": {
+      "sha256": "353c0473208ea11dc060e9d5267a1a275c5e0c462c253b4f18c4e2b6cc351054",
+      "bytes": 17941024,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\case_corpus\\chunks\\guides.jsonl": {
+      "sha256": "9f79634cb2d2de8b742bf06cf049f1257f00a09b804b79480f20e13284c236ca",
+      "bytes": 13243,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\case_corpus\\chunks\\laws.jsonl": {
+      "sha256": "5817d0edc2a864c9af9cf62332e83dcd52c47720d7b55874038a964ea28caa5b",
+      "bytes": 201131,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\case_corpus\\database\\knowledge.sqlite3": {
+      "sha256": "ef359f9dac65bec969ab04d9f97d1ac5f7e8b32a0cf72b6a6dab92346d161c5a",
+      "bytes": 367280128,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\case_corpus\\index\\chroma_kurev1_1024\\a557366c-ace6-42ff-b9ba-2d19a92b6451\\data_level0.bin": {
+      "sha256": "2314da3ab81b5b84d32ea96fa3bd3cc4d9e61768a4c5fbbe7bca8ecdf83da247",
+      "bytes": 34701312,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\case_corpus\\index\\chroma_kurev1_1024\\a557366c-ace6-42ff-b9ba-2d19a92b6451\\header.bin": {
+      "sha256": "b8094a4fa32623596e3603302f40f63a2a3bc6d4fe76d6e7fc8c1242670c7041",
+      "bytes": 100,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\case_corpus\\index\\chroma_kurev1_1024\\a557366c-ace6-42ff-b9ba-2d19a92b6451\\index_metadata.pickle": {
+      "sha256": "6c4a31e7defd0318a10ca0c8febfc453899b3654669a6ead4465444acbed27c2",
+      "bytes": 385868,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\case_corpus\\index\\chroma_kurev1_1024\\a557366c-ace6-42ff-b9ba-2d19a92b6451\\length.bin": {
+      "sha256": "2d6d1459f513b3593ed31239ffc5465bdc7405c2c19ede505b674139f703d450",
+      "bytes": 32768,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\case_corpus\\index\\chroma_kurev1_1024\\a557366c-ace6-42ff-b9ba-2d19a92b6451\\link_lists.bin": {
+      "sha256": "e86ed129feb4d6831b221f4987ff864d5cc8c2c3d81ff90a87f8c18558d6fd04",
+      "bytes": 73228,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\case_corpus\\index\\chroma_kurev1_1024\\chroma.sqlite3": {
+      "sha256": "7805151b8571706d8629081d6d936a4dda313ab6135f5206a8b39ae788acd30a",
+      "bytes": 89231360,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\case_corpus\\release.json": {
+      "sha256": "32805c686958d425fc665cdae1c59d660a147ce98586f1eddd3271f3e97db74c",
+      "bytes": 3135,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\case_corpus\\runtime-profile.json": {
+      "sha256": "2e2bfb4880c31aecad922ba940080e5f7a797b8b75347b89128e821e4152ae3d",
+      "bytes": 1905,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\chunks\\cases.jsonl": {
+      "sha256": "00b3565a637f9ba453f538e44495d36c7057d79a09f290d0dd5565d2b7136a33",
+      "bytes": 39279,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\chunks\\chunks.jsonl": {
+      "sha256": "dd5c1d67b412673a3197b6a79255e60b50d5f3e17ac5ad60b813b29b3ae9aa81",
+      "bytes": 354658,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\chunks\\civil.jsonl": {
+      "sha256": "f060b82b6233aaae20e16fe5e2996bd20b24e3b98a4a65d10d20f655b9913b6b",
+      "bytes": 27197,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\chunks\\guides.jsonl": {
+      "sha256": "9700a2196aa5c71634eba9cfee3423f00f40c53f86a03def1f5c870f9e5af742",
+      "bytes": 22809,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\database\\civil.sqlite3": {
+      "sha256": "38ab0294c69178ea2189f569c5596257900b1b2d4add55dcd031a4192d0887ea",
+      "bytes": 712704,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\database\\knowledge.sqlite3": {
+      "sha256": "08a33bfa44f4756b169d845ce22c91c77a1aab75b66b6f8eab1f2acb655b01ba",
+      "bytes": 2379776,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\case_holdout_current_20.jsonl": {
+      "sha256": "aaf518f87d98a05e0aee7d9220bb46f3a1ba930c8fb1e6e4afeaf0956e55c947",
+      "bytes": 5691,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\civil-review2\\manifest.json": {
+      "sha256": "8e0c95c8e3e69b0420c5d54c0e284db31942479b08fe0c06a5a9a48043664362",
+      "bytes": 2042,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\dev.jsonl": {
+      "sha256": "9e5ab5154b88fd66b5bd597f22c26cf4f633e0451efc7aa863469289f199103d",
+      "bytes": 7520,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\dev100-v2\\manifest.json": {
+      "sha256": "1f9d930887161773d95c8b56f608091c4640a5c2cd51f8469741fbf1e5fcec6e",
+      "bytes": 2328,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\holdout-v2-ho30-20260918\\evaluation-contract.json": {
+      "sha256": "3e42a28d254e5f0e47b7b47dcdb40c4959e26bd4529e76a833570bcf0a4b14ef",
+      "bytes": 8809,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\holdout-v2-ho30-20260918\\questions.jsonl": {
+      "sha256": "9253c1d92449378b1ab54a69b94414509ac3e48d7056cc1bcae7052906d3d5d2",
+      "bytes": 5327,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\holdout-v2-ho30-20260918\\review\\05_최종기준_구조화.json": {
+      "sha256": "71e5608fa4148e5c91baa807965d2bb595f18060ea504615081779f192749bb1",
+      "bytes": 102780,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\holdout.jsonl": {
+      "sha256": "62bfaa804e42bd436d2dcfda37ae38190c64dcd87f93c33e5d17296dac2964cf",
+      "bytes": 5720,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\minbeop_review_holdout_20260901.jsonl": {
+      "sha256": "abfa66775f5d75ddc683ddb647cc4dafd8acf7861be1113052c3668620ce71d7",
+      "bytes": 6139,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\patch057-comprehensive\\base-build-result.json": {
+      "sha256": "85d47ba56e8bd252391f54a0bc420df22ae32381ee9538371b9a7284054e6d1f",
+      "bytes": 281,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\patch057-comprehensive\\base-build-verification.json": {
+      "sha256": "e31abdb2d8172934fc06575558e9339ee4eac4203e552f392492394b226aecca",
+      "bytes": 74,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\patch057-comprehensive\\case-release-verification.json": {
+      "sha256": "bd5a052cb84c3c37273a80373f2033863acba2f615bfc798d478ee7253bbbf48",
+      "bytes": 498,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\patch057-comprehensive\\environment.json": {
+      "sha256": "f201331bb95db7f2646d8a02acc6fe3bb6ef7de146ffb68301d98970d1fd3428",
+      "bytes": 835,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\patch057-comprehensive\\evaluator-clone-tests.log": {
+      "sha256": "3d180919ff1604233b24321ce88a71a813a36b4858299fcbcd710a658ea8679d",
+      "bytes": 101,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\patch057-comprehensive\\evaluator-tests.log": {
+      "sha256": "7931af017e16e6c29086f9fa955db2ed26c77ed06589d20e337308b338b784e2",
+      "bytes": 101,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\patch057-comprehensive\\lfs-file-verification.json": {
+      "sha256": "3a4fcb66451a6fe812220f4a29764f61ce8f86691df730d522ee5ccafc91786c",
+      "bytes": 2120,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\patch057-comprehensive\\prequery-index-mutation.log": {
+      "sha256": "d7a243a78f94fcea526b941dba0b4a54137a2eb529a3798c4c0841ff84627bf7",
+      "bytes": 3262,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\patch057-comprehensive\\requirements-frozen.txt": {
+      "sha256": "147cf957f4a7aa9996e887937ad368cfbcd938687c31d9c955c7a76617b50956",
+      "bytes": 3053,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\patch057-comprehensive\\retrieval-contract-tests.log": {
+      "sha256": "3d7c08a6a617b9ea88ea93a474850fb8679a56eeba3326a094edaf89f7df3c5a",
+      "bytes": 101,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\eval\\patch057-comprehensive\\service-preflight.json": {
+      "sha256": "ad11a4e7654886c862ed63ac348175612a25055e1507d84948af6031848c81a7",
+      "bytes": 10063,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\index\\chroma_civil_kurev1_1024\\94b2ab4b-412d-4fb9-af95-fb513133e1ba\\data_level0.bin": {
+      "sha256": "69be1f6fe15c2c9ed072459ac2dcfd5e16f07458874d237e19a8c75604d18c49",
+      "bytes": 423600,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\index\\chroma_civil_kurev1_1024\\94b2ab4b-412d-4fb9-af95-fb513133e1ba\\header.bin": {
+      "sha256": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+      "bytes": 100,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\index\\chroma_civil_kurev1_1024\\94b2ab4b-412d-4fb9-af95-fb513133e1ba\\length.bin": {
+      "sha256": "a5114ffbdccb9b5d33eafca5364d3097ce5e3470bcaaf5f3795a3047da546cbf",
+      "bytes": 400,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\index\\chroma_civil_kurev1_1024\\94b2ab4b-412d-4fb9-af95-fb513133e1ba\\link_lists.bin": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\index\\chroma_civil_kurev1_1024\\chroma.sqlite3": {
+      "sha256": "b5071b4654d80f6e13011fe119192887fdc5fbc107bb772b86edc963c473d434",
+      "bytes": 462848,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\index\\chroma_kurev1_1024\\2218c632-fb6f-46a3-bf1b-641c6563c225\\data_level0.bin": {
+      "sha256": "98cf539228e5b766176a9c583af5ee83c9b4b916241c112aee8cf7aa4528645e",
+      "bytes": 423600,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\index\\chroma_kurev1_1024\\2218c632-fb6f-46a3-bf1b-641c6563c225\\header.bin": {
+      "sha256": "bf12d4486518c7addf488cb4854526902c78e91951990e1e2f4e055cec814e5d",
+      "bytes": 100,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\index\\chroma_kurev1_1024\\2218c632-fb6f-46a3-bf1b-641c6563c225\\length.bin": {
+      "sha256": "7301dc58bb13b903c1244511813082e9961fe97907307ed35a2715fa4995a922",
+      "bytes": 400,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\index\\chroma_kurev1_1024\\2218c632-fb6f-46a3-bf1b-641c6563c225\\link_lists.bin": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\index\\chroma_kurev1_1024\\chroma.sqlite3": {
+      "sha256": "142d10ed3bc61cfb846e46d65211730c18656a7a03d93170b14779970987e040",
+      "bytes": 3522560,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\index\\retrieval-profile.json": {
+      "sha256": "7ef76301ae1bda6bbbabacaa8eddfb4276b3af4bd4b2e8411230d53ff349d91b",
+      "bytes": 1668,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\scripts\\dev100_v2\\report.py": {
+      "sha256": "3b009870975eccdc0e370c8bdd9993bb649dc8e6da31457cbb2d4a51d22dcf08",
+      "bytes": 13125,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\scripts\\patch041_retrieval_eval.py": {
+      "sha256": "dfba2dc52397e39269240b7e81248c4b8f199d02d379798780c4259ded1339ff",
+      "bytes": 31177,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\scripts\\patch057_comprehensive_eval.py": {
+      "sha256": "912de3a6b441f47a7de5303ebbaaa11c47a8f3fcf09b4678d462c4035e443716",
+      "bytes": 49004,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\evaluation\\baseline.py": {
+      "sha256": "329f0bfad1f1ab2f74619adbc95c33a78438ef3dda8bd6009a6997c277a294a9",
+      "bytes": 14952,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\generation\\evidence_routing.py": {
+      "sha256": "0706d4eba3937a600e7036e02ce8c6323406f61f6e653f4db41bf9481587afb1",
+      "bytes": 8412,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\case_internal.py": {
+      "sha256": "ec0ae9eb9204ec83373c3184fe24b94414a1a9167f06f583132f9cb06d7850b1",
+      "bytes": 12762,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\case_internal_profile.py": {
+      "sha256": "f6d81f0ae653e9320a9002dcf98fbfa88d81c7e99f674add6ec60811dad8fbca",
+      "bytes": 8276,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\case_profile.py": {
+      "sha256": "35a81e4b0ac4125e85a0073dabcf1317f9bb1288d59a8e4eb62116ed6fb98196",
+      "bytes": 15249,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\case_rerank.py": {
+      "sha256": "aba0d6770eeb21fdfd487c3ffa7d4eff5e070346c2f3c33f46619f2b1fb8eb1d",
+      "bytes": 1667,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\companion_evidence.py": {
+      "sha256": "db1b7d7e8865e05fd3420cc8ba663adbdd618b0fbfacee6ae9da59f639c3494a",
+      "bytes": 12843,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\context_policy.py": {
+      "sha256": "d43ee32bedec38b3569ddd4cec4f66a9f13b729f3c5d1e564b530795f39ac771",
+      "bytes": 13281,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\dense.py": {
+      "sha256": "cae64520c02937411196a309f1c2091d0394b16b8437513f31d086771ae601ef",
+      "bytes": 9022,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\expanded.py": {
+      "sha256": "1d541c5c6da78a49f2037712635373eb62966242f5ef0db1b7328e6971b27c82",
+      "bytes": 7910,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\hybrid.py": {
+      "sha256": "71ded64a0b55df7c235650017e1a1d6ac6c2903bfa4bf8b9f54d199dab28ffcc",
+      "bytes": 5176,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\index.py": {
+      "sha256": "dd4fd669cbdec1213ed6f6e787f0474a49320d833727d6f95441e806df190d14",
+      "bytes": 8273,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\multi_evidence.py": {
+      "sha256": "f6cc14e275fe7b8fbb728943fcf54be6fb3f6729189ffbd0d3182c32bda5fe2a",
+      "bytes": 9877,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\partitioned.py": {
+      "sha256": "1b15d7ccc10f955e13eadb1977ff9d03f8427315e30bb4272fcaa97f7c3823f3",
+      "bytes": 1341,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\portable_index.py": {
+      "sha256": "daf5354fc9fe5394a299ca6904beed23d4522a619fef16a6d549faf6ace99e69",
+      "bytes": 1796,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\profile.py": {
+      "sha256": "5f610d2c4e90b43a2826b0ef37c6619c8ac1446e4310d2adf3ff2620d75facad",
+      "bytes": 5198,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\readiness.py": {
+      "sha256": "e2220f8b623697d5ddecdc54e47c5fc3ebdff1c3a1d1842821e352f5937ce95f",
+      "bytes": 3214,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\refs.py": {
+      "sha256": "e2ce58238e57aa6469fcc047a81db241529c6f81d777ea8d3fbbb5aef79ad215",
+      "bytes": 40,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\retrieval_intent.py": {
+      "sha256": "b71d951c850d8af55366bffe8db935fdfcaaa4463cd18d6246e1d4210f041294",
+      "bytes": 15295,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\retriever.py": {
+      "sha256": "64e2cbefbc61515a2c8c223cd5289ac624617327eeca3bd7e401cc96f13bae51",
+      "bytes": 10329,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\service.py": {
+      "sha256": "50f3e4eb15ff5d7547f01d587575cd2963ea0d23ae34a3b551e24b98cc450d03",
+      "bytes": 48857,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\retrieval\\terms.py": {
+      "sha256": "71d31ab7bf767233a048ca7acac7b855654ab1a9c4e31d60328bcab2a86cfd31",
+      "bytes": 11347,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\scripts\\patch058_regression_eval.py": {
+      "sha256": "d252f233988510578dbba2557f2bd078ebe225c344c099301e4e31d4af6fc0eb",
+      "bytes": 6381,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\build_mock.py": {
+      "sha256": "0b037315cb61be08da8c922de923b48374c991007e982c1c34999552d5a56d12",
+      "bytes": 29983,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\build_verified_case_source.py": {
+      "sha256": "bc023b066755909d7c6963cb517f0c2edfbe91d8bb1f79b38ef31a1f484f245e",
+      "bytes": 11106,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\case_release.py": {
+      "sha256": "3fc0d90c23ad7e4a16e441e0947449e4fc179c5d95a8d2f7fd1e3885c32ee28c",
+      "bytes": 350,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\chunk.py": {
+      "sha256": "28ab6d818fdeca84a3b291c0f6f403ca6c867bfeecdf9ab573decc406a72aa42",
+      "bytes": 41,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\coverage_sources.py": {
+      "sha256": "257b0173aaf1bfb7afa5e938292280aa232d37330be9820ec6ac23f862a87514",
+      "bytes": 6069,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\export_case_review_queue.py": {
+      "sha256": "3243e78e149b82ccd075b2157f45eaeca04c4a21cfb6a7475b9b6b47dd5723e5",
+      "bytes": 4869,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\fetch_guides.py": {
+      "sha256": "1da621c84f35424ae4242a121461b22c0697514e2a14810d888e10368428e43a",
+      "bytes": 10746,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\fetch_law.py": {
+      "sha256": "de7a2a0cbb2ed776103afbe1e3aef5d30266b3da9259571097b15620c2157da7",
+      "bytes": 41,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\fetch_law_mock.py": {
+      "sha256": "b37755100192242ce4eaab804de8500ee6bb0292f16b2f5a634016716a5c9fc4",
+      "bytes": 10793,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\fetch_minbeop.py": {
+      "sha256": "71c1bad0660e9ead491c82f3659c460d6d1fc7c8a78cec1505e76c7b2142f80c",
+      "bytes": 3594,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\knowledge_release.py": {
+      "sha256": "903dd9d88e3b434f6eab82b11354b3e77c46f5df8d69ad47ef346f8c3ed9d8a6",
+      "bytes": 21212,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\law_structure.py": {
+      "sha256": "4dd150e329efa7961b4011caf68f13418dc969a1d57493c97c46310b754fc781",
+      "bytes": 5783,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\load_cases.py": {
+      "sha256": "0b421b3ce947ce484f582dad37263b02ba85fb6c1ab0394f279699a7596641e6",
+      "bytes": 12625,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\load_guides.py": {
+      "sha256": "5623c406b2cd34fd9df2e2baf65c330a58ee1d173ce0130ca9c745c80968277f",
+      "bytes": 12713,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\load_laws.py": {
+      "sha256": "b8e1952a3497767e2ea71b598dfb535f1c98d5a8c1fcad7e85993c975fffb77a",
+      "bytes": 19371,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\merge_chunks.py": {
+      "sha256": "fed1f1466cb93a47ece65542830ca865dbe3d3e4390284aa9bd4b41cb5ca7f6a",
+      "bytes": 2959,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\parse_cases.py": {
+      "sha256": "339673375831f5c5dc646370b64f149a0887a93aee68ebadb2b68f1b91281592",
+      "bytes": 19796,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\parse_law.py": {
+      "sha256": "5e80dac0662970fd555888a42f48cb562c6f03f6745e51283e764bb48be95c33",
+      "bytes": 37,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\parse_pdf.py": {
+      "sha256": "c88e2ee8ebd3ba7e65435777cfe27e90cd71b272c0e36f8c88e0dffc282c8fa8",
+      "bytes": 44,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\refetch_case_details.py": {
+      "sha256": "9b2a421a7e0258dfbba46f4d6a72232df9af44f7068c39e5d301ab887ec5482c",
+      "bytes": 7549,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\resolve_case_ids.py": {
+      "sha256": "fa9f2867ce8f6b0c58ea6b7853bf391083589bf6f510cbb13e12dbc81e3e10a0",
+      "bytes": 5533,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\retrieval_supplements.py": {
+      "sha256": "16c68d0550e2237e865a93f71e8f61425e4e420613bdbcc46db2f90bf5395984",
+      "bytes": 3678,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\server_build.py": {
+      "sha256": "a80286539059548e9dc202d185dc9a446aaa157bc656ea6b877039d16da7150d",
+      "bytes": 18482,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\server_sources.py": {
+      "sha256": "deada5dc195609c4a6aa4cb4ab6a2df86bc3b557f7e1653643d6e5b31a596f43",
+      "bytes": 5723,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\src\\ingestion\\validate_chunks.py": {
+      "sha256": "9b3deb6578fa483094884c910cf7700dbf0add80068b40f39acfe40538269843",
+      "bytes": 8741,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\sources\\retrieval-supplements-v1\\case-167313.html": {
+      "sha256": "546feadde0b523f83c80c90f6d377076bb9d7f073ca827f3502272a561b7ae67",
+      "bytes": 68481,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\sources\\retrieval-supplements-v1\\case-197934.html": {
+      "sha256": "88273e3c3065e2e09e90ae7ca431dad32a461facfcea8a7c7dea913f7091f6fd",
+      "bytes": 73446,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\sources\\retrieval-supplements-v1\\manifest.json": {
+      "sha256": "9a90ea80cd3513fe083d1b0a067eaa2a9825328b5336b41f13c1e78929ca4695",
+      "bytes": 1298,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\sources\\retrieval-supplements-v1\\public-financial-consent.pdf": {
+      "sha256": "a047dde013718d14cab169239724ea772287b8209aeb9a6785802deddfd57e17",
+      "bytes": 162667,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\sources\\retrieval-supplements-v1\\public-financial-consent.txt": {
+      "sha256": "700f5def755aa91458f530762ef6fae9912f32e12f6ac91c0fc0d5a6f36680de",
+      "bytes": 5490,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\sources\\supplement-v1\\manifest.json": {
+      "sha256": "9d107d292c3f4acaa5d4c7a7644a45ad808b5f4be3764458927708482b67e1e2",
+      "bytes": 1792,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\sources\\supplement-v1\\specs.json": {
+      "sha256": "d6442fe2f7de1f51606a2047d3c580fabdb65211a723bb4a44f7f1ccfaebc08f",
+      "bytes": 6566,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\sources\\supplement-v1\\공공주택특별법-20260908.html": {
+      "sha256": "a0c2602af239837351f973b533f3009dbc43b96a49195939a10295ed482e5f93",
+      "bytes": 845665,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\sources\\supplement-v1\\공공주택특별법시행령-20260908.html": {
+      "sha256": "c73445e3617fc1bdf8c2e7f8530eb12a5e36d6abc72e0f42b51f724b799f5e7e",
+      "bytes": 700885,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\sources\\supplement-v1\\민간임대주택에관한특별법시행령-20260226.html": {
+      "sha256": "0f3c4ea7c0e7caa55839db6f51dd6c4171e122cd1143a0aa8c72ab273a4447d5",
+      "bytes": 547842,
+      "required_at_capture": true
+    },
+    "C:\\team_project\\patch058-worktree\\data\\sources\\supplement-v1\\민사집행법-20260201.html": {
+      "sha256": "aa951570d76d96841287728bc14a5fa703e95a4d087d6e9b59ba96b227ee1d2d",
+      "bytes": 576840,
+      "required_at_capture": true
+    }
+  },
+  "case_profile_identity": {
+    "schema": "lens-case-retrieval-v1",
+    "version": "data-dev-v2-8377-reindexed-20260915-v1",
+    "model_id": "nlpai-lab/KURE-v1",
+    "model_revision": "8b418a58414668e75532ed045c22d9ca018ae2b2",
+    "dimension": 1024,
+    "candidate_depth": 80,
+    "return_k": 20,
+    "rerank_policy": "band_3pct",
+    "case_rrf_k": 60,
+    "case_bm25_weight": 2,
+    "case_dense_weight": 1,
+    "case_query_expansion": "civil_terms",
+    "case_field_policy": "tax_source_guard",
+    "index_content_sha256": "85850fa63854788b01ae675cad6003941c536deb7fc77c42b1f30a0b0df4c4d7"
+  },
+  "budgets": {
+    "raw": [
+      {
+        "laws": 3,
+        "civil_laws": 3,
+        "cases": 5,
+        "guides": 2
+      },
+      {
+        "laws": 5,
+        "civil_laws": 3,
+        "cases": 5,
+        "guides": 2
+      }
+    ],
+    "staged_operating": {
+      "laws": 3,
+      "civil_laws": 3,
+      "cases": 2,
+      "guides": 2
+    },
+    "staged_diagnostic": {
+      "laws": 5,
+      "civil_laws": 3,
+      "cases": 5,
+      "guides": 2
+    }
+  },
+  "scoring_contract": {
+    "channel_metrics": "Hit@1/3/5, MRR, recall and all-required; case also Hit@2",
+    "combined_rank": "Separate channel ranks are never pooled",
+    "missing_gold": "Retained in all-required and recall denominators",
+    "ho_law_complete_n": 30,
+    "ho_full_evidence_complete_n": 30,
+    "ho_strata": {
+      "statute_only": 27,
+      "mixed_source": 3
+    },
+    "ho_occurrences": {
+      "statutes": 44,
+      "other_sources": 4
+    },
+    "reviewed_denominators": {
+      "question_only_all_required": 75,
+      "context_diagnostic_all_required": 75,
+      "general_target_items_each_mode": 47,
+      "civil_target_items_each_mode": 32,
+      "civil35_required_law": 29,
+      "civil35_scope_provisional": 1,
+      "civil35_diagnostic_only": 5
+    }
+  },
+  "expected": {
+    "reviewed": 235,
+    "public_scored": {
+      "legacy_dev": 24,
+      "legacy_holdout": 18,
+      "civil_public": 15,
+      "case_dev13": 13,
+      "case_external8": 8,
+      "case_legacy20": 20
+    },
+    "public_inputs": {
+      "legacy_dev": 24,
+      "legacy_holdout": 18,
+      "civil_public": 20,
+      "case_dev13": 13,
+      "case_external8": 8,
+      "case_legacy20": 20
+    },
+    "ho30": 30,
+    "jobs": 368
+  },
+  "counts": {
+    "total": 368,
+    "groups": {
+      "question_only": {
+        "inputs": 100,
+        "scored": 75
+      },
+      "context_diagnostic": {
+        "inputs": 100,
+        "scored": 75
+      },
+      "required_law": {
+        "inputs": 29,
+        "scored": 29
+      },
+      "diagnostic_only": {
+        "inputs": 5,
+        "scored": 0
+      },
+      "scope_provisional": {
+        "inputs": 1,
+        "scored": 0
+      },
+      "legacy_dev": {
+        "inputs": 24,
+        "scored": 24
+      },
+      "legacy_holdout": {
+        "inputs": 18,
+        "scored": 18
+      },
+      "civil_public": {
+        "inputs": 20,
+        "scored": 15
+      },
+      "case_dev13": {
+        "inputs": 13,
+        "scored": 13
+      },
+      "case_external8": {
+        "inputs": 8,
+        "scored": 8
+      },
+      "case_legacy20": {
+        "inputs": 20,
+        "scored": 20
+      },
+      "ho30": {
+        "inputs": 30,
+        "scored": 30
+      }
+    }
+  },
+  "holdout_source_inventory": {
+    "A3": {
+      "channel": "laws",
+      "identity": "주택임대차보호법-제3조",
+      "available": true,
+      "source": {
+        "title": "주택임대차보호법 제3조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=276291&efYd=20260102&chrClsCd=010202#J3:0",
+        "section": "제1항·제4항",
+        "effective": "2026-01-02",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "A3_2": {
+      "channel": "laws",
+      "identity": "주택임대차보호법-제3조의2",
+      "available": true,
+      "source": {
+        "title": "주택임대차보호법 제3조의2",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=276291&efYd=20260102&chrClsCd=010202#J3:2",
+        "section": "제1항~제3항",
+        "effective": "2026-01-02",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "A3_6": {
+      "channel": "laws",
+      "identity": "주택임대차보호법-제3조의6",
+      "available": true,
+      "source": {
+        "title": "주택임대차보호법 제3조의6",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=276291&efYd=20260102&chrClsCd=010202#J3:6",
+        "section": "제1항~제3항",
+        "effective": "2026-01-02",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "B5": {
+      "channel": "laws",
+      "identity": "주택임대차보호법시행령-제5조",
+      "available": true,
+      "source": {
+        "title": "주택임대차보호법 시행령 제5조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=287183&efYd=20260701&chrClsCd=010202#J5:0",
+        "section": "제1호",
+        "effective": "2026-07-01",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "P90": {
+      "channel": "cases",
+      "identity": "52d398f1f8db105e428792d24e04ae16d7e7895c2c6014e4b1bf4adf6ce7b166",
+      "available": true,
+      "source": {
+        "title": "대법원 1990. 8. 14. 선고 90다카11377",
+        "url": "https://www.law.go.kr/LSW/precInfoP.do?evtNo=90%EB%8B%A4%EC%B9%B411377",
+        "section": "판시사항·판결요지·이유(1985년 저당권 설정, 1986년 보증금 2,100만 원→2,400만 원 증액)",
+        "effective": "판결 선고일 1990-08-14; 2026-09-18 기준 일반 법리 적용 검토",
+        "checked": "2026-09-18",
+        "status": "판례 원문과 관련 사실관계 확인"
+      }
+    },
+    "P2010": {
+      "channel": "cases",
+      "identity": "570b0ac08ae2fdf420f272136df2d0b2bf27d8e65f1f4bbaa68fac81fbeeed6b",
+      "available": true,
+      "source": {
+        "title": "대법원 2012. 7. 12. 선고 2010다42990",
+        "url": "https://www.law.go.kr/LSW/precInfoR.do?precSeq=167313",
+        "section": "판시사항·이유 제1항~제2항(같은 4,800만 원으로 갱신, 뒤의 계약서 제출에도 기존 우선변제권 유지)",
+        "effective": "판결 선고일 2012-07-12; 2026-09-18 기준 일반 법리 적용 검토",
+        "checked": "2026-09-18",
+        "status": "판례 원문과 관련 사실관계 확인"
+      }
+    },
+    "D148": {
+      "channel": "laws",
+      "identity": "민사집행법-제148조",
+      "available": true,
+      "source": {
+        "title": "민사집행법 제148조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=268837&efYd=20260201&chrClsCd=010202#J148:0",
+        "section": "제2호·제4호",
+        "effective": "2026-02-01",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "A3_3": {
+      "channel": "laws",
+      "identity": "주택임대차보호법-제3조의3",
+      "available": true,
+      "source": {
+        "title": "주택임대차보호법 제3조의3",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=276291&efYd=20260102&chrClsCd=010202#J3:3",
+        "section": "제1항·제5항·제8항",
+        "effective": "2026-01-02",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "C536": {
+      "channel": "civil_laws",
+      "identity": "민법-제536조",
+      "available": true,
+      "source": {
+        "title": "민법 제536조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284415&efYd=20260317&chrClsCd=010202#J536:0",
+        "section": "제1항",
+        "effective": "2026-03-17",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "P2017": {
+      "channel": "cases",
+      "identity": "1d0119f700fdda7214a2e482180ce33d6f6273c83632ad690a9568c5f157cbcc",
+      "available": true,
+      "source": {
+        "title": "대법원 2017. 10. 12. 선고 2017다224630, 224647",
+        "url": "https://law.go.kr/LSW/precInfoP.do?mode=0&precSeq=197934",
+        "section": "이유 제1항~제3항(당구장 점포 종료·인도 합의와 보증금 미반환; 일반 임대차 동시이행 법리)",
+        "effective": "판결 선고일 2017-10-12; 2026-09-18 기준 일반 법리 적용 검토",
+        "checked": "2026-09-18",
+        "status": "판례 원문과 관련 사실관계 확인"
+      }
+    },
+    "A14": {
+      "channel": "laws",
+      "identity": "주택임대차보호법-제14조",
+      "available": true,
+      "source": {
+        "title": "주택임대차보호법 제14조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=276291&efYd=20260102&chrClsCd=010202#J14:0",
+        "section": "제2항 제3호",
+        "effective": "2026-01-02",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "A26": {
+      "channel": "laws",
+      "identity": "주택임대차보호법-제26조",
+      "available": true,
+      "source": {
+        "title": "주택임대차보호법 제26조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=276291&efYd=20260102&chrClsCd=010202#J26:0",
+        "section": "제2항~제4항",
+        "effective": "2026-01-02",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "A27": {
+      "channel": "laws",
+      "identity": "주택임대차보호법-제27조",
+      "available": true,
+      "source": {
+        "title": "주택임대차보호법 제27조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=276291&efYd=20260102&chrClsCd=010202#J27:0",
+        "section": "제1항·제2항",
+        "effective": "2026-01-02",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "A4": {
+      "channel": "laws",
+      "identity": "주택임대차보호법-제4조",
+      "available": true,
+      "source": {
+        "title": "주택임대차보호법 제4조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=276291&efYd=20260102&chrClsCd=010202#J4:0",
+        "section": "제1항·제2항",
+        "effective": "2026-01-02",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "A7": {
+      "channel": "laws",
+      "identity": "주택임대차보호법-제7조",
+      "available": true,
+      "source": {
+        "title": "주택임대차보호법 제7조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=276291&efYd=20260102&chrClsCd=010202#J7:0",
+        "section": "제1항·제2항",
+        "effective": "2026-01-02",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "C640": {
+      "channel": "civil_laws",
+      "identity": "민법-제640조",
+      "available": true,
+      "source": {
+        "title": "민법 제640조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284415&efYd=20260317&chrClsCd=010202#J640:0",
+        "section": "전체",
+        "effective": "2026-03-17",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "A6": {
+      "channel": "laws",
+      "identity": "주택임대차보호법-제6조",
+      "available": true,
+      "source": {
+        "title": "주택임대차보호법 제6조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=276291&efYd=20260102&chrClsCd=010202#J6:0",
+        "section": "제1항~제3항",
+        "effective": "2026-01-02",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "A6_2": {
+      "channel": "laws",
+      "identity": "주택임대차보호법-제6조의2",
+      "available": true,
+      "source": {
+        "title": "주택임대차보호법 제6조의2",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=276291&efYd=20260102&chrClsCd=010202#J6:2",
+        "section": "제1항·제2항",
+        "effective": "2026-01-02",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "A6_3": {
+      "channel": "laws",
+      "identity": "주택임대차보호법-제6조의3",
+      "available": true,
+      "source": {
+        "title": "주택임대차보호법 제6조의3",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=276291&efYd=20260102&chrClsCd=010202#J6:3",
+        "section": "제1항~제3항",
+        "effective": "2026-01-02",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "C623": {
+      "channel": "civil_laws",
+      "identity": "민법-제623조",
+      "available": true,
+      "source": {
+        "title": "민법 제623조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284415&efYd=20260317&chrClsCd=010202#J623:0",
+        "section": "전체",
+        "effective": "2026-03-17",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "C626": {
+      "channel": "civil_laws",
+      "identity": "민법-제626조",
+      "available": true,
+      "source": {
+        "title": "민법 제626조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284415&efYd=20260317&chrClsCd=010202#J626:0",
+        "section": "제1항",
+        "effective": "2026-03-17",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "C634": {
+      "channel": "civil_laws",
+      "identity": "민법-제634조",
+      "available": true,
+      "source": {
+        "title": "민법 제634조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284415&efYd=20260317&chrClsCd=010202#J634:0",
+        "section": "전체",
+        "effective": "2026-03-17",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "C624": {
+      "channel": "civil_laws",
+      "identity": "민법-제624조",
+      "available": true,
+      "source": {
+        "title": "민법 제624조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284415&efYd=20260317&chrClsCd=010202#J624:0",
+        "section": "전체",
+        "effective": "2026-03-17",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "C627": {
+      "channel": "civil_laws",
+      "identity": "민법-제627조",
+      "available": true,
+      "source": {
+        "title": "민법 제627조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284415&efYd=20260317&chrClsCd=010202#J627:0",
+        "section": "제1항·제2항",
+        "effective": "2026-03-17",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "C114": {
+      "channel": "civil_laws",
+      "identity": "민법-제114조",
+      "available": true,
+      "source": {
+        "title": "민법 제114조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284415&efYd=20260317&chrClsCd=010202#J114:0",
+        "section": "제1항",
+        "effective": "2026-03-17",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "C618": {
+      "channel": "civil_laws",
+      "identity": "민법-제618조",
+      "available": true,
+      "source": {
+        "title": "민법 제618조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284415&efYd=20260317&chrClsCd=010202#J618:0",
+        "section": "전체",
+        "effective": "2026-03-17",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "C633": {
+      "channel": "civil_laws",
+      "identity": "민법-제633조",
+      "available": true,
+      "source": {
+        "title": "민법 제633조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284415&efYd=20260317&chrClsCd=010202#J633:0",
+        "section": "전체",
+        "effective": "2026-03-17",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "C131": {
+      "channel": "civil_laws",
+      "identity": "민법-제131조",
+      "available": true,
+      "source": {
+        "title": "민법 제131조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284415&efYd=20260317&chrClsCd=010202#J131:0",
+        "section": "전체",
+        "effective": "2026-03-17",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "C134": {
+      "channel": "civil_laws",
+      "identity": "민법-제134조",
+      "available": true,
+      "source": {
+        "title": "민법 제134조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=284415&efYd=20260317&chrClsCd=010202#J134:0",
+        "section": "전체",
+        "effective": "2026-03-17",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "G48_4": {
+      "channel": "laws",
+      "identity": "공공주택특별법-제48조의4",
+      "available": true,
+      "source": {
+        "title": "공공주택 특별법 제48조의4",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=289289&efYd=20260908&chrClsCd=010202#J48:4",
+        "section": "제1항·제2항",
+        "effective": "2026-09-08",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "H42": {
+      "channel": "laws",
+      "identity": "공공주택특별법시행령-제42조",
+      "available": true,
+      "source": {
+        "title": "공공주택 특별법 시행령 제42조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=289503&efYd=20260908&chrClsCd=010202#J42:0",
+        "section": "제1항·제3항",
+        "effective": "2026-09-08",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "Iform4": {
+      "channel": "forms",
+      "identity": "공공주택특별법시행규칙-별지제4호서식",
+      "available": true,
+      "source": {
+        "title": "공공주택 특별법 시행규칙 별지 제4호서식",
+        "url": "https://www.law.go.kr/LSW/flDownload.do?gubun=&flSeq=168433763&bylClsCd=110202",
+        "section": "앞면 제4항·주석 1), 뒷면 유의사항 제1호~제3호(특히 제2호)",
+        "effective": "2026-08-24 시행규칙에 연결된 현행 서식; 서식 자체 개정일 2022-12-29",
+        "checked": "2026-09-18",
+        "status": "현행 규칙 제28조와 별지 링크 연결 확인; PDF 앞·뒷면 텍스트 및 이미지 확인"
+      }
+    },
+    "E46": {
+      "channel": "laws",
+      "identity": "민간임대주택에관한특별법-제46조",
+      "available": true,
+      "source": {
+        "title": "민간임대주택에 관한 특별법 제46조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=276995&efYd=20260102&chrClsCd=010202#J46:0",
+        "section": "제1항·제2항",
+        "effective": "2026-01-02",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "F40": {
+      "channel": "laws",
+      "identity": "민간임대주택에관한특별법시행령-제40조",
+      "available": true,
+      "source": {
+        "title": "민간임대주택에 관한 특별법 시행령 제40조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=269343&efYd=20260226&chrClsCd=010202#J40:0",
+        "section": "제1호·제2호",
+        "effective": "2026-02-26",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "G49_4": {
+      "channel": "laws",
+      "identity": "공공주택특별법-제49조의4",
+      "available": true,
+      "source": {
+        "title": "공공주택 특별법 제49조의4",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=289289&efYd=20260908&chrClsCd=010202#J49:4",
+        "section": "전체",
+        "effective": "2026-09-08",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "G49_3": {
+      "channel": "laws",
+      "identity": "공공주택특별법-제49조의3",
+      "available": true,
+      "source": {
+        "title": "공공주택 특별법 제49조의3",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=289289&efYd=20260908&chrClsCd=010202#J49:3",
+        "section": "제1항 제5호",
+        "effective": "2026-09-08",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "H48": {
+      "channel": "laws",
+      "identity": "공공주택특별법시행령-제48조",
+      "available": true,
+      "source": {
+        "title": "공공주택 특별법 시행령 제48조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=289503&efYd=20260908&chrClsCd=010202#J48:0",
+        "section": "제1항~제4항",
+        "effective": "2026-09-08",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "E47": {
+      "channel": "laws",
+      "identity": "민간임대주택에관한특별법-제47조",
+      "available": true,
+      "source": {
+        "title": "민간임대주택에 관한 특별법 제47조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=276995&efYd=20260102&chrClsCd=010202#J47:0",
+        "section": "제1항",
+        "effective": "2026-01-02",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    },
+    "E48": {
+      "channel": "laws",
+      "identity": "민간임대주택에관한특별법-제48조",
+      "available": true,
+      "source": {
+        "title": "민간임대주택에 관한 특별법 제48조",
+        "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=276995&efYd=20260102&chrClsCd=010202#J48:0",
+        "section": "제1항 제2호",
+        "effective": "2026-01-02",
+        "checked": "2026-09-18",
+        "status": "관련 조문 원문 확인"
+      }
+    }
+  },
+  "limitations": "Retrieval only; no answer generation or semantic answer grading.",
+  "evaluation_status": "regression_after_public_baseline_not_independent_holdout",
+  "form_scoring": "Exact official-form identity projected at its original guide rank; shared guide budget 2",
+  "baseline_protocol_sha256": "8bf6b56d2b55129ab2072791e3d3f5322a75e0809178c97e30a5ff2eaa923cf9",
+  "code_state": " M .gitattributes\n M .gitignore\n M CHANGELOG.md\n M CHANGELOG_Kr.md\n M LIST.md\n M README.md\n M data/case_corpus/chunks/cases.jsonl\n M data/case_corpus/chunks/guides.jsonl\n M data/case_corpus/chunks/laws.jsonl\n M data/case_corpus/database/knowledge.sqlite3\n M data/case_corpus/index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/data_level0.bin\n M data/case_corpus/index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/header.bin\n M data/case_corpus/index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/index_metadata.pickle\n M data/case_corpus/index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/length.bin\n M data/case_corpus/index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/link_lists.bin\n M data/case_corpus/index/chroma_kurev1_1024/chroma.sqlite3\n M docs/server-data-setup.md\n M scripts/patch027_rollout.py\n M scripts/patch041_retrieval_eval.py\n M src/generation/evidence_routing.py\n M src/ingestion/load_cases.py\n M src/ingestion/server_build.py\n M src/ingestion/server_sources.py\n M src/retrieval/case_profile.py\n M src/retrieval/companion_evidence.py\n M src/retrieval/context_policy.py\n M src/retrieval/expanded.py\n M src/retrieval/multi_evidence.py\n M src/retrieval/profile.py\n M src/retrieval/retrieval_intent.py\n M src/retrieval/service.py\n M tests/test_patch027_product.py\n M tests/test_patch046_multi_evidence.py\n M tests/test_patch051_companion_evidence.py\n M tests/test_retrieval_service.py\n M tests/test_server_build.py\n?? data/eval/patch058-regression/\n?? data/sources/retrieval-supplements-v1/\n?? data/sources/supplement-v1/\n?? docs/patch058-retrieval-coverage.md\n?? scripts/patch058_loss_detail.py\n?? scripts/patch058_regression_eval.py\n?? scripts/patch058_report.py\n?? src/ingestion/coverage_sources.py\n?? src/ingestion/retrieval_supplements.py\n?? tests/test_coverage_sources058.py\n?? tests/test_patch058_regression_eval.py\n?? tests/test_selection058.py\n?? tests/test_supplement_sources058.py\n"
+}

@@ -1,0 +1,502 @@
+{
+  "method": "exact normalized case number, guarded by court/date",
+  "summary": {
+    "requested": 26,
+    "mapped": 25,
+    "lower_bound_coverage": 0.9615384615384616,
+    "unknown": [
+      "CASE-2000DA24184"
+    ],
+    "missing": [
+      "CASE-2000DA24184"
+    ],
+    "metadata_mismatch": [],
+    "ambiguous": []
+  },
+  "mapping": {
+    "CASE-2000DA24184": {
+      "old_case_id": "CASE-2000DA24184",
+      "case_number": "2000다24184",
+      "court_name": "대법원",
+      "decision_date": "2002-03-12",
+      "matches": [],
+      "status": "unmapped",
+      "unresolved_reason": "missing"
+    },
+    "CASE-2000DA44799": {
+      "old_case_id": "CASE-2000DA44799",
+      "case_number": "2000다44799",
+      "court_name": "대법원",
+      "decision_date": "2001-04-24",
+      "matches": [
+        {
+          "case_id": "191369",
+          "canonical_case_key": "bb66db384f788463f0cb887c56c6dba12efa109da8cce7f3b2252104e0165509",
+          "case_number": "2000다44799",
+          "court_name": "대법원",
+          "decision_date": "2001-04-24",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=191369"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "191369",
+      "canonical_case_key": "bb66db384f788463f0cb887c56c6dba12efa109da8cce7f3b2252104e0165509"
+    },
+    "CASE-2000DA61466": {
+      "old_case_id": "CASE-2000DA61466",
+      "case_number": "2000다61466",
+      "court_name": "대법원",
+      "decision_date": "2002-08-13",
+      "matches": [
+        {
+          "case_id": "81786",
+          "canonical_case_key": "1182a1a6e883cb2300de6a17e6f935c016bcd13a4c8d77074f2f1d80a2928b1f",
+          "case_number": "2000다61466",
+          "court_name": "대법원",
+          "decision_date": "2002-08-13",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=81786"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "81786",
+      "canonical_case_key": "1182a1a6e883cb2300de6a17e6f935c016bcd13a4c8d77074f2f1d80a2928b1f"
+    },
+    "CASE-2004DA69741": {
+      "old_case_id": "CASE-2004DA69741",
+      "case_number": "2004다69741",
+      "court_name": "대법원",
+      "decision_date": "2007-06-28",
+      "matches": [
+        {
+          "case_id": "126198",
+          "canonical_case_key": "aea75a7f3e25f86803718790fccd7a78e58c1f114d914ac4fe3c0c3d159ee0ed",
+          "case_number": "2004다69741",
+          "court_name": "대법원",
+          "decision_date": "2007-06-28",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=126198"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "126198",
+      "canonical_case_key": "aea75a7f3e25f86803718790fccd7a78e58c1f114d914ac4fe3c0c3d159ee0ed"
+    },
+    "CASE-2007DA17475": {
+      "old_case_id": "CASE-2007DA17475",
+      "case_number": "2007다17475",
+      "court_name": "대법원",
+      "decision_date": "2007-06-14",
+      "matches": [
+        {
+          "case_id": "85136",
+          "canonical_case_key": "bde2161dcf3130cee1378f764b8503ede133bcb38e055519f54b868374edbb31",
+          "case_number": "2007다17475",
+          "court_name": "대법원",
+          "decision_date": "2007-06-14",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=85136"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "85136",
+      "canonical_case_key": "bde2161dcf3130cee1378f764b8503ede133bcb38e055519f54b868374edbb31"
+    },
+    "CASE-2009DA101275": {
+      "old_case_id": "CASE-2009DA101275",
+      "case_number": "2009다101275",
+      "court_name": "대법원",
+      "decision_date": "2010-06-10",
+      "matches": [
+        {
+          "case_id": "144525",
+          "canonical_case_key": "6ab121c49e1268f3b352b1eb6924a6db013d3c1f741e240f0541f13654aa5fe3",
+          "case_number": "2009다101275",
+          "court_name": "대법원",
+          "decision_date": "2010-06-10",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=144525"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "144525",
+      "canonical_case_key": "6ab121c49e1268f3b352b1eb6924a6db013d3c1f741e240f0541f13654aa5fe3"
+    },
+    "CASE-2009DA40790": {
+      "old_case_id": "CASE-2009DA40790",
+      "case_number": "2009다40790",
+      "court_name": "대법원",
+      "decision_date": "2010-06-24",
+      "matches": [
+        {
+          "case_id": "144686",
+          "canonical_case_key": "98363ef4d4deeac6c45f2c1ce9e6355c34bbe838625df34a579327f61142fd07",
+          "case_number": "2009다40790",
+          "court_name": "대법원",
+          "decision_date": "2010-06-24",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=144686"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "144686",
+      "canonical_case_key": "98363ef4d4deeac6c45f2c1ce9e6355c34bbe838625df34a579327f61142fd07"
+    },
+    "CASE-2011DA49523": {
+      "old_case_id": "CASE-2011DA49523",
+      "case_number": "2011다49523",
+      "court_name": "대법원",
+      "decision_date": "2013-01-17",
+      "matches": [
+        {
+          "case_id": "167474",
+          "canonical_case_key": "5116182db9c87c5138b3fe7d787292c758273fa38e42cc750290c8de343917ff",
+          "case_number": "2011다49523",
+          "court_name": "대법원",
+          "decision_date": "2013-01-17",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=167474"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "167474",
+      "canonical_case_key": "5116182db9c87c5138b3fe7d787292c758273fa38e42cc750290c8de343917ff"
+    },
+    "CASE-2015DA254507": {
+      "old_case_id": "CASE-2015DA254507",
+      "case_number": "2015다254507",
+      "court_name": "대법원",
+      "decision_date": "2019-04-11",
+      "matches": [
+        {
+          "case_id": "207117",
+          "canonical_case_key": "e8a38bfff8d15e613b4d8f27c617f371583ea6c5c6e77514ac32c77f0eac97e6",
+          "case_number": "2015다254507",
+          "court_name": "대법원",
+          "decision_date": "2019-04-11",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=207117"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "207117",
+      "canonical_case_key": "e8a38bfff8d15e613b4d8f27c617f371583ea6c5c6e77514ac32c77f0eac97e6"
+    },
+    "CASE-2020DA202371": {
+      "old_case_id": "CASE-2020DA202371",
+      "case_number": "2020다202371",
+      "court_name": "대법원",
+      "decision_date": "2020-05-28",
+      "matches": [
+        {
+          "case_id": "226355",
+          "canonical_case_key": "098d01eaeff8e8fd642204e2236d046ac6096fb0b5392105c21196e190c1bb9d",
+          "case_number": "2020다202371",
+          "court_name": "대법원",
+          "decision_date": "2020-05-28",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=226355"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "226355",
+      "canonical_case_key": "098d01eaeff8e8fd642204e2236d046ac6096fb0b5392105c21196e190c1bb9d"
+    },
+    "CASE-2021DA238650": {
+      "old_case_id": "CASE-2021DA238650",
+      "case_number": "2021다238650",
+      "court_name": "대법원",
+      "decision_date": "2021-10-28",
+      "matches": [
+        {
+          "case_id": "218441",
+          "canonical_case_key": "4d873cffd7795cd5faed09de7995c38e438479f1c687be6822ef252321ea3b62",
+          "case_number": "2021다238650",
+          "court_name": "대법원",
+          "decision_date": "2021-10-28",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=218441"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "218441",
+      "canonical_case_key": "4d873cffd7795cd5faed09de7995c38e438479f1c687be6822ef252321ea3b62"
+    },
+    "CASE-2021DA266631": {
+      "old_case_id": "CASE-2021DA266631",
+      "case_number": "2021다266631",
+      "court_name": "대법원",
+      "decision_date": "2022-12-01",
+      "matches": [
+        {
+          "case_id": "232565",
+          "canonical_case_key": "4ca7597949c3b4371fe928ac20cb1a75a695e06c7c37a5b5cb465b49fbd94b71",
+          "case_number": "2021다266631",
+          "court_name": "대법원",
+          "decision_date": "2022-12-01",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=232565"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "232565",
+      "canonical_case_key": "4ca7597949c3b4371fe928ac20cb1a75a695e06c7c37a5b5cb465b49fbd94b71"
+    },
+    "CASE-2022DA279795": {
+      "old_case_id": "CASE-2022DA279795",
+      "case_number": "2022다279795",
+      "court_name": "대법원",
+      "decision_date": "2023-12-07",
+      "matches": [
+        {
+          "case_id": "238197",
+          "canonical_case_key": "3e59c42d2237f822193e8b2458543ec932672aeaeba28ef2b628da647298400e",
+          "case_number": "2022다279795",
+          "court_name": "대법원",
+          "decision_date": "2023-12-07",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=238197"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "238197",
+      "canonical_case_key": "3e59c42d2237f822193e8b2458543ec932672aeaeba28ef2b628da647298400e"
+    },
+    "CASE-2024DA326398": {
+      "old_case_id": "CASE-2024DA326398",
+      "case_number": "2024다326398",
+      "court_name": "대법원",
+      "decision_date": "2025-04-15",
+      "matches": [
+        {
+          "case_id": "605771",
+          "canonical_case_key": "580f07b36fcddb164d0b0832e1fe6074b4cdcd905e9841142950911025aece87",
+          "case_number": "2024다326398",
+          "court_name": "대법원",
+          "decision_date": "2025-04-15",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=605771"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "605771",
+      "canonical_case_key": "580f07b36fcddb164d0b0832e1fe6074b4cdcd905e9841142950911025aece87"
+    },
+    "CASE-2025DA210305": {
+      "old_case_id": "CASE-2025DA210305",
+      "case_number": "2025다210305",
+      "court_name": "대법원",
+      "decision_date": "2026-02-26",
+      "matches": [
+        {
+          "case_id": "618185",
+          "canonical_case_key": "28fcf5edadbb893a6cacb4d89a9821750963af46a87b44ab6be59afc90cc44da",
+          "case_number": "2025다210305",
+          "court_name": "대법원",
+          "decision_date": "2026-02-26",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=618185"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "618185",
+      "canonical_case_key": "28fcf5edadbb893a6cacb4d89a9821750963af46a87b44ab6be59afc90cc44da"
+    },
+    "CASE-2025DA213466": {
+      "old_case_id": "CASE-2025DA213466",
+      "case_number": "2025다213466",
+      "court_name": "대법원",
+      "decision_date": "2026-01-08",
+      "matches": [
+        {
+          "case_id": "615767",
+          "canonical_case_key": "309282f747d3b71608dca88d264653b34c1dd407eee6e38a7fbcf9906590623f",
+          "case_number": "2025다213466",
+          "court_name": "대법원",
+          "decision_date": "2026-01-08",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=615767"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "615767",
+      "canonical_case_key": "309282f747d3b71608dca88d264653b34c1dd407eee6e38a7fbcf9906590623f"
+    },
+    "CASE-93DA39676": {
+      "old_case_id": "CASE-93DA39676",
+      "case_number": "93다39676",
+      "court_name": "대법원",
+      "decision_date": "1993-12-24",
+      "matches": [
+        {
+          "case_id": "200751",
+          "canonical_case_key": "fd7363e524b4f3098f926d21ffc06c4317438523e54a8604708d4c2c1e664ac5",
+          "case_number": "93다39676",
+          "court_name": "대법원",
+          "decision_date": "1993-12-24",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=200751"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "200751",
+      "canonical_case_key": "fd7363e524b4f3098f926d21ffc06c4317438523e54a8604708d4c2c1e664ac5"
+    },
+    "CASE-94DA37646": {
+      "old_case_id": "CASE-94DA37646",
+      "case_number": "94다37646",
+      "court_name": "대법원",
+      "decision_date": "1996-07-12",
+      "matches": [
+        {
+          "case_id": "197481",
+          "canonical_case_key": "107930a2b5dd805b372db0f50fbadb9c3dbd51c52fc4986a49f5b285bc5f2a64",
+          "case_number": "94다37646",
+          "court_name": "대법원",
+          "decision_date": "1996-07-12",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=197481"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "197481",
+      "canonical_case_key": "107930a2b5dd805b372db0f50fbadb9c3dbd51c52fc4986a49f5b285bc5f2a64"
+    },
+    "CASE-95DA30338": {
+      "old_case_id": "CASE-95DA30338",
+      "case_number": "95다30338",
+      "court_name": "대법원",
+      "decision_date": "1996-01-26",
+      "matches": [
+        {
+          "case_id": "198331",
+          "canonical_case_key": "4dc274ede80b5feb30aa5fc7fe7967c70283097a87ada6be9a7fa1c548206839",
+          "case_number": "95다30338",
+          "court_name": "대법원",
+          "decision_date": "1996-01-26",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=198331"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "198331",
+      "canonical_case_key": "4dc274ede80b5feb30aa5fc7fe7967c70283097a87ada6be9a7fa1c548206839"
+    },
+    "CASE-95DA44597": {
+      "old_case_id": "CASE-95DA44597",
+      "case_number": "95다44597",
+      "court_name": "대법원",
+      "decision_date": "1997-10-10",
+      "matches": [
+        {
+          "case_id": "196792",
+          "canonical_case_key": "9d1d9611c6990f8b33376cb62df22997cd3bb7218c854a03278ea75193104f42",
+          "case_number": "95다44597",
+          "court_name": "대법원",
+          "decision_date": "1997-10-10",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=196792"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "196792",
+      "canonical_case_key": "9d1d9611c6990f8b33376cb62df22997cd3bb7218c854a03278ea75193104f42"
+    },
+    "CASE-96DA17653": {
+      "old_case_id": "CASE-96DA17653",
+      "case_number": "96다17653",
+      "court_name": "대법원",
+      "decision_date": "1996-08-20",
+      "matches": [
+        {
+          "case_id": "197433",
+          "canonical_case_key": "3530756545217029f4d33be1e92496e68c5bbd05d4f2576b841581dfd7302741",
+          "case_number": "96다17653",
+          "court_name": "대법원",
+          "decision_date": "1996-08-20",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=197433"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "197433",
+      "canonical_case_key": "3530756545217029f4d33be1e92496e68c5bbd05d4f2576b841581dfd7302741"
+    },
+    "CASE-97DA22393": {
+      "old_case_id": "CASE-97DA22393",
+      "case_number": "97다22393",
+      "court_name": "대법원",
+      "decision_date": "1997-12-12",
+      "matches": [
+        {
+          "case_id": "196635",
+          "canonical_case_key": "b117a91fcbd62fd7afe852f081375b91897618e7dbfbccce1b109bc44d23386a",
+          "case_number": "97다22393",
+          "court_name": "대법원",
+          "decision_date": "1997-12-12",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=196635"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "196635",
+      "canonical_case_key": "b117a91fcbd62fd7afe852f081375b91897618e7dbfbccce1b109bc44d23386a"
+    },
+    "CASE-97DA43468": {
+      "old_case_id": "CASE-97DA43468",
+      "case_number": "97다43468",
+      "court_name": "대법원",
+      "decision_date": "1998-01-23",
+      "matches": [
+        {
+          "case_id": "196036",
+          "canonical_case_key": "a252e1d7a80e17569d407e83adcdf9314b94cfda670d95201173858f8335d251",
+          "case_number": "97다43468",
+          "court_name": "대법원",
+          "decision_date": "1998-01-23",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=196036"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "196036",
+      "canonical_case_key": "a252e1d7a80e17569d407e83adcdf9314b94cfda670d95201173858f8335d251"
+    },
+    "CASE-98CHU40": {
+      "old_case_id": "CASE-98CHU40",
+      "case_number": "98추40",
+      "court_name": "대법원",
+      "decision_date": "1999-04-13",
+      "matches": [
+        {
+          "case_id": "117574",
+          "canonical_case_key": "75287fd8e420c0c33c9435ae2c222d280d838352e03d3e037bf28c56990e4b81",
+          "case_number": "98추40",
+          "court_name": "대법원",
+          "decision_date": "1999-04-13",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=117574"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "117574",
+      "canonical_case_key": "75287fd8e420c0c33c9435ae2c222d280d838352e03d3e037bf28c56990e4b81"
+    },
+    "CASE-98DA32939": {
+      "old_case_id": "CASE-98DA32939",
+      "case_number": "98다32939",
+      "court_name": "대법원",
+      "decision_date": "1999-04-23",
+      "matches": [
+        {
+          "case_id": "195130",
+          "canonical_case_key": "c1dcec2f5643a907282ce5f6af409ece29658a9ab626d44fbbe06a4b62692928",
+          "case_number": "98다32939",
+          "court_name": "대법원",
+          "decision_date": "1999-04-23",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=195130"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "195130",
+      "canonical_case_key": "c1dcec2f5643a907282ce5f6af409ece29658a9ab626d44fbbe06a4b62692928"
+    },
+    "CASE-99DA59306": {
+      "old_case_id": "CASE-99DA59306",
+      "case_number": "99다59306",
+      "court_name": "대법원",
+      "decision_date": "2000-02-11",
+      "matches": [
+        {
+          "case_id": "230033",
+          "canonical_case_key": "2e6ecf2c66fd39fd2feaea6b9277a4ea0cab886b8f5a17c2d946347272dfc83e",
+          "case_number": "99다59306",
+          "court_name": "대법원",
+          "decision_date": "2000-02-11",
+          "source_url": "https://www.law.go.kr/LSW/precInfoP.do?precSeq=230033"
+        }
+      ],
+      "status": "mapped",
+      "case_id": "230033",
+      "canonical_case_key": "2e6ecf2c66fd39fd2feaea6b9277a4ea0cab886b8f5a17c2d946347272dfc83e"
+    }
+  }
+}
