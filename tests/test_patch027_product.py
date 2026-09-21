@@ -144,6 +144,8 @@ def test_product_factory_and_generation_fallback_use_activated_profile(payload, 
     from src.retrieval import dense as dense_module, service as service_module
 
     data, chunks, profile = payload
+    # A local .env set up for the team MySQL release must not leak into this path.
+    monkeypatch.setenv("LENS_MYSQL_RELEASE", "")
     paths = tuple(data / p for p in profiles.CHUNKS)
     indexes = tuple(data / p for p in profiles.INDEXES)
     for path in indexes:

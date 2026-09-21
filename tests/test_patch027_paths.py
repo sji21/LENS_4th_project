@@ -21,7 +21,7 @@ def test_frozen_paths_resolve_without_changing_capture_bytes(tmp_path):
     assert resolved["source_hashes"] == original["source_hashes"]
     assert resolved["commit"] == original["commit"]
     assert sha(path) == digest
-    assert json.loads(path.read_text()) == original
+    assert json.loads(path.read_text(encoding="utf-8")) == original
     assert current_data_paths(resolved) == resolved
 
 

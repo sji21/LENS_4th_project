@@ -152,8 +152,8 @@ def test_install_failure_restores_previous_data_and_preserves_web_db(tmp_path, m
         monkeypatch.setattr(build, "write", fail)
     with pytest.raises(error, match="injected"):
         build.promote(staged, target, run)
-    assert all((target / rel).read_text() == "old" for rel in build.SCOPES)
-    assert web.read_text() == "sessions"
+    assert all((target / rel).read_text(encoding="utf-8") == "old" for rel in build.SCOPES)
+    assert web.read_text(encoding="utf-8") == "sessions"
 
 
 @pytest.mark.parametrize("phase", ["before", "after"])
@@ -189,7 +189,7 @@ def test_partial_existing_data_requires_explicit_rebuild(tmp_path, monkeypatch):
     target.write_text("old")
     with pytest.raises(ValueError, match="--rebuild"):
         build.prepare()
-    assert target.read_text() == "old"
+    assert target.read_text(encoding="utf-8") == "old"
 
 
 @pytest.fixture
@@ -435,4 +435,4 @@ def test_interrupted_output_stops_worker_before_releasing_control(tmp_path, monk
     with pytest.raises(error):
         build.run_worker("build", tmp_path / "data", tmp_path)
     assert events == ["kill", "wait", "exit"]
-    assert (tmp_path / "build.log").read_text() == "progress\n"
+    assert (tmp_path / "build.log").read_text(encoding="utf-8") == "progress\n"

@@ -298,7 +298,7 @@ def test_empty_data_is_reported_uninstalled_without_touching_eval(tmp_path):
     (tmp_path / "eval").mkdir()
     (tmp_path / "eval/proof.json").write_text("proof")
     assert manager.data_status(tmp_path)["state"] == "empty"
-    assert (tmp_path / "eval/proof.json").read_text() == "proof"
+    assert (tmp_path / "eval/proof.json").read_text(encoding="utf-8") == "proof"
 
 
 def test_partial_base_data_is_rejected(tmp_path):
@@ -319,7 +319,7 @@ def test_source_build_is_explained_without_overwriting(tmp_path, monkeypatch, ca
     monkeypatch.setattr(manager, "run_step", lambda *a, **k: pytest.fail("must not overwrite"))
     assert manager.main([action, "--backup", str(tmp_path / "backup")]) == 1
     assert "별도 체크아웃" in capsys.readouterr().err
-    assert marker.read_text() == '{"version":1}'
+    assert marker.read_text(encoding="utf-8") == '{"version":1}'
 
 
 def test_source_build_cannot_be_used_as_frozen_bundle_source(tmp_path):
@@ -388,7 +388,7 @@ def test_first_install_preserves_repository_data(fresh_install):
     result = manager.install_empty(run, {"laws": 178, "civil_laws": 26, "cases": 26, "guides": 6})
     assert result["installation"] == "fresh"
     assert manager.payload_hashes(root / "data") == manager.payload_hashes(run / "stage/data")
-    assert (root / "data/eval/proof.json").read_text() == "keep"
+    assert (root / "data/eval/proof.json").read_text(encoding="utf-8") == "keep"
 
 
 @pytest.mark.parametrize("failure", ["verify", "save_result"])
@@ -402,7 +402,7 @@ def test_first_install_failure_removes_only_installed_payload(fresh_install, mon
         manager.install_empty(run, {})
     assert not any((root / "data" / rel).exists() for rel in manager.SCOPES)
     assert manager.payload_hashes(run / "failed") == manager.payload_hashes(run / "stage/data")
-    assert (root / "data/eval/proof.json").read_text() == "keep"
+    assert (root / "data/eval/proof.json").read_text(encoding="utf-8") == "keep"
 
 
 def test_first_install_rejects_existing_data(fresh_install):
@@ -412,7 +412,7 @@ def test_first_install_rejects_existing_data(fresh_install):
     existing.write_text("existing")
     with pytest.raises(ValueError, match="덮어쓰지"):
         manager.install_empty(run, {})
-    assert existing.read_text() == "existing"
+    assert existing.read_text(encoding="utf-8") == "existing"
 
 
 def test_empty_apply_is_preflight_verified_before_install(flow, monkeypatch):

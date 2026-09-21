@@ -9,12 +9,15 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
+- PATCH-061 README and the MySQL search guide mark re-checking out the search code as required for existing clones, tell Windows users to run tests in UTF-8 mode, and record Linux x64 (RunPod) as verified for the r2 release. (commit: pending)
+
 - PATCH-060 MySQL search releases can be verified on Windows, macOS (Apple Silicon) and Linux from the same package. `src/retrieval/*.py` is always checked out with LF, and each release stores its build-time vectors and a vector-free ID/text/metadata hash, so CPU-specific last-bit differences are accepted only within `1e-6` when texts, metadata value types and embedding provenance match the build exactly. Releases built before PATCH-060 must be rebuilt. (commit: 445baa7, cc0c6ce)
 
 - PATCH-059 keeps public-housing and registered-private-rental statutes out of the general-law channel unless the request names that programme, and gives each requested tax system its own slot when both are asked for. Over the 368 sealed inputs, complete required-evidence coverage moves from 170/195 to 182/204 (law3/law5) and the HO30 regression set from 14/17 to 20/24 of 30. Six inputs at law3 and four at law5 still lose one previously retrieved provision each; they are listed in `docs/patch058-retrieval-coverage.md`. (commit: 903dc1d)
 
 ### Fixed
 
+- PATCH-061 Tests no longer fail on PCs whose `.env` uses the team release defaults, and test files read UTF-8 explicitly. On RunPod Linux x64 the full suite passes except the known PATCH-042 record mismatch. (commit: pending)
 - PATCH-060 review corrections pass 31 targeted tests and the rebuilt r2 release passes installation, verification and search from the same ZIP on Windows x64 and Apple Silicon (arm64). Linux remains unverified. PATCH-059 is complete and merged through PR #42. (commit: cc0c6ce, 18a5b9e)
 - PATCH-060 README section 6.0 now offers the team release ZIP as the default search-data setup and local `setup_data.py` build as the alternative, so members set up only one. `.env.example` ships the team release defaults and separates maintainer-only MySQL connection settings. Existing environments retain their .env; the ZIP installation path points to Django environment setup and avoids reinstalling dependencies without the release constraints. (commit: 18a5b9e)
 

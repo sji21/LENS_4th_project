@@ -10,7 +10,7 @@ MySQL은 원문·청크·버전을 관리한다. 앱 검색은 같은 MySQL 스�
 | --- | --- |
 | Windows x64 | 지원. 빌드 담당 환경 |
 | macOS Apple Silicon (arm64) | 지원. 기준 벡터 허용 오차 검증 사용 |
-| Linux x64 | 지원 대상. 배포 전 `verify`·`query` 확인 필요 |
+| Linux x64 | 지원. RunPod(Ubuntu 22.04, Python 3.11.10)에서 r2 실측 |
 | macOS Intel | 미지원. 고정 버전의 PyTorch 설치 파일이 없음 |
 
 Python은 3.11을 기준으로 한다. PyTorch는 반드시 PyPI(`pip install`)에서 설치한다. `download.pytorch.org` 설치본은 버전이 `2.14.0+cpu`·`+cu124`처럼 표시되어 배포본의 고정 버전과 달라 거절된다.
@@ -39,13 +39,13 @@ Chroma 생성 프로세스가 종료된 뒤 물리 파일 해시를 계산한다
 
 현재 공유 대상은 **`LENS-MySQL-search-patch060-r2-20260921.zip`**이다. release 폴더는 `data/mysql-search/releases/patch060-r2-20260921/`, release ID는 `5b1a63a7b004f63ad2dae018d53b9e4e0cdd120a61d623ec3270174c53622703`이다. 아래 `VERSION`은 `patch060-r2-20260921`로 바꾼다. `records_sha256`이 없는 1차 PATCH-060 배포본도 현재 코드와 함께 사용하지 않는다.
 
-r2는 Windows x64(새 가상환경)와 Apple Silicon Mac(arm64, Python 3.11.15)에서 같은 ZIP으로 `requirements`(출력 폴더 없이) → 설치 → `verify` → `model` → `activate` → `query`와 관련 테스트31개를 모두 통과했다. Linux는 아직 실측하지 않았으므로 설치 후 `verify`·`query`를 실행한다.
+r2는 Windows x64(새 가상환경)와 Apple Silicon Mac(arm64, Python 3.11.15)에서 같은 ZIP으로 `requirements`(출력 폴더 없이) → 설치 → `verify` → `model` → `activate` → `query`와 관련 테스트31개를 모두 통과했다. Linux x64(RunPod, Ubuntu 22.04, Python 3.11.10)에서도 Drive에서 받은 같은 ZIP으로 같은 절차와 전체 테스트(알려진 PATCH-042 기록 불일치 외 통과)를 확인했다.
 
 담당자가 만든 배포 폴더 전체와 동일한 검색 코드를 사용한다. 개인별로 데이터를 다시 수집하거나 임베딩하거나 MySQL에 접속할 필요는 없다. macOS에서도 배포본을 직접 빌드하지 않는다. 배포본은 생성한 커밋의 검색 코드에서만 통과하므로, 그 커밋이 반영된 `main`(병합 전에는 해당 브랜치·커밋)을 checkout한 뒤 설치한다.
 
 배포본 폴더(`data/mysql-search/releases/VERSION/`)에는 모델이 없다. 팀에 공유하는 배포 ZIP에는 배포본과 같은 해시의 모델(`data/models/kure-mysql/`)을 함께 넣을 수 있다. 이 경우에도 아래 `model` 명령이 모델 해시를 다시 확인하고, 파일이 모두 있으면 내려받지 않는다.
 
-PATCH-060 이전에 clone한 저장소는 검색 코드 파일이 CRLF로 남아 있을 수 있다. 커밋하지 않은 변경이 없는지 확인한 뒤 한 번 다시 체크아웃한다(새로 clone해도 된다).
+**기존 clone은 이 단계가 필수다.** PATCH-060 이전에 clone한 저장소는 `git pull` 뒤에도 검색 코드 파일이 CRLF로 남는다(`core.autocrlf=true`인 Windows에서 재현). 이 상태로는 `verify`가 "정책·코드·필수 항목이 다릅니다"로 실패한다. 커밋하지 않은 변경이 없는지 확인한 뒤 한 번 다시 체크아웃한다(새로 clone했다면 생략).
 
 ```powershell
 Remove-Item src\retrieval\*.py

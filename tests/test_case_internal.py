@@ -102,6 +102,8 @@ def test_existing_factory_dispatches_new_profile_with_product_base(monkeypatch,t
     def load(path,*,base_service): calls.append((path,base_service));return sentinel
     monkeypatch.setattr(RetrievalService,'_from_index_without_case_profile',classmethod(lambda cls:base))
     monkeypatch.setattr(module,'load_internal_case_profile',load)
+    # A local .env set up for the team MySQL release must not leak into this path.
+    monkeypatch.setenv('LENS_MYSQL_RELEASE','')
     monkeypatch.setenv('LENS_CASE_RETRIEVAL_PROFILE',str(profile))
     assert RetrievalService.from_index() is sentinel
     assert calls==[(str(profile),base)]

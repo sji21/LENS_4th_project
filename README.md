@@ -312,7 +312,7 @@ README에서는 평가자가 전체 구조를 이해하는 데 필요한 관계�
 | 결과 | 모든 PC가 같은 release ID | PC별로 구축 |
 | MySQL 접속 | 필요 없음 | 필요 없음 |
 | `.env` | `LENS_MYSQL_RELEASE=data/mysql-search/active.json`, `LENS_MYSQL_MODEL_DIR=data/models/kure-mysql` | 두 값을 비움 |
-| 확인한 환경 | Windows x64, Apple Silicon Mac (r2 실측) | Windows, macOS, RunPod |
+| 확인한 환경 | Windows x64, Apple Silicon Mac, Linux x64(RunPod) (r2 실측) | Windows, macOS, RunPod |
 
 `LENS_CASE_RETRIEVAL_PROFILE`은 두 방식 모두 비워 둡니다. A의 값과 B용 경로·프로필을 동시에 지정하면 앱은 다른 데이터로 넘어가지 않고 오류로 중단합니다.
 
@@ -320,12 +320,13 @@ README에서는 평가자가 전체 구조를 이해하는 데 필요한 관계�
 
 현재 배포본은 **`LENS-MySQL-search-patch060-r2-20260921.zip`**(release ID `5b1a63a7…`)입니다. 이 release를 만든 커밋의 검색 코드에서만 검증이 통과하므로 PATCH-060이 반영된 `main`을 사용합니다(병합 전에는 `fix/patch-060-cross-platform-search-release` 브랜치의 배포본과 일치하는 코드). 구형 `shared-v3`, `patch059-20260921`, 1차 `patch060-20260921`과 혼용하지 않습니다.
 
+0. **기존 clone이면 필수:** 검색 코드를 LF로 다시 받습니다. 커밋하지 않은 수정이 없을 때 Windows는 `Remove-Item src\retrieval\*.py; git checkout -- src/retrieval`, macOS·Linux는 `rm src/retrieval/*.py && git checkout -- src/retrieval`를 실행합니다. 건너뛰면 `core.autocrlf=true`인 Windows에서 CRLF 파일이 남아 `verify`가 "정책·코드·필수 항목이 다릅니다"로 실패합니다. 새로 clone했다면 생략합니다.
 1. `.env`가 없으면 `.env.example`을 복사합니다. 검색 관련 기본값이 A로 설정되어 있습니다. 기존 `.env`는 덮어쓰지 않고 위 표의 A 경로를 설정하며 `LENS_CASE_RETRIEVAL_PROFILE`은 비웁니다.
 2. ZIP을 저장소 루트에 풀어 `data` 폴더가 합쳐지게 합니다.
 3. Python 3.11 가상환경에서 `requirements` → 의존성 설치 → `verify` → `model` → `activate`를 실행합니다. PyTorch는 PyPI에서 설치합니다.
 4. `verify`가 `verified: true`이고 `activate`까지 완료되면, 6.2의 Django 키·환경변수 설정을 확인한 뒤 6.3 Ollama 준비와 6.6 서비스 실행으로 이동합니다. `activate` 뒤에는 앱을 재시작합니다.
 
-OS별 명령, 기존 clone의 줄바꿈 재체크아웃, 오류 대처는 [MySQL 검색 설치 안내](docs/mysql-search.md)와 ZIP 안 `README-KR.md`에 있습니다. A에서는 B의 `setup_data.py` DB 구축을 실행하지 않습니다. A의 가상환경은 `python3.11 -m venv .venv`(Windows: `py -3.11 -m venv .venv`)로 만들고, 패키지는 반드시 배포본의 제약 파일을 적용해 설치합니다. macOS Intel은 지원하지 않고 Linux는 설치 후 `verify`·검색 확인이 필요합니다.
+OS별 명령, 기존 clone의 줄바꿈 재체크아웃, 오류 대처는 [MySQL 검색 설치 안내](docs/mysql-search.md)와 ZIP 안 `README-KR.md`에 있습니다. A에서는 B의 `setup_data.py` DB 구축을 실행하지 않습니다. A의 가상환경은 `python3.11 -m venv .venv`(Windows: `py -3.11 -m venv .venv`)로 만들고, 패키지는 반드시 배포본의 제약 파일을 적용해 설치합니다. macOS Intel은 지원하지 않습니다.
 
 #### B. 로컬 구축 `setup_data.py` (ZIP을 쓰지 않을 때)
 
@@ -556,6 +557,12 @@ pip install -r requirements-dev.txt
 python -m pytest -q
 ```
 
+Windows에서는 UTF-8 모드로 실행합니다. 일부 평가 코드가 인코딩을 지정하지 않고 한글 JSON을 읽고 써서 기본 cp949에서는 실패합니다.
+
+```powershell
+python -X utf8 -m pytest -q
+```
+
 | 테스트 영역 | 확인 내용 |
 | --- | --- |
 | 데이터·DB | 법령·판례·안내 적재, 청크 규격, SQLite·Chroma 동기화 |
@@ -567,7 +574,7 @@ python -m pytest -q
 
 실제 OCR 통합 테스트는 Tesseract 설치 여부, 실제 LLM 테스트는 Ollama 실행 여부,
 LangSmith 연결 테스트는 관련 환경변수에 따라 달라집니다. Windows에서 긴 PDF 테스트명의
-환경변수 한도 문제가 발생할 수 있으며 자세한 검증 기록은
+환경변수 한도 문제가 발생할 수 있습니다. Windows 사용자 이름에 한글이 있으면 Chroma가 기본 임시 경로를 거부하므로 테스트 전에 `$env:TEMP='C:\Temp'; $env:TMP='C:\Temp'`처럼 영문 경로를 지정합니다. 테스트는 로컬 `.env`의 `LENS_MYSQL_RELEASE` 설정과 무관하게 통과해야 합니다. 자세한 검증 기록은
 [`docs/windows-verification.md`](docs/windows-verification.md)를 참고합니다.
 
 ### 검색 평가 재현

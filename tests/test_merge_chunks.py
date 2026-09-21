@@ -27,7 +27,7 @@ def test_merges_inputs_without_changing_their_order(tmp_path: Path):
 
     assert count == 3
     assert doc_types == {"law": 1, "case": 2}
-    assert [row["chunk_id"] for row in map(json.loads, output.read_text().splitlines())] == [
+    assert [row["chunk_id"] for row in map(json.loads, output.read_text(encoding="utf-8").splitlines())] == [
         "law:1", "case:1", "case:2"
     ]
 
