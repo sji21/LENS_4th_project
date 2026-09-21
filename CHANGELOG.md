@@ -9,19 +9,19 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-059 keeps public-housing and registered-private-rental statutes out of the general-law channel unless the request names that programme, and gives each requested tax system its own slot when both are asked for. Over the 368 sealed inputs, complete required-evidence coverage moves from 170/195 to 182/204 (law3/law5) and the HO30 regression set from 14/17 to 20/24 of 30. Six inputs at law3 and four at law5 still lose one previously retrieved provision each; they are listed in `docs/patch058-retrieval-coverage.md`.
+- PATCH-059 keeps public-housing and registered-private-rental statutes out of the general-law channel unless the request names that programme, and gives each requested tax system its own slot when both are asked for. Over the 368 sealed inputs, complete required-evidence coverage moves from 170/195 to 182/204 (law3/law5) and the HO30 regression set from 14/17 to 20/24 of 30. Six inputs at law3 and four at law5 still lose one previously retrieved provision each; they are listed in `docs/patch058-retrieval-coverage.md`. (commit: 903dc1d)
 
 ### Fixed
 
-- PATCH-059 preserves body lines referring to later titled articles instead of treating those references as new article headings. Re-parsing the 216 approved provisions leaves the stored records unchanged. MySQL search releases distinguish the legacy 26-article civil-law policy from the expanded 31-article policy during building, validation and service loading (commit: pending).
-- PATCH-059 restores the body of 공공주택 특별법 제49조의4. A table-of-contents line in the reused article page claimed the article number, so the chunk carried the text of 제49조의2 and 제49조의3 as well (107 → 733 tokens, empty article title) and displaced the real 제49조의3 in retrieval. Article parsing now ignores such listing lines and the page's download controls; 1 of 216 provisions changed and the base corpus was rebuilt with a single new embedding.
-- PATCH-059 routes questions by the same guide topics retrieval delivers. A form request whose housing type appeared only in the situation block was classified as a plain statute question while the official form was still returned.
+- PATCH-059 preserves body lines referring to later titled articles instead of treating those references as new article headings. Re-parsing the 216 approved provisions leaves the stored records unchanged. MySQL search releases distinguish the legacy 26-article civil-law policy from the expanded 31-article policy during building, validation and service loading (commit: 903dc1d).
+- PATCH-059 restores the body of 공공주택 특별법 제49조의4. A table-of-contents line in the reused article page claimed the article number, so the chunk carried the text of 제49조의2 and 제49조의3 as well (107 → 733 tokens, empty article title) and displaced the real 제49조의3 in retrieval. Article parsing now ignores such listing lines and the page's download controls; 1 of 216 provisions changed and the base corpus was rebuilt with a single new embedding. (commit: 903dc1d)
+- PATCH-059 routes questions by the same guide topics retrieval delivers. A form request whose housing type appeared only in the situation block was classified as a plain statute question while the official form was still returned. (commit: 903dc1d)
 
 ## 2026-09-19
 
 ### Added
 
-- PATCH-059 supplements 12 official provisions (204→216), two cases (8,377→8,379 in the runtime corpus) and the public-housing financial-consent form. Retains source snapshots and hashes, supports the previous civil26 profile, and connects the supplements to setup and retrieval. Improves record-lookup/mediation evidence selection and conditional case/form delivery. Reuses exposed HO30 as a regression set and preserves the initial capture; remaining ranking regressions and validation are documented in `docs/patch058-retrieval-coverage.md`. (commit: pending)
+- PATCH-059 supplements 12 official provisions (204→216), two cases (8,377→8,379 in the runtime corpus) and the public-housing financial-consent form. Retains source snapshots and hashes, supports the previous civil26 profile, and connects the supplements to setup and retrieval. Improves record-lookup/mediation evidence selection and conditional case/form delivery. Reuses exposed HO30 as a regression set and preserves the initial capture; remaining ranking regressions and validation are documented in `docs/patch058-retrieval-coverage.md`. (commit: 903dc1d)
 
 - PATCH-060 adds a retrieval-only evaluation runner and pre-run protocol for HO30, reviewed DEV/civil inputs and public regression sets. Preserves required-source denominators, separates actual law3/law5 requests and conditional case delivery, and records corpus/model/environment identities. Git LFS case8377 integrity, rebuilt law178/civil26 data and CUDA KURE loading are verified. No generated answers or retrieval tuning; evaluation results are not yet claimed. (commit: pending)
 
