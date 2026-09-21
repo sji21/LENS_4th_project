@@ -13,7 +13,7 @@ This file records the 4th project from its first change onward.
 
 ### Fixed
 
-- PATCH-059 assigns base-corpus supplemental cases their actual base snapshot instead of the cases snapshot, preserving source lookup by snapshot and chunk ID. Cases already present in the cases corpus retain that source. The 23 MySQL search tests pass. (commit: pending)
+- PATCH-059 assigns base-corpus supplemental cases their actual base snapshot instead of the cases snapshot, preserving source lookup by snapshot and chunk ID. Cases already present in the cases corpus retain that source. The 23 MySQL search tests pass. (commit: 7fb0afd)
 
 - PATCH-059 preserves body lines referring to later titled articles instead of treating those references as new article headings. Re-parsing the 216 approved provisions leaves the stored records unchanged. MySQL search releases distinguish the legacy 26-article civil-law policy from the expanded 31-article policy during building, validation and service loading (commit: 903dc1d).
 - PATCH-059 restores the body of 공공주택 특별법 제49조의4. A table-of-contents line in the reused article page claimed the article number, so the chunk carried the text of 제49조의2 and 제49조의3 as well (107 → 733 tokens, empty article title) and displaced the real 제49조의3 in retrieval. Article parsing now ignores such listing lines and the page's download controls; 1 of 216 provisions changed and the base corpus was rebuilt with a single new embedding. (commit: 903dc1d)
