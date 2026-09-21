@@ -301,9 +301,35 @@ README에서는 평가자가 전체 구조를 이해하는 데 필요한 관계�
 
 ## 6. 설치부터 실행까지
 
-### 먼저: 서버 DB 간편 구축 (Windows / macOS / RunPod)
+### 6.0 검색 데이터 준비 — A와 B 중 하나만
 
-**DB ZIP은 필요 없습니다.** 저장소의 승인 원천 자료를 파싱해 SQLite·일반 법령 인덱스·민법 전용 인덱스를 직접 구축합니다. 서버 관리자나 개발자가 실행하며, 웹 이용자는 사이트에서 질문만 입력합니다.
+검색에는 법령·민법·판례·안내 데이터와 색인이 필요합니다. **팀원은 A(팀 배포본 ZIP)를 기본으로 사용합니다.** B는 ZIP을 쓰지 않고 각 PC에서 원천부터 직접 구축할 때만 사용합니다. 두 방식은 서로 대체하므로 함께 실행하지 않습니다.
+
+| | A. 팀 배포본 ZIP (기본 권장) | B. 로컬 구축 `setup_data.py` |
+| --- | --- | --- |
+| 받는 것 | ZIP 하나 (검색 release + KURE 모델) | 저장소 원천 자료 + Git LFS 판례 |
+| 시간 | 설치·검증 수 분 | 원천 파싱·임베딩 포함 |
+| 결과 | 모든 PC가 같은 release ID | PC별로 구축 |
+| MySQL 접속 | 필요 없음 | 필요 없음 |
+| `.env` | `LENS_MYSQL_RELEASE=data/mysql-search/active.json`, `LENS_MYSQL_MODEL_DIR=data/models/kure-mysql` | 두 값을 비움 |
+| 확인한 환경 | Windows x64, Apple Silicon Mac (r2 실측) | Windows, macOS, RunPod |
+
+`LENS_CASE_RETRIEVAL_PROFILE`은 두 방식 모두 비워 둡니다. A의 값과 B용 경로·프로필을 동시에 지정하면 앱은 다른 데이터로 넘어가지 않고 오류로 중단합니다.
+
+#### A. 팀 배포본 ZIP 설치 (기본 권장)
+
+현재 배포본은 **`LENS-MySQL-search-patch060-r2-20260921.zip`**(release ID `5b1a63a7…`)입니다. 이 release를 만든 커밋의 검색 코드에서만 검증이 통과하므로 PATCH-060이 반영된 `main`을 사용합니다(병합 전에는 `fix/patch-060-cross-platform-search-release` 브랜치의 배포본과 일치하는 코드). 구형 `shared-v3`, `patch059-20260921`, 1차 `patch060-20260921`과 혼용하지 않습니다.
+
+1. `.env`가 없으면 `.env.example`을 복사합니다. 검색 관련 기본값이 A로 설정되어 있습니다. 기존 `.env`는 덮어쓰지 않고 위 표의 A 경로를 설정하며 `LENS_CASE_RETRIEVAL_PROFILE`은 비웁니다.
+2. ZIP을 저장소 루트에 풀어 `data` 폴더가 합쳐지게 합니다.
+3. Python 3.11 가상환경에서 `requirements` → 의존성 설치 → `verify` → `model` → `activate`를 실행합니다. PyTorch는 PyPI에서 설치합니다.
+4. `verify`가 `verified: true`이고 `activate`까지 완료되면, 6.2의 Django 키·환경변수 설정을 확인한 뒤 6.3 Ollama 준비와 6.6 서비스 실행으로 이동합니다. `activate` 뒤에는 앱을 재시작합니다.
+
+OS별 명령, 기존 clone의 줄바꿈 재체크아웃, 오류 대처는 [MySQL 검색 설치 안내](docs/mysql-search.md)와 ZIP 안 `README-KR.md`에 있습니다. A에서는 B의 `setup_data.py` DB 구축을 실행하지 않습니다. A의 가상환경은 `python3.11 -m venv .venv`(Windows: `py -3.11 -m venv .venv`)로 만들고, 패키지는 반드시 배포본의 제약 파일을 적용해 설치합니다. macOS Intel은 지원하지 않고 Linux는 설치 후 `verify`·검색 확인이 필요합니다.
+
+#### B. 로컬 구축 `setup_data.py` (ZIP을 쓰지 않을 때)
+
+**DB ZIP은 필요 없습니다.** 저장소의 승인 원천 자료를 파싱해 SQLite·일반 법령 인덱스·민법 전용 인덱스를 직접 구축합니다. 서버 관리자나 개발자가 실행하며, 웹 이용자는 사이트에서 질문만 입력합니다. `.env`의 `LENS_MYSQL_RELEASE`와 `LENS_MYSQL_MODEL_DIR`을 비운 뒤 실행하세요.
 
 Python 3.11을 설치하고 저장소 루트에서 실행하세요.
 
@@ -317,13 +343,15 @@ Python 3.11을 설치하고 저장소 루트에서 실행하세요.
 
 이미 준비된 환경에서는 `python manage.py prepare_retrieval`로 같은 작업을 실행합니다. 다른 방식으로 만든 기존 DB를 전환하려면 `--rebuild`가 필요합니다. 환경만 준비하려면 `setup_data.py --prepare-only`, 다운로드 없는 환경 점검은 `--check`를 사용합니다.
 
+PATCH-060부터 검색 코드를 모든 OS에서 LF 줄바꿈으로 받습니다. 그 전에 Windows에서 구축한 PC는 `setup_data.py`를 다시 실행하면 코드 기록이 달라 로컬 DB를 한 번 자동 재구축합니다(기본 코퍼스 재구축 여부·처리 건수는 실행 로그로 확인, 별도 판례8,377건 배포는 제외). 이미 구축된 DB는 재실행하지 않아도 그대로 동작합니다.
+
 PATCH-059의 구축 대상은 **일반 법령185·민법31조문(합계216), 안내·공식 서식3문서**입니다. 판례 설치를 완료하면 기존8,377건에 공식 보완2건을 합쳐 검색합니다. 코드 갱신 후 위 구축 명령을 다시 실행해야 새 자료가 반영됩니다. 최초 평가와 개선 후 회귀 결과·남은 근거 손실은 [PATCH-059 기록](docs/patch058-retrieval-coverage.md)을 참고하세요.
 
 [서버 설치·원천 자료·Django·RunPod 실행 안내](docs/server-data-setup.md)를 먼저 확인하세요. RunPod에서는 프로젝트·DB와 `HF_HOME=/workspace/huggingface` 모델 캐시를 영구 볼륨에 두고, 가상환경은 쓰기 가능한 내부 디스크(`/opt/lens-venv` 예시)에 설치합니다. 이후 `source /opt/lens-venv/bin/activate`를 사용하고, setup 재실행에도 같은 `--venv-dir`를 지정합니다. 컨테이너 교체로 내부 디스크가 사라지면 패키지는 재설치해야 합니다. 기본 Windows·Mac `.venv` 동작은 유지합니다. **Mac·RunPod 설치 확인을 완료했습니다. 이전 RunPod에서는 DB 구축·적용·기본 검색을 확인했고, 2026-09-15 새 Pod에서는 README 가상환경의 CUDA 연산·KURE GPU 임베딩을 확인했습니다. 현재 확인한 Pod에는 추가 CUDA 수정이 필요하지 않습니다. 과거 경고의 원인은 미확정이며 새 Pod의 DB 구축·검색·LLM 평가는 미실시입니다.** [GPU 실측 환경과 범위](docs/patch040-runpod-gpu-verification.md)를 참고하세요.
 
 입력은 검토한 원천 스냅샷이며 최신 법령 자동 수집·채택 기능은 아닙니다. 설치 확인은 무결성·중복·기본 검색 검사이고 전체235문항 평가나 LLM 평가는 별도입니다. **기존 ZIP 방식은 [평가 DB 재현·복원 전용](docs/local-retrieval-data.md)으로 유지합니다.**
 
-DB 준비를 마쳤으면 환경변수·Ollama 설정 후 **6.6 서비스 실행**으로 이동합니다. 아래 **6.4~6.5는 이전 수동 재생성 경로**이므로 간편 구축 후 다시 실행하지 않습니다.
+A 또는 B로 검색 데이터를 준비했으면 환경변수·Ollama 설정 후 **6.6 서비스 실행**으로 이동합니다. 아래 **6.4~6.5는 이전 수동 재생성 경로**이므로 A나 B 이후 다시 실행하지 않습니다.
 
 수동 재생성과 앱 전체 실행 순서는 다음과 같습니다.
 
@@ -351,7 +379,7 @@ Python 환경 준비
 
 ### 6.2 Python 패키지와 환경변수
 
-간편 실행기가 이미 패키지를 설치했다면 중복 설치할 필요가 없습니다. 수동으로 준비할 때만 아래를 실행합니다.
+A 설치를 마쳤다면 아래 패키지 설치 명령은 건너뛰고 환경변수 설정부터 확인합니다. A의 패키지를 다시 설치할 때도 배포본의 제약 파일을 적용해야 합니다. B의 간편 실행기가 이미 패키지를 설치한 경우에도 중복 설치하지 않습니다. 아래 명령은 B를 수동으로 준비할 때 사용합니다.
 
 ```bash
 python3.11 -m venv .venv
@@ -387,8 +415,9 @@ python -c "from django.core.management.utils import get_random_secret_key; print
 
 | 환경변수 | 사용하는 경우 |
 | --- | --- |
-| `JEONSEON_DATABASE_PATH` | 기본 SQLite 저장 위치를 바꿀 때 |
-| `JEONSEON_CHROMA_PATH` | 기본 Chroma 인덱스 위치를 바꿀 때 |
+| `LENS_MYSQL_RELEASE`, `LENS_MYSQL_MODEL_DIR` | 6.0 A 팀 배포본 사용 시 `.env.example` 기본값 유지, B 로컬 구축 시 비움 |
+| `JEONSEON_DATABASE_PATH` | 기본 SQLite 저장 위치를 바꿀 때 (B에서만) |
+| `JEONSEON_CHROMA_PATH` | 기본 Chroma 인덱스 위치를 바꿀 때 (B에서만) |
 | `TESSERACT_CMD` | Windows에서 Tesseract를 자동으로 찾지 못할 때 |
 | `LANGSMITH_TRACING`, `LANGSMITH_API_KEY`, `LANGSMITH_PROJECT` | 개인정보가 없는 개발 실행을 추적할 때 |
 
@@ -413,7 +442,7 @@ JEONSEON_LLM_MODEL=qwen3:8b-q4_K_M
 ### 6.4 수동 초기 데이터 생성 (기존 기준선 재생성용)
 
 아래는 기존 3차 자료의 재생성 절차이며, 현재 확대216조문 묶음을 완성하는 명령이 아닙니다.
-팀원 설치에는 위 원천 기반 간편 구축 경로를 사용하세요. 현재 DB가 있는 폴더에서
+팀원 설치에는 6.0의 A(팀 배포본 ZIP) 또는 B(로컬 구축)를 사용하세요. 현재 DB가 있는 폴더에서
 아래 명령을 실행하면 데이터·인덱스가 바뀔 수 있으므로 별도 작업 폴더에서 재생성합니다.
 
 ```bash
@@ -638,7 +667,7 @@ PDF 파일명은 기존 제출 경로와 회귀 테스트 호환성을 위해 �
 
 - 별도로 수집된 약 200건의 판례 후보는 출처·사건정보·판결요지·주택임대차 관련성을
   검토한 뒤 검색 자료 확대 여부를 결정하고, 채택 시 Dev·Holdout 전체 재평가
-- 결과를 보지 않고 봉인한 법령 Holdout-v2 구축
+- 추가 독립 평가가 필요하면 개선에 사용하지 않은 새 질문을 평가 전에 봉인
 - 기관 안내 문서·평가 질문 확대와 독립 정량 평가
 - TOP3·TOP2 리랭커의 정확도·응답시간 비교
 - 확대 법령·민법 검색의 남은 근거 손실 개선 및 독립 평가
@@ -648,7 +677,9 @@ PDF 파일명은 기존 제출 경로와 회귀 테스트 호환성을 위해 �
 완료된 기반과 실제 남은 조건은 [`LIST.md`](LIST.md)의 「검색 파트 후속 과제」와
 [`docs/retrieval-handoff.md`](docs/retrieval-handoff.md) 6절에 구분해 기록했습니다.
 
-## 12. MySQL 지식 데이터 이전
+## 12. MySQL 지식 데이터 관리 (담당자용)
+
+팀원의 검색 설치는 [6.0 A. 팀 배포본 ZIP 설치](#a-팀-배포본-zip-설치-기본-권장)를 따릅니다. 이 절은 공용 MySQL 적재·내보내기·배포본 생성을 맡은 담당자용 기록입니다.
 
 PATCH-057 — 2026-09-19 공용 MySQL의 기본·민법·판례 스냅샷 전체 해시와
 유형별 원문 조회를 확인했습니다. 판례는 8,377건입니다.
@@ -667,3 +698,11 @@ MySQL 청크로 BM25·Chroma 검색 배포본을 생성·검증·활성화하고
 추가·교체·삭제·재청킹과 벡터 재사용, 배포 갱신·되돌리기도 검증했습니다.
 실제 LLM 및 다른 팀원 PC 검증은
 [실행 계획](docs/planning/mysql-retrieval-execution-plan.md)의 남은 항목입니다.
+
+
+### PATCH-059·060 완료 및 배포본 기록
+
+- **PATCH-059:** 최종 리트리버 종합 평가·법령/판례/서식 보완·검색 전달 개선을 완료했고 PR #42로 병합했습니다. 기존 근거 손실과 과거 평가 테스트 실패는 알려진 한계로 유지합니다. 검색 평가를 LLM 답변 품질 평가로 해석하지 않습니다.
+- **PATCH-060:** OS별 코드 줄바꿈 통일, CPU 간 벡터 오차 검증, 본문·메타데이터 타입·임베딩 출처의 정확한 검증, 새 환경의 설치 제약 파일 생성 처리를 완료했습니다. r2 배포본은 Windows x64와 Apple Silicon Mac(arm64, Python 3.11.15)에서 같은 ZIP으로 설치·`verify`·검색·관련 테스트 31개를 모두 통과했습니다. Linux는 미실측입니다.
+
+현재 배포본은 **`LENS-MySQL-search-patch060-r2-20260921.zip`**, release ID `5b1a63a7b004f63ad2dae018d53b9e4e0cdd120a61d623ec3270174c53622703`입니다. 구형 `shared-v3`, `patch059-20260921`, 1차 `patch060-20260921` 배포본과 혼용하지 않습니다. ZIP에는 검색 release와 KURE 모델이 포함되며 팀원 설치 순서는 6.0 A에 있습니다. 검색 코드가 바뀌면 담당자가 배포본을 다시 생성해 새 ZIP으로 배포합니다.
