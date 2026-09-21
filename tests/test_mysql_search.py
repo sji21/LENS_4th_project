@@ -430,7 +430,11 @@ def test_runtime_package_drift_is_rejected(bundle, monkeypatch):
 
 
 def test_dependency_bootstrap_does_not_require_already_matching_runtime(bundle, monkeypatch):
+    import sys
     path, _ = bundle
+    # A fresh virtual environment has only pip; bootstrap must not need packaging.
+    monkeypatch.setitem(sys.modules, "packaging", None)
+    monkeypatch.setitem(sys.modules, "packaging.version", None)
     expected = json.loads(path.read_text())["runtime_versions"]
     monkeypatch.setattr(runtime, "runtime_versions", lambda: {"chromadb": "different"})
     pins = builder.dependency_requirements(path)

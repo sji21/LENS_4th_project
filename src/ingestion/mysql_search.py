@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -237,16 +238,22 @@ def prepare_model(path, directory):
     return verify_model(directory, model)
 
 
+# PEP 440 release, pre/post/dev and local segments. This runs in a fresh virtual
+# environment, so it must not import third-party packages such as packaging.
+VERSION_PIN = re.compile(r"[0-9]+(\.[0-9]+)*((a|b|rc)[0-9]+)?(\.post[0-9]+)?(\.dev[0-9]+)?"
+                         r"(\+[a-z0-9]+(\.[a-z0-9]+)*)?")
+
+
 def dependency_requirements(path):
     """Bootstrap dependency pins before strict runtime verification is possible."""
-    from packaging.version import Version
     release = _read_json(resolve_release(path))
     versions = release.get("runtime_versions", {})
     if (release.get("schema") != SCHEMA
             or digest({k: v for k, v in release.items() if k != "release_id"}) != release.get("release_id")
-            or set(versions) != {"chromadb", "numpy", "sentence-transformers", "torch", "transformers", "tokenizers"}):
+            or set(versions) != {"chromadb", "numpy", "sentence-transformers", "torch", "transformers", "tokenizers"}
+            or not all(isinstance(v, str) and VERSION_PIN.fullmatch(v) for v in versions.values())):
         raise ValueError("검색 배포 의존성 목록·해시가 잘못됐습니다.")
-    return "".join(f"{name}=={Version(value)}\n" for name, value in sorted(versions.items()))
+    return "".join(f"{name}=={value}\n" for name, value in sorted(versions.items()))
 
 
 def main(argv=None):
