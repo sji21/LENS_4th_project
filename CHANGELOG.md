@@ -9,15 +9,15 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
-- PATCH-060 MySQL search releases can be verified on Windows, macOS (Apple Silicon) and Linux from the same package. `src/retrieval/*.py` is always checked out with LF, and each release stores its build-time vectors and a vector-free ID/text/metadata hash, so CPU-specific last-bit differences are accepted only within `1e-6` when texts, metadata value types and embedding provenance match the build exactly. Releases built before PATCH-060 must be rebuilt. (commit: 445baa7, pending)
+- PATCH-060 MySQL search releases can be verified on Windows, macOS (Apple Silicon) and Linux from the same package. `src/retrieval/*.py` is always checked out with LF, and each release stores its build-time vectors and a vector-free ID/text/metadata hash, so CPU-specific last-bit differences are accepted only within `1e-6` when texts, metadata value types and embedding provenance match the build exactly. Releases built before PATCH-060 must be rebuilt. (commit: 445baa7, cc0c6ce)
 
 - PATCH-059 keeps public-housing and registered-private-rental statutes out of the general-law channel unless the request names that programme, and gives each requested tax system its own slot when both are asked for. Over the 368 sealed inputs, complete required-evidence coverage moves from 170/195 to 182/204 (law3/law5) and the HO30 regression set from 14/17 to 20/24 of 30. Six inputs at law3 and four at law5 still lose one previously retrieved provision each; they are listed in `docs/patch058-retrieval-coverage.md`. (commit: 903dc1d)
 
 ### Fixed
 
-- PATCH-060 review corrections pass 31 targeted tests and the rebuilt r2 release passes Windows verification. Document the matching r2 package and keep its Mac/Linux revalidation outside the verified scope. PATCH-059 is complete and merged through PR #42. (commit: pending)
+- PATCH-060 review corrections pass 31 targeted tests and the rebuilt r2 release passes Windows verification. Document the matching r2 package and keep its Mac/Linux revalidation outside the verified scope. PATCH-059 is complete and merged through PR #42. (commit: cc0c6ce)
 
-- PATCH-060 `mysql_search requirements` no longer needs the `packaging` package, so the first install step works in a fresh virtual environment that only has pip. It also creates the output folder and keeps an identical existing file instead of failing. (commit: 8216dde, pending)
+- PATCH-060 `mysql_search requirements` no longer needs the `packaging` package, so the first install step works in a fresh virtual environment that only has pip. It also creates the output folder and keeps an identical existing file instead of failing. (commit: 8216dde, cc0c6ce)
 - PATCH-059 assigns base-corpus supplemental cases their actual base snapshot instead of the cases snapshot, preserving source lookup by snapshot and chunk ID. Cases already present in the cases corpus retain that source. The 23 MySQL search tests pass. (commit: 7fb0afd)
 
 - PATCH-059 preserves body lines referring to later titled articles instead of treating those references as new article headings. Re-parsing the 216 approved provisions leaves the stored records unchanged. MySQL search releases distinguish the legacy 26-article civil-law policy from the expanded 31-article policy during building, validation and service loading (commit: 903dc1d).
