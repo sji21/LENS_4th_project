@@ -15,7 +15,7 @@ This file records the 4th project from its first change onward.
 
 ### Fixed
 
-- PATCH-060 `mysql_search requirements` no longer needs the `packaging` package, so the first install step works in a fresh virtual environment that only has pip. (commit: pending)
+- PATCH-060 `mysql_search requirements` no longer needs the `packaging` package, so the first install step works in a fresh virtual environment that only has pip. (commit: 8216dde)
 - PATCH-059 assigns base-corpus supplemental cases their actual base snapshot instead of the cases snapshot, preserving source lookup by snapshot and chunk ID. Cases already present in the cases corpus retain that source. The 23 MySQL search tests pass. (commit: 7fb0afd)
 
 - PATCH-059 preserves body lines referring to later titled articles instead of treating those references as new article headings. Re-parsing the 216 approved provisions leaves the stored records unchanged. MySQL search releases distinguish the legacy 26-article civil-law policy from the expanded 31-article policy during building, validation and service loading (commit: 903dc1d).

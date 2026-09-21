@@ -15,7 +15,7 @@
 
 ### 버그 수정 (Fixed)
 
-- PATCH-060 `mysql_search requirements`가 `packaging` 패키지 없이 동작해, pip만 있는 새 가상환경에서도 첫 설치 단계가 실패하지 않습니다. (commit: pending)
+- PATCH-060 `mysql_search requirements`가 `packaging` 패키지 없이 동작해, pip만 있는 새 가상환경에서도 첫 설치 단계가 실패하지 않습니다. (commit: 8216dde)
 - PATCH-059 기본 코퍼스의 보충 판례에 실제 base 스냅샷을 연결해 스냅샷·청크 ID 기반 원문 추적을 보존합니다. 기존 cases 코퍼스에 있는 판례는 cases 출처를 유지합니다. MySQL 검색 검사23개 통과. (commit: 7fb0afd)
 
 - PATCH-059 뒤에 나오는 제목 있는 조문을 참조하는 본문 줄을 새 조문 머리로 오인하지 않고 보존합니다. 승인된 216조문을 다시 파싱한 결과 기존 저장 레코드와 같습니다. MySQL 검색 배포의 생성·검증·서비스 로딩에서 기존 민법 26개 정책과 확대 31개 정책을 구분합니다 (commit: 903dc1d).
