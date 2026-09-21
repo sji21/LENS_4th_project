@@ -56,3 +56,6 @@
 /data/sources/retrieval-supplements-v1/** -text -whitespace
 /data/eval/patch058-regression/** -text whitespace=cr-at-eol
 /data/eval/patch058-regression/validation/*.log -whitespace
+
+# MySQL search releases pin these files byte-for-byte; use one line ending on every OS.
+/src/retrieval/*.py text eol=lf

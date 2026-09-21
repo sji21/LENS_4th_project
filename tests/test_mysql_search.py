@@ -169,6 +169,9 @@ def test_builder_records_the_policy_matching_its_civil_export(
     monkeypatch.setattr(builder, "verify_model", lambda *args: None)
     monkeypatch.setattr(builder, "audit_tokens", lambda rows, model_dir: {"checked": len(rows)})
     monkeypatch.setattr(builder, "verify_collection", lambda *args: "2" * 64)
+    monkeypatch.setattr(builder, "write_vector_reference",
+                        lambda collection, path: (Path(path).parent.mkdir(parents=True, exist_ok=True),
+                                                  Path(path).write_bytes(b"vectors")))
     monkeypatch.setattr(dense, "SentenceTransformerEmbedding", lambda *args, **kwargs: object())
 
     class Dense:
@@ -182,7 +185,11 @@ def test_builder_records_the_policy_matching_its_civil_export(
     monkeypatch.setattr(dense, "ChromaRetriever", Dense)
     monkeypatch.setattr(index, "build_index", build_index)
     builder.build_worker(staging, tmp_path / "model", case_release=case_release)
-    assert json.loads((staging / "worker-result.json").read_text())["law_policy"] == law_policy
+    result = json.loads((staging / "worker-result.json").read_text())
+    assert result["law_policy"] == law_policy
+    for channel in runtime.STREAMS:
+        assert result["indexes"][channel]["vector_reference"] == f"references/{channel}.f32"
+        assert (staging / "references" / f"{channel}.f32").is_file()
 
 
 @pytest.mark.parametrize("file", ["exports/base/laws.jsonl", "indexes/cases/index.bin",
@@ -205,6 +212,80 @@ def test_incomplete_or_changed_policy_release_is_rejected(bundle):
     seal(path, release)
     with pytest.raises(ValueError, match="정책"):
         runtime.read_release(path)
+
+
+def test_vector_reference_must_be_listed_at_its_fixed_path(bundle):
+    path, _ = bundle
+    release = json.loads(path.read_text())
+    reference = path.parent / "references" / "cases.f32"
+    reference.parent.mkdir()
+    reference.write_bytes(b"vectors")
+    release["indexes"]["cases"]["vector_reference"] = "references/cases.f32"
+    seal(path, release)
+    with pytest.raises(ValueError, match="목록"):
+        runtime.read_release(path)
+    release["files"]["references/cases.f32"] = runtime.file_hash(reference)
+    seal(path, release)
+    runtime.read_release(path)
+    release["indexes"]["cases"]["vector_reference"] = "indexes/cases/index.bin"
+    seal(path, release)
+    with pytest.raises(ValueError, match="기준 벡터 경로"):
+        runtime.read_release(path)
+
+
+class VectorCollection:
+    """Minimal Chroma stand-in whose stored vectors can differ in their last bits."""
+    configuration = {"hnsw": {"space": "cosine"}}
+
+    def __init__(self, rows, vectors):
+        self.rows, self.vectors = rows, vectors
+
+    def count(self):
+        return len(self.rows)
+
+    def get(self, ids=None, include=()):
+        ids = [r["chunk_id"] for r in self.rows] if ids is None else ids
+        rows = {r["chunk_id"]: r for r in self.rows}
+        return {"ids": ids, "documents": [rows[i]["text"] for i in ids],
+                "metadatas": [rows[i]["metadata"] for i in ids],
+                "embeddings": [self.vectors[i] for i in ids]}
+
+
+@pytest.mark.parametrize("shift, accepted", [(0.0, True), (1.5e-8, True), (1e-4, False)])
+def test_cross_cpu_vector_bits_are_accepted_only_within_tolerance(
+        tmp_path, monkeypatch, shift, accepted):
+    import numpy as np
+    from src.retrieval import case_profile
+    rows = [chunk("b-law"), chunk("a-law")]
+    built = {r["chunk_id"]: np.full(1024, 0.03125, dtype="<f4") * (i + 1)
+             for i, r in enumerate(rows)}
+    reference = tmp_path / "cases.f32"
+    runtime.write_vector_reference(VectorCollection(rows, built), reference)
+    opened = {cid: (v + np.float32(shift)).astype("<f4") for cid, v in built.items()}
+    monkeypatch.setattr(case_profile, "index_content_hash", lambda c: "other-cpu-hash")
+    collection = VectorCollection(rows, opened)
+    with pytest.raises(ValueError, match="논리 해시"):
+        runtime.verify_collection(collection, rows, "build-cpu-hash")
+    if accepted:
+        assert runtime.verify_collection(collection, rows, "build-cpu-hash",
+                                         reference=reference) == "other-cpu-hash"
+    else:
+        with pytest.raises(ValueError, match="허용 오차"):
+            runtime.verify_collection(collection, rows, "build-cpu-hash", reference=reference)
+
+
+def test_vector_reference_of_another_index_is_rejected(tmp_path, monkeypatch):
+    import numpy as np
+    from src.retrieval import case_profile
+    rows = [chunk("law")]
+    reference = tmp_path / "base.f32"
+    runtime.write_vector_reference(
+        VectorCollection(rows + [chunk("extra")], {"law": np.zeros(1024), "extra": np.zeros(1024)}),
+        reference)
+    monkeypatch.setattr(case_profile, "index_content_hash", lambda c: "other-cpu-hash")
+    with pytest.raises(ValueError, match="크기"):
+        runtime.verify_collection(VectorCollection(rows, {"law": np.zeros(1024)}), rows,
+                                  "build-cpu-hash", reference=reference)
 
 
 def test_activation_verifies_before_atomic_pointer_replacement(bundle, tmp_path, monkeypatch):

@@ -15,7 +15,7 @@ from src.ingestion.knowledge_release import _read_json, file_hash
 from src.retrieval.mysql_release import (
     CASE_POLICY, ROOT, SCHEMA, STREAMS, channel_rows, code_files, digest, encoded,
     detect_law_policy, load_service, open_indexes, read_export, read_release, resolve_release,
-    verify_collection, verify_model, runtime_versions,
+    verify_collection, verify_model, runtime_versions, write_vector_reference,
 )
 
 
@@ -131,7 +131,8 @@ def build_worker(staging, model_dir, case_release=None, previous_release=None):
             spec = previous["indexes"][channel]
             shutil.copytree(previous_path.parent / spec["path"], target)
             dense = ChromaRetriever(None, target)
-            verify_collection(dense.collection, previous_rows[channel], spec["logical_sha256"], model)
+            reference = previous_path.parent / spec["vector_reference"] if "vector_reference" in spec else None
+            verify_collection(dense.collection, previous_rows[channel], spec["logical_sha256"], model, reference)
             stats = sync_collection(dense.collection, rows[channel], get_backend, model)
         elif channel == "cases":
             shutil.copytree(case_release.parent / source["index"]["path"], target)
@@ -141,8 +142,11 @@ def build_worker(staging, model_dir, case_release=None, previous_release=None):
         dense = ChromaRetriever(backend, target)
         logical = verify_collection(dense.collection, rows[channel],
             source["index"]["logical_sha256"] if channel == "cases" and not previous else None, model)
+        reference = "references/" + channel + ".f32"
+        write_vector_reference(dense.collection, staging / reference)
         indexes[channel] = {"path": "indexes/" + channel, "count": len(rows[channel]),
-                            "logical_sha256": logical, "update": stats, "token_audit": token_audit}
+                            "logical_sha256": logical, "vector_reference": reference,
+                            "update": stats, "token_audit": token_audit}
         print("색인 검증 완료: " + channel, flush=True)
     release = {"schema": SCHEMA, "index_status": "ready", "fallback_allowed": False,
         "snapshots": {c: m["snapshot_id"] for c, m in manifests.items()},
@@ -177,7 +181,7 @@ def build_release(export_root, output, model_dir, case_release=None, previous_re
                        cwd=ROOT, check=True)
         release = _read_json(staging / "worker-result.json")
         release["files"] = {p.relative_to(staging).as_posix(): file_hash(p)
-                            for folder in ("exports", "indexes")
+                            for folder in ("exports", "indexes", "references")
                             for p in sorted((staging / folder).rglob("*")) if p.is_file()}
         release["release_id"] = digest(release)
         write_json(staging / "release.json", release)

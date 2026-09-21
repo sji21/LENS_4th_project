@@ -24,6 +24,11 @@ CASE_POLICY = {"candidate_depth": 80, "return_k": 20, "rerank_policy": "band_3pc
                "case_field_policy": "tax_source_guard"}
 STREAMS = {"base": {"laws", "cases", "guides"}, "civil": {"civil"},
            "cases": {"laws", "cases", "guides"}}
+DIMENSION = 1024
+# Chroma re-inserts queued vectors when an index is opened; CPU-specific float
+# code (e.g. Apple Silicon vs x86) can change their last bits. Real mismatches
+# are orders of magnitude larger.
+VECTOR_TOLERANCE = 1e-6
 
 
 def runtime_versions():
@@ -141,7 +146,40 @@ def channel_rows(exports, law_policy=None):
     }
 
 
-def verify_collection(collection, rows, expected_hash=None, model=None):
+def collection_vectors(collection, ids):
+    import numpy as np
+    vectors = np.empty((len(ids), DIMENSION), dtype="<f4")
+    for start in range(0, len(ids), 128):
+        window = ids[start:start + 128]
+        got = collection.get(ids=window, include=["embeddings"])
+        found = dict(zip(got["ids"], got["embeddings"]))
+        for offset, cid in enumerate(window):
+            vector = np.asarray(found[cid], dtype="<f4")
+            if vector.shape != (DIMENSION,) or not np.isfinite(vector).all():
+                raise ValueError("색인 벡터 차원 또는 값이 잘못됐습니다: " + cid)
+            vectors[start + offset] = vector
+    return vectors
+
+
+def write_vector_reference(collection, path):
+    """Store build-time vectors (sorted by chunk ID) for cross-CPU verification."""
+    ids = sorted(collection.get(include=[])["ids"])
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    Path(path).write_bytes(collection_vectors(collection, ids).tobytes())
+
+
+def verify_vector_reference(collection, path):
+    import numpy as np
+    ids = sorted(collection.get(include=[])["ids"])
+    expected = np.fromfile(path, dtype="<f4")
+    if expected.size != len(ids) * DIMENSION:
+        raise ValueError("기준 벡터 파일의 크기가 색인과 다릅니다.")
+    diff = np.abs(collection_vectors(collection, ids) - expected.reshape(len(ids), DIMENSION))
+    if not diff.max(initial=0.0) <= VECTOR_TOLERANCE:
+        raise ValueError("Chroma 벡터가 기준 벡터와 허용 오차 이상 다릅니다.")
+
+
+def verify_collection(collection, rows, expected_hash=None, model=None, reference=None):
     from src.retrieval.case_profile import index_content_hash
     from src.retrieval.index import clean_metadata
     expected = {r["chunk_id"]: r for r in rows}
@@ -165,7 +203,10 @@ def verify_collection(collection, rows, expected_hash=None, model=None):
             raise ValueError("Chroma/MySQL 본문·검색 메타데이터가 다릅니다: " + cid)
     logical = index_content_hash(collection)
     if expected_hash is not None and logical != expected_hash:
-        raise ValueError("Chroma 논리 해시가 다릅니다.")
+        # Texts and metadata matched exactly above; only vector bits may vary.
+        if reference is None:
+            raise ValueError("Chroma 논리 해시가 다릅니다.")
+        verify_vector_reference(collection, reference)
     return logical
 
 
@@ -211,6 +252,10 @@ def read_release(path):
         if not names or index.get("path") != "indexes/" + channel:
             raise ValueError("검색 배포 인덱스가 없습니다.")
         expected_names.update(names)
+        if "vector_reference" in index:
+            if index["vector_reference"] != f"references/{channel}.f32":
+                raise ValueError("검색 배포 기준 벡터 경로가 잘못됐습니다.")
+            expected_names.add(index["vector_reference"])
     if set(value.get("files", {})) != expected_names:
         raise ValueError("검색 배포 파일 목록이 불완전합니다.")
     exports = {}
@@ -239,7 +284,8 @@ def open_indexes(path, release, rows, backend):
     indexes = {}
     for channel, spec in release["indexes"].items():
         dense = ChromaRetriever(backend, native_index_path(path.parent / spec["path"], immutable=True))
-        verify_collection(dense.collection, rows[channel], spec["logical_sha256"], release["model"])
+        reference = (path.parent / spec["vector_reference"]) if "vector_reference" in spec else None
+        verify_collection(dense.collection, rows[channel], spec["logical_sha256"], release["model"], reference)
         if spec["count"] != len(rows[channel]):
             raise ValueError("배포 인덱스 건수가 다릅니다.")
         indexes[channel] = dense

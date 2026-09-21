@@ -2,7 +2,22 @@
 
 MySQL은 원문·청크·버전을 관리한다. 앱 검색은 같은 MySQL 스냅샷에서 내보낸 JSONL과 Chroma를 함께 검증한 배포본을 읽는다. BM25는 배포본의 JSONL로 메모리에 구성한다. 검색할 때 기존 SQLite 원본이나 MySQL 접속 비밀번호가 필요하지 않다.
 
-기존 `LENS-MySQL-search-shared-v3.zip`은 생성 당시 코드의 바이트 해시를 고정한다. Git 체크아웃의 LF/CRLF 차이나 이후 코드 변경으로 검증이 실패할 수 있으므로, 최종 PR 코드와 배포본의 호환성을 별도로 확인하고 필요하면 같은 코드에서 재생성한다. 이번 공용 DB 재검증 통과가 기존 ZIP의 새 코드 호환성이나 다른 PC 실행까지 보장하지는 않는다.
+배포본은 생성 당시 `src/retrieval/*.py`의 바이트 해시를 고정한다. 검색 코드가 바뀌면 배포본을 다시 생성한다. PATCH-060부터 이 파일들은 모든 OS에서 LF로 체크아웃되므로(`.gitattributes`) Windows·macOS·Linux가 같은 배포본을 검증할 수 있다. PATCH-060 이전에 만든 배포본(`shared-v3`, `patch059-20260921` 등)은 CRLF 체크아웃 기준이라 새 코드에서 사용할 수 없다.
+
+## 지원 환경
+
+| 환경 | 상태 |
+| --- | --- |
+| Windows x64 | 지원. 빌드 담당 환경 |
+| macOS Apple Silicon (arm64) | 지원. 기준 벡터 허용 오차 검증 사용 |
+| Linux x64 | 지원 대상. 배포 전 `verify`·`query` 확인 필요 |
+| macOS Intel | 미지원. 고정 버전의 PyTorch 설치 파일이 없음 |
+
+Python은 3.11을 기준으로 한다. PyTorch는 반드시 PyPI(`pip install`)에서 설치한다. `download.pytorch.org` 설치본은 버전이 `2.14.0+cpu`·`+cu124`처럼 표시되어 배포본의 고정 버전과 달라 거절된다.
+
+### CPU별 벡터 차이
+
+Chroma는 색인을 열 때 기록 대기 중인 벡터를 HNSW에 다시 넣는다. 이때 CPU 종류(x86·Apple Silicon)에 따라 일부 벡터의 마지막 비트가 달라져 논리 해시가 달라질 수 있다. 배포본은 빌드한 PC의 전체 벡터를 `references/<채널>.f32`로 함께 담는다. 논리 해시가 다르면 본문·메타데이터가 완전히 일치하는지 먼저 확인한 뒤, 모든 벡터가 기준 벡터와 `1e-6` 이내인지 검사한다. 그 이상 다르면 거절한다. 실측된 Apple Silicon 차이는 약 `1.5e-8`이다. 기존 Mac 전용 수동 패치(`case_index_reference_x86.json`)는 더 이상 필요하지 않으며 적용하지 않는다.
 
 ## 담당자: 배포본 생성
 
@@ -22,7 +37,21 @@ Chroma 생성 프로세스가 종료된 뒤 물리 파일 해시를 계산한다
 
 ## 팀원: 동일 배포본 설치·실행
 
-담당자가 만든 배포 폴더 전체와 동일한 검색 코드를 사용한다. 개인별로 데이터를 다시 수집하거나 임베딩할 필요는 없다. Python 환경은 프로젝트 `requirements.txt`를 설치한다. MySQL 적재·내보내기를 실행하는 담당자만 `requirements-mysql.txt`가 추가로 필요하다.
+담당자가 만든 배포 폴더 전체와 동일한 검색 코드를 사용한다. 개인별로 데이터를 다시 수집하거나 임베딩하거나 MySQL에 접속할 필요는 없다. macOS에서도 배포본을 직접 빌드하지 않는다.
+
+PATCH-060 이전에 clone한 저장소는 검색 코드 파일이 CRLF로 남아 있을 수 있다. 커밋하지 않은 변경이 없는지 확인한 뒤 한 번 다시 체크아웃한다(새로 clone해도 된다).
+
+```powershell
+Remove-Item src\retrieval\*.py
+git checkout -- src/retrieval
+```
+
+macOS·Linux:
+
+```bash
+rm src/retrieval/*.py
+git checkout -- src/retrieval
+``` Python 환경은 프로젝트 `requirements.txt`를 설치한다. MySQL 적재·내보내기를 실행하는 담당자만 `requirements-mysql.txt`가 추가로 필요하다.
 
 ```powershell
 python -m src.ingestion.mysql_search requirements --release data/mysql-search/releases/VERSION/release.json --output tmp/requirements-search.txt
@@ -31,6 +60,21 @@ python -m src.ingestion.mysql_search verify --release data/mysql-search/releases
 python -m src.ingestion.mysql_search model --release data/mysql-search/releases/VERSION/release.json --model-dir data/models/kure-mysql
 python -m src.ingestion.mysql_search activate --release data/mysql-search/releases/VERSION/release.json --pointer data/mysql-search/active.json
 ```
+
+macOS·Linux는 Python 3.11 가상환경에서 같은 명령을 실행한다.
+
+```bash
+python3.11 -m venv .venv
+source .venv/bin/activate
+R=data/mysql-search/releases/VERSION/release.json
+python -m src.ingestion.mysql_search requirements --release "$R" --output tmp/requirements-search.txt
+python -m pip install -r requirements.txt -c tmp/requirements-search.txt
+python -m src.ingestion.mysql_search verify --release "$R"
+python -m src.ingestion.mysql_search model --release "$R" --model-dir data/models/kure-mysql
+python -m src.ingestion.mysql_search activate --release "$R" --pointer data/mysql-search/active.json
+```
+
+`verify`가 `verified: true`를 출력해야 한다. 모델 폴더를 Hugging Face 캐시에서 직접 복사하면 심볼릭 링크가 남아 거절되므로 `model` 명령으로 준비한다. `active.json`은 PC별 절대 경로를 담으므로 다른 PC의 파일을 복사하지 않고 각 PC에서 `activate`로 만든다.
 
 배포 시점의 Chroma·NumPy·Sentence Transformers·PyTorch·Transformers·Tokenizers 버전을 함께 고정한다. `requirements`는 배포 manifest 해시를 확인한 뒤 제약 파일을 생성하며, 검색 실행은 실제 설치 버전까지 대조한다.
 

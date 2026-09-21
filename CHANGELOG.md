@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
+- PATCH-060 MySQL search releases can be verified on Windows, macOS (Apple Silicon) and Linux from the same package. `src/retrieval/*.py` is always checked out with LF, and each release stores its build-time vectors so CPU-specific last-bit differences are accepted only within `1e-6` after texts and metadata match exactly. Releases built before PATCH-060 must be rebuilt. (commit: pending)
+
 - PATCH-059 keeps public-housing and registered-private-rental statutes out of the general-law channel unless the request names that programme, and gives each requested tax system its own slot when both are asked for. Over the 368 sealed inputs, complete required-evidence coverage moves from 170/195 to 182/204 (law3/law5) and the HO30 regression set from 14/17 to 20/24 of 30. Six inputs at law3 and four at law5 still lose one previously retrieved provision each; they are listed in `docs/patch058-retrieval-coverage.md`. (commit: 903dc1d)
 
 ### Fixed
