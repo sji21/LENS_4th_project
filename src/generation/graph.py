@@ -16,6 +16,7 @@
       → grounding
       → deterministic validation
       → semantic validation
+      → (첫 검증 실패에 한해 근거 기반 repair 후 재검증)
       → answered / abstained / refused
 
 ``chain.answer_question()``은 테스트·호환 경로로 유지한다.
@@ -52,6 +53,7 @@ Route = Literal[
     "generate",
     "grounding",
     "deterministic_validation",
+    "validation_repair",
     "semantic_validation",
     "refuse",
     "abstain_no_evidence",
@@ -73,6 +75,14 @@ class GenerationGraphState(TypedDict, total=False):
     candidate: Answer
     validation_report: Any
     validation_mode: str
+    # 결정론/semantic 검증 중 먼저 실패한 초안만 근거를 유지한 채 한 번 정정한다.
+    # 이 값은 LangGraph 상태에서만 사용해 재검증 경로의 반복을 막는다.
+    repair_attempted: bool
+    repair_attempts: int
+    initial_validation_codes: tuple[str, ...]
+    repair_validation_codes: tuple[str, ...]
+    initial_draft: str
+    repair_draft: str
     refusal_reason: str
     next_step: Route
     answer: Answer
@@ -94,6 +104,8 @@ def build_generation_graph(
     document_evidences: tuple[SessionDocumentEvidence, ...] = (),
     document_search_attempted: bool = False,
     response_style: str | None = None,
+    repair_validation: bool | None = None,
+    retain_rejected_draft: bool = False,
 ):
     """기존 Generation 정책을 그대로 사용하는 실행 Graph를 만든다.
 
@@ -104,6 +116,7 @@ def build_generation_graph(
 
     chain_module.prompt_module.style_guidance(response_style)
     runtime_aux_llm = auxiliary_llm if auxiliary_llm is not None else llm
+    runtime_main_llm = llm
 
     def get_aux_llm():
         nonlocal runtime_aux_llm
@@ -116,6 +129,48 @@ def build_generation_graph(
                 max_retries=0,
             )
         return runtime_aux_llm
+
+    def get_main_llm():
+        """생성과 validation repair가 같은 main LLM 인스턴스를 사용하게 한다."""
+        nonlocal runtime_main_llm
+        if runtime_main_llm is None:
+            document_only = (
+                bool(document_evidences)
+                and k_law <= 0
+                and k_case <= 0
+                and k_guide <= 0
+            )
+            runtime_main_llm = chain_module.get_llm(
+                max_retries=0,
+                **(
+                    {
+                        "extra_body": {
+                            "num_ctx": max(
+                                8192, chain_module.llm_module.LLM_NUM_CTX
+                            )
+                        }
+                    }
+                    if response_style is not None
+                    else {}
+                ),
+                **(
+                    {
+                        "max_tokens": max(
+                            512 if response_style is not None else 384,
+                            chain_module.llm_module.LLM_MAX_TOKENS,
+                        )
+                    }
+                    if document_only or response_style is not None
+                    else {}
+                ),
+            )
+        return runtime_main_llm
+
+    def validation_codes(report: Any) -> tuple[str, ...]:
+        """Keep stable issue labels for local repair diagnostics."""
+        return tuple(
+            dict.fromkeys(issue.code or issue.kind for issue in report.issues)
+        )
 
     def input_guard_node(
         state: GenerationGraphState,
@@ -332,20 +387,7 @@ def build_generation_graph(
             and k_case <= 0
             and k_guide <= 0
         )
-        main_llm = (
-            llm
-            if llm is not None
-            else chain_module.get_llm(
-                max_retries=0,
-                **({"extra_body": {"num_ctx": max(8192, chain_module.llm_module.LLM_NUM_CTX)}}
-                   if response_style is not None else {}),
-                **(
-                    {"max_tokens": max(512 if response_style is not None else 384, chain_module.llm_module.LLM_MAX_TOKENS)}
-                    if document_only or response_style is not None
-                    else {}
-                ),
-            )
-        )
+        main_llm = get_main_llm()
         qa_chain = (
             chain_module.build_document_qa_chain(main_llm, **({"response_style": response_style} if response_style is not None else {}))
             if document_only
@@ -455,7 +497,14 @@ def build_generation_graph(
         report = chain_module.audit_answer(state["candidate"])
 
         if not report.is_valid:
-            next_step: Route = "abstain_validation"
+            # repair 결과도 반드시 같은 결정론 검증을 다시 통과해야 하며,
+            # 재검증 실패 시에는 다시 생성하지 않고 보류한다. 두 번째 보정은
+            # 결정론 검사를 통과한 뒤 semantic 검증에서만 허용한다.
+            next_step: Route = (
+                "abstain_validation"
+                if state.get("repair_attempted", False)
+                else "validation_repair"
+            )
         elif chain_module.requires_semantic_validation(state["candidate"]):
             next_step = "semantic_validation"
         else:
@@ -466,6 +515,76 @@ def build_generation_graph(
             "validation_report": report,
             "validation_mode": "deterministic",
             "next_step": next_step,
+        }
+
+    def validation_repair_node(
+        state: GenerationGraphState,
+    ) -> GenerationGraphState:
+        """Run an evidence-bound repair after validation failure.
+
+        The repair prompt receives only the original retrieved evidence and its
+        failed draft. A repaired draft is always sent through deterministic and,
+        when required, semantic validation again before delivery. 결정론 보정 후
+        semantic에서 실패한 경우에만 두 번째 보정을 허용한다.
+        """
+        prior_attempts = int(state.get("repair_attempts", 0) or 0)
+        if prior_attempts >= 2:
+            return {
+                "repair_attempted": True,
+                "repair_attempts": prior_attempts,
+                "next_step": "abstain_validation",
+            }
+
+        candidate = state["candidate"]
+        report = state["validation_report"]
+        repair_enabled = (
+            llm is None if repair_validation is None else repair_validation
+        )
+        if not repair_enabled:
+            return {
+                "repair_attempted": False,
+                "repair_attempts": 0,
+                "next_step": "abstain_validation",
+            }
+        attempt = chain_module._attempt_validation_repair(
+            candidate,
+            state["retrieval_result"],
+            report,
+            get_main_llm(),
+            enabled=True,
+        )
+        initial_codes = tuple(
+            state.get("initial_validation_codes") or validation_codes(report)
+        )
+        repair_codes = validation_codes(attempt.report) if attempt.report else ()
+        if attempt.repaired is None:
+            return {
+                "repair_attempted": True,
+                "repair_attempts": prior_attempts + 1,
+                "initial_validation_codes": initial_codes,
+                "repair_validation_codes": repair_codes,
+                "initial_draft": state.get("initial_draft", candidate.raw_text),
+                "repair_draft": attempt.draft,
+                # A failed repair has a newer deterministic report; keep it as
+                # the final rejection reason rather than relabeling it with the
+                # pre-repair failure.
+                "validation_report": attempt.report or report,
+                "validation_mode": "deterministic" if attempt.report else state.get("validation_mode", "deterministic"),
+                "next_step": "abstain_validation",
+            }
+
+        repaired = attempt.repaired
+
+        return {
+            "candidate": repaired,
+            "raw_text": repaired.raw_text,
+            "repair_attempted": True,
+            "repair_attempts": prior_attempts + 1,
+            "initial_validation_codes": initial_codes,
+            "repair_validation_codes": repair_codes,
+            "initial_draft": state.get("initial_draft", candidate.raw_text),
+            "repair_draft": attempt.draft,
+            "next_step": "deterministic_validation",
         }
 
     def semantic_validation_node(
@@ -479,15 +598,30 @@ def build_generation_graph(
             )(question, text, evidences, document_evidences),
         )
 
-        return {
+        updates: GenerationGraphState = {
             "validation_report": report,
             "validation_mode": "semantic",
             "next_step": (
-                "abstain_validation"
-                if not report.is_valid
-                else "answer"
+                "answer"
+                if report.is_valid
+                else (
+                    # 결정론 보정을 통과한 초안도 의미상 잘못된 출처 연결이나
+                    # 조건 누락이 남을 수 있다. 이 지점에서만 한 번 더 보정한다.
+                    "abstain_validation"
+                    if int(state.get("repair_attempts", 0) or 0) >= 2
+                    else "validation_repair"
+                )
             ),
         }
+        # A repaired draft can pass deterministic validation and then fail the
+        # semantic review. Preserve that later code for local evaluation;
+        # otherwise the recorded repair result misleadingly has no failure type.
+        if state.get("repair_attempted", False) and not report.is_valid:
+            prior_codes = tuple(state.get("repair_validation_codes", ()))
+            updates["repair_validation_codes"] = tuple(
+                dict.fromkeys((*prior_codes, *validation_codes(report)))
+            )
+        return updates
 
     def abstain_validation_node(
         state: GenerationGraphState,
@@ -499,6 +633,29 @@ def build_generation_graph(
                 state["validation_report"],
                 document_evidences,
                 validation_mode=state.get("validation_mode", "deterministic"),
+                # Rejected drafts can contain personal or uploaded-document
+                # text. Retain them only for an explicit local evaluator;
+                # production callers keep the existing blank raw_text policy.
+                raw_text=(
+                    state["candidate"].raw_text
+                    if retain_rejected_draft and "candidate" in state
+                    else ""
+                ),
+                repair_attempts=int(state.get("repair_attempts", 0) or 0),
+                initial_validation_codes=(
+                    tuple(state.get("initial_validation_codes", ()))
+                    if retain_rejected_draft else ()
+                ),
+                repair_validation_codes=(
+                    tuple(state.get("repair_validation_codes", ()))
+                    if retain_rejected_draft else ()
+                ),
+                diagnostic_initial_draft=(
+                    state.get("initial_draft", "") if retain_rejected_draft else ""
+                ),
+                diagnostic_repair_draft=(
+                    state.get("repair_draft", "") if retain_rejected_draft else ""
+                ),
             )
         }
 
@@ -509,6 +666,10 @@ def build_generation_graph(
             "answer": replace(
                 state["candidate"],
                 validation_mode=state.get("validation_mode", "deterministic"),
+                initial_validation_codes=(tuple(state.get("initial_validation_codes", ())) if retain_rejected_draft else ()),
+                repair_validation_codes=(tuple(state.get("repair_validation_codes", ())) if retain_rejected_draft else ()),
+                diagnostic_initial_draft=(state.get("initial_draft", "") if retain_rejected_draft else ""),
+                diagnostic_repair_draft=(state.get("repair_draft", "") if retain_rejected_draft else ""),
             ),
         }
 
@@ -530,6 +691,7 @@ def build_generation_graph(
         "deterministic_validation",
         deterministic_validation_node,
     )
+    builder.add_node("validation_repair", validation_repair_node)
     builder.add_node("semantic_validation", semantic_validation_node)
     builder.add_node("abstain_validation", abstain_validation_node)
     builder.add_node("answer", answer_node)
@@ -608,7 +770,18 @@ def build_generation_graph(
         "deterministic_validation",
         _next_step,
         {
+            "validation_repair": "validation_repair",
+            "semantic_validation": "semantic_validation",
             "abstain_validation": "abstain_validation",
+            "answer": "answer",
+        },
+    )
+    builder.add_conditional_edges(
+        "validation_repair",
+        _next_step,
+        {
+            "abstain_validation": "abstain_validation",
+            "deterministic_validation": "deterministic_validation",
             "semantic_validation": "semantic_validation",
             "answer": "answer",
         },
@@ -617,6 +790,7 @@ def build_generation_graph(
         "semantic_validation",
         _next_step,
         {
+            "validation_repair": "validation_repair",
             "abstain_validation": "abstain_validation",
             "answer": "answer",
         },
@@ -640,6 +814,8 @@ def answer_question(
     document_evidences: tuple[SessionDocumentEvidence, ...] = (),
     document_search_attempted: bool = False,
     response_style: str | None = None,
+    repair_validation: bool | None = None,
+    retain_rejected_draft: bool = False,
 ) -> Answer:
     """LangGraph가 실행·상태·분기를 담당하는 Generation 진입점.
 
@@ -659,6 +835,8 @@ def answer_question(
         auxiliary_llm=auxiliary_llm,
         document_evidences=document_evidences,
         document_search_attempted=document_search_attempted,
+        repair_validation=repair_validation,
+        retain_rejected_draft=retain_rejected_draft,
         **({"response_style": response_style} if response_style is not None else {}),
     )
 

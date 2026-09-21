@@ -25,7 +25,7 @@ import csv
 import hashlib
 import json
 import time
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
 from datetime import datetime
 from pathlib import Path
 from typing import Iterable
@@ -108,6 +108,9 @@ class EvalRow:
     manual_note: str = ""
     validation_mode: str = "not_applicable"
     code_version: str = ""
+    validation_codes: list[str] = field(default_factory=list)
+    repair_attempts: int = 0
+    refusal_reason: str = ""
 
 
 def load_questions(path: Path) -> list[dict]:
@@ -225,6 +228,9 @@ def evaluate_one(
         failure_stage=infer_failure_stage(answer),
         validation_mode=answer.validation_mode,
         code_version=code_version,
+        validation_codes=list(answer.validation_codes),
+        repair_attempts=answer.repair_attempts,
+        refusal_reason=answer.refusal_reason,
     )
 
 
@@ -321,6 +327,15 @@ def summarize(rows: list[EvalRow]) -> dict:
         ),
         "semantic_validation_n": len(semantic_rows),
         "deterministic_validation_n": len(deterministic_rows),
+        "validation_code_counts": {
+            code: sum(code in row.validation_codes for row in rows)
+            for code in sorted({code for row in rows for code in row.validation_codes})
+        },
+        "repair_attempted_n": sum(row.repair_attempts > 0 for row in rows),
+        "refusal_reason_counts": {
+            reason: sum(row.refusal_reason == reason for row in rows)
+            for reason in sorted({row.refusal_reason for row in rows if row.refusal_reason})
+        },
         "failures": [
             {
                 "qid": row.qid,
@@ -350,6 +365,7 @@ def write_csv(path: Path, rows: list[EvalRow]) -> None:
                 "retrieved_gold_articles",
                 "source_labels",
                 "source_chunk_ids",
+                "validation_codes",
             ):
                 payload[key] = " | ".join(payload[key])
             writer.writerow(payload)
@@ -510,6 +526,11 @@ def main() -> None:
     print(f"mean_elapsed             {summary['mean_elapsed_seconds']:.1f}s")
     print(f"semantic_validation      {summary['semantic_validation_n']}")
     print(f"deterministic_validation {summary['deterministic_validation_n']}")
+    print(f"repair_attempted         {summary['repair_attempted_n']}")
+    if summary["validation_code_counts"]:
+        print(f"validation_codes         {summary['validation_code_counts']}")
+    if summary["refusal_reason_counts"]:
+        print(f"refusal_reasons          {summary['refusal_reason_counts']}")
     print(f"JSON  {json_path}")
     print(f"CSV   {csv_path}")
     print(f"JSONL {checkpoint_path}")

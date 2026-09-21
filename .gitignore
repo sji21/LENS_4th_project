@@ -4,6 +4,8 @@ data/parsed/
 data/chunks/
 data/database/
 data/index/
+/data/models/
+/data/mysql-search/
 /data/.retrieval-data.lock
 /data/case_internal/runtime-profile.json
 /data/case_internal/runtime-profile.json.tmp
@@ -17,6 +19,8 @@ data/index/
 __pycache__/
 *.pyc
 .venv/
+.venv311/
+.venv312/
 venv/
 *.egg-info/
 

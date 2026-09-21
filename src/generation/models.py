@@ -57,6 +57,15 @@ class Answer:
     # rejection without exposing the generated text itself.
     validation_codes: tuple[str, ...] = ()
     repair_attempts: int = 0
+    # 아래 필드는 명시적인 로컬 평가에서만 채운다. 운영 답변과 대화 메모리에
+    # 검증 전 초안이 섞이지 않도록 기본값은 비어 있다.
+    initial_validation_codes: tuple[str, ...] = ()
+    repair_validation_codes: tuple[str, ...] = ()
+    diagnostic_initial_draft: str = ""
+    diagnostic_repair_draft: str = ""
+    # 범위 거절을 평가·운영 진단에서 검색/생성 보류와 구분한다. 사용자에게
+    # 표시하는 text는 기존 안내 문구를 그대로 사용한다.
+    refusal_reason: str = ""
 
     @property
     def evidences(self) -> tuple[Evidence, ...]:

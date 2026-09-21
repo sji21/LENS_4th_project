@@ -174,12 +174,14 @@ def exclusive_conversation(request, payload):
     if payload.get("conversation_id") != str(conversation.pk):
         raise ApiError("다른 탭에서 대화가 변경되었습니다. 새로고침해 주세요.", 409)
     try:
-        request_id = str(uuid.UUID(payload.get("request_id", "")))
+        request_uuid = uuid.UUID(payload.get("request_id", ""))
     except (ValueError, TypeError, AttributeError):
         raise ApiError("유효한 요청 ID가 필요합니다.") from None
     now, token = timezone.now(), uuid.uuid4()
+    request_id = str(request_uuid)
     acquired = Conversation.objects.filter(pk=conversation.pk, busy_until__lte=now).update(
-        busy_until=now + timedelta(seconds=settings.CHAT_LEASE_SECONDS), lease_token=token,
+        busy_until=now + timedelta(seconds=settings.CHAT_LEASE_SECONDS),
+        lease_token=token, active_request_id=request_uuid,
     )
     if not acquired:
         raise ApiError("이 대화의 다른 요청을 처리 중입니다. 완료 후 다시 시도해 주세요.", 409)
@@ -203,6 +205,7 @@ def exclusive_conversation(request, payload):
                 expiry = timezone.now() + timedelta(seconds=settings.CHAT_TTL_SECONDS)
             updated = Conversation.objects.filter(pk=conversation.pk, lease_token=token, busy_until__gt=timezone.now()).update(
                 state=conversation.state, expires_at=expiry,
+                busy_until=timezone.now(), lease_token=None, active_request_id=None,
             )
             if not updated:
                 owner = Conversation.objects.filter(pk=conversation.pk).values("lease_token", "busy_until").first()
@@ -218,7 +221,9 @@ def exclusive_conversation(request, payload):
             )
         raise
     finally:
-        Conversation.objects.filter(pk=conversation.pk, lease_token=token).update(busy_until=timezone.now(), lease_token=None)
+        Conversation.objects.filter(pk=conversation.pk, lease_token=token).update(
+            busy_until=timezone.now(), lease_token=None, active_request_id=None,
+        )
 
 
 @api
@@ -275,6 +280,35 @@ def send_message(request):
     response = services.public_state(conversation)
     response["room_created"] = room_created
     return JsonResponse(response)
+
+
+@api
+@require_POST
+def cancel_message(request):
+    """Stop publication of the caller's active answer, without closing its room.
+
+    The upstream model request may still finish, but it has lost its lease and
+    therefore cannot persist or return its late result.  A new request can
+    acquire the conversation immediately after this endpoint succeeds.
+    """
+    payload = json_body(request)
+    conversation = current_conversation(request)
+    if payload.get("conversation_id") != str(conversation.pk):
+        raise ApiError("다른 탭에서 대화가 변경되었습니다. 새로고침해 주세요.", 409)
+    try:
+        request_uuid = uuid.UUID(payload.get("request_id", ""))
+    except (ValueError, TypeError, AttributeError):
+        raise ApiError("유효한 요청 ID가 필요합니다.") from None
+    cancelled = Conversation.objects.filter(
+        pk=conversation.pk,
+        active_request_id=request_uuid,
+        lease_token__isnull=False,
+        busy_until__gt=timezone.now(),
+    ).update(busy_until=timezone.now(), lease_token=None, active_request_id=None)
+    if not cancelled:
+        raise ApiError("중지할 진행 중인 응답을 찾지 못했습니다.", 409)
+    conversation.refresh_from_db()
+    return JsonResponse({**services.public_state(conversation), "cancelled": True})
 
 
 @api

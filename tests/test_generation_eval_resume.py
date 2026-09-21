@@ -61,3 +61,19 @@ def test_load_completed_reuses_only_matching_code_version(tmp_path):
 def test_load_completed_without_resume_state_stays_empty(tmp_path):
     missing_checkpoint = tmp_path / "missing.jsonl"
     assert eval_mod.load_completed(missing_checkpoint, "any-version") == {}
+
+
+def test_evaluation_summary_reports_validation_and_repair_diagnostics():
+    summary = eval_mod.summarize([
+        eval_mod.EvalRow(**_row(
+            "dev-diagnostic",
+            actual_status="abstained",
+            validation_codes=["paragraph", "unsupported_claim"],
+            repair_attempts=1,
+            refusal_reason="semantic_out_of_scope",
+        )),
+    ])
+
+    assert summary["validation_code_counts"] == {"paragraph": 1, "unsupported_claim": 1}
+    assert summary["repair_attempted_n"] == 1
+    assert summary["refusal_reason_counts"] == {"semantic_out_of_scope": 1}

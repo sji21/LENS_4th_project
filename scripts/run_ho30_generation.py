@@ -259,11 +259,12 @@ def main() -> None:
                     "validation_mode": answer.validation_mode,
                     "validation_codes": list(answer.validation_codes),
                     "repair_attempts": answer.repair_attempts,
+                    "refusal_reason": answer.refusal_reason,
                     "generation_evidence": [_evidence(item) for item in answer.evidences],
                 }
             except Exception as exception:
                 error = type(exception).__name__
-                answer_record = {"status": "generation_error", "text": "", "raw_text": "", "validation_mode": "not_applicable", "validation_codes": [], "repair_attempts": 0, "generation_evidence": []}
+                answer_record = {"status": "generation_error", "text": "", "raw_text": "", "validation_mode": "not_applicable", "validation_codes": [], "repair_attempts": 0, "refusal_reason": "", "generation_evidence": []}
             record = {
                 "id": row["id"],
                 "question": row["question"],

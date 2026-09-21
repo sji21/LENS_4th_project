@@ -47,6 +47,11 @@ class ValidationTests(unittest.TestCase):
         self.assertIn("다른 법령이나", prompt)
         self.assertIn("조건·예외·주체·시점·법적 효과", prompt)
         self.assertIn("유효성, 무효, 책임 또는 권리 발생", prompt)
+        self.assertIn("조건부로 설명하는 것은 허용", prompt)
+        self.assertIn("별도 법적·평가적 판단", prompt)
+        self.assertIn("불완전한 답변", prompt)
+        self.assertIn("unsupported_fact_application", prompt)
+        self.assertIn("incomplete_answer", prompt)
 
     def test_long_registry_identifier_is_not_treated_as_money(self):
         text = "문서관리번호 23660070500023666102000001000202"

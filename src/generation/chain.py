@@ -30,13 +30,13 @@
 
 from __future__ import annotations
 
-from dataclasses import replace
+from dataclasses import dataclass, replace
 import json
 import logging
 
 from pathlib import Path
 
-from typing import Callable
+from typing import Any, Callable
 
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
@@ -432,7 +432,9 @@ def _semantic_judge(llm):
                 "scope_expansion",
                 "condition_or_exception_loss",
                 "unsupported_contract_verdict",
+                "unsupported_fact_application",
                 "missing_required_answer",
+                "incomplete_answer",
                 "wrong_citation_binding",
             }
             if label not in {"PASS", "FAIL"}:
@@ -468,6 +470,7 @@ def _refused_answer(question: str, reason: str) -> Answer:
         question=question,
         status="refused",
         text=f"{notice}\n\n{prompt_module.DISCLAIMER}",
+        refusal_reason=reason,
     )
 
 
@@ -480,6 +483,10 @@ def _abstained_after_validation(
     validation_mode: str = "deterministic",
     raw_text: str = "",
     repair_attempts: int = 0,
+    initial_validation_codes: tuple[str, ...] = (),
+    repair_validation_codes: tuple[str, ...] = (),
+    diagnostic_initial_draft: str = "",
+    diagnostic_repair_draft: str = "",
 ) -> Answer:
     # OCR 문구와 생성 원문은 로그에 남기지 않는다. 운영 진단에는 오류 분류와
     # 공식 청크 식별자만 남긴다.
@@ -505,6 +512,10 @@ def _abstained_after_validation(
         raw_text=raw_text,
         validation_codes=tuple(dict.fromkeys(issue.code or issue.kind for issue in report.issues)),
         repair_attempts=repair_attempts,
+        initial_validation_codes=initial_validation_codes,
+        repair_validation_codes=repair_validation_codes,
+        diagnostic_initial_draft=diagnostic_initial_draft,
+        diagnostic_repair_draft=diagnostic_repair_draft,
     )
 
 
@@ -514,23 +525,113 @@ _REPAIR_SYSTEM = """검증에 실패한 법률 안내 초안을 수정하십시�
 서로 다른 근거를 연결해 새로운 법적 효과, 무효, 책임, 권리 발생을 만들지 마십시오.
 검사에서 지적한 문장은 삭제하거나 해당 원문의 조건을 모두 복원하십시오.
 근거가 부족한 항목은 그 한계를 밝히되, 근거가 있는 질문 항목까지 생략하지 마십시오.
+`[답변에 쓸 출처명]` 목록의 한 항목을 글자 그대로 복사한 출처명만 쓰십시오. 목록에 없는
+법령명·조문 항 번호·사건번호·기관명은 쓰지 마십시오. 답변에 공식 근거가 있다면 출처를
+모두 지우지 말고, 직접 사용한 근거 하나를 첫 문장 또는 두 번째 문장에 남기십시오.
 수정 이유·검사 결과·초안은 출력하지 말고, 완결된 한국어 답변만 출력하십시오."""
 
 
-def _try_validation_repair(candidate: Answer, result: RetrievalResult, report, main_llm, *, enabled: bool):
-    """Repair one invalid draft once, using only its existing evidence."""
+def _repair_directives(report) -> tuple[str, ...]:
+    """Turn validator categories into neutral, evidence-preserving repair rules.
+
+    The validator already tells us *which class* of grounding failed.  Repeating
+    its raw diagnostic alone made the repair model guess at the intended fix and
+    frequently trade one surface error for another.  These rules deliberately
+    describe only the failure class: they do not mention a law, question, or
+    expected conclusion, so they remain applicable to unseen retrieval results.
+    """
+    kinds = {issue.kind for issue in report.issues}
+    codes = {issue.code for issue in report.issues if issue.code}
+    directives: list[str] = []
+
+    if "quote" in kinds:
+        directives.append("직접 인용 부호는 원문을 그대로 옮길 때만 쓰고, 그 외에는 자신의 말로 풀어 쓰십시오.")
+    if "value" in kinds or "amount_role" in kinds:
+        directives.append("숫자·기간·비율·금액의 법적 역할은 참고 자료에 명시된 것만 쓰며, 계산·추정·일반화하지 마십시오.")
+    if "paragraph" in kinds:
+        directives.append("참고 자료에 없는 항·호·목 번호는 쓰지 마십시오. 그 번호가 결론의 조건이면 번호를 지워 일반화하지 말고 한계를 밝히십시오.")
+    if "citation" in kinds:
+        directives.append(
+            "법령·판례·기관명과 조문 표시는 `[답변에 쓸 출처명]` 목록의 한 항목을 "
+            "글자 그대로 복사해서만 쓰고, 직접 사용한 출처 하나는 지우지 마십시오."
+        )
+    if "condition" in kinds:
+        directives.append("근거에 있는 주체, 요건, 예외, 부정 표현, 시점은 빠뜨리지 말고 모두 보존하십시오.")
+    if "semantic" in kinds:
+        directives.append(
+            "질문의 요구를 나누어 각 요구에 직접 답하거나 근거 부족을 구분하십시오. "
+            "각 핵심 결론은 그것을 직접 뒷받침하는 출처 하나와 같은 문장 또는 바로 앞 문장에 두십시오. "
+            "여러 자료를 함께 설명할 수 있지만, 자료 사이의 연결 관계가 뒷받침되지 않는 새 법적 효과나 결론은 만들지 마십시오."
+        )
+    if "missing_required_answer" in codes or "incomplete_answer" in codes:
+        directives.append(
+            "질문의 여러 요구를 나누어, 각각 직접 답하거나 해당 근거만으로는 알 수 없다고 "
+            "구분하십시오. 한 요구에 대한 한계 설명 때문에 다른 요구의 답을 빼지 마십시오."
+        )
+    if codes & {
+        "unsupported_claim",
+        "unsupported_cross_source_inference",
+        "wrong_citation_binding",
+        "unsupported_fact_application",
+    }:
+        directives.append("근거가 뒷받침하지 않는 결론은 삭제하고, 근거가 말하는 범위와 그 한계를 구별하십시오.")
+
+    if "wrong_citation_binding" in codes:
+        directives.append("출처명은 그 출처가 직접 말하는 결론에만 붙이십시오. 출처가 뒷받침하지 않는 문장은 삭제하거나 출처 없이 한계로 구분하십시오.")
+
+    # DEV100-v2에서 보정 뒤에도 남은 실패는 대부분 답에 필요하지 않은 조문
+    # 항·숫자·인용을 새로 늘려 적은 경우였다. 이 규칙은 근거 또는 결론을
+    # 추가하지 않고, 이미 답할 수 있는 핵심만 남기도록 하므로 검증 범위를
+    # 약화하지 않는다.
+    if kinds & {"citation", "quote", "value", "paragraph"}:
+        directives.append(
+            "이번 보정은 질문의 핵심 답만 1~3문장으로 남기십시오. "
+            "출처 오류를 고치기 위해 목록의 정확한 출처명 하나를 쓰는 것은 허용하지만, "
+            "목록에 없는 조문 항 번호·숫자·직접 인용을 새로 추가하지 말고, "
+            "답하는 데 불필요한 다른 자료의 설명은 삭제하십시오."
+        )
+
+    return tuple(dict.fromkeys(directives))
+
+
+@dataclass(frozen=True)
+class ValidationRepairAttempt:
+    """One repair attempt and its deterministic revalidation result.
+
+    The draft and report are diagnostic data. Callers must not expose them to
+    end users; local evaluation can opt in to persist them.
+    """
+
+    repaired: Answer | None
+    draft: str = ""
+    report: Any = None
+    attempted: bool = False
+
+
+def _attempt_validation_repair(
+    candidate: Answer,
+    result: RetrievalResult,
+    report,
+    main_llm,
+    *,
+    enabled: bool,
+) -> ValidationRepairAttempt:
+    """Attempt one evidence-bound repair while retaining local diagnostics."""
     repairable = {"citation", "quote", "value", "condition", "amount_role", "paragraph", "semantic"}
-    if (not enabled or not candidate.evidences or not report.issues
+    if (not enabled or not (candidate.evidences or candidate.document_evidences) or not report.issues
             or any(issue.kind not in repairable for issue in report.issues)):
-        return None
+        return ValidationRepairAttempt(repaired=None)
     diagnostics = [
         {"kind": issue.kind, "code": issue.code or issue.kind, "detail": issue.detail}
         for issue in report.issues
     ]
+    directives = _repair_directives(report)
+    directive_text = "\n".join(f"- {directive}" for directive in directives)
     user = (
         f"[사용자 질문]\n{candidate.question}\n\n[참고 자료]\n"
-        f"{prompt_module.format_context(result)}\n\n[수정 전 초안]\n{candidate.raw_text}"
+        f"{prompt_module.format_context(result, document_evidences=candidate.document_evidences)}\n\n[수정 전 초안]\n{candidate.raw_text}"
         f"\n\n[검사 결과]\n{json.dumps(diagnostics, ensure_ascii=False)}"
+        f"\n\n[이번 보정 규칙]\n{directive_text}"
     )
     try:
         repair_llm = main_llm or get_llm(
@@ -540,18 +641,30 @@ def _try_validation_repair(candidate: Answer, result: RetrievalResult, report, m
         raw = _invoke_auxiliary_llm(repair_llm, _REPAIR_SYSTEM, user)
     except Exception as error:
         logger.warning("검증 보정 호출 실패: %s", type(error).__name__)
-        return None
+        return ValidationRepairAttempt(repaired=None, attempted=True)
     if not raw.strip():
-        return None
+        return ValidationRepairAttempt(repaired=None, attempted=True)
     raw = ground_answer_conditions(raw, candidate.evidences)
     repaired = replace(
         candidate,
         raw_text=raw,
         text=f"{raw}\n\n{prompt_module.DISCLAIMER}",
-        repair_attempts=1,
+        repair_attempts=candidate.repair_attempts + 1,
     )
     checked = audit_answer(repaired)
-    return repaired if checked.is_valid else None
+    return ValidationRepairAttempt(
+        repaired=repaired if checked.is_valid else None,
+        draft=raw,
+        report=checked,
+        attempted=True,
+    )
+
+
+def _try_validation_repair(candidate: Answer, result: RetrievalResult, report, main_llm, *, enabled: bool):
+    """Compatibility wrapper returning only a valid repaired answer."""
+    return _attempt_validation_repair(
+        candidate, result, report, main_llm, enabled=enabled
+    ).repaired
 
 
 def answer_question(
@@ -748,7 +861,7 @@ def answer_question(
     # 6) main Qwen이 만든 최종 본문을 deterministic citation/validation으로
     # 먼저 검사한다. 명확한 오류가 있으면 semantic judge까지 호출하지 않는다.
     report = audit_answer(candidate)
-    if not report.is_valid:
+    if not report.is_valid and candidate.repair_attempts == 0:
         repaired = _try_validation_repair(
             candidate,
             result,
@@ -775,6 +888,29 @@ def answer_question(
             get_aux_llm()
         )(question, text, evidences, document_evidences),
     )
+    if not report.is_valid and candidate.repair_attempts == 0:
+        # Graph 경로와 동일하게 답변 한 건당 repair 기회는 하나뿐이다. 결정론
+        # 검증을 통과했지만 semantic에서 처음 실패한 경우에는 근거 안에서만 한 번
+        # 축소·보정한 뒤 두 검증을 다시 모두 통과해야 한다.
+        repaired = _try_validation_repair(
+            candidate,
+            result,
+            report,
+            main_llm,
+            enabled=(llm is None if repair_validation is None else repair_validation),
+        )
+        if repaired is not None:
+            candidate = repaired
+            report = audit_answer(candidate)
+            if report.is_valid and requires_semantic_validation(candidate):
+                report = audit_answer(
+                    candidate,
+                    semantic_judge=lambda question, text, evidences: _semantic_judge(
+                        get_aux_llm()
+                    )(question, text, evidences, document_evidences),
+                )
+            if report.is_valid:
+                return replace(candidate, validation_mode="semantic")
     if not report.is_valid:
         return _abstained_after_validation(
             safe_question,

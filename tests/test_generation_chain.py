@@ -23,6 +23,7 @@ from src.generation import chain as chain_module
 from src.generation import prompt as prompt_module
 from src.generation.chain import answer_document_question, answer_question, build_qa_chain
 from src.generation.llm import get_llm
+from src.generation.validation import ValidationIssue, ValidationReport
 from src.retrieval.service import RetrievalService
 
 
@@ -951,6 +952,85 @@ class GuideOnEveryExitTests(unittest.TestCase):
         answer = answer_question(QUESTION, service=self.service, llm=boom_llm())
         self.assertEqual("abstained", answer.status)
         self.assertEqual(1, len(answer.guides))
+
+
+class ValidationRepairDirectiveTests(unittest.TestCase):
+    def test_directives_follow_failure_classes_without_legal_answer_hardcoding(self) -> None:
+        report = ValidationReport(issues=(
+            ValidationIssue("value", "10일", "근거에 없는 기간", code="value"),
+            ValidationIssue(
+                "semantic",
+                "효력이 생깁니다.",
+                "서로 다른 근거를 연결했습니다.",
+                code="unsupported_cross_source_inference",
+            ),
+        ))
+
+        directives = "\n".join(chain_module._repair_directives(report))
+
+        self.assertIn("숫자·기간·비율·금액", directives)
+        self.assertIn("질문의 요구를 나누어", directives)
+        self.assertIn("같은 문장 또는 바로 앞 문장", directives)
+        self.assertIn("여러 자료를 함께 설명할 수 있지만", directives)
+        self.assertIn("근거가 뒷받침하지 않는 결론", directives)
+        self.assertNotIn("주택임대차보호법", directives)
+        self.assertNotIn("대항력", directives)
+
+    def test_missing_answer_directive_keeps_supported_parts_answerable(self) -> None:
+        report = ValidationReport(issues=(
+            ValidationIssue(
+                "semantic", "", "질문의 일부가 빠졌습니다.", code="missing_required_answer"
+            ),
+        ))
+
+        directives = "\n".join(chain_module._repair_directives(report))
+
+        self.assertIn("여러 요구를 나누어", directives)
+        self.assertIn("직접 답하거나", directives)
+
+    def test_fact_application_directive_removes_unsupported_conclusion(self) -> None:
+        report = ValidationReport(issues=(
+            ValidationIssue(
+                "semantic", "", "개별 사실 적용 근거가 없습니다.",
+                code="unsupported_fact_application",
+            ),
+        ))
+
+        directives = "\n".join(chain_module._repair_directives(report))
+
+        self.assertIn("뒷받침하지 않는 결론은 삭제", directives)
+        self.assertIn("범위와 그 한계", directives)
+
+    def test_structural_repair_directive_keeps_the_answer_minimal(self) -> None:
+        report = ValidationReport(issues=(
+            ValidationIssue(
+                "paragraph", "제3조제2항", "검색 근거에서 확인할 수 없습니다."
+            ),
+        ))
+
+        directives = "\n".join(chain_module._repair_directives(report))
+
+        self.assertIn("1~3문장", directives)
+        self.assertIn("정확한 출처명 하나", directives)
+
+    def test_citation_repair_directive_keeps_an_exact_source_name(self) -> None:
+        report = ValidationReport(issues=(
+            ValidationIssue("citation", "민법 제999조", "검색 근거에 없습니다."),
+        ))
+
+        directives = "\n".join(chain_module._repair_directives(report))
+
+        self.assertIn("글자 그대로", directives)
+        self.assertIn("출처 하나는 지우지 마십시오", directives)
+
+    def test_wrong_citation_binding_directive_keeps_claim_and_source_together(self) -> None:
+        report = ValidationReport(issues=(
+            ValidationIssue("semantic", "", "출처 연결이 틀렸습니다.", code="wrong_citation_binding"),
+        ))
+
+        directives = "\n".join(chain_module._repair_directives(report))
+
+        self.assertIn("직접 말하는 결론에만", directives)
 
 
 class FallbackCorpusTests(unittest.TestCase):

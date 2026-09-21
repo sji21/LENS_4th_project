@@ -5,11 +5,23 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-22
+
+### Fixed (Bug Fixes)
+
+- PATCH-058 adds a matching-request-only cancel action to the Django chat UI. Cancelling releases the conversation lease immediately and a late model response cannot be saved. Generation now checks multi-part questions, binds each conclusion to its direct source, and permits one focused semantic repair only after a deterministic repair has passed. A DEV100-v2 runner can select explicit question IDs for focused reruns. Related generation tests: 121 passed, 6 subtests passed; Django web tests: 41 passed. (commit: pending)
+
+## 2026-09-21
+
+### Fixed (Bug Fixes)
+
+- PATCH-058 preserves uploaded-document evidence during validation repair and permits document-only repair. Explicit local diagnostics now retain successful repair drafts in Graph and DEV100 output. The initial-answer and structural-repair instructions retain the stricter unsupported-fact and incomplete-answer checks while limiting unrelated retrieved citations, paragraph numbers, values, and procedures; a citation, quote, value, or paragraph repair leaves only the direct 1–3 sentence answer and is revalidated before delivery. Related regression tests: 117 passed, 6 subtests passed. RunPod Qwen3.8 27B connection and one generated answer succeeded; the two DEV100-v2 three-item runs ended before the manifest completed, so no answer-rate claim is made. (commit: pending)
+
 ## 2026-09-20
 
 ### Fixed (Bug Fixes)
 
-- PATCH-058 keeps the production retriever and its budgets unchanged while hardening the frozen HO30 Qwen3.8 27B generation run. The runner now rejects altered temperature, output-token and context settings; verifies the recorded Ollama model identity before resume and completion; and keeps structured semantic failure codes in abstention and JSONL records so unsupported cross-source legal inferences can be audited precisely. (commit: pending)
+- PATCH-058 hardens the frozen HO30 Qwen3.8 27B generation run without changing its retrieval budget. The runner rejects altered temperature, output-token and context settings; verifies the recorded Ollama model identity before resume and completion; and preserves structured semantic failure codes in abstention and JSONL records. The production LangGraph path gives the first deterministic or semantic validation failure one evidence-bounded repair, then revalidates it before delivery; rejected drafts are recorded only through an explicit local-evaluation option, with separate pre-repair and repair validation diagnostics. Repair instructions now distinguish citation, quotation, numeric, paragraph, condition, semantic binding, unsupported fact application, and incomplete-answer failures, preserving only claims directly supported by the supplied evidence without question- or law-specific rules. Dev100/HO30 records distinguish validation codes, repair attempts and scope-refusal reasons so unsupported cross-source legal inferences can be audited precisely. A DEV100-v2 Graph runner records real generations without loading gold requirements or expected answers. The Django chat UI can cancel only its matching in-flight answer, releases the lease for an immediate next question, and prevents a late model result from being persisted. Apple Silicon MySQL search accepts an x86 index digest mismatch only after verifying the team-distributed reference and queue-only vector tolerance; a verified local release is required before activation. (commit: pending)
 
 ## 2026-09-18
 
