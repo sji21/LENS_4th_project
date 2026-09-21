@@ -39,7 +39,7 @@ Chroma 생성 프로세스가 종료된 뒤 물리 파일 해시를 계산한다
 
 현재 공유 대상은 **`LENS-MySQL-search-patch060-r2-20260921.zip`**이다. release 폴더는 `data/mysql-search/releases/patch060-r2-20260921/`, release ID는 `5b1a63a7b004f63ad2dae018d53b9e4e0cdd120a61d623ec3270174c53622703`이다. 아래 `VERSION`은 `patch060-r2-20260921`로 바꾼다. `records_sha256`이 없는 1차 PATCH-060 배포본도 현재 코드와 함께 사용하지 않는다.
 
-r2는 Windows 공식 `verify`와 관련 테스트31개를 확인했다. 초기 배포의 Apple Silicon 통과 기록을 r2 Mac·Linux 실측 완료로 확대하지 않으며, 각 환경에서 설치 후 `verify`·`query`를 실행한다.
+r2는 Windows x64(새 가상환경)와 Apple Silicon Mac(arm64, Python 3.11.15)에서 같은 ZIP으로 `requirements`(출력 폴더 없이) → 설치 → `verify` → `model` → `activate` → `query`와 관련 테스트31개를 모두 통과했다. Linux는 아직 실측하지 않았으므로 설치 후 `verify`·`query`를 실행한다.
 
 담당자가 만든 배포 폴더 전체와 동일한 검색 코드를 사용한다. 개인별로 데이터를 다시 수집하거나 임베딩하거나 MySQL에 접속할 필요는 없다. macOS에서도 배포본을 직접 빌드하지 않는다. 배포본은 생성한 커밋의 검색 코드에서만 통과하므로, 그 커밋이 반영된 `main`(병합 전에는 해당 브랜치·커밋)을 checkout한 뒤 설치한다.
 

@@ -15,7 +15,8 @@ This file records the 4th project from its first change onward.
 
 ### Fixed
 
-- PATCH-060 review corrections pass 31 targeted tests and the rebuilt r2 release passes Windows verification. Document the matching r2 package and keep its Mac/Linux revalidation outside the verified scope. PATCH-059 is complete and merged through PR #42. (commit: cc0c6ce)
+- PATCH-060 review corrections pass 31 targeted tests and the rebuilt r2 release passes installation, verification and search from the same ZIP on Windows x64 and Apple Silicon (arm64). Linux remains unverified. PATCH-059 is complete and merged through PR #42. (commit: cc0c6ce, pending)
+- PATCH-060 README section 6.0 now offers the team release ZIP as the default search-data setup and local `setup_data.py` build as the alternative, so members set up only one. `.env.example` ships the team release defaults and separates maintainer-only MySQL connection settings. Existing environments retain their .env; the ZIP installation path points to Django environment setup and avoids reinstalling dependencies without the release constraints. (commit: pending)
 
 - PATCH-060 `mysql_search requirements` no longer needs the `packaging` package, so the first install step works in a fresh virtual environment that only has pip. It also creates the output folder and keeps an identical existing file instead of failing. (commit: 8216dde, cc0c6ce)
 - PATCH-059 assigns base-corpus supplemental cases their actual base snapshot instead of the cases snapshot, preserving source lookup by snapshot and chunk ID. Cases already present in the cases corpus retain that source. The 23 MySQL search tests pass. (commit: 7fb0afd)
