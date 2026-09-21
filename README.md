@@ -317,7 +317,7 @@ Python 3.11을 설치하고 저장소 루트에서 실행하세요.
 
 이미 준비된 환경에서는 `python manage.py prepare_retrieval`로 같은 작업을 실행합니다. 다른 방식으로 만든 기존 DB를 전환하려면 `--rebuild`가 필요합니다. 환경만 준비하려면 `setup_data.py --prepare-only`, 다운로드 없는 환경 점검은 `--check`를 사용합니다.
 
-PATCH-058의 구축 대상은 **일반 법령185·민법31조문(합계216), 안내·공식 서식3문서**입니다. 판례 설치를 완료하면 기존8,377건에 공식 보완2건을 합쳐 검색합니다. 코드 갱신 후 위 구축 명령을 다시 실행해야 새 자료가 반영됩니다. 최초 평가와 개선 후 회귀 결과·남은 근거 손실은 [PATCH-058 기록](docs/patch058-retrieval-coverage.md)을 참고하세요.
+PATCH-059의 구축 대상은 **일반 법령185·민법31조문(합계216), 안내·공식 서식3문서**입니다. 판례 설치를 완료하면 기존8,377건에 공식 보완2건을 합쳐 검색합니다. 코드 갱신 후 위 구축 명령을 다시 실행해야 새 자료가 반영됩니다. 최초 평가와 개선 후 회귀 결과·남은 근거 손실은 [PATCH-059 기록](docs/patch058-retrieval-coverage.md)을 참고하세요.
 
 [서버 설치·원천 자료·Django·RunPod 실행 안내](docs/server-data-setup.md)를 먼저 확인하세요. RunPod에서는 프로젝트·DB와 `HF_HOME=/workspace/huggingface` 모델 캐시를 영구 볼륨에 두고, 가상환경은 쓰기 가능한 내부 디스크(`/opt/lens-venv` 예시)에 설치합니다. 이후 `source /opt/lens-venv/bin/activate`를 사용하고, setup 재실행에도 같은 `--venv-dir`를 지정합니다. 컨테이너 교체로 내부 디스크가 사라지면 패키지는 재설치해야 합니다. 기본 Windows·Mac `.venv` 동작은 유지합니다. **Mac·RunPod 설치 확인을 완료했습니다. 이전 RunPod에서는 DB 구축·적용·기본 검색을 확인했고, 2026-09-15 새 Pod에서는 README 가상환경의 CUDA 연산·KURE GPU 임베딩을 확인했습니다. 현재 확인한 Pod에는 추가 CUDA 수정이 필요하지 않습니다. 과거 경고의 원인은 미확정이며 새 Pod의 DB 구축·검색·LLM 평가는 미실시입니다.** [GPU 실측 환경과 범위](docs/patch040-runpod-gpu-verification.md)를 참고하세요.
 

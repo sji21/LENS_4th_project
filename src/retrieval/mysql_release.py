@@ -266,9 +266,12 @@ def load_service(path, model_dir=None):
         def evidence_payload(self, result):
             payload = super().evidence_payload(result)
             payload["release_id"] = release["release_id"]
+            supplements = {item["chunk_id"] for item in self.case_supplement_manifest}
             for channel, evidences in payload["channels"].items():
-                corpus = {"cases": "cases", "civil_laws": "civil"}.get(channel, "base")
                 for evidence in evidences:
+                    corpus = ("civil" if channel == "civil_laws" else
+                              "base" if channel != "cases" or evidence["chunk_id"] in supplements else
+                              "cases")
                     evidence["snapshot_id"] = release["snapshots"][corpus]
             return payload
 

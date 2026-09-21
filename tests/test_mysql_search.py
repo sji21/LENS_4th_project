@@ -32,15 +32,18 @@ def export(root, corpus, rows):
     return manifest
 
 
-def make_bundle(tmp_path, civil_ids=CIVIL_IDS, law_policy=POLICY):
+def make_bundle(tmp_path, civil_ids=CIVIL_IDS, law_policy=POLICY,
+                base_cases=None, release_cases=None):
     root = tmp_path / "release"
     civil = [chunk(cid) for cid in civil_ids]
+    base_cases = [chunk("old-case", "case", "판례")] if base_cases is None else base_cases
+    release_cases = [chunk("new-case", "case", "판례")] if release_cases is None else release_cases
     data = {"base": {"laws": [chunk("law-1", title="주택임대차보호법")] + civil,
-                     "cases": [chunk("old-case", "case", "판례")],
+                     "cases": base_cases,
                      "guides": [chunk("guide", "guide", "안내")]},
             "civil": {"civil": civil},
             "cases": {"laws": [chunk("old-law", title="주택임대차보호법")],
-                      "cases": [chunk("new-case", "case", "판례")], "guides": []}}
+                      "cases": release_cases, "guides": []}}
     snapshots = {c: export(root / "exports" / c, c, rows)["snapshot_id"]
                  for c, rows in data.items()}
     rows = runtime.channel_rows(data, law_policy)
@@ -286,6 +289,36 @@ def test_versioned_evidence_reaches_existing_generation_chain(bundle, monkeypatc
         assert "검증 본문 " + name in captured[0]
     assert generated["evidence"]["release_id"] == payload["release_id"]
     assert generated["application_quality_verified"] is False
+
+
+def test_case_evidence_uses_the_snapshot_of_its_selected_source(tmp_path, monkeypatch):
+    from src.retrieval import dense
+    from src.retrieval.service import Evidence, RetrievalResult
+
+    def supplement(cid, key):
+        row = chunk(cid, "case", "판례")
+        row["metadata"].update(status="current", corpus_role="case_supplement",
+                               canonical_case_key=key)
+        return row
+
+    base_case = supplement("base-supplement", "a" * 64)
+    duplicate = supplement("frozen-case", "b" * 64)
+    path, _ = make_bundle(tmp_path, base_cases=[base_case, duplicate],
+                          release_cases=[chunk("frozen-case", "case", "판례")])
+    monkeypatch.setattr(runtime, "verify_model", lambda directory, spec: Path(directory))
+    monkeypatch.setattr(dense, "SentenceTransformerEmbedding", lambda *a, **k: object())
+    monkeypatch.setattr(runtime, "open_indexes", lambda *a: dict.fromkeys(runtime.STREAMS))
+    service = runtime.load_service(path, "test-model")
+    assert [item["chunk_id"] for item in service.case_supplement_manifest] == ["base-supplement"]
+
+    cases = [Evidence(rank=rank, chunk_id=cid, doc_type="case", citation=cid,
+                      text="판례 본문", score=0.1, source_url="https://example.org/" + cid)
+             for rank, cid in enumerate(("frozen-case", "base-supplement"), 1)]
+    payload = service.evidence_payload(RetrievalResult(
+        question="판례 원천은?", laws=[], cases=cases, civil_laws=[], guides=[]))
+    snapshots = service.mysql_release["snapshots"]
+    assert [item["snapshot_id"] for item in payload["channels"]["cases"]] == [
+        snapshots["cases"], snapshots["base"]]
 
 
 def test_reused_index_embedding_provenance_is_validated(monkeypatch):
