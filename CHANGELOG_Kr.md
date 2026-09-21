@@ -15,8 +15,8 @@
 
 ### 버그 수정 (Fixed)
 
-- PATCH-060 리뷰 보완 후 관련 검사31개와 재빌드 r2 배포본이 같은 ZIP으로 Windows x64와 Apple Silicon(arm64)에서 설치·검증·검색을 통과했습니다. Linux는 미확인입니다. PATCH-059는 PR #42 병합 완료로 기록합니다. (commit: cc0c6ce, pending)
-- PATCH-060 README 6.0에서 팀 배포본 ZIP을 기본 검색 데이터 준비 방법으로, 로컬 `setup_data.py` 구축을 대안으로 안내해 둘 중 하나만 설치하게 합니다. `.env.example`에 팀 배포본 기본값을 넣고 담당자 전용 MySQL 접속 설정을 분리했습니다. 기존 .env는 보존하며 ZIP 설치 후 Django 환경설정을 확인하고 배포본 제약 없는 패키지 재설치를 피하도록 안내합니다. (commit: pending)
+- PATCH-060 리뷰 보완 후 관련 검사31개와 재빌드 r2 배포본이 같은 ZIP으로 Windows x64와 Apple Silicon(arm64)에서 설치·검증·검색을 통과했습니다. Linux는 미확인입니다. PATCH-059는 PR #42 병합 완료로 기록합니다. (commit: cc0c6ce, 18a5b9e)
+- PATCH-060 README 6.0에서 팀 배포본 ZIP을 기본 검색 데이터 준비 방법으로, 로컬 `setup_data.py` 구축을 대안으로 안내해 둘 중 하나만 설치하게 합니다. `.env.example`에 팀 배포본 기본값을 넣고 담당자 전용 MySQL 접속 설정을 분리했습니다. 기존 .env는 보존하며 ZIP 설치 후 Django 환경설정을 확인하고 배포본 제약 없는 패키지 재설치를 피하도록 안내합니다. (commit: 18a5b9e)
 
 - PATCH-060 `mysql_search requirements`가 `packaging` 패키지 없이 동작해, pip만 있는 새 가상환경에서도 첫 설치 단계가 실패하지 않습니다. 출력 폴더가 없으면 만들고, 같은 내용의 파일이 이미 있으면 실패하지 않습니다. (commit: 8216dde, cc0c6ce)
 - PATCH-059 기본 코퍼스의 보충 판례에 실제 base 스냅샷을 연결해 스냅샷·청크 ID 기반 원문 추적을 보존합니다. 기존 cases 코퍼스에 있는 판례는 cases 출처를 유지합니다. MySQL 검색 검사23개 통과. (commit: 7fb0afd)
