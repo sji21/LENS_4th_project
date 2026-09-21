@@ -36,7 +36,7 @@ _DATE_EFFECT = (
 )
 _RESIDENT_EFFECT = rf"(?:{_RESIDENT})(?:의)?\s*(?:법적\s*)?효력"
 _TARGETED_EFFECT = rf"{_DATE_EFFECT}|{_RESIDENT_EFFECT}"
-_DIRECT_EFFECT = rf"{_TARGETED_EFFECT}|대항력|우선\s*변제|보증금[^.!?\n;]{{0,20}}(?:돌려받|변제)"
+_DIRECT_EFFECT = rf"{_TARGETED_EFFECT}|대항력|우선\s*변제|보증금[^.!?\n;]{{0,20}}순위|보증금[^.!?\n;]{{0,20}}(?:돌려받|변제)"
 _SCOPED_EFFECT = rf"{_TENANT_RIGHT}|{_PROTECTED_INTEREST}"
 _PROCEDURE = r"어디|언제|신청|발급|방법|절차|수수료|서류|양식|기록|내역|열람|조회|기한|현황"
 _SCOPED_PROCEDURE = r"발급|방법|절차|수수료|서류|양식|기록|내역|열람|조회|현황"

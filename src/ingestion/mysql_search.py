@@ -14,7 +14,7 @@ import tempfile
 from src.ingestion.knowledge_release import _read_json, file_hash
 from src.retrieval.mysql_release import (
     CASE_POLICY, ROOT, SCHEMA, STREAMS, channel_rows, code_files, digest, encoded,
-    load_service, open_indexes, read_export, read_release, resolve_release,
+    detect_law_policy, load_service, open_indexes, read_export, read_release, resolve_release,
     verify_collection, verify_model, runtime_versions,
 )
 
@@ -114,7 +114,8 @@ def build_worker(staging, model_dir, case_release=None, previous_release=None):
     manifests, exports = {}, {}
     for corpus in STREAMS:
         manifests[corpus], exports[corpus] = read_export(staging / "exports" / corpus, corpus)
-    rows = channel_rows(exports)
+    law_policy = detect_law_policy(exports)
+    rows = channel_rows(exports, law_policy)
     indexes = {}
     backend = None
     def get_backend():
@@ -146,7 +147,7 @@ def build_worker(staging, model_dir, case_release=None, previous_release=None):
     release = {"schema": SCHEMA, "index_status": "ready", "fallback_allowed": False,
         "snapshots": {c: m["snapshot_id"] for c, m in manifests.items()},
         "indexes": indexes, "model": model, "case_policy": CASE_POLICY,
-        "law_policy": "expanded-laws-record-v1", "code_files": code_files(),
+        "law_policy": law_policy, "code_files": code_files(),
         "runtime_versions": runtime_versions(),
         "provenance": provenance}
     write_json(staging / "worker-result.json", release)

@@ -19,11 +19,14 @@ from src.retrieval.retrieval_intent import (
 )
 from src.retrieval.service import CIVIL, LAW, PROCEDURE_TITLES, RetrievalService, _to_evidence
 
-POLICY = "expanded-laws-record-v1"
-CIVIL_IDS = tuple(f"민법-제{n}조" for n in (
+LEGACY_POLICY = "expanded-laws-record-v1"
+POLICY = "expanded-laws-record-v2"
+LEGACY_CIVIL_IDS = tuple(f"민법-제{n}조" for n in (
     105, 111, 113, 114, 118, 147, 186, 187, 265, 357, 390, 393, 470,
     536, 543, 548, 615, 623, 626, 627, 629, 632, 634, 636, 640, 654,
 ))
+CIVIL_IDS = tuple(sorted(LEGACY_CIVIL_IDS + tuple(f"민법-제{n}조" for n in (131, 134, 618, 624, 633)),
+                         key=lambda article: int(article.split("제")[1].split("조")[0])))
 
 
 class ContextDense:
@@ -42,7 +45,8 @@ def civil_terms(query):
 class ExpandedLawRetrievalService(RetrievalService):
     profile_name = POLICY
 
-    def __init__(self, chunks, dense=None, civil_dense=None):
+    def __init__(self, chunks, dense=None, civil_dense=None, *, civil_ids=CIVIL_IDS, policy=POLICY):
+        self.profile_name = policy
         self._embedding_cache = ContextVar("expanded_law_embedding_cache", default=None)
         def cached(retriever):
             if retriever is None or not hasattr(retriever, "backend"):
@@ -51,10 +55,10 @@ class ExpandedLawRetrievalService(RetrievalService):
             cloned.backend = RequestEmbeddingCache(retriever.backend, self._embedding_cache)
             return cloned
         dense, civil_dense = cached(dense), cached(civil_dense)
-        civil = replace(CIVIL, include_ids=CIVIL_IDS)
+        civil = replace(CIVIL, include_ids=civil_ids)
         super().__init__(chunks, dense, civil=civil, civil_dense=civil_dense)
         self._anchors = {c["chunk_id"]: c["metadata"].get("article_id", "") for c in chunks}
-        self._reference_graph, _ = _reference_graph(chunks, CIVIL_IDS)
+        self._reference_graph, _ = _reference_graph(chunks, civil_ids)
         laws = [c for c in chunks if c["metadata"].get("doc_type") in LAW.doc_types
                 and c["metadata"].get("title") != "민법"]
         self._tax_lookup_selector = TaxLookupSelector(laws)
@@ -70,10 +74,10 @@ class ExpandedLawRetrievalService(RetrievalService):
         }, PROCEDURE_TITLES)
         civil_bm25 = BM25Retriever([
             c for c in chunks if c["metadata"].get("title") == "민법"
-            and c["metadata"].get("article_id") in CIVIL_IDS
+            and c["metadata"].get("article_id") in civil_ids
         ], b=civil.bm25_b, query_expander=civil_terms)
         self._context_law = self._context_retriever(law_bm25, dense, "general", LAW.expand_weight, 20)
-        self._context_civil = self._context_retriever(civil_bm25, civil_dense or dense, "civil", civil.expand_weight, 26)
+        self._context_civil = self._context_retriever(civil_bm25, civil_dense or dense, "civil", civil.expand_weight, len(civil_ids))
 
     def search(self, *args, **kwargs):
         token = self._embedding_cache.set({})

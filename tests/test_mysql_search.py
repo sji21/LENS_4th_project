@@ -6,7 +6,7 @@ import pytest
 
 from src.ingestion import mysql_search as builder
 from src.retrieval import mysql_release as runtime
-from src.retrieval.expanded import CIVIL_IDS
+from src.retrieval.expanded import CIVIL_IDS, LEGACY_CIVIL_IDS, LEGACY_POLICY, POLICY
 
 
 def chunk(cid, kind="law", title="민법"):
@@ -32,19 +32,21 @@ def export(root, corpus, rows):
     return manifest
 
 
-@pytest.fixture
-def bundle(tmp_path):
+def make_bundle(tmp_path, civil_ids=CIVIL_IDS, law_policy=POLICY,
+                base_cases=None, release_cases=None):
     root = tmp_path / "release"
-    civil = [chunk(cid) for cid in CIVIL_IDS]
+    civil = [chunk(cid) for cid in civil_ids]
+    base_cases = [chunk("old-case", "case", "판례")] if base_cases is None else base_cases
+    release_cases = [chunk("new-case", "case", "판례")] if release_cases is None else release_cases
     data = {"base": {"laws": [chunk("law-1", title="주택임대차보호법")] + civil,
-                     "cases": [chunk("old-case", "case", "판례")],
+                     "cases": base_cases,
                      "guides": [chunk("guide", "guide", "안내")]},
             "civil": {"civil": civil},
             "cases": {"laws": [chunk("old-law", title="주택임대차보호법")],
-                      "cases": [chunk("new-case", "case", "판례")], "guides": []}}
+                      "cases": release_cases, "guides": []}}
     snapshots = {c: export(root / "exports" / c, c, rows)["snapshot_id"]
                  for c, rows in data.items()}
-    rows = runtime.channel_rows(data)
+    rows = runtime.channel_rows(data, law_policy)
     indexes = {}
     for channel in runtime.STREAMS:
         path = root / "indexes" / channel
@@ -54,7 +56,7 @@ def bundle(tmp_path):
                             "logical_sha256": "0" * 64}
     release = {"schema": runtime.SCHEMA, "index_status": "ready", "fallback_allowed": False,
                "snapshots": snapshots, "indexes": indexes, "case_policy": runtime.CASE_POLICY,
-               "law_policy": "expanded-laws-record-v1", "code_files": runtime.code_files(),
+               "law_policy": law_policy, "code_files": runtime.code_files(),
                "runtime_versions": runtime.runtime_versions(),
                "model": {"model_id": "nlpai-lab/KURE-v1", "dimension": 1024,
                          "revision": "a" * 40, "files": {n: "0" * 64 for n in runtime.MODEL_FILES}},
@@ -62,6 +64,11 @@ def bundle(tmp_path):
                          for p in root.rglob("*") if p.is_file()}}
     seal(root / "release.json", release)
     return root / "release.json", data
+
+
+@pytest.fixture
+def bundle(tmp_path):
+    return make_bundle(tmp_path)
 
 
 def seal(path, release):
@@ -75,10 +82,107 @@ def test_snapshot_selection_preserves_channels_and_rejects_mixed_civil(bundle):
     _, _, rows = runtime.read_release(path)
     assert [r["chunk_id"] for r in rows["base"]] == ["law-1", "old-case", "guide"]
     assert [r["chunk_id"] for r in rows["cases"]] == ["old-law", "new-case"]
-    assert len(rows["civil"]) == 26
+    assert len(rows["civil"]) == len(CIVIL_IDS)
     data["civil"]["civil"] = [dict(r, text="different version") for r in data["civil"]["civil"]]
     with pytest.raises(ValueError, match="민법 청크"):
         runtime.channel_rows(data)
+
+
+@pytest.mark.parametrize("law_policy,civil_ids", [
+    (LEGACY_POLICY, LEGACY_CIVIL_IDS),
+    (POLICY, CIVIL_IDS),
+])
+def test_release_loads_the_civil_scope_declared_by_its_policy(
+        tmp_path, monkeypatch, law_policy, civil_ids):
+    from src.retrieval import dense
+    path, _ = make_bundle(tmp_path, civil_ids, law_policy)
+    _, release, rows = runtime.read_release(path)
+    assert release["law_policy"] == law_policy
+    assert tuple(r["metadata"]["article_id"] for r in rows["civil"]) == civil_ids
+
+    monkeypatch.setattr(runtime, "verify_model", lambda directory, spec: Path(directory))
+    monkeypatch.setattr(dense, "SentenceTransformerEmbedding", lambda *a, **k: object())
+    monkeypatch.setattr(runtime, "open_indexes", lambda *a: dict.fromkeys(runtime.STREAMS))
+    service = runtime.load_service(path, "test-model")
+    assert service.base_service.profile_name == law_policy
+    assert service.base_service.civil.include_ids == civil_ids
+
+
+@pytest.mark.parametrize("civil_ids,law_policy", [
+    (CIVIL_IDS, LEGACY_POLICY),
+    (LEGACY_CIVIL_IDS, POLICY),
+])
+def test_policy_with_the_other_civil_scope_is_rejected(tmp_path, civil_ids, law_policy):
+    path, data = make_bundle(tmp_path, civil_ids,
+                             POLICY if civil_ids == CIVIL_IDS else LEGACY_POLICY)
+    with pytest.raises(ValueError, match="정책과 민법 조문"):
+        runtime.channel_rows(data, law_policy)
+    release = json.loads(path.read_text())
+    release["law_policy"] = law_policy
+    seal(path, release)
+    with pytest.raises(ValueError, match="정책과 민법 조문"):
+        runtime.read_release(path)
+
+
+def test_duplicate_civil_article_is_rejected_even_with_a_different_chunk_id(bundle):
+    _, data = bundle
+    duplicate = dict(data["civil"]["civil"][0],
+                     chunk_id=data["civil"]["civil"][0]["chunk_id"] + "-duplicate")
+    data["civil"]["civil"].append(duplicate)
+    data["base"]["laws"].append(duplicate)
+    with pytest.raises(ValueError, match="중복"):
+        runtime.channel_rows(data, POLICY)
+
+
+@pytest.mark.parametrize("law_policy,civil_ids", [
+    (LEGACY_POLICY, LEGACY_CIVIL_IDS),
+    (POLICY, CIVIL_IDS),
+])
+def test_builder_records_the_policy_matching_its_civil_export(
+        tmp_path, monkeypatch, law_policy, civil_ids):
+    from src.ingestion import knowledge_release
+    from src.retrieval import dense, index
+    staging = tmp_path / "staging"
+    civil = [chunk(cid) for cid in civil_ids]
+    data = {"base": {"laws": [chunk("law-1", title="주택임대차보호법")] + civil,
+                     "cases": [], "guides": []},
+            "civil": {"civil": civil},
+            "cases": {"laws": [], "cases": [chunk("case", "case", "판례")],
+                      "guides": []}}
+    for corpus, rows in data.items():
+        export(staging / "exports" / corpus, corpus, rows)
+
+    case_root = tmp_path / "case-release"
+    case_index = case_root / "index"
+    case_index.mkdir(parents=True)
+    (case_index / "index.bin").write_bytes(b"case-index")
+    case_release = case_root / "release.json"
+    case_release.write_text("{}")
+    audit = json.loads((runtime.ROOT / "data/eval/patch027-full/capture/audit.json").read_text())
+    model_files = {"/".join(Path(name).parts[2:]): value
+                   for name, value in audit["model_files"].items()}
+    model = {"model_id": "nlpai-lab/KURE-v1", "revision": "a" * 40,
+             "dimension": 1024, "files": model_files}
+    source = {"embedding_model": model, "retrieval_policy": runtime.CASE_POLICY,
+              "index": {"path": "index", "logical_sha256": "1" * 64}}
+    monkeypatch.setattr(knowledge_release, "read_release", lambda path: source)
+    monkeypatch.setattr(builder, "verify_model", lambda *args: None)
+    monkeypatch.setattr(builder, "audit_tokens", lambda rows, model_dir: {"checked": len(rows)})
+    monkeypatch.setattr(builder, "verify_collection", lambda *args: "2" * 64)
+    monkeypatch.setattr(dense, "SentenceTransformerEmbedding", lambda *args, **kwargs: object())
+
+    class Dense:
+        def __init__(self, backend, path):
+            self.collection = object()
+
+    def build_index(rows, backend, path, **kwargs):
+        Path(path).mkdir(parents=True)
+        (Path(path) / "index.bin").write_bytes(b"built-index")
+
+    monkeypatch.setattr(dense, "ChromaRetriever", Dense)
+    monkeypatch.setattr(index, "build_index", build_index)
+    builder.build_worker(staging, tmp_path / "model", case_release=case_release)
+    assert json.loads((staging / "worker-result.json").read_text())["law_policy"] == law_policy
 
 
 @pytest.mark.parametrize("file", ["exports/base/laws.jsonl", "indexes/cases/index.bin",
@@ -185,6 +289,36 @@ def test_versioned_evidence_reaches_existing_generation_chain(bundle, monkeypatc
         assert "검증 본문 " + name in captured[0]
     assert generated["evidence"]["release_id"] == payload["release_id"]
     assert generated["application_quality_verified"] is False
+
+
+def test_case_evidence_uses_the_snapshot_of_its_selected_source(tmp_path, monkeypatch):
+    from src.retrieval import dense
+    from src.retrieval.service import Evidence, RetrievalResult
+
+    def supplement(cid, key):
+        row = chunk(cid, "case", "판례")
+        row["metadata"].update(status="current", corpus_role="case_supplement",
+                               canonical_case_key=key)
+        return row
+
+    base_case = supplement("base-supplement", "a" * 64)
+    duplicate = supplement("frozen-case", "b" * 64)
+    path, _ = make_bundle(tmp_path, base_cases=[base_case, duplicate],
+                          release_cases=[chunk("frozen-case", "case", "판례")])
+    monkeypatch.setattr(runtime, "verify_model", lambda directory, spec: Path(directory))
+    monkeypatch.setattr(dense, "SentenceTransformerEmbedding", lambda *a, **k: object())
+    monkeypatch.setattr(runtime, "open_indexes", lambda *a: dict.fromkeys(runtime.STREAMS))
+    service = runtime.load_service(path, "test-model")
+    assert [item["chunk_id"] for item in service.case_supplement_manifest] == ["base-supplement"]
+
+    cases = [Evidence(rank=rank, chunk_id=cid, doc_type="case", citation=cid,
+                      text="판례 본문", score=0.1, source_url="https://example.org/" + cid)
+             for rank, cid in enumerate(("frozen-case", "base-supplement"), 1)]
+    payload = service.evidence_payload(RetrievalResult(
+        question="판례 원천은?", laws=[], cases=cases, civil_laws=[], guides=[]))
+    snapshots = service.mysql_release["snapshots"]
+    assert [item["snapshot_id"] for item in payload["channels"]["cases"]] == [
+        snapshots["cases"], snapshots["base"]]
 
 
 def test_reused_index_embedding_provenance_is_validated(monkeypatch):

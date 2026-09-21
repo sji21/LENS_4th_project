@@ -1,0 +1,6930 @@
+{
+  "summary": {
+    "question_only:raw3": {
+      "n": 75,
+      "before_complete": 43,
+      "after_complete": 44,
+      "loss_inputs": 2,
+      "gain_inputs": 4
+    },
+    "question_only:raw5": {
+      "n": 75,
+      "before_complete": 51,
+      "after_complete": 52,
+      "loss_inputs": 1,
+      "gain_inputs": 3
+    },
+    "question_only:staged_operating": {
+      "n": 75,
+      "before_complete": 43,
+      "after_complete": 44,
+      "loss_inputs": 2,
+      "gain_inputs": 4
+    },
+    "question_only:staged_diagnostic": {
+      "n": 75,
+      "before_complete": 51,
+      "after_complete": 52,
+      "loss_inputs": 1,
+      "gain_inputs": 3
+    },
+    "context_diagnostic:raw3": {
+      "n": 75,
+      "before_complete": 41,
+      "after_complete": 43,
+      "loss_inputs": 4,
+      "gain_inputs": 6
+    },
+    "context_diagnostic:raw5": {
+      "n": 75,
+      "before_complete": 50,
+      "after_complete": 51,
+      "loss_inputs": 2,
+      "gain_inputs": 3
+    },
+    "context_diagnostic:staged_operating": {
+      "n": 75,
+      "before_complete": 41,
+      "after_complete": 43,
+      "loss_inputs": 4,
+      "gain_inputs": 6
+    },
+    "context_diagnostic:staged_diagnostic": {
+      "n": 75,
+      "before_complete": 50,
+      "after_complete": 51,
+      "loss_inputs": 2,
+      "gain_inputs": 3
+    },
+    "required_law:raw3": {
+      "n": 29,
+      "before_complete": 28,
+      "after_complete": 28,
+      "loss_inputs": 0,
+      "gain_inputs": 0
+    },
+    "required_law:raw5": {
+      "n": 29,
+      "before_complete": 28,
+      "after_complete": 28,
+      "loss_inputs": 0,
+      "gain_inputs": 0
+    },
+    "required_law:staged_operating": {
+      "n": 29,
+      "before_complete": 28,
+      "after_complete": 28,
+      "loss_inputs": 0,
+      "gain_inputs": 0
+    },
+    "required_law:staged_diagnostic": {
+      "n": 29,
+      "before_complete": 28,
+      "after_complete": 28,
+      "loss_inputs": 0,
+      "gain_inputs": 0
+    },
+    "legacy_dev:raw3": {
+      "n": 24,
+      "before_complete": 23,
+      "after_complete": 23,
+      "loss_inputs": 1,
+      "gain_inputs": 1
+    },
+    "legacy_dev:raw5": {
+      "n": 24,
+      "before_complete": 24,
+      "after_complete": 24,
+      "loss_inputs": 0,
+      "gain_inputs": 0
+    },
+    "legacy_dev:staged_operating": {
+      "n": 24,
+      "before_complete": 23,
+      "after_complete": 23,
+      "loss_inputs": 1,
+      "gain_inputs": 1
+    },
+    "legacy_dev:staged_diagnostic": {
+      "n": 24,
+      "before_complete": 24,
+      "after_complete": 24,
+      "loss_inputs": 0,
+      "gain_inputs": 0
+    },
+    "legacy_holdout:raw3": {
+      "n": 18,
+      "before_complete": 12,
+      "after_complete": 13,
+      "loss_inputs": 1,
+      "gain_inputs": 1
+    },
+    "legacy_holdout:raw5": {
+      "n": 18,
+      "before_complete": 13,
+      "after_complete": 14,
+      "loss_inputs": 0,
+      "gain_inputs": 1
+    },
+    "legacy_holdout:staged_operating": {
+      "n": 18,
+      "before_complete": 12,
+      "after_complete": 13,
+      "loss_inputs": 1,
+      "gain_inputs": 1
+    },
+    "legacy_holdout:staged_diagnostic": {
+      "n": 18,
+      "before_complete": 13,
+      "after_complete": 14,
+      "loss_inputs": 0,
+      "gain_inputs": 1
+    },
+    "civil_public:raw3": {
+      "n": 15,
+      "before_complete": 9,
+      "after_complete": 9,
+      "loss_inputs": 0,
+      "gain_inputs": 0
+    },
+    "civil_public:raw5": {
+      "n": 15,
+      "before_complete": 12,
+      "after_complete": 11,
+      "loss_inputs": 1,
+      "gain_inputs": 0
+    },
+    "civil_public:staged_operating": {
+      "n": 15,
+      "before_complete": 9,
+      "after_complete": 9,
+      "loss_inputs": 0,
+      "gain_inputs": 0
+    },
+    "civil_public:staged_diagnostic": {
+      "n": 15,
+      "before_complete": 12,
+      "after_complete": 11,
+      "loss_inputs": 1,
+      "gain_inputs": 0
+    },
+    "case_dev13:raw3": {
+      "n": 13,
+      "before_complete": 1,
+      "after_complete": 1,
+      "loss_inputs": 0,
+      "gain_inputs": 0
+    },
+    "case_dev13:raw5": {
+      "n": 13,
+      "before_complete": 1,
+      "after_complete": 1,
+      "loss_inputs": 0,
+      "gain_inputs": 0
+    },
+    "case_dev13:staged_operating": {
+      "n": 13,
+      "before_complete": 0,
+      "after_complete": 0,
+      "loss_inputs": 0,
+      "gain_inputs": 0
+    },
+    "case_dev13:staged_diagnostic": {
+      "n": 13,
+      "before_complete": 0,
+      "after_complete": 1,
+      "loss_inputs": 0,
+      "gain_inputs": 1
+    },
+    "case_external8:raw3": {
+      "n": 8,
+      "before_complete": 0,
+      "after_complete": 0,
+      "loss_inputs": 0,
+      "gain_inputs": 0
+    },
+    "case_external8:raw5": {
+      "n": 8,
+      "before_complete": 0,
+      "after_complete": 0,
+      "loss_inputs": 0,
+      "gain_inputs": 0
+    },
+    "case_external8:staged_operating": {
+      "n": 8,
+      "before_complete": 0,
+      "after_complete": 0,
+      "loss_inputs": 0,
+      "gain_inputs": 1
+    },
+    "case_external8:staged_diagnostic": {
+      "n": 8,
+      "before_complete": 0,
+      "after_complete": 0,
+      "loss_inputs": 0,
+      "gain_inputs": 1
+    },
+    "case_legacy20:raw3": {
+      "n": 20,
+      "before_complete": 11,
+      "after_complete": 11,
+      "loss_inputs": 0,
+      "gain_inputs": 0
+    },
+    "case_legacy20:raw5": {
+      "n": 20,
+      "before_complete": 11,
+      "after_complete": 11,
+      "loss_inputs": 0,
+      "gain_inputs": 0
+    },
+    "case_legacy20:staged_operating": {
+      "n": 20,
+      "before_complete": 0,
+      "after_complete": 9,
+      "loss_inputs": 0,
+      "gain_inputs": 9
+    },
+    "case_legacy20:staged_diagnostic": {
+      "n": 20,
+      "before_complete": 0,
+      "after_complete": 10,
+      "loss_inputs": 0,
+      "gain_inputs": 10
+    },
+    "ho30:raw3": {
+      "n": 30,
+      "before_complete": 14,
+      "after_complete": 20,
+      "loss_inputs": 0,
+      "gain_inputs": 11
+    },
+    "ho30:raw5": {
+      "n": 30,
+      "before_complete": 17,
+      "after_complete": 24,
+      "loss_inputs": 2,
+      "gain_inputs": 13
+    },
+    "ho30:staged_operating": {
+      "n": 30,
+      "before_complete": 14,
+      "after_complete": 20,
+      "loss_inputs": 0,
+      "gain_inputs": 11
+    },
+    "ho30:staged_diagnostic": {
+      "n": 30,
+      "before_complete": 17,
+      "after_complete": 24,
+      "loss_inputs": 2,
+      "gain_inputs": 13
+    }
+  },
+  "changes": [
+    {
+      "qid": "DEV-003",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "국세징수법-제109조",
+        "지방세징수법시행령-제8조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조",
+            "주택임대차보호법-제3조의7",
+            "지방세징수법-제6조",
+            "지방세징수법시행령-제8조"
+          ],
+          "before_found": [
+            "국세징수법-제109조",
+            "주택임대차보호법-제3조의7",
+            "지방세징수법-제6조"
+          ],
+          "after_found": [
+            "국세징수법시행령-제97조",
+            "주택임대차보호법-제3조의7",
+            "지방세징수법-제6조"
+          ],
+          "lost": [
+            "국세징수법-제109조"
+          ],
+          "gained": [
+            "국세징수법시행령-제97조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-003",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "국세징수법-제109조",
+        "지방세징수법시행령-제8조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조",
+            "주택임대차보호법-제3조의7",
+            "지방세징수법-제6조",
+            "지방세징수법시행령-제8조"
+          ],
+          "before_found": [
+            "국세징수법-제109조",
+            "주택임대차보호법-제3조의7",
+            "지방세징수법-제6조"
+          ],
+          "after_found": [
+            "국세징수법시행령-제97조",
+            "주택임대차보호법-제3조의7",
+            "지방세징수법-제6조"
+          ],
+          "lost": [
+            "국세징수법-제109조"
+          ],
+          "gained": [
+            "국세징수법시행령-제97조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-012",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "raw3",
+      "before_complete": true,
+      "after_complete": false,
+      "missing": [
+        "민법-제114조"
+      ],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법-제114조"
+          ],
+          "before_found": [
+            "민법-제114조"
+          ],
+          "after_found": [],
+          "lost": [
+            "민법-제114조"
+          ],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "DEV-012",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "raw5",
+      "before_complete": true,
+      "after_complete": false,
+      "missing": [
+        "민법-제114조"
+      ],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법-제114조"
+          ],
+          "before_found": [
+            "민법-제114조"
+          ],
+          "after_found": [],
+          "lost": [
+            "민법-제114조"
+          ],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "DEV-012",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "staged_operating",
+      "before_complete": true,
+      "after_complete": false,
+      "missing": [
+        "민법-제114조"
+      ],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법-제114조"
+          ],
+          "before_found": [
+            "민법-제114조"
+          ],
+          "after_found": [],
+          "lost": [
+            "민법-제114조"
+          ],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "DEV-012",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "staged_diagnostic",
+      "before_complete": true,
+      "after_complete": false,
+      "missing": [
+        "민법-제114조"
+      ],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법-제114조"
+          ],
+          "before_found": [
+            "민법-제114조"
+          ],
+          "after_found": [],
+          "lost": [
+            "민법-제114조"
+          ],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "DEV-026",
+      "group": "question_only",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "국세징수법시행령-제97조",
+        "지방세징수법시행령-제8조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조",
+            "지방세징수법-제6조",
+            "지방세징수법시행령-제8조"
+          ],
+          "before_found": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조"
+          ],
+          "after_found": [
+            "국세징수법-제109조",
+            "지방세징수법-제6조"
+          ],
+          "lost": [
+            "국세징수법시행령-제97조"
+          ],
+          "gained": [
+            "지방세징수법-제6조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-026",
+      "group": "question_only",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "국세징수법시행령-제97조",
+        "지방세징수법시행령-제8조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조",
+            "지방세징수법-제6조",
+            "지방세징수법시행령-제8조"
+          ],
+          "before_found": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조"
+          ],
+          "after_found": [
+            "국세징수법-제109조",
+            "지방세징수법-제6조"
+          ],
+          "lost": [
+            "국세징수법시행령-제97조"
+          ],
+          "gained": [
+            "지방세징수법-제6조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-027",
+      "group": "question_only",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "국세징수법-제109조",
+            "지방세징수법-제6조"
+          ],
+          "before_found": [
+            "국세징수법-제109조"
+          ],
+          "after_found": [
+            "국세징수법-제109조",
+            "지방세징수법-제6조"
+          ],
+          "lost": [],
+          "gained": [
+            "지방세징수법-제6조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-027",
+      "group": "question_only",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "국세징수법-제109조",
+            "지방세징수법-제6조"
+          ],
+          "before_found": [
+            "국세징수법-제109조"
+          ],
+          "after_found": [
+            "국세징수법-제109조",
+            "지방세징수법-제6조"
+          ],
+          "lost": [],
+          "gained": [
+            "지방세징수법-제6조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-028",
+      "group": "question_only",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "국세징수법시행령-제97조",
+        "지방세징수법시행령-제8조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조",
+            "지방세징수법-제6조",
+            "지방세징수법시행령-제8조"
+          ],
+          "before_found": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조"
+          ],
+          "after_found": [
+            "국세징수법-제109조",
+            "지방세징수법-제6조"
+          ],
+          "lost": [
+            "국세징수법시행령-제97조"
+          ],
+          "gained": [
+            "지방세징수법-제6조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-028",
+      "group": "question_only",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "국세징수법시행령-제97조",
+        "지방세징수법시행령-제8조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조",
+            "지방세징수법-제6조",
+            "지방세징수법시행령-제8조"
+          ],
+          "before_found": [
+            "국세징수법-제109조",
+            "국세징수법시행령-제97조"
+          ],
+          "after_found": [
+            "국세징수법-제109조",
+            "지방세징수법-제6조"
+          ],
+          "lost": [
+            "국세징수법시행령-제97조"
+          ],
+          "gained": [
+            "지방세징수법-제6조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-033",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주민등록법-제16조",
+            "주택임대차보호법-제3조"
+          ],
+          "before_found": [
+            "주택임대차보호법-제3조"
+          ],
+          "after_found": [
+            "주민등록법-제16조",
+            "주택임대차보호법-제3조"
+          ],
+          "lost": [],
+          "gained": [
+            "주민등록법-제16조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-033",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주민등록법-제16조",
+            "주택임대차보호법-제3조"
+          ],
+          "before_found": [
+            "주택임대차보호법-제3조"
+          ],
+          "after_found": [
+            "주민등록법-제16조",
+            "주택임대차보호법-제3조"
+          ],
+          "lost": [],
+          "gained": [
+            "주민등록법-제16조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-033",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주민등록법-제16조",
+            "주택임대차보호법-제3조"
+          ],
+          "before_found": [
+            "주택임대차보호법-제3조"
+          ],
+          "after_found": [
+            "주민등록법-제16조",
+            "주택임대차보호법-제3조"
+          ],
+          "lost": [],
+          "gained": [
+            "주민등록법-제16조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-033",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주민등록법-제16조",
+            "주택임대차보호법-제3조"
+          ],
+          "before_found": [
+            "주택임대차보호법-제3조"
+          ],
+          "after_found": [
+            "주민등록법-제16조",
+            "주택임대차보호법-제3조"
+          ],
+          "lost": [],
+          "gained": [
+            "주민등록법-제16조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-034",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법-제105조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법-제105조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법-제105조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-034",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법-제105조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법-제105조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법-제105조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-034",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법-제105조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법-제105조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법-제105조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-034",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법-제105조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법-제105조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법-제105조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-041",
+      "group": "question_only",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "부동산거래신고등에관한법률-제6조의2"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조"
+          ],
+          "before_found": [
+            "부동산거래신고등에관한법률시행규칙-제6조의2"
+          ],
+          "after_found": [
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조"
+          ],
+          "lost": [],
+          "gained": [
+            "주민등록법-제16조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-041",
+      "group": "question_only",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조"
+          ],
+          "before_found": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2"
+          ],
+          "after_found": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조"
+          ],
+          "lost": [],
+          "gained": [
+            "주민등록법-제16조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-041",
+      "group": "question_only",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "부동산거래신고등에관한법률-제6조의2"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조"
+          ],
+          "before_found": [
+            "부동산거래신고등에관한법률시행규칙-제6조의2"
+          ],
+          "after_found": [
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조"
+          ],
+          "lost": [],
+          "gained": [
+            "주민등록법-제16조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-041",
+      "group": "question_only",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조"
+          ],
+          "before_found": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2"
+          ],
+          "after_found": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조"
+          ],
+          "lost": [],
+          "gained": [
+            "주민등록법-제16조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-041",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조"
+          ],
+          "before_found": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2"
+          ],
+          "after_found": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조"
+          ],
+          "lost": [],
+          "gained": [
+            "주민등록법-제16조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-041",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조"
+          ],
+          "before_found": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2"
+          ],
+          "after_found": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조"
+          ],
+          "lost": [],
+          "gained": [
+            "주민등록법-제16조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-041",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조"
+          ],
+          "before_found": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2"
+          ],
+          "after_found": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조"
+          ],
+          "lost": [],
+          "gained": [
+            "주민등록법-제16조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-041",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조"
+          ],
+          "before_found": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2"
+          ],
+          "after_found": [
+            "부동산거래신고등에관한법률-제6조의2",
+            "부동산거래신고등에관한법률시행규칙-제6조의2",
+            "주민등록법-제16조"
+          ],
+          "lost": [],
+          "gained": [
+            "주민등록법-제16조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-049",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법-제7조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "주택임대차보호법-제7조"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법-제7조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-049",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법-제7조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "주택임대차보호법-제7조"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법-제7조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-053",
+      "group": "question_only",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법-제6조의3"
+          ],
+          "before_found": [],
+          "after_found": [
+            "주택임대차보호법-제6조의3"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법-제6조의3"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-053",
+      "group": "question_only",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법-제6조의3"
+          ],
+          "before_found": [],
+          "after_found": [
+            "주택임대차보호법-제6조의3"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법-제6조의3"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-058",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "raw3",
+      "before_complete": true,
+      "after_complete": false,
+      "missing": [
+        "민법-제627조"
+      ],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법-제627조"
+          ],
+          "before_found": [
+            "민법-제627조"
+          ],
+          "after_found": [],
+          "lost": [
+            "민법-제627조"
+          ],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "DEV-058",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "raw5",
+      "before_complete": true,
+      "after_complete": false,
+      "missing": [
+        "민법-제627조"
+      ],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법-제627조"
+          ],
+          "before_found": [
+            "민법-제627조"
+          ],
+          "after_found": [],
+          "lost": [
+            "민법-제627조"
+          ],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "DEV-058",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "staged_operating",
+      "before_complete": true,
+      "after_complete": false,
+      "missing": [
+        "민법-제627조"
+      ],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법-제627조"
+          ],
+          "before_found": [
+            "민법-제627조"
+          ],
+          "after_found": [],
+          "lost": [
+            "민법-제627조"
+          ],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "DEV-058",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "staged_diagnostic",
+      "before_complete": true,
+      "after_complete": false,
+      "missing": [
+        "민법-제627조"
+      ],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법-제627조"
+          ],
+          "before_found": [
+            "민법-제627조"
+          ],
+          "after_found": [],
+          "lost": [
+            "민법-제627조"
+          ],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "DEV-067",
+      "group": "question_only",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": true,
+      "after_complete": false,
+      "missing": [
+        "주택임대차보호법-제4조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법-제4조"
+          ],
+          "before_found": [
+            "주택임대차보호법-제4조"
+          ],
+          "after_found": [],
+          "lost": [
+            "주택임대차보호법-제4조"
+          ],
+          "gained": []
+        },
+        "civil_laws": {
+          "targets": [
+            "민법-제536조"
+          ],
+          "before_found": [
+            "민법-제536조"
+          ],
+          "after_found": [
+            "민법-제536조"
+          ],
+          "lost": [],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "DEV-067",
+      "group": "question_only",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": true,
+      "after_complete": false,
+      "missing": [
+        "주택임대차보호법-제4조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법-제4조"
+          ],
+          "before_found": [
+            "주택임대차보호법-제4조"
+          ],
+          "after_found": [],
+          "lost": [
+            "주택임대차보호법-제4조"
+          ],
+          "gained": []
+        },
+        "civil_laws": {
+          "targets": [
+            "민법-제536조"
+          ],
+          "before_found": [
+            "민법-제536조"
+          ],
+          "after_found": [
+            "민법-제536조"
+          ],
+          "lost": [],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "DEV-090",
+      "group": "question_only",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "상가건물임대차보호법-제2조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "상가건물임대차보호법-제2조",
+            "상가건물임대차보호법-제6조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "상가건물임대차보호법-제6조"
+          ],
+          "lost": [],
+          "gained": [
+            "상가건물임대차보호법-제6조"
+          ]
+        },
+        "civil_laws": {
+          "targets": [
+            "민법-제536조"
+          ],
+          "before_found": [
+            "민법-제536조"
+          ],
+          "after_found": [
+            "민법-제536조"
+          ],
+          "lost": [],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "DEV-090",
+      "group": "question_only",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "상가건물임대차보호법-제2조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "상가건물임대차보호법-제2조",
+            "상가건물임대차보호법-제6조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "상가건물임대차보호법-제6조"
+          ],
+          "lost": [],
+          "gained": [
+            "상가건물임대차보호법-제6조"
+          ]
+        },
+        "civil_laws": {
+          "targets": [
+            "민법-제536조"
+          ],
+          "before_found": [
+            "민법-제536조"
+          ],
+          "after_found": [
+            "민법-제536조"
+          ],
+          "lost": [],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "DEV-092",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "raw3",
+      "before_complete": true,
+      "after_complete": false,
+      "missing": [
+        "공공주택특별법-제49조의3"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "공공주택특별법-제49조의3"
+          ],
+          "before_found": [
+            "공공주택특별법-제49조의3"
+          ],
+          "after_found": [],
+          "lost": [
+            "공공주택특별법-제49조의3"
+          ],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "DEV-092",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "staged_operating",
+      "before_complete": true,
+      "after_complete": false,
+      "missing": [
+        "공공주택특별법-제49조의3"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "공공주택특별법-제49조의3"
+          ],
+          "before_found": [
+            "공공주택특별법-제49조의3"
+          ],
+          "after_found": [],
+          "lost": [
+            "공공주택특별법-제49조의3"
+          ],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "DEV-099",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법-제3조의6"
+          ],
+          "before_found": [],
+          "after_found": [
+            "주택임대차보호법-제3조의6"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법-제3조의6"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "DEV-099",
+      "group": "context_diagnostic",
+      "input_mode": "context_diagnostic",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법-제3조의6"
+          ],
+          "before_found": [],
+          "after_found": [
+            "주택임대차보호법-제3조의6"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법-제3조의6"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "dev-008",
+      "group": "legacy_dev",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법-제4조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "주택임대차보호법-제4조"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법-제4조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "dev-008",
+      "group": "legacy_dev",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법-제4조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "주택임대차보호법-제4조"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법-제4조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "dev-015",
+      "group": "legacy_dev",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": true,
+      "after_complete": false,
+      "missing": [
+        "주택임대차보호법 시행령-제9조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법 시행령-제9조",
+            "주택임대차보호법-제7조의2"
+          ],
+          "before_found": [
+            "주택임대차보호법 시행령-제9조",
+            "주택임대차보호법-제7조의2"
+          ],
+          "after_found": [
+            "주택임대차보호법-제7조의2"
+          ],
+          "lost": [
+            "주택임대차보호법 시행령-제9조"
+          ],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "dev-015",
+      "group": "legacy_dev",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": true,
+      "after_complete": false,
+      "missing": [
+        "주택임대차보호법 시행령-제9조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법 시행령-제9조",
+            "주택임대차보호법-제7조의2"
+          ],
+          "before_found": [
+            "주택임대차보호법 시행령-제9조",
+            "주택임대차보호법-제7조의2"
+          ],
+          "after_found": [
+            "주택임대차보호법-제7조의2"
+          ],
+          "lost": [
+            "주택임대차보호법 시행령-제9조"
+          ],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "holdout-001",
+      "group": "legacy_holdout",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제3조의3"
+          ],
+          "before_found": [
+            "주택임대차보호법-제3조의2"
+          ],
+          "after_found": [
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제3조의3"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법-제3조의3"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "holdout-001",
+      "group": "legacy_holdout",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제3조의3"
+          ],
+          "before_found": [
+            "주택임대차보호법-제3조의2"
+          ],
+          "after_found": [
+            "주택임대차보호법-제3조의2",
+            "주택임대차보호법-제3조의3"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법-제3조의3"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "holdout-005",
+      "group": "legacy_holdout",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법-제3조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "주택임대차보호법-제3조"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법-제3조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "holdout-005",
+      "group": "legacy_holdout",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법-제3조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "주택임대차보호법-제3조"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법-제3조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "holdout-017",
+      "group": "legacy_holdout",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "주택임대차보호법 시행령-제10조",
+        "주택임대차보호법 시행령-제11조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법 시행령-제10조",
+            "주택임대차보호법 시행령-제11조",
+            "주택임대차보호법-제8조"
+          ],
+          "before_found": [
+            "주택임대차보호법 시행령-제11조",
+            "주택임대차보호법-제8조"
+          ],
+          "after_found": [
+            "주택임대차보호법-제8조"
+          ],
+          "lost": [
+            "주택임대차보호법 시행령-제11조"
+          ],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "holdout-017",
+      "group": "legacy_holdout",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "주택임대차보호법 시행령-제10조",
+        "주택임대차보호법 시행령-제11조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법 시행령-제10조",
+            "주택임대차보호법 시행령-제11조",
+            "주택임대차보호법-제8조"
+          ],
+          "before_found": [
+            "주택임대차보호법 시행령-제11조",
+            "주택임대차보호법-제8조"
+          ],
+          "after_found": [
+            "주택임대차보호법-제8조"
+          ],
+          "lost": [
+            "주택임대차보호법 시행령-제11조"
+          ],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "civil-review-004",
+      "group": "civil_public",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": true,
+      "after_complete": false,
+      "missing": [
+        "주택임대차보호법-제6조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법-제6조"
+          ],
+          "before_found": [
+            "주택임대차보호법-제6조"
+          ],
+          "after_found": [],
+          "lost": [
+            "주택임대차보호법-제6조"
+          ],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "civil-review-004",
+      "group": "civil_public",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": true,
+      "after_complete": false,
+      "missing": [
+        "주택임대차보호법-제6조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법-제6조"
+          ],
+          "before_found": [
+            "주택임대차보호법-제6조"
+          ],
+          "after_found": [],
+          "lost": [
+            "주택임대차보호법-제6조"
+          ],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "case26-dev-013",
+      "group": "case_dev13",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "CASE-2021DA266631",
+            "CASE-2022DA279795"
+          ],
+          "before_found": [],
+          "after_found": [
+            "CASE-2021DA266631",
+            "CASE-2022DA279795"
+          ],
+          "lost": [],
+          "gained": [
+            "CASE-2021DA266631",
+            "CASE-2022DA279795"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case26-ext-008",
+      "group": "case_external8",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "CASE-2021DA266631"
+      ],
+      "channels": {
+        "cases": {
+          "targets": [
+            "CASE-2021DA266631",
+            "CASE-2022DA279795"
+          ],
+          "before_found": [],
+          "after_found": [
+            "CASE-2022DA279795"
+          ],
+          "lost": [],
+          "gained": [
+            "CASE-2022DA279795"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case26-ext-008",
+      "group": "case_external8",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "CASE-2021DA266631"
+      ],
+      "channels": {
+        "cases": {
+          "targets": [
+            "CASE-2021DA266631",
+            "CASE-2022DA279795"
+          ],
+          "before_found": [],
+          "after_found": [
+            "CASE-2022DA279795"
+          ],
+          "lost": [],
+          "gained": [
+            "CASE-2022DA279795"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-001",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "75829"
+          ],
+          "before_found": [],
+          "after_found": [
+            "75829"
+          ],
+          "lost": [],
+          "gained": [
+            "75829"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-001",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "75829"
+          ],
+          "before_found": [],
+          "after_found": [
+            "75829"
+          ],
+          "lost": [],
+          "gained": [
+            "75829"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-003",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "201827"
+          ],
+          "before_found": [],
+          "after_found": [
+            "201827"
+          ],
+          "lost": [],
+          "gained": [
+            "201827"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-003",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "201827"
+          ],
+          "before_found": [],
+          "after_found": [
+            "201827"
+          ],
+          "lost": [],
+          "gained": [
+            "201827"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-004",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "200844"
+          ],
+          "before_found": [],
+          "after_found": [
+            "200844"
+          ],
+          "lost": [],
+          "gained": [
+            "200844"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-004",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "200844"
+          ],
+          "before_found": [],
+          "after_found": [
+            "200844"
+          ],
+          "lost": [],
+          "gained": [
+            "200844"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-005",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "117855"
+          ],
+          "before_found": [],
+          "after_found": [
+            "117855"
+          ],
+          "lost": [],
+          "gained": [
+            "117855"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-005",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "117855"
+          ],
+          "before_found": [],
+          "after_found": [
+            "117855"
+          ],
+          "lost": [],
+          "gained": [
+            "117855"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-009",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "191129"
+          ],
+          "before_found": [],
+          "after_found": [
+            "191129"
+          ],
+          "lost": [],
+          "gained": [
+            "191129"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-009",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "191129"
+          ],
+          "before_found": [],
+          "after_found": [
+            "191129"
+          ],
+          "lost": [],
+          "gained": [
+            "191129"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-013",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "81841"
+          ],
+          "before_found": [],
+          "after_found": [
+            "81841"
+          ],
+          "lost": [],
+          "gained": [
+            "81841"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-013",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "81841"
+          ],
+          "before_found": [],
+          "after_found": [
+            "81841"
+          ],
+          "lost": [],
+          "gained": [
+            "81841"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-014",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "194464"
+          ],
+          "before_found": [],
+          "after_found": [
+            "194464"
+          ],
+          "lost": [],
+          "gained": [
+            "194464"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-014",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "194464"
+          ],
+          "before_found": [],
+          "after_found": [
+            "194464"
+          ],
+          "lost": [],
+          "gained": [
+            "194464"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-018",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "184312"
+          ],
+          "before_found": [],
+          "after_found": [
+            "184312"
+          ],
+          "lost": [],
+          "gained": [
+            "184312"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-018",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "184312"
+          ],
+          "before_found": [],
+          "after_found": [
+            "184312"
+          ],
+          "lost": [],
+          "gained": [
+            "184312"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-019",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "185576"
+          ],
+          "before_found": [],
+          "after_found": [
+            "185576"
+          ],
+          "lost": [],
+          "gained": [
+            "185576"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-020",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "207117"
+          ],
+          "before_found": [],
+          "after_found": [
+            "207117"
+          ],
+          "lost": [],
+          "gained": [
+            "207117"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "case-holdout-020",
+      "group": "case_legacy20",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "cases": {
+          "targets": [
+            "207117"
+          ],
+          "before_found": [],
+          "after_found": [
+            "207117"
+          ],
+          "lost": [],
+          "gained": [
+            "207117"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-003",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법 시행령 제5조",
+            "주택임대차보호법 제3조의6"
+          ],
+          "before_found": [],
+          "after_found": [
+            "주택임대차보호법 시행령 제5조",
+            "주택임대차보호법 제3조의6"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법 시행령 제5조",
+            "주택임대차보호법 제3조의6"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-003",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법 시행령 제5조",
+            "주택임대차보호법 제3조의6"
+          ],
+          "before_found": [
+            "주택임대차보호법 제3조의6"
+          ],
+          "after_found": [
+            "주택임대차보호법 시행령 제5조",
+            "주택임대차보호법 제3조의6"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법 시행령 제5조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-003",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법 시행령 제5조",
+            "주택임대차보호법 제3조의6"
+          ],
+          "before_found": [],
+          "after_found": [
+            "주택임대차보호법 시행령 제5조",
+            "주택임대차보호법 제3조의6"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법 시행령 제5조",
+            "주택임대차보호법 제3조의6"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-003",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법 시행령 제5조",
+            "주택임대차보호법 제3조의6"
+          ],
+          "before_found": [
+            "주택임대차보호법 제3조의6"
+          ],
+          "after_found": [
+            "주택임대차보호법 시행령 제5조",
+            "주택임대차보호법 제3조의6"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법 시행령 제5조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-004",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "대법원 1990. 8. 14. 선고 90다카11377",
+        "대법원 2012. 7. 12. 선고 2010다42990"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법 제3조",
+            "주택임대차보호법 제3조의2"
+          ],
+          "before_found": [
+            "주택임대차보호법 제3조의2"
+          ],
+          "after_found": [
+            "주택임대차보호법 제3조",
+            "주택임대차보호법 제3조의2"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법 제3조"
+          ]
+        },
+        "cases": {
+          "targets": [
+            "대법원 1990. 8. 14. 선고 90다카11377",
+            "대법원 2012. 7. 12. 선고 2010다42990"
+          ],
+          "before_found": [],
+          "after_found": [],
+          "lost": [],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "HO-004",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "대법원 1990. 8. 14. 선고 90다카11377",
+        "대법원 2012. 7. 12. 선고 2010다42990"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법 제3조",
+            "주택임대차보호법 제3조의2"
+          ],
+          "before_found": [
+            "주택임대차보호법 제3조의2"
+          ],
+          "after_found": [
+            "주택임대차보호법 제3조",
+            "주택임대차보호법 제3조의2"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법 제3조"
+          ]
+        },
+        "cases": {
+          "targets": [
+            "대법원 1990. 8. 14. 선고 90다카11377",
+            "대법원 2012. 7. 12. 선고 2010다42990"
+          ],
+          "before_found": [],
+          "after_found": [],
+          "lost": [],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "HO-004",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "대법원 1990. 8. 14. 선고 90다카11377",
+        "대법원 2012. 7. 12. 선고 2010다42990"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법 제3조",
+            "주택임대차보호법 제3조의2"
+          ],
+          "before_found": [
+            "주택임대차보호법 제3조의2"
+          ],
+          "after_found": [
+            "주택임대차보호법 제3조",
+            "주택임대차보호법 제3조의2"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법 제3조"
+          ]
+        },
+        "cases": {
+          "targets": [
+            "대법원 1990. 8. 14. 선고 90다카11377",
+            "대법원 2012. 7. 12. 선고 2010다42990"
+          ],
+          "before_found": [],
+          "after_found": [],
+          "lost": [],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "HO-004",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "대법원 1990. 8. 14. 선고 90다카11377",
+        "대법원 2012. 7. 12. 선고 2010다42990"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법 제3조",
+            "주택임대차보호법 제3조의2"
+          ],
+          "before_found": [
+            "주택임대차보호법 제3조의2"
+          ],
+          "after_found": [
+            "주택임대차보호법 제3조",
+            "주택임대차보호법 제3조의2"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법 제3조"
+          ]
+        },
+        "cases": {
+          "targets": [
+            "대법원 1990. 8. 14. 선고 90다카11377",
+            "대법원 2012. 7. 12. 선고 2010다42990"
+          ],
+          "before_found": [],
+          "after_found": [],
+          "lost": [],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "HO-005",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "주택임대차보호법 제3조의2"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "민사집행법 제148조",
+            "주택임대차보호법 제3조의2"
+          ],
+          "before_found": [
+            "주택임대차보호법 제3조의2"
+          ],
+          "after_found": [
+            "민사집행법 제148조"
+          ],
+          "lost": [
+            "주택임대차보호법 제3조의2"
+          ],
+          "gained": [
+            "민사집행법 제148조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-005",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "주택임대차보호법 제3조의2"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "민사집행법 제148조",
+            "주택임대차보호법 제3조의2"
+          ],
+          "before_found": [
+            "주택임대차보호법 제3조의2"
+          ],
+          "after_found": [
+            "민사집행법 제148조"
+          ],
+          "lost": [
+            "주택임대차보호법 제3조의2"
+          ],
+          "gained": [
+            "민사집행법 제148조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-008",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "대법원 2017. 10. 12. 선고 2017다224630, 224647"
+      ],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제536조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제536조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제536조"
+          ]
+        },
+        "cases": {
+          "targets": [
+            "대법원 2017. 10. 12. 선고 2017다224630, 224647"
+          ],
+          "before_found": [],
+          "after_found": [],
+          "lost": [],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "HO-008",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "대법원 2017. 10. 12. 선고 2017다224630, 224647"
+      ],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제536조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제536조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제536조"
+          ]
+        },
+        "cases": {
+          "targets": [
+            "대법원 2017. 10. 12. 선고 2017다224630, 224647"
+          ],
+          "before_found": [],
+          "after_found": [],
+          "lost": [],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "HO-008",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "대법원 2017. 10. 12. 선고 2017다224630, 224647"
+      ],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제536조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제536조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제536조"
+          ]
+        },
+        "cases": {
+          "targets": [
+            "대법원 2017. 10. 12. 선고 2017다224630, 224647"
+          ],
+          "before_found": [],
+          "after_found": [],
+          "lost": [],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "HO-008",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "대법원 2017. 10. 12. 선고 2017다224630, 224647"
+      ],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제536조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제536조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제536조"
+          ]
+        },
+        "cases": {
+          "targets": [
+            "대법원 2017. 10. 12. 선고 2017다224630, 224647"
+          ],
+          "before_found": [],
+          "after_found": [],
+          "lost": [],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "HO-010",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법 제14조",
+            "주택임대차보호법 제26조",
+            "주택임대차보호법 제27조"
+          ],
+          "before_found": [
+            "주택임대차보호법 제26조"
+          ],
+          "after_found": [
+            "주택임대차보호법 제14조",
+            "주택임대차보호법 제26조",
+            "주택임대차보호법 제27조"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법 제14조",
+            "주택임대차보호법 제27조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-010",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법 제14조",
+            "주택임대차보호법 제26조",
+            "주택임대차보호법 제27조"
+          ],
+          "before_found": [
+            "주택임대차보호법 제26조"
+          ],
+          "after_found": [
+            "주택임대차보호법 제14조",
+            "주택임대차보호법 제26조",
+            "주택임대차보호법 제27조"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법 제14조",
+            "주택임대차보호법 제27조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-010",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법 제14조",
+            "주택임대차보호법 제26조",
+            "주택임대차보호법 제27조"
+          ],
+          "before_found": [
+            "주택임대차보호법 제26조"
+          ],
+          "after_found": [
+            "주택임대차보호법 제14조",
+            "주택임대차보호법 제26조",
+            "주택임대차보호법 제27조"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법 제14조",
+            "주택임대차보호법 제27조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-010",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법 제14조",
+            "주택임대차보호법 제26조",
+            "주택임대차보호법 제27조"
+          ],
+          "before_found": [
+            "주택임대차보호법 제26조"
+          ],
+          "after_found": [
+            "주택임대차보호법 제14조",
+            "주택임대차보호법 제26조",
+            "주택임대차보호법 제27조"
+          ],
+          "lost": [],
+          "gained": [
+            "주택임대차보호법 제14조",
+            "주택임대차보호법 제27조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-015",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": true,
+      "after_complete": false,
+      "missing": [
+        "주택임대차보호법 제6조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법 제6조",
+            "주택임대차보호법 제6조의3",
+            "주택임대차보호법 제7조"
+          ],
+          "before_found": [
+            "주택임대차보호법 제6조",
+            "주택임대차보호법 제6조의3",
+            "주택임대차보호법 제7조"
+          ],
+          "after_found": [
+            "주택임대차보호법 제6조의3",
+            "주택임대차보호법 제7조"
+          ],
+          "lost": [
+            "주택임대차보호법 제6조"
+          ],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "HO-015",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": true,
+      "after_complete": false,
+      "missing": [
+        "주택임대차보호법 제6조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "주택임대차보호법 제6조",
+            "주택임대차보호법 제6조의3",
+            "주택임대차보호법 제7조"
+          ],
+          "before_found": [
+            "주택임대차보호법 제6조",
+            "주택임대차보호법 제6조의3",
+            "주택임대차보호법 제7조"
+          ],
+          "after_found": [
+            "주택임대차보호법 제6조의3",
+            "주택임대차보호법 제7조"
+          ],
+          "lost": [
+            "주택임대차보호법 제6조"
+          ],
+          "gained": []
+        }
+      }
+    },
+    {
+      "qid": "HO-019",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제624조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제624조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제624조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-019",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제624조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제624조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제624조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-019",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제624조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제624조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제624조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-019",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제624조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제624조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제624조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-022",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제618조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제618조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제618조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-022",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제618조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제618조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제618조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-022",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제618조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제618조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제618조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-022",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제618조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제618조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제618조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-024",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제633조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제633조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제633조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-024",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제633조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제633조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제633조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-024",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제633조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제633조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제633조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-024",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제633조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제633조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제633조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-025",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "민법 제131조"
+      ],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제131조",
+            "민법 제134조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제134조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제134조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-025",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "민법 제131조"
+      ],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제131조",
+            "민법 제134조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제134조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제134조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-025",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "민법 제131조"
+      ],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제131조",
+            "민법 제134조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제134조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제134조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-025",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "민법 제131조"
+      ],
+      "channels": {
+        "civil_laws": {
+          "targets": [
+            "민법 제131조",
+            "민법 제134조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민법 제134조"
+          ],
+          "lost": [],
+          "gained": [
+            "민법 제134조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-026",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "공공주택 특별법 시행령 제42조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "공공주택 특별법 시행령 제42조",
+            "공공주택 특별법 제48조의4"
+          ],
+          "before_found": [],
+          "after_found": [
+            "공공주택 특별법 제48조의4"
+          ],
+          "lost": [],
+          "gained": [
+            "공공주택 특별법 제48조의4"
+          ]
+        },
+        "forms": {
+          "targets": [
+            "공공주택 특별법 시행규칙 별지 제4호서식"
+          ],
+          "before_found": [],
+          "after_found": [
+            "공공주택 특별법 시행규칙 별지 제4호서식"
+          ],
+          "lost": [],
+          "gained": [
+            "공공주택 특별법 시행규칙 별지 제4호서식"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-026",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "공공주택 특별법 시행령 제42조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "공공주택 특별법 시행령 제42조",
+            "공공주택 특별법 제48조의4"
+          ],
+          "before_found": [],
+          "after_found": [
+            "공공주택 특별법 제48조의4"
+          ],
+          "lost": [],
+          "gained": [
+            "공공주택 특별법 제48조의4"
+          ]
+        },
+        "forms": {
+          "targets": [
+            "공공주택 특별법 시행규칙 별지 제4호서식"
+          ],
+          "before_found": [],
+          "after_found": [
+            "공공주택 특별법 시행규칙 별지 제4호서식"
+          ],
+          "lost": [],
+          "gained": [
+            "공공주택 특별법 시행규칙 별지 제4호서식"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-026",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "공공주택 특별법 시행령 제42조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "공공주택 특별법 시행령 제42조",
+            "공공주택 특별법 제48조의4"
+          ],
+          "before_found": [],
+          "after_found": [
+            "공공주택 특별법 제48조의4"
+          ],
+          "lost": [],
+          "gained": [
+            "공공주택 특별법 제48조의4"
+          ]
+        },
+        "forms": {
+          "targets": [
+            "공공주택 특별법 시행규칙 별지 제4호서식"
+          ],
+          "before_found": [],
+          "after_found": [
+            "공공주택 특별법 시행규칙 별지 제4호서식"
+          ],
+          "lost": [],
+          "gained": [
+            "공공주택 특별법 시행규칙 별지 제4호서식"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-026",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "공공주택 특별법 시행령 제42조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "공공주택 특별법 시행령 제42조",
+            "공공주택 특별법 제48조의4"
+          ],
+          "before_found": [],
+          "after_found": [
+            "공공주택 특별법 제48조의4"
+          ],
+          "lost": [],
+          "gained": [
+            "공공주택 특별법 제48조의4"
+          ]
+        },
+        "forms": {
+          "targets": [
+            "공공주택 특별법 시행규칙 별지 제4호서식"
+          ],
+          "before_found": [],
+          "after_found": [
+            "공공주택 특별법 시행규칙 별지 제4호서식"
+          ],
+          "lost": [],
+          "gained": [
+            "공공주택 특별법 시행규칙 별지 제4호서식"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-028",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "민간임대주택에 관한 특별법 시행령 제40조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민간임대주택에 관한 특별법 시행령 제40조"
+          ],
+          "lost": [],
+          "gained": [
+            "민간임대주택에 관한 특별법 시행령 제40조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-028",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "민간임대주택에 관한 특별법 시행령 제40조"
+          ],
+          "before_found": [],
+          "after_found": [
+            "민간임대주택에 관한 특별법 시행령 제40조"
+          ],
+          "lost": [],
+          "gained": [
+            "민간임대주택에 관한 특별법 시행령 제40조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-029",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "공공주택 특별법 시행령 제48조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "공공주택 특별법 시행령 제48조",
+            "공공주택 특별법 제49조의3",
+            "공공주택 특별법 제49조의4"
+          ],
+          "before_found": [
+            "공공주택 특별법 제49조의3"
+          ],
+          "after_found": [
+            "공공주택 특별법 제49조의3",
+            "공공주택 특별법 제49조의4"
+          ],
+          "lost": [],
+          "gained": [
+            "공공주택 특별법 제49조의4"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-029",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "공공주택 특별법 시행령 제48조",
+            "공공주택 특별법 제49조의3",
+            "공공주택 특별법 제49조의4"
+          ],
+          "before_found": [
+            "공공주택 특별법 제49조의3"
+          ],
+          "after_found": [
+            "공공주택 특별법 시행령 제48조",
+            "공공주택 특별법 제49조의3",
+            "공공주택 특별법 제49조의4"
+          ],
+          "lost": [],
+          "gained": [
+            "공공주택 특별법 시행령 제48조",
+            "공공주택 특별법 제49조의4"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-029",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": false,
+      "missing": [
+        "공공주택 특별법 시행령 제48조"
+      ],
+      "channels": {
+        "laws": {
+          "targets": [
+            "공공주택 특별법 시행령 제48조",
+            "공공주택 특별법 제49조의3",
+            "공공주택 특별법 제49조의4"
+          ],
+          "before_found": [
+            "공공주택 특별법 제49조의3"
+          ],
+          "after_found": [
+            "공공주택 특별법 제49조의3",
+            "공공주택 특별법 제49조의4"
+          ],
+          "lost": [],
+          "gained": [
+            "공공주택 특별법 제49조의4"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-029",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "공공주택 특별법 시행령 제48조",
+            "공공주택 특별법 제49조의3",
+            "공공주택 특별법 제49조의4"
+          ],
+          "before_found": [
+            "공공주택 특별법 제49조의3"
+          ],
+          "after_found": [
+            "공공주택 특별법 시행령 제48조",
+            "공공주택 특별법 제49조의3",
+            "공공주택 특별법 제49조의4"
+          ],
+          "lost": [],
+          "gained": [
+            "공공주택 특별법 시행령 제48조",
+            "공공주택 특별법 제49조의4"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-030",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw3",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "민간임대주택에 관한 특별법 제47조",
+            "민간임대주택에 관한 특별법 제48조"
+          ],
+          "before_found": [
+            "민간임대주택에 관한 특별법 제47조"
+          ],
+          "after_found": [
+            "민간임대주택에 관한 특별법 제47조",
+            "민간임대주택에 관한 특별법 제48조"
+          ],
+          "lost": [],
+          "gained": [
+            "민간임대주택에 관한 특별법 제48조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-030",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "raw5",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "민간임대주택에 관한 특별법 제47조",
+            "민간임대주택에 관한 특별법 제48조"
+          ],
+          "before_found": [
+            "민간임대주택에 관한 특별법 제47조"
+          ],
+          "after_found": [
+            "민간임대주택에 관한 특별법 제47조",
+            "민간임대주택에 관한 특별법 제48조"
+          ],
+          "lost": [],
+          "gained": [
+            "민간임대주택에 관한 특별법 제48조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-030",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_operating",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "민간임대주택에 관한 특별법 제47조",
+            "민간임대주택에 관한 특별법 제48조"
+          ],
+          "before_found": [
+            "민간임대주택에 관한 특별법 제47조"
+          ],
+          "after_found": [
+            "민간임대주택에 관한 특별법 제47조",
+            "민간임대주택에 관한 특별법 제48조"
+          ],
+          "lost": [],
+          "gained": [
+            "민간임대주택에 관한 특별법 제48조"
+          ]
+        }
+      }
+    },
+    {
+      "qid": "HO-030",
+      "group": "ho30",
+      "input_mode": "question_only",
+      "run": "staged_diagnostic",
+      "before_complete": false,
+      "after_complete": true,
+      "missing": [],
+      "channels": {
+        "laws": {
+          "targets": [
+            "민간임대주택에 관한 특별법 제47조",
+            "민간임대주택에 관한 특별법 제48조"
+          ],
+          "before_found": [
+            "민간임대주택에 관한 특별법 제47조"
+          ],
+          "after_found": [
+            "민간임대주택에 관한 특별법 제47조",
+            "민간임대주택에 관한 특별법 제48조"
+          ],
+          "lost": [],
+          "gained": [
+            "민간임대주택에 관한 특별법 제48조"
+          ]
+        }
+      }
+    }
+  ],
+  "ho30": [
+    {
+      "qid": "HO-001",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "입주하고 사흘 뒤에 전입신고했어요. 대항력은 언제부터 생기나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-002",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "확정일자만 받고 입주랑 전입신고는 아직이에요. 경매가 되면 보증금을 우선 돌려받을 수 있나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-003",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "전세계약서를 잃어버렸는데, 주민센터에서 확정일자 받은 기록을 조회할 수 있나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 시행령 제5조",
+                "주택임대차보호법 제3조의6"
+              ],
+              "before_found": [],
+              "after_found": [
+                "주택임대차보호법 시행령 제5조",
+                "주택임대차보호법 제3조의6"
+              ],
+              "lost": [],
+              "gained": [
+                "주택임대차보호법 시행령 제5조",
+                "주택임대차보호법 제3조의6"
+              ]
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 시행령 제5조",
+                "주택임대차보호법 제3조의6"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의6"
+              ],
+              "after_found": [
+                "주택임대차보호법 시행령 제5조",
+                "주택임대차보호법 제3조의6"
+              ],
+              "lost": [],
+              "gained": [
+                "주택임대차보호법 시행령 제5조"
+              ]
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 시행령 제5조",
+                "주택임대차보호법 제3조의6"
+              ],
+              "before_found": [],
+              "after_found": [
+                "주택임대차보호법 시행령 제5조",
+                "주택임대차보호법 제3조의6"
+              ],
+              "lost": [],
+              "gained": [
+                "주택임대차보호법 시행령 제5조",
+                "주택임대차보호법 제3조의6"
+              ]
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 시행령 제5조",
+                "주택임대차보호법 제3조의6"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의6"
+              ],
+              "after_found": [
+                "주택임대차보호법 시행령 제5조",
+                "주택임대차보호법 제3조의6"
+              ],
+              "lost": [],
+              "gained": [
+                "주택임대차보호법 시행령 제5조"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-004",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "전입신고랑 확정일자는 근저당보다 먼저 했어요. 보증금을 올려주면 기존 보증금 순위도 밀리나요, 확정일자도 다시 받아야 하나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "대법원 1990. 8. 14. 선고 90다카11377",
+            "대법원 2012. 7. 12. 선고 2010다42990"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "lost": [],
+              "gained": [
+                "주택임대차보호법 제3조"
+              ]
+            },
+            "cases": {
+              "targets": [
+                "대법원 1990. 8. 14. 선고 90다카11377",
+                "대법원 2012. 7. 12. 선고 2010다42990"
+              ],
+              "before_found": [],
+              "after_found": [],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "대법원 1990. 8. 14. 선고 90다카11377",
+            "대법원 2012. 7. 12. 선고 2010다42990"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "lost": [],
+              "gained": [
+                "주택임대차보호법 제3조"
+              ]
+            },
+            "cases": {
+              "targets": [
+                "대법원 1990. 8. 14. 선고 90다카11377",
+                "대법원 2012. 7. 12. 선고 2010다42990"
+              ],
+              "before_found": [],
+              "after_found": [],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "대법원 1990. 8. 14. 선고 90다카11377",
+            "대법원 2012. 7. 12. 선고 2010다42990"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "lost": [],
+              "gained": [
+                "주택임대차보호법 제3조"
+              ]
+            },
+            "cases": {
+              "targets": [
+                "대법원 1990. 8. 14. 선고 90다카11377",
+                "대법원 2012. 7. 12. 선고 2010다42990"
+              ],
+              "before_found": [],
+              "after_found": [],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "대법원 1990. 8. 14. 선고 90다카11377",
+            "대법원 2012. 7. 12. 선고 2010다42990"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "lost": [],
+              "gained": [
+                "주택임대차보호법 제3조"
+              ]
+            },
+            "cases": {
+              "targets": [
+                "대법원 1990. 8. 14. 선고 90다카11377",
+                "대법원 2012. 7. 12. 선고 2010다42990"
+              ],
+              "before_found": [],
+              "after_found": [],
+              "lost": [],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-005",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "전입신고랑 확정일자를 받고 사는 집에 경매가 시작됐어요. 배당은 따로 신청해야 하나요, 돈 받기 전에 집도 비워야 하나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "민사집행법 제148조",
+            "주택임대차보호법 제3조의2"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "민사집행법 제148조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "before_found": [],
+              "after_found": [],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "주택임대차보호법 제3조의2"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "민사집행법 제148조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "after_found": [
+                "민사집행법 제148조"
+              ],
+              "lost": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "gained": [
+                "민사집행법 제148조"
+              ]
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "민사집행법 제148조",
+            "주택임대차보호법 제3조의2"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "민사집행법 제148조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "before_found": [],
+              "after_found": [],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "주택임대차보호법 제3조의2"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "민사집행법 제148조",
+                "주택임대차보호법 제3조의2"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "after_found": [
+                "민사집행법 제148조"
+              ],
+              "lost": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "gained": [
+                "민사집행법 제148조"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-006",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "계약이 끝났는데 보증금을 일부만 돌려받았어요. 그래도 임차권등기를 신청할 수 있나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-007",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "보증금 반환 소송에서 이긴 판결이 확정됐는데 돈을 못 받았어요. 아직 그 집에 살고 있어도 강제경매를 신청할 수 있나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조의2"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-008",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "계약이 끝나 열쇠까지 넘겼는데 새 세입자가 와야 보증금을 준대요. 그때까지 기다려야 하나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "대법원 2017. 10. 12. 선고 2017다224630, 224647"
+          ],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제536조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제536조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제536조"
+              ]
+            },
+            "cases": {
+              "targets": [
+                "대법원 2017. 10. 12. 선고 2017다224630, 224647"
+              ],
+              "before_found": [],
+              "after_found": [],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "대법원 2017. 10. 12. 선고 2017다224630, 224647"
+          ],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제536조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제536조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제536조"
+              ]
+            },
+            "cases": {
+              "targets": [
+                "대법원 2017. 10. 12. 선고 2017다224630, 224647"
+              ],
+              "before_found": [],
+              "after_found": [],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "대법원 2017. 10. 12. 선고 2017다224630, 224647"
+          ],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제536조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제536조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제536조"
+              ]
+            },
+            "cases": {
+              "targets": [
+                "대법원 2017. 10. 12. 선고 2017다224630, 224647"
+              ],
+              "before_found": [],
+              "after_found": [],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "대법원 2017. 10. 12. 선고 2017다224630, 224647"
+          ],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제536조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제536조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제536조"
+              ]
+            },
+            "cases": {
+              "targets": [
+                "대법원 2017. 10. 12. 선고 2017다224630, 224647"
+              ],
+              "before_found": [],
+              "after_found": [],
+              "lost": [],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-009",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "보증금을 못 받아 임차권등기를 마쳤는데, 다른 집으로 전입해도 기존 우선순위가 유지되나요? 등기 비용도 집주인에게 청구할 수 있나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조의3"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-010",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "전세보증금 반환 문제도 분쟁조정을 신청할 수 있나요? 합의 후에도 돈을 안 주면 바로 강제집행할 수 있게 조정서에 뭘 써야 하나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제14조",
+                "주택임대차보호법 제26조",
+                "주택임대차보호법 제27조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제26조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제14조",
+                "주택임대차보호법 제26조",
+                "주택임대차보호법 제27조"
+              ],
+              "lost": [],
+              "gained": [
+                "주택임대차보호법 제14조",
+                "주택임대차보호법 제27조"
+              ]
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제14조",
+                "주택임대차보호법 제26조",
+                "주택임대차보호법 제27조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제26조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제14조",
+                "주택임대차보호법 제26조",
+                "주택임대차보호법 제27조"
+              ],
+              "lost": [],
+              "gained": [
+                "주택임대차보호법 제14조",
+                "주택임대차보호법 제27조"
+              ]
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제14조",
+                "주택임대차보호법 제26조",
+                "주택임대차보호법 제27조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제26조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제14조",
+                "주택임대차보호법 제26조",
+                "주택임대차보호법 제27조"
+              ],
+              "lost": [],
+              "gained": [
+                "주택임대차보호법 제14조",
+                "주택임대차보호법 제27조"
+              ]
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제14조",
+                "주택임대차보호법 제26조",
+                "주택임대차보호법 제27조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제26조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제14조",
+                "주택임대차보호법 제26조",
+                "주택임대차보호법 제27조"
+              ],
+              "lost": [],
+              "gained": [
+                "주택임대차보호법 제14조",
+                "주택임대차보호법 제27조"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-011",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "전세를 처음에 1년만 계약했는데, 제가 원하면 2년까지 살 수 있나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "주택임대차보호법 제4조"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제4조"
+              ],
+              "before_found": [],
+              "after_found": [],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제4조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제4조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제4조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "주택임대차보호법 제4조"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제4조"
+              ],
+              "before_found": [],
+              "after_found": [],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제4조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제4조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제4조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-012",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "합의해서 월세를 올린 지 8개월인데, 계약 도중에 집주인이 또 올려달라고 할 수 있나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "주택임대차보호법 제7조"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제7조"
+              ],
+              "before_found": [],
+              "after_found": [],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제7조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제7조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제7조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "주택임대차보호법 제7조"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제7조"
+              ],
+              "before_found": [],
+              "after_found": [],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제7조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제7조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제7조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-013",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "월세 두 달 치가 밀려 있어요. 집주인이 계약기간이 남았는데도 해지할 수 있나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제640조"
+              ],
+              "before_found": [
+                "민법 제640조"
+              ],
+              "after_found": [
+                "민법 제640조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제640조"
+              ],
+              "before_found": [
+                "민법 제640조"
+              ],
+              "after_found": [
+                "민법 제640조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제640조"
+              ],
+              "before_found": [
+                "민법 제640조"
+              ],
+              "after_found": [
+                "민법 제640조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제640조"
+              ],
+              "before_found": [
+                "민법 제640조"
+              ],
+              "after_found": [
+                "민법 제640조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-014",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "2년 계약이 끝날 때 서로 아무 말 없이 계속 살고 있고, 월세는 안 밀렸어요. 자동 연장된 건가요, 지금 나간다고 통보하면 언제 끝나나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제6조",
+                "주택임대차보호법 제6조의2"
+              ],
+              "before_found": [
+                "주택임대차보호법 제6조",
+                "주택임대차보호법 제6조의2"
+              ],
+              "after_found": [
+                "주택임대차보호법 제6조",
+                "주택임대차보호법 제6조의2"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제6조",
+                "주택임대차보호법 제6조의2"
+              ],
+              "before_found": [
+                "주택임대차보호법 제6조",
+                "주택임대차보호법 제6조의2"
+              ],
+              "after_found": [
+                "주택임대차보호법 제6조",
+                "주택임대차보호법 제6조의2"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제6조",
+                "주택임대차보호법 제6조의2"
+              ],
+              "before_found": [
+                "주택임대차보호법 제6조",
+                "주택임대차보호법 제6조의2"
+              ],
+              "after_found": [
+                "주택임대차보호법 제6조",
+                "주택임대차보호법 제6조의2"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제6조",
+                "주택임대차보호법 제6조의2"
+              ],
+              "before_found": [
+                "주택임대차보호법 제6조",
+                "주택임대차보호법 제6조의2"
+              ],
+              "after_found": [
+                "주택임대차보호법 제6조",
+                "주택임대차보호법 제6조의2"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-015",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "첫 전세계약 만료 4개월 전에 갱신을 요구했더니 보증금을 10% 올려야 해 준대요. 거절해도 갱신을 요구할 수 있나요, 인상 한도는 얼마예요?",
+      "runs": {
+        "raw3": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "주택임대차보호법 제6조"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제6조",
+                "주택임대차보호법 제6조의3",
+                "주택임대차보호법 제7조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제6조의3",
+                "주택임대차보호법 제7조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제6조의3",
+                "주택임대차보호법 제7조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": true,
+          "after_complete": false,
+          "missing": [
+            "주택임대차보호법 제6조"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제6조",
+                "주택임대차보호법 제6조의3",
+                "주택임대차보호법 제7조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제6조",
+                "주택임대차보호법 제6조의3",
+                "주택임대차보호법 제7조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제6조의3",
+                "주택임대차보호법 제7조"
+              ],
+              "lost": [
+                "주택임대차보호법 제6조"
+              ],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "주택임대차보호법 제6조"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제6조",
+                "주택임대차보호법 제6조의3",
+                "주택임대차보호법 제7조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제6조의3",
+                "주택임대차보호법 제7조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제6조의3",
+                "주택임대차보호법 제7조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": true,
+          "after_complete": false,
+          "missing": [
+            "주택임대차보호법 제6조"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제6조",
+                "주택임대차보호법 제6조의3",
+                "주택임대차보호법 제7조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제6조",
+                "주택임대차보호법 제6조의3",
+                "주택임대차보호법 제7조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제6조의3",
+                "주택임대차보호법 제7조"
+              ],
+              "lost": [
+                "주택임대차보호법 제6조"
+              ],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-016",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "월셋집 보일러가 낡아서 고장 났어요. 수리비 약정이 없어도 집주인에게 고쳐달라고 할 수 있나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제623조"
+              ],
+              "before_found": [
+                "민법 제623조"
+              ],
+              "after_found": [
+                "민법 제623조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제623조"
+              ],
+              "before_found": [
+                "민법 제623조"
+              ],
+              "after_found": [
+                "민법 제623조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제623조"
+              ],
+              "before_found": [
+                "민법 제623조"
+              ],
+              "after_found": [
+                "민법 제623조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제623조"
+              ],
+              "before_found": [
+                "민법 제623조"
+              ],
+              "after_found": [
+                "민법 제623조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-017",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "월셋집의 낡은 배관이 터져 집주인에게 알리고 제 돈으로 급히 고쳤어요. 수리비 약정이 없는데 돌려받을 수 있나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제626조"
+              ],
+              "before_found": [
+                "민법 제626조"
+              ],
+              "after_found": [
+                "민법 제626조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제626조"
+              ],
+              "before_found": [
+                "민법 제626조"
+              ],
+              "after_found": [
+                "민법 제626조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제626조"
+              ],
+              "before_found": [
+                "민법 제626조"
+              ],
+              "after_found": [
+                "민법 제626조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제626조"
+              ],
+              "before_found": [
+                "민법 제626조"
+              ],
+              "after_found": [
+                "민법 제626조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-018",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "월셋집 천장에서 물이 조금 새는데 집주인은 아직 몰라요. 생활에 지장이 없어도 바로 알려야 하나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제634조"
+              ],
+              "before_found": [
+                "민법 제634조"
+              ],
+              "after_found": [
+                "민법 제634조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제634조"
+              ],
+              "before_found": [
+                "민법 제634조"
+              ],
+              "after_found": [
+                "민법 제634조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제634조"
+              ],
+              "before_found": [
+                "민법 제634조"
+              ],
+              "after_found": [
+                "민법 제634조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제634조"
+              ],
+              "before_found": [
+                "민법 제634조"
+              ],
+              "after_found": [
+                "민법 제634조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-019",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "집주인이 누수를 막으려고 꼭 필요한 공사를 한대요. 시끄럽다는 이유로 거절할 수 있나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제624조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제624조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제624조"
+              ]
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제624조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제624조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제624조"
+              ]
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제624조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제624조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제624조"
+              ]
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제624조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제624조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제624조"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-020",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "제 잘못이 아닌 화재로 월셋집 주방과 욕실을 못 써서 살기 어려워요. 월세를 깎아달라고 하거나 계약을 끝낼 수 있나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제627조"
+              ],
+              "before_found": [
+                "민법 제627조"
+              ],
+              "after_found": [
+                "민법 제627조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제627조"
+              ],
+              "before_found": [
+                "민법 제627조"
+              ],
+              "after_found": [
+                "민법 제627조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제627조"
+              ],
+              "before_found": [
+                "민법 제627조"
+              ],
+              "after_found": [
+                "민법 제627조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제627조"
+              ],
+              "before_found": [
+                "민법 제627조"
+              ],
+              "after_found": [
+                "민법 제627조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-021",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "집주인에게 위임받은 대리인이 집주인 명의로 전세계약을 했어요. 집주인이 직접 서명하지 않았으니 무효라는데 맞나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제114조"
+              ],
+              "before_found": [
+                "민법 제114조"
+              ],
+              "after_found": [
+                "민법 제114조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제114조"
+              ],
+              "before_found": [
+                "민법 제114조"
+              ],
+              "after_found": [
+                "민법 제114조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제114조"
+              ],
+              "before_found": [
+                "민법 제114조"
+              ],
+              "after_found": [
+                "민법 제114조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제114조"
+              ],
+              "before_found": [
+                "민법 제114조"
+              ],
+              "after_found": [
+                "민법 제114조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-022",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "집주인과 보증금, 월세, 기간을 말로 정하고 입주했어요. 계약서를 안 썼으면 계약이 무효인가요?",
+      "runs": {
+        "raw3": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제618조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제618조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제618조"
+              ]
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제618조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제618조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제618조"
+              ]
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제618조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제618조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제618조"
+              ]
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제618조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제618조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제618조"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-023",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "전입신고하고 계속 사는 집이 팔려 새 주인 앞으로 등기됐어요. 보증금은 전 집주인과 새 집주인 중 누구한테 받아야 하나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "주택임대차보호법 제3조"
+              ],
+              "before_found": [
+                "주택임대차보호법 제3조"
+              ],
+              "after_found": [
+                "주택임대차보호법 제3조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-024",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "월셋집 계약서에 월세 내는 날짜가 없고 따로 정한 적도 없어요. 언제까지 내야 하나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제633조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제633조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제633조"
+              ]
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제633조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제633조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제633조"
+              ]
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제633조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제633조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제633조"
+              ]
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제633조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제633조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제633조"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-025",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "전세계약 후에야 대리인에게 권한이 없다는 걸 알았어요. 집주인에게 계약을 인정할지 답을 요구할 수 있나요, 인정 전에는 제가 취소할 수 있나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "민법 제131조"
+          ],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제131조",
+                "민법 제134조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제134조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제134조"
+              ]
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "민법 제131조"
+          ],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제131조",
+                "민법 제134조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제134조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제134조"
+              ]
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "민법 제131조"
+          ],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제131조",
+                "민법 제134조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제134조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제134조"
+              ]
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "민법 제131조"
+          ],
+          "channels": {
+            "civil_laws": {
+              "targets": [
+                "민법 제131조",
+                "민법 제134조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민법 제134조"
+              ],
+              "lost": [],
+              "gained": [
+                "민법 제134조"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-026",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "LH 국민임대 재계약 때도 저랑 세대원의 금융정보 조회 동의서를 내야 하나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "공공주택 특별법 시행령 제42조"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "공공주택 특별법 시행령 제42조",
+                "공공주택 특별법 제48조의4"
+              ],
+              "before_found": [],
+              "after_found": [
+                "공공주택 특별법 제48조의4"
+              ],
+              "lost": [],
+              "gained": [
+                "공공주택 특별법 제48조의4"
+              ]
+            },
+            "forms": {
+              "targets": [
+                "공공주택 특별법 시행규칙 별지 제4호서식"
+              ],
+              "before_found": [],
+              "after_found": [
+                "공공주택 특별법 시행규칙 별지 제4호서식"
+              ],
+              "lost": [],
+              "gained": [
+                "공공주택 특별법 시행규칙 별지 제4호서식"
+              ]
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "공공주택 특별법 시행령 제42조"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "공공주택 특별법 시행령 제42조",
+                "공공주택 특별법 제48조의4"
+              ],
+              "before_found": [],
+              "after_found": [
+                "공공주택 특별법 제48조의4"
+              ],
+              "lost": [],
+              "gained": [
+                "공공주택 특별법 제48조의4"
+              ]
+            },
+            "forms": {
+              "targets": [
+                "공공주택 특별법 시행규칙 별지 제4호서식"
+              ],
+              "before_found": [],
+              "after_found": [
+                "공공주택 특별법 시행규칙 별지 제4호서식"
+              ],
+              "lost": [],
+              "gained": [
+                "공공주택 특별법 시행규칙 별지 제4호서식"
+              ]
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "공공주택 특별법 시행령 제42조"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "공공주택 특별법 시행령 제42조",
+                "공공주택 특별법 제48조의4"
+              ],
+              "before_found": [],
+              "after_found": [
+                "공공주택 특별법 제48조의4"
+              ],
+              "lost": [],
+              "gained": [
+                "공공주택 특별법 제48조의4"
+              ]
+            },
+            "forms": {
+              "targets": [
+                "공공주택 특별법 시행규칙 별지 제4호서식"
+              ],
+              "before_found": [],
+              "after_found": [
+                "공공주택 특별법 시행규칙 별지 제4호서식"
+              ],
+              "lost": [],
+              "gained": [
+                "공공주택 특별법 시행규칙 별지 제4호서식"
+              ]
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "공공주택 특별법 시행령 제42조"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "공공주택 특별법 시행령 제42조",
+                "공공주택 특별법 제48조의4"
+              ],
+              "before_found": [],
+              "after_found": [
+                "공공주택 특별법 제48조의4"
+              ],
+              "lost": [],
+              "gained": [
+                "공공주택 특별법 제48조의4"
+              ]
+            },
+            "forms": {
+              "targets": [
+                "공공주택 특별법 시행규칙 별지 제4호서식"
+              ],
+              "before_found": [],
+              "after_found": [
+                "공공주택 특별법 시행규칙 별지 제4호서식"
+              ],
+              "lost": [],
+              "gained": [
+                "공공주택 특별법 시행규칙 별지 제4호서식"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-027",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "등록민간임대주택에 살면서 집주인과 합의해 월세를 바꿨어요. 변경 신고는 제가 하나요, 임대사업자가 하나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "민간임대주택에 관한 특별법 제46조"
+              ],
+              "before_found": [
+                "민간임대주택에 관한 특별법 제46조"
+              ],
+              "after_found": [
+                "민간임대주택에 관한 특별법 제46조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "민간임대주택에 관한 특별법 제46조"
+              ],
+              "before_found": [
+                "민간임대주택에 관한 특별법 제46조"
+              ],
+              "after_found": [
+                "민간임대주택에 관한 특별법 제46조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "민간임대주택에 관한 특별법 제46조"
+              ],
+              "before_found": [
+                "민간임대주택에 관한 특별법 제46조"
+              ],
+              "after_found": [
+                "민간임대주택에 관한 특별법 제46조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": true,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "민간임대주택에 관한 특별법 제46조"
+              ],
+              "before_found": [
+                "민간임대주택에 관한 특별법 제46조"
+              ],
+              "after_found": [
+                "민간임대주택에 관한 특별법 제46조"
+              ],
+              "lost": [],
+              "gained": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-028",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "등록민간임대주택 세입자인데, 집주인이 가입한 임대보증금 보증의 보증료를 제가 전부 내야 하나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "민간임대주택에 관한 특별법 시행령 제40조"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "민간임대주택에 관한 특별법 시행령 제40조"
+              ],
+              "before_found": [],
+              "after_found": [],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "민간임대주택에 관한 특별법 시행령 제40조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민간임대주택에 관한 특별법 시행령 제40조"
+              ],
+              "lost": [],
+              "gained": [
+                "민간임대주택에 관한 특별법 시행령 제40조"
+              ]
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "민간임대주택에 관한 특별법 시행령 제40조"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "민간임대주택에 관한 특별법 시행령 제40조"
+              ],
+              "before_found": [],
+              "after_found": [],
+              "lost": [],
+              "gained": []
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "민간임대주택에 관한 특별법 시행령 제40조"
+              ],
+              "before_found": [],
+              "after_found": [
+                "민간임대주택에 관한 특별법 시행령 제40조"
+              ],
+              "lost": [],
+              "gained": [
+                "민간임대주택에 관한 특별법 시행령 제40조"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-029",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "LH 국민임대에서 이사 나가고 집 전체를 다른 사람에게 월세로 주려 해요. LH 허락이 필요한가요, 허락 없이 하면 제 계약도 해지될 수 있나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "공공주택 특별법 시행령 제48조"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "공공주택 특별법 시행령 제48조",
+                "공공주택 특별법 제49조의3",
+                "공공주택 특별법 제49조의4"
+              ],
+              "before_found": [
+                "공공주택 특별법 제49조의3"
+              ],
+              "after_found": [
+                "공공주택 특별법 제49조의3",
+                "공공주택 특별법 제49조의4"
+              ],
+              "lost": [],
+              "gained": [
+                "공공주택 특별법 제49조의4"
+              ]
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "공공주택 특별법 시행령 제48조",
+                "공공주택 특별법 제49조의3",
+                "공공주택 특별법 제49조의4"
+              ],
+              "before_found": [
+                "공공주택 특별법 제49조의3"
+              ],
+              "after_found": [
+                "공공주택 특별법 시행령 제48조",
+                "공공주택 특별법 제49조의3",
+                "공공주택 특별법 제49조의4"
+              ],
+              "lost": [],
+              "gained": [
+                "공공주택 특별법 시행령 제48조",
+                "공공주택 특별법 제49조의4"
+              ]
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": false,
+          "after_complete": false,
+          "missing": [
+            "공공주택 특별법 시행령 제48조"
+          ],
+          "channels": {
+            "laws": {
+              "targets": [
+                "공공주택 특별법 시행령 제48조",
+                "공공주택 특별법 제49조의3",
+                "공공주택 특별법 제49조의4"
+              ],
+              "before_found": [
+                "공공주택 특별법 제49조의3"
+              ],
+              "after_found": [
+                "공공주택 특별법 제49조의3",
+                "공공주택 특별법 제49조의4"
+              ],
+              "lost": [],
+              "gained": [
+                "공공주택 특별법 제49조의4"
+              ]
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "공공주택 특별법 시행령 제48조",
+                "공공주택 특별법 제49조의3",
+                "공공주택 특별법 제49조의4"
+              ],
+              "before_found": [
+                "공공주택 특별법 제49조의3"
+              ],
+              "after_found": [
+                "공공주택 특별법 시행령 제48조",
+                "공공주택 특별법 제49조의3",
+                "공공주택 특별법 제49조의4"
+              ],
+              "lost": [],
+              "gained": [
+                "공공주택 특별법 시행령 제48조",
+                "공공주택 특별법 제49조의4"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "qid": "HO-030",
+      "group": "ho30",
+      "mode": "question_only",
+      "question": "등록민간임대주택을 계약할 때 표준계약서로 써 달라고 할 수 있나요? 집에 먼저 잡힌 근저당도 설명해 달라고 할 수 있나요?",
+      "runs": {
+        "raw3": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "민간임대주택에 관한 특별법 제47조",
+                "민간임대주택에 관한 특별법 제48조"
+              ],
+              "before_found": [
+                "민간임대주택에 관한 특별법 제47조"
+              ],
+              "after_found": [
+                "민간임대주택에 관한 특별법 제47조",
+                "민간임대주택에 관한 특별법 제48조"
+              ],
+              "lost": [],
+              "gained": [
+                "민간임대주택에 관한 특별법 제48조"
+              ]
+            }
+          }
+        },
+        "raw5": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "민간임대주택에 관한 특별법 제47조",
+                "민간임대주택에 관한 특별법 제48조"
+              ],
+              "before_found": [
+                "민간임대주택에 관한 특별법 제47조"
+              ],
+              "after_found": [
+                "민간임대주택에 관한 특별법 제47조",
+                "민간임대주택에 관한 특별법 제48조"
+              ],
+              "lost": [],
+              "gained": [
+                "민간임대주택에 관한 특별법 제48조"
+              ]
+            }
+          }
+        },
+        "staged_operating": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "민간임대주택에 관한 특별법 제47조",
+                "민간임대주택에 관한 특별법 제48조"
+              ],
+              "before_found": [
+                "민간임대주택에 관한 특별법 제47조"
+              ],
+              "after_found": [
+                "민간임대주택에 관한 특별법 제47조",
+                "민간임대주택에 관한 특별법 제48조"
+              ],
+              "lost": [],
+              "gained": [
+                "민간임대주택에 관한 특별법 제48조"
+              ]
+            }
+          }
+        },
+        "staged_diagnostic": {
+          "before_complete": false,
+          "after_complete": true,
+          "missing": [],
+          "channels": {
+            "laws": {
+              "targets": [
+                "민간임대주택에 관한 특별법 제47조",
+                "민간임대주택에 관한 특별법 제48조"
+              ],
+              "before_found": [
+                "민간임대주택에 관한 특별법 제47조"
+              ],
+              "after_found": [
+                "민간임대주택에 관한 특별법 제47조",
+                "민간임대주택에 관한 특별법 제48조"
+              ],
+              "lost": [],
+              "gained": [
+                "민간임대주택에 관한 특별법 제48조"
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "note": "HO30 used for improvement is regression, not independent holdout. Case all-complete is labelled-case-set coverage, not legal necessity.",
+  "capture_sha256": {
+    "C:\\team_project\\patch057-worktree\\data\\eval\\patch057-comprehensive\\capture\\rows.jsonl": "3408a97bf1cd8c4ceaf6648d6236b604776e69ace9f76583f35e49c8a43d38e6",
+    "data\\eval\\patch058-regression\\capture-v3\\rows.jsonl": "5495ad27dc0b2ce7e448ac00c60f9902504cc140b7ab87fc05a6b7fe3efa7fad"
+  }
+}

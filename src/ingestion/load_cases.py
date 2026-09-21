@@ -33,7 +33,10 @@ class CaseRecord:
     """판례 한 건의 서비스용 원천 레코드.
 
     ``holding``·``summary``는 공식 판결요지이고, ``full_text``는 국가법령정보센터
-    공식 판례 전문이다. 검색 청크에는 짧은 공식 판결요지만 사용한다.
+    공식 판례 전문이다. 검색 청크는 기본적으로 짧은 공식 판결요지를 쓰지만,
+    ``data/sources/retrieval-supplements-v1/``에서 온 보완 판례는 판시사항과 이유가
+    함께 있는 전문을 쓴다(``chunk_body`` 참조). 그래서 보완 판례 청크는 기존
+    seed 청크(최대 68토큰)보다 훨씬 길다.
     """
 
     case_id: str
@@ -99,7 +102,11 @@ def token_count_of(text: str) -> int:
 
 
 def chunk_body(record: CaseRecord) -> str:
-    return f"[{record.court_name} {record.case_number} {record.case_name}]\n{record.holding.strip()}"
+    # Supplemental official pages include the reasons as well as the issue heading.
+    # Existing seed representations remain byte-identical.
+    body = (record.full_text if record.file_path.startswith('data/sources/retrieval-supplements-v1/')
+            else record.holding)
+    return f"[{record.court_name} {record.case_number} {record.case_name}]\n{body.strip()}"
 
 
 def load_case_records(records: list[CaseRecord], connection: sqlite3.Connection) -> CaseLoadSummary:
@@ -206,6 +213,7 @@ SELECT
     d.title,
     d.source_url,
     d.status,
+    d.file_path,
     ca.case_id,
     ca.case_number,
     ca.court_name,
@@ -250,6 +258,15 @@ def export_case_chunks(connection: sqlite3.Connection, out_path: Path) -> int:
                     "token_count": row["token_count"],
                 },
             }
+            if row['file_path'].startswith('data/sources/retrieval-supplements-v1/'):
+                compact = lambda value: re.sub(r'\s+', '', value)
+                identity = [compact(row['court_name']), compact(row['case_number']),
+                            row['decision_date'], compact(row['case_name'])]
+                chunk['metadata'].update(
+                    corpus_role='case_supplement', source_name='국가법령정보센터',
+                    canonical_case_key=hashlib.sha256(json.dumps(
+                        identity, ensure_ascii=False, separators=(',', ':')).encode()).hexdigest(),
+                    court_level=0, summary_type='official', indexed_official_section='full_text')
             handle.write(json.dumps(chunk, ensure_ascii=False) + "\n")
             count += 1
     return count

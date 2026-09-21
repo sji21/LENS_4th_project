@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "collected_at": "2026-09-19",
+  "cases": [
+    {
+      "case_id": "167313",
+      "case_number": "2010다42990",
+      "court": "대법원",
+      "date": "2012-07-12",
+      "name": "배당이의"
+    },
+    {
+      "case_id": "197934",
+      "case_number": "2017다224630, 224647",
+      "court": "대법원",
+      "date": "2017-10-12",
+      "name": "건물인도등청구의소·보증금반환"
+    }
+  ],
+  "files": {
+    "case-167313.html": "546feadde0b523f83c80c90f6d377076bb9d7f073ca827f3502272a561b7ae67",
+    "case-197934.html": "88273e3c3065e2e09e90ae7ca431dad32a461facfcea8a7c7dea913f7091f6fd",
+    "public-financial-consent.pdf": "a047dde013718d14cab169239724ea772287b8209aeb9a6785802deddfd57e17",
+    "public-financial-consent.txt": "700f5def755aa91458f530762ef6fae9912f32e12f6ac91c0fc0d5a6f36680de"
+  },
+  "form": {
+    "url": "https://www.law.go.kr/LSW/flDownload.do?gubun=&flSeq=168433763&bylClsCd=110202",
+    "title": "공공주택 특별법 시행규칙 별지 제4호서식",
+    "identity": "공공주택특별법시행규칙-별지제4호서식",
+    "revision": "2022-12-29",
+    "rule_effective": "2026-08-24",
+    "text_extractor": "pdfplumber 0.11.9",
+    "visual_checked_pages": [
+      1,
+      2
+    ]
+  }
+}

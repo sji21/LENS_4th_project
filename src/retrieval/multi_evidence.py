@@ -122,16 +122,50 @@ def requested_tax_scopes(query: str) -> tuple[str, ...]:
     return tuple(scope for scope in ("national", "local") if scope in scopes)
 
 
-def tax_lookup_match(text: str, scopes: tuple[str, ...]) -> bool:
-    """Require unpaid-tax inspection language in the body, not a title/ID."""
+def tax_lookup_scopes(text: str, scopes: tuple[str, ...]) -> tuple[str, ...]:
+    """Which requested tax systems this body actually documents for inspection."""
     body = re.sub(r"^\[[^\]\n]+\]\s*", "", text).replace(" ", "")
     if "열람" not in body:
-        return False
-    return any(
-        ("미납" + tax in body or (tax in body and re.search(r"납부하지(?:아니한|않은)", body)))
+        return ()
+    return tuple(
+        scope
         for scope, tax in (("national", "국세"), ("local", "지방세"))
         if scope in scopes
+        and ("미납" + tax in body
+             or (tax in body and re.search(r"납부하지(?:아니한|않은)", body)))
     )
+
+
+def tax_lookup_match(text: str, scopes: tuple[str, ...]) -> bool:
+    """Require unpaid-tax inspection language in the body, not a title/ID."""
+    return bool(tax_lookup_scopes(text, scopes))
+
+
+def _balanced(direct: list, confirmed: dict, scopes: tuple[str, ...]) -> list:
+    """Alternate the slots held by single-system evidence, keeping fused order.
+
+    A request naming both tax systems must not spend its whole budget on one of
+    them. Provisions covering every requested system keep their fused position;
+    only the single-system slots are refilled, one system at a time.
+    """
+    queues = {scope: [hit for hit in direct if confirmed[hit[0]] == (scope,)]
+              for scope in scopes}
+    queues = {scope: hits for scope, hits in queues.items() if hits}
+    if len(queues) < 2:
+        return direct
+    # Start from whichever system already had the better placed evidence, so
+    # the order does not depend on how the scopes happen to be listed.
+    order = sorted(queues, key=lambda scope: direct.index(queues[scope][0]))
+    rotated = []
+    while any(queues[scope] for scope in order):
+        for scope in order:
+            if queues[scope]:
+                rotated.append(queues[scope].pop(0))
+    result = list(direct)
+    slots = [index for index, hit in enumerate(direct) if len(confirmed[hit[0]]) == 1]
+    for index, hit in zip(slots, rotated):
+        result[index] = hit
+    return result
 
 
 class TaxLookupSelector:
@@ -146,10 +180,14 @@ class TaxLookupSelector:
         scopes = requested_tax_scopes(query)
         if not scopes:
             return ranked[:k]
-        direct, other = [], []
+        direct, other, confirmed = [], [], {}
         for hit in ranked:
             if not matches(self.chunks[hit[0]]["metadata"], where):
                 continue
-            target = direct if tax_lookup_match(self.chunks[hit[0]]["text"], scopes) else other
-            target.append(hit)
-        return (direct + other)[:k]
+            found = tax_lookup_scopes(self.chunks[hit[0]]["text"], scopes)
+            if found:
+                confirmed[hit[0]] = found
+                direct.append(hit)
+            else:
+                other.append(hit)
+        return (_balanced(direct, confirmed, scopes) + other)[:k]

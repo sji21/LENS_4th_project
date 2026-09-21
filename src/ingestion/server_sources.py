@@ -7,8 +7,10 @@ from pathlib import Path
 
 from src.ingestion.fetch_law_mock import LAWS, ENDPOINT, parse_articles, parse_law_header
 from src.ingestion.fetch_minbeop import MINBEOP_ARTICLES
+from src.ingestion.coverage_sources import APPROVED_ANCHORS, supplement_records
 from src.ingestion.load_laws import LawArticleRecord
 from src.ingestion.load_guides import read_guide_records
+from src.ingestion.retrieval_supplements import case_records, form_records
 from src.retrieval.expanded import CIVIL_IDS
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -80,16 +82,25 @@ def source_records():
             raise ValueError("추가 법령 원문 해시 불일치")
         records.append(parse_page(path.read_text(encoding="utf-8"), spec, source["url"], path.relative_to(ROOT).as_posix()))
     records.extend(compile_records())
+    base_anchors = [r.law_name + "-" + r.article_number for r in records]
+    if len(base_anchors) != len(set(base_anchors)) or len(records) != 204:
+        raise ValueError("기존 204개 승인 조문 수 또는 중복 검사 실패")
+    supplements = supplement_records()
+    if tuple(r.law_name + "-" + r.article_number for r in supplements) != APPROVED_ANCHORS:
+        raise ValueError("PATCH-058 승인 보완 조문 불일치")
+    records.extend(supplements)
     anchors = [r.law_name + "-" + r.article_number for r in records]
-    if len(anchors) != len(set(anchors)) or len(records) != 204:
-        raise ValueError("승인 조문 수 또는 중복 검사 실패")
+    if len(anchors) != len(set(anchors)) or len(records) != 216:
+        raise ValueError("승인 216개 조문 수 또는 중복 검사 실패")
     if {a for a in anchors if a.startswith("민법-")} != set(CIVIL_IDS):
         raise ValueError("민법 선택 범위 불일치")
     for record in records:
         if record.validate():
             raise ValueError(record.validate())
     from scripts.load_case_only_demo_corpus import records_from_sources
-    return records, records_from_sources(), read_guide_records(SOURCES / "guide-records.jsonl")
+    cases = records_from_sources() + case_records()
+    guides = read_guide_records(SOURCES / "guide-records.jsonl") + form_records()
+    return records, cases, guides
 
 
 def fingerprint(records):

@@ -14,7 +14,7 @@ from scripts.patch027_paths import ROOT, read, sha, write
 from scripts.patch027_context_live import _serialize, _committed_sources
 from scripts.patch027_final_test import check as check_final, BUNDLE as FINAL, SEARCH_K
 from scripts.patch027_loss_analysis import align
-from src.retrieval.expanded import CIVIL_IDS, POLICY
+from src.retrieval.expanded import LEGACY_CIVIL_IDS as CIVIL_IDS, LEGACY_POLICY as POLICY
 from src.retrieval.profile import FILES, CHUNKS, INDEXES, PROFILE
 
 SCOPES = tuple(sorted(FILES)) + INDEXES + (PROFILE,)

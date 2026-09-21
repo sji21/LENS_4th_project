@@ -12,7 +12,7 @@ from chat.dialogue_contract import Decision
 from chat.dialogue_query import grounded_query
 from chat.dialogue_state import apply_user_update
 from src.retrieval.multi_evidence import (
-    TaxLookupSelector, requested_tax_scopes, tax_lookup_match,
+    TaxLookupSelector, requested_tax_scopes, tax_lookup_match, tax_lookup_scopes,
 )
 from src.retrieval.service import route_law_corpus
 
@@ -194,6 +194,55 @@ def test_scope_exclusion_reranks_only_the_remaining_direct_evidence(selector_pay
     )
 
     assert result == [("local", 0.2), ("rent", 0.4)]
+
+
+@pytest.fixture
+def unbalanced_payload():
+    chunks = [
+        make_chunk("both", "임대인의 미납국세와 미납지방세를 열람할 수 있다"),
+        make_chunk("national", "임차인이 미납국세를 열람하는 절차"),
+        make_chunk("national-decree", "미납국세 열람 신청에 필요한 서류", doc_type="decree"),
+        make_chunk("local", "미납지방세 열람을 신청하는 방법"),
+        make_chunk("local-decree", "미납지방세 열람 신청 서류", doc_type="decree"),
+        make_chunk("rent", "계약 종료 후 보증금 반환"),
+    ]
+    ranked = [("both", 0.6), ("national", 0.5), ("national-decree", 0.4),
+              ("local", 0.3), ("local-decree", 0.2), ("rent", 0.1)]
+    return chunks, ranked
+
+
+def test_both_requested_tax_systems_keep_a_slot_in_a_small_budget(unbalanced_payload):
+    chunks, ranked = unbalanced_payload
+    result = TaxLookupSelector(chunks).select("집주인 체납세금 조회 방법은요?", ranked, 3)
+
+    assert result == [("both", 0.6), ("national", 0.5), ("local", 0.3)]
+
+
+def test_balancing_never_drops_or_adds_candidates_when_the_budget_allows(unbalanced_payload):
+    chunks, ranked = unbalanced_payload
+    result = TaxLookupSelector(chunks).select("집주인 체납세금 조회 방법은요?", ranked, 6)
+
+    assert {cid for cid, _ in result} == {cid for cid, _ in ranked}
+    assert result[0] == ("both", 0.6)
+
+
+def test_a_single_requested_tax_system_keeps_the_fused_order(unbalanced_payload):
+    chunks, ranked = unbalanced_payload
+    result = TaxLookupSelector(chunks).select("집주인 미납국세 열람 방법은요?", ranked, 3)
+
+    assert result == [("both", 0.6), ("national", 0.5), ("national-decree", 0.4)]
+
+
+@pytest.mark.parametrize("text, scopes, expected", [
+    ("임대인의 미납국세와 미납지방세를 열람할 수 있다", ("national", "local"),
+     ("national", "local")),
+    ("임차인이 미납국세를 열람하는 절차", ("national", "local"), ("national",)),
+    ("미납지방세 열람을 신청하는 방법", ("national", "local"), ("local",)),
+    ("임대인의 미납국세와 미납지방세를 열람할 수 있다", ("local",), ("local",)),
+    ("계약 종료 후 보증금 반환", ("national", "local"), ()),
+])
+def test_confirmed_scopes_follow_the_body_and_the_request(text, scopes, expected):
+    assert tax_lookup_scopes(text, scopes) == expected
 
 
 def test_certificate_issuance_keeps_the_existing_ranking(selector_payload):

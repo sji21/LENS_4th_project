@@ -19,7 +19,7 @@ from scripts.patch015_baseline import norm
 from scripts.patch023_report import diagnose, summarize
 from scripts.patch041_settings_contract import snapshot_settings, validate_settings
 from src.evaluation.baseline import SEARCH_K, settings
-from src.retrieval.expanded import POLICY
+from src.retrieval.expanded import LEGACY_POLICY as POLICY
 from src.retrieval.profile import CHUNKS, FILES, INDEXES, PROFILE, index_hash
 
 

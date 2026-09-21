@@ -1,0 +1,20 @@
+{
+  "counts": {
+    "laws": 178,
+    "civil_laws": 26,
+    "cases": 26,
+    "guides": 6
+  },
+  "indexing": [
+    {
+      "embedded": 210,
+      "reused": 0,
+      "removed": 0
+    },
+    {
+      "embedded": 26,
+      "reused": 0,
+      "removed": 0
+    }
+  ]
+}

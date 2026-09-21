@@ -90,21 +90,53 @@ def read_export(root, corpus):
     return manifest, rows
 
 
-def channel_rows(exports):
+def _law_policies():
+    from src.retrieval.expanded import CIVIL_IDS, LEGACY_CIVIL_IDS, LEGACY_POLICY, POLICY
+    return {LEGACY_POLICY: LEGACY_CIVIL_IDS, POLICY: CIVIL_IDS}
+
+
+def civil_ids_for_policy(law_policy):
+    policies = _law_policies()
+    if law_policy not in policies:
+        raise ValueError("MySQL 검색 배포의 법령 검색 정책이 잘못됐습니다.")
+    return policies[law_policy]
+
+
+def detect_law_policy(exports):
+    articles = [r.get("metadata", {}).get("article_id")
+                for r in exports["civil"]["civil"]]
+    matches = [law_policy for law_policy, civil_ids in _law_policies().items()
+               if len(articles) == len(civil_ids) and set(articles) == set(civil_ids)]
+    if len(matches) != 1:
+        raise ValueError("민법 조문 목록에 맞는 법령 검색 정책이 없습니다.")
+    return matches[0]
+
+
+def channel_rows(exports, law_policy=None):
     base, civil, cases = exports["base"], exports["civil"], exports["cases"]
     # The base snapshot also preserves civil rows. The dedicated civil export
     # owns that channel; prove they agree before removing the duplicate copy.
-    base_civil = {r["chunk_id"]: r for r in base["laws"] if r["metadata"].get("title") == "민법"}
-    dedicated = {r["chunk_id"]: r for r in civil["civil"]}
+    base_rows = [r for r in base["laws"] if r["metadata"].get("title") == "민법"]
+    dedicated_rows = civil["civil"]
+    base_civil = {r["chunk_id"]: r for r in base_rows}
+    dedicated = {r["chunk_id"]: r for r in dedicated_rows}
+    base_articles = [r["metadata"].get("article_id") for r in base_rows]
+    dedicated_articles = [r["metadata"].get("article_id") for r in dedicated_rows]
+    if (len(base_civil) != len(base_rows) or len(dedicated) != len(dedicated_rows)
+            or len(set(base_articles)) != len(base_articles)
+            or len(set(dedicated_articles)) != len(dedicated_articles)):
+        raise ValueError("민법 청크 ID 또는 조문이 중복됐습니다.")
     if base_civil != dedicated:
         raise ValueError("기본/민법 스냅샷의 민법 청크가 다릅니다.")
-    from src.retrieval.expanded import CIVIL_IDS
-    if {r["metadata"].get("article_id") for r in dedicated.values()} != set(CIVIL_IDS):
-        raise ValueError("기존 검색 정책의 민법 조문 범위가 다릅니다.")
+    law_policy = detect_law_policy(exports) if law_policy is None else law_policy
+    expected_articles = civil_ids_for_policy(law_policy)
+    if (len(dedicated_articles) != len(expected_articles)
+            or set(dedicated_articles) != set(expected_articles)):
+        raise ValueError("법령 검색 정책과 민법 조문 범위가 다릅니다.")
     return {
         "base": [r for stream in ("laws", "cases", "guides") for r in base[stream]
                  if r["metadata"].get("title") != "민법"],
-        "civil": civil["civil"],
+        "civil": dedicated_rows,
         "cases": [r for stream in ("laws", "cases", "guides") for r in cases[stream]],
     }
 
@@ -159,7 +191,7 @@ def read_release(path):
     if (value.get("schema") != SCHEMA or value.get("index_status") != "ready"
             or value.get("fallback_allowed") is not False
             or value.get("case_policy") != CASE_POLICY
-            or value.get("law_policy") != "expanded-laws-record-v1"
+            or value.get("law_policy") not in _law_policies()
             or set(value.get("snapshots", {})) != set(STREAMS)
             or set(value.get("indexes", {})) != set(STREAMS)
             or value.get("runtime_versions") != runtime_versions()
@@ -191,7 +223,7 @@ def read_release(path):
             or not re.fullmatch(r"[0-9a-f]{40}", model.get("revision", ""))
             or set(model.get("files", {})) != MODEL_FILES):
         raise ValueError("검색 배포 모델 정보가 잘못됐습니다.")
-    return path, value, channel_rows(exports)
+    return path, value, channel_rows(exports, value.get("law_policy"))
 
 
 def verify_model(directory, spec):
@@ -225,16 +257,21 @@ def load_service(path, model_dir=None):
     model = verify_model(directory, release["model"])
     backend = SentenceTransformerEmbedding(str(model), device="cpu", batch=2)
     indexes = open_indexes(path, release, rows, backend)
+    civil_ids = civil_ids_for_policy(release["law_policy"])
     base = ExpandedLawRetrievalService(rows["base"] + rows["civil"],
-                                      indexes["base"], indexes["civil"])
+                                      indexes["base"], indexes["civil"],
+                                      civil_ids=civil_ids, policy=release["law_policy"])
 
     class MySQLRetrievalService(CaseCorpusRetrievalService):
         def evidence_payload(self, result):
             payload = super().evidence_payload(result)
             payload["release_id"] = release["release_id"]
+            supplements = {item["chunk_id"] for item in self.case_supplement_manifest}
             for channel, evidences in payload["channels"].items():
-                corpus = {"cases": "cases", "civil_laws": "civil"}.get(channel, "base")
                 for evidence in evidences:
+                    corpus = ("civil" if channel == "civil_laws" else
+                              "base" if channel != "cases" or evidence["chunk_id"] in supplements else
+                              "cases")
                     evidence["snapshot_id"] = release["snapshots"][corpus]
             return payload
 

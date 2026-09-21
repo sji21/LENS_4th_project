@@ -39,12 +39,16 @@ LAWS: list[tuple[str, str, str, str, str | None]] = [
 
 # 조문 시작 지점. "제3조", "제3조의2", "제12조의3" 등
 _ARTICLE_HEAD = re.compile(r"^\s*(제\d+조(?:의\d+)?)\s*(?:\(([^)]*)\))?")
+# 조문 제목을 괄호로 단 본문 머리. 목차 줄에는 괄호가 없다.
+_TITLED_HEAD = re.compile(r"^\s*(제\d+조(?:의\d+)?)\s*\(")
 # 검색용 본문에서는 부칙을 제외한다. 적재 레코드는 전체 수집 평문을
 # 별도 source_text 스냅샷에 보존하므로 부칙을 유실하지 않는다.
 # onclick 자바스크립트가 텍스트로 새어나와 줄 앞을 가리므로 줄머리로 잡지 않는다.
 _ADDENDA = re.compile(r"부\s*칙\s*<\s*(?:법률|대통령령)")
-# 태그를 걷어내도 남는 스크립트·속성 잔해
-_JUNK = re.compile(r"href=|src=|return false|value=\"|onclick|javascript:|조문목록")
+# 태그를 걷어내도 남는 스크립트·속성 잔해와, 조문 단위 페이지 끝의 내려받기 조작부.
+# 조작부는 마지막 조문 본문 뒤에 붙어 그 조문의 본문으로 딸려 들어간다.
+_JUNK = re.compile(r"href=|src=|return false|value=\"|onclick|javascript:|조문목록"
+                   r"|^\s*파일형식(?:\s*선택)?\s*$|^\s*HWP\s+PDF\s*$")
 # "[제9조로 이동]" 처럼 본문이 없는 이동·삭제 표기
 _MOVED = re.compile(r"^\[제\d+조(?:의\d+)?로 이동")
 _TAG = re.compile(r"<[^>]+>")
@@ -82,11 +86,26 @@ def parse_articles(text: str) -> list[tuple[str, str, str]]:
     seen: set[str] = set()
     current: tuple[str, str, list[str]] | None = None
 
-    for line in text.split("\n"):
+    # 같은 조문이 두 번 나오면 첫 번째만 취하므로, 어느 쪽이 본문인지 먼저 정한다.
+    # 조문 목록 줄은 "제49조의4 공공임대주택의 전대 제한"처럼 제목을 괄호 없이
+    # 붙여 본문 위에 먼저 나온다. 이 줄이 번호를 선점하면 실제 본문 머리가 중복으로
+    # 걸러져 그 아래 조문들이 통째로 한 조문의 본문이 된다.
+    #
+    # 제목 있는 머리가 따로 존재하면 bare 번호는 새 조문을 열지 않는다.
+    # 본문이 시작되기 전의 목록만 버리고, 본문 안의 앞/뒤 조문 참조는 보존한다.
+    # 제목 없는 조문으로 먼저 시작한 원문에서도 그 본문의 참조를 버리면 안 된다.
+    lines = text.split("\n")
+    titled = {found[1] for line in lines if (found := _TITLED_HEAD.match(line))}
+    listing_end = next((i for i, line in enumerate(lines) if _TITLED_HEAD.match(line)), 0)
+
+    for index, line in enumerate(lines):
         if _JUNK.search(line):
             continue
         head = _ARTICLE_HEAD.match(line)
-        # 목차 링크 등으로 같은 조문이 두 번 나오면 첫 번째만 취한다.
+        if head and head.group(2) is None and head.group(1) in titled:
+            if current is None and index < listing_end:
+                continue
+            head = None
         if head and head.group(1) not in seen:
             if current:
                 articles.append(current)

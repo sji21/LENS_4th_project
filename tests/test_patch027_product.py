@@ -15,7 +15,8 @@ from scripts import patch027_rollout as rollout
 from src.evaluation.baseline import settings
 from src.retrieval import context_policy as policy
 from src.retrieval import profile as profiles
-from src.retrieval.expanded import CIVIL_IDS, ExpandedLawRetrievalService, RequestEmbeddingCache
+from src.retrieval.expanded import (CIVIL_IDS, LEGACY_CIVIL_IDS, LEGACY_POLICY,
+                                    ExpandedLawRetrievalService, RequestEmbeddingCache)
 from src.retrieval.service import RetrievalService
 
 
@@ -26,15 +27,30 @@ def chunk(article, title="민법", text="임대차 계약 비용 반환"):
         "status": "current", "version": "법률 제1호", "effective_date": "2026-01-01"}}
 
 
-def test_product_pure_policy_matches_frozen_trial_for_all_235_inputs():
+def test_product_policy_retains_prior_terms_except_documented_semantic_extensions():
+    # PATCH-058 expands record eligibility and handover vocabulary. The old
+    # pure-function equality is no longer the v2 contract; frozen queries and
+    # captures remain untouched and live retrieval regression is checked separately.
     queries = rollout.read(rollout.ROOT / "data/eval/patch015-baseline/capture/results.json")
     assert len(queries) == 235
+    record_extension = "정보제공 요청 이해관계인 임차인 범위"
     for row in queries:
         q = row["query"]
-        assert policy.final_law_terms(q) == final.final_law_terms(q)
-        assert policy.final_dense_query(q) == final.final_dense_query(q)
+        expected = final.final_law_terms(q)
+        actual = policy.final_law_terms(q)
+        assert [term for term in actual if term != record_extension] == expected
+        expected_query = final.final_dense_query(q)
+        assert policy.final_dense_query(q) == (expected_query + "; " + record_extension
+                                                if record_extension in actual else expected_query)
+        # The historical 235 questions contain no newly supported key-handover
+        # wording, so their existing civil expansion is still identical.
         assert policy.context_terms(q, "civil") == trial.context_terms(q, "civil")
         assert policy.dense_context_query(q, "civil") == trial.dense_context_query(q, "civil")
+
+
+@pytest.fixture(autouse=True)
+def isolate_product_profile_from_installed_case_overlay(monkeypatch):
+    monkeypatch.setattr("src.retrieval.case_profile.configured_case_profile", lambda: "")
 
 
 @pytest.mark.parametrize("body,expected", [
@@ -343,7 +359,7 @@ def test_published_preflight_and_adopted_results_replay_with_backup_receipt():
         audit = rollout.check_verification(bundle / name)
         assert audit["default_data_path"] is is_default
         assert audit["model_calls"] == 375
-        assert audit["runtime_settings"]["corpora"]["civil"]["include_ids"] == list(CIVIL_IDS)
+        assert audit["runtime_settings"]["corpora"]["civil"]["include_ids"] == list(LEGACY_CIVIL_IDS)
     receipt = rollout.read(bundle / "receipt.json")
     baseline = rollout.read(rollout.ROOT / "data/eval/patch027-full/capture/audit.json")
     assert receipt["target"] == "data"
