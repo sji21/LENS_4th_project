@@ -169,6 +169,7 @@ def test_builder_records_the_policy_matching_its_civil_export(
     monkeypatch.setattr(builder, "verify_model", lambda *args: None)
     monkeypatch.setattr(builder, "audit_tokens", lambda rows, model_dir: {"checked": len(rows)})
     monkeypatch.setattr(builder, "verify_collection", lambda *args: "2" * 64)
+    monkeypatch.setattr(builder, "records_hash", lambda collection: "3" * 64)
     monkeypatch.setattr(builder, "write_vector_reference",
                         lambda collection, path: (Path(path).parent.mkdir(parents=True, exist_ok=True),
                                                   Path(path).write_bytes(b"vectors")))
@@ -189,6 +190,7 @@ def test_builder_records_the_policy_matching_its_civil_export(
     assert result["law_policy"] == law_policy
     for channel in runtime.STREAMS:
         assert result["indexes"][channel]["vector_reference"] == f"references/{channel}.f32"
+        assert result["indexes"][channel]["records_sha256"] == "3" * 64
         assert (staging / "references" / f"{channel}.f32").is_file()
 
 
@@ -221,12 +223,18 @@ def test_vector_reference_must_be_listed_at_its_fixed_path(bundle):
     reference.parent.mkdir()
     reference.write_bytes(b"vectors")
     release["indexes"]["cases"]["vector_reference"] = "references/cases.f32"
+    release["indexes"]["cases"]["records_sha256"] = "4" * 64
     seal(path, release)
     with pytest.raises(ValueError, match="목록"):
         runtime.read_release(path)
     release["files"]["references/cases.f32"] = runtime.file_hash(reference)
     seal(path, release)
     runtime.read_release(path)
+    del release["indexes"]["cases"]["records_sha256"]
+    seal(path, release)
+    with pytest.raises(ValueError, match="레코드 해시"):
+        runtime.read_release(path)
+    release["indexes"]["cases"]["records_sha256"] = "4" * 64
     release["indexes"]["cases"]["vector_reference"] = "indexes/cases/index.bin"
     seal(path, release)
     with pytest.raises(ValueError, match="기준 벡터 경로"):
@@ -261,17 +269,46 @@ def test_cross_cpu_vector_bits_are_accepted_only_within_tolerance(
              for i, r in enumerate(rows)}
     reference = tmp_path / "cases.f32"
     runtime.write_vector_reference(VectorCollection(rows, built), reference)
+    records = runtime.records_hash(VectorCollection(rows, built))
     opened = {cid: (v + np.float32(shift)).astype("<f4") for cid, v in built.items()}
     monkeypatch.setattr(case_profile, "index_content_hash", lambda c: "other-cpu-hash")
     collection = VectorCollection(rows, opened)
     with pytest.raises(ValueError, match="논리 해시"):
         runtime.verify_collection(collection, rows, "build-cpu-hash")
+    with pytest.raises(ValueError, match="논리 해시"):
+        runtime.verify_collection(collection, rows, "build-cpu-hash", reference=reference)
     if accepted:
-        assert runtime.verify_collection(collection, rows, "build-cpu-hash",
-                                         reference=reference) == "other-cpu-hash"
+        assert runtime.verify_collection(collection, rows, "build-cpu-hash", reference=reference,
+                                         expected_records=records) == "other-cpu-hash"
     else:
         with pytest.raises(ValueError, match="허용 오차"):
-            runtime.verify_collection(collection, rows, "build-cpu-hash", reference=reference)
+            runtime.verify_collection(collection, rows, "build-cpu-hash", reference=reference,
+                                      expected_records=records)
+
+
+@pytest.mark.parametrize("change", ["drop_provenance", "int_to_bool"])
+def test_vector_tolerance_requires_type_exact_build_records(tmp_path, change):
+    """Loose dict equality (1 == True, optional provenance) must not reach the vector fallback."""
+    import numpy as np
+    from hashlib import sha256
+    model = {"model_id": "nlpai-lab/KURE-v1", "revision": "a" * 40}
+    row = chunk("case", "case", "판례")
+    row["metadata"]["page"] = 1
+    built_meta = dict(row["metadata"], embedding_fingerprint=model["model_id"] + "@" + model["revision"],
+                      embedding_input_hash=sha256(row["text"].encode()).hexdigest())
+    vectors = {"case": np.full(1024, 0.03125, dtype="<f4")}
+    built = VectorCollection([dict(row, metadata=built_meta)], vectors)
+    from src.retrieval.case_profile import index_content_hash
+    expected_hash = index_content_hash(built)
+    records = runtime.records_hash(built)
+    reference = tmp_path / "cases.f32"
+    runtime.write_vector_reference(built, reference)
+    opened_meta = (dict(row["metadata"]) if change == "drop_provenance"
+                   else dict(built_meta, page=True))
+    opened = VectorCollection([dict(row, metadata=opened_meta)], vectors)
+    assert index_content_hash(opened) != expected_hash
+    with pytest.raises(ValueError, match="빌드 당시"):
+        runtime.verify_collection(opened, [row], expected_hash, model, reference, records)
 
 
 def test_vector_reference_of_another_index_is_rejected(tmp_path, monkeypatch):
@@ -283,9 +320,10 @@ def test_vector_reference_of_another_index_is_rejected(tmp_path, monkeypatch):
         VectorCollection(rows + [chunk("extra")], {"law": np.zeros(1024), "extra": np.zeros(1024)}),
         reference)
     monkeypatch.setattr(case_profile, "index_content_hash", lambda c: "other-cpu-hash")
+    opened = VectorCollection(rows, {"law": np.zeros(1024)})
     with pytest.raises(ValueError, match="크기"):
-        runtime.verify_collection(VectorCollection(rows, {"law": np.zeros(1024)}), rows,
-                                  "build-cpu-hash", reference=reference)
+        runtime.verify_collection(opened, rows, "build-cpu-hash", reference=reference,
+                                  expected_records=runtime.records_hash(opened))
 
 
 def test_activation_verifies_before_atomic_pointer_replacement(bundle, tmp_path, monkeypatch):
@@ -445,6 +483,19 @@ def test_dependency_bootstrap_does_not_require_already_matching_runtime(bundle, 
     seal(path, release)
     with pytest.raises(ValueError):
         builder.dependency_requirements(path)
+
+
+def test_requirements_output_creates_its_folder_and_never_replaces_other_pins(bundle, tmp_path):
+    path, _ = bundle
+    output = tmp_path / "fresh" / "tmp" / "requirements-search.txt"
+    builder.main(["requirements", "--release", str(path), "--output", str(output)])
+    pins = output.read_text(encoding="utf-8")
+    builder.main(["requirements", "--release", str(path), "--output", str(output)])
+    assert output.read_text(encoding="utf-8") == pins
+    output.write_text("torch==0.0.1\n", encoding="utf-8")
+    with pytest.raises(FileExistsError):
+        builder.main(["requirements", "--release", str(path), "--output", str(output)])
+    assert output.read_text(encoding="utf-8") == "torch==0.0.1\n"
 
 
 def test_incremental_index_update_reuses_only_identical_text_vectors():

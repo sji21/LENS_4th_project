@@ -168,6 +168,20 @@ def write_vector_reference(collection, path):
     Path(path).write_bytes(collection_vectors(collection, ids).tobytes())
 
 
+def records_hash(collection):
+    """Hash IDs, texts and metadata exactly as index_content_hash does, without vectors."""
+    ids = sorted(collection.get(include=[])["ids"])
+    value = hashlib.sha256()
+    for start in range(0, len(ids), 128):
+        got = collection.get(ids=ids[start:start + 128], include=["documents", "metadatas"])
+        for cid, doc, meta in sorted(zip(got["ids"], got["documents"], got["metadatas"])):
+            record = json.dumps([cid, doc, meta], ensure_ascii=False, sort_keys=True,
+                                separators=(",", ":")).encode()
+            value.update(len(record).to_bytes(8, "little"))
+            value.update(record)
+    return value.hexdigest()
+
+
 def verify_vector_reference(collection, path):
     import numpy as np
     ids = sorted(collection.get(include=[])["ids"])
@@ -179,7 +193,8 @@ def verify_vector_reference(collection, path):
         raise ValueError("Chroma 벡터가 기준 벡터와 허용 오차 이상 다릅니다.")
 
 
-def verify_collection(collection, rows, expected_hash=None, model=None, reference=None):
+def verify_collection(collection, rows, expected_hash=None, model=None, reference=None,
+                      expected_records=None):
     from src.retrieval.case_profile import index_content_hash
     from src.retrieval.index import clean_metadata
     expected = {r["chunk_id"]: r for r in rows}
@@ -203,9 +218,12 @@ def verify_collection(collection, rows, expected_hash=None, model=None, referenc
             raise ValueError("Chroma/MySQL 본문·검색 메타데이터가 다릅니다: " + cid)
     logical = index_content_hash(collection)
     if expected_hash is not None and logical != expected_hash:
-        # Texts and metadata matched exactly above; only vector bits may vary.
-        if reference is None:
+        # Tolerate vector bits only when IDs, texts and metadata (including
+        # value types and embedding provenance) are identical to the build.
+        if reference is None or expected_records is None:
             raise ValueError("Chroma 논리 해시가 다릅니다.")
+        if records_hash(collection) != expected_records:
+            raise ValueError("Chroma 본문·메타데이터가 빌드 당시와 다릅니다.")
         verify_vector_reference(collection, reference)
     return logical
 
@@ -253,8 +271,9 @@ def read_release(path):
             raise ValueError("검색 배포 인덱스가 없습니다.")
         expected_names.update(names)
         if "vector_reference" in index:
-            if index["vector_reference"] != f"references/{channel}.f32":
-                raise ValueError("검색 배포 기준 벡터 경로가 잘못됐습니다.")
+            if (index["vector_reference"] != f"references/{channel}.f32"
+                    or not re.fullmatch(r"[0-9a-f]{64}", str(index.get("records_sha256", "")))):
+                raise ValueError("검색 배포 기준 벡터 경로 또는 레코드 해시가 잘못됐습니다.")
             expected_names.add(index["vector_reference"])
     if set(value.get("files", {})) != expected_names:
         raise ValueError("검색 배포 파일 목록이 불완전합니다.")
@@ -285,7 +304,8 @@ def open_indexes(path, release, rows, backend):
     for channel, spec in release["indexes"].items():
         dense = ChromaRetriever(backend, native_index_path(path.parent / spec["path"], immutable=True))
         reference = (path.parent / spec["vector_reference"]) if "vector_reference" in spec else None
-        verify_collection(dense.collection, rows[channel], spec["logical_sha256"], release["model"], reference)
+        verify_collection(dense.collection, rows[channel], spec["logical_sha256"], release["model"],
+                          reference, spec.get("records_sha256"))
         if spec["count"] != len(rows[channel]):
             raise ValueError("배포 인덱스 건수가 다릅니다.")
         indexes[channel] = dense

@@ -16,7 +16,7 @@ from src.ingestion.knowledge_release import _read_json, file_hash
 from src.retrieval.mysql_release import (
     CASE_POLICY, ROOT, SCHEMA, STREAMS, channel_rows, code_files, digest, encoded,
     detect_law_policy, load_service, open_indexes, read_export, read_release, resolve_release,
-    verify_collection, verify_model, runtime_versions, write_vector_reference,
+    records_hash, verify_collection, verify_model, runtime_versions, write_vector_reference,
 )
 
 
@@ -133,7 +133,8 @@ def build_worker(staging, model_dir, case_release=None, previous_release=None):
             shutil.copytree(previous_path.parent / spec["path"], target)
             dense = ChromaRetriever(None, target)
             reference = previous_path.parent / spec["vector_reference"] if "vector_reference" in spec else None
-            verify_collection(dense.collection, previous_rows[channel], spec["logical_sha256"], model, reference)
+            verify_collection(dense.collection, previous_rows[channel], spec["logical_sha256"], model,
+                              reference, spec.get("records_sha256"))
             stats = sync_collection(dense.collection, rows[channel], get_backend, model)
         elif channel == "cases":
             shutil.copytree(case_release.parent / source["index"]["path"], target)
@@ -146,7 +147,8 @@ def build_worker(staging, model_dir, case_release=None, previous_release=None):
         reference = "references/" + channel + ".f32"
         write_vector_reference(dense.collection, staging / reference)
         indexes[channel] = {"path": "indexes/" + channel, "count": len(rows[channel]),
-                            "logical_sha256": logical, "vector_reference": reference,
+                            "logical_sha256": logical, "records_sha256": records_hash(dense.collection),
+                            "vector_reference": reference,
                             "update": stats, "token_audit": token_audit}
         print("색인 검증 완료: " + channel, flush=True)
     release = {"schema": SCHEMA, "index_status": "ready", "fallback_allowed": False,
@@ -291,8 +293,11 @@ def main(argv=None):
         return
     if args.command == "requirements":
         content = dependency_requirements(args.release)
-        with args.output.open("x", encoding="utf-8") as stream:
-            stream.write(content)
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        # Re-running with the same release may reuse the file; never replace other pins.
+        if not (args.output.is_file() and args.output.read_text(encoding="utf-8") == content):
+            with args.output.open("x", encoding="utf-8") as stream:
+                stream.write(content)
         result = str(args.output.resolve())
     elif args.command == "build":
         result = str(build_release(args.export_root, args.output, args.model_dir, args.case_release, args.previous_release))
