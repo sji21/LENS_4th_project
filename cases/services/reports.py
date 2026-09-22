@@ -74,6 +74,8 @@ def _source_snapshot(case, conversations):
     for conversation in conversations:
         pending_question = None
         for message in conversation.state.get("messages", []):
+            if message.get("context_excluded"):
+                continue
             role = message.get("role")
             if role == "user":
                 pending_question = message.get("content", "")[:1200]
@@ -106,6 +108,11 @@ def _source_snapshot(case, conversations):
                 })
                 sources.extend(answer_sources)
             pending_question = None
+        if pending_question:
+            # A current, unanswered consultation question is still useful as
+            # a report topic.  Do not pair it with a made-up answer; the
+            # fallback and LLM can place it among follow-up checks instead.
+            dialogue.append({"role": "user", "content": pending_question})
     facts = [{
         "key": f.key, "value": f.value_json, "status": f.status,
         "source_type": f.source_type, "source_ref": f.source_ref, "source_label": f.source_label,

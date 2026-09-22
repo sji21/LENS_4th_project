@@ -205,6 +205,8 @@ class SessionDocumentContext:
     chunks: tuple[SessionDocumentChunk, ...]
     document_id: str = ""
     document_kind: str = ""
+    table_cells: tuple = ()
+    table_values: tuple = ()
 
     @property
     def is_empty(self) -> bool:
@@ -309,6 +311,8 @@ def build_session_document_context(
         chunks=chunks,
         document_id=document_id,
         document_kind=document_kind,
+        table_cells=extraction.table_cells,
+        table_values=extraction.table_values,
     )
 
 

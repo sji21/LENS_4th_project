@@ -14,6 +14,7 @@ QUESTIONS = {
     "deposit_returned": "보증금을 돌려받으셨나요?",
     "living_in_property": "현재 그 집에 거주하고 계신가요?",
     "moved_out": "그 집에서 이미 이사하셨나요?",
+    "contract_signed": "이미 계약을 체결하셨나요, 아니면 계약 전 검토 중인가요?",
     "landlord_notified": "임대인에게 의사를 알리셨나요?",
     "subject": "누구의 계약에 관한 상담인가요?",
     "role": "이 계약에서 임차인, 임대인, 중개사, 대리인 중 어떤 입장이신가요?",

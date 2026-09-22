@@ -31,6 +31,9 @@ class DocumentAnalysis:
         payload = asdict(self)
         payload.pop("filename", None)
         payload.pop("masked_text_preview", None)
+        payload["extraction"].pop("date_readings", None)
+        payload["extraction"].pop("table_cells", None)
+        payload["extraction"].pop("table_values", None)
         for page in payload["extraction"]["pages"]:
             page.pop("text", None)
         return payload

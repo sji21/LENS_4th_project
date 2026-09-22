@@ -63,7 +63,7 @@ def analyze_registry_extraction(
         filename=filename,
         status=status,
         headline=headline,
-        summary=summary,
+        summary=f"현재 첨부된 {extraction.page_count}쪽에서 발견한 표시만 안내합니다. 미첨부 페이지의 권리관계는 확인하지 않았습니다. " + summary,
         extraction=extraction,
         signals=signals,
         common_checks=COMMON_CHECKS,

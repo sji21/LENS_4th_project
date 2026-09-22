@@ -40,3 +40,6 @@ tmp/
 
 # 큰 검색 원시는 같은 내용의 검증된 gzip으로 보존
 /data/eval/patch058-regression/capture-*/rows.jsonl
+
+# 회원·비회원 첨부 원본의 로컬 암호화 저장소
+/data/private/
