@@ -5,6 +5,18 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-23
+
+### Changed
+
+- PATCH-066 publishes the existing Seoul EC2 deployment configuration for Python 3.11, Gunicorn/systemd, Nginx and CloudFront, with production environment examples and validated runtime constraints. Adds the atomic SQLite Backup API helper, daily timer, EBS DLM policy example, update/restore procedures and operational handoff documentation. Secrets, user data, search releases and model weights are excluded from Git. (implementation: 97699cf)
+- Records the `patch060-r2-20260921` export transition to the server-compatible search release. RunPod reconnection and actual generation verification are explicitly deferred at the user's request. GitHub publication does not deploy or merge automatically.
+
+### Validation
+
+- EC2 Python 3.11: 31 case-feature tests and 3 SQLite backup tests passed. Backup tests cover committed WAL content, preservation of an existing backup on failure, and rejection of the live DB as output. Local and server-side publication scans found no configured production secrets in the reviewed files.
+- Earlier deployment checks covered dependency consistency, migration status, Nginx/systemd/shell syntax, public HTTPS and search readiness. The full test suite and full restore drill were not repeated for this publication; the scheduled DLM run is not claimed as observed.
+
 ## 2026-09-22
 
 ### Fixed (Bug Fixes)
