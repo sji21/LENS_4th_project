@@ -1,4 +1,4 @@
-"""Streamlit과 향후 LangChain 체인이 함께 사용할 문서 점검 서비스."""
+"""Django와 LangChain 생성 체인이 함께 사용할 문서 점검 서비스."""
 
 from __future__ import annotations
 

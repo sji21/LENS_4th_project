@@ -20,7 +20,7 @@
       → answered / abstained / refused
 
 ``chain.answer_question()``은 테스트·호환 경로로 유지한다.
-Django와 기존 Streamlit UI는 이 모듈의 생성 진입점을 사용한다.
+Django UI는 이 모듈의 생성 진입점을 사용한다.
 """
 
 from __future__ import annotations
@@ -279,7 +279,7 @@ def build_generation_graph(
                 "next_step": "refuse",
             }
 
-        # Streamlit이 실제 세션 첨부 참조를 확인해 문서 경계로 보낸 요청은
+        # Django가 실제 세션 첨부 참조를 확인해 문서 경계로 보낸 요청은
         # "첨부한 등본 검토해줘"처럼 법률 용어가 짧아도 일반 범위 LLM으로
         # 재분류하지 않는다. deterministic 금지 질문과 custom guard는 위에서 유지한다.
         if scope.needs_semantic_review and not document_search_attempted:

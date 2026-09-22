@@ -31,7 +31,7 @@ LLM 담당 후속 확인: 수정된 검색 결과를 사용하는 배포인지, 
 
 이 보완은 `ExpandedLawRetrievalService`에 적용한다. 이번 실측은 재구축 DB의 `expanded-laws-record-v1` 프로필을 명시적으로 사용했다. 로컬 기본 checkout의 `data/index/retrieval-profile.json`에도 같은 정책이 있고 현재 셸/로컬 `.env`의 `LENS_CASE_RETRIEVAL_PROFILE` 지정은 확인되지 않았다. 첨부 화면을 만든 실행 프로세스의 환경은 별도다.
 
-- 선택적 `lens-case-internal-v1`은 일반 검색을 기본 서비스에 위임하므로 기본 서비스가 expanded이면 적용된다.
+- `lens-case-internal-v1`은 PATCH-043 내부 실험용으로 보관됐으며 제품 로더는 명시적으로 거부한다. 이 과거 선택 경로는 현재 적용 대상이 아니다.
 - 구형 봉인 bundle `lens-case-retrieval-v1`은 별도 기본 법령 서비스를 직접 생성하므로 이 변경이 적용되지 않는다. 해당 팀원 프로필은 변경하지 않았다.
 - expanded manifest가 없는 구형 설치에도 적용되지 않는다. 기존 설치 절차로 프로필·자료를 확인해야 한다.
 - 웹 서비스는 검색 객체를 캐시한다. 코드 반영 뒤 프로세스를 재시작하고 실제 활성 서비스/프로필과 모델 요청을 확인한다. 이 작업에서 운영 앱 재시작·배포는 하지 않았다.
