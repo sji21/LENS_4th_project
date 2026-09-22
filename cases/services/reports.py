@@ -16,17 +16,82 @@ REPORT_KEYS = (
 )
 
 
+def _text(value) -> str:
+    """Turn an LLM field into safe, human-readable report text."""
+    if isinstance(value, str):
+        return " ".join(value.split()).strip()
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        return str(value)
+    return ""
+
+
+def _question_answer_text(value) -> str:
+    if isinstance(value, dict):
+        question = _text(value.get("question") or value.get("질문"))
+        answer = _text(value.get("answer") or value.get("답변") or value.get("확인한 내용"))
+        if question and answer:
+            return f"질문: {question}\n확인한 내용: {answer}"
+        return question or answer
+    return _text(value)
+
+
+def normalize_report_content(content):
+    """Keep saved report snapshots presentable even when an LLM returned objects.
+
+    Earlier report snapshots permit list members to be JSON objects.  They are
+    valid JSON but must never be rendered with Python dictionary syntax.
+    """
+    payload = content if isinstance(content, dict) else {}
+    normalized = {"case_summary": _text(payload.get("case_summary"))}
+    for key in REPORT_KEYS[1:]:
+        values = payload.get(key, [])
+        if not isinstance(values, list):
+            values = []
+        if key == "questions_and_answers":
+            normalized[key] = [text for value in values if (text := _question_answer_text(value))]
+        else:
+            normalized[key] = [text for value in values if (text := _text(value))]
+    return normalized
+
+
 def _source_snapshot(case, conversations):
     dialogue = []
     sources = []
     for conversation in conversations:
+        pending_question = None
         for message in conversation.state.get("messages", []):
             role = message.get("role")
             if role == "user":
-                dialogue.append({"role": "user", "content": message.get("content", "")[:1200]})
-            elif role == "assistant" and message.get("status") == "answered":
-                dialogue.append({"role": "assistant", "content": (message.get("context_content") or message.get("content", ""))[:1600]})
-                sources.extend(message.get("sources", []))
+                pending_question = message.get("content", "")[:1200]
+                continue
+            if role != "assistant":
+                continue
+
+            answer_sources = message.get("sources", [])
+            if (
+                pending_question
+                and message.get("status") == "answered"
+                and answer_sources
+            ):
+                # A report is a consultation summary, not a raw chat export.
+                # Greetings, test prompts, refusals, and unsupported replies do
+                # not have grounded sources and must not become report topics.
+                dialogue.append({"role": "user", "content": pending_question})
+                dialogue.append({
+                    "role": "assistant",
+                    "content": (message.get("context_content") or message.get("content", ""))[:1600],
+                })
+                sources.extend(answer_sources)
+            elif message.get("status") == "answered" and answer_sources:
+                # Older saved conversations can contain a verified assistant
+                # message without its preceding user turn. Preserve its source
+                # context for LLM summaries, but do not invent a user topic.
+                dialogue.append({
+                    "role": "assistant",
+                    "content": (message.get("context_content") or message.get("content", ""))[:1600],
+                })
+                sources.extend(answer_sources)
+            pending_question = None
     facts = [{
         "key": f.key, "value": f.value_json, "status": f.status,
         "source_type": f.source_type, "source_ref": f.source_ref, "source_label": f.source_label,
@@ -60,7 +125,11 @@ def _fallback(snapshot):
         for f in snapshot["facts"] if f["status"] == CaseFact.Status.CONFLICT
     ]
     return {
-        "case_summary": snapshot["case"]["title"],
+        # The room title is a navigation label, not a contract fact.
+        "case_summary": (
+            f"확인된 계약 정보 {len(confirmed)}건이 있습니다."
+            if confirmed else "등록된 계약 정보가 없습니다."
+        ),
         "user_interests": questions[-8:],
         "questions_and_answers": pairs[-8:],
         "confirmed_items": [f"{f['key']}: {f['value']}" for f in confirmed],
@@ -81,12 +150,13 @@ def _parse_json(text):
     for key in REPORT_KEYS[1:]:
         if not isinstance(payload[key], list):
             raise ValueError("Report list field mismatch")
-    return {key: payload[key] for key in REPORT_KEYS}
+    return normalize_report_content(payload)
 
 
 def build_report_content(snapshot, llm=None):
     prompt = (
         "당신은 임대차 상담 리포트 작성기입니다. 이 채팅방에서 사용자가 궁금해한 내용을 중심으로 질문과 검증된 답변을 정리하세요. "
+        "리포트 독자가 바로 확인하고 행동할 수 있게 핵심 결론과 next_checks를 분명히 쓰세요. "
         "사용자가 추가로 알아보거나 확인해야 할 행동은 next_checks에 구체적으로 작성하세요. "
         "새로운 법률 판단을 만들지 말고 제공된 대화, 확인된 사실, 출처만 사용하세요. "
         "충돌하거나 답을 확인하지 못한 내용은 unresolved_items에 넣으세요. 모든 목록 항목은 짧은 문자열로 작성하세요. "

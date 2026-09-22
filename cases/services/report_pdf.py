@@ -101,7 +101,9 @@ def render_report_pdf(report):
         topMargin=18 * mm, bottomMargin=17 * mm,
         title=f"LENS 상담 리포트 v{report.version}", author="LENS",
     )
-    content = report.content_json or {}
+    from cases.services.reports import normalize_report_content
+
+    content = normalize_report_content(report.content_json)
     case_title = str(report.case.title).strip()
     report_title = f"{case_title} 리포트" if case_title.endswith("상담") else f"{case_title} 상담 리포트"
     mode_label = "AI 요약" if report.generation_mode == "llm" else "기본 요약"
@@ -116,11 +118,11 @@ def render_report_pdf(report):
         HRFlowable(width="100%", thickness=.7, color=LINE, spaceAfter=5),
     ]
     _add_section(story, styles, "상담 요약", content.get("case_summary"), "정리된 요약이 없습니다.")
-    _add_section(story, styles, "사용자가 궁금해한 내용", content.get("user_interests", []), "정리된 질문이 없습니다.")
-    _add_section(story, styles, "주요 질문과 확인한 내용", content.get("questions_and_answers", []), "검증된 답변이 없습니다.")
+    _add_section(story, styles, "지금 확인할 일", content.get("next_checks", []), "현재 추가 확인 항목이 없습니다.")
     _add_section(story, styles, "확인된 내용", content.get("confirmed_items", []), "확인된 항목이 없습니다.")
     _add_section(story, styles, "미확인 내용", content.get("unresolved_items", []), "표시할 항목이 없습니다.")
-    _add_section(story, styles, "추가로 알아볼 내용", content.get("next_checks", []), "추가 확인 항목이 없습니다.")
+    _add_section(story, styles, "상담 주제", content.get("user_interests", []), "정리된 질문이 없습니다.")
+    _add_section(story, styles, "질문과 확인한 내용", content.get("questions_and_answers", []), "검증된 답변이 없습니다.")
     _add_section(story, styles, "참고 근거", content.get("source_refs", []), "연결된 출처가 없습니다.")
     story.append(Paragraph(
         "이 리포트는 생성 시점까지 확인된 상담 기록을 정리한 자료입니다. 법률 자문이나 계약 안전 판정을 대신하지 않습니다.",
