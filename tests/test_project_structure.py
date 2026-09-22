@@ -28,3 +28,22 @@ def test_readme_documents_added_directories_and_artifacts() -> None:
         "scripts/build_project_plan_pdf.py",
     ):
         assert expected in readme
+
+
+def test_django_is_the_only_product_web_entrypoint() -> None:
+    urls = (ROOT / "config" / "urls.py").read_text(encoding="utf-8")
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+
+    assert 'include("chat.urls")' in urls
+    assert (ROOT / "manage.py").is_file()
+    assert not (ROOT / "app" / "streamlit_app.py").exists()
+    assert not (ROOT / ".streamlit" / "config.toml").exists()
+    assert "웹 서비스는 Django만 사용합니다." in readme
+
+
+def test_patch043_is_excluded_from_product_runtime() -> None:
+    case_profile = (ROOT / "src" / "retrieval" / "case_profile.py").read_text(encoding="utf-8")
+
+    assert (ROOT / "experiments" / "patch043_case_internal" / "README.md").is_file()
+    assert "PATCH-043 내부 판례 프로필은 제품 검색에서 지원하지 않습니다." in case_profile
+    assert "case_internal_profile" not in case_profile

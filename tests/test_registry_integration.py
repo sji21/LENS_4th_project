@@ -6,15 +6,12 @@ import os
 from pathlib import Path
 
 import pytest
-from streamlit.testing.v1 import AppTest
 
 from src.document_check.service import analyze_registry_pdf
-from tests.test_streamlit_app import install_ui_test_stubs
 
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCAL_SAMPLE = ROOT / "test" / "data" / "부동산등기부등본.pdf"
-APP_PATH = ROOT / "app" / "streamlit_app.py"
 
 
 def sample_path() -> Path:
@@ -36,15 +33,3 @@ def test_registry_pdf_end_to_end() -> None:
     assert result.extraction.elapsed_seconds > 0
     assert result.rag_queries
     assert "masked_text_preview" not in result.to_public_dict()
-
-
-def test_streamlit_uses_chat_attachment_for_registry_documents(monkeypatch) -> None:
-    # 화면 구조만 확인하는 테스트다. main 병합으로 앱이 시작할 때 KURE-v1을 미리
-    # 로딩하게 되어(PATCH-034) 실제 모델을 올리면 20초 제한을 넘긴다. 다른
-    # Streamlit UI 테스트와 같은 스텁을 쓴다.
-    install_ui_test_stubs(monkeypatch)
-    app = AppTest.from_file(APP_PATH).run(timeout=20)
-
-    assert not app.exception
-    assert len(app.chat_input) == 1
-    assert not app.get("file_uploader")

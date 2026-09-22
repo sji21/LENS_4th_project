@@ -118,8 +118,8 @@ _service: RetrievalService | None = None
 def get_default_service() -> RetrievalService:
     """검색 서비스를 한 번만 만들어 재사용한다.
 
-    KURE-v1 이 2.3GB 라 질의마다 올리면 쓸 수 없다. Streamlit 에서는 이 함수
-    대신 `@st.cache_resource` 로 감싼 팩토리를 쓰고 그 결과를 인자로 넘긴다.
+    KURE-v1 이 2.3GB 라 질의마다 올리면 쓸 수 없다. Django는 이 팩토리를
+    백그라운드 서비스 로더에서 한 번만 호출해 결과를 재사용한다.
 
     ★ 인덱스를 못 열면 어휘 검색만으로 동작하고, 그 상태가 이 캐시에 그대로
       굳는다. 품질이 떨어진 줄 모르고 답변을 평가하는 것이 가장 찾기 어려운

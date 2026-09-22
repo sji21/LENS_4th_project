@@ -14,11 +14,6 @@ LENS는 전세와 월세 계약을 준비하거나 거주 중인 사용자가 �
 대신하지 않습니다. 근거가 없거나 생성된 답변이 검증을 통과하지 못하면 답변을
 보류합니다.
 
-이 저장소는 3차 단위 프로젝트에서 이관한 코드베이스로 시작합니다. 현재 웹은
-Django와 HTML·CSS·JavaScript로 동작합니다. 아래 평가 결과는 별도 표시가 없으면
-3차에서 이어받은 기준선이며, 웹 전환에 따른 성능 향상을 의미하지 않습니다.
-이관 기준 커밋과 3차 기록 링크는 [`LIST.md`](LIST.md)에 있습니다.
-
 ## 팀 소개
 
 | 이름 | 역할 | 담당 파트 | 주요 작업 |
@@ -39,7 +34,7 @@ Django와 HTML·CSS·JavaScript로 동작합니다. 아래 평가 결과는 별�
 | 검색 방식 | BM25 키워드 검색 + KURE-v1 의미 검색 + RRF 순위 결합 |
 | 답변 모델 | Qwen3-8B Q4 · Ollama |
 | 웹 | Django 5.2 LTS + HTML·CSS·JavaScript |
-| 저장소 | SQLite 원문·관계 정보 + Chroma 검색 인덱스 |
+| 검색 데이터 | MySQL 구축 스냅샷 + 해시 검증 portable release |
 | 답변 원칙 | 검색 근거 사용, 출처 표시, 검증 실패 시 답변 보류, 안전 여부 확정 금지 |
 
 ### 개발 범위
@@ -55,6 +50,13 @@ Django와 HTML·CSS·JavaScript로 동작합니다. 아래 평가 결과는 별�
 | AI 답변 | LangChain·LangGraph, Qwen 생성, 출처·숫자·조건 검증 |
 | 서비스 화면 | 채팅, PDF·이미지 업로드, 등기·계약서 확인 결과와 출처 표시 |
 | 테스트·평가 | 검색 성능, 답변 상태, OCR, 보안, 화면 회귀 테스트 |
+
+### 현재 운영 기준
+
+- 웹 서비스는 Django만 사용합니다. Streamlit UI와 전용 테스트·설정은 운영 경로에서 제외했습니다.
+- 검색은 `data/mysql-search/active.json`이 가리키는 검증된 portable release를 사용합니다.
+- PATCH-043 내부 판례 후보는 제품에 채택하지 않았으며, 재현용 코드만 `experiments/patch043_case_internal/`에 보관합니다.
+- 3차 이관 기준과 과거 평가 기록은 [`LIST.md`](LIST.md) 및 상세 평가 문서에서 현재 결과와 구분해 확인합니다.
 
 ## 2. 사용자가 할 수 있는 일
 
@@ -114,8 +116,10 @@ Django와 HTML·CSS·JavaScript로 동작합니다. 아래 평가 결과는 별�
                               Retriever 검색
                     ┌──────────┼──────────┐
                     ▼          ▼          ▼
-                  법령       판례      기관 안내
+                일반 법령    민법      기관 안내
                     └──────────┼──────────┘
+                               │
+                      필요 시 판례 추가 검색
                                + 세션 문서 근거
                                       │
                                       ▼
@@ -141,16 +145,16 @@ Retriever는 질문을 받아 법령·판례·기관 안내를 한 줄로 섞지
 사용자 질문
    ↓
 질문 유형 확인
-   ├─ 일반 법률 질문 → 법령·관련 기관 안내 우선 검색
-   ├─ 판례 직접 요청 → 판례 검색
-   └─ 법령·안내 근거 부족 → 판례 추가 검색
+   ├─ 일반 법률 질문 → 일반 법령·민법·관련 기관 안내 우선 검색
+   ├─ 판례 직접 요청 또는 구체적 분쟁 → 판례 추가 검색
+   └─ 1차 법령 근거 부족 → 판례 추가 검색
    ↓
 자료 유형별 Hybrid 검색
    ├─ BM25: 조문번호·법률용어처럼 글자가 직접 겹치는 문서 탐색
    ├─ KURE-v1: 표현은 달라도 의미가 가까운 문서 탐색
    └─ RRF: 두 검색 결과의 순위를 하나로 결합
    ↓
-RetrievalResult(laws, cases, guides)
+   RetrievalResult(laws, civil_laws, cases, guides)
 ```
 
 `RetrievalResult` 안의 각 `Evidence`에는 다음 정보가 들어갑니다.
@@ -226,26 +230,34 @@ RetrievalResult(laws, cases, guides)
 
 ### 최종 제출·평가에 사용한 데이터
 
+현재 작업 트리의 앱은 `data/mysql-search/active.json`이 가리키는
+`django-runtime-20260922` portable release (release ID
+`a5cd80062e499b75435de248297097cf96d38f4c8d98923d8c32007b10c5d7b9`)를 사용합니다.
+이는 PATCH-043 제품 제외와 Django 전환 뒤 현재 코드 해시로 다시 구축·검증한 **로컬
+검증 release**입니다. 아래 수치는 활성 검색 데이터의 범위이며, 검색 정확도나 법률 답변의
+전문가 정확도를 의미하지 않습니다.
+
 | 자료 | 현재 범위 | 용도 |
 | --- | ---: | --- |
-| 법령 | 133청크 | 주택임대차 관련 조문 검색 |
-| 판례 | 26건 | 판례 검색과 최종 평가 |
-| 기관 안내 | 2문서·6청크 | HUG 반환보증·국세청 미납국세 열람 절차 안내 |
-| 업로드 문서 | 현재 세션 한정 | 계약서·등기 내용 질문 |
+| 일반 법령 | 185개 조문 | 주택임대차 관련 기본 법령 검색 |
+| 민법 | 31개 조문 | 일반 법령과 분리한 민사·임대차 근거 검색 |
+| 판례 | 고정 8,377건 + 공식 보완 2건 | 조건부 판례 검색 후보 8,379건 |
+| 기관 안내 | 3문서·10청크 | HUG·국세청 등 공식 절차 안내 |
+| 업로드 문서 | 현재 브라우저 세션 한정 | 계약서·등기 내용 질문 |
 
-판례 최종 결과는 검토하고 재현할 수 있는 26건을 기준으로 합니다. 과거 문서에 나온
-207건은 검토 전 수집 기준선이며 현재 적재·검증 완료 건수가 아닙니다. 추가 판례는
-출처·사건정보·판결요지와 주택임대차 관련성을 확인한 뒤 넣을 수 있고, 검색 자료가 바뀌면
-Dev·Holdout 평가를 다시 수행해야 합니다.
+판례 package의 8,516개 인덱스 행에는 판례 외에도 지원 법령 133개와 기관 안내 6개가
+포함됩니다. 따라서 이를 “판례 8,516건”으로 표기하지 않습니다. PATCH-043의 8,395건
+내부 후보는 제품에 채택하지 않았으며 현재 검색·생성 경로에서 제외했습니다.
 
 ### 저장소 역할
 
 | 저장소 | 기본 경로 | 역할 |
 | --- | --- | --- |
-| 원천·가공 파일 | `data/raw/`, `data/parsed/`, `data/chunks/` | 수집 원문, 표준 레코드, 검색 청크 |
-| SQLite | `data/database/knowledge.sqlite3` | 법령·판례·안내 원문과 관계 정보 |
-| Chroma | `data/index/chroma_kurev1_1024/` | KURE-v1 벡터와 검색 메타데이터 |
-| 평가셋 | `data/eval/` | Dev·Holdout 질문과 정답 근거 |
+| 웹 DB | `data/database/web.sqlite3` | Django 계정·대화·세션 데이터 |
+| 지식 원천 | MySQL 스냅샷 | 법령·판례·안내의 구축·이관 원천 |
+| 검색 release | `data/mysql-search/` | JSONL·Chroma·모델·코드 해시를 검증한 실제 검색 데이터 |
+| 판례 package | `data/case_corpus/` | 배포 판례 코퍼스·재현용 자료 |
+| 평가셋 | `data/eval/` | Dev·회귀·근거 충족 평가와 원시 결과 |
 
 ### 주요 데이터 관계
 
@@ -256,48 +268,41 @@ README에서는 평가자가 전체 구조를 이해하는 데 필요한 관계�
 | --- | --- |
 | `documents` → 법령·판례·안내 | 모든 공식 자료의 출처·URL·수집일·원문 경로를 공통 관리 |
 | `laws` → `law_versions` → `law_articles` | 법령의 개정 버전과 조문을 분리해 보존 |
-| `cases` ↔ `law_articles` | `case_law_citations`로 판례가 적용·인용한 조문을 연결 |
+| `cases` ↔ `law_articles` | `case_law_citations` 스키마가 관계를 지원함. 활성 스냅샷의 실제 행 수는 0건 |
 | `risk_rules` ↔ 공식 근거 | `rule_evidence`로 문서 위험 규칙의 법령·판례·안내 근거를 연결 |
 | SQLite `chunks.chunk_id` ↔ Chroma 문서 ID | 원문 관계 정보와 검색 벡터를 같은 청크 ID로 추적 |
 
-기본 설치의 SQLite·Chroma·생성 청크는 각 실행 환경에서 다시 만듭니다. 후속 판례
-배포는 예외로 `data/case_corpus`의 **data_dev_v2 8,377건 DB·청크·인덱스**를 Git LFS로
-전달하고, 설치 시 검증한 판례 프로필을 활성화합니다. 원격 업로드·pull 확인 전에는
-배포 완료가 아닙니다. [판례 Git 배포 문서](docs/case-git-release.md)를 참고하세요. 같은
-자료를 다시 적재해도 중복 행을 계속 추가하지 않고 해당 자료 유형의 현재 입력 상태로
-맞춥니다. 법령만 다시 색인할 때 판례·안내를 지우지 않도록 삭제 범위도 자료 유형별로
-제한합니다.
+MySQL은 데이터 구축과 이관에 사용하며, Django 웹 DB와 분리됩니다. 앱 검색은 원천 DB에
+직접 연결하지 않고 portable release를 사용합니다. release는 JSONL·Chroma·모델·검색 코드
+해시가 일치하지 않으면 로딩을 중단합니다. [MySQL 검색 실행 안내](docs/mysql-search.md)와
+[판례 release 문서](docs/case-git-release.md)를 참고하세요.
 
 상세 필드와 원문 추적 규칙은 [`docs/chunk-schema.md`](docs/chunk-schema.md), 판례 검증
 절차는 [`docs/case-data-handoff.md`](docs/case-data-handoff.md)를 참고합니다.
 
-## 5. 최종 평가 결과
+## 5. 최종 평가 결과와 한계
 
-검색 결과에 필요한 정답 근거가 운영 반환 범위 안에 들어왔는지를 측정했습니다.
-`Dev`는 개발 과정에서 반복 확인한 질문, `Holdout`은 설정을 고르는 데 사용하지 않고
-마지막 회귀 확인에 사용한 질문입니다. `Hit@3`은 정답 근거가 상위 3건 안에 하나 이상
-있는지, `Hit@2`는 판례 상위 2건 안에 정답이 있는지를 뜻합니다.
+검색 결과에 필요한 근거가 운영 반환 범위 안에 들어왔는지를 측정했습니다. 이 평가는
+법률 답변의 전문가 정확도나 법적 타당성 평가가 아니라 근거 검색·전달 평가입니다.
 
-| 평가 대상 | 문항 수 | 운영 기준 | 결과 |
-| --- | ---: | ---: | ---: |
-| 법령 Dev | 24 | Hit@3 | 24/24 (100.0%) |
-| 법령 기존 Holdout | 18 | Hit@3 | 17/18 (94.4%) |
-| 판례 Dev | 13 | Hit@2 | 12/13 (92.3%) |
-| 판례 대체 Holdout | 8 | Hit@2 | 7/8 (87.5%) |
+| 평가 대상 | 범위 | 실제 결과 |
+| --- | ---: | --- |
+| 최종 법령 관련 평가 | 266개 채점 입력 | 필요 근거 완전 확보: Top-3 182/266, Top-5 204/266 |
+| HO30 회귀 세트 | 30개 고정 공개 입력 | 운영 예산 전체 필요 근거 20/30, 법령만 22/30 |
+| 판례 raw retrieval | 41개 판례 평가 질문 | Hit@5 19/41 |
+| 현재 코드 검증 | retrieval 관련 테스트 | 126 passed, MySQL opt-in 4 skipped |
 
 ### 결과를 읽을 때의 주의사항
 
-- 법령과 판례는 정답 단위와 운영 반환 건수가 달라 하나의 “전체 정확도”로 합치지 않음
-- 판례 수치는 현재 26건 검색 자료에만 적용됨
-- 판례 대체 Holdout은 8문항으로 표본이 작아 일반화 성능을 확정하지 않음
-- 기관 안내는 관련 질문에서 0~2건을 반환하고 일반 질문에서 빠지는 기능을 확인했지만,
-  독립 평가셋이 충분하지 않아 별도 정확도를 주장하지 않음
-- 공개된 Holdout 실패 문항을 보고 검색 규칙을 추가하지 않음
+- HO30은 개선 과정에서 사용된 고정 회귀 세트이므로 독립 blind holdout이 아님
+- 판례 Hit@5는 raw retrieval 결과이며, 실제 생성 경로의 조건부 Top-2 전달 결과와 다름
+- 법령·판례·안내는 정답 단위와 반환 예산이 달라 하나의 “전체 정확도”로 합치지 않음
+- 기관 안내의 독립 정확도와 최종 답변의 전문가 품질 평가는 아직 완료되지 않음
+- RunPod 생성 경로의 출처 추적은 확인됐지만, 답변 품질 gate 통과 결과로 해석하지 않음
 
-평가 절차와 한계는 [`docs/eval-audit.md`](docs/eval-audit.md), 최초 Holdout 절차는
-[`docs/eval-holdout.md`](docs/eval-holdout.md), 검색 재현 방법은
-[`docs/retrieval-handoff.md`](docs/retrieval-handoff.md)를 참고합니다. PATCH-043 판례 전용 후보의 로컬 실행 코드와 필요한 SQLite·Chroma·모델 자료는
-[`docs/patch043-local-retriever.md`](docs/patch043-local-retriever.md)에 구분해 기록했습니다.
+평가 절차와 한계는 [`docs/eval-audit.md`](docs/eval-audit.md), 검색 재현 방법은
+[`docs/retrieval-handoff.md`](docs/retrieval-handoff.md), 최종 근거 충족 결과는
+[`docs/patch058-retrieval-coverage.md`](docs/patch058-retrieval-coverage.md)를 참고합니다.
 
 ## 6. 설치부터 실행까지
 
@@ -318,7 +323,11 @@ README에서는 평가자가 전체 구조를 이해하는 데 필요한 관계�
 
 #### A. 팀 배포본 ZIP 설치 (기본 권장)
 
-현재 배포본은 **`LENS-MySQL-search-patch060-r2-20260921.zip`**(release ID `5b1a63a7…`)입니다. 이 release를 만든 커밋의 검색 코드에서만 검증이 통과하므로 PATCH-060이 반영된 `main`을 사용합니다(병합 전에는 `fix/patch-060-cross-platform-search-release` 브랜치의 배포본과 일치하는 코드). 구형 `shared-v3`, `patch059-20260921`, 1차 `patch060-20260921`과 혼용하지 않습니다.
+현재 작업 트리의 활성 release는 `django-runtime-20260922`(release ID
+`a5cd80062e499b75435de248297097cf96d38f4c8d98923d8c32007b10c5d7b9`)이며, 이 변경분을
+담은 팀 배포 ZIP은 아직 생성하지 않았습니다. 기존 **`LENS-MySQL-search-patch060-r2-20260921.zip`**
+(release ID `5b1a63a7…`)은 수정 전 코드용 과거 배포본이므로 현재 소스와 혼용하지 않습니다.
+팀 배포 전에는 확정 소스에서 release를 다시 build·verify하고 새 ZIP을 만들어야 합니다.
 
 0. **기존 clone이면 필수:** 검색 코드를 LF로 다시 받습니다. 커밋하지 않은 수정이 없을 때 Windows는 `Remove-Item src\retrieval\*.py; git checkout -- src/retrieval`, macOS·Linux는 `rm src/retrieval/*.py && git checkout -- src/retrieval`를 실행합니다. 건너뛰면 `core.autocrlf=true`인 Windows에서 CRLF 파일이 남아 `verify`가 "정책·코드·필수 항목이 다릅니다"로 실패합니다. 새로 clone했다면 생략합니다.
 1. `.env`가 없으면 `.env.example`을 복사합니다. 검색 관련 기본값이 A로 설정되어 있습니다. 기존 `.env`는 덮어쓰지 않고 위 표의 A 경로를 설정하며 `LENS_CASE_RETRIEVAL_PROFILE`은 비웁니다.
@@ -570,7 +579,7 @@ python -X utf8 -m pytest -q
 | Generation | 검색→Prompt→Qwen 연결, 세 가지 답변 상태, RunPod→Local 전환 |
 | Validation | 출처·직접 인용·금액·기간·시점·조건·주체 검사 |
 | 문서 처리 | PDF 검증, OCR, 세션 검색, 개인정보 마스킹 |
-| 웹 | Django 채팅·업로드·세션 격리·CSRF·중복 요청·오류 처리, 기존 Streamlit 회귀 |
+| 웹 | Django 채팅·업로드·세션 격리·CSRF·중복 요청·오류 처리 |
 
 실제 OCR 통합 테스트는 Tesseract 설치 여부, 실제 LLM 테스트는 Ollama 실행 여부,
 LangSmith 연결 테스트는 관련 환경변수에 따라 달라집니다. Windows에서 긴 PDF 테스트명의
@@ -607,7 +616,7 @@ python -m src.evaluation.compare_law_top3
 - 판례는 개별 사건의 판단이므로 법령과 같은 일반 규칙으로 단정하지 않음
 - OCR 결과가 흐리거나 페이지 구조가 복잡하면 일부 문구를 읽지 못할 수 있음
 - 검색 자료에 정답 근거가 없으면 LLM이 답을 만들지 않고 보류할 수 있음
-- 현재 판례 평가 결과는 검토된 26건 범위에 한정됨
+- 판례 검색 평가는 raw retrieval·조건부 Top-2 전달·최종 답변 품질을 구분해 해석해야 함
 - 여러 첨부 문서 중 질문 대상이 불명확하면 문서 종류와 확인할 항목을 직접 밝혀야 함
 
 ## 9. 프로젝트 구조
@@ -619,7 +628,6 @@ accounts/                    확장 가능한 사용자 모델·관리자 등록
 chat/                        채팅 API·세션 DB·기존 RAG 연결
 templates/                   Django HTML 템플릿
 static/chat/                 CSS·JavaScript
-app/streamlit_app.py          3차 화면 보존 (기본 실행 경로 아님)
 
 src/
 ├─ ingestion/                법령·판례·안내 수집·정제·청크 생성
@@ -632,6 +640,7 @@ src/
 └─ evaluation/               검색·생성 평가
 
 scripts/                     데이터 적재·평가·문서 생성 명령
+experiments/                 제품에 채택하지 않은 PATCH-043 재현 코드·평가 도구
 tests/                       단위·통합·회귀 테스트
 docs/                        상세 설계·실행·평가 문서
 data/                        샘플·평가셋과 로컬 생성 데이터
@@ -710,6 +719,10 @@ MySQL 청크로 BM25·Chroma 검색 배포본을 생성·검증·활성화하고
 ### PATCH-059·060 완료 및 배포본 기록
 
 - **PATCH-059:** 최종 리트리버 종합 평가·법령/판례/서식 보완·검색 전달 개선을 완료했고 PR #42로 병합했습니다. 기존 근거 손실과 과거 평가 테스트 실패는 알려진 한계로 유지합니다. 검색 평가를 LLM 답변 품질 평가로 해석하지 않습니다.
-- **PATCH-060:** OS별 코드 줄바꿈 통일, CPU 간 벡터 오차 검증, 본문·메타데이터 타입·임베딩 출처의 정확한 검증, 새 환경의 설치 제약 파일 생성 처리를 완료했습니다. r2 배포본은 Windows x64와 Apple Silicon Mac(arm64, Python 3.11.15)에서 같은 ZIP으로 설치·`verify`·검색·관련 테스트 31개를 모두 통과했습니다. Linux는 미실측입니다.
+- **PATCH-060:** OS별 코드 줄바꿈 통일, CPU 간 벡터 오차 검증, 본문·메타데이터 타입·임베딩 출처의 정확한 검증, 새 환경의 설치 제약 파일 생성 처리를 완료했습니다. r2 배포본은 Windows x64와 Apple Silicon Mac(arm64, Python 3.11.15)에서 같은 ZIP으로 설치·`verify`·검색·관련 테스트 31개를 모두 통과했습니다. Linux는 미실측인 **과거 배포 검증 기록**입니다.
 
-현재 배포본은 **`LENS-MySQL-search-patch060-r2-20260921.zip`**, release ID `5b1a63a7b004f63ad2dae018d53b9e4e0cdd120a61d623ec3270174c53622703`입니다. 구형 `shared-v3`, `patch059-20260921`, 1차 `patch060-20260921` 배포본과 혼용하지 않습니다. ZIP에는 검색 release와 KURE 모델이 포함되며 팀원 설치 순서는 6.0 A에 있습니다. 검색 코드가 바뀌면 담당자가 배포본을 다시 생성해 새 ZIP으로 배포합니다.
+현재 작업 트리에서는 **`django-runtime-20260922`** release ID
+`a5cd80062e499b75435de248297097cf96d38f4c8d98923d8c32007b10c5d7b9`가 활성화되어 있습니다.
+이는 팀 배포 ZIP이 아닌 로컬 검증 결과입니다. 기존 r2 ZIP과 구형 `shared-v3`,
+`patch059-20260921`, 1차 `patch060-20260921`은 현재 소스와 혼용하지 않습니다. 확정된
+소스의 새 release를 build·verify한 뒤에만 새 ZIP으로 배포합니다.

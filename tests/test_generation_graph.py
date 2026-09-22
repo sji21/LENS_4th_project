@@ -9,8 +9,6 @@
 
 from __future__ import annotations
 
-from pathlib import Path
-
 from langchain_core.runnables import RunnableLambda
 
 from src.document_check.extraction_models import ExtractionResult, PageExtraction
@@ -22,10 +20,6 @@ from src.generation import chain as chain_module
 from src.generation import graph as graph_module
 from src.generation.llm import get_llm
 from src.retrieval.service import Evidence, RetrievalResult
-
-
-ROOT = Path(__file__).resolve().parents[1]
-STREAMLIT_APP = ROOT / "app" / "streamlit_app.py"
 
 
 QUESTION = "대항력은 언제부터 생기나요?"
@@ -419,23 +413,6 @@ def test_secret_is_masked_before_retrieval_and_graph_trace():
     assert answer.status == "abstained"
     assert secret not in service.calls[0]["question"]
     assert "[REDACTED_SECRET]" in service.calls[0]["question"]
-
-
-def test_streamlit_keeps_existing_conversation_then_graph_boundary():
-    text = STREAMLIT_APP.read_text(encoding="utf-8")
-
-    assert (
-        "from src.generation.graph import answer_document_question, answer_question"
-        "  # noqa: E402"
-    ) in text
-    assert "from src.generation.chain import answer_question  # noqa: E402" not in text
-
-    # 멀티턴 해석은 기존 conversation.py가 그대로 담당한다.
-    assert "from src.generation.conversation import resolve_question  # noqa: E402" in text
-    assert 'previous_messages = list(st.session_state["chat_messages"])' in text
-    assert "resolved = resolve_question(question, previous_messages)" in text
-    assert "answer = answer_question(" in text
-    assert "service=retrieval_service" in text
 
 
 def test_graph_contains_real_workflow_nodes():

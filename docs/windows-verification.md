@@ -47,7 +47,7 @@ pytest -q
 ## 앱 실행
 
 ```powershell
-streamlit run app/streamlit_app.py
+python manage.py runserver 127.0.0.1:8000 --noreload
 ```
 
 브라우저에서 PDF 업로드, 동의 체크, 점검 실행, JSON 다운로드를 확인한다.

@@ -1,4 +1,4 @@
-"""계약서 점검 서비스와 Streamlit 화면이 공유하는 모델."""
+"""계약서 점검 서비스와 Django 화면이 공유하는 모델."""
 
 from __future__ import annotations
 

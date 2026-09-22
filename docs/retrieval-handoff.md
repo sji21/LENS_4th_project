@@ -83,11 +83,10 @@ result.is_empty()            # 근거를 하나도 못 찾았을 때 ABSTAIN 판
 KURE-v1이 2.3GB입니다. 질의마다 올리면 못 씁니다.
 
 ```python
-import streamlit as st
+from src.generation.chain import get_default_service
 
-@st.cache_resource
-def get_service():
-    return RetrievalService.from_index()
+# 같은 프로세스의 준비된 검색 서비스를 재사용한다.
+service = get_default_service()
 ```
 
 ---
