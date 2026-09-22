@@ -164,7 +164,7 @@ def simplify_message(state, message_id):
         (m for m in state["messages"] if m.get("id") == message_id and m.get("role") == "assistant"),
         None,
     )
-    if message is None:
+    if message is None or message.get("context_excluded"):
         return None
     if message.get("simplified"):
         return message
@@ -191,7 +191,7 @@ def _respond_legacy(state, question, document_id=None):
         answer = graph.answer_document_question(query, evidences, service=retrieval_loader().result())
         used_history = False
     else:
-        resolved = resolve_question(question, state["messages"])
+        resolved = resolve_question(question, [m for m in state["messages"] if not m.get("context_excluded")])
         answer = graph.answer_question(resolved.standalone, service=retrieval_loader().result())
         used_history = resolved.used_history
     message = answer_message(answer, started, used_history)

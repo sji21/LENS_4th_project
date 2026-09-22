@@ -18,16 +18,6 @@
   box-sizing:border-box;
 }
 
-.followup-question {
-  margin-top:16px;
-  padding-top:12px;
-  border-top:1px solid var(--line);
-  color:var(--green-dark);
-}
-
-.followup-question p {
-  margin:6px 0 0;
-}
 
 body {
   margin:0;
@@ -1206,8 +1196,6 @@ dialog p {
   }
 }
 
-.clarification-panel { padding: 14px 16px; margin-bottom: 10px; border: 1px solid #bed5ce; border-radius: 14px; background: #f1f8f5; color: #24483c; }
-.clarification-panel p { margin: 6px 0 10px; font-size: 12px; }
 .clarification-choices, .answer-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .clarification-choices button, .answer-actions button { border: 1px solid #c8d6cf; border-radius: 18px; padding: 7px 12px; background: white; color: #315747; font-size: 12px; cursor: pointer; }
 .clarification-choices button:disabled, .answer-actions button:disabled { opacity: .5; cursor: wait; }
@@ -1341,3 +1329,30 @@ dialog p {
   border-color:var(--green);
   background:var(--mint);
 }
+
+/* Compact document action stays reachable while the card is collapsed. */
+.document-card summary { position:relative; padding-right:34px; min-height:34px; }
+.document-card summary .document-remove {
+  position:absolute;
+  top:0;
+  right:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:30px;
+  height:30px;
+  margin:0;
+  padding:6px;
+  color:var(--muted);
+  border:0;
+  background:transparent;
+  border-radius:7px;
+  cursor:pointer;
+  transition:color .15s, background .15s;
+}
+.document-remove svg { width:17px; height:17px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+.document-card summary .document-remove:hover { color:var(--danger); background:#f8eeeb; }
+.document-card summary .document-remove:focus-visible { outline:2px solid var(--green); outline-offset:2px; }
+.delete-document-name { overflow-wrap:anywhere; font-weight:600; }
+
+.conversation-choices { margin-top:12px; }

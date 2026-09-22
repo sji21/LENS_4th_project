@@ -94,6 +94,7 @@ def test_explicit_notification_cannot_be_discarded_to_hide_wrong_polarity():
 
 
 WIRE_FACT_FIELDS = {
+    "contract_signed",
     "contract_type", "contract_ended", "deposit_returned", "living_in_property",
     "moved_out", "landlord_notified", "subject", "role", "property_type",
     "deposit", "monthly_rent", "end_date", "start_date", "notice_date",

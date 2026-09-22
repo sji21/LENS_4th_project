@@ -71,7 +71,7 @@
     const locked = busy || externalBusy || !conversationId;
     $("send").disabled = locked || !input.value.trim();
     for (const id of ["attach", "new-chat", "upload-suggestion", "document-select"]) $(id).disabled = locked;
-    document.querySelectorAll("[data-question], .document-card button, .clarification-panel button, .text-action").forEach((b) => { b.disabled = locked; });
+    document.querySelectorAll("[data-question], .document-card button, .conversation-choices button, .text-action").forEach((b) => { b.disabled = locked; });
     form.setAttribute("aria-busy", String(busy));
   }
   async function request(url, options = {}) {
@@ -190,18 +190,19 @@
   }
   function renderMessage(message) {
     const row = element("article", undefined, `message ${message.role}`);
+    if (message.id) row.dataset.messageId = message.id;
     row.setAttribute("aria-label", message.role === "user" ? "내 질문" : "LENS 답변");
     if (message.role !== "user") row.append(element("span", "L", "avatar"));
     const bubble = element("div", undefined, "bubble");
-    bubble.append(answerText(message.content, message.role === "assistant" ? message : {}));
-    if (message.role === "assistant" && message.followup_question) {
-      const followup = element("div", undefined, "followup-question");
-      followup.append(element("strong", "상황을 조금 더 알려주세요"), element("p", message.followup_question));
-      bubble.append(followup);
+    const body = answerText(message.content, message.role === "assistant" ? message : {});
+    bubble.append(body);
+    if (message.context_excluded) bubble.append(element("p", "문서 삭제 후 보존된 기록 · 이후 답변의 근거에서 제외됨", "doc-meta"));
+    if (!message.context_excluded && message.role === "assistant" && message.followup_question) {
+      body.append(element("p", message.followup_question));
     }
     if (message.role === "assistant") {
       const meta = element("div", undefined, "message-meta");
-      const labels = { answered: "근거 확인 답변", abstained: "답변 보류", refused: "요청 안내", social: "대화", clarify: "확인 질문" };
+      const labels = { answered: "근거 확인 답변", document_review: "문서 표시 확인", abstained: "답변 보류", refused: "요청 안내", social: "대화", clarify: "확인 질문" };
       const reasons = { no_evidence: "관련 근거 부족", validation_failed: "검증 결과 답변 보류", generation_failed: "답변 생성 실패", needs_information: "추가 정보 확인" };
       meta.append(element("span", reasons[message.reason] || labels[message.status] || "안내", `answer-status ${message.status || ""}`));
       if (typeof message.elapsed_seconds === "number") meta.append(element("span", `${message.elapsed_seconds}초`));
@@ -223,7 +224,7 @@
         box.append(element("span", "쉽게 다시 설명", "simplified-label"));
         box.append(markup(message.simplified, element("p")));
         bubble.append(box);
-      } else if (message.status === "answered" && message.id) {
+      } else if (!message.context_excluded && message.status === "answered" && message.id) {
         const button = element("button", "쉽게 다시 설명해줘", "text-action");
         button.type = "button"; button.dataset.simplify = message.id;
         button.addEventListener("click", () => action("답변을 쉬운 말로 바꾸고 있어요", async () => {
@@ -260,13 +261,19 @@
       card.append(summary);
       const analysis = doc.analysis || {};
       card.append(element("p", analysis.headline || "분석 완료"), element("p", analysis.summary || ""));
-      const checks = [...(analysis.signals || []), ...(analysis.fields || []), ...(analysis.clauses || [])];
+      const unavailable = (analysis.fields || []).filter(check => check.status === "not_found");
+      const checks = [...(analysis.signals || []), ...(analysis.fields || []).filter(check => check.status !== "not_found"), ...(analysis.clauses || []), ...unavailable];
       if (checks.length) {
         const list = element("ul");
         for (const check of checks) {
+          if (check === unavailable[0]) {
+            const heading = element("li");
+            heading.append(element("strong", "현재 첨부 범위에서 확인할 수 없는 항목"), element("p", "다른 페이지에 있거나 OCR이 읽지 못했을 수 있습니다. 계약서 전체의 누락을 뜻하지 않습니다."));
+            list.append(heading);
+          }
           const li = element("li");
           li.append(element("strong", `${check.title}${check.page_number ? ` (${check.page_number}쪽)` : ""}`));
-          const statuses = { confirmed: "문구 탐지", review: "원본 확인 필요", not_found: "문구 미탐지", included: "관련 특약 탐지", recommended: "협의 권장", high: "우선 확인", caution: "주의 확인", info: "참고" };
+          const statuses = { confirmed: "문구 탐지", review: "원본 확인 필요", not_found: "첨부 범위에서 미확인", included: "관련 특약 탐지", recommended: "협의 권장", high: "우선 확인", caution: "주의 확인", info: "참고" };
           const status = statuses[check.status || check.severity];
           if (status) li.append(element("p", status, "doc-meta"));
           for (const text of [check.guidance, check.reason, check.recommendation, ...(check.checks || [])]) {
@@ -280,19 +287,35 @@
       for (const warning of analysis.extraction?.warnings || []) card.append(element("p", warning));
       for (const check of analysis.common_checks || []) card.append(element("p", check));
       if (analysis.disclaimer) card.append(element("p", analysis.disclaimer, "doc-meta"));
-      const remove = element("button", "문서 삭제"); remove.type = "button";
-      remove.addEventListener("click", () => { selectedDelete = doc.document_id; $("delete-dialog").showModal(); });
-      card.append(remove); box.append(card);
+      const remove = element("button", undefined, "document-remove"); remove.type = "button";
+      remove.title = "문서 삭제";
+      const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      icon.setAttribute("viewBox", "0 0 24 24"); icon.setAttribute("aria-hidden", "true");
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", "M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5");
+      icon.append(path); remove.append(icon);
+      remove.setAttribute("aria-label", `${doc.filename} 문서 삭제`);
+      remove.addEventListener("click", (event) => {
+        event.preventDefault(); event.stopPropagation();
+        selectedDelete = doc.document_id;
+        $("delete-document-name").textContent = doc.filename;
+        $("delete-dialog").showModal();
+      });
+      summary.append(remove); box.append(card);
     }
     if (documents.some((doc) => doc.document_id === previous)) select.value = previous;
   }
   function renderConversation(data) {
     const context = data.conversation || {};
     const pending = context.enabled ? context.pending : null;
-    const box = $("clarification"); box.replaceChildren(); box.hidden = !pending;
-    if (pending) {
-      box.append(element("strong", pending.question), element("p", "선택하거나 아래에 편하게 답해 주세요."));
-      const choices = element("div", undefined, "clarification-choices");
+    input.placeholder = "궁금한 내용을 편하게 물어보세요.";
+    form.dataset.replyTo = pending?.message_id || "";
+    input.setAttribute("aria-description", "질문하거나 직전 답변에 이어서 자유롭게 입력하세요.");
+    // Suggested replies and free typing share the same composer and pending turn.
+    $("messages").querySelectorAll(".conversation-choices").forEach(node => node.remove());
+    const row = Array.from($("messages").children).find(node => node.dataset.messageId === pending?.message_id);
+    if (pending && row) {
+      const choices = element("div", undefined, "clarification-choices conversation-choices");
       for (const choice of pending.choices || []) {
         const button = element("button", choice.label); button.type = "button";
         button.addEventListener("click", () => {
@@ -302,7 +325,13 @@
         });
         choices.append(button);
       }
-      box.append(choices);
+      const typeReply = element("button", "직접 입력"); typeReply.type = "button";
+      typeReply.addEventListener("click", () => {
+        replyingTo = pending.message_id;
+        input.focus(); controls();
+      });
+      choices.append(typeReply);
+      row.querySelector(".bubble").append(choices);
     }
     $("answer-actions").hidden = !(context.enabled && context.can_rephrase);
     const active = data.documents.find((doc) => doc.document_id === context.active_document_id);
@@ -381,7 +410,7 @@
       $("welcome").hidden = true;
       $("messages").append(renderMessage({ role: "user", content: question })); scrollBottom();
       lastRendered = "";
-      const payload = { message: question, document_id: $("document-select").value || null, ...(replyingTo ? { reply_to: replyingTo } : {}) };
+      const payload = { message: question, document_id: $("document-select").value || null, ...((replyingTo || form.dataset.replyTo) ? { reply_to: replyingTo || form.dataset.replyTo } : {}) };
       const requestId = submission.get({ conversation_id: conversationId, ...payload });
       const submittedText = input.value;
       const submittedReply = replyingTo;
@@ -472,8 +501,11 @@
   }
   $("cancel-delete").addEventListener("click", () => $("delete-dialog").close());
   $("confirm-delete").addEventListener("click", () => {
+    const documentId = selectedDelete;
+    if (!documentId) return;
     $("delete-dialog").close(); action("문서를 삭제하고 있어요", async () => {
-      render(await post(`${form.dataset.uploadUrl}${encodeURIComponent(selectedDelete)}/delete/`));
+      render(await post(`${form.dataset.uploadUrl}${encodeURIComponent(documentId)}/delete/`));
+      selectedDelete = null;
       submission.clear(); replyingTo = null;
     });
   });

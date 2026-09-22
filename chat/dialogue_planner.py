@@ -37,7 +37,7 @@ Waiting for a deposit to be returned means deposit_returned=아니요. A future 
 An audience for an explanation (beginner, someone signing their first lease) is NOT the consultation subject.
 If the user needs to check documents or cannot confirm now, mark ONLY the pending field 모름; do not invent other unknown fields.
 Fields: contract_type 전세/월세/반전세/모름;
-contract_ended (contract has ended), deposit_returned (deposit received), living_in_property (still lives there), moved_out (already moved out), landlord_notified (already notified landlord): 예/아니요/모름;
+contract_signed (contract already signed), contract_ended (contract has ended), deposit_returned (deposit received), living_in_property (still lives there), moved_out (already moved out), landlord_notified (already notified landlord): 예/아니요/모름;
 subject: ONLY an explicitly named person whose case this is, literal user words; never a document clause or question topic; role: ONLY explicit 임대인/집주인, 임차인/세입자, 중개사/중개인, 대리인;
 Do not extract subject from phrases meaning related, that, beginner or explanation audience. Sources/evidence questions are followup, not document_question unless they refer to an uploaded document.
 property_type: ONLY building type (주택, 아파트, 빌라, 단독주택, 다가구주택, 다세대주택, 연립주택, 오피스텔, 상가, 기숙사, 고시원), never appliances;
@@ -67,6 +67,9 @@ For papers, deadlines or sources of the CURRENT issue, retain context.topic rath
 Use stable topics: 보증금반환, 시설수리, 계약준비, 계약갱신, 대항력, 문서확인 as applicable.
 clarify_field may be a missing FACT field with action=rag (a question AFTER guidance), or with action=clarify. Otherwise null. Pure greetings, general definitions, summary/rephrasing, and questions asking what an uploaded document says need no personal interview.
 An approaching end (끝나가다/만료 예정) is NOT already ended: contract_ended=아니요. Never infer a completed expiry from these phrases.
+An attached registry (등기/등본/등기부등본) represents the building being discussed. For the selected/active registry, "이집 계약해도 괜찮을까?" and similar requests mean explain documented risk indicators and pre-contract checks: action=rag, intent=document_question, topic=문서확인, purpose=documents. Never interpret this as a demand for a safety guarantee or refuse it. Keep using that owned document for building follow-ups until deleted or the user explicitly switches buildings/cases. General unrelated questions do not use it. Multiple plausible buildings require a document choice.
+With an attached contract, asking when to move in is a document date lookup (인도일/입주일), not a request to ask the user for start_date. Read the handover clause, distinguish expiry and signing dates, and request a clearer excerpt only when unreadable.
+A contract attachment alone does NOT prove the user signed. Extract contract_signed only from explicit current statements ("이미 계약했어" = 예; "아직 계약 전이야" = 아니요). Preserve the stored stage on follow-ups. If stage affects guidance and is unknown, give supported document guidance with rag and clarify_field=contract_signed; simple document value lookups need no stage question. Do not infer signing from OCR signatures, contract dates, or hypothetical permission questions.
 document_id is an owned document ID or null; ambiguous documents require clarify_field=document.
 style: standard/simple/brief. The SERVER builds the search query and clarification question; you only extract statements and route.
 purpose is the CURRENT question's requested answer, separate from topic and intent:

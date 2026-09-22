@@ -56,7 +56,6 @@
     </div>
     <section class="composer-section" aria-label="질문 입력">
       <div id="notice" class="notice" role="alert" hidden></div>
-      <div id="clarification" class="clarification-panel" aria-live="polite" hidden></div>
       <div id="answer-actions" class="answer-actions" hidden><button type="button" data-question="방금 답변을 더 쉽게 설명해 주세요.">쉽게 설명</button><button type="button" data-question="방금 답변의 핵심만 짧게 요약해 주세요.">핵심만 요약</button></div>
       <p id="active-document" class="active-document" hidden></p>
       <div id="upload-progress" class="upload-progress" aria-live="polite"></div>
@@ -76,8 +75,8 @@
 </div>
 <div id="toast-stack" class="toast-stack" aria-live="polite" aria-atomic="true"></div>
 <dialog id="reset-dialog"><h2>새 대화를 시작할까요?</h2><p>{% if user.is_authenticated %}현재 계약의 채팅 기록만 비웁니다. 저장된 문서와 계약 정보는 유지됩니다.{% else %}현재 대화와 첨부 문서가 삭제됩니다.{% endif %}</p><div class="dialog-actions"><button type="button" id="cancel-reset">취소</button><button type="button" id="confirm-reset" class="primary">새 대화 시작</button></div></dialog>
-<dialog id="delete-dialog"><h2>문서를 삭제할까요?</h2><p>{% if user.is_authenticated %}암호화 원본과 이 문서에서 추출된 계약 정보가 삭제되고 체크리스트·일정이 다시 계산됩니다.{% else %}삭제한 문서의 내용이 후속 질문에 사용되지 않도록 현재 대화 기록도 함께 삭제됩니다.{% endif %}</p><div class="dialog-actions"><button type="button" id="cancel-delete">취소</button><button type="button" id="confirm-delete" class="primary">문서 삭제</button></div></dialog>
+<dialog id="delete-dialog"><h2>문서를 삭제할까요?</h2><p id="delete-document-name" class="delete-document-name"></p><p>{% if user.is_authenticated %}문서 원본과 추출 정보가 삭제됩니다. 대화는 화면에 남지만 관련 내용은 이후 답변·새 리포트의 근거에서 제외됩니다.{% else %}대화 기록은 남습니다. 삭제한 문서와 관련된 내용은 이후 답변의 근거에서 제외됩니다.{% endif %}</p><div class="dialog-actions"><button type="button" id="cancel-delete">취소</button><button type="button" id="confirm-delete" class="primary">문서 삭제</button></div></dialog>
 <noscript><p class="notice">채팅을 사용하려면 브라우저에서 JavaScript를 활성화해 주세요.</p></noscript>
 <script src="{% static 'chat/request-identity.js' %}" defer></script>
-<script src="{% static 'chat/app.js' %}?v=20260916-dialogue-integration" defer></script>
+<script src="{% static 'chat/app.js' %}?v=20260922-followup-choices" defer></script>
 {% endblock %}

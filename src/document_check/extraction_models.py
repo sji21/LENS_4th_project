@@ -19,6 +19,9 @@ class ExtractionResult:
     pages: tuple[PageExtraction, ...]
     elapsed_seconds: float
     warnings: tuple[str, ...] = ()
+    date_readings: tuple = ()
+    table_cells: tuple = ()
+    table_values: tuple = ()
 
     @property
     def text(self) -> str:

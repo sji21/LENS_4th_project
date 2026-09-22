@@ -41,7 +41,8 @@ def test_extract_document_accepts_contract_image_extensions(monkeypatch, filenam
         assert data.startswith(b"\x89PNG")
         return "주택 임대차계약서 보증금 1억원"
 
-    monkeypatch.setattr(extraction, "_ocr_image", fake_ocr)
+    from src.document_check import photo_ocr
+    monkeypatch.setattr(photo_ocr, "extract_photo", lambda *args: photo_ocr.PhotoResult(fake_ocr(*args), ()))
     source_format = "PNG" if filename.endswith("png") else "JPEG"
 
     result = extraction.extract_document_text(filename, image_bytes(source_format))

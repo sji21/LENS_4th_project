@@ -68,7 +68,7 @@ FIELD_RULES = (
         "property_address",
         "임대 목적물 주소",
         "core",
-        ("소재지", "임차주택의 표시", "목적물 주소"),
+        ("소재지", "임차주택의 표시", "목적물 주소", "소재지번"),
         (ADDRESS_PATTERN,),
         "등기사항증명서·건축물대장과 같은 주소와 동·호가 적혔는지 원본에서 확인하세요.",
     ),
@@ -124,7 +124,7 @@ FIELD_RULES = (
         "lease_period",
         "임대차 기간",
         "core",
-        ("임대차기간", "계약기간", "임대차 기간"),
+        ("임대차기간", "계약기간", "임대차 기간", "존속기간"),
         (DATE_PATTERN, r"\d+\s*(?:년|개월)"),
         "입주일과 종료일이 합의 내용과 일치하는지 확인하세요.",
         (HUG_CONTRACT_CONTENT, RTMS_REPORTING),
@@ -261,6 +261,12 @@ def check_contract_fields(pages: tuple[PageExtraction, ...]) -> tuple[ContractFi
             evidence = _evidence(label_context, label_match.start(), label_match.end())
         else:
             window = label_context[label_match.start() : label_match.end() + 140]
+            # A following cell label must not lend its value to this field.
+            tail = window[label_match.end() - label_match.start():]
+            boundaries = [m.start() for other in FIELD_RULES if other.field_id != rule.field_id
+                          for label in other.labels if (m := _flexible_keyword(label).search(tail))]
+            if boundaries:
+                window = window[:label_match.end() - label_match.start() + min(boundaries)]
             value_found = any(re.search(pattern, window) for pattern in rule.values)
             status = "confirmed" if value_found else "review"
             page_number = label_page.page_number

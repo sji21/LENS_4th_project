@@ -322,37 +322,30 @@ def delete_document(request, document_id):
                 raise ApiError("문서를 찾을 수 없습니다.", 404)
             conversation.state["documents"] = [d for d in documents if d["document_id"] != document_id]
             invalidate_document(conversation.state, document_id)
+            provenance_complete = conversation.state.get("document_provenance_version") == 1
+            for message in conversation.state["messages"]:
+                if not provenance_complete or document_id in message.get("document_ids", []):
+                    message["context_excluded"] = True
+                    message["context_exclusion_reason"] = "document_deleted"
+                    message["context_content"] = ""
+            conversation.state["document_provenance_version"] = 1
             if conversation.case_id:
                 from cases.services.attachments import delete_document_attachment
                 from cases.services.conversation_guidance import clear_generated_guidance, schedule_conversation_guidance
                 delete_document_attachment(conversation.case, document_id)
-                messages = conversation.state["messages"]
-                provenance_complete = conversation.state.get("document_provenance_version") == 1
-                retained = ([
-                    message for message in messages
-                    if document_id not in message.get("document_ids", [])
-                ] if provenance_complete else [])
-                removed_message_ids = [
-                    message.get("id") for message in messages
-                    if message.get("id") and message not in retained
-                ]
-                conversation.state["document_provenance_version"] = 1
-                conversation.state["messages"] = retained
-                Message.objects.filter(conversation=conversation).exclude(
-                    public_id__in=[m.get("id") for m in retained if m.get("id")]
-                ).delete()
+                services.sync_persistent_messages(conversation)
+                removed_message_ids = [message.get("id") for message in conversation.state["messages"]
+                                       if message.get("context_excluded") and message.get("id")]
                 from cases.services.facts import invalidate_source
                 for message_id in removed_message_ids:
                     invalidate_source(conversation.case, "chat", message_id)
                 clear_generated_guidance(conversation.case)
                 schedule_conversation_guidance(
                     conversation.case,
-                    messages=retained,
+                    messages=conversation.state["messages"],
                     conversation=conversation,
                 )
             else:
-                # Guest sessions cannot preserve provenance separately.
-                conversation.state["messages"] = []
                 pending = conversation.pending_documents.filter(document_id=document_id).first()
                 if pending:
                     pending.delete()

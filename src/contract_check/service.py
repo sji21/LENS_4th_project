@@ -2,12 +2,15 @@
 
 from __future__ import annotations
 
+from dataclasses import replace
+
 from src.document_check.extraction import extract_document_text
 from src.document_check.extraction_models import ExtractionResult
 from src.document_check.privacy import mask_sensitive_text
 
-from .models import ContractAnalysis
+from .models import ContractAnalysis, ContractFieldCheck
 from .rules import check_contract_clauses, check_contract_fields, looks_like_contract
+from .dates import extract_clause_dates, reconcile_dates
 
 
 DISCLAIMER = (
@@ -54,11 +57,51 @@ def analyze_contract_extraction(
             masked_text_preview=mask_sensitive_text(extraction.text[:12000]),
         )
 
-    fields = check_contract_fields(extraction.pages)
+    fields = tuple(replace(item, guidance=(
+        "현재 업로드한 페이지에서 확인되지 않았습니다. 실제 누락으로 판단하지 않습니다. 해당 항목이 있는 페이지나 선명한 확대 사진을 추가해 주세요. " + item.guidance
+        if item.status == "not_found" else
+        "항목 표시는 있지만 작성값을 확정하지 못했습니다. 질문에 필요한 부분이면 원본을 대조하거나 해당 부분을 선명하게 다시 촬영해 주세요. " + item.guidance
+        if item.status == "review" and item.importance != "visual" else item.guidance
+    )) for item in check_contract_fields(extraction.pages))
+    uncertain_ocr = any("판독 신뢰도가 낮" in w or "판독 결과" in w for w in extraction.warnings)
+    if uncertain_ocr:
+        fields = tuple(replace(item, status="review", guidance="OCR 결과를 확정하기 어렵습니다. 해당 항목을 선명하게 확대 촬영하거나 원본과 대조해 주세요. " + item.guidance)
+                       if item.status == "confirmed" else item for item in fields)
     clauses = check_contract_clauses(
         extraction.pages,
         registry_signal_ids=registry_signal_ids,
     )
+    readings = list(extraction.date_readings)
+    for page in extraction.pages:
+        for item in extract_clause_dates(page.text, page.page_number):
+            if any(previous.field_id == item.field_id and previous.value == item.value for previous in extraction.date_readings):
+                continue
+            # Whole-page uncertainty does not override independent focused OCR.
+            status = "review" if any("판독 신뢰도가 낮" in w for w in extraction.warnings) else "confirmed"
+            readings.append(replace(item, status=status))
+    dates = reconcile_dates(readings)
+    date_fields = []
+    for field_id, title in (("handover_date", "인도기한(입주 관련 날짜)"),
+                            ("lease_start_date", "임대차 시작일"),
+                            ("lease_end_date", "임대차 종료일"),
+                            ("balance_date", "잔금 지급일")):
+        values = [item for item in dates if item.field_id == field_id]
+        confirmed = len(values) == 1 and values[0].status == "confirmed"
+        status = "confirmed" if confirmed else "review" if values else "not_found"
+        guidance = (f"문구에서 읽은 날짜: {values[0].value}. 실제 이행일을 확정한 결과는 아니므로 원문과 대조해 주세요."
+                    if confirmed else "현재 첨부 범위에서 날짜와 해당 조항을 명확히 연결하지 못했습니다. 실제 누락으로 판단하지 않습니다. 해당 조항과 날짜가 함께 보이는 확대 사진을 추가해 주세요.")
+        date_fields.append(ContractFieldCheck(field_id, title, "conditional", status, guidance,
+                                              page_number=values[0].page_number if values else None,
+                                              evidence=values[0].evidence if confirmed else ""))
+    fields += tuple(date_fields)
+    for field_id, title in (("landlord_name", "임대인 성명"), ("tenant_name", "임차인 성명")):
+        values = [item for item in extraction.table_values if item.field_id == field_id]
+        confirmed = len(values) == 1 and values[0].status == "confirmed"
+        fields += (ContractFieldCheck(
+            field_id, title, "conditional", "confirmed" if confirmed else "review" if values else "not_found",
+            "당사자 표시·성명 칸·값 칸을 같은 표에서 연결해 판독했습니다. 원문과 대조해 주세요."
+            if confirmed else "현재 첨부 범위에서 당사자와 성명 칸을 정확히 연결하지 못했습니다. 실제 누락으로 판단하지 않습니다. 당사자 표시와 성명 칸이 함께 보이는 확대 사진을 추가해 주세요.",
+            page_number=values[0].page_number if values else None),)
     missing_core = [
         field for field in fields if field.importance == "core" and field.status == "not_found"
     ]
@@ -88,12 +131,13 @@ def analyze_contract_extraction(
         filename=filename,
         status=status,
         headline=headline,
-        summary=summary,
+        summary=f"현재 첨부된 {extraction.page_count}쪽만 점검했습니다. 전체 계약서 제출 여부는 알 수 없습니다. " + summary,
         extraction=extraction,
         fields=fields,
         clauses=clauses,
         disclaimer=DISCLAIMER,
         masked_text_preview=mask_sensitive_text(extraction.text[:12000]),
+        dates=dates,
     )
 
 
