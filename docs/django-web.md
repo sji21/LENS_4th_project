@@ -3,7 +3,12 @@
 4차 프로젝트의 기본 웹 실행 경로를 Django 5.2 + HTML·CSS·JavaScript로 전환했다.
 채팅, 공식 출처, 계약서·등기 PDF/이미지 분석, 문서 선택·삭제, 새 대화를 제공한다.
 기존 `src/` 검색·생성·법률 검증 함수는 수정하지 않고 `chat/services.py`에서 호출한다.
-기존 Streamlit 화면은 회귀 비교용으로 보존하며 Django 실행에는 사용하지 않는다.
+PATCH-062에서 기존 Streamlit 화면과 전용 설정·테스트를 제거했다. 웹 실행 경로는 Django만 사용한다.
+
+PATCH-062의 검색 데이터는 `data/mysql-search/active.json`이 가리키는 검증된 portable
+release를 사용한다. 현재 작업 트리의 `django-runtime-20260922`는 로컬 검증 release이며,
+새 팀 배포 ZIP은 확정 소스에서 별도로 생성해야 한다. PATCH-043 내부 판례 실험 프로필은
+제품에서 지원하지 않으며, 재현용 코드는 `experiments/patch043_case_internal/`에만 둔다.
 
 ## 실행
 
@@ -14,7 +19,6 @@ Python 3.11 환경에서 다음 명령을 실행한다. Ollama, KURE 캐시, Tes
 pip install -r requirements.txt
 # .env가 없다면 .env.example을 복사하고 DJANGO_SECRET_KEY를 각자 생성한다.
 python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
-python -c "from pathlib import Path; Path('data/database').mkdir(parents=True, exist_ok=True)"
 python manage.py migrate
 python manage.py check
 python manage.py runserver 127.0.0.1:8000 --noreload
@@ -122,7 +126,7 @@ python -m pytest -q
 python manage.py makemigrations --check --dry-run
 ```
 
-개발용 requirements는 기존 Streamlit 회귀 테스트를 위해 Streamlit을 추가한다.
+개발용 requirements는 Django 웹·검색·문서 처리 회귀 테스트를 포함한다.
 Django는 BSD 라이선스의 5.2 LTS 계열로 제한했고 Python 3.11 환경에서 검증했다.
 웹 테스트는 CSRF, 세션 격리, 문서 문맥 비공개, 입력 제한, 중복·동시 요청, 잠금 회복,
 예외 처리, 문서 삭제·초기화와 기존 RAG 진입점 호출을 확인한다.

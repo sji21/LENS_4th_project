@@ -72,12 +72,12 @@ LLM_NUM_CTX = _env_number("JEONSEON_LLM_NUM_CTX", "8192", int)
 # 같은 구절 반복 방지를 서버 기본값에만 맡기지 않고 명시적으로 전달한다.
 LLM_REPEAT_PENALTY = _env_number("JEONSEON_LLM_REPEAT_PENALTY", "1.1", float)
 LLM_KEEP_ALIVE = os.getenv("JEONSEON_LLM_KEEP_ALIVE", "30m").strip() or "30m"
-OLLAMA_USER_AGENT = "PATCH32-Streamlit/1.0"
+OLLAMA_USER_AGENT = "LENS-Django/1.0"
 LOCAL_OLLAMA_BASE_URL = "http://localhost:11434"
 # RunPod가 꺼져 있을 때 180초 생성 timeout까지 기다리지 않고 로컬로 전환한다.
 OLLAMA_FAILOVER_PROBE_TIMEOUT = 3.0
 
-# 같은 Streamlit 프로세스에서 매 LLM 호출마다 RunPod 상태를 다시 조회하지 않는다.
+# 같은 Django 프로세스에서 매 LLM 호출마다 RunPod 상태를 다시 조회하지 않는다.
 # 실제 생성 호출이 실패하면 캐시를 버리고 로컬로 한 번 더 시도한다.
 _ROUTE_CACHE: dict[tuple[str, str], str] = {}
 

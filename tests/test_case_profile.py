@@ -3,7 +3,14 @@ from copy import deepcopy
 import json
 import pytest
 
-from src.retrieval.case_profile import CaseCorpusRetrievalService, read_case_profile, FILES, file_hash
+from src.retrieval.case_profile import (
+    CaseCorpusRetrievalService,
+    RETIRED_INTERNAL_SCHEMA,
+    load_case_profile,
+    read_case_profile,
+    FILES,
+    file_hash,
+)
 from src.retrieval.case_rerank import rerank_cases
 from src.retrieval.service import RetrievalService
 
@@ -54,6 +61,14 @@ def test_opt_in_profile_does_not_fallback_in_actual_service_factory(monkeypatch)
         _build_service()
     with pytest.raises(ValueError,match='어휘 전용'):
         RetrievalService.from_local_chunks([])
+
+
+def test_patch043_internal_profile_is_refused_by_product_loader(tmp_path):
+    profile = tmp_path / "patch043-profile.json"
+    profile.write_text(json.dumps({"schema": RETIRED_INTERNAL_SCHEMA}), encoding="utf-8")
+
+    with pytest.raises(ValueError, match="PATCH-043 내부 판례 프로필"):
+        load_case_profile(profile)
 
 
 def test_profile_refuses_swapped_db_before_model_loading(tmp_path):

@@ -5,7 +5,7 @@ from django.views.decorators.http import require_GET, require_POST
 
 from .models import ChecklistItem, ContractCase, Report, ScheduleEvent
 from .services.report_pdf import render_report_pdf, report_filename
-from .services.reports import generate_report
+from .services.reports import generate_report, normalize_report_content
 
 
 def owned_case(request, case_id):
@@ -166,4 +166,8 @@ def download_report(request, case_id, report_id):
 def report_detail(request, case_id, report_id):
     case = owned_case(request, case_id)
     report = get_object_or_404(Report, pk=report_id, case=case)
-    return render(request, "cases/report_detail.html", {"case": case, "report": report})
+    return render(request, "cases/report_detail.html", {
+        "case": case,
+        "report": report,
+        "content": normalize_report_content(report.content_json),
+    })

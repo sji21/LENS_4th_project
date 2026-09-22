@@ -14,6 +14,7 @@ from src.retrieval.case_rerank import rerank_cases
 
 PROFILE_ENV = "LENS_CASE_RETRIEVAL_PROFILE"
 DEFAULT_PROFILE = Path(__file__).resolve().parents[2] / "data/case_corpus/runtime-profile.json"
+RETIRED_INTERNAL_SCHEMA = "lens-case-internal-v1"
 FILES = ("database/knowledge.sqlite3", "chunks/laws.jsonl", "chunks/cases.jsonl", "chunks/guides.jsonl")
 CHUNKS = FILES[1:]
 TAX_SOURCES = ("국세법령정보시스템", "지방세법령정보시스템")
@@ -255,11 +256,11 @@ class CaseCorpusRetrievalService(RetrievalService):
 
 def load_case_profile(path, *, attach_base=True):
     header = json.loads(Path(path).read_text(encoding="utf-8-sig"))
-    if header.get("schema") == "lens-case-internal-v1":
-        from src.retrieval.case_internal_profile import load_internal_case_profile
-        # Keep the product law/civil/guide channels when overlaying a new case index.
-        base_service = RetrievalService._from_index_without_case_profile() if attach_base else None
-        return load_internal_case_profile(path, base_service=base_service)
+    if header.get("schema") == RETIRED_INTERNAL_SCHEMA:
+        raise ValueError(
+            "PATCH-043 내부 판례 프로필은 제품 검색에서 지원하지 않습니다. "
+            "현재 서비스에는 검증된 MySQL 검색 release 또는 lens-case-retrieval-v1 프로필만 사용하세요."
+        )
     from src.retrieval.dense import SentenceTransformerEmbedding, ChromaRetriever
     from src.retrieval.retriever import load_chunks
 

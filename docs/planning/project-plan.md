@@ -51,7 +51,7 @@ LENS는 답변 범위를 넓히는 대신, 검색된 공공 문서로 확인할 
 - 검색 근거에만 기반해 답변하고 출처를 결정론적으로 표시한다.
 - 근거 부족, 범위 밖 질문, 개별 법률 판단 요청을 구분한다.
 - 고정 평가셋으로 검색, 답변, 인용, 보류, 응답 시간을 측정한다.
-- Streamlit에서 질문, 답변, 출처, 근거 원문을 확인할 수 있게 한다.
+- Django에서 질문, 답변, 출처, 근거 원문을 확인할 수 있게 한다.
 
 ### 3.2 1차 MVP에서 하지 않는 것
 
@@ -164,7 +164,7 @@ Vector DB 메타데이터에는 문자열·숫자·불리언 스칼라만 저장
 | 인용 | 출처 코드 생성과 인용 검증 | 인용이 검색된 chunk 메타데이터와 일치 |
 | 안전장치 | ANSWER/ABSTAIN/REFUSE, PII 마스킹, 인젝션 방어 | 적대적 질문에서 범위 정책 준수 |
 | 평가 | Dev/Holdout, 검색·답변·인용·보류·지연 지표 | Baseline과 실험 결과 JSON 저장 |
-| 서비스 | Streamlit 질문·답변·출처·근거 화면 | 새 환경에서 README만으로 실행 가능 |
+| 서비스 | Django 질문·답변·출처·근거 화면 | 새 환경에서 README만으로 실행 가능 |
 
 ### 6.1 2차 등기 점검 확장 범위
 
@@ -287,7 +287,7 @@ PII 마스킹 + 범위 분류
 | 임베딩 | `text-embedding-3-small` | 초기 비용과 품질의 균형, 계획서 기준 모델 |
 | Vector DB | Chroma | 로컬 영속화와 메타데이터 필터 지원, 별도 서버 없이 재현 가능 |
 | 검색 | Dense Top-k | 가장 단순한 Baseline. 조문번호 질의 실패가 확인될 때만 Hybrid 도입 |
-| 앱 | Streamlit | 단일 팀 프로젝트의 데모와 근거 확인 UI에 충분 |
+| 앱 | Django 5.2 + HTML·CSS·JavaScript | 세션·CSRF·문서 업로드 경계를 갖춘 웹 UI |
 | PDF 파싱 | pdfplumber | 텍스트 기반 공식 가이드 PDF 처리. 스캔 PDF는 MVP에서 제외 |
 | 평가 | 자체 지표 + 선택적 RAGAS | Hit@k, MRR, Citation Precision은 gold ID로 결정론적 채점. Faithfulness만 보조 평가 |
 | 등기 PDF 기본 추출 | PyMuPDF 또는 pdfplumber | 텍스트 레이어가 있는 PDF는 OCR 없이 빠르고 정확하게 처리 |
@@ -408,7 +408,7 @@ PII 마스킹 + 범위 분류
 | G2 Baseline | 청킹, 인덱싱, Dense 검색, LCEL, 인용, 최소 UI | 대표 질문 10개에 근거·답변·출처가 함께 출력 | 실행 가능한 Baseline |
 | G3 검색 개선 | Baseline 측정 후 1회 1조건 실험 | 동일 Dev set에서 수치와 실패 사례 비교 | `data/eval/runs/*.json` |
 | G4 답변 평가 | 보류 임계값, 인용 형식, 적대적 평가 | 근거 없는 단정 감소와 안전 정책 수치화 | 답변·안전성 리포트 |
-| G5 서비스 | UI, 오류 처리, 환경, 실행 문서 | 새 환경에서 README만 보고 실행 | Streamlit 앱, README |
+| G5 서비스 | UI, 오류 처리, 환경, 실행 문서 | 새 환경에서 README만 보고 실행 | Django 앱, README |
 | G6 최종 검증 | Holdout 1회, 회귀 테스트, 발표 | 성공·실패·한계와 다음 개선을 함께 제시 | 최종 비교표, 발표 자료 |
 
 Gate 2를 통과하기 전에는 Hybrid, Reranker, LangGraph 같은 확장 기능을 구현하지 않는다.
@@ -421,7 +421,7 @@ Gate 2를 통과하기 전에는 Hybrid, Reranker, LangGraph 같은 확장 기�
 | D2 | G1 | 법령 목록·평가 질문 설계, 법령 수집기 | Data, Eval | 법령 목록, fetcher, eval 설계안 |
 | D3 | G1 | XML·PDF 파싱, Document Card, Corpus Audit | Data, App, Domain | parsed 데이터, 데이터 문서 |
 | D4 | G2 | 조 단위 청킹, 임베딩, Chroma 적재 | Data | chunks, index |
-| D5 | G2 | Retriever, LCEL, 인용 검증, 최소 Streamlit | RAG, LLM, App | Baseline 데모 |
+| D5 | G2 | Retriever, LCEL, 인용 검증, 최소 Django UI | RAG, LLM, App | Baseline 데모 |
 | D6 | G3 | 평가 코드와 Baseline 측정 | Eval | baseline run |
 | D7 | G3-G4 | 단일 조건 실험, 실패 분석, 보류 정책 | Data, Eval | exp runs, 실패 목록 |
 | D8 | G4-G5 | 답변·적대적 평가, UI 완성 | Eval, App, Domain | 안전성 표, 앱 v2 |
@@ -433,7 +433,7 @@ Gate 2를 통과하기 전에는 Hybrid, Reranker, LangGraph 같은 확장 기�
 - PM·Domain: 범위, 문서 목록, 법적 표현, 일정, 발표
 - Data·RAG: 수집, 파싱, 청킹, 임베딩, 검색
 - LLM·Evaluation: 프롬프트, 체인, 평가셋, 실험, 안전성 평가
-- App·Infra: Streamlit, 오류 처리, 환경, 배포, 로그
+- App·Infra: Django, 오류 처리, 환경, 배포, 로그
 
 역할은 책임 영역이며 핵심 구조와 평가 결과는 전원이 설명할 수 있어야 한다.
 
@@ -452,7 +452,7 @@ Gate 2를 통과하기 전에는 Hybrid, Reranker, LangGraph 같은 확장 기�
 
 | 경로 | 현재 상태 | 다음 구현 |
 | --- | --- | --- |
-| `app/streamlit_app.py` | 진입점 docstring | 질문·답변·출처·근거 4영역 UI |
+| `chat/services.py`, `templates/chat/index.html` | Django 서비스·화면 | 질문·답변·출처·근거 UI |
 | `src/ingestion/` | 파일 골격 | API 수집, XML/PDF 파싱, 조 단위 청킹 |
 | `src/retrieval/` | 파일 골격 | Chroma index, Dense retriever, 기준일 필터 |
 | `src/generation/` | 파일 골격 | 범위 정책, LCEL, 인용 생성·검증 |
@@ -489,7 +489,7 @@ Gate 2를 통과하기 전에는 Hybrid, Reranker, LangGraph 같은 확장 기�
 2. 문제 정의, 아키텍처, 설치·실행법, 기술 선택 이유가 포함된 README
 3. 출처·라이선스·규모·정제·청킹·제외 기준이 포함된 Document Card
 4. Dev·Holdout·적대적 평가셋과 Baseline·개선 비교 결과
-5. 질문·답변·출처·근거 원문을 확인할 수 있는 Streamlit 서비스
+5. 질문·답변·출처·근거 원문을 확인할 수 있는 Django 서비스
 6. 비즈니스 가치, 데모, 평가, 실패 사례, 한계를 포함한 발표 자료
 7. 2차 확장 선택 시 등기 OCR 방식별 정확도·시간·비용 비교 보고서와 개인정보 처리 명세
 

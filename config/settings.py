@@ -39,9 +39,11 @@ TEMPLATES = [{
 }]
 WSGI_APPLICATION = "config.wsgi.application"
 ASGI_APPLICATION = "config.asgi.application"
+WEB_DATABASE_PATH = BASE_DIR / "data" / "database" / "web.sqlite3"
+WEB_DATABASE_PATH.parent.mkdir(parents=True, exist_ok=True)
 DATABASES = {"default": {
     "ENGINE": "django.db.backends.sqlite3",
-    "NAME": BASE_DIR / "data" / "database" / "web.sqlite3",
+    "NAME": WEB_DATABASE_PATH,
     "OPTIONS": {"timeout": 20},
 }}
 AUTH_USER_MODEL = "accounts.User"

@@ -2,7 +2,7 @@
 
 ## 현재 구현 범위
 
-현재 초기 기능은 사용자가 올린 PDF에서 계약 전 확인이 필요한 권리 문구를 찾아 Streamlit 화면에 표시한다.
+현재 초기 기능은 사용자가 올린 PDF에서 계약 전 확인이 필요한 권리 문구를 찾아 Django 화면에 표시한다.
 
 ```text
 PDF 업로드
@@ -15,7 +15,7 @@ PDF 업로드
   -> 후속 RAG 검색 질의 생성
 ```
 
-현재 기능은 LLM이나 외부 OCR API를 사용하지 않는다. 업로드 원본과 추출문을 서버 파일로 저장하지 않고 Streamlit 세션 메모리에서만 처리한다.
+등기 분석 함수는 LLM이나 외부 OCR API를 사용하지 않는다. 현재 웹의 문서 보관·세션 처리 방식은 [Django 웹 안내](django-web.md)를 따른다.
 
 ## 탐지하는 주요 신호
 
@@ -57,7 +57,7 @@ TESSERACT_CMD=C:\Program Files\Tesseract-OCR\tesseract.exe
 ```bash
 python -m venv .venv
 pip install -r requirements.txt
-streamlit run app/streamlit_app.py
+python manage.py runserver 127.0.0.1:8000 --noreload
 ```
 
 ## 테스트
