@@ -43,6 +43,9 @@ def test_case_dashboard_requires_login_and_enforces_owner(client, user, case):
     assert page.index("전체 대화 일정") < page.index("전체 체크리스트")
     assert "채팅방별 표시" in page
     assert "채팅방별 리포트 파일" in page
+    assert 'id="calendar-month"' in page
+    assert 'id="calendar-picker"' in page
+    assert 'id="calendar-picker-grid"' in page
     assert "<h2>달력 일정</h2>" not in page
     assert "상담 녹음 분석" not in page
     assert "cases/mypage.js" in page
