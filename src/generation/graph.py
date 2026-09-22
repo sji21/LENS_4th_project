@@ -388,6 +388,11 @@ def build_generation_graph(
             and k_guide <= 0
         )
         main_llm = get_main_llm()
+        answer_plan = ""
+        if llm is None and not document_only:
+            answer_plan = chain_module.build_answer_plan(
+                question, result, get_aux_llm()
+            )
         qa_chain = (
             chain_module.build_document_qa_chain(main_llm, **({"response_style": response_style} if response_style is not None else {}))
             if document_only
@@ -397,7 +402,7 @@ def build_generation_graph(
             raw_text = qa_chain.invoke(
                 {
                     "context": chain_module.prompt_module.format_context(
-                        result, document_evidences
+                        result, document_evidences, answer_plan
                     ),
                     "question": question,
                 }

@@ -9,7 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
-- PATCH-058 adds a matching-request-only cancel action to the Django chat UI. Cancelling releases the conversation lease immediately and a late model response cannot be saved. Generation now checks multi-part questions, binds each conclusion to its direct source, and permits one focused semantic repair only after a deterministic repair has passed. A DEV100-v2 runner can select explicit question IDs for focused reruns. Related generation tests: 121 passed, 6 subtests passed; Django web tests: 41 passed. (commit: pending)
+- PATCH-058 adds a matching-request-only cancel action to the Django chat UI. Cancelling releases the conversation lease immediately and a late model response cannot be saved. Before production generation, a source-whitelisted answer plan separates answerable and evidence-insufficient question parts; the final answer still must pass deterministic and semantic validation. Generation also binds each conclusion to its direct source and permits one focused semantic repair only after a deterministic repair has passed. A DEV100-v2 runner can select explicit question IDs for focused reruns. Related tests: 201 passed, 6 subtests passed. (commit: pending)
 
 
 ## 2026-09-21

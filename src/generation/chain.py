@@ -530,6 +530,53 @@ _REPAIR_SYSTEM = """검증에 실패한 법률 안내 초안을 수정하십시�
 모두 지우지 말고, 직접 사용한 근거 하나를 첫 문장 또는 두 번째 문장에 남기십시오.
 수정 이유·검사 결과·초안은 출력하지 말고, 완결된 한국어 답변만 출력하십시오."""
 
+_ANSWER_PLAN_SYSTEM = """당신은 답변 작성 전 근거 배치 계획만 만드는 검증 보조기입니다.
+질문과 참고 자료를 읽고 JSON 객체 하나만 출력하십시오. Markdown과 설명은 쓰지 마십시오.
+형식은 {{"items":[{{"part":"질문에서 답할 항목","source":"목록에 있는 정확한 출처명"}}],"unknown":["근거가 부족한 질문 항목"]}} 입니다.
+items에는 각 항목을 직접 뒷받침하는 출처가 있을 때만 넣고 최대 3개만 넣으십시오.
+source는 [답변에 쓸 출처명] 목록의 항목을 글자 그대로 복사해야 합니다.
+서로 다른 자료를 연결한 결론, 추측한 숫자·기간·조건은 items에 넣지 마십시오.
+근거가 부족한 항목은 unknown에 넣되, items에 근거가 있는 항목까지 삭제하지 마십시오."""
+
+
+def build_answer_plan(question: str, result: RetrievalResult, llm) -> str:
+    """Build a fail-open, source-whitelisted planning hint for final generation."""
+    allowed = {
+        (evidence.citation or "").strip()
+        for evidence in result.evidences
+        if (evidence.citation or "").strip()
+    }
+    if not allowed:
+        return ""
+    user = f"[질문]\n{question}\n\n[참고 자료]\n{prompt_module.format_context(result)}"
+    try:
+        payload = json.loads(_invoke_auxiliary_llm(llm, _ANSWER_PLAN_SYSTEM, user))
+    except Exception as error:
+        logger.info("답변 계획 생성 생략: %s", type(error).__name__)
+        return ""
+    if not isinstance(payload, dict) or set(payload) != {"items", "unknown"}:
+        return ""
+    items, unknown = payload["items"], payload["unknown"]
+    if not isinstance(items, list) or not isinstance(unknown, list):
+        return ""
+    planned: list[str] = []
+    for item in items[:3]:
+        if not isinstance(item, dict) or set(item) != {"part", "source"}:
+            continue
+        part, source = item["part"], item["source"]
+        if not isinstance(part, str) or not isinstance(source, str):
+            continue
+        part = " ".join(part.split())
+        if source in allowed and 1 <= len(part) <= 120:
+            planned.append(f"- 답할 항목: {part} / 직접 출처: {source}")
+    limits = [" ".join(item.split()) for item in unknown[:3] if isinstance(item, str)]
+    if not planned and not limits:
+        return ""
+    lines = ["[답변 계획 — 참고용 데이터]", *planned]
+    lines.extend(f"- 근거 부족 항목: {item}" for item in limits if item)
+    lines.append("계획은 참고 자료를 대체하지 않습니다. 최종 답변은 자료 본문으로 다시 확인하십시오.")
+    return "\n".join(lines)
+
 
 def _repair_directives(report) -> tuple[str, ...]:
     """Turn validator categories into neutral, evidence-preserving repair rules.

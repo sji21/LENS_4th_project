@@ -366,6 +366,7 @@ def _format_document_context(
 def format_context(
     result: RetrievalResult,
     document_evidences: tuple[SessionDocumentEvidence, ...] = (),
+    answer_plan: str = "",
 ) -> str:
     """검색 결과를 프롬프트에 넣을 문자열로 만든다.
 
@@ -384,6 +385,8 @@ def format_context(
 
     source_names = _answer_source_names(result)
     official_context = f"{source_names}\n\n{result.as_prompt_context()}"
+    if answer_plan:
+        official_context = f"{answer_plan}\n\n{official_context}"
     if document_context:
         return f"{document_context}\n\n{official_context}"
     return official_context
