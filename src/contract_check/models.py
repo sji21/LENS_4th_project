@@ -50,6 +50,7 @@ class ContractAnalysis:
     clauses: tuple[ContractClauseCheck, ...]
     disclaimer: str
     masked_text_preview: str = field(repr=False)
+    dates: tuple = ()
 
     def to_public_dict(self) -> dict:
         """파일명과 OCR 원문을 제외한 팀 공유용 결과를 반환한다."""
@@ -57,10 +58,15 @@ class ContractAnalysis:
         payload = asdict(self)
         payload.pop("filename", None)
         payload.pop("masked_text_preview", None)
+        payload["extraction"].pop("date_readings", None)
+        payload["extraction"].pop("table_cells", None)
+        payload["extraction"].pop("table_values", None)
         for page in payload["extraction"]["pages"]:
             page.pop("text", None)
         for field in payload["fields"]:
             field["evidence"] = ""
         for clause in payload["clauses"]:
             clause["evidence"] = ""
+        for item in payload["dates"]:
+            item["evidence"] = ""
         return payload

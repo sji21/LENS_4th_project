@@ -35,6 +35,8 @@ def conversation_messages(case, messages=None):
         messages = conversation.state.get("messages", []) if conversation else []
     selected = []
     for message in messages[-MAX_MESSAGES:]:
+        if message.get("context_excluded"):
+            continue
         role = message.get("role")
         if role not in {"user", "assistant"}:
             continue

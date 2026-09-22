@@ -23,7 +23,7 @@ def empty_dialogue():
     return {
         "version": VERSION, "turn": 0, "epoch": 0, "topic": None,
         "facts": {}, "history": [], "changes": [], "pending": None,
-        "active_document_id": None, "last_answer": None, "last_status": None,
+        "active_document_id": None, "document_binding_suspended": False, "last_answer": None, "last_status": None,
         "clarification_counts": {},
     }
 
@@ -94,11 +94,14 @@ def apply_user_update(state, *, user, updates=None, topic=None, topic_changed=Fa
     if topic_changed:
         draft = empty_dialogue()
         draft["epoch"] = epoch + 1
+        draft["document_binding_suspended"] = not bool(document_id)
     draft["turn"] = turn
     if topic is not None:
         if topic != draft["topic"]:
             draft["last_answer"] = None
         draft["topic"] = _safe(topic)
+    if document_id:
+        draft["document_binding_suspended"] = False
     if document_id is not None:
         if draft["active_document_id"] != (document_id or None):
             draft["last_answer"] = None
