@@ -4,13 +4,13 @@ data/parsed/
 data/chunks/
 data/database/
 data/index/
+/data/models/
+/data/mysql-search/
 /data/.retrieval-data.lock
 /data/case_internal/runtime-profile.json
 /data/case_internal/runtime-profile.json.tmp
 /data/case_corpus/runtime-profile.json
 /data/case_corpus/runtime-profile.json.tmp
-/data/mysql-search/
-/data/models/
 
 # 환경 변수 · 비밀정보
 .env
@@ -19,6 +19,8 @@ data/index/
 __pycache__/
 *.pyc
 .venv/
+.venv311/
+.venv312/
 venv/
 *.egg-info/
 /.pytest_cache/

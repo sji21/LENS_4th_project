@@ -5,6 +5,15 @@ Changes made before the transfer are recorded in the
 [3rd project changelog](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG.md).
 This file records the 4th project from its first change onward.
 
+## 2026-09-22
+
+### Fixed (Bug Fixes)
+
+- PATCH-058 review fixes keep the frozen model, retrieval budgets, answer prompt and validation thresholds while aligning HO30 with the production Graph. They bound repairs to the documented path, preserve actual repair counts, accept fenced JSON without relaxing its schema, retain displayed guide names in answer plans, recover truncated final checkpoints, and correct RunPod/no-think sampling. Web cancellation no longer restores a completed successor lease or leaves the first rolled-back room in the session. LIST ordering, pipeline limits and per-member `.env.example` synchronization guidance are corrected. Review-focused tests: 209 passed, 1 skipped and 6 subtests; evaluation/search expansion: 189 passed. The non-Streamlit full suite has 3,041 passed, 2 failed, 3 errors, 12 skipped and 689 subtests; all five failures are the recorded PATCH-042 evaluator-source mismatch. The two Streamlit modules cannot be collected because the optional package is not installed. (commits: 509ec0f0, 4b6681c1)
+
+- PATCH-058 adds a matching-request-only cancel action to the Django chat UI. Cancelling releases the conversation lease immediately and a late model response cannot be saved. Before production generation, a source-whitelisted answer plan separates answerable and evidence-insufficient question parts; the final answer still must pass deterministic and semantic validation. Generation also binds each conclusion to its direct source and permits one focused semantic repair only after a deterministic repair has passed. A DEV100-v2 runner can select explicit question IDs for focused reruns. (commits: c2e01eb6, 2ddb3f7b)
+
+
 ## 2026-09-21
 
 ### Changed

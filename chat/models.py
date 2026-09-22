@@ -12,6 +12,10 @@ class Conversation(models.Model):
     expires_at = models.DateTimeField(db_index=True)
     busy_until = models.DateTimeField(default=timezone.now)
     lease_token = models.UUIDField(null=True, editable=False)
+    # The browser request currently allowed to publish an answer.  Keeping this
+    # separate from the private lease token lets the owner cancel only its own
+    # in-flight request without allowing a stale tab to cancel a newer turn.
+    active_request_id = models.UUIDField(null=True, editable=False)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.CASCADE, related_name="conversations")
     case = models.ForeignKey("cases.ContractCase", null=True, blank=True, on_delete=models.CASCADE, related_name="conversations")
     created_at = models.DateTimeField(auto_now_add=True, null=True)

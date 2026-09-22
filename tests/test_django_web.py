@@ -23,6 +23,9 @@ pytestmark = pytest.mark.django_db
 def browser(settings, tmp_path):
     settings.PRIVATE_UPLOAD_ROOT = tmp_path
     settings.FILE_ENCRYPTION_KEY = Fernet.generate_key().decode()
+    # This module verifies the legacy graph HTTP contract; conversational
+    # planning has its own focused test module.
+    settings.CHAT_CONVERSATION_ENABLED = False
     client = Client(enforce_csrf_checks=True)
     assert client.get("/").status_code == 200
     return client
@@ -75,7 +78,7 @@ def test_html_has_csrf_form_static_assets_and_no_streamlit(browser):
 
 
 def test_csrf_required_for_every_mutation(browser):
-    for url in ["/api/chat/", "/api/reset/", "/api/documents/", "/api/documents/abc/delete/", "/api/readiness/retry/"]:
+    for url in ["/api/chat/", "/api/chat/cancel/", "/api/reset/", "/api/documents/", "/api/documents/abc/delete/", "/api/readiness/retry/"]:
         result = browser.post(url)
         assert result.status_code == 403
         assert "error" in result.json()
@@ -131,6 +134,44 @@ def test_busy_session_rejects_parallel_write(browser, model_calls):
     assert post(browser, "/api/chat/", {"message": "질문"}).status_code == 409
     assert current(browser)["busy"] is True
     model_calls[0].assert_not_called()
+
+
+def test_cancel_only_releases_matching_active_request(browser, model_calls):
+    conversation = Conversation.objects.get()
+    request_id = uuid.uuid4()
+    token = uuid.uuid4()
+    Conversation.objects.filter(pk=conversation.pk).update(
+        busy_until=timezone.now() + timedelta(minutes=2),
+        lease_token=token, active_request_id=request_id,
+    )
+
+    wrong = post(browser, "/api/chat/cancel/", {}, str(uuid.uuid4()))
+    assert wrong.status_code == 409
+    conversation.refresh_from_db()
+    assert conversation.lease_token == token and conversation.active_request_id == request_id
+
+    cancelled = post(browser, "/api/chat/cancel/", {}, str(request_id))
+    assert cancelled.status_code == 200 and cancelled.json()["cancelled"] is True
+    conversation.refresh_from_db()
+    assert conversation.lease_token is None and conversation.active_request_id is None
+    assert post(browser, "/api/chat/", {"message": "다시 질문"}).status_code == 200
+
+
+def test_cancelled_worker_cannot_publish_late_answer(browser, model_calls):
+    request_id = uuid.uuid4()
+    answer = model_calls[0].return_value
+
+    def cancel_current(*args, **kwargs):
+        conversation = Conversation.objects.get()
+        Conversation.objects.filter(pk=conversation.pk).update(
+            busy_until=timezone.now(), lease_token=None, active_request_id=None,
+        )
+        return answer
+
+    model_calls[0].side_effect = cancel_current
+    result = post(browser, "/api/chat/", {"message": "취소할 질문"}, str(request_id))
+    assert result.status_code == 409
+    assert Conversation.objects.get().state["messages"] == []
 
 
 def test_expired_lease_can_be_recovered(browser, model_calls):

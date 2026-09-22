@@ -51,6 +51,14 @@ class SystemPromptTests(unittest.TestCase):
     def test_uses_only_directly_relevant_evidence(self) -> None:
         self.assertIn("질문과 직접 관련 없는", prompt_module.SYSTEM_QA)
 
+    def test_forbids_unsupported_cross_source_legal_effects(self) -> None:
+        text = prompt_module.SYSTEM_QA
+
+        self.assertIn("각 결론은 그 결론을 직접 뒷받침하는 근거", text)
+        self.assertIn("연결 관계 자체를 설명할 때만", text)
+        self.assertIn("새로운 무효·책임", text)
+        self.assertIn("다른 법령이나 다른 조문의 요건·효과로 확장하지", text)
+
     def test_accuracy_has_priority_over_plain_language(self) -> None:
         text = prompt_module.SYSTEM_QA
 

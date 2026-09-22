@@ -36,3 +36,16 @@ const setInterval=fn=>{tick=fn;return 1;}, clearInterval=()=>{cleared=true;};
 })().catch(e=>{console.error(e);process.exitCode=1;});
 '''
     subprocess.run([node, "-e", script], check=True, capture_output=True, text=True)
+
+
+def test_cancel_releases_composer_before_aborted_send_fetch_settles():
+    source = Path("static/chat/app.js").read_text(encoding="utf-8")
+    start = source.index('  $("cancel-answer").addEventListener')
+    cancel = source[start:source.index('  const reportForm', start)]
+
+    assert "if (activeChat === active) activeChat = null;" in cancel
+    assert "busy = false;" in cancel
+    assert "externalBusy = false;" in cancel
+    assert cancel.index("controls();") < cancel.index("active.controller.abort();")
+    assert "if (error.status !== 409) notice(" in cancel
+    assert "button.disabled = false;" not in cancel
