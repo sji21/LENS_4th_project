@@ -1,0 +1,42 @@
+
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]
+Loading weights:   2%|▏         | 9/391 [00:00<00:04, 77.11it/s]
+Loading weights:   5%|▍         | 18/391 [00:00<00:05, 71.42it/s]
+Loading weights:  11%|█         | 42/391 [00:00<00:02, 137.48it/s]
+Loading weights:  15%|█▍        | 57/391 [00:00<00:03, 111.04it/s]
+Loading weights:  18%|█▊        | 70/391 [00:00<00:03, 89.12it/s] 
+Loading weights:  24%|██▍       | 94/391 [00:00<00:02, 116.30it/s]
+Loading weights:  28%|██▊       | 109/391 [00:00<00:02, 119.62it/s]
+Loading weights:  36%|███▌      | 141/391 [00:01<00:01, 162.70it/s]
+Loading weights:  41%|████      | 161/391 [00:01<00:01, 172.16it/s]
+Loading weights:  57%|█████▋    | 224/391 [00:01<00:00, 294.03it/s]
+Loading weights: 100%|██████████| 391/391 [00:01<00:00, 300.48it/s]
+
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]
+Loading weights:   5%|▌         | 21/391 [00:00<00:02, 179.87it/s]
+Loading weights:  10%|▉         | 39/391 [00:00<00:02, 140.94it/s]
+Loading weights:  16%|█▌        | 63/391 [00:00<00:01, 171.77it/s]
+Loading weights:  21%|██        | 81/391 [00:00<00:01, 170.71it/s]
+Loading weights:  32%|███▏      | 126/391 [00:00<00:01, 260.98it/s]
+Loading weights:  39%|███▉      | 154/391 [00:00<00:01, 212.02it/s]
+Loading weights:  46%|████▌     | 178/391 [00:00<00:01, 201.17it/s]
+Loading weights:  51%|█████     | 200/391 [00:01<00:00, 194.17it/s]
+Loading weights:  57%|█████▋    | 221/391 [00:01<00:01, 149.73it/s]
+Loading weights:  66%|██████▌   | 259/391 [00:01<00:00, 197.61it/s]
+Loading weights: 100%|██████████| 391/391 [00:01<00:00, 282.53it/s]
+민법 조문 10/10건이 코퍼스에 없어 조건부 검색이 동작하지 않습니다: 민법-제623조, 민법-제626조, 민법-제627조, 민법-제629조, 민법-제632조, 민법-제634조, 민법-제640조, 민법-제105조, 민법-제114조, 민법-제357조
+  python -m src.ingestion.fetch_minbeop --records data/parsed/minbeop_records.jsonl
+  python -m src.ingestion.load_laws --records data/parsed/minbeop_records.jsonl --export data/chunks/chunks.jsonl
+  민법 벡터는 기본 인덱스와 분리해야 합니다. docs/patch006-civil-routing.md를 확인하세요.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\team_project\patch057-worktree\scripts\patch057_comprehensive_eval.py", line 902, in <module>
+    main()
+  File "C:\team_project\patch057-worktree\scripts\patch057_comprehensive_eval.py", line 896, in main
+    capture(args.protocol, args.protocol_commit, args.out)
+  File "C:\team_project\patch057-worktree\scripts\patch057_comprehensive_eval.py", line 692, in capture
+    verify_bundle(bundle)
+  File "C:\team_project\patch057-worktree\scripts\patch057_comprehensive_eval.py", line 511, in verify_bundle
+    raise ValueError("Frozen source differs: " + name)
+ValueError: Frozen source differs: C:\team_project\patch057-worktree\data\index\chroma_civil_kurev1_1024\6a18c4fb-5c23-49a7-8a2d-780a883d5a06\data_level0.bin

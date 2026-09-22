@@ -1,0 +1,14 @@
+{
+  "case_count": 8377,
+  "chunk_count": 8516,
+  "integrity_check": "ok",
+  "full_text_source_hashes_verified": true,
+  "db_jsonl_identity_verified": true,
+  "case_chunks_without_observed_at": 11,
+  "case_chunks_without_corpus_active": 11,
+  "schema": "lens-knowledge-corpus-verification-v1",
+  "version": "data-dev-v2-8377-reindexed-20260915-v1",
+  "index_verified": true,
+  "pass": true,
+  "profile": "C:\\team_project\\patch057-worktree\\data\\case_corpus\\runtime-profile.json"
+}

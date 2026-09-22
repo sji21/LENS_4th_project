@@ -23,6 +23,7 @@ __pycache__/
 .venv312/
 venv/
 *.egg-info/
+/.pytest_cache/
 
 # OS / 에디터
 .DS_Store
@@ -36,3 +37,6 @@ tmp/
 
 # 로컬 AI 작업 지침 (팀 저장소에 업로드하지 않음)
 /AGENTS.md
+
+# 큰 검색 원시는 같은 내용의 검증된 gzip으로 보존
+/data/eval/patch058-regression/capture-*/rows.jsonl

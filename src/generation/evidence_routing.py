@@ -5,6 +5,7 @@
 기관 안내를 먼저 검색하고 다음 경우에만 판례를 추가한다.
 
 * 사용자가 판례·판결·법원의 판단을 명시적으로 요청한 경우
+* 구체적인 권리 충돌·책임 등 사실관계에 따른 법적 해석을 요청한 경우
 * 질문 유형에 맞는 1차 근거를 찾지 못한 경우
 
 질문 유형 판별과 충분성 검사는 결정론적으로 수행한다. 검색 전에 별도 LLM을
@@ -13,10 +14,13 @@
 
 from __future__ import annotations
 
+import re
+
 from dataclasses import dataclass
 from typing import Literal, Protocol
 
 from src.retrieval.service import RetrievalResult, detect_guide_topics
+from src.retrieval.retrieval_intent import _request_and_facts
 
 
 QuestionType = Literal["law", "guide", "case"]
@@ -57,13 +61,76 @@ class RoutedRetrieval:
     route: EvidenceRoute
 
 
-def classify_question_type(question: str) -> QuestionType:
-    """판례 직접 요청, 기관 안내 주제, 일반 법령 질문 순으로 분류한다."""
+_LEGAL_OUTCOME = r"효력|유효|무효|인정|대항|승계|책임|청구|공제|거절|거부|권리|의무|보호|순위|기다려|기다리"
+_ADMINISTRATIVE_TOPIC = r"서식|양식|신청\s*서|서류|접수|제출|발급|수수료|다운로드|내려받|(?:신청|청구)\s*(?:방법|절차)|신청"
 
-    normalized = " ".join((question or "").split())
-    if any(signal in normalized for signal in _CASE_REQUEST_SIGNALS):
+
+def _only_administrative_request(request: str) -> bool:
+    """Do not turn the title of a requested form into a legal-outcome request.
+
+    A separate legal question still takes precedence over its accompanying
+    paperwork request, regardless of which one is written first.
+    """
+    if not re.search(_ADMINISTRATIVE_TOPIC, request):
+        return False
+    for outcome in re.finditer(_LEGAL_OUTCOME, request):
+        tail = re.split(r"[.!?\n;]", request[outcome.end():], 1)[0]
+        # The first administrative noun owns the following filing question:
+        # '반환 청구 신청서를 어디서 받나요' asks for the form, not entitlement.
+        pieces = re.split(_ADMINISTRATIVE_TOPIC, tail, 1)
+        legal_tail = pieces[0]
+        if len(pieces) > 1:
+            legal_tail = re.sub(r"(?:어떻게|어디(?:서|에)?|언제|어떤|무슨)\s*$", "", legal_tail)
+        if re.search(
+            r"(?:있|없|되|돼|하|한|인|받|물|지|야|달라|밀리|생기|사라지|잃|지켜)"
+            r"[^.!?\n;]{0,18}(?:나요|까요|는지|은지|인지|할\s*수|해야|하나요)"
+            r"|가능(?:한가요|합니까|한지|할까요|하나요)"
+            r"|어떻게|왜|설명|판단|인정\s*여부|^\s*(?:한지|할지|될지|인지)", legal_tail,
+        ):
+            return False
+    return True
+
+
+def requires_case_interpretation(question: str) -> bool:
+    """Recognize a requested legal outcome under competing concrete facts.
+
+    Filing steps, statutory counts/deadlines and general definitions alone do
+    not require case law. A dispute word alone is likewise insufficient.
+    """
+    request, facts = _request_and_facts(question or "")
+    if re.search(r"(?:판례|판결|재판|법원)(?:는|은|를|을)?[^.!?\n;]{0,12}(?:제외|말고|묻지|필요\s*없)", request):
+        return False
+    outcome = re.search(_LEGAL_OUTCOME, request)
+    if not outcome or _only_administrative_request(request):
+        return False
+    scope = request + "\n" + facts
+    if (re.search(r"뜻|정의|의미|무엇인가|뭔가|개념", request)
+            and not re.search(r"경우|했|됐|았|었|인데|지만|없이|몰래|바뀌|바뀐|넘겼|받은", scope)):
+        return False
+    competing = (
+        r"제3자|제삼자|양도담보|담보\s*목적|이전\s*임대인|새\s*소유자|근저당|다른\s*채권자",
+        r"보험금|손해배상|지체책임|이행제공|선정당사자|거소신고|체류지|외국인등록",
+        r"(?:주소|지번).{0,25}(?:바뀌|변경|분할|불일치)|(?:형식|실제\s*거주|거주\s*의사|꾸며).{0,30}(?:전입|임대차|보호|대항)",
+        r"(?:점유|인도).{0,30}(?:인정|물리|사실상)|(?:열쇠|출입수단).{0,30}(?:넘|반납|지배)",
+        r"(?:보증금).{0,35}(?:못\s*받|안\s*주|주지\s*않|반환하지|반환\s*거부)|(?:보증금).{0,25}(?:와야|구해야)",
+        r"(?:실거주|들어와\s*산|직접\s*거주).{0,35}(?:거절|거부)|(?:갱신).{0,35}(?:실거주|들어와\s*산|직접\s*거주)",
+        r"(?:양도|소유권).{0,30}(?:금지|해제)|(?:월세|차임).{0,25}(?:연체|공제)|(?:안전|도난).{0,20}(?:보호|의무)",
+    )
+    return any(re.search(pattern, scope) for pattern in competing)
+
+
+def classify_question_type(question: str) -> QuestionType:
+    """판례·사실관계 해석 요청, 기관 안내, 일반 법령 질문 순으로 분류한다."""
+
+    request, _ = _request_and_facts(question or "")
+    explicit = any(signal in request for signal in _CASE_REQUEST_SIGNALS)
+    excluded = re.search(r"(?:판례|판결|재판|법원)(?:는|은|를|을)?[^.!?\n;]{0,12}(?:제외|말고|묻지|필요\s*없)", request)
+    if (explicit and not excluded) or requires_case_interpretation(question):
         return "case"
-    if detect_guide_topics(normalized):
+    # 안내 주제는 검색과 같은 입력으로 판별한다. `_search_guides` 는 질문 전체를
+    # 보므로 여기서만 상황 정보를 떼면, 주택 유형이 상황에만 적힌 서식 요청에서
+    # 검색은 서식을 전달하는데 경로는 법령 질문으로 판정한다.
+    if detect_guide_topics(question or ""):
         return "guide"
     return "law"
 

@@ -21,7 +21,7 @@ def test_base_smoke_verification_does_not_attach_case_overlay(tmp_path, monkeypa
         path.parent.mkdir(parents=True)
         path.touch()
     monkeypatch.setattr(retriever, "load_chunks", lambda path: [row] if path == tmp_path / build.CHUNKS[0] else [])
-    monkeypatch.setattr(build, "check_duplicates", lambda path: {"laws": 178, "civil_laws": 26, "cases": 26, "guides": 6})
+    monkeypatch.setattr(build, "check_duplicates", lambda path: build.EXPECTED_COUNTS)
     monkeypatch.setattr(dense, "ChromaRetriever", lambda backend, path: SimpleNamespace(
         collection=SimpleNamespace(get=lambda **kw: rows if path == tmp_path / build.INDEXES[0] else empty)))
     monkeypatch.setattr(profile, "read_profile", lambda *a, **kw: {"index_hashes": ["hash", "hash"]})
@@ -42,9 +42,9 @@ def test_base_smoke_verification_does_not_attach_case_overlay(tmp_path, monkeypa
 
 def test_sources_produce_complete_unique_corpus_without_database():
     laws, cases, guides = sources.source_records()
-    assert len(laws) == 204 and len(cases) == 26 and len(guides) == 2
-    assert len({(r.law_name, r.article_number) for r in laws}) == 204
-    assert len([r for r in laws if r.law_name == "민법"]) == 26
+    assert len(laws) == 216 and len(cases) == 28 and len(guides) == 3
+    assert len({(r.law_name, r.article_number) for r in laws}) == 216
+    assert len([r for r in laws if r.law_name == "민법"]) == 31
 
 
 def test_source_url_pins_version_article_and_branch():
@@ -152,8 +152,8 @@ def test_install_failure_restores_previous_data_and_preserves_web_db(tmp_path, m
         monkeypatch.setattr(build, "write", fail)
     with pytest.raises(error, match="injected"):
         build.promote(staged, target, run)
-    assert all((target / rel).read_text() == "old" for rel in build.SCOPES)
-    assert web.read_text() == "sessions"
+    assert all((target / rel).read_text(encoding="utf-8") == "old" for rel in build.SCOPES)
+    assert web.read_text(encoding="utf-8") == "sessions"
 
 
 @pytest.mark.parametrize("phase", ["before", "after"])
@@ -189,7 +189,7 @@ def test_partial_existing_data_requires_explicit_rebuild(tmp_path, monkeypatch):
     target.write_text("old")
     with pytest.raises(ValueError, match="--rebuild"):
         build.prepare()
-    assert target.read_text() == "old"
+    assert target.read_text(encoding="utf-8") == "old"
 
 
 @pytest.fixture
@@ -435,4 +435,4 @@ def test_interrupted_output_stops_worker_before_releasing_control(tmp_path, monk
     with pytest.raises(error):
         build.run_worker("build", tmp_path / "data", tmp_path)
     assert events == ["kill", "wait", "exit"]
-    assert (tmp_path / "build.log").read_text() == "progress\n"
+    assert (tmp_path / "build.log").read_text(encoding="utf-8") == "progress\n"

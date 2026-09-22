@@ -1,0 +1,26 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "torch": "2.11.0+cu128",
+  "cuda_runtime": "12.8",
+  "cuda_available": true,
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "cuda_matrix_pass": true,
+  "kure_smoke_dimension": 1024,
+  "kure_device": "cuda:0",
+  "kure_smoke_seconds": 0.43382460001157597,
+  "kure_smoke_is_evaluation_question": false,
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "sentence-transformers": "6.1.0",
+    "transformers": "5.17.0",
+    "tokenizers": "0.23.2",
+    "chromadb": "1.5.9",
+    "numpy": "1.26.4",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.1",
+    "safetensors": "0.8.0",
+    "huggingface-hub": "1.32.0"
+  },
+  "nvidia_smi": "NVIDIA GeForce RTX 3060 Laptop GPU, 610.74, 6144 MiB"
+}

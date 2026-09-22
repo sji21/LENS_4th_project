@@ -91,7 +91,7 @@ def test_changed_source_identity_refused(bundle):
 
 
 def test_model_traversal_is_refused(bundle):
-    release=json.loads(bundle.read_text())
+    release=json.loads(bundle.read_text(encoding="utf-8"))
     release["embedding_model"]["files"]={"../outside":"b"*64}
     bundle.write_text(json.dumps(release))
     with pytest.raises(ValueError,match="상대 경로|고정 정보"):
@@ -129,12 +129,12 @@ def test_portable_profile_keeps_original_policy_and_base_channels(bundle,monkeyp
     monkeypatch.setattr(module,"verify_release",lambda *a,**kw:{"pass":True})
     output=bundle.parent/"runtime-profile.json"
     write_runtime_profile(bundle,output,expected_case_count=2)
-    profile=json.loads(output.read_text())
+    profile=json.loads(output.read_text(encoding="utf-8"))
     assert profile["data_root"]==str(bundle.parent.resolve())
     assert profile["preserve_base_channels"] is True
     assert profile["model_revision"]==REVISION
     for key in POLICY_KEYS:
-        assert profile[key]==json.loads(bundle.read_text())["retrieval_policy"][key]
+        assert profile[key]==json.loads(bundle.read_text(encoding="utf-8"))["retrieval_policy"][key]
 
 
 def test_db_exported_case_evidence_reaches_llm_prompt(bundle):
@@ -144,7 +144,7 @@ def test_db_exported_case_evidence_reaches_llm_prompt(bundle):
     from src.generation.prompt import format_context
     from src.retrieval.case_profile import CaseCorpusRetrievalService
     rows=load_rows(bundle.parent)
-    profile=json.loads(bundle.read_text())["retrieval_policy"]
+    profile=json.loads(bundle.read_text(encoding="utf-8"))["retrieval_policy"]
     profile["version"]="test-v1"
     service=CaseCorpusRetrievalService(list(rows.values()),None,profile)
     result=service.search("보증금 반환 판례",k_law=0,k_case=2,k_guide=0,k_civil=0)
@@ -168,7 +168,7 @@ def test_overlay_keeps_base_channel_results(bundle):
         def search(self,question,**kwargs):
             assert kwargs["k_case"]==0
             return RetrievalResult(question=question,laws=[law])
-    profile={"version":"test",**json.loads(bundle.read_text())["retrieval_policy"]}
+    profile={"version":"test",**json.loads(bundle.read_text(encoding="utf-8"))["retrieval_policy"]}
     service=CaseCorpusRetrievalService(list(load_rows(bundle.parent).values()),None,profile,base_service=Base())
     result=service.search("보증금 반환 판례",k_case=2)
     assert result.laws==[law] and len(result.cases)==2

@@ -11,17 +11,39 @@ This file records the 4th project from its first change onward.
 
 - PATCH-058 adds a matching-request-only cancel action to the Django chat UI. Cancelling releases the conversation lease immediately and a late model response cannot be saved. Generation now checks multi-part questions, binds each conclusion to its direct source, and permits one focused semantic repair only after a deterministic repair has passed. A DEV100-v2 runner can select explicit question IDs for focused reruns. Related generation tests: 121 passed, 6 subtests passed; Django web tests: 41 passed. (commit: pending)
 
+
 ## 2026-09-21
 
-### Fixed (Bug Fixes)
+### Changed
 
-- PATCH-058 preserves uploaded-document evidence during validation repair and permits document-only repair. Explicit local diagnostics now retain successful repair drafts in Graph and DEV100 output. The initial-answer and structural-repair instructions retain the stricter unsupported-fact and incomplete-answer checks while limiting unrelated retrieved citations, paragraph numbers, values, and procedures; a citation, quote, value, or paragraph repair leaves only the direct 1–3 sentence answer and is revalidated before delivery. Related regression tests: 117 passed, 6 subtests passed. RunPod Qwen3.8 27B connection and one generated answer succeeded; the two DEV100-v2 three-item runs ended before the manifest completed, so no answer-rate claim is made. (commit: pending)
+- PATCH-061 README and the MySQL search guide mark re-checking out the search code as required for existing clones, tell Windows users to run tests in UTF-8 mode, and record Linux x64 (RunPod) as verified for the r2 release. (commit: 1cfaace)
 
-## 2026-09-20
+- PATCH-060 MySQL search releases can be verified on Windows, macOS (Apple Silicon) and Linux from the same package. `src/retrieval/*.py` is always checked out with LF, and each release stores its build-time vectors and a vector-free ID/text/metadata hash, so CPU-specific last-bit differences are accepted only within `1e-6` when texts, metadata value types and embedding provenance match the build exactly. Releases built before PATCH-060 must be rebuilt. (commit: 445baa7, cc0c6ce)
 
-### Fixed (Bug Fixes)
+- PATCH-059 keeps public-housing and registered-private-rental statutes out of the general-law channel unless the request names that programme, and gives each requested tax system its own slot when both are asked for. Over the 368 sealed inputs, complete required-evidence coverage moves from 170/195 to 182/204 (law3/law5) and the HO30 regression set from 14/17 to 20/24 of 30. Six inputs at law3 and four at law5 still lose one previously retrieved provision each; they are listed in `docs/patch058-retrieval-coverage.md`. (commit: 903dc1d)
 
-- PATCH-058 hardens the frozen HO30 Qwen3.8 27B generation run without changing its retrieval budget. The runner rejects altered temperature, output-token and context settings; verifies the recorded Ollama model identity before resume and completion; and preserves structured semantic failure codes in abstention and JSONL records. The production LangGraph path gives the first deterministic or semantic validation failure one evidence-bounded repair, then revalidates it before delivery; rejected drafts are recorded only through an explicit local-evaluation option, with separate pre-repair and repair validation diagnostics. Repair instructions now distinguish citation, quotation, numeric, paragraph, condition, semantic binding, unsupported fact application, and incomplete-answer failures, preserving only claims directly supported by the supplied evidence without question- or law-specific rules. Dev100/HO30 records distinguish validation codes, repair attempts and scope-refusal reasons so unsupported cross-source legal inferences can be audited precisely. A DEV100-v2 Graph runner records real generations without loading gold requirements or expected answers. The Django chat UI can cancel only its matching in-flight answer, releases the lease for an immediate next question, and prevents a late model result from being persisted. Apple Silicon MySQL search accepts an x86 index digest mismatch only after verifying the team-distributed reference and queue-only vector tolerance; a verified local release is required before activation. (commit: pending)
+### Fixed
+
+- PATCH-061 Tests no longer fail on PCs whose `.env` uses the team release defaults, and test files read UTF-8 explicitly. On RunPod Linux x64 the full suite passes except the known PATCH-042 record mismatch. (commit: 1cfaace)
+- PATCH-060 review corrections pass 31 targeted tests and the rebuilt r2 release passes installation, verification and search from the same ZIP on Windows x64 and Apple Silicon (arm64). Linux remains unverified. PATCH-059 is complete and merged through PR #42. (commit: cc0c6ce, 18a5b9e)
+- PATCH-060 README section 6.0 now offers the team release ZIP as the default search-data setup and local `setup_data.py` build as the alternative, so members set up only one. `.env.example` ships the team release defaults and separates maintainer-only MySQL connection settings. Existing environments retain their .env; the ZIP installation path points to Django environment setup and avoids reinstalling dependencies without the release constraints. (commit: 18a5b9e)
+
+- PATCH-060 `mysql_search requirements` no longer needs the `packaging` package, so the first install step works in a fresh virtual environment that only has pip. It also creates the output folder and keeps an identical existing file instead of failing. (commit: 8216dde, cc0c6ce)
+- PATCH-059 assigns base-corpus supplemental cases their actual base snapshot instead of the cases snapshot, preserving source lookup by snapshot and chunk ID. Cases already present in the cases corpus retain that source. The 23 MySQL search tests pass. (commit: 7fb0afd)
+
+- PATCH-059 preserves body lines referring to later titled articles instead of treating those references as new article headings. Re-parsing the 216 approved provisions leaves the stored records unchanged. MySQL search releases distinguish the legacy 26-article civil-law policy from the expanded 31-article policy during building, validation and service loading (commit: 903dc1d).
+- PATCH-059 restores the body of 공공주택 특별법 제49조의4. A table-of-contents line in the reused article page claimed the article number, so the chunk carried the text of 제49조의2 and 제49조의3 as well (107 → 733 tokens, empty article title) and displaced the real 제49조의3 in retrieval. Article parsing now ignores such listing lines and the page's download controls; 1 of 216 provisions changed and the base corpus was rebuilt with a single new embedding. (commit: 903dc1d)
+- PATCH-059 routes questions by the same guide topics retrieval delivers. A form request whose housing type appeared only in the situation block was classified as a plain statute question while the official form was still returned. (commit: 903dc1d)
+
+## 2026-09-19
+
+### Added
+
+- PATCH-059 supplements 12 official provisions (204→216), two cases (8,377→8,379 in the runtime corpus) and the public-housing financial-consent form. Retains source snapshots and hashes, supports the previous civil26 profile, and connects the supplements to setup and retrieval. Improves record-lookup/mediation evidence selection and conditional case/form delivery. Reuses exposed HO30 as a regression set and preserves the initial capture; remaining ranking regressions and validation are documented in `docs/patch058-retrieval-coverage.md`. (commit: 903dc1d)
+
+- PATCH-059 adds a retrieval-only evaluation runner and pre-run protocol for HO30, reviewed DEV/civil inputs and public regression sets. Preserves required-source denominators, separates actual law3/law5 requests and conditional case delivery, and records corpus/model/environment identities. Git LFS case8377 integrity, rebuilt law178/civil26 data and CUDA KURE loading are verified. The baseline and subsequent improvement measurements belong to the same final retriever patch; generated answers remain outside scope. (commits: 95d0744, 8f7c00a; integration: 903dc1d)
+
+- PATCH-057 adds versioned shared MySQL storage for legal sources, chunks and case history, transactional source updates, verified JSONL exports and an opt-in BM25/Chroma release path. On 2026-09-19, live MySQL 8.4.11 read-only verification passed for all three delivered snapshots, including 8,377 cases, full row/stream hashes and seven provenance queries. Integrates main fc87c38 while preserving PATCH-055 installation fixes and PATCH-056 sealed evaluation files. Records PR #38 as merged in LIST; PATCH-057 remains under review. Real LLM, another teammate PC and the final full suite are not verified by this run. See docs/mysql-live-verification.md. (implementation: ca16e0d)
 
 ## 2026-09-18
 

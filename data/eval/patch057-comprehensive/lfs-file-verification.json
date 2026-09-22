@@ -1,0 +1,57 @@
+{
+  "pass": true,
+  "verification": "Physical file hashes only; logical index/database verification pending",
+  "release_version": "data-dev-v2-8377-reindexed-20260915-v1",
+  "files": [
+    {
+      "bytes": 367280128,
+      "sha256": "ef359f9dac65bec969ab04d9f97d1ac5f7e8b32a0cf72b6a6dab92346d161c5a",
+      "file": "database/knowledge.sqlite3"
+    },
+    {
+      "bytes": 201131,
+      "sha256": "5817d0edc2a864c9af9cf62332e83dcd52c47720d7b55874038a964ea28caa5b",
+      "file": "chunks/laws.jsonl"
+    },
+    {
+      "bytes": 17941024,
+      "sha256": "353c0473208ea11dc060e9d5267a1a275c5e0c462c253b4f18c4e2b6cc351054",
+      "file": "chunks/cases.jsonl"
+    },
+    {
+      "bytes": 13243,
+      "sha256": "9f79634cb2d2de8b742bf06cf049f1257f00a09b804b79480f20e13284c236ca",
+      "file": "chunks/guides.jsonl"
+    },
+    {
+      "bytes": 34701312,
+      "sha256": "2314da3ab81b5b84d32ea96fa3bd3cc4d9e61768a4c5fbbe7bca8ecdf83da247",
+      "file": "index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/data_level0.bin"
+    },
+    {
+      "bytes": 100,
+      "sha256": "b8094a4fa32623596e3603302f40f63a2a3bc6d4fe76d6e7fc8c1242670c7041",
+      "file": "index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/header.bin"
+    },
+    {
+      "bytes": 385868,
+      "sha256": "6c4a31e7defd0318a10ca0c8febfc453899b3654669a6ead4465444acbed27c2",
+      "file": "index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/index_metadata.pickle"
+    },
+    {
+      "bytes": 32768,
+      "sha256": "2d6d1459f513b3593ed31239ffc5465bdc7405c2c19ede505b674139f703d450",
+      "file": "index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/length.bin"
+    },
+    {
+      "bytes": 73228,
+      "sha256": "e86ed129feb4d6831b221f4987ff864d5cc8c2c3d81ff90a87f8c18558d6fd04",
+      "file": "index/chroma_kurev1_1024/a557366c-ace6-42ff-b9ba-2d19a92b6451/link_lists.bin"
+    },
+    {
+      "bytes": 89231360,
+      "sha256": "7805151b8571706d8629081d6d936a4dda313ab6135f5206a8b39ae788acd30a",
+      "file": "index/chroma_kurev1_1024/chroma.sqlite3"
+    }
+  ]
+}

@@ -107,6 +107,57 @@ def read_case_profile(path):
     return profile
 
 
+class SupplementalCaseDense:
+    """One cosine ranking across the frozen index and verified extra texts.
+
+    Re-encode only the supplement with the very same pinned backend instance;
+    a second index's model label is not sufficient proof of vector compatibility.
+    """
+    def __init__(self, frozen, chunks):
+        from src.retrieval.dense import DenseRetriever
+
+        metadata = getattr(getattr(frozen, "collection", None), "metadata", None)
+        if metadata is not None and metadata.get("hnsw:space") != "cosine":
+            raise ValueError("판례 보충 검색은 코사인 인덱스가 필요합니다.")
+        self.frozen = frozen
+        self.backend = frozen.backend
+        self.supplement = DenseRetriever(chunks, self.backend, use_cache=False)
+
+    def __getattr__(self, name):
+        return getattr(self.frozen, name)
+
+    def search(self, query, k, where=None):
+        if k <= 0:
+            return []
+        hits = self.frozen.search(query, k, where)
+        hits += self.supplement.search(query, k, where)
+        scores = {}
+        for cid, score in hits:
+            if math.isfinite(score):
+                scores[cid] = max(scores.get(cid, -math.inf), score)
+        return sorted(scores.items(), key=lambda item: (-item[1], item[0]))[:k]
+
+
+def _supplemental_cases(chunks, base_service):
+    if base_service is None:
+        return []
+    known_ids = {chunk["chunk_id"] for chunk in chunks}
+    known_cases = {chunk["metadata"].get("canonical_case_key") for chunk in chunks}
+    supplement = []
+    for chunk in getattr(base_service, "_chunks", {}).values():
+        meta = chunk["metadata"]
+        if (meta.get("doc_type") != "case" or meta.get("status") != "current"
+                or meta.get("corpus_role") != "case_supplement"):
+            continue
+        key = meta.get("canonical_case_key")
+        if not key or not re.fullmatch(r"[0-9a-f]{64}", key):
+            raise ValueError("보충 판례의 canonical identity가 없습니다.")
+        if chunk["chunk_id"] in known_ids or key in known_cases:
+            continue
+        supplement.append(chunk)
+    return supplement
+
+
 class CaseCorpusRetrievalService(RetrievalService):
     def __init__(self, chunks, dense, profile, base_service=None):
         from src.retrieval.terms import expand, expand_civil
@@ -116,13 +167,43 @@ class CaseCorpusRetrievalService(RetrievalService):
             bm25_weight=profile.get("case_bm25_weight", 1),
             dense_weight=profile.get("case_dense_weight", 1))
         self.base_service = base_service
+        self._frozen_chunks = list(chunks)
+        self._frozen_dense = dense
         super().__init__(chunks, dense, case=case)
         self.case_profile = profile
-        self.base_service = base_service
         self._request_trace = local()
-        retriever = self._retrievers.get(self.corpora[1].name)
+        self.attach_base_service(base_service)
+
+    def attach_base_service(self, base_service):
+        """Bind base channels and rebuild the single case candidate corpus.
+
+        Call once during service construction, before concurrent searches.
+        Reattachment replaces prior supplements instead of accumulating them.
+        """
+        supplement = _supplemental_cases(self._frozen_chunks, base_service)
+        chunks = self._frozen_chunks + supplement
+        dense = self._frozen_dense
+        if supplement and dense is not None:
+            dense = SupplementalCaseDense(dense, supplement)
+        self.base_service = base_service
+        self.case_supplement_manifest = [
+            {"chunk_id": chunk["chunk_id"],
+             "canonical_case_key": chunk["metadata"]["canonical_case_key"],
+             "text_sha256": hashlib.sha256(chunk["text"].encode("utf-8")).hexdigest(),
+             "source_url": chunk["metadata"].get("source_url", ""),
+             "model_id": self.case_profile.get("model_id") if dense is not None else None,
+             "model_revision": self.case_profile.get("model_revision") if dense is not None else None}
+            for chunk in supplement
+        ]
+        self._chunks = {chunk["chunk_id"]: chunk for chunk in chunks}
+        self.dense = dense
+        case = self.corpora[1]
+        retriever = self._build(case, [chunk for chunk in chunks
+                                     if chunk["metadata"].get("doc_type") in case.doc_types])
         if retriever is not None:
-            retriever.rrf_k = profile.get("case_rrf_k", 60)
+            retriever.rrf_k = self.case_profile.get("case_rrf_k", 60)
+        self._retrievers[case.name] = retriever
+        return self
 
     def _warn_if_civil_missing(self, civil, civil_chunks):
         if self.base_service is None:

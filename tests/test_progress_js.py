@@ -9,7 +9,7 @@ def test_estimate_keeps_elapsed_and_becomes_indeterminate():
     node = shutil.which("node")
     if not node:
         pytest.skip("Node.js required for frontend timer check")
-    source = Path("static/chat/app.js").read_text()
+    source = Path("static/chat/app.js").read_text(encoding="utf-8")
     action = source[source.index("  async function action("):source.index('  input.addEventListener("input"')]
     script = r'''
 const assert = require("node:assert/strict");

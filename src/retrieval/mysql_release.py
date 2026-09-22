@@ -24,6 +24,11 @@ CASE_POLICY = {"candidate_depth": 80, "return_k": 20, "rerank_policy": "band_3pc
                "case_field_policy": "tax_source_guard"}
 STREAMS = {"base": {"laws", "cases", "guides"}, "civil": {"civil"},
            "cases": {"laws", "cases", "guides"}}
+DIMENSION = 1024
+# Chroma re-inserts queued vectors when an index is opened; CPU-specific float
+# code (e.g. Apple Silicon vs x86) can change their last bits. Real mismatches
+# are orders of magnitude larger.
+VECTOR_TOLERANCE = 1e-6
 
 
 def runtime_versions():
@@ -90,26 +95,106 @@ def read_export(root, corpus):
     return manifest, rows
 
 
-def channel_rows(exports):
+def _law_policies():
+    from src.retrieval.expanded import CIVIL_IDS, LEGACY_CIVIL_IDS, LEGACY_POLICY, POLICY
+    return {LEGACY_POLICY: LEGACY_CIVIL_IDS, POLICY: CIVIL_IDS}
+
+
+def civil_ids_for_policy(law_policy):
+    policies = _law_policies()
+    if law_policy not in policies:
+        raise ValueError("MySQL 검색 배포의 법령 검색 정책이 잘못됐습니다.")
+    return policies[law_policy]
+
+
+def detect_law_policy(exports):
+    articles = [r.get("metadata", {}).get("article_id")
+                for r in exports["civil"]["civil"]]
+    matches = [law_policy for law_policy, civil_ids in _law_policies().items()
+               if len(articles) == len(civil_ids) and set(articles) == set(civil_ids)]
+    if len(matches) != 1:
+        raise ValueError("민법 조문 목록에 맞는 법령 검색 정책이 없습니다.")
+    return matches[0]
+
+
+def channel_rows(exports, law_policy=None):
     base, civil, cases = exports["base"], exports["civil"], exports["cases"]
     # The base snapshot also preserves civil rows. The dedicated civil export
     # owns that channel; prove they agree before removing the duplicate copy.
-    base_civil = {r["chunk_id"]: r for r in base["laws"] if r["metadata"].get("title") == "민법"}
-    dedicated = {r["chunk_id"]: r for r in civil["civil"]}
+    base_rows = [r for r in base["laws"] if r["metadata"].get("title") == "민법"]
+    dedicated_rows = civil["civil"]
+    base_civil = {r["chunk_id"]: r for r in base_rows}
+    dedicated = {r["chunk_id"]: r for r in dedicated_rows}
+    base_articles = [r["metadata"].get("article_id") for r in base_rows]
+    dedicated_articles = [r["metadata"].get("article_id") for r in dedicated_rows]
+    if (len(base_civil) != len(base_rows) or len(dedicated) != len(dedicated_rows)
+            or len(set(base_articles)) != len(base_articles)
+            or len(set(dedicated_articles)) != len(dedicated_articles)):
+        raise ValueError("민법 청크 ID 또는 조문이 중복됐습니다.")
     if base_civil != dedicated:
         raise ValueError("기본/민법 스냅샷의 민법 청크가 다릅니다.")
-    from src.retrieval.expanded import CIVIL_IDS
-    if {r["metadata"].get("article_id") for r in dedicated.values()} != set(CIVIL_IDS):
-        raise ValueError("기존 검색 정책의 민법 조문 범위가 다릅니다.")
+    law_policy = detect_law_policy(exports) if law_policy is None else law_policy
+    expected_articles = civil_ids_for_policy(law_policy)
+    if (len(dedicated_articles) != len(expected_articles)
+            or set(dedicated_articles) != set(expected_articles)):
+        raise ValueError("법령 검색 정책과 민법 조문 범위가 다릅니다.")
     return {
         "base": [r for stream in ("laws", "cases", "guides") for r in base[stream]
                  if r["metadata"].get("title") != "민법"],
-        "civil": civil["civil"],
+        "civil": dedicated_rows,
         "cases": [r for stream in ("laws", "cases", "guides") for r in cases[stream]],
     }
 
 
-def verify_collection(collection, rows, expected_hash=None, model=None):
+def collection_vectors(collection, ids):
+    import numpy as np
+    vectors = np.empty((len(ids), DIMENSION), dtype="<f4")
+    for start in range(0, len(ids), 128):
+        window = ids[start:start + 128]
+        got = collection.get(ids=window, include=["embeddings"])
+        found = dict(zip(got["ids"], got["embeddings"]))
+        for offset, cid in enumerate(window):
+            vector = np.asarray(found[cid], dtype="<f4")
+            if vector.shape != (DIMENSION,) or not np.isfinite(vector).all():
+                raise ValueError("색인 벡터 차원 또는 값이 잘못됐습니다: " + cid)
+            vectors[start + offset] = vector
+    return vectors
+
+
+def write_vector_reference(collection, path):
+    """Store build-time vectors (sorted by chunk ID) for cross-CPU verification."""
+    ids = sorted(collection.get(include=[])["ids"])
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    Path(path).write_bytes(collection_vectors(collection, ids).tobytes())
+
+
+def records_hash(collection):
+    """Hash IDs, texts and metadata exactly as index_content_hash does, without vectors."""
+    ids = sorted(collection.get(include=[])["ids"])
+    value = hashlib.sha256()
+    for start in range(0, len(ids), 128):
+        got = collection.get(ids=ids[start:start + 128], include=["documents", "metadatas"])
+        for cid, doc, meta in sorted(zip(got["ids"], got["documents"], got["metadatas"])):
+            record = json.dumps([cid, doc, meta], ensure_ascii=False, sort_keys=True,
+                                separators=(",", ":")).encode()
+            value.update(len(record).to_bytes(8, "little"))
+            value.update(record)
+    return value.hexdigest()
+
+
+def verify_vector_reference(collection, path):
+    import numpy as np
+    ids = sorted(collection.get(include=[])["ids"])
+    expected = np.fromfile(path, dtype="<f4")
+    if expected.size != len(ids) * DIMENSION:
+        raise ValueError("기준 벡터 파일의 크기가 색인과 다릅니다.")
+    diff = np.abs(collection_vectors(collection, ids) - expected.reshape(len(ids), DIMENSION))
+    if not diff.max(initial=0.0) <= VECTOR_TOLERANCE:
+        raise ValueError("Chroma 벡터가 기준 벡터와 허용 오차 이상 다릅니다.")
+
+
+def verify_collection(collection, rows, expected_hash=None, model=None, reference=None,
+                      expected_records=None):
     from src.retrieval.case_profile import index_content_hash
     from src.retrieval.index import clean_metadata
     expected = {r["chunk_id"]: r for r in rows}
@@ -133,7 +218,13 @@ def verify_collection(collection, rows, expected_hash=None, model=None):
             raise ValueError("Chroma/MySQL 본문·검색 메타데이터가 다릅니다: " + cid)
     logical = index_content_hash(collection)
     if expected_hash is not None and logical != expected_hash:
-        raise ValueError("Chroma 논리 해시가 다릅니다.")
+        # Tolerate vector bits only when IDs, texts and metadata (including
+        # value types and embedding provenance) are identical to the build.
+        if reference is None or expected_records is None:
+            raise ValueError("Chroma 논리 해시가 다릅니다.")
+        if records_hash(collection) != expected_records:
+            raise ValueError("Chroma 본문·메타데이터가 빌드 당시와 다릅니다.")
+        verify_vector_reference(collection, reference)
     return logical
 
 
@@ -159,7 +250,7 @@ def read_release(path):
     if (value.get("schema") != SCHEMA or value.get("index_status") != "ready"
             or value.get("fallback_allowed") is not False
             or value.get("case_policy") != CASE_POLICY
-            or value.get("law_policy") != "expanded-laws-record-v1"
+            or value.get("law_policy") not in _law_policies()
             or set(value.get("snapshots", {})) != set(STREAMS)
             or set(value.get("indexes", {})) != set(STREAMS)
             or value.get("runtime_versions") != runtime_versions()
@@ -179,6 +270,11 @@ def read_release(path):
         if not names or index.get("path") != "indexes/" + channel:
             raise ValueError("검색 배포 인덱스가 없습니다.")
         expected_names.update(names)
+        if "vector_reference" in index:
+            if (index["vector_reference"] != f"references/{channel}.f32"
+                    or not re.fullmatch(r"[0-9a-f]{64}", str(index.get("records_sha256", "")))):
+                raise ValueError("검색 배포 기준 벡터 경로 또는 레코드 해시가 잘못됐습니다.")
+            expected_names.add(index["vector_reference"])
     if set(value.get("files", {})) != expected_names:
         raise ValueError("검색 배포 파일 목록이 불완전합니다.")
     exports = {}
@@ -191,7 +287,7 @@ def read_release(path):
             or not re.fullmatch(r"[0-9a-f]{40}", model.get("revision", ""))
             or set(model.get("files", {})) != MODEL_FILES):
         raise ValueError("검색 배포 모델 정보가 잘못됐습니다.")
-    return path, value, channel_rows(exports)
+    return path, value, channel_rows(exports, value.get("law_policy"))
 
 
 def verify_model(directory, spec):
@@ -207,7 +303,9 @@ def open_indexes(path, release, rows, backend):
     indexes = {}
     for channel, spec in release["indexes"].items():
         dense = ChromaRetriever(backend, native_index_path(path.parent / spec["path"], immutable=True))
-        verify_collection(dense.collection, rows[channel], spec["logical_sha256"], release["model"])
+        reference = (path.parent / spec["vector_reference"]) if "vector_reference" in spec else None
+        verify_collection(dense.collection, rows[channel], spec["logical_sha256"], release["model"],
+                          reference, spec.get("records_sha256"))
         if spec["count"] != len(rows[channel]):
             raise ValueError("배포 인덱스 건수가 다릅니다.")
         indexes[channel] = dense
@@ -225,16 +323,21 @@ def load_service(path, model_dir=None):
     model = verify_model(directory, release["model"])
     backend = SentenceTransformerEmbedding(str(model), device="cpu", batch=2)
     indexes = open_indexes(path, release, rows, backend)
+    civil_ids = civil_ids_for_policy(release["law_policy"])
     base = ExpandedLawRetrievalService(rows["base"] + rows["civil"],
-                                      indexes["base"], indexes["civil"])
+                                      indexes["base"], indexes["civil"],
+                                      civil_ids=civil_ids, policy=release["law_policy"])
 
     class MySQLRetrievalService(CaseCorpusRetrievalService):
         def evidence_payload(self, result):
             payload = super().evidence_payload(result)
             payload["release_id"] = release["release_id"]
+            supplements = {item["chunk_id"] for item in self.case_supplement_manifest}
             for channel, evidences in payload["channels"].items():
-                corpus = {"cases": "cases", "civil_laws": "civil"}.get(channel, "base")
                 for evidence in evidences:
+                    corpus = ("civil" if channel == "civil_laws" else
+                              "base" if channel != "cases" or evidence["chunk_id"] in supplements else
+                              "cases")
                     evidence["snapshot_id"] = release["snapshots"][corpus]
             return payload
 

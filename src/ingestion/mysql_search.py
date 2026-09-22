@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -14,8 +15,8 @@ import tempfile
 from src.ingestion.knowledge_release import _read_json, file_hash
 from src.retrieval.mysql_release import (
     CASE_POLICY, ROOT, SCHEMA, STREAMS, channel_rows, code_files, digest, encoded,
-    load_service, open_indexes, read_export, read_release, resolve_release,
-    verify_collection, verify_model, runtime_versions,
+    detect_law_policy, load_service, open_indexes, read_export, read_release, resolve_release,
+    records_hash, verify_collection, verify_model, runtime_versions, write_vector_reference,
 )
 
 
@@ -114,7 +115,8 @@ def build_worker(staging, model_dir, case_release=None, previous_release=None):
     manifests, exports = {}, {}
     for corpus in STREAMS:
         manifests[corpus], exports[corpus] = read_export(staging / "exports" / corpus, corpus)
-    rows = channel_rows(exports)
+    law_policy = detect_law_policy(exports)
+    rows = channel_rows(exports, law_policy)
     indexes = {}
     backend = None
     def get_backend():
@@ -130,7 +132,9 @@ def build_worker(staging, model_dir, case_release=None, previous_release=None):
             spec = previous["indexes"][channel]
             shutil.copytree(previous_path.parent / spec["path"], target)
             dense = ChromaRetriever(None, target)
-            verify_collection(dense.collection, previous_rows[channel], spec["logical_sha256"], model)
+            reference = previous_path.parent / spec["vector_reference"] if "vector_reference" in spec else None
+            verify_collection(dense.collection, previous_rows[channel], spec["logical_sha256"], model,
+                              reference, spec.get("records_sha256"))
             stats = sync_collection(dense.collection, rows[channel], get_backend, model)
         elif channel == "cases":
             shutil.copytree(case_release.parent / source["index"]["path"], target)
@@ -140,13 +144,17 @@ def build_worker(staging, model_dir, case_release=None, previous_release=None):
         dense = ChromaRetriever(backend, target)
         logical = verify_collection(dense.collection, rows[channel],
             source["index"]["logical_sha256"] if channel == "cases" and not previous else None, model)
+        reference = "references/" + channel + ".f32"
+        write_vector_reference(dense.collection, staging / reference)
         indexes[channel] = {"path": "indexes/" + channel, "count": len(rows[channel]),
-                            "logical_sha256": logical, "update": stats, "token_audit": token_audit}
+                            "logical_sha256": logical, "records_sha256": records_hash(dense.collection),
+                            "vector_reference": reference,
+                            "update": stats, "token_audit": token_audit}
         print("색인 검증 완료: " + channel, flush=True)
     release = {"schema": SCHEMA, "index_status": "ready", "fallback_allowed": False,
         "snapshots": {c: m["snapshot_id"] for c, m in manifests.items()},
         "indexes": indexes, "model": model, "case_policy": CASE_POLICY,
-        "law_policy": "expanded-laws-record-v1", "code_files": code_files(),
+        "law_policy": law_policy, "code_files": code_files(),
         "runtime_versions": runtime_versions(),
         "provenance": provenance}
     write_json(staging / "worker-result.json", release)
@@ -176,7 +184,7 @@ def build_release(export_root, output, model_dir, case_release=None, previous_re
                        cwd=ROOT, check=True)
         release = _read_json(staging / "worker-result.json")
         release["files"] = {p.relative_to(staging).as_posix(): file_hash(p)
-                            for folder in ("exports", "indexes")
+                            for folder in ("exports", "indexes", "references")
                             for p in sorted((staging / folder).rglob("*")) if p.is_file()}
         release["release_id"] = digest(release)
         write_json(staging / "release.json", release)
@@ -232,16 +240,22 @@ def prepare_model(path, directory):
     return verify_model(directory, model)
 
 
+# PEP 440 release, pre/post/dev and local segments. This runs in a fresh virtual
+# environment, so it must not import third-party packages such as packaging.
+VERSION_PIN = re.compile(r"[0-9]+(\.[0-9]+)*((a|b|rc)[0-9]+)?(\.post[0-9]+)?(\.dev[0-9]+)?"
+                         r"(\+[a-z0-9]+(\.[a-z0-9]+)*)?")
+
+
 def dependency_requirements(path):
     """Bootstrap dependency pins before strict runtime verification is possible."""
-    from packaging.version import Version
     release = _read_json(resolve_release(path))
     versions = release.get("runtime_versions", {})
     if (release.get("schema") != SCHEMA
             or digest({k: v for k, v in release.items() if k != "release_id"}) != release.get("release_id")
-            or set(versions) != {"chromadb", "numpy", "sentence-transformers", "torch", "transformers", "tokenizers"}):
+            or set(versions) != {"chromadb", "numpy", "sentence-transformers", "torch", "transformers", "tokenizers"}
+            or not all(isinstance(v, str) and VERSION_PIN.fullmatch(v) for v in versions.values())):
         raise ValueError("검색 배포 의존성 목록·해시가 잘못됐습니다.")
-    return "".join(f"{name}=={Version(value)}\n" for name, value in sorted(versions.items()))
+    return "".join(f"{name}=={value}\n" for name, value in sorted(versions.items()))
 
 
 def main(argv=None):
@@ -279,8 +293,11 @@ def main(argv=None):
         return
     if args.command == "requirements":
         content = dependency_requirements(args.release)
-        with args.output.open("x", encoding="utf-8") as stream:
-            stream.write(content)
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        # Re-running with the same release may reuse the file; never replace other pins.
+        if not (args.output.is_file() and args.output.read_text(encoding="utf-8") == content):
+            with args.output.open("x", encoding="utf-8") as stream:
+                stream.write(content)
         result = str(args.output.resolve())
     elif args.command == "build":
         result = str(build_release(args.export_root, args.output, args.model_dir, args.case_release, args.previous_release))

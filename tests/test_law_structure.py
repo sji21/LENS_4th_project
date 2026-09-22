@@ -152,3 +152,94 @@ def test_backfill_is_idempotent_and_export_keeps_missing_sources_explicit(db, tm
     assert "".join(u["content"] for u in exported["units"][1:]) == exported["content"]
     with pytest.raises(FileExistsError):
         export_structure(db, out)
+
+
+def test_article_listing_line_does_not_claim_the_body_of_later_articles():
+    """목차 줄이 번호를 선점하면 아래 조문 전체가 한 조문의 본문이 된다.
+
+    국가법령정보센터 조문 단위 페이지는 본문 위에 "제3조 제목"처럼 괄호 없는
+    조문 목록을 먼저 싣는다. 이 줄을 본문 머리로 잡으면 실제 머리가 중복으로
+    걸러져 뒤따르는 조문들이 앞 조문 본문에 통째로 들어간다.
+    """
+    text = (
+        "시험법\n"
+        "[시행 2025. 2. 1.] [법률 제1호, 2025. 1. 1., 일부개정]\n"
+        "제2조 두 번째 조문\n"
+        "제3조 세 번째 조문\n"
+        "시험법\n"
+        "[시행 2025. 2. 1.] [법률 제1호, 2025. 1. 1., 일부개정]\n"
+        "제2조(두 번째 조문) ① 둘째 조문의 본문이다.\n"
+        "제3조(세 번째 조문) 셋째 조문의 본문이다.\n"
+    )
+
+    assert parse_articles(text) == [
+        ("제2조", "두 번째 조문", "① 둘째 조문의 본문이다."),
+        ("제3조", "세 번째 조문", "셋째 조문의 본문이다."),
+    ]
+
+
+def test_download_controls_do_not_join_the_last_article_body():
+    """조문 단위 페이지 끝의 내려받기 조작부는 마지막 조문 본문이 아니다."""
+    text = "시험법\n제1조(목적) 목적이다.\n파일형식 선택\n파일형식\nHWP PDF\n"
+
+    assert parse_articles(text) == [("제1조", "목적", "목적이다.")]
+
+
+def test_an_untitled_article_head_still_starts_its_own_body():
+    """괄호 제목이 없는 조문도 목록 줄이 따로 없으면 그대로 본문을 연다."""
+    text = "시험법\n제1조 제목 없는 본문이다.\n제2조(다음 조문) 다음 본문이다.\n"
+
+    assert parse_articles(text) == [
+        ("제1조", "", "제목 없는 본문이다."),
+        ("제2조", "다음 조문", "다음 본문이다."),
+    ]
+
+
+def test_body_line_starting_with_an_article_reference_is_kept():
+    """조문 참조로 시작하는 정상 본문 줄은 목차 줄로 오인하지 않는다.
+
+    목차는 본문 위에 먼저 나온다. 첫 본문 머리 뒤에서 "제1조제1항에 따라…"처럼
+    다른 조문을 가리키며 시작하는 줄은 그 조문의 본문이므로 그대로 남아야 한다.
+    """
+    text = (
+        "시험법\n"
+        "제1조 첫 번째 조문\n"
+        "제2조 두 번째 조문\n"
+        "시험법\n"
+        "제1조(첫 번째 조문) 첫째 본문이다.\n"
+        "제2조(두 번째 조문) 둘째 본문이다.\n"
+        "제1조제1항에 따라 산정한 금액으로 한다.\n"
+    )
+
+    assert parse_articles(text) == [
+        ("제1조", "첫 번째 조문", "첫째 본문이다."),
+        ("제2조", "두 번째 조문", "둘째 본문이다.\n제1조제1항에 따라 산정한 금액으로 한다."),
+    ]
+
+
+@pytest.mark.parametrize("reference", [
+    "제2조제1항에 따라 산정한다.",
+    "제2조 및 제3조를 적용한다.",
+])
+@pytest.mark.parametrize("first_head,first_title", [
+    ("제1조(목적)", "목적"),
+    ("제1조", ""),
+])
+def test_forward_article_reference_does_not_claim_later_heading(reference, first_head, first_title):
+    text = (
+        f"{first_head} 첫째 본문이다.\n{reference}\n"
+        "제2조(정의) 둘째 본문이다.\n"
+        "제3조(적용) 셋째 본문이다.\n"
+    )
+    assert parse_articles(text) == [
+        ("제1조", first_title, f"첫째 본문이다.\n{reference}"),
+        ("제2조", "정의", "둘째 본문이다."),
+        ("제3조", "적용", "셋째 본문이다."),
+    ]
+
+
+def test_articles_without_parenthesized_titles_remain_separate():
+    assert parse_articles("제1조 첫째 본문이다.\n제2조 둘째 본문이다.") == [
+        ("제1조", "", "첫째 본문이다."),
+        ("제2조", "", "둘째 본문이다."),
+    ]

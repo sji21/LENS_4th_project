@@ -153,3 +153,30 @@ def test_primary_sufficiency_matches_question_type() -> None:
     assert primary_evidence_is_sufficient("law", result) is True
     assert primary_evidence_is_sufficient("guide", result) is False
     assert primary_evidence_is_sufficient("case", result) is False
+
+
+def test_routing_sees_the_same_guide_topics_as_retrieval() -> None:
+    """주택 유형이 상황 정보에만 있어도 경로와 검색이 같은 주제를 본다.
+
+    검색은 질문 전체로 안내 주제를 찾는다. 경로 판정만 현재 요청으로 좁히면
+    서식을 실제로 전달하면서 법령 질문으로 분류해 단계형 경로가 어긋난다.
+    """
+    from src.retrieval.service import detect_guide_topics
+
+    question = (
+        "사용자 추가 상황: 지금 국민임대주택에 살고 있습니다.\n"
+        "사용자 질문: 재계약할 때 금융정보 제공 동의서를 내야 하나요?"
+    )
+
+    assert detect_guide_topics(question)
+    assert classify_question_type(question) == "guide"
+
+
+def test_previous_dialogue_topic_alone_does_not_route_to_cases() -> None:
+    """상황 정보를 다시 보더라도 지난 대화의 판례 요청까지 살아나지는 않는다."""
+    question = (
+        "이전 대화: 관련 판례를 알려 주세요.\n"
+        "사용자 질문: 계약 기간은 최소 몇 년인가요?"
+    )
+
+    assert classify_question_type(question) == "law"

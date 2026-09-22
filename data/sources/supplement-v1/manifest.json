@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "specs_sha256": "d6442fe2f7de1f51606a2047d3c580fabdb65211a723bb4a44f7f1ccfaebc08f",
+  "files": {
+    "민사집행법-20260201.html": {
+      "sha256": "aa951570d76d96841287728bc14a5fa703e95a4d087d6e9b59ba96b227ee1d2d",
+      "url": "https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=268837&efYd=20260201&efYn=Y&chrClsCd=010202&nwJoYnInfo=Y&ancYnChk=0&netPrivateYn=N"
+    },
+    "민간임대주택에관한특별법시행령-20260226.html": {
+      "sha256": "0f3c4ea7c0e7caa55839db6f51dd6c4171e122cd1143a0aa8c72ab273a4447d5",
+      "url": "https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=269343&efYd=20260226&efYn=Y&chrClsCd=010202&nwJoYnInfo=Y&ancYnChk=0&netPrivateYn=N"
+    },
+    "공공주택특별법-20260908.html": {
+      "sha256": "a0c2602af239837351f973b533f3009dbc43b96a49195939a10295ed482e5f93",
+      "url": "https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=289289&efYd=20260908&efYn=Y&chrClsCd=010202&nwJoYnInfo=Y&ancYnChk=0&netPrivateYn=N"
+    },
+    "공공주택특별법시행령-20260908.html": {
+      "sha256": "c73445e3617fc1bdf8c2e7f8530eb12a5e36d6abc72e0f42b51f724b799f5e7e",
+      "url": "https://www.law.go.kr/LSW/lsInfoR.do?lsiSeq=289503&efYd=20260908&efYn=Y&chrClsCd=010202&nwJoYnInfo=Y&ancYnChk=0&netPrivateYn=N"
+    }
+  },
+  "reused_files": {
+    "data/sources/server-v1/민법-20260317.txt": "d7533cfcad78f583466b11a79bdb6684062c64fea907956a9c79af59c02da5d0",
+    "data/eval/patch027-full/sources/PRIVATE_FULL.html": "e11d49806859ea53369802ad287dae0ce75d6ca50a975940b384da52dca6b8e4",
+    "data/eval/patch027-full/sources/PUBLIC492.html": "d783efdb0a309ee482a4f41767b6f3765a95ad41b7356bd7ead7a12d6f95963f"
+  },
+  "collected_at": "2026-09-19",
+  "purpose": "PATCH-058 approved HO30 statute coverage supplements; exact articles are pinned in specs.json"
+}

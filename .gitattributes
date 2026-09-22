@@ -48,3 +48,14 @@
 
 # Preserve received HO30 review and freeze hashes byte-for-byte.
 /data/eval/holdout-v2-ho30-20260918/** -text whitespace=cr-at-eol
+
+# Preserve pre-run identities and measured PATCH-057 outputs.
+/data/eval/patch057-comprehensive/** -text whitespace=cr-at-eol
+/data/eval/patch057-comprehensive/prequery-index-mutation.log whitespace=cr-at-eol,-blank-at-eol
+/data/sources/supplement-v1/** -text -whitespace
+/data/sources/retrieval-supplements-v1/** -text -whitespace
+/data/eval/patch058-regression/** -text whitespace=cr-at-eol
+/data/eval/patch058-regression/validation/*.log -whitespace
+
+# MySQL search releases pin these files byte-for-byte; use one line ending on every OS.
+/src/retrieval/*.py text eol=lf

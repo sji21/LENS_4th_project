@@ -1,0 +1,8 @@
+{
+  "jobs.json": "7032bfd65d43b9b19a49210eaee9b7219afa3acbcef10c23f04bcb67427d49f2",
+  "case-id-map.json": "ad633fded831b5ffa164046df4733512ed387fb02ffd1f8da4633e5226ee7c9e",
+  "protocol.json": "58d2c48f3d0626e5136e8b5a8e3f396b7d1d0d5225ffd616bee605c92ca3e2cd",
+  "inputs/case-dev13.jsonl": "65b9f15a432087065a71a026d5b7bdb196fc25aa253b34dbd3ef700241672316",
+  "inputs/case-external8.jsonl": "28ff1e459b2e30b60da5160ff5f6d831eeb0113396dd0e8d9791cea37a3c8889",
+  "inputs/case-legacy20.jsonl": "aaf518f87d98a05e0aee7d9220bb46f3a1ba930c8fb1e6e4afeaf0956e55c947"
+}

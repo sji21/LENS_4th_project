@@ -25,6 +25,8 @@ from src.retrieval.service import (
     GUIDE,
     LAW,
     LAW_RRF_K,
+    PRIVATE_RENTAL_LAWS,
+    PUBLIC_HOUSING_LAWS,
     detect_guide_topics,
     Corpus,
     Evidence,
@@ -322,19 +324,33 @@ class RoutingTests(unittest.TestCase):
         "사무실 임대차도 같은 법이 적용되나요?",
     ]
 
+    PUBLIC_HOUSING = [
+        "공공임대도 계약이 끝나면 갱신할 수 있나요?",
+        "국민임대 재계약 조건이 궁금해요.",
+        "행복주택에 살고 있는데 소득이 오르면 어떻게 되나요?",
+        "LH에서 계약 연장을 거절할 수 있나요?",
+    ]
+    PRIVATE_RENTAL = [
+        "등록민간임대주택은 임대료를 얼마나 올릴 수 있나요?",
+        "등록임대주택이라는데 확인할 게 있나요?",
+        "임대사업자가 신고를 직접 하나요?",
+    ]
+    PROGRAM_LAWS = PUBLIC_HOUSING_LAWS + PRIVATE_RENTAL_LAWS
+
     def test_housing_questions_exclude_commercial_laws(self):
         for question in self.HOUSING:
             with self.subTest(question=question):
                 self.assertEqual(
                     route_law_corpus(question).exclude_titles,
-                    COMMERCIAL_LAWS + (CIVIL_TITLE,),
+                    COMMERCIAL_LAWS + self.PROGRAM_LAWS + (CIVIL_TITLE,),
                 )
 
     def test_commercial_questions_keep_commercial_laws(self):
         for question in self.COMMERCIAL:
             with self.subTest(question=question):
                 self.assertEqual(
-                    route_law_corpus(question).exclude_titles, (CIVIL_TITLE,)
+                    route_law_corpus(question).exclude_titles,
+                    self.PROGRAM_LAWS + (CIVIL_TITLE,),
                 )
 
     def test_commercial_signal_widens_instead_of_switching(self):
@@ -343,8 +359,42 @@ class RoutingTests(unittest.TestCase):
         "상가주택"처럼 둘 다 걸린 질문에서 주택 조문이 사라지면 안 된다.
         """
         corpus = route_law_corpus("상가주택인데 주택 부분만 전세로 살고 있어요")
-        self.assertEqual(corpus.exclude_titles, (CIVIL_TITLE,))
+        self.assertEqual(corpus.exclude_titles, self.PROGRAM_LAWS + (CIVIL_TITLE,))
         self.assertEqual(corpus.doc_types, LAW.doc_types)
+
+    def test_general_lease_questions_exclude_supply_programme_laws(self):
+        """제도 신호가 없으면 공공임대·등록민간임대 조문이 자리를 먹지 않는다."""
+        for question in self.HOUSING:
+            with self.subTest(question=question):
+                excluded = route_law_corpus(question).exclude_titles
+                for title in self.PROGRAM_LAWS:
+                    self.assertIn(title, excluded)
+
+    def test_public_housing_signal_keeps_only_that_programme(self):
+        for question in self.PUBLIC_HOUSING:
+            with self.subTest(question=question):
+                excluded = route_law_corpus(question).exclude_titles
+                for title in PUBLIC_HOUSING_LAWS:
+                    self.assertNotIn(title, excluded)
+                for title in PRIVATE_RENTAL_LAWS:
+                    self.assertIn(title, excluded)
+
+    def test_private_rental_signal_keeps_only_that_programme(self):
+        for question in self.PRIVATE_RENTAL:
+            with self.subTest(question=question):
+                excluded = route_law_corpus(question).exclude_titles
+                for title in PRIVATE_RENTAL_LAWS:
+                    self.assertNotIn(title, excluded)
+                for title in PUBLIC_HOUSING_LAWS:
+                    self.assertIn(title, excluded)
+
+    def test_programme_signal_widens_instead_of_switching(self):
+        """제도 신호도 범위를 바꾸는 것이 아니라 제외를 푸는 것이다."""
+        corpus = route_law_corpus("공공임대인데 일반 전세랑 보증금 보호가 같나요?")
+        self.assertTrue(matches(
+            {"doc_type": "law", "title": "주택임대차보호법", "status": "current"},
+            corpus.where(),
+        ))
 
     def test_routing_keeps_the_tuned_parameters(self):
         """범위만 바꾸고 파라미터는 건드리지 않는다."""

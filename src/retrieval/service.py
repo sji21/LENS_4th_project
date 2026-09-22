@@ -185,6 +185,40 @@ def mentions_commercial(question: str) -> bool:
     return any(sign in question for sign in COMMERCIAL_SIGNS)
 
 
+# 공급 제도 전용 법령. 일반 임대차가 아니라 그 제도에 입주한 사람에게만 적용되며,
+# 재계약·갱신·신고를 임대차 일반과 다른 말로 규정한다. 제도 신호가 없는 질문에
+# 그대로 두면 임대차 일반 조문 자리를 차지한다.
+PUBLIC_HOUSING_LAWS = (
+    "공공주택 특별법",
+    "공공주택 특별법 시행령",
+    "공공주택 특별법 시행규칙",
+)
+PRIVATE_RENTAL_LAWS = (
+    "민간임대주택에 관한 특별법",
+    "민간임대주택에 관한 특별법 시행령",
+    "민간임대주택에 관한 특별법 시행규칙",
+)
+
+# 각 제도를 가리키는 말. 제도 이름과 공급기관만 넣고 "임대"·"주택"처럼 일반
+# 임대차 질문에 흔한 낱말은 넣지 않는다. 오탐은 일반 질문의 근거 자리를 먹고,
+# 미탐은 그 제도 질문이 임대차 일반 조문만 받는 것으로 끝난다.
+_PUBLIC_HOUSING_SIGNS = re.compile(
+    r"공공\s*(?:임대|주택)|국민\s*임대|영구\s*임대|행복\s*주택|장기\s*전세"
+    r"|한국토지주택공사|주택도시공사|(?<![A-Za-z])[Ll][Hh](?![A-Za-z])"
+)
+_PRIVATE_RENTAL_SIGNS = re.compile(
+    r"민간\s*임대|등록\s*(?:된\s*)?임대|임대\s*등록|임대\s*사업자"
+)
+
+
+def mentions_public_housing(question: str) -> bool:
+    return bool(_PUBLIC_HOUSING_SIGNS.search(question))
+
+
+def mentions_private_rental(question: str) -> bool:
+    return bool(_PRIVATE_RENTAL_SIGNS.search(question))
+
+
 def route_law_corpus(question: str, base: Corpus = LAW) -> Corpus:
     """질문에 맞는 법령 범위를 고른다.
 
@@ -196,14 +230,24 @@ def route_law_corpus(question: str, base: Corpus = LAW) -> Corpus:
     상가 신호가 있으면 빼지 않는다. **상가로 바꾸는 것이 아니라 제외를 푸는 것**이다.
     "상가주택"처럼 둘 다 걸린 질문에서 주택 조문이 사라지면 안 된다.
 
+    공공임대·등록민간임대도 같은 구조로 다룬다. 두 제도는 재계약·갱신·신고를
+    임대차 일반과 다르게 규정해서, 제도 신호가 없는 질문에서는 임대차 일반
+    조문이 서야 할 자리를 가져간다. 제도별로 따로 판단하므로 공공임대 질문이
+    등록민간임대 조문을 함께 받지 않는다.
+
     한계: 낱말 표에 없는 표현은 잡지 못한다. 평가셋 27문항에 상가 질문이 하나도
     없어 이 분기는 검색 성능으로 검증하지 못했다. 판정 자체는 테스트로 잠갔다.
     """
-    # 민법은 상가 여부와 관계없이 별도 검색한다. 기본 법령 검색에 섞이면 질문과
+    excluded: tuple[str, ...] = ()
+    if not mentions_commercial(question):
+        excluded += COMMERCIAL_LAWS
+    if not mentions_public_housing(question):
+        excluded += PUBLIC_HOUSING_LAWS
+    if not mentions_private_rental(question):
+        excluded += PRIVATE_RENTAL_LAWS
+    # 민법은 제도 신호와 관계없이 별도 검색한다. 기본 법령 검색에 섞이면 질문과
     # 무관한 민법이 생성 근거를 차지하고, BM25 IDF도 바뀐다.
-    if mentions_commercial(question):
-        return replace(base, exclude_titles=(CIVIL_TITLE,))
-    return replace(base, exclude_titles=COMMERCIAL_LAWS + (CIVIL_TITLE,))
+    return replace(base, exclude_titles=excluded + (CIVIL_TITLE,))
 
 
 @dataclass(frozen=True)
@@ -382,11 +426,33 @@ _PARTICLES = ("으로부터", "에서부터", "이라도", "으로", "까지", "
 
 def detect_guide_topics(question: str) -> tuple[GuideTopic, ...]:
     """질문이 어느 안내 주제인지. 해당 없으면 빈 튜플."""
-    return tuple(
+    topics = tuple(
         topic
         for topic in GUIDE_TOPICS
         if any(signal in question for signal in topic.signals)
     )
+    if _requests_public_financial_consent(question):
+        topics += (GuideTopic('금융정보 제공 동의',
+                    'official-form:공공주택특별법시행규칙-별지제4호서식', ()),)
+    return topics
+
+
+def _requests_public_financial_consent(question: str) -> bool:
+    from src.retrieval.retrieval_intent import _request_and_facts, _requested
+
+    request, facts = _request_and_facts(question)
+    # Asking whether consent is unnecessary still requests that topic; it is
+    # different from excluding it ('필요 없고 계약기간만 알려줘').
+    request = re.sub(r'필요\s*없(?:나요|습니까|을까요|는지)', '필요한가요', request)
+    request = re.sub(r'아닌(?:가요|가\s*궁금|지)', '인지', request)
+    public = r'공공\s*(?:주택|임대)|국민\s*임대|행복\s*주택|(?<![A-Za-z])[Ll][Hh](?![A-Za-z])'
+    financial = r'금융\s*정보|금융\s*조회|재산\s*조회'
+    # Only current facts may supply an omitted housing type. A type explicitly
+    # rejected in the request must not be restored from those facts.
+    scope = request if re.search(public, request) else facts
+    return bool(_requested(public, scope)
+                and _requested(financial, request)
+                and _requested(r'동의(?:서)?', request))
 
 
 def _adds_to(second: str, first: str, question: str) -> bool:
@@ -480,10 +546,12 @@ class RetrievalResult:
         if self.guides:
             # 안내는 맨 뒤에 두고 법적 근거가 아님을 제목에 박는다. 조문과 같은
             # 무게로 읽으면 모델이 "법에 따르면 보증 한도는…" 같은 문장을 쓴다.
-            parts.append(
-                GUIDE_HEADER
-                + "\n\n".join(e.as_prompt_block() for e in self.guides)
-            )
+            forms = [e for e in self.guides if e.chunk_id.startswith('official-form:')]
+            guides = [e for e in self.guides if not e.chunk_id.startswith('official-form:')]
+            if guides:
+                parts.append(GUIDE_HEADER + "\n\n".join(e.as_prompt_block() for e in guides))
+            if forms:
+                parts.append('## 공식 법정 서식\n' + '\n\n'.join(e.as_prompt_block() for e in forms))
         return "\n\n".join(parts)
 
     def is_empty(self) -> bool:
