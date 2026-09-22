@@ -284,6 +284,41 @@ def test_report_detail_uses_stable_navigation_and_summary_labels(client, user):
     assert "질문: 대항력은 언제 생겨?" in page
     assert "확인한 내용: 전입신고 다음 날입니다." in page
     assert "{'question':" not in page
+    assert "PDF 다운로드" in page
+    assert 'class="report-page-actions"' in page
+
+
+def test_room_delete_keeps_the_user_on_the_origin_screen(client, user, case):
+    client.force_login(user)
+
+    chat = client.get("/").content.decode()
+    assert f'action="/cases/{case.pk}/delete/"' in chat
+    response = client.post(f"/cases/{case.pk}/delete/", {"next": "chat"})
+
+    assert response.status_code == 302
+    assert response.url == "/"
+    assert not ContractCase.objects.filter(pk=case.pk).exists()
+
+
+def test_room_delete_from_mypage_returns_to_mypage(client, user, case):
+    client.force_login(user)
+
+    response = client.post(f"/cases/{case.pk}/delete/")
+
+    assert response.status_code == 302
+    assert response.url == "/cases/"
+    assert not ContractCase.objects.filter(pk=case.pk).exists()
+
+
+def test_room_delete_controls_reserve_space_for_a_long_title(client, user):
+    case = ContractCase.objects.create(user=user, title="긴 채팅방 제목 " * 20)
+    client.force_login(user)
+
+    chat = client.get("/").content.decode()
+    dashboard = client.get("/cases/").content.decode()
+
+    assert f'action="/cases/{case.pk}/delete/"' in chat
+    assert f'action="/cases/{case.pk}/delete/"' in dashboard
 
 
 def test_report_json_question_answer_objects_are_normalized_for_rendering():
