@@ -22,6 +22,20 @@ def _text(value) -> str:
         return " ".join(value.split()).strip()
     if isinstance(value, (int, float)) and not isinstance(value, bool):
         return str(value)
+    if isinstance(value, list):
+        return ", ".join(text for item in value if (text := _text(item)))
+    if isinstance(value, dict):
+        labels = {
+            "item": "항목", "name": "항목", "label": "항목",
+            "value": "내용", "description": "설명", "status": "상태",
+            "source": "출처", "url": "출처",
+        }
+        parts = []
+        for key, item in value.items():
+            text = _text(item)
+            if text:
+                parts.append(f"{labels.get(str(key), str(key))}: {text}")
+        return " · ".join(parts)
     return ""
 
 

@@ -223,6 +223,9 @@ def test_first_member_question_creates_named_room_and_enables_report(client, use
 def test_greeting_does_not_become_a_chat_room_title():
     assert title_from_question("안녕") == "새 임대차 상담"
     assert title_from_question("  안녕하세요  ") == "새 임대차 상담"
+    assert title_from_question("안녕하세요!") == "새 임대차 상담"
+    assert title_from_question("안녕~") == "새 임대차 상담"
+    assert title_from_question("Hi!") == "새 임대차 상담"
     assert title_from_question("대항력은 언제 생기나요?") == "대항력은 언제 생기나요?"
 
 
@@ -292,6 +295,22 @@ def test_report_json_question_answer_objects_are_normalized_for_rendering():
     }, ensure_ascii=False))
 
     assert content["questions_and_answers"] == ["질문: 대항력은 언제 생겨?\n확인한 내용: 전입신고 다음 날"]
+
+
+def test_report_json_object_items_are_kept_as_readable_text():
+    content = _parse_json(json.dumps({
+        "case_summary": "요약",
+        "user_interests": [{"item": "대항력", "value": "발생 시점"}],
+        "questions_and_answers": [],
+        "confirmed_items": [{"item": "보증금", "value": "1억원"}],
+        "unresolved_items": [{"item": "전입신고일", "status": "확인 필요"}],
+        "next_checks": [{"description": "전입신고일을 확인하세요."}],
+        "source_refs": [{"label": "주택임대차보호법 제3조", "url": "https://example.test/law"}],
+    }, ensure_ascii=False))
+
+    assert content["confirmed_items"] == ["항목: 보증금 · 내용: 1억원"]
+    assert content["next_checks"] == ["설명: 전입신고일을 확인하세요."]
+    assert content["source_refs"] == ["항목: 주택임대차보호법 제3조 · 출처: https://example.test/law"]
 
 
 def test_member_can_rename_only_owned_chat_room(client, user, case):
