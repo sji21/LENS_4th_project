@@ -108,6 +108,8 @@ def delete_case(request, case_id):
         request.session.pop("lens_case_id", None)
         request.session.pop("lens_conversation_id", None)
     case.delete()
+    if request.POST.get("next") == "chat":
+        return redirect("chat:home")
     return redirect("cases:dashboard")
 
 

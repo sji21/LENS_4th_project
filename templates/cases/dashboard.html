@@ -16,6 +16,7 @@
         <div class="case-room-item" data-room-row>
           <a class="{% if selected.pk == room.case.pk %}selected{% endif %}" href="{% url 'cases:open-chat' room.case.pk %}"><i class="room-swatch room-color-{{ room.color_index }}"></i><span>{{ room.case.title }}<small>{% if selected.pk == room.case.pk %}현재 채팅방{% else %}대화 열기{% endif %}</small></span></a>
           <button class="room-rename-button" type="button" data-room-edit aria-label="{{ room.case.title }} 이름 수정" title="채팅방 이름 수정">✎</button>
+          <form class="room-delete-form" method="post" action="{% url 'cases:delete' room.case.pk %}" onsubmit="return confirm('채팅방과 관련 문서, 일정, 체크리스트, 리포트를 모두 삭제할까요?');">{% csrf_token %}<button class="room-delete-button" type="submit" aria-label="{{ room.case.title }} 채팅방 삭제" title="채팅방 삭제">×</button></form>
           <form class="room-rename-form" data-room-form method="post" action="{% url 'cases:rename' room.case.pk %}" hidden>{% csrf_token %}<label class="sr-only" for="mypage-room-title-{{ forloop.counter }}">채팅방 이름</label><input id="mypage-room-title-{{ forloop.counter }}" name="title" value="{{ room.case.title }}" maxlength="120" required><input type="hidden" name="next" value="mypage"><button type="submit">저장</button><button type="button" data-room-cancel>취소</button></form>
         </div>
       {% empty %}<p class="sidebar-empty">등록된 채팅방이 없습니다.</p>{% endfor %}
