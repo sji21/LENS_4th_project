@@ -16,6 +16,7 @@
           <div class="chat-room-item" data-room-row>
             <a class="case-shortcut {% if contract_case.pk == room.pk %}current-case{% endif %}" href="{% url 'cases:open-chat' room.pk %}"><span aria-hidden="true">{% if contract_case.pk == room.pk %}●{% else %}○{% endif %}</span><span>{{ room.title }}<small>{% if contract_case.pk == room.pk %}현재 채팅방{% else %}대화 열기{% endif %}</small></span></a>
             <button class="room-rename-button" type="button" data-room-edit aria-label="{{ room.title }} 이름 수정" title="채팅방 이름 수정">✎</button>
+            <form class="room-delete-form" method="post" action="{% url 'cases:delete' room.pk %}" onsubmit="return confirm('채팅방과 관련 문서, 일정, 체크리스트, 리포트를 모두 삭제할까요?');">{% csrf_token %}<input type="hidden" name="next" value="chat"><button class="room-delete-button" type="submit" aria-label="{{ room.title }} 채팅방 삭제" title="채팅방 삭제">×</button></form>
             <form class="room-rename-form" data-room-form method="post" action="{% url 'cases:rename' room.pk %}" hidden>{% csrf_token %}<label class="sr-only" for="chat-room-title-{{ forloop.counter }}">채팅방 이름</label><input id="chat-room-title-{{ forloop.counter }}" name="title" value="{{ room.title }}" maxlength="120" required><input type="hidden" name="next" value="chat"><button type="submit">저장</button><button type="button" data-room-cancel>취소</button></form>
           </div>
         {% empty %}<p class="chat-room-empty">첫 질문을 보내면 채팅방이 여기에 저장됩니다.</p>{% endfor %}

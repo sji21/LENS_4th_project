@@ -10,10 +10,11 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.test import Client
 
-from cases.models import CaseFact, ChecklistItem, ContractCase, ScheduleEvent
+from cases.models import CaseFact, ChecklistItem, ContractCase, Report, ScheduleEvent
 from cases.services.conversation_guidance import refresh_conversation_guidance
 from cases.services.facts import invalidate_source, record_fact
-from cases.services.reports import generate_report
+from cases.services.reports import _fallback, _parse_json, _source_snapshot, generate_report
+from cases.services.titles import title_from_question
 from cases.services.storage import delete_encrypted, load_decrypted, save_encrypted
 from chat.models import Conversation
 
@@ -217,6 +218,134 @@ def test_first_member_question_creates_named_room_and_enables_report(client, use
     page = client.get("/").content.decode()
     assert 'id="report-form"' in page
     assert f'action="/cases/{conversation.case_id}/rename/"' in page
+
+
+def test_greeting_does_not_become_a_chat_room_title():
+    assert title_from_question("안녕") == "새 임대차 상담"
+    assert title_from_question("  안녕하세요  ") == "새 임대차 상담"
+    assert title_from_question("안녕하세요!") == "새 임대차 상담"
+    assert title_from_question("안녕~") == "새 임대차 상담"
+    assert title_from_question("Hi!") == "새 임대차 상담"
+    assert title_from_question("대항력은 언제 생기나요?") == "대항력은 언제 생기나요?"
+
+
+def test_report_snapshot_excludes_ungrounded_and_unanswered_turns(case):
+    conversation = Conversation.objects.create(
+        user=case.user,
+        case=case,
+        state={
+            "documents": [],
+            "messages": [
+                {"id": "u1", "role": "user", "content": "안녕"},
+                {"id": "a1", "role": "assistant", "status": "answered", "content": "안녕하세요.", "sources": []},
+                {"id": "u2", "role": "user", "content": "대항력은 언제 생기나요?"},
+                {"id": "a2", "role": "assistant", "status": "answered", "content": "전입 다음 날입니다.", "sources": [{"label": "주택임대차보호법 제3조"}]},
+                {"id": "u3", "role": "user", "content": "오늘 날짜가 며칠이야?"},
+                {"id": "a3", "role": "assistant", "status": "refused", "content": "범위 밖 질문입니다.", "sources": []},
+            ],
+        },
+        expires_at="2036-01-01T00:00:00Z",
+    )
+
+    snapshot = _source_snapshot(case, [conversation])
+
+    assert snapshot["dialogue"] == [
+        {"role": "user", "content": "대항력은 언제 생기나요?"},
+        {"role": "assistant", "content": "전입 다음 날입니다."},
+    ]
+    content = _fallback(snapshot)
+    assert content["user_interests"] == ["대항력은 언제 생기나요?"]
+    assert content["case_summary"] == "등록된 계약 정보가 없습니다."
+
+
+def test_report_detail_uses_stable_navigation_and_summary_labels(client, user):
+    case = ContractCase.objects.create(user=user, title="안녕")
+    report = Report.objects.create(
+        case=case,
+        version=1,
+        generation_mode="template_fallback",
+        content_json={
+            "case_summary": "등록된 계약 정보가 없습니다.",
+            "user_interests": [],
+            "questions_and_answers": [{"question": "대항력은 언제 생겨?", "answer": "전입신고 다음 날입니다."}],
+            "confirmed_items": [],
+            "unresolved_items": [], "next_checks": [], "source_refs": [],
+        },
+    )
+    client.force_login(user)
+
+    page = client.get(f"/cases/{case.pk}/reports/{report.pk}/").content.decode()
+
+    assert "← 마이페이지" in page
+    assert "안녕 마이페이지" not in page
+    assert "상담 요약" in page
+    assert "계약 기본 정보" not in page
+    assert "기본 요약" in page
+    assert "질문: 대항력은 언제 생겨?" in page
+    assert "확인한 내용: 전입신고 다음 날입니다." in page
+    assert "{'question':" not in page
+    assert "PDF 다운로드" in page
+    assert 'class="report-page-actions"' in page
+
+
+def test_room_delete_keeps_the_user_on_the_origin_screen(client, user, case):
+    client.force_login(user)
+
+    chat = client.get("/").content.decode()
+    assert f'action="/cases/{case.pk}/delete/"' in chat
+    response = client.post(f"/cases/{case.pk}/delete/", {"next": "chat"})
+
+    assert response.status_code == 302
+    assert response.url == "/"
+    assert not ContractCase.objects.filter(pk=case.pk).exists()
+
+
+def test_room_delete_from_mypage_returns_to_mypage(client, user, case):
+    client.force_login(user)
+
+    response = client.post(f"/cases/{case.pk}/delete/")
+
+    assert response.status_code == 302
+    assert response.url == "/cases/"
+    assert not ContractCase.objects.filter(pk=case.pk).exists()
+
+
+def test_room_delete_controls_reserve_space_for_a_long_title(client, user):
+    case = ContractCase.objects.create(user=user, title="긴 채팅방 제목 " * 20)
+    client.force_login(user)
+
+    chat = client.get("/").content.decode()
+    dashboard = client.get("/cases/").content.decode()
+
+    assert f'action="/cases/{case.pk}/delete/"' in chat
+    assert f'action="/cases/{case.pk}/delete/"' in dashboard
+
+
+def test_report_json_question_answer_objects_are_normalized_for_rendering():
+    content = _parse_json(json.dumps({
+        "case_summary": "요약",
+        "user_interests": ["대항력"],
+        "questions_and_answers": [{"question": "대항력은 언제 생겨?", "answer": "전입신고 다음 날"}],
+        "confirmed_items": [], "unresolved_items": [], "next_checks": [], "source_refs": [],
+    }, ensure_ascii=False))
+
+    assert content["questions_and_answers"] == ["질문: 대항력은 언제 생겨?\n확인한 내용: 전입신고 다음 날"]
+
+
+def test_report_json_object_items_are_kept_as_readable_text():
+    content = _parse_json(json.dumps({
+        "case_summary": "요약",
+        "user_interests": [{"item": "대항력", "value": "발생 시점"}],
+        "questions_and_answers": [],
+        "confirmed_items": [{"item": "보증금", "value": "1억원"}],
+        "unresolved_items": [{"item": "전입신고일", "status": "확인 필요"}],
+        "next_checks": [{"description": "전입신고일을 확인하세요."}],
+        "source_refs": [{"label": "주택임대차보호법 제3조", "url": "https://example.test/law"}],
+    }, ensure_ascii=False))
+
+    assert content["confirmed_items"] == ["항목: 보증금 · 내용: 1억원"]
+    assert content["next_checks"] == ["설명: 전입신고일을 확인하세요."]
+    assert content["source_refs"] == ["항목: 주택임대차보호법 제3조 · 출처: https://example.test/law"]
 
 
 def test_member_can_rename_only_owned_chat_room(client, user, case):

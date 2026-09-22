@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
+- PATCH-064 filters consultation reports to grounded final answers, so greetings, test prompts, refusals and unsupported replies are not presented as user consultation topics. A room title is no longer reported as contract information when no verified fact exists, and the report header has a stable My Page link and a user-facing summary-mode label. (commits: 3beb1f81, f904e93e)
+- PATCH-064 restores room deletion controls in chat and My Page, keeps the user on the screen where deletion started, and reserves space for rename/delete controls so long room titles are ellipsized instead of overlapping them. Report detail keeps stable My Page and PDF actions. (commit: 1beee72d)
 - PATCH-063 follow-up questions appear as ordinary final answer paragraphs with suggested replies and a “Type a reply” button. Suggested replies send the selected answer; typing focuses the existing composer without clearing drafts or sending a message. The composer keeps its default placeholder. (commit: bfb8597)
 
 - PATCH-063 photo OCR now retains table cell coordinates, reads isolated cells with local contrast correction, and links vertically merged party labels to name cells in the same row. Only corroborated names can answer identity questions; uncertain names request a clearer table image. Existing uploads require re-uploading. (commit: bfb8597)
