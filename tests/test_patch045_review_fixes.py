@@ -439,7 +439,9 @@ def test_member_document_delete_removes_derived_messages(client, user, case, mon
         "conversation_id": str(conversation.pk), "request_id": "22222222-2222-2222-2222-222222222222",
     }), content_type="application/json")
     assert response.status_code == 200
-    assert [message["id"] for message in response.json()["messages"]] == ["u2"]
+    assert [message["id"] for message in response.json()["messages"]] == ["u1", "a1", "u2"]
+    assert all(m.get("context_excluded") for m in response.json()["messages"][:2])
+    assert not response.json()["messages"][2].get("context_excluded")
 
 
 def test_member_document_delete_invalidates_removed_chat_facts(client, user, case, monkeypatch):
@@ -499,7 +501,8 @@ def test_mixed_legacy_document_delete_clears_unproven_history_and_guidance(clien
         "request_id": "33333333-3333-3333-3333-333333333333",
     }), content_type="application/json")
     assert response.status_code == 200
-    assert response.json()["messages"] == []
+    assert len(response.json()["messages"]) == 4
+    assert all(m.get("context_excluded") for m in response.json()["messages"])
     assert case.checklist_items.filter(code="llm_document", state=ChecklistItem.State.DONE).exists()
     assert case.schedule_events.filter(
         rule_code="llm_document", status=ScheduleEvent.Status.CONFIRMED,

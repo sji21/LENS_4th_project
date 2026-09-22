@@ -274,7 +274,8 @@ def test_delete_document_clears_followup_context(browser, extracted_document, mo
     conversation.save(update_fields=["state"])
     response = post(browser, f"/api/documents/{doc_id}/delete/")
     assert response.status_code == 200
-    assert response.json()["documents"] == [] and response.json()["messages"] == []
+    assert response.json()["documents"] == []
+    assert len(response.json()["messages"]) == 2
     assert Conversation.objects.get().state["dialogue"] == services.empty_dialogue()
 
 

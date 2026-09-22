@@ -3,7 +3,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const vm = require("node:vm");
 const source = fs.readFileSync(require.resolve("../static/chat/app.js"), "utf8");
-const submit = source.slice(source.indexOf('  form.addEventListener("submit"'), source.indexOf('  const reportForm'));
+const submit = source.slice(source.indexOf('  form.addEventListener("submit"'), source.indexOf('  $("cancel-answer").addEventListener'));
 
 for (const failure of [false, true]) {
   for (const newDraft of ["", "다음 질문"]) {
@@ -12,6 +12,7 @@ for (const failure of [false, true]) {
       const response = new Promise((yes, no) => { resolve = yes; reject = no; });
       const input = {value: "첫 질문", focus() {}};
       const context = {
+        AbortController, activeChat: null, controls() {},
         window: {location: {reload() { reloaded = true; }}},
         input, replyingTo: "pending-1", conversationId: "chat-1", lastRendered: "",
         form: {dataset: {sendUrl: "/send"}, addEventListener: (_, fn) => { handler = fn; }},

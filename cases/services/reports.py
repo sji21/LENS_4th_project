@@ -21,6 +21,8 @@ def _source_snapshot(case, conversations):
     sources = []
     for conversation in conversations:
         for message in conversation.state.get("messages", []):
+            if message.get("context_excluded"):
+                continue
             role = message.get("role")
             if role == "user":
                 dialogue.append({"role": "user", "content": message.get("content", "")[:1200]})

@@ -273,13 +273,20 @@ def extract_image_text(filename: str, data: bytes) -> ExtractionResult:
     executable = find_tesseract()
     warnings: list[str] = []
     text = ""
+    date_readings = ()
+    table_cells, table_values = (), ()
 
     if not executable:
         warnings.append("계약서 이미지 OCR에 필요한 Tesseract를 찾지 못했습니다.")
     else:
         try:
             language = _ocr_language(executable)
-            text = _ocr_image(image_bytes, executable, language)
+            from .photo_ocr import extract_photo
+            result = extract_photo(image_bytes, executable, language)
+            text = result.text
+            date_readings = result.date_readings
+            table_cells, table_values = result.table_cells, result.table_values
+            warnings.extend(result.warnings)
         except (OcrUnavailableError, subprocess.SubprocessError, TimeoutError) as error:
             warnings.append(f"계약서 이미지 OCR 실패: {error}")
 
@@ -294,6 +301,9 @@ def extract_image_text(filename: str, data: bytes) -> ExtractionResult:
         pages=(page,),
         elapsed_seconds=round(time.perf_counter() - started, 3),
         warnings=tuple(warnings),
+        date_readings=date_readings,
+        table_cells=table_cells,
+        table_values=table_values,
     )
 
 

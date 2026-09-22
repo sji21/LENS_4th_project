@@ -12,7 +12,7 @@ from .dialogue_state import apply_user_update, ensure_dialogue, _safe
 
 INTENTS = {"greeting", "question", "followup", "correction", "clarification_answer", "explain", "topic_change", "document_question"}
 ACTIONS = {"social", "clarify", "rag", "refuse"}
-BOOL_FIELDS = {"contract_ended", "deposit_returned", "living_in_property", "moved_out", "landlord_notified"}
+BOOL_FIELDS = {"contract_signed", "contract_ended", "deposit_returned", "living_in_property", "moved_out", "landlord_notified"}
 FACT_FIELDS = BOOL_FIELDS | {"contract_type", "subject", "role", "property_type", "deposit", "monthly_rent", "end_date", "start_date", "notice_date"}
 CLARIFY_FIELDS = FACT_FIELDS | {"details", "document"}
 STYLES = {"standard", "simple", "brief"}
@@ -91,7 +91,7 @@ def build_decision_input(state, user, document_id=None):
     if not history and dialogue["turn"] == 0 and dialogue["epoch"] == 0:
         # Old sessions retain user messages, including statements before abstention.
         # Assistant generations are not inferred as user facts during migration.
-        messages = state.get("messages", [])
+        messages = [m for m in state.get("messages", []) if not m.get("context_excluded")]
         history = [
             {"role": "user", "content": _safe(m["content"])[:2000]}
             for index, m in enumerate(messages)
@@ -145,6 +145,7 @@ def _polarity_scope(field, evidence):
         if reported:
             return reported.group(1)
     predicates = {
+        "contract_signed": r"계약|서명|체결",
         "contract_ended": r"끝|종료|만료|해지",
         "deposit_returned": r"받|반환",
         "living_in_property": r"살|거주",
@@ -194,6 +195,11 @@ def _check_meaning(field, value, evidence):
         if (field == "landlord_notified" and not short_positive and not short_negative
                 and not re.search(r"알리|알렸|알린|알려|통지|통보|연락|전달|보냈|보내|말했|말하|요구|요청", scope)):
             raise DecisionError("unstated_notification")
+        if field == "contract_signed" and not short_positive and not short_negative:
+            positive_signed = bool(re.search(r"계약(?:을)?\s*했|계약했|체결했|서명했|체결한|서명한|계약한", scope))
+            negative_signed = bool(re.search(r"계약\s*전|서명\s*전|체결\s*전|아직|예정|하려|안\s*했|않았", scope))
+            if (value == "예" and (not positive_signed or negative_signed)) or (value == "아니요" and not negative_signed):
+                raise DecisionError("unstated_contract_stage")
         if value == "예" and short_negative or value == "아니요" and short_positive:
             raise DecisionError("polarity")
         # Detect clear contradictions without claiming a complete Korean parser.
