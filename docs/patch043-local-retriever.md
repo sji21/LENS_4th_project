@@ -3,6 +3,8 @@
 > **현재 결정:** PATCH-043 내부 판례 후보는 LENS 제품에 채택하지 않는다. Django 서비스는
 > 검증된 MySQL portable release 또는 `lens-case-retrieval-v1` 배포 판례 프로필만 사용하며,
 > `lens-case-internal-v1`을 지정하면 명시적으로 오류를 반환한다.
+> 이 제품 제외·실험 보관 결정과 Django 단일 운영 경로 정리는
+> [PATCH-062 기록](patch062-django-runtime-cleanup.md)에 남긴다.
 
 ## 결론
 

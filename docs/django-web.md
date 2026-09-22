@@ -3,7 +3,12 @@
 4차 프로젝트의 기본 웹 실행 경로를 Django 5.2 + HTML·CSS·JavaScript로 전환했다.
 채팅, 공식 출처, 계약서·등기 PDF/이미지 분석, 문서 선택·삭제, 새 대화를 제공한다.
 기존 `src/` 검색·생성·법률 검증 함수는 수정하지 않고 `chat/services.py`에서 호출한다.
-기존 Streamlit 화면과 전용 설정·테스트는 제거했다. 웹 실행 경로는 Django를 사용한다.
+PATCH-062에서 기존 Streamlit 화면과 전용 설정·테스트를 제거했다. 웹 실행 경로는 Django만 사용한다.
+
+PATCH-062의 검색 데이터는 `data/mysql-search/active.json`이 가리키는 검증된 portable
+release를 사용한다. 현재 작업 트리의 `django-runtime-20260922`는 로컬 검증 release이며,
+새 팀 배포 ZIP은 확정 소스에서 별도로 생성해야 한다. PATCH-043 내부 판례 실험 프로필은
+제품에서 지원하지 않으며, 재현용 코드는 `experiments/patch043_case_internal/`에만 둔다.
 
 ## 실행
 

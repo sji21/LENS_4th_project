@@ -4,6 +4,11 @@ MySQL은 원문·청크·버전을 관리한다. 앱 검색은 같은 MySQL 스�
 
 배포본은 생성 당시 `src/retrieval/*.py`의 바이트 해시를 고정한다. 검색 코드가 바뀌면 배포본을 다시 생성한다. PATCH-060부터 이 파일들은 모든 OS에서 LF로 체크아웃되므로(`.gitattributes`) Windows·macOS·Linux가 같은 배포본을 검증할 수 있다. PATCH-060 이전에 만든 배포본(`shared-v3`, `patch059-20260921` 등)은 CRLF 체크아웃 기준이라 새 코드에서 사용할 수 없다.
 
+> **PATCH-062 현재 상태:** 작업 트리의 활성 `django-runtime-20260922` release는 PATCH-043
+> 제품 제외 뒤 현재 코드 해시로 다시 build·verify한 로컬 검증 결과다. 기존 r2 팀 ZIP은
+> 수정 전 코드용 기록이므로 현재 소스와 혼용하지 않는다. 확정 소스에서 새 release와 팀 ZIP을
+> 만들기 전까지 이 로컬 release를 팀 배포본으로 표현하지 않는다.
+
 ## 지원 환경
 
 | 환경 | 상태 |
@@ -37,7 +42,7 @@ Chroma 생성 프로세스가 종료된 뒤 물리 파일 해시를 계산한다
 
 ## 팀원: 동일 배포본 설치·실행
 
-현재 공유 대상은 **`LENS-MySQL-search-patch060-r2-20260921.zip`**이다. release 폴더는 `data/mysql-search/releases/patch060-r2-20260921/`, release ID는 `5b1a63a7b004f63ad2dae018d53b9e4e0cdd120a61d623ec3270174c53622703`이다. 아래 `VERSION`은 `patch060-r2-20260921`로 바꾼다. `records_sha256`이 없는 1차 PATCH-060 배포본도 현재 코드와 함께 사용하지 않는다.
+마지막 팀 공유 대상은 **`LENS-MySQL-search-patch060-r2-20260921.zip`**이다. release 폴더는 `data/mysql-search/releases/patch060-r2-20260921/`, release ID는 `5b1a63a7b004f63ad2dae018d53b9e4e0cdd120a61d623ec3270174c53622703`이다. 이는 PATCH-062 이전 코드용 과거 배포본이다. 현재 작업 트리의 활성 release는 `django-runtime-20260922`(ID `a5cd80062e499b75435de248297097cf96d38f4c8d98923d8c32007b10c5d7b9`)이며 팀 ZIP은 아직 생성하지 않았다. `records_sha256`이 없는 1차 PATCH-060 배포본도 현재 코드와 함께 사용하지 않는다.
 
 r2는 Windows x64(새 가상환경)와 Apple Silicon Mac(arm64, Python 3.11.15)에서 같은 ZIP으로 `requirements`(출력 폴더 없이) → 설치 → `verify` → `model` → `activate` → `query`와 관련 테스트31개를 모두 통과했다. Linux x64(RunPod, Ubuntu 22.04, Python 3.11.10)에서도 Drive에서 받은 같은 ZIP으로 같은 절차와 전체 테스트(알려진 PATCH-042 기록 불일치 외 통과)를 확인했다.
 

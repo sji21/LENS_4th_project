@@ -5,6 +5,18 @@
 [3차 프로젝트 변경 이력](https://github.com/sji21/3rd_project_team4/blob/main/CHANGELOG_Kr.md)에 있습니다.
 이 파일은 4차 프로젝트의 첫 변경부터 기록합니다.
 
+## 2026-09-22
+
+### 변경
+
+- PATCH-062 제품 검색에서 `lens-case-internal-v1`을 거부하고 PATCH-043 내부 판례 구현·스크립트·테스트를 `experiments/patch043_case_internal/`에 재현 전용으로 보관합니다. Streamlit 앱·설정·전용 테스트를 제거해 Django를 유일한 웹 실행 경로로 고정하고, Django 웹 DB 경로의 상위 디렉터리를 설정 시 준비합니다. `.env.example`의 MySQL 원천 적재 키는 코드가 읽는 `LENS_MYSQL_*` 이름으로 정정합니다. (implementation: 1b1c713)
+
+- PATCH-062 변경된 리트리버 코드 해시로 로컬 `django-runtime-20260922` portable release를 다시 build·verify·activate했습니다. release ID는 `a5cd80062e499b75435de248297097cf96d38f4c8d98923d8c32007b10c5d7b9`이며, 일반 223·민법 31·판례 package 8,516 인덱스 검증과 전입신고 질의의 법령5·민법3·판례2 반환을 확인했습니다. 이는 팀 배포 ZIP이 아닌 로컬 검증 결과이며, 확정 소스의 새 ZIP 생성은 후속 작업입니다.
+
+### 검증
+
+- PATCH-062 관련 회귀는 269통과·5조건부 생략·97 subtests 통과입니다. 생략은 비공개 샘플 PDF 1건과 `LENS_RUN_MYSQL_TESTS=1`이 필요한 실제 MySQL 전송 테스트 4건입니다. `python manage.py check`, `python manage.py makemigrations --check --dry-run`, 활성 release `verify`도 통과했습니다.
+
 ## 2026-09-21
 
 ### 변경
