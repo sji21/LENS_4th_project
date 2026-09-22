@@ -1,4 +1,4 @@
-"""로컬 양자화 LLM 연결 — Qwen3-8B (Q4_K_M) on Ollama.
+"""Qwen3.8-27B 기반 Ollama LLM 연결.
 
 실제 생성은 Ollama native `/api/chat` 엔드포인트를 사용한다.
 
@@ -55,7 +55,8 @@ def _env_text(name: str, default: str) -> str:
 
 # 로컬 Ollama가 기본값이고, RunPod HTTP 프록시나 SSH 터널 주소로 덮어쓸 수 있다.
 LLM_BASE_URL = _env_text("JEONSEON_LLM_BASE_URL", "http://localhost:11434/v1")
-LLM_MODEL = os.getenv("JEONSEON_LLM_MODEL", "qwen3:8b-q4_K_M")
+DEFAULT_LLM_MODEL = "qwen3.8:27b"
+LLM_MODEL = _env_text("JEONSEON_LLM_MODEL", DEFAULT_LLM_MODEL)
 
 # 법령의 조건·시점 표현이 매 실행마다 달라지지 않도록 기본 생성은 결정적으로 한다.
 LLM_TEMPERATURE = _env_number("JEONSEON_LLM_TEMPERATURE", "0.0", float)

@@ -32,7 +32,7 @@ LENS는 전세와 월세 계약을 준비하거나 거주 중인 사용자가 �
 | 해결하려는 문제 | 법령·판례·기관 안내가 흩어져 있고 일반 사용자가 계약 문구와 법률 근거를 연결하기 어려움 |
 | 주요 기능 | 임대차 상담, 공식 근거 검색, 계약서·등기 OCR, 위험 신호·작성 항목 확인 |
 | 검색 방식 | BM25 키워드 검색 + KURE-v1 의미 검색 + RRF 순위 결합 |
-| 답변 모델 | Qwen3-8B Q4 · Ollama |
+| 답변 모델 | Qwen3.8-27B · Ollama · 추론 비활성화 |
 | 웹 | Django 5.2 LTS + HTML·CSS·JavaScript |
 | 검색 데이터 | MySQL 구축 스냅샷 + 해시 검증 portable release |
 | 답변 원칙 | 검색 근거 사용, 출처 표시, 검증 실패 시 답변 보류, 안전 여부 확정 금지 |
@@ -123,7 +123,7 @@ LENS는 전세와 월세 계약을 준비하거나 거주 중인 사용자가 �
                                + 세션 문서 근거
                                       │
                                       ▼
-                         Qwen3-8B 근거 기반 답변 생성
+                         Qwen3.8-27B 근거 기반 답변 생성
                                       │
                                       ▼
                     출력 정리 → 출처·숫자·조건 검증 → 의미 검증
@@ -186,7 +186,9 @@ Retriever는 질문을 받아 법령·판례·기관 안내를 한 줄로 섞지
                      ↓
             LangChain Prompt 구성
                      ↓
-        Qwen3-8B가 답변 본문 1회 생성
+       근거별 답변 계획 생성(JSON, 실패 시 생략)
+                     ↓
+        Qwen3.8-27B가 답변 본문 1회 생성
                      ↓
      reasoning·임의 URL·잘린 문장 정리
                      ↓
@@ -196,12 +198,24 @@ Retriever는 질문을 받아 법령·판례·기관 안내를 한 줄로 섞지
                      ↓
      위험한 답변만 보조 Qwen으로 의미 검사
                      ↓
+   첫 검증 실패 1회 보정·재검증
+   (결정론 보정 뒤 의미 실패 시에만 추가 1회)
+                     ↓
           ANSWER / ABSTAIN / REFUSE
 ```
 
 모델은 답변 본문만 생성합니다. 답변 상태, 면책문구, 출처 링크는 코드가 관리합니다.
 검색되지 않은 법령·판례를 인용하거나 근거의 금액·기간·시점·임대인/임차인 역할을
 바꾸면 검증에서 차단합니다. 검증을 통과하지 못한 원문을 대체 답변으로 보여주지 않습니다.
+답변 계획과 의미 검증처럼 JSON을 반환하는 보조 호출은 짧은 분류 호출과 별도의 출력
+상한을 사용합니다. 운영 Graph 기준 생성·검증 호출은 일반 semantic 최초 실패에서 최대
+5회, 결정론 보정 뒤 semantic 실패까지 이어질 때 최대 7회입니다. 검색 예산과 최종 답변
+생성 설정은 이 보조 호출 설정과 무관하게 기존 값을 유지합니다.
+
+로컬 DEV100 전수 실행 `dev100-v2-answer-plan-full-20260922-090412`의 참고 지연은
+100문항 평균 38.532초, 중앙값 31.959초, 최대 113.028초였습니다. 당시 상태는
+answered 65, abstained 29, refused 6, generation error 0이며, 공개 문항으로 조정한
+회귀 측정이라 독립 성능 점수로 사용하지 않습니다.
 
 | 최종 상태 | 의미 |
 | --- | --- |
@@ -213,7 +227,7 @@ Retriever는 질문을 받아 법령·판례·기관 안내를 한 줄로 섞지
 
 | 설정 | 현재 값 |
 | --- | --- |
-| 모델 | `qwen3:8b-q4_K_M` |
+| 모델 | `qwen3.8:27b` |
 | API | Ollama native `/api/chat` |
 | Temperature | `0.0` |
 | 일반 답변 길이 상한 | `512 tokens` |
@@ -380,7 +394,7 @@ Python 환경 준비
 ### 6.1 요구 환경
 
 - Python 3.11
-- Ollama와 `qwen3:8b-q4_K_M`
+- Ollama와 `qwen3.8:27b`
 - 스캔 PDF·이미지 OCR 사용 시 Tesseract와 한국어 언어 데이터
 - 기관 안내 원문을 처음 수집할 때 인터넷 연결
 
@@ -414,6 +428,9 @@ py -3.11 -m venv .venv
 LangSmith 추적은 선택 기능입니다.
 
 이미 `.env`가 있으면 덮어쓰지 말고 `.env.example`의 누락 항목만 추가합니다.
+**팀원은 브랜치를 받거나 `git pull`한 뒤마다 `.env.example`과 자신의 로컬 `.env`를
+비교해 새 항목을 각자 반영해야 합니다.** 개인 키와 PC별 경로는 유지하고, 예시 파일의
+비밀값을 그대로 복사하거나 `.env`를 Git에 올리지 않습니다. 변경 후에는 앱을 재시작합니다.
 다음 명령으로 Django 키를 생성해 로컬 `.env`의 `DJANGO_SECRET_KEY`에 넣습니다.
 키와 `.env`는 Git에 올리지 않습니다. 로컬 HTTP 실행은 `DJANGO_DEBUG=true`를 사용합니다.
 
@@ -438,7 +455,7 @@ python -c "from django.core.management.utils import get_random_secret_key; print
 ### 6.3 Ollama 준비
 
 ```bash
-ollama pull qwen3:8b-q4_K_M
+ollama pull qwen3.8:27b
 ollama serve
 ```
 
@@ -446,7 +463,7 @@ RunPod를 사용할 때만 `.env`의 주소를 바꿉니다.
 
 ```dotenv
 JEONSEON_LLM_BASE_URL=https://YOUR_POD_ID-11434.proxy.runpod.net/v1
-JEONSEON_LLM_MODEL=qwen3:8b-q4_K_M
+JEONSEON_LLM_MODEL=qwen3.8:27b
 ```
 
 ### 6.4 수동 초기 데이터 생성 (기존 기준선 재생성용)

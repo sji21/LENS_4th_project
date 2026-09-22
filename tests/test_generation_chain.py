@@ -23,7 +23,8 @@ from src.generation import chain as chain_module
 from src.generation import prompt as prompt_module
 from src.generation.chain import answer_document_question, answer_question, build_qa_chain
 from src.generation.llm import get_llm
-from src.retrieval.service import RetrievalService
+from src.generation.validation import ValidationIssue, ValidationReport
+from src.retrieval.service import Evidence, RetrievalResult, RetrievalService
 
 
 def law_chunk(chunk_id: str, text: str, no: str) -> dict:
@@ -632,6 +633,20 @@ class StubService:
 
 
 class RuntimeSafetyIntegrationTests(unittest.TestCase):
+    def test_validation_repair_rechecks_one_grounded_revision(self) -> None:
+        initial = "주택임대차보호법 제3조의2에 따르면 주민등록을 마친 그 다음 날부터 효력이 생깁니다."
+        repaired = "주택임대차보호법 제3조에 따르면 주민등록을 마친 그 다음 날부터 효력이 생깁니다."
+        answer = answer_question(
+            QUESTION,
+            service=self._stub_with_law(),
+            llm=get_llm(fake_responses=[initial, repaired, "PASS"]),
+            repair_validation=True,
+        )
+
+        self.assertEqual("answered", answer.status)
+        self.assertEqual(1, answer.repair_attempts)
+        self.assertIn("그 다음 날부터", answer.raw_text)
+
     """PATCH-023 B 모듈이 실제 answer_question 흐름에서 호출되는지 확인한다."""
 
     def _stub_with_law(self):
@@ -802,6 +817,48 @@ class RuntimeSafetyIntegrationTests(unittest.TestCase):
         self.assertIn(main, answer.text)
         self.assertEqual("semantic", answer.validation_mode)
 
+    def test_semantic_json_pass_returns_the_main_final_body(self) -> None:
+        main = "주택임대차보호법 제3조에 따르면 대항력은 그 다음 날부터 생깁니다."
+        judgement = '{"verdict":"PASS","failure_codes":[],"reason":"모든 주장이 직접 근거와 일치합니다."}'
+        answer = answer_question(
+            QUESTION,
+            service=self._stub_with_law(),
+            llm=runtime_llm(main, semantic_label=judgement),
+        )
+
+        self.assertEqual("answered", answer.status)
+        self.assertEqual(main, answer.raw_text)
+
+    def test_semantic_json_cross_source_failure_is_abstained(self) -> None:
+        main = "주택임대차보호법 제3조에 따르면 대항력은 그 다음 날부터 생깁니다."
+        judgement = (
+            '{"verdict":"FAIL","failure_codes":["unsupported_cross_source_inference"],'
+            '"reason":"근거 사이의 연결 관계가 제시되지 않았습니다."}'
+        )
+        answer = answer_question(
+            QUESTION,
+            service=self._stub_with_law(),
+            llm=runtime_llm(main, semantic_label=judgement),
+        )
+
+        self.assertEqual("abstained", answer.status)
+        self.assertEqual("", answer.raw_text)
+        self.assertEqual(
+            ("unsupported_cross_source_inference",),
+            answer.validation_codes,
+        )
+
+    def test_inconsistent_semantic_json_fails_closed(self) -> None:
+        main = "주택임대차보호법 제3조에 따르면 대항력은 그 다음 날부터 생깁니다."
+        invalid = '{"verdict":"PASS","failure_codes":["unsupported_claim"],"reason":"모순"}'
+        answer = answer_question(
+            QUESTION,
+            service=self._stub_with_law(),
+            llm=runtime_llm(main, semantic_label=invalid),
+        )
+
+        self.assertEqual("abstained", answer.status)
+
     def test_law_only_answer_uses_semantic_judge(self) -> None:
         main = "주택임대차보호법 제3조에 따르면 대항력은 그 다음 날부터 생깁니다."
         answer = answer_question(
@@ -813,8 +870,8 @@ class RuntimeSafetyIntegrationTests(unittest.TestCase):
         self.assertEqual("answered", answer.status)
         self.assertEqual(main, answer.raw_text)
 
-    def test_runtime_auxiliary_llm_uses_160_max_tokens(self) -> None:
-        """보조 분류·semantic judge는 160 token 상한을 사용한다."""
+    def test_runtime_json_auxiliary_llm_uses_400_max_tokens(self) -> None:
+        """JSON semantic judge has room for its complete strict response."""
         main = get_llm(
             fake_responses=[
                 "주택임대차보호법 제3조에 따르면 대항력은 그 다음 날부터 생깁니다."
@@ -827,7 +884,7 @@ class RuntimeSafetyIntegrationTests(unittest.TestCase):
 
         self.assertEqual("answered", answer.status)
         self.assertEqual(2, factory.call_count)
-        self.assertEqual(160, factory.call_args_list[1].kwargs["max_tokens"])
+        self.assertEqual(chain_module.JSON_AUX_MAX_TOKENS, factory.call_args_list[1].kwargs["max_tokens"])
 
     def test_law_only_semantic_mismatch_is_abstained(self) -> None:
         main = "주택임대차보호법 제3조에 따르면 주민등록을 마친 당일부터 효력이 생깁니다."
@@ -895,6 +952,124 @@ class GuideOnEveryExitTests(unittest.TestCase):
         answer = answer_question(QUESTION, service=self.service, llm=boom_llm())
         self.assertEqual("abstained", answer.status)
         self.assertEqual(1, len(answer.guides))
+
+
+class AnswerPlanContractTests(unittest.TestCase):
+    def test_guide_uses_the_displayed_source_name_and_bounds_unknown(self) -> None:
+        guide = Evidence(
+            rank=1,
+            chunk_id="guide-plan",
+            doc_type="guide",
+            citation="주택도시보증공사(전세보증금반환보증)",
+            text="보증기관이 임차인에게 보증금을 대신 지급합니다.",
+            score=1.0,
+            source_url="https://example.kr/guide",
+        )
+        result = RetrievalResult(question="보증 제도", guides=[guide])
+        output = (
+            "```json\n"
+            '{"items":[{"part":"보증 제도 설명","source":"주택도시보증공사 안내"}],'
+            f'"unknown":["{"가" * 121}"]}}\n'
+            "```"
+        )
+
+        plan = chain_module.build_answer_plan(
+            "보증 제도", result, get_llm(fake_responses=[output])
+        )
+
+        self.assertIn("직접 출처: 주택도시보증공사 안내", plan)
+        self.assertNotIn("근거 부족 항목", plan)
+
+    def test_semantic_judge_accepts_one_json_code_fence(self) -> None:
+        judgement = (
+            "```json\n"
+            '{"verdict":"PASS","failure_codes":[],"reason":"근거와 일치합니다."}\n'
+            "```"
+        )
+        judge = chain_module._semantic_judge(get_llm(fake_responses=[judgement]))
+
+        result = judge("질문", "답변", ())
+
+        self.assertTrue(result.supported)
+
+
+class ValidationRepairDirectiveTests(unittest.TestCase):
+    def test_directives_follow_failure_classes_without_legal_answer_hardcoding(self) -> None:
+        report = ValidationReport(issues=(
+            ValidationIssue("value", "10일", "근거에 없는 기간", code="value"),
+            ValidationIssue(
+                "semantic",
+                "효력이 생깁니다.",
+                "서로 다른 근거를 연결했습니다.",
+                code="unsupported_cross_source_inference",
+            ),
+        ))
+
+        directives = "\n".join(chain_module._repair_directives(report))
+
+        self.assertIn("숫자·기간·비율·금액", directives)
+        self.assertIn("질문의 요구를 나누어", directives)
+        self.assertIn("같은 문장 또는 바로 앞 문장", directives)
+        self.assertIn("여러 자료를 함께 설명할 수 있지만", directives)
+        self.assertIn("근거가 뒷받침하지 않는 결론", directives)
+        self.assertNotIn("주택임대차보호법", directives)
+        self.assertNotIn("대항력", directives)
+
+    def test_missing_answer_directive_keeps_supported_parts_answerable(self) -> None:
+        report = ValidationReport(issues=(
+            ValidationIssue(
+                "semantic", "", "질문의 일부가 빠졌습니다.", code="missing_required_answer"
+            ),
+        ))
+
+        directives = "\n".join(chain_module._repair_directives(report))
+
+        self.assertIn("여러 요구를 나누어", directives)
+        self.assertIn("직접 답하거나", directives)
+
+    def test_fact_application_directive_removes_unsupported_conclusion(self) -> None:
+        report = ValidationReport(issues=(
+            ValidationIssue(
+                "semantic", "", "개별 사실 적용 근거가 없습니다.",
+                code="unsupported_fact_application",
+            ),
+        ))
+
+        directives = "\n".join(chain_module._repair_directives(report))
+
+        self.assertIn("뒷받침하지 않는 결론은 삭제", directives)
+        self.assertIn("범위와 그 한계", directives)
+
+    def test_structural_repair_directive_keeps_the_answer_minimal(self) -> None:
+        report = ValidationReport(issues=(
+            ValidationIssue(
+                "paragraph", "제3조제2항", "검색 근거에서 확인할 수 없습니다."
+            ),
+        ))
+
+        directives = "\n".join(chain_module._repair_directives(report))
+
+        self.assertIn("1~3문장", directives)
+        self.assertIn("정확한 출처명 하나", directives)
+
+    def test_citation_repair_directive_keeps_an_exact_source_name(self) -> None:
+        report = ValidationReport(issues=(
+            ValidationIssue("citation", "민법 제999조", "검색 근거에 없습니다."),
+        ))
+
+        directives = "\n".join(chain_module._repair_directives(report))
+
+        self.assertIn("글자 그대로", directives)
+        self.assertIn("출처 하나는 지우지 마십시오", directives)
+
+    def test_wrong_citation_binding_directive_keeps_claim_and_source_together(self) -> None:
+        report = ValidationReport(issues=(
+            ValidationIssue("semantic", "", "출처 연결이 틀렸습니다.", code="wrong_citation_binding"),
+        ))
+
+        directives = "\n".join(chain_module._repair_directives(report))
+
+        self.assertIn("직접 말하는 결론에만", directives)
 
 
 class FallbackCorpusTests(unittest.TestCase):

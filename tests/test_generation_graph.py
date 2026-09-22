@@ -359,6 +359,60 @@ def test_deterministic_validation_failure_abstains_before_semantic_judge():
     )
 
     assert answer.status == "abstained"
+    assert answer.repair_attempts == 0
+
+
+def test_graph_repairs_a_deterministic_failure_with_existing_evidence():
+    service = StaticService(result_with_law())
+    initial = "주택임대차보호법 제3조의2에 따르면 주민등록을 마친 그 다음 날부터 효력이 생깁니다."
+    repaired = "주택임대차보호법 제3조에 따르면 주민등록을 마친 그 다음 날부터 효력이 생깁니다."
+
+    answer = graph_module.answer_question(
+        QUESTION,
+        service=service,
+        llm=get_llm(fake_responses=[initial, repaired, "PASS"]),
+        repair_validation=True,
+    )
+
+    assert answer.status == "answered"
+    assert answer.repair_attempts == 1
+    assert "제3조에 따르면" in answer.raw_text
+
+
+def test_graph_revalidates_a_repaired_draft_before_delivery():
+    service = StaticService(result_with_law())
+    initial = "주택임대차보호법 제999조에 따르면 즉시 효력이 생깁니다."
+    still_invalid = "민법 제999조에 따르면 대항력은 즉시 생깁니다."
+
+    answer = graph_module.answer_question(
+        QUESTION,
+        service=service,
+        llm=get_llm(fake_responses=[initial, still_invalid]),
+        repair_validation=True,
+        retain_rejected_draft=True,
+    )
+
+    # repair 초안도 결정론 검증을 재통과하지 못하면 semantic 단계로 넘기지 않는다.
+    assert answer.status == "abstained"
+    assert answer.repair_attempts == 1
+    assert answer.diagnostic_initial_draft == initial
+    assert answer.diagnostic_repair_draft == still_invalid
+    assert answer.initial_validation_codes
+    assert answer.repair_validation_codes
+
+
+def test_injected_llm_requires_explicit_repair_opt_in():
+    service = StaticService(result_with_law())
+    initial = "주택임대차보호법 제999조에 따르면 즉시 효력이 생깁니다."
+
+    answer = graph_module.answer_question(
+        QUESTION,
+        service=service,
+        llm=get_llm(fake_responses=[initial]),
+    )
+
+    assert answer.status == "abstained"
+    assert answer.repair_attempts == 0
 
 
 def test_semantic_validation_failure_abstains():
@@ -371,6 +425,75 @@ def test_semantic_validation_failure_abstains():
     )
 
     assert answer.status == "abstained"
+    assert answer.raw_text == ""
+    assert answer.diagnostic_initial_draft == ""
+    assert answer.diagnostic_repair_draft == ""
+
+
+def test_graph_repairs_first_semantic_failure_with_the_same_single_budget():
+    service = StaticService(result_with_law())
+    repaired = "주택임대차보호법 제3조에 따르면 주민등록을 마친 그 다음 날부터 효력이 생깁니다."
+
+    answer = graph_module.answer_question(
+        QUESTION,
+        service=service,
+        # generation -> semantic FAIL -> repair -> deterministic -> semantic PASS
+        llm=get_llm(fake_responses=[VALID_RAW_ANSWER, "FAIL", repaired, "PASS"]),
+        repair_validation=True,
+        retain_rejected_draft=True,
+    )
+
+    assert answer.status == "answered"
+    assert answer.repair_attempts == 1
+    assert answer.raw_text == repaired
+    assert answer.diagnostic_initial_draft == VALID_RAW_ANSWER
+    assert answer.diagnostic_repair_draft == repaired
+    assert answer.initial_validation_codes == ("semantic",)
+
+
+def test_graph_does_not_repair_a_second_semantic_failure() -> None:
+    service = StaticService(result_with_law())
+    repaired = "주택임대차보호법 제3조에 따르면 주민등록을 마친 그 다음 날부터 효력이 생깁니다."
+
+    answer = graph_module.answer_question(
+        QUESTION,
+        service=service,
+        llm=get_llm(fake_responses=[VALID_RAW_ANSWER, "FAIL", repaired, "FAIL"]),
+        repair_validation=True,
+        retain_rejected_draft=True,
+    )
+
+    assert answer.status == "abstained"
+    assert answer.repair_attempts == 1
+    assert answer.initial_validation_codes == ("semantic",)
+
+
+def test_graph_repairs_semantic_failure_after_deterministic_repair_once():
+    service = StaticService(result_with_law())
+    initial = "주택임대차보호법 제3조의2에 따르면 주민등록을 마친 그 다음 날부터 효력이 생깁니다."
+    repaired = "주택임대차보호법 제3조에 따르면 주민등록을 마친 그 다음 날부터 효력이 생깁니다."
+
+    second_repair = "주택임대차보호법 제3조에 따르면 주민등록을 마친 그 다음 날부터 효력이 생깁니다."
+    answer = graph_module.answer_question(
+        QUESTION,
+        service=service,
+        # Deterministic repair -> semantic FAIL -> one focused semantic repair
+        # -> deterministic and semantic PASS.
+        llm=get_llm(fake_responses=[
+            initial,
+            repaired,
+            ('{"verdict":"FAIL","failure_codes":["unsupported_fact_application"],'
+             '"reason":"개별 사실 적용 근거가 없습니다."}'),
+            second_repair,
+            "PASS",
+        ]),
+        repair_validation=True,
+        retain_rejected_draft=True,
+    )
+
+    assert answer.status == "answered"
+    assert answer.repair_attempts == 2
+    assert answer.raw_text == second_repair
 
 
 def test_semantic_validation_pass_returns_answered():
@@ -431,6 +554,7 @@ def test_graph_contains_real_workflow_nodes():
         "generate",
         "grounding",
         "deterministic_validation",
+        "validation_repair",
         "semantic_validation",
         "refuse",
         "abstain_no_evidence",

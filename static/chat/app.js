@@ -6,6 +6,7 @@
   let conversationId = null;
   let busy = false;
   let externalBusy = false;
+  let activeChat = null;
   let selectedDelete = null;
   let readinessTimer = null;
   let syncTimer = null;
@@ -73,6 +74,9 @@
     for (const id of ["attach", "new-chat", "upload-suggestion", "document-select"]) $(id).disabled = locked;
     document.querySelectorAll("[data-question], .document-card button, .clarification-panel button, .text-action").forEach((b) => { b.disabled = locked; });
     form.setAttribute("aria-busy", String(busy));
+    const cancel = $("cancel-answer");
+    cancel.hidden = !activeChat;
+    cancel.disabled = !activeChat || externalBusy;
   }
   async function request(url, options = {}) {
     const response = await fetch(url, {
@@ -87,10 +91,10 @@
     }
     return data;
   }
-  function post(url, body = {}, requestId = crypto.randomUUID()) {
+  function post(url, body = {}, requestId = crypto.randomUUID(), options = {}) {
     return request(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({
       ...body, conversation_id: conversationId, request_id: requestId,
-    }) });
+    }), ...options });
   }
   function safeLink(url, label) {
     try {
@@ -385,20 +389,55 @@
       const requestId = submission.get({ conversation_id: conversationId, ...payload });
       const submittedText = input.value;
       const submittedReply = replyingTo;
+      const requestController = new AbortController();
+      const active = { requestId, controller: requestController, cancelled: false, draft: submittedText, replyTo: submittedReply };
+      activeChat = active; controls();
       input.value = ""; replyingTo = null;
       let data;
       try {
-        data = await post(form.dataset.sendUrl, payload, requestId);
+        data = await post(form.dataset.sendUrl, payload, requestId, { signal: requestController.signal });
       } catch (error) {
+        if (active.cancelled) return;
         // Keep a newer draft; restore the failed submission only into an untouched composer.
         if (!input.value) { input.value = submittedText; replyingTo = submittedReply; }
         throw error;
+      } finally {
+        if (activeChat === active) { activeChat = null; controls(); }
       }
       submission.clear();
       render(data);
       if (data.room_created && !input.value) { window.location.reload(); return; }
       input.focus();
     }, true);
+  });
+  $("cancel-answer").addEventListener("click", async () => {
+    const active = activeChat;
+    if (!active || !conversationId) return;
+    const button = $("cancel-answer");
+    button.disabled = true;
+    try {
+      const data = await post(form.dataset.cancelUrl, {}, active.requestId);
+      active.cancelled = true;
+      submission.clear();
+      if (!input.value) { input.value = active.draft; replyingTo = active.replyTo; }
+      // Do not wait for the aborted send fetch to settle before re-enabling the
+      // composer. Browsers can defer that rejection while the server finishes
+      // its upstream model call, which otherwise makes search look disabled.
+      if (activeChat === active) activeChat = null;
+      busy = false;
+      externalBusy = false;
+      controls();
+      active.controller.abort();
+      render({ ...data, busy: false });
+      notice("응답을 중지했습니다. 내용을 고쳐 다시 보낼 수 있어요.");
+      input.focus();
+    } catch (error) {
+      // The answer may have completed just before the click; restore the server state.
+      await syncState();
+      if (error.status !== 409) notice(error.message, [403, 410].includes(error.status) || !error.status);
+    } finally {
+      controls();
+    }
   });
   const reportForm = $("report-form");
   if (reportForm) reportForm.addEventListener("submit", async (event) => {
