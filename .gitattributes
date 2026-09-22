@@ -59,3 +59,6 @@
 
 # MySQL search releases pin these files byte-for-byte; use one line ending on every OS.
 /src/retrieval/*.py text eol=lf
+
+# Linux deployment scripts and systemd units must not acquire CRLF on Windows.
+/deploy/aws/** text eol=lf

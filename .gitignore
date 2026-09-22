@@ -3,6 +3,8 @@ data/raw/
 data/parsed/
 data/chunks/
 data/database/
+data/backups/
+data/staticfiles/
 data/index/
 /data/models/
 /data/mysql-search/
@@ -14,6 +16,8 @@ data/index/
 
 # 환경 변수 · 비밀정보
 .env
+/deploy/aws/*.env
+/deploy/aws/private/
 
 # Python
 __pycache__/
