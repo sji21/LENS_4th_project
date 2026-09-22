@@ -9,6 +9,8 @@ This file records the 4th project from its first change onward.
 
 ### Fixed (Bug Fixes)
 
+- PATCH-065 keeps My Page room rename and delete controls separate at narrow widths, and makes the month label open a mini calendar. Selecting a date changes the displayed month and marks the selected date. Room deletion still returns to the screen where it started. (commits: 357e970b, 1e1e6a0d)
+
 - PATCH-063 follow-up questions appear as ordinary final answer paragraphs with suggested replies and a “Type a reply” button. Suggested replies send the selected answer; typing focuses the existing composer without clearing drafts or sending a message. The composer keeps its default placeholder. (commit: bfb8597)
 
 - PATCH-063 photo OCR now retains table cell coordinates, reads isolated cells with local contrast correction, and links vertically merged party labels to name cells in the same row. Only corroborated names can answer identity questions; uncertain names request a clearer table image. Existing uploads require re-uploading. (commit: bfb8597)
