@@ -58,6 +58,7 @@ _VERSION_SOURCE_FILES = (
     Path("src/generation/validation.py"),
     Path("src/generation/abstention.py"),
     Path("src/generation/citation.py"),
+    Path("src/generation/claim_binding.py"),
     Path("src/retrieval/service.py"),
     Path("src/retrieval/hybrid.py"),
     Path("src/retrieval/dense.py"),

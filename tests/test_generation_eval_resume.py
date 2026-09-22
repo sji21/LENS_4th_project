@@ -7,6 +7,7 @@
 남기고, load_completed()가 현재 해시와 다른 행은 재사용하지 않도록 고쳤다.
 """
 import json
+from pathlib import Path
 from unittest import mock
 
 from src.evaluation import run_generation_eval as eval_mod
@@ -27,6 +28,10 @@ def _row(qid, **overrides):
 
 def test_compute_code_version_is_deterministic():
     assert eval_mod.compute_code_version() == eval_mod.compute_code_version()
+
+
+def test_compute_code_version_tracks_claim_binding_validation():
+    assert Path("src/generation/claim_binding.py") in eval_mod._VERSION_SOURCE_FILES
 
 
 def test_compute_code_version_changes_when_tracked_source_changes(tmp_path):
