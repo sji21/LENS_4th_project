@@ -3,7 +3,7 @@
 {% block title %}나의 프로필 · LENS{% endblock %}
 {% block head %}
   <link rel="stylesheet" href="{% static 'cases/app.css' %}?v=20260915-2">
-  <link rel="stylesheet" href="{% static 'cases/mypage.css' %}?v=20260915-5">
+  <link rel="stylesheet" href="{% static 'cases/mypage.css' %}?v=20260922-room-controls-calendar-picker">
 {% endblock %}
 {% block content %}
 <div class="case-layout">
@@ -37,7 +37,7 @@
         <article class="panel calendar-panel">
           <div class="panel-heading calendar-heading">
             <div><span class="eyebrow">CALENDAR</span><h2>전체 대화 일정</h2></div>
-            <div class="calendar-nav" aria-label="달력 월 이동"><button id="calendar-prev" type="button" aria-label="이전 달">‹</button><strong id="calendar-month" aria-live="polite"></strong><button id="calendar-next" type="button" aria-label="다음 달">›</button></div>
+            <div class="calendar-nav" aria-label="달력 월 이동"><button id="calendar-prev" type="button" aria-label="이전 달">‹</button><button id="calendar-month" class="calendar-month-button" type="button" aria-haspopup="dialog" aria-expanded="false"></button><button id="calendar-next" type="button" aria-label="다음 달">›</button><section id="calendar-picker" class="calendar-picker" role="dialog" aria-label="날짜 선택" hidden><div class="calendar-picker-heading"><button id="calendar-picker-prev" type="button" aria-label="이전 달">‹</button><strong id="calendar-picker-month"></strong><button id="calendar-picker-next" type="button" aria-label="다음 달">›</button></div><div class="calendar-picker-weekdays" aria-hidden="true"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div><div id="calendar-picker-grid" class="calendar-picker-grid" role="grid" aria-label="날짜 선택"></div><button id="calendar-picker-close" class="calendar-picker-close" type="button">닫기</button></section></div>
           </div>
           <p class="panel-description">모든 채팅방의 대화에서 확인된 날짜와 기한을 한 달력에 표시합니다.</p>
           <div class="calendar-weekdays" aria-hidden="true"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div>

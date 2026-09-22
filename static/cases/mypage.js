@@ -33,6 +33,11 @@
   });
   const today = new Date();
   let visibleMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+  let selectedDate = null;
+  const picker = document.getElementById("calendar-picker");
+  const pickerMonth = document.getElementById("calendar-picker-month");
+  const pickerGrid = document.getElementById("calendar-picker-grid");
+  let pickerVisibleMonth = new Date(visibleMonth);
 
   function render() {
     grid.replaceChildren();
@@ -50,6 +55,7 @@
       day.setAttribute("aria-label", `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`);
       if (date.getMonth() !== visibleMonth.getMonth()) day.classList.add("outside");
       if (dateKey === keyFor(today)) day.classList.add("today");
+      if (dateKey === selectedDate) day.classList.add("selected-date");
       const number = document.createElement("span");
       number.className = "day-number";
       number.textContent = date.getDate();
@@ -71,7 +77,47 @@
       grid.append(day);
     }
   }
+  function renderPicker() {
+    if (!pickerMonth || !pickerGrid) return;
+    pickerGrid.replaceChildren();
+    pickerMonth.textContent = `${pickerVisibleMonth.getFullYear()}년 ${pickerVisibleMonth.getMonth() + 1}월`;
+    const first = new Date(pickerVisibleMonth.getFullYear(), pickerVisibleMonth.getMonth(), 1);
+    const start = new Date(first);
+    start.setDate(first.getDate() - first.getDay());
+    for (let index = 0; index < 42; index += 1) {
+      const date = new Date(start);
+      date.setDate(start.getDate() + index);
+      const key = keyFor(date);
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = date.getDate();
+      button.setAttribute("role", "gridcell");
+      button.setAttribute("aria-label", `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 선택`);
+      if (date.getMonth() !== pickerVisibleMonth.getMonth()) button.classList.add("outside");
+      if (key === keyFor(today)) button.classList.add("today");
+      if (key === selectedDate) button.classList.add("selected");
+      button.addEventListener("click", () => {
+        selectedDate = key;
+        visibleMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+        picker.hidden = true;
+        label.setAttribute("aria-expanded", "false");
+        render();
+      });
+      pickerGrid.append(button);
+    }
+  }
+  function openPicker() {
+    if (!picker) return;
+    pickerVisibleMonth = new Date(visibleMonth);
+    picker.hidden = false;
+    label.setAttribute("aria-expanded", "true");
+    renderPicker();
+  }
   document.getElementById("calendar-prev")?.addEventListener("click", () => {visibleMonth = new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() - 1, 1);render();});
   document.getElementById("calendar-next")?.addEventListener("click", () => {visibleMonth = new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() + 1, 1);render();});
+  label.addEventListener("click", openPicker);
+  document.getElementById("calendar-picker-prev")?.addEventListener("click", () => {pickerVisibleMonth = new Date(pickerVisibleMonth.getFullYear(), pickerVisibleMonth.getMonth() - 1, 1);renderPicker();});
+  document.getElementById("calendar-picker-next")?.addEventListener("click", () => {pickerVisibleMonth = new Date(pickerVisibleMonth.getFullYear(), pickerVisibleMonth.getMonth() + 1, 1);renderPicker();});
+  document.getElementById("calendar-picker-close")?.addEventListener("click", () => {picker.hidden = true;label.setAttribute("aria-expanded", "false");label.focus();});
   render();
 })();
