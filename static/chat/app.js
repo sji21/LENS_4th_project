@@ -420,8 +420,15 @@
       active.cancelled = true;
       submission.clear();
       if (!input.value) { input.value = active.draft; replyingTo = active.replyTo; }
+      // Do not wait for the aborted send fetch to settle before re-enabling the
+      // composer. Browsers can defer that rejection while the server finishes
+      // its upstream model call, which otherwise makes search look disabled.
+      if (activeChat === active) activeChat = null;
+      busy = false;
+      externalBusy = false;
+      controls();
       active.controller.abort();
-      render(data);
+      render({ ...data, busy: false });
       notice("응답을 중지했습니다. 내용을 고쳐 다시 보낼 수 있어요.");
       input.focus();
     } catch (error) {
