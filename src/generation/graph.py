@@ -79,6 +79,7 @@ class GenerationGraphState(TypedDict, total=False):
     # 이 값은 LangGraph 상태에서만 사용해 재검증 경로의 반복을 막는다.
     repair_attempted: bool
     repair_attempts: int
+    repair_origin: str
     initial_validation_codes: tuple[str, ...]
     repair_validation_codes: tuple[str, ...]
     initial_draft: str
@@ -116,6 +117,7 @@ def build_generation_graph(
 
     chain_module.prompt_module.style_guidance(response_style)
     runtime_aux_llm = auxiliary_llm if auxiliary_llm is not None else llm
+    runtime_json_aux_llm = auxiliary_llm if auxiliary_llm is not None else llm
     runtime_main_llm = llm
 
     def get_aux_llm():
@@ -129,6 +131,17 @@ def build_generation_graph(
                 max_retries=0,
             )
         return runtime_aux_llm
+
+    def get_json_aux_llm():
+        nonlocal runtime_json_aux_llm
+        if runtime_json_aux_llm is None:
+            runtime_json_aux_llm = chain_module.get_llm(
+                temperature=0.0,
+                max_tokens=chain_module.JSON_AUX_MAX_TOKENS,
+                timeout=90,
+                max_retries=0,
+            )
+        return runtime_json_aux_llm
 
     def get_main_llm():
         """생성과 validation repair가 같은 main LLM 인스턴스를 사용하게 한다."""
@@ -391,7 +404,7 @@ def build_generation_graph(
         answer_plan = ""
         if llm is None and not document_only:
             answer_plan = chain_module.build_answer_plan(
-                question, result, get_aux_llm()
+                question, result, get_json_aux_llm()
             )
         qa_chain = (
             chain_module.build_document_qa_chain(main_llm, **({"response_style": response_style} if response_style is not None else {}))
@@ -564,8 +577,11 @@ def build_generation_graph(
         repair_codes = validation_codes(attempt.report) if attempt.report else ()
         if attempt.repaired is None:
             return {
-                "repair_attempted": True,
-                "repair_attempts": prior_attempts + 1,
+                "repair_attempted": attempt.attempted,
+                "repair_attempts": prior_attempts + int(attempt.attempted),
+                "repair_origin": state.get(
+                    "repair_origin", state.get("validation_mode", "deterministic")
+                ),
                 "initial_validation_codes": initial_codes,
                 "repair_validation_codes": repair_codes,
                 "initial_draft": state.get("initial_draft", candidate.raw_text),
@@ -585,6 +601,9 @@ def build_generation_graph(
             "raw_text": repaired.raw_text,
             "repair_attempted": True,
             "repair_attempts": prior_attempts + 1,
+            "repair_origin": state.get(
+                "repair_origin", state.get("validation_mode", "deterministic")
+            ),
             "initial_validation_codes": initial_codes,
             "repair_validation_codes": repair_codes,
             "initial_draft": state.get("initial_draft", candidate.raw_text),
@@ -599,7 +618,7 @@ def build_generation_graph(
         report = chain_module.audit_answer(
             candidate,
             semantic_judge=lambda question, text, evidences: chain_module._semantic_judge(
-                get_aux_llm()
+                get_json_aux_llm()
             )(question, text, evidences, document_evidences),
         )
 
@@ -612,9 +631,15 @@ def build_generation_graph(
                 else (
                     # 결정론 보정을 통과한 초안도 의미상 잘못된 출처 연결이나
                     # 조건 누락이 남을 수 있다. 이 지점에서만 한 번 더 보정한다.
-                    "abstain_validation"
-                    if int(state.get("repair_attempts", 0) or 0) >= 2
-                    else "validation_repair"
+                    "validation_repair"
+                    if (
+                        int(state.get("repair_attempts", 0) or 0) == 0
+                        or (
+                            int(state.get("repair_attempts", 0) or 0) == 1
+                            and state.get("repair_origin") == "deterministic"
+                        )
+                    )
+                    else "abstain_validation"
                 )
             ),
         }

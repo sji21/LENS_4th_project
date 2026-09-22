@@ -312,6 +312,22 @@ def _guide_source_name(citation: str) -> str:
     return f"{agency} 안내"
 
 
+def answer_source_names(result: RetrievalResult) -> tuple[str, ...]:
+    """Return the exact source labels shown to the answer model."""
+
+    names: list[str] = []
+    for evidence in result.evidences:
+        if evidence.doc_type in _LAW_DOC_TYPES or evidence.doc_type == "case":
+            name = (evidence.citation or "").strip()
+        elif evidence.doc_type == "guide":
+            name = _guide_source_name(evidence.citation)
+        else:
+            continue
+        if name and name not in names:
+            names.append(name)
+    return tuple(names)
+
+
 def _answer_source_names(result: RetrievalResult) -> str:
     """Qwen이 답변에 써야 할 출처명을 본문과 별도로 짧게 보여 준다.
 

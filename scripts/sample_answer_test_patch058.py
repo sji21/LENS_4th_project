@@ -42,7 +42,8 @@ def _utc_now() -> str:
 
 
 def _json_get(url: str, timeout: int = 30) -> dict:
-    with urllib.request.urlopen(url, timeout=timeout) as response:
+    request = urllib.request.Request(url, headers={"User-Agent": "LENS-PATCH058/1.0"})
+    with urllib.request.urlopen(request, timeout=timeout) as response:
         return json.loads(response.read().decode("utf-8"))
 
 
@@ -230,7 +231,7 @@ def main(argv: list[str] | None = None) -> int:
         "LANGSMITH_TRACING": "false",
     })
     if args.no_think:
-        os.environ["JEONSEON_LLM_THINK_OFF"] = "1"
+        os.environ["JEONSEON_LLM_NO_THINK"] = "1"
 
     available_models = _require_model(args.base_url, args.model)
     corpus = _corpus_anchors()

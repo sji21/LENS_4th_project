@@ -47,3 +47,5 @@ def test_cancel_releases_composer_before_aborted_send_fetch_settles():
     assert "busy = false;" in cancel
     assert "externalBusy = false;" in cancel
     assert cancel.index("controls();") < cancel.index("active.controller.abort();")
+    assert "if (error.status !== 409) notice(" in cancel
+    assert "button.disabled = false;" not in cancel

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "dataset_id": "holdout-v2-ho30-20260918",
-  "purpose": "First frozen Qwen3.8-27B generation measurement",
+  "purpose": "Frozen Qwen3.8-27B regression measurement",
   "input_policy": "questions.jsonl only; gold and review files are never read by the runner",
   "model": {
     "tag": "qwen3.8:27b",
@@ -38,5 +38,5 @@
     ],
     "automatic_semantic_score": false
   },
-  "tuning_policy": "Do not change model, prompt, retrieval or grading after viewing this first run and report the same HO30 as an independent holdout."
+  "tuning_policy": "HO30 has been used for retrieval and generation improvement. Preserve the frozen questions and grading contract, and report every later run as a regression measurement rather than an independent holdout."
 }

@@ -208,7 +208,9 @@ def exclusive_conversation(request, payload):
                 busy_until=timezone.now(), lease_token=None, active_request_id=None,
             )
             if not updated:
-                owner = Conversation.objects.filter(pk=conversation.pk).values("lease_token", "busy_until").first()
+                owner = Conversation.objects.filter(pk=conversation.pk).values(
+                    "lease_token", "busy_until"
+                ).first()
                 if owner and owner["lease_token"] not in {None, token}:
                     successor = owner["lease_token"]
                     successor_busy_until = owner["busy_until"]
@@ -216,7 +218,11 @@ def exclusive_conversation(request, payload):
         request.session.set_expiry(settings.SESSION_COOKIE_AGE)
     except ApiError:
         if successor:
-            Conversation.objects.filter(pk=conversation.pk).update(
+            # A rollback can reveal this request's old token in tests and on
+            # databases with coarse transaction visibility. Restore the observed
+            # successor only while the old owner still holds the row. If the
+            # successor already completed (token=None), never resurrect it.
+            Conversation.objects.filter(pk=conversation.pk, lease_token=token).update(
                 lease_token=successor, busy_until=successor_busy_until,
             )
         raise
@@ -259,7 +265,6 @@ def send_message(request):
                 conversation.save(update_fields=("case", "updated_at"))
                 from cases.services.attachments import promote_pending_documents
                 promote_pending_documents(conversation, conversation.case)
-                request.session["lens_case_id"] = str(conversation.case_id)
                 room_created = True
             if conversation.case_id:
                 from cases.models import CaseFact
@@ -277,6 +282,8 @@ def send_message(request):
                 )
                 services.sync_persistent_messages(conversation)
                 conversation.case.save(update_fields=("updated_at",))
+    if room_created:
+        request.session["lens_case_id"] = str(conversation.case_id)
     response = services.public_state(conversation)
     response["room_created"] = room_created
     return JsonResponse(response)

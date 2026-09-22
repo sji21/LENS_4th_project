@@ -434,9 +434,9 @@
     } catch (error) {
       // The answer may have completed just before the click; restore the server state.
       await syncState();
-      notice(error.message, [403, 409, 410].includes(error.status) || !error.status);
+      if (error.status !== 409) notice(error.message, [403, 410].includes(error.status) || !error.status);
     } finally {
-      button.disabled = false;
+      controls();
     }
   });
   const reportForm = $("report-form");

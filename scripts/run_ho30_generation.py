@@ -31,8 +31,8 @@ from src.generation.chain import (
     DEFAULT_K_GUIDE,
     DEFAULT_K_LAW,
     _build_service,
-    answer_question,
 )
+from src.generation.graph import answer_question
 
 
 DATASET = ROOT / "data/eval/holdout-v2-ho30-20260918"
@@ -44,6 +44,11 @@ CODE_FILES = (
     ROOT / "src/generation/prompt.py",
     ROOT / "src/generation/validation.py",
     ROOT / "src/generation/chain.py",
+    ROOT / "src/generation/graph.py",
+    ROOT / "src/generation/claim_binding.py",
+    ROOT / "src/generation/citation.py",
+    ROOT / "src/generation/paragraph.py",
+    ROOT / "src/generation/models.py",
     ROOT / "src/generation/evidence_routing.py",
     ROOT / "src/retrieval/service.py",
     ROOT / "src/retrieval/expanded.py",
@@ -141,9 +146,21 @@ def _completed(path: Path) -> set[str]:
     if not path.exists():
         return set()
     ids = set()
-    for line in path.read_text(encoding="utf-8").splitlines():
+    lines = path.read_text(encoding="utf-8").splitlines()
+    valid_lines: list[str] = []
+    for index, line in enumerate(lines):
         if line.strip():
-            ids.add(json.loads(line)["id"])
+            try:
+                ids.add(json.loads(line)["id"])
+            except json.JSONDecodeError:
+                if index == len(lines) - 1:
+                    path.write_text(
+                        "\n".join(valid_lines) + ("\n" if valid_lines else ""),
+                        encoding="utf-8",
+                    )
+                    continue
+                raise
+            valid_lines.append(line)
     return ids
 
 

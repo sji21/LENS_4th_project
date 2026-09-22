@@ -24,7 +24,7 @@ from src.generation import prompt as prompt_module
 from src.generation.chain import answer_document_question, answer_question, build_qa_chain
 from src.generation.llm import get_llm
 from src.generation.validation import ValidationIssue, ValidationReport
-from src.retrieval.service import RetrievalService
+from src.retrieval.service import Evidence, RetrievalResult, RetrievalService
 
 
 def law_chunk(chunk_id: str, text: str, no: str) -> dict:
@@ -870,8 +870,8 @@ class RuntimeSafetyIntegrationTests(unittest.TestCase):
         self.assertEqual("answered", answer.status)
         self.assertEqual(main, answer.raw_text)
 
-    def test_runtime_auxiliary_llm_uses_160_max_tokens(self) -> None:
-        """보조 분류·semantic judge는 160 token 상한을 사용한다."""
+    def test_runtime_json_auxiliary_llm_uses_400_max_tokens(self) -> None:
+        """JSON semantic judge has room for its complete strict response."""
         main = get_llm(
             fake_responses=[
                 "주택임대차보호법 제3조에 따르면 대항력은 그 다음 날부터 생깁니다."
@@ -884,7 +884,7 @@ class RuntimeSafetyIntegrationTests(unittest.TestCase):
 
         self.assertEqual("answered", answer.status)
         self.assertEqual(2, factory.call_count)
-        self.assertEqual(160, factory.call_args_list[1].kwargs["max_tokens"])
+        self.assertEqual(chain_module.JSON_AUX_MAX_TOKENS, factory.call_args_list[1].kwargs["max_tokens"])
 
     def test_law_only_semantic_mismatch_is_abstained(self) -> None:
         main = "주택임대차보호법 제3조에 따르면 주민등록을 마친 당일부터 효력이 생깁니다."
@@ -952,6 +952,45 @@ class GuideOnEveryExitTests(unittest.TestCase):
         answer = answer_question(QUESTION, service=self.service, llm=boom_llm())
         self.assertEqual("abstained", answer.status)
         self.assertEqual(1, len(answer.guides))
+
+
+class AnswerPlanContractTests(unittest.TestCase):
+    def test_guide_uses_the_displayed_source_name_and_bounds_unknown(self) -> None:
+        guide = Evidence(
+            rank=1,
+            chunk_id="guide-plan",
+            doc_type="guide",
+            citation="주택도시보증공사(전세보증금반환보증)",
+            text="보증기관이 임차인에게 보증금을 대신 지급합니다.",
+            score=1.0,
+            source_url="https://example.kr/guide",
+        )
+        result = RetrievalResult(question="보증 제도", guides=[guide])
+        output = (
+            "```json\n"
+            '{"items":[{"part":"보증 제도 설명","source":"주택도시보증공사 안내"}],'
+            f'"unknown":["{"가" * 121}"]}}\n'
+            "```"
+        )
+
+        plan = chain_module.build_answer_plan(
+            "보증 제도", result, get_llm(fake_responses=[output])
+        )
+
+        self.assertIn("직접 출처: 주택도시보증공사 안내", plan)
+        self.assertNotIn("근거 부족 항목", plan)
+
+    def test_semantic_judge_accepts_one_json_code_fence(self) -> None:
+        judgement = (
+            "```json\n"
+            '{"verdict":"PASS","failure_codes":[],"reason":"근거와 일치합니다."}\n'
+            "```"
+        )
+        judge = chain_module._semantic_judge(get_llm(fake_responses=[judgement]))
+
+        result = judge("질문", "답변", ())
+
+        self.assertTrue(result.supported)
 
 
 class ValidationRepairDirectiveTests(unittest.TestCase):

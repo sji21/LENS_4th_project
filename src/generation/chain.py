@@ -73,6 +73,8 @@ from src.security.secret_filter import redact_secrets
 
 logger = logging.getLogger(__name__)
 
+JSON_AUX_MAX_TOKENS = 400
+
 # ★ 검색이 주는 기본값(법령 5 · 판례 5)보다 적게 쓴다. 측정 결과다.
 #
 #   질문                  법령5·판례5              법령3·판례2
@@ -323,6 +325,15 @@ def _invoke_auxiliary_llm(llm, system_prompt: str, user_prompt: str) -> str:
         # 구조화된 검증 출력은 완전한 객체인 경우 그대로 parser에 넘긴다.
         if stripped.startswith("{") and stripped.endswith("}"):
             return stripped
+        lines = stripped.splitlines()
+        if (
+            len(lines) >= 3
+            and lines[0].strip().lower() in {"```", "```json"}
+            and lines[-1].strip() == "```"
+            and "\n".join(lines[1:-1]).strip().startswith("{")
+            and "\n".join(lines[1:-1]).strip().endswith("}")
+        ):
+            return stripped
         return clean_output(stripped)
 
     chain = (
@@ -410,7 +421,7 @@ def _semantic_judge(llm):
 
         codes: list[str] = []
         try:
-            payload = json.loads(output)
+            payload = _parse_json_object(output)
         except json.JSONDecodeError:
             # 이전 체크포인트와 Fake LLM 기반 회귀 테스트는 기존 한 줄 계약을
             # 사용한다. 실제 27B 프롬프트는 JSON 계약을 요구하며, 그 밖의
@@ -539,18 +550,28 @@ source는 [답변에 쓸 출처명] 목록의 항목을 글자 그대로 복사�
 근거가 부족한 항목은 unknown에 넣되, items에 근거가 있는 항목까지 삭제하지 마십시오."""
 
 
+def _parse_json_object(output: str) -> Any:
+    """Parse JSON, accepting only an optional single Markdown JSON fence."""
+
+    text = output.strip()
+    lines = text.splitlines()
+    if (
+        len(lines) >= 3
+        and lines[0].strip().lower() in {"```", "```json"}
+        and lines[-1].strip() == "```"
+    ):
+        text = "\n".join(lines[1:-1]).strip()
+    return json.loads(text)
+
+
 def build_answer_plan(question: str, result: RetrievalResult, llm) -> str:
     """Build a fail-open, source-whitelisted planning hint for final generation."""
-    allowed = {
-        (evidence.citation or "").strip()
-        for evidence in result.evidences
-        if (evidence.citation or "").strip()
-    }
+    allowed = set(prompt_module.answer_source_names(result))
     if not allowed:
         return ""
     user = f"[질문]\n{question}\n\n[참고 자료]\n{prompt_module.format_context(result)}"
     try:
-        payload = json.loads(_invoke_auxiliary_llm(llm, _ANSWER_PLAN_SYSTEM, user))
+        payload = _parse_json_object(_invoke_auxiliary_llm(llm, _ANSWER_PLAN_SYSTEM, user))
     except Exception as error:
         logger.info("답변 계획 생성 생략: %s", type(error).__name__)
         return ""
@@ -569,7 +590,12 @@ def build_answer_plan(question: str, result: RetrievalResult, llm) -> str:
         part = " ".join(part.split())
         if source in allowed and 1 <= len(part) <= 120:
             planned.append(f"- 답할 항목: {part} / 직접 출처: {source}")
-    limits = [" ".join(item.split()) for item in unknown[:3] if isinstance(item, str)]
+    limits = [
+        cleaned
+        for item in unknown[:3]
+        if isinstance(item, str)
+        and 1 <= len(cleaned := " ".join(item.split())) <= 120
+    ]
     if not planned and not limits:
         return ""
     lines = ["[답변 계획 — 참고용 데이터]", *planned]
@@ -752,6 +778,7 @@ def answer_question(
         return _refused_answer(safe_question, "prompt_injection")
 
     runtime_aux_llm = auxiliary_llm if auxiliary_llm is not None else llm
+    runtime_json_aux_llm = auxiliary_llm if auxiliary_llm is not None else llm
 
     def get_aux_llm():
         nonlocal runtime_aux_llm
@@ -765,6 +792,17 @@ def answer_question(
                 max_retries=0,
             )
         return runtime_aux_llm
+
+    def get_json_aux_llm():
+        nonlocal runtime_json_aux_llm
+        if runtime_json_aux_llm is None:
+            runtime_json_aux_llm = get_llm(
+                temperature=0.0,
+                max_tokens=JSON_AUX_MAX_TOKENS,
+                timeout=90,
+                max_retries=0,
+            )
+        return runtime_json_aux_llm
 
     # ambiguous injection만 Qwen으로 재검사한다. 일반 질문마다 한 번 더 부르지 않는다.
     if injection.needs_semantic_review:
@@ -909,18 +947,22 @@ def answer_question(
     # 먼저 검사한다. 명확한 오류가 있으면 semantic judge까지 호출하지 않는다.
     report = audit_answer(candidate)
     if not report.is_valid and candidate.repair_attempts == 0:
-        repaired = _try_validation_repair(
+        attempt = _attempt_validation_repair(
             candidate,
             result,
             report,
             main_llm,
             enabled=(llm is None if repair_validation is None else repair_validation),
         )
-        if repaired is not None:
-            candidate = repaired
+        if attempt.repaired is not None:
+            candidate = attempt.repaired
         else:
             return _abstained_after_validation(
-                safe_question, result, report, document_evidences
+                safe_question,
+                result,
+                attempt.report or report,
+                document_evidences,
+                repair_attempts=int(attempt.attempted),
             )
 
     # 단일 법령의 단순 설명은 결정론적 검사로 끝낸다. 판례·기관 안내·복수 출처,
@@ -932,28 +974,30 @@ def answer_question(
     report = audit_answer(
         candidate,
         semantic_judge=lambda question, text, evidences: _semantic_judge(
-            get_aux_llm()
+            get_json_aux_llm()
         )(question, text, evidences, document_evidences),
     )
+    failed_repair_attempts = candidate.repair_attempts
     if not report.is_valid and candidate.repair_attempts == 0:
         # Graph 경로와 동일하게 답변 한 건당 repair 기회는 하나뿐이다. 결정론
         # 검증을 통과했지만 semantic에서 처음 실패한 경우에는 근거 안에서만 한 번
         # 축소·보정한 뒤 두 검증을 다시 모두 통과해야 한다.
-        repaired = _try_validation_repair(
+        attempt = _attempt_validation_repair(
             candidate,
             result,
             report,
             main_llm,
             enabled=(llm is None if repair_validation is None else repair_validation),
         )
-        if repaired is not None:
-            candidate = repaired
+        failed_repair_attempts += int(attempt.attempted)
+        if attempt.repaired is not None:
+            candidate = attempt.repaired
             report = audit_answer(candidate)
             if report.is_valid and requires_semantic_validation(candidate):
                 report = audit_answer(
                     candidate,
                     semantic_judge=lambda question, text, evidences: _semantic_judge(
-                        get_aux_llm()
+                        get_json_aux_llm()
                     )(question, text, evidences, document_evidences),
                 )
             if report.is_valid:
@@ -965,7 +1009,7 @@ def answer_question(
             report,
             document_evidences,
             validation_mode="semantic",
-            repair_attempts=candidate.repair_attempts,
+            repair_attempts=failed_repair_attempts,
         )
 
     return replace(candidate, validation_mode="semantic")

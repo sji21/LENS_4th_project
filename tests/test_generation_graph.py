@@ -457,6 +457,23 @@ def test_graph_repairs_first_semantic_failure_with_the_same_single_budget():
     assert answer.initial_validation_codes == ("semantic",)
 
 
+def test_graph_does_not_repair_a_second_semantic_failure() -> None:
+    service = StaticService(result_with_law())
+    repaired = "주택임대차보호법 제3조에 따르면 주민등록을 마친 그 다음 날부터 효력이 생깁니다."
+
+    answer = graph_module.answer_question(
+        QUESTION,
+        service=service,
+        llm=get_llm(fake_responses=[VALID_RAW_ANSWER, "FAIL", repaired, "FAIL"]),
+        repair_validation=True,
+        retain_rejected_draft=True,
+    )
+
+    assert answer.status == "abstained"
+    assert answer.repair_attempts == 1
+    assert answer.initial_validation_codes == ("semantic",)
+
+
 def test_graph_repairs_semantic_failure_after_deterministic_repair_once():
     service = StaticService(result_with_law())
     initial = "주택임대차보호법 제3조의2에 따르면 주민등록을 마친 그 다음 날부터 효력이 생깁니다."

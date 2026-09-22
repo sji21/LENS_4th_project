@@ -21,6 +21,22 @@ def test_runner_does_not_open_gold_or_review_inputs():
     assert "review/" not in source
 
 
+def test_runner_uses_the_production_graph_and_hashes_graph_dependencies():
+    source = Path(runner.__file__).read_text(encoding="utf-8")
+
+    assert "from src.generation.graph import answer_question" in source
+    assert runner.ROOT / "src/generation/graph.py" in runner.CODE_FILES
+    assert runner.ROOT / "src/generation/claim_binding.py" in runner.CODE_FILES
+
+
+def test_completed_discards_only_a_truncated_final_checkpoint(tmp_path):
+    results = tmp_path / "results.jsonl"
+    results.write_text('{"id":"HO-001"}\n{"id":"HO-', encoding="utf-8")
+
+    assert runner._completed(results) == {"HO-001"}
+    assert results.read_text(encoding="utf-8") == '{"id":"HO-001"}\n'
+
+
 def test_capturing_service_archives_returned_text_and_ids():
     evidence = Evidence(1, "law-1", "law", "법령 제1조", "본문", 1.0, "")
 
