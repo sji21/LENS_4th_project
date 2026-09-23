@@ -57,6 +57,8 @@ sudo -iu github-runner sudo -n /usr/local/sbin/lens-github-deploy not-a-sha || t
 
 마지막 명령은 SHA 검증 오류가 나야 정상이다. sudo 권한 오류가 나오면 sudoers 설정을 다시 확인한다.
 
+배포 스크립트가 Django 관리 명령을 실행할 때는 `/etc/lens/lens.env`를 직접 불러오고, 저장소에 있는 `config.settings`를 사용한다. 서비스는 기존 systemd 설정대로 `config.production`으로 실행된다. 따라서 `/etc/lens/lens.env`는 `lens` 사용자가 읽을 수 있어야 하며, 배포 때마다 필요한 비밀값과 운영 DB 설정이 관리 명령에도 적용된다.
+
 ## GitHub Actions 동작
 
 [`.github/workflows/deploy-production.yml`](../../.github/workflows/deploy-production.yml)은 `main` 푸시와 수동 실행에서만 동작한다. `pull_request` 이벤트에서는 실행하지 않는다. 러너가 준비된 뒤 `main`에 병합하면 GitHub **Actions → Deploy production**에서 배포 기록과 로그를 확인할 수 있다.

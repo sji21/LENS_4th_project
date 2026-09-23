@@ -4,6 +4,7 @@ set -Eeuo pipefail
 
 readonly APP=/opt/lens/app
 readonly VENV=/opt/lens/venv311
+readonly ENVIRONMENT=/etc/lens/lens.env
 readonly DATABASE="$APP/data/database/web.sqlite3"
 readonly BACKUP="$APP/data/backups/web-latest.sqlite3"
 readonly REVISION=${1:-}
@@ -20,17 +21,22 @@ for command in flock git git-lfs runuser systemctl; do
     command -v "$command" >/dev/null || { echo "Missing command: $command" >&2; exit 1; }
 done
 [[ -d $APP/.git && -x $VENV/bin/python ]] || { echo "LENS application runtime is incomplete." >&2; exit 1; }
+[[ -f $ENVIRONMENT ]] || { echo "Missing production environment file: $ENVIRONMENT" >&2; exit 1; }
 
 as_lens() {
     runuser -u lens -- "$@"
 }
 as_lens_env() {
-    runuser -u lens -- env \
-        DJANGO_SETTINGS_MODULE=config.production \
-        HF_HOME=/opt/lens/cache/huggingface \
-        OMP_NUM_THREADS=2 \
-        TOKENIZERS_PARALLELISM=false \
-        "$@"
+    runuser -u lens -- /bin/bash -c '
+        set -a
+        source /etc/lens/lens.env
+        set +a
+        export DJANGO_SETTINGS_MODULE=config.settings
+        export HF_HOME=/opt/lens/cache/huggingface
+        export OMP_NUM_THREADS=2
+        export TOKENIZERS_PARALLELISM=false
+        exec "$@"
+    ' bash "$@"
 }
 on_failure() {
     local status=$?
