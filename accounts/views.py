@@ -7,7 +7,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.db import IntegrityError, transaction
 
-from .forms import SignUpForm
+from .forms import EmailAuthenticationForm, SignUpForm
 from .models import User
 
 
@@ -54,6 +54,7 @@ class ChatLoginView(LoginView):
     """로그인 진입 경로와 관계없이 성공 후 채팅 홈을 연다."""
 
     template_name = "accounts/login.html"
+    authentication_form = EmailAuthenticationForm
     redirect_authenticated_user = True
 
     def get_success_url(self):

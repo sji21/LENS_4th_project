@@ -1,7 +1,33 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 from .models import User
+
+
+class EmailAuthenticationForm(AuthenticationForm):
+    """Authenticate existing accounts by their unique email address."""
+
+    username = forms.EmailField(
+        label="이메일",
+        widget=forms.EmailInput(attrs={"autocomplete": "email", "autofocus": True}),
+    )
+
+    def clean(self):
+        email = self.cleaned_data.get("username", "").strip().lower()
+        password = self.cleaned_data.get("password")
+
+        if email and password:
+            user = User.objects.filter(email__iexact=email).only("username").first()
+            self.user_cache = authenticate(
+                self.request,
+                username=user.username if user is not None else email,
+                password=password,
+            )
+            if self.user_cache is None:
+                raise self.get_invalid_login_error()
+            self.confirm_login_allowed(self.user_cache)
+        return self.cleaned_data
 
 
 class SignUpForm(UserCreationForm):
