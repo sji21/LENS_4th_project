@@ -750,3 +750,16 @@ MySQL 청크로 BM25·Chroma 검색 배포본을 생성·검증·활성화하고
 이는 팀 배포 ZIP이 아닌 로컬 검증 결과입니다. 기존 r2 ZIP과 구형 `shared-v3`,
 `patch059-20260921`, 1차 `patch060-20260921`은 현재 소스와 혼용하지 않습니다. 확정된
 소스의 새 release를 build·verify한 뒤에만 새 ZIP으로 배포합니다.
+
+### AWS 운영 배포
+
+AWS 서울의 EC2·Nginx·Gunicorn·CloudFront 운영 설정은
+[deploy/aws/README.md](deploy/aws/README.md)에 정리했습니다.
+Python 3.11, MySQL export 기반 검색 배포본, EBS 정기 스냅샷과 SQLite 백업을 사용합니다.
+[팀 공유 문서](docs/deployment/aws-runpod-team-guide.md),
+[코드 갱신](deploy/aws/UPDATE.md), [백업·복구](deploy/aws/BACKUP.md)를 참고하세요.
+RunPod는 별도 서비스이며 현재 연결 상태와 복구 절차는
+[RUNPOD.md](deploy/aws/RUNPOD.md)를 확인하세요. 실제 비밀 설정·키·운영 데이터는 Git에 포함하지 않습니다.
+
+GitHub 밖에서 인계할 접근 권한·검색 데이터·비밀값의 범위는
+[별도 인수인계 안내](docs/deployment/ACCESS-HANDOFF.md)에 정리했습니다.

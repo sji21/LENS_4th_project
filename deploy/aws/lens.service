@@ -1,0 +1,27 @@
+[Unit]
+Description=LENS Django application
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=lens
+Group=lens
+WorkingDirectory=/opt/lens/app
+EnvironmentFile=/etc/lens/lens.env
+Environment=DJANGO_SETTINGS_MODULE=config.production
+Environment=HF_HOME=/opt/lens/cache/huggingface
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/lens/venv311/bin/gunicorn --config deploy/aws/gunicorn.conf.py config.wsgi:application
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=260
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/lens/app/data /opt/lens/app/tmp /opt/lens/cache
+
+[Install]
+WantedBy=multi-user.target

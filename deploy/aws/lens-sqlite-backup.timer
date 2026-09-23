@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily LENS SQLite backup at 02:30 Asia/Seoul
+
+[Timer]
+OnCalendar=*-*-* 17:30:00 UTC
+Persistent=true
+Unit=lens-sqlite-backup.service
+
+[Install]
+WantedBy=timers.target

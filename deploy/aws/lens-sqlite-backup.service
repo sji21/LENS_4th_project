@@ -1,0 +1,16 @@
+[Unit]
+Description=Validated LENS SQLite backup before the daily EBS snapshot window
+
+[Service]
+Type=oneshot
+User=lens
+Group=lens
+WorkingDirectory=/opt/lens/app
+ExecStart=/opt/lens/venv311/bin/python /opt/lens/app/deploy/aws/backup-sqlite.py
+UMask=0077
+TimeoutStartSec=300
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/lens/app/data
