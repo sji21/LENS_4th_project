@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+# Runs only as root through the restricted github-runner sudo rule.
+set -Eeuo pipefail
+
+readonly APP=/opt/lens/app
+readonly VENV=/opt/lens/venv311
+readonly ENVIRONMENT=/etc/lens/lens.env
+readonly DATABASE="$APP/data/database/web.sqlite3"
+readonly BACKUP="$APP/data/backups/web-latest.sqlite3"
+readonly REVISION=${1:-}
+
+if [[ $EUID -ne 0 ]]; then
+    echo "Run this deployment command through sudo." >&2
+    exit 1
+fi
+if [[ ! $REVISION =~ ^[0-9a-f]{40}$ ]]; then
+    echo "Expected one lowercase, 40-character Git commit SHA." >&2
+    exit 2
+fi
+for command in flock git git-lfs runuser systemctl; do
+    command -v "$command" >/dev/null || { echo "Missing command: $command" >&2; exit 1; }
+done
+[[ -d $APP/.git && -x $VENV/bin/python ]] || { echo "LENS application runtime is incomplete." >&2; exit 1; }
+[[ -f $ENVIRONMENT ]] || { echo "Missing production environment file: $ENVIRONMENT" >&2; exit 1; }
+
+as_lens() {
+    runuser -u lens -- "$@"
+}
+as_lens_env() {
+    runuser -u lens -- /bin/bash -c '
+        set -a
+        source /etc/lens/lens.env
+        set +a
+        export DJANGO_SETTINGS_MODULE=config.settings
+        export HF_HOME=/opt/lens/cache/huggingface
+        export OMP_NUM_THREADS=2
+        export TOKENIZERS_PARALLELISM=false
+        exec "$@"
+    ' bash "$@"
+}
+on_failure() {
+    local status=$?
+    echo "Deployment did not complete; inspect the lens service before retrying." >&2
+    systemctl --no-pager --full status lens || true
+    journalctl -u lens -n 40 --no-pager || true
+    exit "$status"
+}
+trap on_failure ERR
+
+install -d -o lens -g lens -m 0700 "$APP/data/backups"
+exec 9>/run/lock/lens-github-deploy.lock
+flock -n 9 || { echo "Another LENS deployment is already running." >&2; exit 3; }
+
+if [[ -n $(as_lens git -C "$APP" status --porcelain --untracked-files=no) ]]; then
+    echo "Refusing to deploy over modified tracked files in $APP." >&2
+    exit 4
+fi
+
+as_lens git -C "$APP" fetch --quiet origin main
+as_lens git -C "$APP" cat-file -e "$REVISION^{commit}"
+as_lens git -C "$APP" merge-base --is-ancestor "$REVISION" origin/main
+
+current_revision=$(as_lens git -C "$APP" rev-parse HEAD)
+echo "Deploying $REVISION (current production revision: $current_revision)"
+
+# Preserve the web database before a migration can alter its schema.
+if [[ -f $DATABASE ]]; then
+    as_lens "$VENV/bin/python" "$APP/deploy/aws/backup-sqlite.py" \
+        --database "$DATABASE" --output "$BACKUP"
+fi
+
+as_lens git -C "$APP" merge --ff-only "$REVISION"
+as_lens git -C "$APP" lfs pull --include='data/case_corpus/**'
+
+# Do not upgrade already-installed packages implicitly. Missing packages required
+# by the checked-in requirements are installed; version upgrades are explicit.
+as_lens "$VENV/bin/pip" install --disable-pip-version-check --requirement "$APP/requirements.txt"
+as_lens "$VENV/bin/pip" check
+as_lens_env "$VENV/bin/python" manage.py makemigrations --check --dry-run
+as_lens_env "$VENV/bin/python" manage.py check --deploy
+as_lens_env "$VENV/bin/python" manage.py migrate --noinput
+as_lens_env "$VENV/bin/python" manage.py collectstatic --noinput
+chmod -R a+rX "$APP/data/staticfiles"
+
+if [[ -f $APP/data/mysql-search/active.json ]]; then
+    as_lens_env "$VENV/bin/python" -m src.ingestion.mysql_search verify \
+        --release "$APP/data/mysql-search/active.json"
+fi
+
+systemctl restart lens
+systemctl is-active --quiet lens
+curl --fail --silent --show-error --max-time 30 \
+    -H 'Host: d3kro62a2qvg04.cloudfront.net' \
+    -H 'X-Forwarded-Proto: https' \
+    http://127.0.0.1:8000/ >/dev/null
+
+echo "LENS deployment complete: $REVISION"

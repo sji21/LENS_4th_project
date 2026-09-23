@@ -1,0 +1,30 @@
+name: Deploy production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# The runner only needs this workflow's code. It does not use a GitHub token to
+# deploy; the production host fetches the approved main revision itself.
+permissions:
+  contents: read
+
+concurrency:
+  group: lens-production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy ${{ github.sha }}
+    # This runner lives on the production EC2 instance. Do not add pull_request
+    # here: unreviewed code must never execute on that machine.
+    runs-on: [self-hosted, linux, x64, lens-production]
+    timeout-minutes: 25
+
+    steps:
+      - name: Update the production release
+        env:
+          DEPLOY_SHA: ${{ github.sha }}
+        run: sudo /usr/local/sbin/lens-github-deploy "$DEPLOY_SHA"
