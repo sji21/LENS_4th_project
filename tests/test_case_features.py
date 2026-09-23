@@ -172,13 +172,39 @@ def test_signup_redirects_to_chat_without_creating_first_room(client):
     assert Conversation.objects.get(user=user).case is None
 
 
-def test_login_always_redirects_to_chat_even_with_mypage_next(client, user):
+def test_login_uses_email_and_always_redirects_to_chat_even_with_mypage_next(client, user):
     response = client.post(
         "/accounts/login/?next=/cases/",
-        {"username": user.username, "password": "safe-password-123"},
+        {"username": user.email.upper(), "password": "safe-password-123"},
     )
     assert response.status_code == 302
     assert response.url == "/"
+
+
+def test_login_rejects_username_when_email_is_required(client, user):
+    response = client.post(
+        "/accounts/login/",
+        {"username": user.username, "password": "safe-password-123"},
+    )
+    assert response.status_code == 200
+    assert "올바른 이메일 주소" in response.content.decode()
+
+
+def test_login_does_not_fall_back_to_an_email_shaped_username(client):
+    User = get_user_model()
+    User.objects.create_user(
+        username="member@example.com",
+        email="actual-owner@example.com",
+        password="safe-password-123",
+    )
+
+    response = client.post(
+        "/accounts/login/",
+        {"username": "member@example.com", "password": "safe-password-123"},
+    )
+
+    assert response.status_code == 200
+    assert response.context["form"].non_field_errors()
 
 
 def test_login_claims_empty_guest_draft_without_creating_or_selecting_room(client, user, case):
@@ -186,7 +212,7 @@ def test_login_claims_empty_guest_draft_without_creating_or_selecting_room(clien
     guest_id = client.session["lens_conversation_id"]
     response = client.post(
         "/accounts/login/",
-        {"username": user.username, "password": "safe-password-123"},
+        {"username": user.email, "password": "safe-password-123"},
     )
     conversation = Conversation.objects.get(pk=guest_id)
     assert response.status_code == 302 and response.url == "/"

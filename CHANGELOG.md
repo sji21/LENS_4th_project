@@ -9,6 +9,7 @@ This file records the 4th project from its first change onward.
 
 ### Changed
 
+- PATCH-067 changes member sign-in to email and password. Existing usernames remain internal account identifiers; existing post-login chat and guest-conversation handoff behavior is preserved. An unmatched email is never retried as a username. (commits: ebd57667, 63d06583)
 - PATCH-066 publishes the existing Seoul EC2 deployment configuration for Python 3.11, Gunicorn/systemd, Nginx and CloudFront, with production environment examples and validated runtime constraints. Adds the atomic SQLite Backup API helper, daily timer, EBS DLM policy example, update/restore procedures and operational handoff documentation. Secrets, user data, search releases and model weights are excluded from Git. (implementation: 97699cf)
 - Records the `patch060-r2-20260921` export transition to the server-compatible search release. RunPod reconnection and actual generation verification are explicitly deferred at the user's request. GitHub publication does not deploy or merge automatically.
 
