@@ -1,8 +1,8 @@
 # 로컬 검색 데이터 준비
 
 이 문서는 **개발 PC에서 승인 원천으로 검색 데이터를 구축하는 방법**입니다. 전체 실행 순서는
-[로컬 설치 안내](local-setup.md)에, 기존 EC2 검색 배포 이력은
-[AWS 검색 데이터 기록](../deploy/aws/MYSQL-SEARCH.md)에 있습니다. 현재 소스와 호환되는
+[로컬 설치 안내](local-setup.md)에, EC2 검색 배포·갱신 절차는
+[AWS 검색 데이터 안내](../deploy/aws/MYSQL-SEARCH.md)에 있습니다. 현재 소스와 호환되는
 팀 검색 ZIP이 없어 로컬 첫 설치에는 이 원천 구축 방법을 사용합니다. 호환 ZIP을 전달받았다면
 [`mysql-search.md`](mysql-search.md), 과거 평가 DB 복원은
 [`local-retrieval-data.md`](local-retrieval-data.md)를 따릅니다.

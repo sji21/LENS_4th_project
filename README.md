@@ -122,21 +122,6 @@ LLM 생성 결과: answered(답변) · abstained(보류) · refused(거절)
 Ollama로 한 번 전환합니다. 노트북에서 화면 흐름만 확인할 때는 `JEONSEON_LLM_MODEL`을 작은 모델로 바꿀 수
 있지만, 그 결과는 답변 품질·지연 판단의 기준으로 쓰지 않습니다.
 
-### 2.3 현재 AWS·RunPod 운영 구조
-
-![LENS 배포 시스템 아키텍처: AWS EC2 Docker Compose와 RunPod 직접 실행](docs/images/lens-deployment-architecture.png)
-
-사용자는 웹 주소로 접속합니다. AWS EC2의 Docker Compose가 Nginx와 Django를 실행하고,
-Django가 대화·문서 처리·공식 근거 검색·답변 검증을 맡습니다. 앱 데이터 볼륨에는 웹 DB, 암호화한
-업로드 문서, MySQL 원천에서 내보낸 JSONL·Chroma 검색 자료를 따로 보관합니다. Django는 HTTPS로
-RunPod의 Ollama/Qwen3.8-27B에 필요한 질문·근거를 보내 답변을 받습니다. **RunPod에서는
-Ollama를 직접 실행하며 Docker를 사용하지 않습니다.** 모델 가중치와 캐시는 RunPod Network Volume에
-둡니다. 앱 코드는 Docker 이미지로 빌드해 AWS에 배포하고, MySQL 원천은 별도 JSONL·Chroma
-배포본으로 전달합니다.
-
-이 구조는 팀에서 제공한 배포 그림을 기준으로 정리했습니다. 저장소의 `deploy/aws/` 문서는 이전
-systemd·SSH 방식의 운영 기록이므로 이 그림의 Docker Compose 설치 절차로 사용하지 않습니다.
-
 ## 3. 데이터와 저장 위치
 
 다음은 현재 검색 배포본의 자료 범위입니다. EC2는 검증한 MySQL 스냅샷에서 내보낸 자료로
@@ -343,6 +328,7 @@ data/                     원천·평가 자료와 로컬 생성 데이터 (3장
 | [`docs/windows-verification.md`](docs/windows-verification.md) | Windows 설치·OCR·웹 회귀 확인 |
 | [`docs/chunk-schema.md`](docs/chunk-schema.md) | 검색 청크·메타데이터 규격 |
 | [`docs/planning/project-plan.md`](docs/planning/project-plan.md) | 3차에서 이관한 프로젝트 기획서 원문 |
+| [`deploy/aws/README.md`](deploy/aws/README.md) | 현재 AWS 운영 설정·RunPod 연결·백업·갱신 절차 |
 | [`LIST.md`](LIST.md) | 패치별 상태·담당·검증 기록·후속 과제 |
 
 3차 Streamlit UI와 전용 설정·테스트는 현재 운영 경로에서 제거했습니다. `docs/`의 `patchNNN-*`·`eval-*` 문서와 3차에서 이관한 인계 문서(`retrieval-handoff.md`, `case-data-handoff.md` 등)는

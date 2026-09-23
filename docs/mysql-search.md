@@ -5,8 +5,8 @@
 MySQL 접속 정보가 필요하지 않습니다.
 
 이 문서는 **현재 소스와 호환되는 새 ZIP을 받은 팀원**의 로컬 설치 안내입니다. Python 3.11을
-사용합니다. ZIP이 없다면 [로컬 원천 구축](server-data-setup.md)을 따르세요. 이전 EC2 서버용
-배포본 기록은 [AWS 검색 데이터 안내](../deploy/aws/MYSQL-SEARCH.md)에 있습니다.
+사용합니다. ZIP이 없다면 [로컬 원천 구축](server-data-setup.md)을 따르세요. EC2 서버용
+배포본의 갱신 절차는 [AWS 검색 데이터 안내](../deploy/aws/MYSQL-SEARCH.md)에 있습니다.
 
 ## 현재 배포 상태
 
