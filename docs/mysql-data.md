@@ -12,7 +12,7 @@ MySQL 배포본에서 BM25·Chroma를 생성·검증·활성화하는 앱 연결
 
 신규 원문·문서 교체·삭제·재청킹은 [원문 갱신 안내](mysql-ingest.md)의 `mysql_ingest` 명령을 사용한다. 실제 MySQL에서 변경·재실행·실패 시 미반영을 확인했고, 공용 HUG 원문 재청킹과 검색 배포본 갱신·되돌리기도 검증했다. [갱신 검증 기록](planning/mysql-update-validation.json)에 결과를 남겼다.
 
-아직 미완료: 실제 LLM 연결 및 다른 팀원 PC에서의 재현. 기존 판례 평가 20문항 중 8문항은 정답 ID가 현재 코퍼스에 없어 현재 코퍼스용 평가 자료 보완이 필요하다. JSONL 내보내기만 성공한 배포본에는 `index_status: not_built`가 기록되며 검색 배포본 생성이 성공하면 별도 `release.json`에 `ready`가 기록된다. 전체 실행 계획은 [실행 계획서](planning/mysql-retrieval-execution-plan.md)를 따른다.
+2026-09-18 이전 검증 당시에는 실제 LLM 연결과 다른 팀원 PC 재현이 남아 있었다. 이후 r2 배포본은 Windows·Apple Silicon macOS·Linux에서 설치·검증·검색을 확인했지만, 현재 코드의 새 팀 ZIP은 아직 없다. EC2에는 현재 코드와 서버 환경에 맞춰 같은 MySQL 스냅샷에서 별도 release를 구축했다([검색 배포 안내](mysql-search.md), [EC2 전환 기록](../deploy/aws/MYSQL-SEARCH.md)). 기존 판례 평가 20문항 중 8문항은 정답 ID가 당시 코퍼스에 없어 현재 코퍼스용 평가 자료 보완이 필요하다. JSONL 내보내기만 성공한 배포본에는 `index_status: not_built`가 기록되며 검색 배포본 생성이 성공하면 별도 `release.json`에 `ready`가 기록된다. 전체 실행 계획은 [실행 계획서](planning/mysql-retrieval-execution-plan.md)를 따른다.
 
 2026-09-19 재확인에서도 세 스냅샷 전체 행·스트림 해시와 유형별 원문 조회가 통과했다. [실제 DB 재검증](mysql-live-verification.md)에 이번 실행 범위와 접속 설정 주의점을 기록한다.
 
@@ -90,7 +90,7 @@ python -m src.ingestion.mysql_transfer import --database data/case_corpus/databa
 
 모든 테이블과 메타데이터를 하나의 트랜잭션으로 적재하고 원본의 각 컬럼과 전체 행 집합을 MySQL 조회 결과로 대조한다. 마지막 검증까지 통과해야 commit한다. 출력의 `snapshot_id`를 다음 단계에 사용한다.
 
-기본 법령·안내와 민법은 판례와 별도 코퍼스로 이전한다. 기본 `chunks.jsonl`에는 민법도 포함될 수 있으므로 파일명으로 법령 채널 건수를 판단하지 않는다. 현재 기본 레시피는 법령 178·민법 26·시드 판례 26·안내 6을 만든다. 앱에서 실제 사용하는 판례 채널은 별도의 8,377건 코퍼스다.
+기본 법령·안내와 민법은 판례와 별도 코퍼스로 이전한다. 기본 `chunks.jsonl`에는 민법도 포함될 수 있으므로 파일명으로 법령 채널 건수를 판단하지 않는다. 아래 이전 예시는 당시 기본 레시피(법령 178·민법 26·시드 판례 26·안내 6)의 스냅샷을 대상으로 한다. 최신 승인 원천 구축 범위(법령 185·민법 31·기본 판례 28·안내 10청크)는 [서버 데이터 준비](server-data-setup.md)를 따른다. 앱의 확대 판례 검색에는 별도의 8,377건 코퍼스와 승인 보완 2건을 사용한다.
 
 ### 4. MySQL 검증·내보내기·출처 추적
 

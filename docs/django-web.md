@@ -12,21 +12,18 @@ release를 사용한다. 현재 작업 트리의 `django-runtime-20260922`는 �
 
 ## 실행
 
-Python 3.11 환경에서 다음 명령을 실행한다. Ollama, KURE 캐시, Tesseract 한국어 데이터,
-지식 DB와 Chroma 준비는 루트 README의 기존 절차를 따른다.
+[로컬 설치 안내](local-setup.md)에 따라 OS별 Python 환경·검색 데이터·`.env`·Ollama를
+준비한다. 그 절차에서 활성화한 가상환경으로 다음 명령을 실행한다.
 
 ```bash
-pip install -r requirements.txt
-# .env가 없다면 .env.example을 복사하고 DJANGO_SECRET_KEY를 각자 생성한다.
-python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 python manage.py migrate
 python manage.py check
 python manage.py runserver 127.0.0.1:8000 --noreload
 ```
 
-생성한 키를 로컬 `.env`에 넣고 `DJANGO_DEBUG=true`,
-`DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,[::1]`를 설정한다.
-기존 `.env`와 API 키를 덮어쓰거나 저장소에 올리지 않는다.
+로컬 HTTP 실행에서는 `DJANGO_DEBUG=true`,
+`DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,[::1]`를 사용한다. 기존 `.env`와 API 키를
+덮어쓰거나 저장소에 올리지 않는다.
 팀원은 브랜치를 받거나 `git pull`한 뒤마다 `.env.example`과 로컬 `.env`를 비교해
 새 환경변수를 각자 추가한다. 개인 키와 PC별 경로는 유지하고 변경 후 앱을 재시작한다.
 http://127.0.0.1:8000 에 접속한다. Python 변경 후 서버를 재시작한다.
