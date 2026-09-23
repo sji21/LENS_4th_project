@@ -19,9 +19,11 @@ class EmailAuthenticationForm(AuthenticationForm):
 
         if email and password:
             user = User.objects.filter(email__iexact=email).only("username").first()
+            if user is None:
+                raise self.get_invalid_login_error()
             self.user_cache = authenticate(
                 self.request,
-                username=user.username if user is not None else email,
+                username=user.username,
                 password=password,
             )
             if self.user_cache is None:
